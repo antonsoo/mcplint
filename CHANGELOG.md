@@ -10,7 +10,7 @@ Initial release.
 
 - `mcplint stdio|http|file|config` targets for collecting tools, prompts, and resources from an MCP server via
   the official `@modelcontextprotocol/sdk` client.
-- 19 rules across five categories: token budget, naming, descriptions, schema validity, and safety (hidden
+- 23 rules across five categories: token budget, naming, descriptions, schema validity, and safety (hidden
   Unicode, prompt injection, secret-access instructions, cross-tool references, encoded blobs, missing
   destructive annotations). See `docs/rules/`.
 - Terminal, JSON, SARIF 2.1.0, Markdown, and self-contained HTML report formats.
