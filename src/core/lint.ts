@@ -33,7 +33,7 @@ export function lint(target: LintTarget, config: ResolvedConfig): LintResult {
     promptCount: target.prompts.length,
     resourceCount: target.resources.length,
     totalEstimatedTokens: target.tools.reduce((sum, t) => sum + estimateToolTokens(t), 0),
-    score: computeScore(findings)
+    score: computeScore(findings, target)
   };
 
   return {
