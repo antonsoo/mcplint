@@ -2,10 +2,16 @@
 
 **Category:** naming · **Default severity:** warning
 
-Fires when a tool's full name, or the last `_`/`-`/`.`-delimited segment of it, matches a list of generic verbs:
-`run`, `execute`, `exec`, `query`, `do`, `process`, `handle`, `call`, `invoke`, `action`, `perform`, `task`,
-`go`, `main`, `operation`, `op`, `command`, `cmd`, `tool`, `helper`, `util`, `misc`, `generic`, `request`,
-`submit`.
+Fires when a tool's full name matches a list of generic verbs — `run`, `execute`, `exec`, `query`, `do`,
+`process`, `handle`, `call`, `invoke`, `action`, `perform`, `task`, `go`, `main`, `operation`, `op`, `command`,
+`cmd`, `tool`, `helper`, `util`, `misc`, `generic`, `request`, `submit` — or, for names of **one or two**
+`_`/`-`/`.`-delimited segments only, when the last segment does.
+
+The segment count limit matters: a name like `db_query` (two segments, ambiguous) is flagged, but
+`simulate-research-query` or `trigger-long-running-operation` (three and four segments) are not, even though
+both end in a word on the list — a longer compound name already says something specific, and penalizing it for
+its last word alone produced real false positives against `@modelcontextprotocol/server-everything` during
+development (see the README's "Real-world run" section).
 
 ## Why it matters
 
@@ -20,7 +26,7 @@ have been obvious from the name.
 { "name": "run", "description": "Runs the requested operation." }
 ```
 
-Fix: name it after the resource or effect instead — `list_invoices`, not `query`; `deploy_service`, not `run`.
+Fix: name it after the resource or effect instead — `list_widgets`, not `query`; `deploy_service`, not `run`.
 
 ## How to fix
 

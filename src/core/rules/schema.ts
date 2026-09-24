@@ -2,7 +2,11 @@ import { Ajv2020 } from 'ajv/dist/2020.js';
 import type { Finding, Rule, RuleContext } from '../types.js';
 import { asSchema, isPlainObject, schemaProperties } from '../schema-utils.js';
 
-const ajv = new Ajv2020({ strict: false, allErrors: true });
+// logger: false — Ajv warns to the console (not into any Finding) for things like an unrecognized
+// `format` keyword (e.g. real-world schemas commonly declare `format: "uri"`, which Ajv's core
+// doesn't validate without the separate ajv-formats package). That's not a finding mcplint reports,
+// so it shouldn't print raw noise into a user's terminal on every run against a server that uses it.
+const ajv = new Ajv2020({ strict: false, allErrors: true, logger: false });
 
 export const validSchema: Rule = {
   id: 'schema/invalid',

@@ -172,14 +172,22 @@ export const genericName: Rule = {
   check(ctx: RuleContext): Finding[] {
     const findings: Finding[] = [];
     for (const tool of namesOf(ctx)) {
-      const last = tool.name.split(/[_.\-]/).pop()?.toLowerCase() ?? tool.name.toLowerCase();
-      if (GENERIC_NAMES.has(tool.name.toLowerCase()) || GENERIC_NAMES.has(last)) {
+      const segments = tool.name.split(/[_.\-]/).filter(Boolean);
+      const last = segments[segments.length - 1]?.toLowerCase();
+      // The whole name being generic ("run") is always a problem. A generic *last*
+      // segment ("query" in "db_query") only is when the name has just 1-2 segments —
+      // a longer compound name like "simulate-research-query" or
+      // "trigger-long-running-operation" already says something specific even though
+      // its last word, in isolation, is on the generic list.
+      const flagged =
+        GENERIC_NAMES.has(tool.name.toLowerCase()) || (segments.length <= 2 && last !== undefined && GENERIC_NAMES.has(last));
+      if (flagged) {
         findings.push({
           ruleId: this.id,
           severity: this.defaultSeverity,
           serverId: tool.serverId,
           subject: { kind: 'tool', name: tool.name },
-          message: `"${tool.name}" is a generic action name; prefer a name that names the resource or effect, e.g. "list_invoices" not "query".`
+          message: `"${tool.name}" is a generic action name; prefer one that names the resource or effect, e.g. "list_widgets" or "delete_widget" instead of a bare verb like "${tool.name}".`
         });
       }
     }
