@@ -42,6 +42,20 @@ Nothing is published to a registry yet, so run it straight from GitHub:
 npx github:antonsoo/mcplint stdio -- node your-server.js
 ```
 
+npm 12 refuses git-hosted packages by default (`allow-git=none`) and fails with `EALLOWGIT`. On npm 12+, opt in
+explicitly:
+
+```sh
+npx --allow-git=root github:antonsoo/mcplint stdio -- node your-server.js
+```
+
+(Verified against real installs, not just the git-clone step: `npm pack`, then a global install of the tarball
+*and* of a git-hosted source install both produce a working `dist/cli.js` — npm still runs mcplint's own
+`prepare` script for the package being installed from git, even though it warns about blocking install scripts
+for other reasons. The installed bin is a symlink into `lib/node_modules/mcplint/dist/cli.js`; mcplint has no
+"am I the main module" check to break under that symlink — `dist/cli.js` runs unconditionally when invoked, the
+way any CLI entry point should.)
+
 To build and try it from source instead (what the commands below were actually run against):
 
 ```sh

@@ -3,6 +3,11 @@
 mcplint isn't published to npm yet, so install it straight from GitHub. Two ways to wire it into a server
 repository's CI:
 
+> **npm 12+:** `npx github:...` fails with `EALLOWGIT` on npm 12, which disables git-hosted packages by default
+> (`allow-git=none`). Add `--allow-git=root` to opt in: `npx --allow-git=root github:antonsoo/mcplint ...`. Every
+> `npx github:antonsoo/mcplint` command on this page needs that flag if your CI runner's npm is 12 or newer —
+> check with `npm --version` in a debug step if a run fails with `EALLOWGIT`.
+
 ## GitHub Actions
 
 ```yaml
