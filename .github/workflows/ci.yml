@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+
+  fixtures:
+    name: dogfood mcplint against its own fixture servers
+    runs-on: ubuntu-latest
+    needs: build-test
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+
+      - name: lint the well-behaved fixture (must pass clean)
+        run: node dist/cli.js stdio --format markdown --fail-on warning -- npx tsx examples/good-server/server.ts
+
+      - name: lint the poisoned fixture (must fail — this is the point)
+        id: poisoned
+        continue-on-error: true
+        run: node dist/cli.js stdio --format markdown --fail-on error -- npx tsx examples/poisoned-server/server.ts
+
+      - name: assert the poisoned fixture was actually rejected
+        if: steps.poisoned.outcome != 'failure'
+        run: |
+          echo "::error::mcplint did not fail on the poisoned fixture — it should have."
+          exit 1

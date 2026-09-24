@@ -1,0 +1,9 @@
+{
+  "budget": 350,
+  "totalBudget": 6000,
+  "severities": {
+    "naming/generic": "error",
+    "description/too-long": "off"
+  },
+  "ignore": ["schema/portability", "naming/strict-client-compat:reports.export.csv"]
+}
