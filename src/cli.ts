@@ -87,11 +87,11 @@ async function main(): Promise<void> {
   const configFile = await loadConfigFile(process.cwd(), values.config);
   const config = resolveConfig({
     file: configFile,
-    ...(values.budget !== undefined ? { budgetFlag: Number(values.budget) } : {}),
+    ...(values.budget !== undefined ? { budgetFlag: parsePositiveInt('--budget', values.budget) } : {}),
     failOnFlag: failOn,
     ...(values.ignore ? { ignoreFlags: values.ignore } : {})
   });
-  if (values['total-budget'] !== undefined) config.totalBudget = Number(values['total-budget']);
+  if (values['total-budget'] !== undefined) config.totalBudget = parsePositiveInt('--total-budget', values['total-budget']);
 
   let result: LintResult;
 
@@ -164,6 +164,12 @@ function render(result: LintResult, format: string): string {
     default:
       return renderTerminal(result);
   }
+}
+
+function parsePositiveInt(flag: string, raw: string): number {
+  const n = Number(raw);
+  if (!Number.isFinite(n) || n <= 0) fail(`${flag} must be a positive number, got "${raw}"`);
+  return n;
 }
 
 function parseFailOn(v: string | undefined): Severity | null {
