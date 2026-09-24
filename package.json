@@ -50,6 +50,7 @@
     "test:watch": "vitest",
     "fixtures:good": "tsx examples/good-server/server.ts",
     "fixtures:poisoned": "tsx examples/poisoned-server/server.ts",
+    "build:site": "npm run build && node scripts/build-site.mjs",
     "prepare": "npm run build",
     "prepublishOnly": "npm run build"
   },

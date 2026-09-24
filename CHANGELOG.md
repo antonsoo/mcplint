@@ -19,3 +19,5 @@ Initial release.
 - `examples/good-server` and `examples/poisoned-server` fixture MCP servers, used by the end-to-end test suite
   and as a live demonstration in the README.
 - GitHub Actions CI running lint, typecheck, tests, and build, plus a job that lints both fixture servers.
+- `npm run build:site` (`scripts/build-site.mjs`) and a Pages workflow publishing mcplint's own HTML report,
+  run against both fixture servers, as a live demo.
