@@ -53,7 +53,7 @@ node dist/cli.js stdio -- npx tsx examples/good-server/server.ts
 - **Four targets**: `stdio` (spawn a server), `http` (Streamable HTTP, with custom headers), `file` (a saved
   `tools/list` result or a bare tool array), `config` (every server in a Claude Desktop / Claude Code
   `.mcp.json`-style `mcpServers` map).
-- **19 rules** across five categories — token budget, naming, descriptions, schema validity, and safety. Every
+- **23 rules** across five categories — token budget, naming, descriptions, schema validity, and safety. Every
   rule has an id, a default severity, a rationale, and a doc page in [`docs/rules/`](docs/rules/).
 - **Five report formats**: colored terminal, JSON, [SARIF 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/)
   (for GitHub code scanning and friends), Markdown, and a self-contained, offline HTML report.
