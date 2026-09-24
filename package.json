@@ -1,0 +1,72 @@
+{
+  "name": "mcplint",
+  "version": "0.1.0",
+  "description": "Lint MCP server tools the way the model sees them: token cost, clarity, and hidden instructions.",
+  "type": "module",
+  "bin": {
+    "mcplint": "dist/cli.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "docs/rules"
+  ],
+  "author": "Anton Soloviev",
+  "license": "MIT",
+  "homepage": "https://github.com/antonsoo/mcplint#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonsoo/mcplint.git"
+  },
+  "bugs": {
+    "url": "https://github.com/antonsoo/mcplint/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "linter",
+    "cli",
+    "llm-tools",
+    "prompt-injection",
+    "static-analysis",
+    "ai-agents"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx src/cli.ts",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc -p tsconfig.typecheck.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "fixtures:good": "tsx examples/good-server/server.ts",
+    "fixtures:poisoned": "tsx examples/poisoned-server/server.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.1",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "chalk": "^5.6.2",
+    "gpt-tokenizer": "^4.0.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.2",
+    "@typescript-eslint/eslint-plugin": "^8.19.1",
+    "@typescript-eslint/parser": "^8.19.1",
+    "eslint": "^9.18.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.4"
+  }
+}
