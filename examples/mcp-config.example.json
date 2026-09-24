@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "good": {
+      "command": "npx",
+      "args": ["tsx", "examples/good-server/server.ts"]
+    },
+    "poisoned": {
+      "command": "npx",
+      "args": ["tsx", "examples/poisoned-server/server.ts"]
+    }
+  }
+}
