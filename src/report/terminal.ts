@@ -10,6 +10,40 @@ const SEVERITY_COLOR: Record<Severity, (s: string) => string> = {
 
 const SEVERITY_ICON: Record<Severity, string> = { error: '✖', warning: '⚠', info: 'ℹ' };
 
+const MIN_WRAP_WIDTH = 60;
+const FALLBACK_COLUMNS = 100;
+
+function terminalWidth(): number {
+  return process.stdout.columns && process.stdout.columns > 0 ? process.stdout.columns : FALLBACK_COLUMNS;
+}
+
+/**
+ * Wraps plain text (no ANSI codes — color the already-wrapped lines
+ * afterward) to `width`, indenting every line after the first by `indent`
+ * spaces so continuation text lines up under where the message started,
+ * instead of wrapping back to column 0.
+ */
+function wrapIndented(text: string, indent: number, width: number): string[] {
+  const avail = Math.max(MIN_WRAP_WIDTH - indent, width - indent);
+  const words = text.split(/\s+/).filter(Boolean);
+  const rows: string[] = [];
+  let current = '';
+  for (const word of words) {
+    if (current.length === 0) {
+      current = word;
+    } else if (current.length + 1 + word.length <= avail) {
+      current += ` ${word}`;
+    } else {
+      rows.push(current);
+      current = word;
+    }
+  }
+  if (current.length > 0) rows.push(current);
+  if (rows.length === 0) return [''];
+  const pad = ' '.repeat(indent);
+  return rows.map((row, i) => (i === 0 ? row : pad + row));
+}
+
 function groupBySubject(findings: Finding[]): Map<string, Finding[]> {
   const map = new Map<string, Finding[]>();
   for (const f of findings) {
@@ -30,10 +64,11 @@ function scoreColor(score: number): (s: string) => string {
 export function renderTerminal(result: LintResult): string {
   const lines: string[] = [];
   const { summary } = result;
+  const width = terminalWidth();
 
   lines.push('');
   lines.push(chalk.bold.white(' mcplint ') + chalk.dim(`— ${result.tokenizerName} token estimates, ${result.generatedAt}`));
-  lines.push(chalk.dim('─'.repeat(70)));
+  lines.push(chalk.dim('─'.repeat(Math.min(70, width))));
 
   const bySubject = groupBySubject(result.findings);
   const sortedKeys = [...bySubject.keys()].sort();
@@ -55,13 +90,21 @@ export function renderTerminal(result: LintResult): string {
       `  ${SEVERITY_COLOR[worst](SEVERITY_ICON[worst])} ${chalk.bold(first.subject.name)} ${chalk.dim(`(${first.subject.kind}, ${first.serverId})`)}`
     );
     for (const f of findings) {
-      lines.push(`      ${SEVERITY_COLOR[f.severity](f.severity.padEnd(7))} ${chalk.dim(f.ruleId)}  ${f.message}`);
-      if (f.suggestion) lines.push(`              ${chalk.dim('->')} ${chalk.italic(f.suggestion)}`);
+      const prefix = `      ${f.severity.padEnd(7)} ${f.ruleId}  `;
+      const [firstLine, ...rest] = wrapIndented(f.message, prefix.length, width);
+      lines.push(`      ${SEVERITY_COLOR[f.severity](f.severity.padEnd(7))} ${chalk.dim(f.ruleId)}  ${firstLine}`);
+      for (const row of rest) lines.push(row);
+      if (f.suggestion) {
+        const suggestionPrefix = '              -> ';
+        const [sFirst, ...sRest] = wrapIndented(f.suggestion, suggestionPrefix.length, width);
+        lines.push(`              ${chalk.dim('->')} ${chalk.italic(sFirst)}`);
+        for (const row of sRest) lines.push(chalk.italic(row));
+      }
     }
   }
 
   lines.push('');
-  lines.push(chalk.dim('─'.repeat(70)));
+  lines.push(chalk.dim('─'.repeat(Math.min(70, width))));
   lines.push(
     `  ${chalk.bold('Servers')}: ${result.target.servers.length}   ` +
       `${chalk.bold('Tools')}: ${summary.toolCount}   ` +
