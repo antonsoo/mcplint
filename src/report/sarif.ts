@@ -35,7 +35,9 @@ export function renderSarif(result: LintResult): string {
           locations: [
             {
               physicalLocation: {
-                artifactLocation: { uri: `mcp://${f.serverId}/${f.subject.kind}/${encodeURIComponent(f.subject.name)}` }
+                artifactLocation: {
+                  uri: `mcp://${encodeURIComponent(f.serverId)}/${f.subject.kind}/${encodeURIComponent(f.subject.name)}`
+                }
               }
             }
           ]

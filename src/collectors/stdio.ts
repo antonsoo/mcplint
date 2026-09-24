@@ -19,11 +19,17 @@ export async function collectStdio(opts: StdioTargetOptions): Promise<LintTarget
   });
 
   const client = new Client({ name: 'mcplint', version: '0.1.0' });
-  const serverId = opts.serverId ?? 'stdio';
-  const label = opts.label ?? `${opts.command} ${opts.args.join(' ')}`.trim();
 
   try {
     await client.connect(transport);
+    // Prefer the name the server itself declared in the `initialize` handshake
+    // (serverInfo.name) over a generic "stdio" placeholder — much more useful
+    // in reports and screenshots when linting a single server.
+    const discoveredName = client.getServerVersion()?.name;
+    const serverId = opts.serverId ?? discoveredName ?? 'stdio';
+    // Keep the label as the literal command by default — it's what makes a report
+    // reproducible (see the "target" field in the HTML/terminal header).
+    const label = opts.label ?? `${opts.command} ${opts.args.join(' ')}`.trim();
     return await collectFromClient(client, serverId, label);
   } finally {
     await client.close().catch(() => undefined);

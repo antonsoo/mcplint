@@ -16,11 +16,14 @@ export async function collectHttp(opts: HttpTargetOptions): Promise<LintTarget> 
   });
 
   const client = new Client({ name: 'mcplint', version: '0.1.0' });
-  const serverId = opts.serverId ?? 'http';
-  const label = opts.label ?? opts.url;
 
   try {
     await client.connect(transport);
+    // See collectors/stdio.ts: prefer the server's own declared name over a
+    // generic "http" placeholder when the caller didn't pin a serverId.
+    const discoveredName = client.getServerVersion()?.name;
+    const serverId = opts.serverId ?? discoveredName ?? 'http';
+    const label = opts.label ?? opts.url;
     return await collectFromClient(client, serverId, label);
   } finally {
     await client.close().catch(() => undefined);
