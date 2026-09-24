@@ -26,6 +26,22 @@ describe('schema/invalid', () => {
     });
     expect(validSchema.check(ctxOf([t]))).toHaveLength(0);
   });
+  it('does not flag a structurally valid schema that declares an older $schema draft (e.g. draft-07)', () => {
+    // Regression test: the reference "everything" server ships tools with
+    // $schema: "http://json-schema.org/draft-07/schema#", which Ajv2020 cannot resolve as a meta-schema
+    // reference on its own. mcplint should judge structure, not draft conformance, and not flag this.
+    const t = tool({
+      name: 't',
+      inputSchema: {
+        $schema: 'http://json-schema.org/draft-07/schema#',
+        type: 'object',
+        properties: { a: { type: 'string' } },
+        required: ['a'],
+        additionalProperties: false
+      }
+    });
+    expect(validSchema.check(ctxOf([t]))).toHaveLength(0);
+  });
 });
 
 describe('schema/portability', () => {

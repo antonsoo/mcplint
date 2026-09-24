@@ -49,7 +49,14 @@ export const validSchema: Rule = {
         continue;
       }
       try {
-        ajv.compile(raw);
+        // Compile against the 2020-12 meta-schema regardless of what draft the tool's own `$schema`
+        // names (draft-07 is common in the wild, e.g. the reference "everything" server). Ajv would
+        // otherwise fail to *resolve* an unregistered draft-07/06/04 meta-schema and report the whole
+        // schema as invalid, when the actual keywords in use are perfectly valid, portable JSON Schema.
+        // This rule checks structural well-formedness, not strict draft conformance.
+        const withoutSchemaKeyword = { ...raw };
+        delete withoutSchemaKeyword.$schema;
+        ajv.compile(withoutSchemaKeyword);
       } catch (err) {
         findings.push({
           ruleId: this.id,
