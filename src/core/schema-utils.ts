@@ -11,6 +11,11 @@ export interface JsonSchemaLike {
   [key: string]: unknown;
 }
 
+/** Strips a leading UTF-8 BOM (common in Windows-authored JSON files), which otherwise breaks JSON.parse. */
+export function stripBom(text: string): string {
+  return text.charCodeAt(0) === 0xfeff ? text.slice(1) : text;
+}
+
 export function isPlainObject(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }

@@ -18,6 +18,13 @@ describe('collectFile', () => {
     await writeFile(path, JSON.stringify([{ name: 'a', inputSchema: { type: 'object', properties: {} } }]));
     const target = await collectFile(path);
     expect(target.tools).toHaveLength(1);
+  });
+
+  it('tolerates a leading UTF-8 BOM (common in Windows-authored JSON files)', async () => {
+    const path = join(dir, 'bom.json');
+    await writeFile(path, '﻿' + JSON.stringify([{ name: 'a', inputSchema: { type: 'object', properties: {} } }]));
+    const target = await collectFile(path);
+    expect(target.tools).toHaveLength(1);
     expect(target.tools[0]!.name).toBe('a');
   });
 

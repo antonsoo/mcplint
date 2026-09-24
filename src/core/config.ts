@@ -2,6 +2,7 @@ import { readFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { McplintConfigFile, ResolvedConfig, Severity } from './types.js';
+import { stripBom } from './schema-utils.js';
 
 export const DEFAULT_BUDGET = 400;
 
@@ -12,7 +13,7 @@ export async function loadConfigFile(cwd: string, explicitPath?: string): Promis
   if (!path) return {};
   const raw = await readFile(path, 'utf8');
   try {
-    return JSON.parse(raw) as McplintConfigFile;
+    return JSON.parse(stripBom(raw)) as McplintConfigFile;
   } catch (err) {
     throw new Error(`Failed to parse config file ${path}: ${(err as Error).message}`);
   }

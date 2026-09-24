@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import type { CollectedPrompt, CollectedResource, CollectedTool, LintTarget } from '../core/types.js';
-import { isPlainObject } from '../core/schema-utils.js';
+import { isPlainObject, stripBom } from '../core/schema-utils.js';
 
 /**
  * Accepts either a saved `tools/list` result (`{ tools: [...] }`, optionally
@@ -10,7 +10,7 @@ export async function collectFile(path: string, serverId = 'file'): Promise<Lint
   const raw = await readFile(path, 'utf8');
   let parsed: unknown;
   try {
-    parsed = JSON.parse(raw);
+    parsed = JSON.parse(stripBom(raw));
   } catch (err) {
     throw new Error(`${path} is not valid JSON: ${(err as Error).message}`);
   }

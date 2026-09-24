@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import type { LintTarget } from '../core/types.js';
-import { isPlainObject } from '../core/schema-utils.js';
+import { isPlainObject, stripBom } from '../core/schema-utils.js';
 import { collectStdio } from './stdio.js';
 import { collectHttp } from './http.js';
 import { mergeTargets } from './collect.js';
@@ -61,7 +61,7 @@ export interface CollectConfigOptions {
 
 export async function collectConfig(path: string, opts: CollectConfigOptions = {}): Promise<LintTarget> {
   const raw = await readFile(path, 'utf8');
-  const parsed: unknown = JSON.parse(raw);
+  const parsed: unknown = JSON.parse(stripBom(raw));
   const entries = parseServerEntries(parsed);
   if (entries.length === 0) {
     throw new Error(`${path}'s "mcpServers" map has no entries with a "command" or "url".`);
