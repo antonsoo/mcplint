@@ -1,5 +1,5 @@
 import type { CollectedItem, Finding, Rule, RuleContext } from '../types.js';
-import { findHiddenUnicode } from '../unicode.js';
+import { describeHiddenUnicodeCount, findHiddenUnicode } from '../unicode.js';
 import { schemaProperties, asSchema } from '../schema-utils.js';
 
 function textFields(item: CollectedItem): { field: string; text: string }[] {
@@ -62,7 +62,7 @@ export const hiddenUnicode: Rule = {
             severity: this.defaultSeverity,
             serverId: item.serverId,
             subject: { kind: item.kind, name: item.name },
-            message: `${field}: ${hit.count} ${hit.kind} character(s) found.${decodedPart}`,
+            message: `${field}: ${describeHiddenUnicodeCount(hit.kind, hit.count)} found.${decodedPart}`,
             detail: codepointList
           });
         }
@@ -110,7 +110,7 @@ export const promptInjection: Rule = {
               severity: this.defaultSeverity,
               serverId: item.serverId,
               subject: { kind: item.kind, name: item.name },
-              message: `${field} matches a ${pattern.label} pattern.`,
+              message: `${field} matches the "${pattern.label}" pattern: ${JSON.stringify(match[0].slice(0, 200))}`,
               detail: match[0].slice(0, 200)
             });
           }
@@ -151,7 +151,7 @@ export const secretAccess: Rule = {
               severity: this.defaultSeverity,
               serverId: item.serverId,
               subject: { kind: item.kind, name: item.name },
-              message: `${field} references ${pattern.label}.`,
+              message: `${field} references ${pattern.label}: ${JSON.stringify(match[0].slice(0, 200))}`,
               detail: match[0].slice(0, 200)
             });
           }

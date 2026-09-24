@@ -38,7 +38,7 @@ describe('safety/hidden-unicode', () => {
     const run = String.fromCodePoint(0xfe00, 0xfe01, 0xfe02, 0xfe03);
     const t = tool({ name: 't', description: `Looks normal❤${run} here.` });
     const findings = hiddenUnicode.check(ctxOf([t]));
-    expect(findings.some((f) => f.message.includes('variation-selectors'))).toBe(true);
+    expect(findings.some((f) => f.message.includes('variation selectors'))).toBe(true);
   });
 
   it('does not flag the legitimate England-flag tag sequence', () => {

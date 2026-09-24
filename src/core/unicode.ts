@@ -156,3 +156,16 @@ export function hasHiddenUnicode(text: string | undefined): boolean {
   if (!text) return false;
   return findHiddenUnicode(text).some((f) => !f.benign);
 }
+
+const KIND_LABEL: Record<HiddenUnicodeKind, [singular: string, plural: string]> = {
+  'zero-width': ['zero-width character', 'zero-width characters'],
+  'bidi-control': ['bidi-control character', 'bidi-control characters'],
+  'tag-characters': ['tag character', 'tag characters'],
+  'variation-selectors': ['variation selector', 'variation selectors']
+};
+
+/** Human-readable "N <kind>" with correct singular/plural, e.g. "69 tag characters". */
+export function describeHiddenUnicodeCount(kind: HiddenUnicodeKind, count: number): string {
+  const [singular, plural] = KIND_LABEL[kind];
+  return `${count} ${count === 1 ? singular : plural}`;
+}
