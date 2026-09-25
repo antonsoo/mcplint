@@ -23,7 +23,27 @@ const NAV = (active) => `
   <a href="https://github.com/antonsoo/mcplint" style="margin-left:auto;color:#8b98a5">source &#8594;</a>
 </nav>`;
 
-async function buildReport(fixture, outFile, navKey) {
+// The report's own <title> names the linted command; the published demo gets a
+// descriptive title plus link-preview metadata instead.
+const SITE_URL = 'https://antonsoo.github.io/mcplint/';
+const OG_IMAGE = 'https://raw.githubusercontent.com/antonsoo/mcplint/main/docs/assets/og.png';
+const DESCRIPTION =
+  "Lint your MCP server's tools the way the model sees them: token cost, clarity, and hidden instructions.";
+const HEAD = (title) => `
+<title>${title}</title>
+<meta name="description" content="${DESCRIPTION}" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%230b0f14%22/><text x=%2216%22 y=%2222%22 font-family=%22monospace%22 font-size=%2218%22 text-anchor=%22middle%22 fill=%22%2335d0ba%22>[ ]</text></svg>" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="${title}" />
+<meta property="og:description" content="${DESCRIPTION}" />
+<meta property="og:url" content="${SITE_URL}" />
+<meta property="og:image" content="${OG_IMAGE}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="${OG_IMAGE}" />`;
+
+async function buildReport(fixture, outFile, navKey, title) {
   // Relative paths only: the "target" field in the rendered report echoes the
   // command verbatim, and this output is published to GitHub Pages — an
   // absolute path here would leak this machine's home directory publicly.
@@ -34,15 +54,18 @@ async function buildReport(fixture, outFile, navKey) {
     [cli, 'stdio', '--format', 'html', '--', 'npx', 'tsx', server],
     { cwd: root, maxBuffer: 1024 * 1024 * 16 }
   );
-  const withNav = stdout.replace('<body>', `<body>${NAV(navKey)}`);
+  const withNav = stdout
+    .replace(/<title>[\s\S]*?<\/title>/, '')
+    .replace('</head>', `${HEAD(title)}\n</head>`)
+    .replace('<body>', `<body>${NAV(navKey)}`);
   await writeFile(join(siteDir, outFile), withNav, 'utf8');
   console.log(`wrote site/${outFile} (${withNav.length} bytes)`);
 }
 
 async function main() {
   await mkdir(siteDir, { recursive: true });
-  await buildReport('poisoned-server', 'index.html', 'poisoned');
-  await buildReport('good-server', 'good.html', 'good');
+  await buildReport('poisoned-server', 'index.html', 'poisoned', 'mcplint · sample report on a deliberately poisoned MCP server');
+  await buildReport('good-server', 'good.html', 'good', 'mcplint · sample report on a well-behaved MCP server');
   await writeFile(join(siteDir, '.nojekyll'), '');
 }
 
