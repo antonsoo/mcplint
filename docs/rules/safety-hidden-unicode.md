@@ -2,7 +2,7 @@
 
 **Category:** safety · **Default severity:** error
 
-Fires when any text the model reads contains one of four families of characters that render invisibly or
+Fires when any text the model reads contains one of five families of characters that render invisibly or
 near-invisibly in most UIs, but are tokenized and read by the model like any other character. That text is
 every description and title, every string in a tool's input and output schema at any depth (including enum
 values, defaults and property names), prompt argument descriptions, and the server's `instructions`.
@@ -11,10 +11,14 @@ values, defaults and property names), prompt argument descriptions, and the serv
 
 A tool description is plain text the model reads and mostly trusts. Hidden Unicode lets an attacker append an
 instruction that a human reviewer scrolling through a tool list will never see, but the model reads in full.
-mcplint detects and *decodes* four sub-kinds (`src/core/unicode.ts`):
+mcplint detects five sub-kinds, decoding the two that carry a payload (`src/core/unicode.ts`):
 
 - **Zero-width / formatting** (`U+00AD`, `U+180E`, `U+200B`-`U+200D`, `U+2060`, `U+FEFF`) — essentially never
   legitimate in plain English prose.
+- **Other invisible characters** (`U+034F` combining grapheme joiner, `U+115F`/`U+1160`/`U+3164`/`U+FFA0`
+  Hangul fillers, `U+17B4`-`U+17B5`, `U+180B`-`U+180D`, `U+2061`-`U+2064` invisible operators) — default-ignorable
+  characters that render as nothing or as a blank. A Hangul filler can even stand alone as an identifier, the
+  basis of the "invisible backdoor" trick.
 - **Bidi controls** (`U+061C`, `U+200E`-`U+200F`, `U+202A`-`U+202E`, `U+2066`-`U+2069`) — can reorder how text
   *displays* without changing what the model reads.
 - **Unicode Tag characters** (`U+E0000`-`U+E007F`) — a defunct language-tagging block whose only remaining

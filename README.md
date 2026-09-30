@@ -165,7 +165,7 @@ The full 13-tool report is browsable live at
 | [`description/near-duplicate`](docs/rules/description-near-duplicate.md) | description | warning | Two tools with ≥75% word-overlap descriptions. |
 | [`schema/invalid`](docs/rules/schema-invalid.md) | schema | error | `inputSchema` missing, not `type: "object"`, or fails to compile. |
 | [`schema/portability`](docs/rules/schema-portability.md) | schema | info | Constructs that some clients (OpenAI strict mode, external `$ref`) handle inconsistently. |
-| [`safety/hidden-unicode`](docs/rules/safety-hidden-unicode.md) | safety | error | Zero-width, bidi-control, Unicode Tag, or variation-selector characters — decoded and shown. |
+| [`safety/hidden-unicode`](docs/rules/safety-hidden-unicode.md) | safety | error | Zero-width, other invisible (Hangul fillers and similar), bidi-control, Unicode Tag, or variation-selector characters — decoded and shown. |
 | [`safety/prompt-injection`](docs/rules/safety-prompt-injection.md) | safety | error | "Ignore previous instructions", `<IMPORTANT>` blocks, concealment phrases. |
 | [`safety/secret-access`](docs/rules/safety-secret-access.md) | safety | error | Instructions to read `~/.ssh`, `.env`, cloud credentials. |
 | [`safety/cross-tool-reference`](docs/rules/safety-cross-tool-reference.md) | safety | warning | Coercive instructions about a *different* named tool. |

@@ -19,6 +19,9 @@ All notable changes to this project are documented in this file.
 - `safety/prompt-injection` recognizes "do not mention/reveal ... to the user" and "do not mention that you
   ..." concealment.
 - The poisoned fixture gains a nested-parameter attack (`create_ticket`) and poisoned server instructions.
+- `safety/hidden-unicode` also flags other default-ignorable invisible characters (a new `invisible` kind):
+  the Hangul fillers, which can stand alone as an invisible identifier, the combining grapheme joiner, the
+  invisible math operators, the Khmer inherent vowels and the Mongolian free variation selectors.
 
 ### Changed
 

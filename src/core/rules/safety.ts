@@ -59,7 +59,7 @@ export const hiddenUnicode: Rule = {
   id: 'safety/hidden-unicode',
   category: 'safety',
   defaultSeverity: 'error',
-  summary: 'Text contains zero-width, bidi-control, Unicode Tag, or variation-selector characters.',
+  summary: 'Text contains zero-width, invisible, bidi-control, Unicode Tag, or variation-selector characters.',
   rationale:
     'These characters render invisibly or near-invisibly in most UIs but are tokenized and read by the model like ' +
     'any other character, so they can carry an instruction a human reviewer never sees. See ' +

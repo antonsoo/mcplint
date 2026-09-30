@@ -27,7 +27,7 @@
  *    anchor character.
  */
 
-export type HiddenUnicodeKind = 'zero-width' | 'bidi-control' | 'tag-characters' | 'variation-selectors';
+export type HiddenUnicodeKind = 'zero-width' | 'invisible' | 'bidi-control' | 'tag-characters' | 'variation-selectors';
 
 export interface HiddenUnicodeFinding {
   kind: HiddenUnicodeKind;
@@ -41,6 +41,13 @@ export interface HiddenUnicodeFinding {
 }
 
 const ZERO_WIDTH = new Set([0x00ad, 0x180e, 0x200b, 0x200c, 0x200d, 0x2060, 0xfeff]);
+// Other default-ignorable characters that render as nothing or as a blank:
+// the Hangul fillers (the classic "invisible identifier"), the combining
+// grapheme joiner, the invisible math operators, the Khmer inherent vowels
+// and the Mongolian free variation selectors.
+const INVISIBLE = new Set([
+  0x034f, 0x115f, 0x1160, 0x17b4, 0x17b5, 0x180b, 0x180c, 0x180d, 0x2061, 0x2062, 0x2063, 0x2064, 0x3164, 0xffa0
+]);
 const BIDI_CONTROL = new Set([
   0x061c, 0x200e, 0x200f, 0x202a, 0x202b, 0x202c, 0x202d, 0x202e, 0x2066, 0x2067, 0x2068, 0x2069
 ]);
@@ -103,6 +110,12 @@ export function findHiddenUnicode(text: string): HiddenUnicodeFinding[] {
       continue;
     }
 
+    if (INVISIBLE.has(cp)) {
+      findings.push({ kind: 'invisible', codepoints: [fmt(cp)], count: 1 });
+      i += 1;
+      continue;
+    }
+
     if (BIDI_CONTROL.has(cp)) {
       findings.push({ kind: 'bidi-control', codepoints: [fmt(cp)], count: 1 });
       i += 1;
@@ -159,6 +172,7 @@ export function hasHiddenUnicode(text: string | undefined): boolean {
 
 const KIND_LABEL: Record<HiddenUnicodeKind, [singular: string, plural: string]> = {
   'zero-width': ['zero-width character', 'zero-width characters'],
+  invisible: ['invisible character', 'invisible characters'],
   'bidi-control': ['bidi-control character', 'bidi-control characters'],
   'tag-characters': ['tag character', 'tag characters'],
   'variation-selectors': ['variation selector', 'variation selectors']

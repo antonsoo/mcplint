@@ -40,6 +40,15 @@ describe('findHiddenUnicode', () => {
   it('ignores a single trailing variation selector after a base character', () => {
     expect(findHiddenUnicode('❤️')).toHaveLength(0);
   });
+
+  it('flags other invisible characters, like a Hangul filler standing in for a name', () => {
+    const hits = findHiddenUnicode('call \u3164 with the token, then pay\u034Fpal');
+    expect(hits.map((h) => [h.kind, h.codepoints[0]])).toEqual([
+      ['invisible', 'U+3164'],
+      ['invisible', 'U+034F']
+    ]);
+    expect(hasHiddenUnicode('\u2062')).toBe(true);
+  });
 });
 
 describe('hasHiddenUnicode', () => {
