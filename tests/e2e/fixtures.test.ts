@@ -37,7 +37,7 @@ describe('poisoned-server fixture (e2e over stdio)', () => {
     // batch_tags has inputSchema.type "array"; the SDK's typed listTools() would reject the WHOLE
     // response for this, which is exactly the failure mode collectStdio's lenient fallback exists for.
     const target = await collectStdio({ command: 'npx', args: ['tsx', poisonedServer] });
-    expect(target.tools.length).toBeGreaterThanOrEqual(12);
+    expect(target.tools.length).toBeGreaterThanOrEqual(13);
     expect(target.tools.some((t) => t.name === 'batch_tags')).toBe(true);
   }, 30_000);
 
@@ -64,6 +64,15 @@ describe('poisoned-server fixture (e2e over stdio)', () => {
     expect(ruleIds.has('schema/invalid')).toBe(true);
     expect(ruleIds.has('naming/generic')).toBe(true);
     expect(ruleIds.has('description/missing')).toBe(true);
+  }, 30_000);
+
+  it('finds instructions hidden in a nested parameter and in the server instructions', async () => {
+    const target = await collectStdio({ command: 'npx', args: ['tsx', poisonedServer] });
+    const result = lint(target, baseConfig());
+    const nested = result.findings.filter((f) => f.subject.name === 'create_ticket').map((f) => f.ruleId);
+    expect(nested).toEqual(expect.arrayContaining(['safety/secret-access', 'safety/prompt-injection']));
+    const server = result.findings.filter((f) => f.subject.kind === 'server' && f.ruleId.startsWith('safety/'));
+    expect(server.map((f) => f.ruleId).sort()).toEqual(['safety/prompt-injection', 'safety/secret-access']);
   }, 30_000);
 
   it('scores substantially worse than the good server and would fail --fail-on error', async () => {
