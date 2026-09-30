@@ -14,8 +14,8 @@ import { renderSarif } from './report/sarif.js';
 import { renderMarkdown } from './report/markdown.js';
 import { renderHtml } from './report/html.js';
 import type { LintResult, Severity } from './core/types.js';
+import { VERSION } from './version.js';
 
-const VERSION = '0.1.0';
 
 const HELP = `mcplint ${VERSION} — lint MCP server tools the way the model sees them.
 

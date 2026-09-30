@@ -1,6 +1,7 @@
 import type { LintResult, Severity } from '../core/types.js';
 import { allRules } from '../core/rules/index.js';
 import { ruleSlug } from '../core/rule-slug.js';
+import { VERSION } from '../version.js';
 
 const LEVEL: Record<Severity, 'error' | 'warning' | 'note'> = { error: 'error', warning: 'warning', info: 'note' };
 
@@ -16,7 +17,7 @@ export function renderSarif(result: LintResult): string {
           driver: {
             name: 'mcplint',
             informationUri: 'https://github.com/antonsoo/mcplint',
-            version: '0.1.0',
+            version: VERSION,
             rules: allRules
               .filter((r) => rulesUsed.has(r.id))
               .map((r) => ({

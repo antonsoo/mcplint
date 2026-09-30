@@ -2,6 +2,7 @@ import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js';
 import type { LintTarget } from '../core/types.js';
 import { collectFromClient } from './collect.js';
+import { VERSION } from '../version.js';
 
 export interface HttpTargetOptions {
   url: string;
@@ -15,7 +16,7 @@ export async function collectHttp(opts: HttpTargetOptions): Promise<LintTarget> 
     requestInit: opts.headers ? { headers: opts.headers } : undefined
   });
 
-  const client = new Client({ name: 'mcplint', version: '0.1.0' });
+  const client = new Client({ name: 'mcplint', version: VERSION });
 
   try {
     await client.connect(transport);

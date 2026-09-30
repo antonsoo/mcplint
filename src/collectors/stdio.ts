@@ -2,6 +2,7 @@ import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
 import type { LintTarget } from '../core/types.js';
 import { collectFromClient } from './collect.js';
+import { VERSION } from '../version.js';
 
 export interface StdioTargetOptions {
   command: string;
@@ -18,7 +19,7 @@ export async function collectStdio(opts: StdioTargetOptions): Promise<LintTarget
     env: { ...processEnvAsStrings(), ...(opts.env ?? {}) }
   });
 
-  const client = new Client({ name: 'mcplint', version: '0.1.0' });
+  const client = new Client({ name: 'mcplint', version: VERSION });
 
   try {
     await client.connect(transport);
