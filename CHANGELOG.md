@@ -2,6 +2,31 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.2.0] - 2026-09-30
+
+### Added
+
+- The safety rules read every string the model reads, not just top-level text: descriptions, titles, enum,
+  default, const and example values, and property names at any depth of a tool's input and output schema
+  (nested objects, array items, `$defs`, `anyOf`/`oneOf`/`allOf`...). An injection hidden in a nested
+  parameter's description previously produced no finding and a 100/100 score.
+- Server `instructions` are linted by the text-matching safety rules, as a `server` subject.
+- `tools/list`, `prompts/list` and `resources/list` follow `nextCursor` to the last page, and
+  `resources/templates/list` is collected; `mcplint file` accepts `resourceTemplates` and `instructions`.
+- `safety/secret-access` recognizes more credential stores: `~/.netrc`, `~/.npmrc`, `~/.pgpass`,
+  `~/.git-credentials`, `~/.kube/config`, `~/.docker/config.json`, `~/.config/gh/hosts.yml`, Google Cloud
+  `application_default_credentials.json`, and MCP client configs (`mcp.json`, `claude_desktop_config.json`).
+- `safety/prompt-injection` recognizes "do not mention/reveal ... to the user" and "do not mention that you
+  ..." concealment.
+- The poisoned fixture gains a nested-parameter attack (`create_ticket`) and poisoned server instructions.
+
+### Changed
+
+- `safety/encoded-blob` no longer flags loopback, unspecified or RFC 1918 addresses
+  (`http://127.0.0.1:11434` is configuration), and trailing sentence punctuation is no longer part of a URL.
+- Two phrasings of the same injection technique in one field are reported once.
+- The version is defined once (`src/version.ts`) and checked against `package.json`.
+
 ## [0.1.0] - 2026-09-24
 
 Initial release.
