@@ -4,7 +4,8 @@ import { isPlainObject, stripBom } from '../core/schema-utils.js';
 
 /**
  * Accepts either a saved `tools/list` result (`{ tools: [...] }`, optionally
- * with `prompts`/`resources` alongside it) or a bare array of tool objects.
+ * with `prompts`/`resources`/`resourceTemplates` and the server's
+ * `instructions` alongside it) or a bare array of tool objects.
  */
 export async function collectFile(path: string, serverId = 'file'): Promise<LintTarget> {
   const raw = await readFile(path, 'utf8');
@@ -18,6 +19,7 @@ export async function collectFile(path: string, serverId = 'file'): Promise<Lint
   let toolsRaw: unknown[] = [];
   let promptsRaw: unknown[] = [];
   let resourcesRaw: unknown[] = [];
+  let instructions: string | undefined;
 
   if (Array.isArray(parsed)) {
     toolsRaw = parsed;
@@ -25,8 +27,10 @@ export async function collectFile(path: string, serverId = 'file'): Promise<Lint
     if (Array.isArray(parsed.tools)) toolsRaw = parsed.tools;
     if (Array.isArray(parsed.prompts)) promptsRaw = parsed.prompts;
     if (Array.isArray(parsed.resources)) resourcesRaw = parsed.resources;
-    if (toolsRaw.length === 0 && promptsRaw.length === 0 && resourcesRaw.length === 0) {
-      throw new Error(`${path} has no "tools", "prompts", or "resources" array.`);
+    if (Array.isArray(parsed.resourceTemplates)) resourcesRaw = [...resourcesRaw, ...(parsed.resourceTemplates as unknown[])];
+    if (typeof parsed.instructions === 'string') instructions = parsed.instructions;
+    if (toolsRaw.length === 0 && promptsRaw.length === 0 && resourcesRaw.length === 0 && instructions === undefined) {
+      throw new Error(`${path} has no "tools", "prompts", "resources" or "resourceTemplates" array.`);
     }
   } else {
     throw new Error(`${path} must contain a tools array or a {tools, prompts, resources} object.`);
@@ -58,12 +62,13 @@ export async function collectFile(path: string, serverId = 'file'): Promise<Lint
     ...(typeof r.title === 'string' ? { title: r.title } : {}),
     ...(typeof r.description === 'string' ? { description: r.description } : {}),
     ...(typeof r.uri === 'string' ? { uri: r.uri } : {}),
+    ...(typeof r.uriTemplate === 'string' ? { uriTemplate: r.uriTemplate } : {}),
     ...(typeof r.mimeType === 'string' ? { mimeType: r.mimeType } : {}),
     serverId
   }));
 
   return {
-    servers: [{ id: serverId, label: path }],
+    servers: [{ id: serverId, label: path, ...(instructions !== undefined ? { instructions } : {}) }],
     tools,
     prompts,
     resources

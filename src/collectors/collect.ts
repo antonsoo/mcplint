@@ -4,30 +4,52 @@ import type { CollectedPrompt, CollectedResource, CollectedTool, LintTarget, Ser
 import { isPlainObject } from '../core/schema-utils.js';
 
 /**
- * The SDK's typed `listTools()`/`listPrompts()`/`listResources()` validate
+ * Lists are requested with a permissive passthrough schema rather than the
+ * SDK's typed `listTools()`/`listPrompts()`/`listResources()`, which validate
  * the *entire* response against the spec's Zod schema client-side. That is
- * correct behavior for a normal client — but it means one malformed tool
- * (say, an `inputSchema` that isn't `type: "object"`) makes the SDK reject
- * every tool in the response, hiding the other N-1 tools from a linter that
- * exists specifically to catch that malformed tool. So each list call here
- * tries the typed method first, and on any failure (Zod validation error or
- * otherwise) falls back to the same request with a permissive passthrough
- * schema, trading type safety for "see everything, even the broken parts."
+ * correct behavior for a normal client - but one malformed tool (say, an
+ * `inputSchema` that isn't `type: "object"`) makes the SDK reject every tool
+ * in the response, hiding the other N-1 tools from a linter that exists
+ * specifically to catch that malformed tool.
  */
 const LENIENT_LIST_SCHEMA = z
   .object({
     tools: z.array(z.unknown()).optional(),
     prompts: z.array(z.unknown()).optional(),
-    resources: z.array(z.unknown()).optional()
+    resources: z.array(z.unknown()).optional(),
+    resourceTemplates: z.array(z.unknown()).optional(),
+    nextCursor: z.string().optional()
   })
   .passthrough();
 
-async function rawList(
-  client: Client,
-  method: 'tools/list' | 'prompts/list' | 'resources/list'
-): Promise<Record<string, unknown[]>> {
-  const result = await client.request({ method, params: {} }, LENIENT_LIST_SCHEMA);
-  return result as Record<string, unknown[]>;
+type ListMethod = 'tools/list' | 'prompts/list' | 'resources/list' | 'resources/templates/list';
+type ListKey = 'tools' | 'prompts' | 'resources' | 'resourceTemplates';
+
+// A server that keeps returning cursors (or repeats one) must not keep mcplint looping forever.
+const MAX_PAGES = 1000;
+
+/**
+ * Every page of a paginated list: MCP list results carry a `nextCursor` until the last page, and a
+ * linter that stops at page one silently skips the rest. Returns undefined when the server doesn't
+ * support the method at all; a failure after the first page keeps what was already collected.
+ */
+export async function listAll(client: Pick<Client, 'request'>, method: ListMethod, key: ListKey): Promise<unknown[] | undefined> {
+  const items: unknown[] = [];
+  const seen = new Set<string>();
+  let cursor: string | undefined;
+  for (let page = 0; page < MAX_PAGES; page++) {
+    let result: z.infer<typeof LENIENT_LIST_SCHEMA>;
+    try {
+      result = await client.request({ method, params: cursor === undefined ? {} : { cursor } }, LENIENT_LIST_SCHEMA);
+    } catch {
+      return page === 0 ? undefined : items;
+    }
+    items.push(...(result[key] ?? []));
+    cursor = result.nextCursor;
+    if (cursor === undefined || seen.has(cursor)) break;
+    seen.add(cursor);
+  }
+  return items;
 }
 
 export async function collectFromClient(client: Client, serverId: string, label: string): Promise<LintTarget> {
@@ -46,17 +68,7 @@ export async function collectFromClient(client: Client, serverId: string, label:
   const prompts: CollectedPrompt[] = [];
   const resources: CollectedResource[] = [];
 
-  let rawTools: unknown[] | undefined;
-  try {
-    rawTools = (await client.listTools()).tools;
-  } catch {
-    try {
-      rawTools = (await rawList(client, 'tools/list')).tools;
-    } catch {
-      rawTools = undefined; // server genuinely doesn't support tools/list
-    }
-  }
-  for (const raw of rawTools ?? []) {
+  for (const raw of (await listAll(client, 'tools/list', 'tools')) ?? []) {
     if (!isPlainObject(raw) || typeof raw.name !== 'string') continue;
     tools.push({
       kind: 'tool',
@@ -70,17 +82,7 @@ export async function collectFromClient(client: Client, serverId: string, label:
     });
   }
 
-  let rawPrompts: unknown[] | undefined;
-  try {
-    rawPrompts = (await client.listPrompts()).prompts;
-  } catch {
-    try {
-      rawPrompts = (await rawList(client, 'prompts/list')).prompts;
-    } catch {
-      rawPrompts = undefined;
-    }
-  }
-  for (const raw of rawPrompts ?? []) {
+  for (const raw of (await listAll(client, 'prompts/list', 'prompts')) ?? []) {
     if (!isPlainObject(raw) || typeof raw.name !== 'string') continue;
     prompts.push({
       kind: 'prompt',
@@ -92,17 +94,12 @@ export async function collectFromClient(client: Client, serverId: string, label:
     });
   }
 
-  let rawResources: unknown[] | undefined;
-  try {
-    rawResources = (await client.listResources()).resources;
-  } catch {
-    try {
-      rawResources = (await rawList(client, 'resources/list')).resources;
-    } catch {
-      rawResources = undefined;
-    }
-  }
-  for (const raw of rawResources ?? []) {
+  // Resource templates carry names and descriptions just like resources, so they're linted the same way.
+  const rawResources = [
+    ...((await listAll(client, 'resources/list', 'resources')) ?? []),
+    ...((await listAll(client, 'resources/templates/list', 'resourceTemplates')) ?? [])
+  ];
+  for (const raw of rawResources) {
     if (!isPlainObject(raw) || typeof raw.name !== 'string') continue;
     resources.push({
       kind: 'resource',
@@ -110,6 +107,7 @@ export async function collectFromClient(client: Client, serverId: string, label:
       ...(typeof raw.title === 'string' ? { title: raw.title } : {}),
       ...(typeof raw.description === 'string' ? { description: raw.description } : {}),
       ...(typeof raw.uri === 'string' ? { uri: raw.uri } : {}),
+      ...(typeof raw.uriTemplate === 'string' ? { uriTemplate: raw.uriTemplate } : {}),
       ...(typeof raw.mimeType === 'string' ? { mimeType: raw.mimeType } : {}),
       serverId
     });

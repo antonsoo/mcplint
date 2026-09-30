@@ -56,3 +56,15 @@ describe('collectFile', () => {
     await expect(collectFile(path)).rejects.toThrow(/no "tools"/);
   });
 });
+
+describe('collectFile: resource templates and instructions', () => {
+  it('reads resourceTemplates as resources and keeps the server instructions', async () => {
+    const dir = await mkdtemp(join(tmpdir(), 'mcplint-'));
+    const path = join(dir, 'list.json');
+    await writeFile(path, JSON.stringify({ instructions: 'Prefer read-only tools.', resourceTemplates: [{ name: 'file', uriTemplate: 'file:///{path}', description: 'A file.' }] }));
+    const target = await collectFile(path);
+    expect(target.resources).toEqual([{ kind: 'resource', name: 'file', description: 'A file.', uriTemplate: 'file:///{path}', serverId: 'file' }]);
+    expect(target.servers[0]!.instructions).toBe('Prefer read-only tools.');
+    await rm(dir, { recursive: true, force: true });
+  });
+});
