@@ -2,9 +2,10 @@
 
 **Category:** safety · **Default severity:** error
 
-Fires when a description, title, or parameter description contains any of four families of characters that
-render invisibly or near-invisibly in most UIs, but are tokenized and read by the model like any other
-character.
+Fires when any text the model reads contains one of four families of characters that render invisibly or
+near-invisibly in most UIs, but are tokenized and read by the model like any other character. That text is
+every description and title, every string in a tool's input and output schema at any depth (including enum
+values, defaults and property names), prompt argument descriptions, and the server's `instructions`.
 
 ## Why it matters
 

@@ -173,7 +173,7 @@ export function renderHtml(result: LintResult): string {
   </section>
 
   <section class="panel">
-    <h2>Findings<span class="hint">${result.findings.length} total, grouped by tool / prompt / resource</span></h2>
+    <h2>Findings<span class="hint">${result.findings.length} total, grouped by server / tool / prompt / resource</span></h2>
     ${
       sortedKeys.length === 0
         ? '<p class="empty">No findings. This target is clean against the configured rules and budget.</p>'

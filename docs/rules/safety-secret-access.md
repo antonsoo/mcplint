@@ -4,8 +4,12 @@
 
 Fires when visible text (or a decoded hidden-Unicode payload) references credential material in a way that
 reads as an instruction: `~/.ssh`, an SSH private key path, a `.env` file, `~/.aws/credentials`,
-`/etc/passwd`/`/etc/shadow`, or a private-key/API-key mention near a verb like "read", "send", "upload", or
-"exfiltrate".
+`/etc/passwd`/`/etc/shadow`, a credentials dotfile (`~/.netrc`, `~/.npmrc`, `~/.pgpass`,
+`~/.git-credentials`), `~/.kube/config`, `~/.docker/config.json`, the GitHub CLI's `~/.config/gh/hosts.yml`,
+Google Cloud's `application_default_credentials.json`, an MCP client config (`mcp.json`,
+`claude_desktop_config.json`, which hold other servers' tokens), or a private-key/API-key mention near a verb
+like "read", "send", "upload", or "exfiltrate". It reads the same text as `safety/prompt-injection`: every
+string in the schema at any depth, and the server's `instructions`.
 
 ## Why it matters
 

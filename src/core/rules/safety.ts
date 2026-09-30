@@ -1,15 +1,27 @@
 import type { CollectedItem, Finding, Rule, RuleContext } from '../types.js';
 import { describeHiddenUnicodeCount, findHiddenUnicode } from '../unicode.js';
-import { schemaProperties, asSchema } from '../schema-utils.js';
+import { schemaStrings } from '../schema-utils.js';
 
-function textFields(item: CollectedItem): { field: string; text: string }[] {
+/** Server `instructions` go into the model's context too, so the text-matching rules read them as a subject of their own. */
+interface InstructionsItem {
+  kind: 'server';
+  name: string;
+  description: string;
+  title?: undefined;
+  serverId: string;
+}
+
+type ScannedItem = CollectedItem | InstructionsItem;
+
+function textFields(item: ScannedItem): { field: string; text: string }[] {
   const out: { field: string; text: string }[] = [];
+  if (item.kind === 'server') return [{ field: 'instructions', text: item.description }];
   if (item.description) out.push({ field: 'description', text: item.description });
   if (item.title) out.push({ field: 'title', text: item.title });
   if (item.kind === 'tool') {
-    for (const [name, prop] of schemaProperties(asSchema(item.inputSchema))) {
-      if (prop.description) out.push({ field: `inputSchema.properties.${name}.description`, text: prop.description });
-    }
+    if (typeof item.annotations?.title === 'string' && item.annotations.title) out.push({ field: 'annotations.title', text: item.annotations.title });
+    out.push(...schemaStrings(item.inputSchema, 'inputSchema'));
+    out.push(...schemaStrings(item.outputSchema, 'outputSchema'));
   }
   if (item.kind === 'prompt' && item.arguments) {
     for (const arg of item.arguments) {
@@ -19,8 +31,11 @@ function textFields(item: CollectedItem): { field: string; text: string }[] {
   return out;
 }
 
-function allItems(ctx: RuleContext): CollectedItem[] {
-  return [...ctx.target.tools, ...ctx.target.prompts, ...ctx.target.resources];
+function allItems(ctx: RuleContext): ScannedItem[] {
+  const instructions: InstructionsItem[] = ctx.target.servers
+    .filter((s): s is typeof s & { instructions: string } => typeof s.instructions === 'string' && s.instructions.length > 0)
+    .map((s) => ({ kind: 'server', name: s.id, description: s.instructions, serverId: s.id }));
+  return [...ctx.target.tools, ...ctx.target.prompts, ...ctx.target.resources, ...instructions];
 }
 
 /**
@@ -29,7 +44,7 @@ function allItems(ctx: RuleContext): CollectedItem[] {
  * ASCII once decoded, and it deserves the same pattern scanning as visible
  * text — that is usually where the actual instruction lives.
  */
-function textFieldsWithDecoded(item: CollectedItem): { field: string; text: string }[] {
+function textFieldsWithDecoded(item: ScannedItem): { field: string; text: string }[] {
   const out = textFields(item);
   const extra: { field: string; text: string }[] = [];
   for (const { field, text } of out) {
@@ -83,6 +98,8 @@ const INJECTION_PATTERNS: Pattern[] = [
   { regex: /do\s+not\s+tell\s+(the\s+)?user/i, label: 'concealment from the user' },
   { regex: /without\s+(telling|informing|notifying)\s+the\s+user/i, label: 'concealment from the user' },
   { regex: /don'?t\s+(let|allow)\s+the\s+user\s+(know|see)/i, label: 'concealment from the user' },
+  { regex: /\b(?:do\s+not|don'?t|never)\s+(?:mention|reveal|disclose)\b[^.]{0,60}\bto\s+the\s+user\b/i, label: 'concealment from the user' },
+  { regex: /\b(?:do\s+not|don'?t|never)\s+(?:mention|reveal|disclose|tell\s+(?:the\s+)?user)\s+that\s+you\b/i, label: 'concealment from the user' },
   { regex: /<important>[\s\S]*?<\/important>/i, label: '<IMPORTANT> block' },
   { regex: /\bsystem\s+prompt\b.{0,40}\b(override|ignore|replace)/i, label: 'system prompt override' },
   { regex: /you\s+must\s+always\s+call\s+this\s+tool\s+first/i, label: 'forced tool ordering' },
@@ -102,9 +119,12 @@ export const promptInjection: Rule = {
     const findings: Finding[] = [];
     for (const item of allItems(ctx)) {
       for (const { field, text } of textFieldsWithDecoded(item)) {
+        const reported = new Set<string>();
         for (const pattern of INJECTION_PATTERNS) {
           const match = text.match(pattern.regex);
-          if (match) {
+          // Two phrasings of the same technique in one field are one finding.
+          if (match && !reported.has(pattern.label)) {
+            reported.add(pattern.label);
             findings.push({
               ruleId: this.id,
               severity: this.defaultSeverity,
@@ -127,6 +147,10 @@ const SECRET_PATH_PATTERNS: Pattern[] = [
   { regex: /\benv\s+file\b|\.env\b/i, label: '.env file' },
   { regex: /~\/\.aws\/credentials/i, label: 'AWS credentials file' },
   { regex: /\/etc\/(passwd|shadow)\b/i, label: '/etc/passwd or /etc/shadow' },
+  { regex: /(?:~|\$HOME)\/\.(?:netrc|npmrc|pgpass|git-credentials)\b/i, label: 'credentials dotfile' },
+  { regex: /(?:~|\$HOME)\/\.(?:kube\/config|docker\/config\.json|config\/gh\/hosts\.yml)\b/i, label: 'cluster/registry/GitHub credentials' },
+  { regex: /application_default_credentials\.json/i, label: 'Google Cloud credentials' },
+  { regex: /\bmcp\.json\b|claude_desktop_config\.json/i, label: 'MCP client config (holds other servers\' credentials)' },
   { regex: /\bprivate\s+key\b.{0,30}\b(read|send|upload|cat|print|exfiltrate)/i, label: 'private key exfiltration' },
   { regex: /\b(api|secret)[_\s-]?keys?\b.{0,30}\b(read|send|upload|exfiltrate)/i, label: 'API key exfiltration' }
 ];
@@ -206,6 +230,9 @@ function escapeRegExp(s: string): string {
 const BASE64_RE = /(?:[A-Za-z0-9+/]{4}){20,}(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?/;
 const URL_RE = /https?:\/\/[^\s"'<>]+/gi;
 const SUSPICIOUS_TLD_OR_HOST = /(?:\b\d{1,3}(?:\.\d{1,3}){3}\b|\.(?:xyz|top|zip|click|gq|tk)\b|bit\.ly|tinyurl\.com)/i;
+// Loopback, unspecified and RFC 1918 addresses are how local services are addressed
+// (a default of http://127.0.0.1:11434 is configuration, not exfiltration).
+const LOCAL_IP_HOST = /^https?:\/\/(?:127\.\d{1,3}\.\d{1,3}\.\d{1,3}|0\.0\.0\.0|10\.\d{1,3}\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3}|172\.(?:1[6-9]|2\d|3[01])\.\d{1,3}\.\d{1,3})(?::\d+)?(?:[/?#]|$)/i;
 
 export const encodedBlobOrSuspiciousUrl: Rule = {
   id: 'safety/encoded-blob',
@@ -231,8 +258,10 @@ export const encodedBlobOrSuspiciousUrl: Rule = {
             detail: `${blobMatch[0].slice(0, 60)}...`
           });
         }
-        for (const url of text.match(URL_RE) ?? []) {
-          if (SUSPICIOUS_TLD_OR_HOST.test(url)) {
+        for (const match of text.match(URL_RE) ?? []) {
+          // Sentence punctuation right after a URL isn't part of it.
+          const url = match.replace(/[.,;:!?)\]]+$/, '');
+          if (SUSPICIOUS_TLD_OR_HOST.test(url) && !LOCAL_IP_HOST.test(url)) {
             findings.push({
               ruleId: this.id,
               severity: this.defaultSeverity,
