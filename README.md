@@ -268,13 +268,16 @@ A target with nothing collected, or where nothing triggered a rule, scores 100.
 ## Real-world run
 
 Run on 2026-09-24 on this machine (14 vCPU WSL2 Linux, 48 GB RAM), against the three most common reference
-servers, all at package version `2026.8.31`, all over stdio, `--budget 400`:
+servers, all at package version `2026.8.31`, all over stdio, `--budget 400`; re-run with mcplint 0.2.0 on
+2026-10-01, which is what the table shows. The findings were the same. Resource counts now include resource
+templates (two more on `server-everything`, which spreads the same per-item penalties over more items and
+moves its score from 99 to 100), and token estimates moved by under 1%:
 
 | Server | Tools | Prompts | Resources | Est. tokens | Errors | Warnings | Info | Score |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `@modelcontextprotocol/server-everything` | 13 | 4 | 7 | ~1515 | 0 | 1 | 9 | 99 |
-| `@modelcontextprotocol/server-filesystem` | 14 | 0 | 0 | ~2600 | 0 | 19 | 6 | 94 |
-| `@modelcontextprotocol/server-memory` | 9 | 0 | 1 | ~2239 | 0 | 4 | 0 | 98 |
+| `@modelcontextprotocol/server-everything` | 13 | 4 | 9 | ~1512 | 0 | 1 | 9 | 100 |
+| `@modelcontextprotocol/server-filesystem` | 14 | 0 | 0 | ~2614 | 0 | 19 | 6 | 94 |
+| `@modelcontextprotocol/server-memory` | 9 | 0 | 1 | ~2248 | 0 | 4 | 0 | 98 |
 
 These are observations, not accusations — they're reference/example servers, not production tools, and every
 finding is a `warning` or `info`, not an `error`. What actually showed up:
