@@ -31,9 +31,10 @@ actually distinguishes them.
 
 ## Configuring
 
-Override severity with `"severities": {"description/near-duplicate": "off"}`. Because this rule compares pairs,
-per-subject `ignore` suppresses findings *starting from* the named tool — `"ignore":
-["description/near-duplicate:<toolName>"]`.
+Override severity with `"severities": {"description/near-duplicate": "off"}`. Similar tools are reported as a
+group, once, on the first tool of the group in the server's own order: two tools give the pair and its overlap,
+three or more give the first tool, how many others, and the first few names. Per-subject `ignore` therefore
+takes that first tool's name — `"ignore": ["description/near-duplicate:<toolName>"]`.
 
 ## Limitations
 

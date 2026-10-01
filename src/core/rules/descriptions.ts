@@ -204,24 +204,62 @@ export const nearDuplicate: Rule = {
     'apart from their descriptions alone and will pick between them close to at random.',
   check(ctx: RuleContext): Finding[] {
     const tools = ctx.target.tools.filter((t) => (t.description?.trim().length ?? 0) >= MIN_CHARS);
-    const findings: Finding[] = [];
     const wordSets = tools.map((t) => normalizedWords(t.description ?? ''));
+
+    // Tools are grouped by similarity, and each group is one finding. A finding per pair is
+    // fine for the usual two tools, and useless for a generated server: 250 tools stamped
+    // from one template are 31,125 pairs.
+    const group = tools.map((_, i) => i);
+    const root = (i: number): number => {
+      while (group[i] !== i) {
+        group[i] = group[group[i]!]!;
+        i = group[i]!;
+      }
+      return i;
+    };
+    const overlap = new Map<number, number>(); // the first similar pair's overlap, by the lower index
     for (let i = 0; i < tools.length; i += 1) {
       for (let j = i + 1; j < tools.length; j += 1) {
-        const a = tools[i] as CollectedTool;
-        const b = tools[j] as CollectedTool;
-        if (a.name === b.name) continue;
+        if (tools[i]!.name === tools[j]!.name) continue;
         const sim = jaccard(wordSets[i]!, wordSets[j]!);
-        if (sim >= SIMILARITY_THRESHOLD) {
-          findings.push({
-            ruleId: this.id,
-            severity: this.defaultSeverity,
-            serverId: a.serverId,
-            subject: { kind: 'tool', name: a.name },
-            message: `"${a.name}" and "${b.name}" (${b.serverId}) have ${Math.round(sim * 100)}% word overlap in their descriptions.`
-          });
-        }
+        if (sim < SIMILARITY_THRESHOLD) continue;
+        if (!overlap.has(i)) overlap.set(i, sim);
+        // The lower index stays the root, so a group is reported on its first tool.
+        const a = root(i);
+        const b = root(j);
+        if (a !== b) group[Math.max(a, b)] = Math.min(a, b);
       }
+    }
+
+    const members = new Map<number, number[]>();
+    tools.forEach((_, i) => {
+      const r = root(i);
+      members.set(r, [...(members.get(r) ?? []), i]);
+    });
+
+    const findings: Finding[] = [];
+    for (const [first, indexes] of members) {
+      if (indexes.length < 2) continue;
+      const a = tools[first] as CollectedTool;
+      const others = indexes.slice(1).map((i) => tools[i] as CollectedTool);
+      let message: string;
+      if (others.length === 1) {
+        const b = others[0]!;
+        message = `"${a.name}" and "${b.name}" (${b.serverId}) have ${Math.round((overlap.get(first) ?? SIMILARITY_THRESHOLD) * 100)}% word overlap in their descriptions.`;
+      } else {
+        const named = others.slice(0, 3).map((t) => `"${t.name}"`).join(', ');
+        const more = others.length > 3 ? ` and ${others.length - 3} more` : '';
+        message =
+          `"${a.name}" and ${others.length} other tools (${named}${more}) have near-identical descriptions: ` +
+          `each has at least ${Math.round(SIMILARITY_THRESHOLD * 100)}% word overlap with another in the group.`;
+      }
+      findings.push({
+        ruleId: this.id,
+        severity: this.defaultSeverity,
+        serverId: a.serverId,
+        subject: { kind: 'tool', name: a.name },
+        message
+      });
     }
     return findings;
   }

@@ -64,3 +64,14 @@ describe('report renderers', () => {
     expect(out).toContain('No findings');
   });
 });
+
+describe('names that are not well-formed text', () => {
+  it('renders every report for a tool name holding half of a surrogate pair', () => {
+    // "\ud83d" is valid JSON, and encodeURIComponent throws URIError on it.
+    const odd = lint(targetOf([tool({ name: 'emoji\ud83d', description: undefined })]), baseConfig());
+    const sarif = JSON.parse(renderSarif(odd)) as { runs: { results: { locations: { physicalLocation: { artifactLocation: { uri: string } } }[] }[] }[] };
+    expect(sarif.runs[0]!.results[0]!.locations[0]!.physicalLocation.artifactLocation.uri).toBe('mcp://s1/tool/emoji%EF%BF%BD');
+    for (const render of [renderTerminal, renderMarkdown, renderHtml]) expect(() => render(odd)).not.toThrow();
+  });
+});
+

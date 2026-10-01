@@ -113,6 +113,30 @@ describe('description/near-duplicate', () => {
     ];
     expect(nearDuplicate.check(ctxOf(tools))).toHaveLength(1);
   });
+  it('reports a family of similar tools once, not once per pair', () => {
+    // 250 tools stamped from one template used to be 31,125 findings.
+    const tools = Array.from({ length: 250 }, (_, i) =>
+      tool({ name: `get_item_${i}`, description: `Fetches item number ${i} from the store and returns its fields as JSON.` })
+    );
+    const findings = nearDuplicate.check(ctxOf(tools));
+    expect(findings).toHaveLength(1);
+    expect(findings[0]!.subject.name).toBe('get_item_0');
+    expect(findings[0]!.message).toBe(
+      '"get_item_0" and 249 other tools ("get_item_1", "get_item_2", "get_item_3" and 246 more) have near-identical ' +
+        'descriptions: each has at least 75% word overlap with another in the group.'
+    );
+  });
+  it('keeps unrelated groups apart and names the overlap of a pair', () => {
+    const tools = [
+      tool({ name: 'delete_customer', description: 'Permanently deletes a customer account and all associated billing records from the system.' }),
+      tool({ name: 'list_invoices', description: 'Lists invoices for the current account by status and date range.' }),
+      tool({ name: 'delete_customer_record', description: 'Permanently deletes a customer record and all associated billing records from the system.' }),
+      tool({ name: 'list_all_invoices', description: 'Lists invoices for the current account by status and date range, all pages.' })
+    ];
+    const findings = nearDuplicate.check(ctxOf(tools));
+    expect(findings.map((f) => f.subject.name)).toEqual(['delete_customer', 'list_invoices']);
+    expect(findings[0]!.message).toBe('"delete_customer" and "delete_customer_record" (s1) have 85% word overlap in their descriptions.');
+  });
   it('does not flag unrelated descriptions', () => {
     const tools = [
       tool({ name: 'a', description: 'Lists invoices for the current account by status and date range.' }),

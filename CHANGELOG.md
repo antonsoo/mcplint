@@ -2,6 +2,32 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.2.2] - 2026-10-01
+
+Tool metadata comes from the server being linted, and a server can be built to make the linter slow or its report
+unreadable. This release is about that.
+
+### Fixed
+
+- The token estimate took time proportional to the square of the longest unbroken run in a text: one 40 KB
+  description of zero-width spaces took 5 seconds to lint (of plain spaces, 1 second), four times that for each
+  doubling. A run of more than 2,048 characters with no whitespace, or of nothing but whitespace, is now counted
+  in pieces: 1 MB of zero-width spaces lints in under a second, and the count is within 2% of the exact one on
+  the base64, CJK and single-letter runs tested. Shorter runs are counted exactly as before, so nothing changes
+  for the reference servers (their longest run is 933 characters).
+- `safety/prompt-injection` looked for `<IMPORTANT>` blocks with a lazy pattern that rescanned the rest of the
+  text from every opening tag without a closing one.
+- A tool name containing half of a surrogate pair (`"\ud83d"` is valid JSON) crashed the SARIF report with
+  `URIError: URI malformed`.
+
+### Changed
+
+- `safety/hidden-unicode` reports each field once per family of single characters, with the count and the code
+  points, instead of once per character: a description padded with 40,000 zero-width spaces was 40,000 findings.
+  Payload runs (tag characters, variation selectors) are still listed one by one, up to ten per field.
+- `description/near-duplicate` reports a group of similar tools once, on its first tool, instead of once per
+  pair: 250 tools generated from one template were 31,125 findings. A pair reads as before.
+
 ## [0.2.1] - 2026-10-01
 
 ### Added

@@ -37,7 +37,7 @@ export function renderSarif(result: LintResult): string {
             {
               physicalLocation: {
                 artifactLocation: {
-                  uri: `mcp://${encodeURIComponent(f.serverId)}/${f.subject.kind}/${encodeURIComponent(f.subject.name)}`
+                  uri: `mcp://${uriPart(f.serverId)}/${f.subject.kind}/${uriPart(f.subject.name)}`
                 }
               }
             }
@@ -48,3 +48,14 @@ export function renderSarif(result: LintResult): string {
   };
   return JSON.stringify(sarif, null, 2);
 }
+
+/**
+ * `encodeURIComponent` throws on a lone surrogate, and a name is whatever the server sent
+ * (`"\ud83d"` is valid JSON). The unpaired half becomes U+FFFD first.
+ */
+function uriPart(text: string): string {
+  return encodeURIComponent(text.replace(LONE_SURROGATE_RE, '\uFFFD'));
+}
+
+const LONE_SURROGATE_RE = /[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/g;
+

@@ -1,5 +1,5 @@
 import type { CollectedItem, Finding, Rule, RuleContext } from '../types.js';
-import { describeHiddenUnicodeCount, findHiddenUnicode } from '../unicode.js';
+import { describeHiddenUnicodeCount, findHiddenUnicode, type HiddenUnicodeFinding, type HiddenUnicodeKind } from '../unicode.js';
 import { schemaStrings } from '../schema-utils.js';
 
 /** Server `instructions` go into the model's context too, so the text-matching rules read them as a subject of their own. */
@@ -55,6 +55,62 @@ function textFieldsWithDecoded(item: ScannedItem): { field: string; text: string
   return [...out, ...extra];
 }
 
+interface HiddenUnicodeGroup {
+  kind: HiddenUnicodeKind;
+  count: number;
+  decoded?: string;
+  /** The code points involved, most of them at least. */
+  detail: string;
+}
+
+/** How many separate payload runs of one kind are reported for a field before the rest are summed up. */
+const MAX_RUNS_PER_FIELD = 10;
+
+/**
+ * One finding per field for each family of single hidden characters, however many there are:
+ * a description padded with 40,000 zero-width spaces is one problem, not 40,000 findings in a
+ * report nobody can open. Runs that carry a payload (tag characters, variation selectors) stay
+ * separate, since each decodes to its own text, up to a limit past which they are counted.
+ */
+function groupHiddenUnicode(hits: HiddenUnicodeFinding[]): HiddenUnicodeGroup[] {
+  const groups: HiddenUnicodeGroup[] = [];
+  const singles = new Map<HiddenUnicodeKind, { group: HiddenUnicodeGroup; seen: Map<string, number> }>();
+  const runs = new Map<HiddenUnicodeKind, { shown: number; rest: HiddenUnicodeGroup | undefined }>();
+
+  for (const hit of hits) {
+    if (hit.benign) continue;
+    if (hit.kind === 'tag-characters' || hit.kind === 'variation-selectors') {
+      const state = runs.get(hit.kind) ?? { shown: 0, rest: undefined };
+      runs.set(hit.kind, state);
+      if (state.shown < MAX_RUNS_PER_FIELD) {
+        state.shown += 1;
+        const detail = hit.codepoints.slice(0, 12).join(' ') + (hit.codepoints.length > 12 ? ' ...' : '');
+        groups.push({ kind: hit.kind, count: hit.count, ...(hit.decoded ? { decoded: hit.decoded } : {}), detail });
+      } else if (state.rest) {
+        state.rest.count += hit.count;
+      } else {
+        state.rest = { kind: hit.kind, count: hit.count, detail: `in further runs, beyond the first ${MAX_RUNS_PER_FIELD} reported` };
+        groups.push(state.rest);
+      }
+      continue;
+    }
+    let entry = singles.get(hit.kind);
+    if (!entry) {
+      entry = { group: { kind: hit.kind, count: 0, detail: '' }, seen: new Map() };
+      singles.set(hit.kind, entry);
+      groups.push(entry.group);
+    }
+    entry.group.count += hit.count;
+    for (const cp of hit.codepoints) entry.seen.set(cp, (entry.seen.get(cp) ?? 0) + 1);
+  }
+
+  for (const { group, seen } of singles.values()) {
+    const parts = [...seen].map(([cp, n]) => (n > 1 ? `${cp} ×${n}` : cp));
+    group.detail = parts.slice(0, 12).join(' ') + (parts.length > 12 ? ' ...' : '');
+  }
+  return groups;
+}
+
 export const hiddenUnicode: Rule = {
   id: 'safety/hidden-unicode',
   category: 'safety',
@@ -68,9 +124,7 @@ export const hiddenUnicode: Rule = {
     const findings: Finding[] = [];
     for (const item of allItems(ctx)) {
       for (const { field, text } of textFields(item)) {
-        for (const hit of findHiddenUnicode(text)) {
-          if (hit.benign) continue;
-          const codepointList = hit.codepoints.slice(0, 12).join(' ') + (hit.codepoints.length > 12 ? ' ...' : '');
+        for (const hit of groupHiddenUnicode(findHiddenUnicode(text))) {
           const decodedPart = hit.decoded ? ` Decodes to: ${JSON.stringify(hit.decoded)}.` : '';
           findings.push({
             ruleId: this.id,
@@ -78,7 +132,7 @@ export const hiddenUnicode: Rule = {
             serverId: item.serverId,
             subject: { kind: item.kind, name: item.name },
             message: `${field}: ${describeHiddenUnicodeCount(hit.kind, hit.count)} found.${decodedPart}`,
-            detail: codepointList
+            detail: hit.detail
           });
         }
       }
@@ -92,18 +146,45 @@ interface Pattern {
   label: string;
 }
 
-const INJECTION_PATTERNS: Pattern[] = [
-  { regex: /ignore\s+(all\s+|any\s+)?(previous|prior|above|earlier)\s+instructions?/i, label: 'instruction override' },
-  { regex: /disregard\s+(all\s+|any\s+)?(previous|prior|above)\s+instructions?/i, label: 'instruction override' },
-  { regex: /do\s+not\s+tell\s+(the\s+)?user/i, label: 'concealment from the user' },
-  { regex: /without\s+(telling|informing|notifying)\s+the\s+user/i, label: 'concealment from the user' },
-  { regex: /don'?t\s+(let|allow)\s+the\s+user\s+(know|see)/i, label: 'concealment from the user' },
-  { regex: /\b(?:do\s+not|don'?t|never)\s+(?:mention|reveal|disclose)\b[^.]{0,60}\bto\s+the\s+user\b/i, label: 'concealment from the user' },
-  { regex: /\b(?:do\s+not|don'?t|never)\s+(?:mention|reveal|disclose|tell\s+(?:the\s+)?user)\s+that\s+you\b/i, label: 'concealment from the user' },
-  { regex: /<important>[\s\S]*?<\/important>/i, label: '<IMPORTANT> block' },
-  { regex: /\bsystem\s+prompt\b.{0,40}\b(override|ignore|replace)/i, label: 'system prompt override' },
-  { regex: /you\s+must\s+always\s+call\s+this\s+tool\s+first/i, label: 'forced tool ordering' },
-  { regex: /this\s+is\s+(a\s+)?(mandatory|required)\s+(first\s+)?step/i, label: 'forced tool ordering' }
+/** A named technique and how to find it in a text: the matched passage, or undefined. */
+interface Finder {
+  label: string;
+  find(text: string): string | undefined;
+}
+
+function matching(regex: RegExp, label: string): Finder {
+  return { label, find: (text) => text.match(regex)?.[0] };
+}
+
+/**
+ * The first `<important>...</important>` block in `text`, in any letter case. Found as an
+ * opening tag and then the next closing tag: the lazy pattern `<important>[\s\S]*?</important>` rescans to the end of the text
+ * from every opening tag that has no closing one, which is quadratic in a description built
+ * to be slow.
+ */
+function importantBlock(text: string): string | undefined {
+  const open = IMPORTANT_OPEN_RE.exec(text);
+  if (open === null) return undefined;
+  IMPORTANT_CLOSE_RE.lastIndex = open.index + open[0].length;
+  const close = IMPORTANT_CLOSE_RE.exec(text);
+  return close === null ? undefined : text.slice(open.index, close.index + close[0].length);
+}
+
+const IMPORTANT_OPEN_RE = /<important>/i;
+const IMPORTANT_CLOSE_RE = /<\/important>/gi;
+
+const INJECTION_PATTERNS: Finder[] = [
+  matching(/ignore\s+(all\s+|any\s+)?(previous|prior|above|earlier)\s+instructions?/i, 'instruction override'),
+  matching(/disregard\s+(all\s+|any\s+)?(previous|prior|above)\s+instructions?/i, 'instruction override'),
+  matching(/do\s+not\s+tell\s+(the\s+)?user/i, 'concealment from the user'),
+  matching(/without\s+(telling|informing|notifying)\s+the\s+user/i, 'concealment from the user'),
+  matching(/don'?t\s+(let|allow)\s+the\s+user\s+(know|see)/i, 'concealment from the user'),
+  matching(/\b(?:do\s+not|don'?t|never)\s+(?:mention|reveal|disclose)\b[^.]{0,60}\bto\s+the\s+user\b/i, 'concealment from the user'),
+  matching(/\b(?:do\s+not|don'?t|never)\s+(?:mention|reveal|disclose|tell\s+(?:the\s+)?user)\s+that\s+you\b/i, 'concealment from the user'),
+  { label: '<IMPORTANT> block', find: importantBlock },
+  matching(/\bsystem\s+prompt\b.{0,40}\b(override|ignore|replace)/i, 'system prompt override'),
+  matching(/you\s+must\s+always\s+call\s+this\s+tool\s+first/i, 'forced tool ordering'),
+  matching(/this\s+is\s+(a\s+)?(mandatory|required)\s+(first\s+)?step/i, 'forced tool ordering')
 ];
 
 export const promptInjection: Rule = {
@@ -120,20 +201,22 @@ export const promptInjection: Rule = {
     for (const item of allItems(ctx)) {
       for (const { field, text } of textFieldsWithDecoded(item)) {
         const reported = new Set<string>();
-        for (const pattern of INJECTION_PATTERNS) {
-          const match = text.match(pattern.regex);
+        const report = (label: string, matched: string): void => {
           // Two phrasings of the same technique in one field are one finding.
-          if (match && !reported.has(pattern.label)) {
-            reported.add(pattern.label);
-            findings.push({
-              ruleId: this.id,
-              severity: this.defaultSeverity,
-              serverId: item.serverId,
-              subject: { kind: item.kind, name: item.name },
-              message: `${field} matches the "${pattern.label}" pattern: ${JSON.stringify(match[0].slice(0, 200))}`,
-              detail: match[0].slice(0, 200)
-            });
-          }
+          if (reported.has(label)) return;
+          reported.add(label);
+          findings.push({
+            ruleId: this.id,
+            severity: this.defaultSeverity,
+            serverId: item.serverId,
+            subject: { kind: item.kind, name: item.name },
+            message: `${field} matches the "${label}" pattern: ${JSON.stringify(matched.slice(0, 200))}`,
+            detail: matched.slice(0, 200)
+          });
+        };
+        for (const pattern of INJECTION_PATTERNS) {
+          const matched = pattern.find(text);
+          if (matched !== undefined) report(pattern.label, matched);
         }
       }
     }
