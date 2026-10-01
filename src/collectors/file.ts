@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import type { CollectedPrompt, CollectedResource, CollectedTool, LintTarget } from '../core/types.js';
-import { isPlainObject, stripBom } from '../core/schema-utils.js';
+import { isPlainObject, promptArguments, stripBom } from '../core/schema-utils.js';
 
 /**
  * Accepts either a saved `tools/list` result (`{ tools: [...] }`, optionally
@@ -52,7 +52,7 @@ export async function collectFile(path: string, serverId = 'file'): Promise<Lint
     name: typeof p.name === 'string' ? p.name : '(unnamed)',
     ...(typeof p.title === 'string' ? { title: p.title } : {}),
     ...(typeof p.description === 'string' ? { description: p.description } : {}),
-    ...(Array.isArray(p.arguments) ? { arguments: p.arguments as CollectedPrompt['arguments'] } : {}),
+    ...(Array.isArray(p.arguments) ? { arguments: promptArguments(p.arguments) } : {}),
     serverId
   }));
 

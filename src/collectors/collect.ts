@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import type { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import type { CollectedPrompt, CollectedResource, CollectedTool, LintTarget, ServerInfo } from '../core/types.js';
-import { isPlainObject } from '../core/schema-utils.js';
+import { isPlainObject, promptArguments } from '../core/schema-utils.js';
 
 /**
  * Lists are requested with a permissive passthrough schema rather than the
@@ -89,7 +89,7 @@ export async function collectFromClient(client: Client, serverId: string, label:
       name: raw.name,
       ...(typeof raw.title === 'string' ? { title: raw.title } : {}),
       ...(typeof raw.description === 'string' ? { description: raw.description } : {}),
-      ...(Array.isArray(raw.arguments) ? { arguments: raw.arguments as CollectedPrompt['arguments'] } : {}),
+      ...(Array.isArray(raw.arguments) ? { arguments: promptArguments(raw.arguments) } : {}),
       serverId
     });
   }

@@ -56,7 +56,7 @@ node dist/cli.js stdio -- npx tsx examples/good-server/server.ts
 - **Four targets**: `stdio` (spawn a server), `http` (Streamable HTTP, with custom headers), `file` (a saved
   `tools/list` result or a bare tool array), `config` (every server in a Claude Desktop / Claude Code
   `.mcp.json`-style `mcpServers` map).
-- **23 rules** across five categories — token budget, naming, descriptions, schema validity, and safety. Every
+- **24 rules** across five categories — token budget, naming, descriptions, schema validity, and safety. Every
   rule has an id, a default severity, a rationale, and a doc page in [`docs/rules/`](docs/rules/).
 - **Five report formats**: colored terminal, JSON, [SARIF 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/)
   (for GitHub code scanning and friends), Markdown, and a self-contained, offline HTML report.
@@ -168,6 +168,7 @@ The full 13-tool report is browsable live at
 | [`safety/cross-tool-reference`](docs/rules/safety-cross-tool-reference.md) | safety | warning | Coercive instructions about a *different* named tool. |
 | [`safety/encoded-blob`](docs/rules/safety-encoded-blob.md) | safety | warning | Long opaque base64-looking blobs, raw-IP/shortener URLs. |
 | [`safety/missing-annotations`](docs/rules/safety-missing-annotations.md) | safety | warning | Destructive-sounding tool with no `destructiveHint`/`readOnlyHint`. |
+| [`safety/unchecked`](docs/rules/safety-unchecked.md) | safety | error | A rule could not run on this server's metadata, so that check was not made. Reported instead of crashing or passing silently. |
 
 ## How it works
 

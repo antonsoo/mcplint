@@ -20,8 +20,39 @@ export function isPlainObject(value: unknown): value is Record<string, unknown> 
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
+/**
+ * A schema as the rules read it. `description` is used as text by several rules, so one that
+ * isn't a string (a number, an object) is dropped here and the rules see "no description";
+ * `schema/invalid` is what reports the malformed schema itself. Server metadata is untrusted:
+ * a field of the wrong type must never crash a rule.
+ */
 export function asSchema(value: unknown): JsonSchemaLike | undefined {
-  return isPlainObject(value) ? value : undefined;
+  if (!isPlainObject(value)) return undefined;
+  if ('description' in value && typeof value.description !== 'string') {
+    const rest = { ...value };
+    delete rest.description;
+    return rest;
+  }
+  return value;
+}
+
+/**
+ * A prompt's `arguments` as the rules read them: only the entries that are objects with a string
+ * name, and a `description` only when it is a string.
+ */
+export function promptArguments(value: unknown): { name: string; description?: string; required?: boolean }[] {
+  if (!Array.isArray(value)) return [];
+  return value.filter(isPlainObject).flatMap((arg) =>
+    typeof arg.name === 'string'
+      ? [
+          {
+            name: arg.name,
+            ...(typeof arg.description === 'string' ? { description: arg.description } : {}),
+            ...(typeof arg.required === 'boolean' ? { required: arg.required } : {})
+          }
+        ]
+      : []
+  );
 }
 
 export function schemaProperties(schema: JsonSchemaLike | undefined): [string, JsonSchemaLike][] {

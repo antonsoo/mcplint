@@ -313,11 +313,32 @@ export const missingDestructiveAnnotation: Rule = {
   }
 };
 
+/**
+ * Not a check of its own: `lint()` reports this when another rule throws. A rule crashing must
+ * not hide the other rules' findings, and must not read as "nothing found" either.
+ */
+export const UNCHECKED_RULE_ID = 'safety/unchecked';
+
+export const unchecked: Rule = {
+  id: UNCHECKED_RULE_ID,
+  category: 'safety',
+  defaultSeverity: 'error',
+  summary: 'A rule could not run on this server\'s metadata, so that check was not made.',
+  rationale:
+    'Metadata malformed in a way a rule did not anticipate can make that rule fail. A linter that stops there, or ' +
+    'carries on as if the rule had passed, can be evaded by adding one malformed field next to a poisoned ' +
+    'description. The unfinished check is reported as an error instead: the server is unverified, not clean.',
+  check(): Finding[] {
+    return [];
+  }
+};
+
 export const rules: Rule[] = [
   hiddenUnicode,
   promptInjection,
   secretAccess,
   crossToolReference,
   encodedBlobOrSuspiciousUrl,
-  missingDestructiveAnnotation
+  missingDestructiveAnnotation,
+  unchecked
 ];

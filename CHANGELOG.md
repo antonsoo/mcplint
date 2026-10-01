@@ -8,10 +8,19 @@ All notable changes to this project are documented in this file.
 
 - Published to npm as `@antonsoloviev/mcplint`: `npx @antonsoloviev/mcplint stdio -- node your-server.js`. The
   README and the CI guide use the registry package instead of the GitHub install, which npm 12 blocks by default.
+- `safety/unchecked`: if a rule still fails to run on some metadata, that is reported as an error finding naming
+  the rule, the other rules still run, and `--fail-on error` fails. A crash or a silent pass would both let a
+  poisoned server through.
+- A structural fuzz test: the three reference servers' tool lists, mutated, must lint and render in every format
+  with no rule failing.
 
 ### Fixed
 
 - `mcplint --version` (and `-v`) printed the help text and exited 1, because the no-arguments check ran first.
+- Malformed metadata could crash the linter, which is a way to dodge it: a property whose `description` is a
+  number, or a prompt argument that is `null` or has a non-string description, raised a `TypeError` instead of a
+  report. Those shapes are now read safely (a non-string description counts as missing; `schema/invalid` reports
+  the schema itself).
 
 ## [0.2.0] - 2026-09-30
 

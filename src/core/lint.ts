@@ -1,5 +1,6 @@
 import type { Finding, LintResult, LintSummary, LintTarget, ResolvedConfig, Severity } from './types.js';
 import { allRules } from './rules/index.js';
+import { UNCHECKED_RULE_ID } from './rules/safety.js';
 import { effectiveSeverity, isIgnored } from './config.js';
 import { computeScore } from './score.js';
 import { TOKENIZER_NAME } from './tokenizer.js';
@@ -9,7 +10,26 @@ export function lint(target: LintTarget, config: ResolvedConfig): LintResult {
   const findings: Finding[] = [];
 
   for (const rule of allRules) {
-    const raw = rule.check({ target, config });
+    let raw: Finding[];
+    try {
+      raw = rule.check({ target, config });
+    } catch (err) {
+      // Fail closed: the other rules still run, and the check that didn't is an error, not silence.
+      const server = target.servers[0]?.id ?? 'unknown';
+      raw = [
+        {
+          ruleId: UNCHECKED_RULE_ID,
+          severity: 'error',
+          serverId: server,
+          subject: { kind: 'server', name: server },
+          message: `Rule ${rule.id} could not run on this server's metadata, so that check was not made.`,
+          detail: err instanceof Error ? `${err.name}: ${err.message}` : String(err),
+          suggestion:
+            'Treat the server as unverified for this rule. The metadata is malformed in a way the rule did not expect; ' +
+            'fix the metadata, or report the input at https://github.com/antonsoo/mcplint/issues.'
+        }
+      ];
+    }
     for (const finding of raw) {
       const severity = effectiveSeverity(config, finding.ruleId, finding.severity);
       if (severity === 'off') continue;
