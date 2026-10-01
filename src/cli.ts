@@ -68,13 +68,14 @@ async function main(): Promise<void> {
     }
   });
 
-  if (values.help || positionals.length === 0) {
-    process.stdout.write(HELP);
-    process.exit(values.help ? 0 : 1);
-  }
+  // Before the no-arguments check: `mcplint --version` has no positionals either.
   if (values.version) {
     process.stdout.write(`${VERSION}\n`);
     process.exit(0);
+  }
+  if (values.help || positionals.length === 0) {
+    process.stdout.write(HELP);
+    process.exit(values.help ? 0 : 1);
   }
 
   const [target, ...rest] = positionals;

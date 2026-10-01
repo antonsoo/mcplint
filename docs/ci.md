@@ -1,12 +1,7 @@
 # Running mcplint in CI
 
-mcplint isn't published to npm yet, so install it straight from GitHub. Two ways to wire it into a server
-repository's CI:
-
-> **npm 12+:** `npx github:...` fails with `EALLOWGIT` on npm 12, which disables git-hosted packages by default
-> (`allow-git=none`). Add `--allow-git=root` to opt in: `npx --allow-git=root github:antonsoo/mcplint ...`. Every
-> `npx github:antonsoo/mcplint` command on this page needs that flag if your CI runner's npm is 12 or newer —
-> check with `npm --version` in a debug step if a run fails with `EALLOWGIT`.
+mcplint is on npm as `@antonsoloviev/mcplint`, so `npx` can run it with no install step. Two ways to wire it
+into a server repository's CI:
 
 ## GitHub Actions
 
@@ -27,9 +22,9 @@ jobs:
         with:
           node-version: 24
 
-      # Runs the built CLI directly via npx, no local install step needed.
+      # Runs the published CLI via npx, no local install step needed.
       - name: Lint MCP tool definitions
-        run: npx github:antonsoo/mcplint stdio --fail-on error -- node dist/server.js
+        run: npx @antonsoloviev/mcplint stdio --fail-on error -- node dist/server.js
 ```
 
 Swap the final `-- node dist/server.js` for however your server actually starts (a built entrypoint, `npx tsx
@@ -40,7 +35,7 @@ For a server exposed over Streamable HTTP instead, start it as a background step
 ```yaml
       - run: node dist/server.js &
       - run: npx wait-on http://localhost:3000/mcp
-      - run: npx github:antonsoo/mcplint http http://localhost:3000/mcp --fail-on error
+      - run: npx @antonsoloviev/mcplint http http://localhost:3000/mcp --fail-on error
 ```
 
 ## Any other CI system
@@ -48,7 +43,7 @@ For a server exposed over Streamable HTTP instead, start it as a background step
 The same idea works anywhere a shell step runs:
 
 ```sh
-npx github:antonsoo/mcplint stdio --format sarif --output mcplint.sarif -- node dist/server.js
+npx @antonsoloviev/mcplint stdio --format sarif --output mcplint.sarif -- node dist/server.js
 ```
 
 `--format sarif` produces a [SARIF 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/) log; GitHub code

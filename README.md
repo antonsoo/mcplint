@@ -36,15 +36,12 @@ report._
 
 ## Quickstart
 
-Nothing is published to a registry yet, so run it straight from GitHub:
-
 ```sh
-npx --allow-git=root github:antonsoo/mcplint stdio -- node your-server.js
+npx @antonsoloviev/mcplint stdio -- node your-server.js
 ```
 
-npm 12 refuses git-hosted packages unless you opt in with `--allow-git=root` (without it the command fails with
-`EALLOWGIT`); older npm versions don't need the flag. npm runs mcplint's own `prepare` build during the install,
-and the CLI has no "am I the main module" check to break under the symlink `npx` launches it through.
+That runs the published package ([`@antonsoloviev/mcplint`](https://www.npmjs.com/package/@antonsoloviev/mcplint)
+on npm; the command it installs is `mcplint`). `npm install -g @antonsoloviev/mcplint` puts it on your `PATH`.
 
 To build and try it from source instead (what the commands below were actually run against):
 

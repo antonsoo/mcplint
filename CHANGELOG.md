@@ -2,6 +2,17 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.2.1] - 2026-10-01
+
+### Added
+
+- Published to npm as `@antonsoloviev/mcplint`: `npx @antonsoloviev/mcplint stdio -- node your-server.js`. The
+  README and the CI guide use the registry package instead of the GitHub install, which npm 12 blocks by default.
+
+### Fixed
+
+- `mcplint --version` (and `-v`) printed the help text and exited 1, because the no-arguments check ran first.
+
 ## [0.2.0] - 2026-09-30
 
 ### Added
