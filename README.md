@@ -37,11 +37,11 @@ report._
 ## Quickstart
 
 ```sh
-npx @antonsoloviev/mcplint stdio -- node your-server.js
+npx --allow-git=root github:antonsoo/mcplint stdio -- node your-server.js
 ```
 
-That runs the published package ([`@antonsoloviev/mcplint`](https://www.npmjs.com/package/@antonsoloviev/mcplint)
-on npm; the command it installs is `mcplint`). `npm install -g @antonsoloviev/mcplint` puts it on your `PATH`.
+That installs straight from GitHub: the npm package, `@antonsoloviev/mcplint`, isn't published yet. npm 12 needs `--allow-git=root` for a git-hosted package;
+older npm versions don't need the flag.
 
 To build and try it from source instead (what the commands below were actually run against):
 

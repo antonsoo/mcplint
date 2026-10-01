@@ -6,8 +6,8 @@ All notable changes to this project are documented in this file.
 
 ### Added
 
-- Published to npm as `@antonsoloviev/mcplint`: `npx @antonsoloviev/mcplint stdio -- node your-server.js`. The
-  README and the CI guide use the registry package instead of the GitHub install, which npm 12 blocks by default.
+- The package is named `@antonsoloviev/mcplint`, ready for npm. It isn't published yet; until it is, install from
+  GitHub as before.
 - `safety/unchecked`: if a rule still fails to run on some metadata, that is reported as an error finding naming
   the rule, the other rules still run, and `--fail-on error` fails. A crash or a silent pass would both let a
   poisoned server through.

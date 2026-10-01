@@ -1,7 +1,7 @@
 # Running mcplint in CI
 
-mcplint is on npm as `@antonsoloviev/mcplint`, so `npx` can run it with no install step. Two ways to wire it
-into a server repository's CI:
+mcplint's npm package (`@antonsoloviev/mcplint`) isn't published yet, so `npx` runs it straight from GitHub;
+npm 12 needs `--allow-git=root` for a git-hosted package. Two ways to wire it into a server repository's CI:
 
 ## GitHub Actions
 
@@ -22,9 +22,9 @@ jobs:
         with:
           node-version: 24
 
-      # Runs the published CLI via npx, no local install step needed.
+      # Runs the CLI via npx, no local install step needed.
       - name: Lint MCP tool definitions
-        run: npx @antonsoloviev/mcplint stdio --fail-on error -- node dist/server.js
+        run: npx --allow-git=root github:antonsoo/mcplint stdio --fail-on error -- node dist/server.js
 ```
 
 Swap the final `-- node dist/server.js` for however your server actually starts (a built entrypoint, `npx tsx
@@ -35,7 +35,7 @@ For a server exposed over Streamable HTTP instead, start it as a background step
 ```yaml
       - run: node dist/server.js &
       - run: npx wait-on http://localhost:3000/mcp
-      - run: npx @antonsoloviev/mcplint http http://localhost:3000/mcp --fail-on error
+      - run: npx --allow-git=root github:antonsoo/mcplint http http://localhost:3000/mcp --fail-on error
 ```
 
 ## Any other CI system
@@ -43,7 +43,7 @@ For a server exposed over Streamable HTTP instead, start it as a background step
 The same idea works anywhere a shell step runs:
 
 ```sh
-npx @antonsoloviev/mcplint stdio --format sarif --output mcplint.sarif -- node dist/server.js
+npx --allow-git=root github:antonsoo/mcplint stdio --format sarif --output mcplint.sarif -- node dist/server.js
 ```
 
 `--format sarif` produces a [SARIF 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/) log; GitHub code
