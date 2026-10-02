@@ -13,6 +13,15 @@ All notable changes to this project are documented in this file.
   encoding now, and a UTF-16 copy of a tools file lints exactly like the
   UTF-8 one. (A UTF-8 mark was already handled.)
 
+### Security
+
+- The HTML report carries a Content-Security-Policy. A tool description is
+  text a server wrote, which is what this report exists to distrust: it is
+  escaped, and if some ever were not, the policy lets no script run but the
+  report's own theme toggle (allowed by its hash) and lets nothing be fetched.
+  Opened from disk in Chromium and Firefox: no violations, the toggle works,
+  and the report looks the same.
+
 ## [0.3.1] - 2026-10-02
 
 ### Fixed

@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 import { lint } from '../src/core/lint.js';
 import { renderTerminal } from '../src/report/terminal.js';
@@ -51,6 +52,24 @@ describe('report renderers', () => {
     expect(out).not.toContain('http://');
     expect(out).not.toMatch(/<link[^>]+href="https?:/);
     expect(out).not.toMatch(/<script[^>]+src=/);
+  });
+
+  it("renderHtml's policy allows the one script in the report, by its hash, and nothing else", () => {
+    const out = renderHtml(result);
+    const policy = /<meta http-equiv="Content-Security-Policy" content="([^"]+)">/.exec(out)?.[1] ?? '';
+    const scripts = [...out.matchAll(/<script>([\s\S]*?)<\/script>/g)].map((m) => m[1] ?? '');
+    expect(scripts).toHaveLength(1);
+    const hash = createHash('sha256').update(scripts[0]!).digest('base64');
+    expect(policy.split('; ')).toEqual([
+      "default-src 'none'",
+      "style-src 'unsafe-inline'",
+      `script-src 'sha256-${hash}'`,
+      'img-src data:',
+      "base-uri 'none'",
+      "form-action 'none'",
+    ]);
+    // The policy governs what follows it: it has to come before the style and the script.
+    expect(out.indexOf('Content-Security-Policy')).toBeLessThan(out.indexOf('<style'));
   });
 
   it('renderHtml produces a clean report with no findings section collapsed correctly', () => {
