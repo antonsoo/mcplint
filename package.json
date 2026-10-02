@@ -16,7 +16,8 @@
   },
   "files": [
     "dist",
-    "docs/rules"
+    "docs/rules",
+    "!dist/**/*.map"
   ],
   "author": "Anton Soloviev",
   "license": "MIT",
