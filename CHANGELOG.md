@@ -2,6 +2,19 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.3.1] - 2026-10-02
+
+### Fixed
+
+- **With `--fail-on`, a report longer than 64 KB was cut off when piped.** The
+  CLI called `process.exit(1)` with the report still on its way out. A lint of
+  120 poisoned tools that fails writes 250 KB of JSON, 359 KB of SARIF or
+  503 KB of HTML to a file, and through a pipe (a CI step's captured output,
+  `| tee report.json`, `$(mcplint ...)`) exactly 65,536 bytes of each: invalid
+  JSON, in the one case where the report is wanted. The exit code is now set
+  and the process ends when the output has drained. `--output` was not
+  affected.
+
 ## [0.3.0] - 2026-10-01
 
 `mcplint config` and `mcplint http` against what is really deployed: other clients' config files, and servers

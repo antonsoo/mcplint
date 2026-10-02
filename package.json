@@ -1,6 +1,6 @@
 {
   "name": "@antonsoloviev/mcplint",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Lint MCP server tools the way the model sees them: token cost, clarity, and hidden instructions.",
   "type": "module",
   "bin": {

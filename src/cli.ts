@@ -156,7 +156,10 @@ async function main(): Promise<void> {
     process.stdout.write(rendered.endsWith('\n') ? rendered : `${rendered}\n`);
   }
 
-  if (shouldFail(result)) process.exit(1);
+  // Not process.exit(): a report written to a pipe (a CI step's output, `| tee`) is still on its
+  // way out here, and exiting at once cut it at the pipe's 64 KB buffer -- only when the lint
+  // failed, which is when the report is wanted.
+  if (shouldFail(result)) process.exitCode = 1;
 }
 
 function render(result: LintResult, format: string): string {
