@@ -2,6 +2,32 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.3.0] - 2026-10-01
+
+`mcplint config` and `mcplint http` against what is really deployed: other clients' config files, and servers
+that still speak the transport Streamable HTTP replaced.
+
+### Added
+
+- `mcplint config` reads VS Code's `.vscode/mcp.json` (a `servers` map, and the `mcp.servers` section of a
+  `settings.json`), which it used to refuse for having no `mcpServers`. Comments and trailing commas are allowed,
+  as VS Code allows them.
+- Placeholders are filled in as the clients fill them: `${workspaceFolder}`, `${userHome}`, `${env:NAME}` and
+  `${input:id}` (VS Code), `${NAME}` and `${NAME:-default}` (Claude Code). `--input id=value` supplies an input;
+  an input's `default` is used otherwise.
+- A stdio entry's `cwd` and `envFile` are honored, and a VS Code server with no `cwd` runs in the workspace
+  folder, as it does in VS Code.
+- `mcplint http`, and remote entries of a config, fall back to the HTTP+SSE transport when a server does not
+  answer Streamable HTTP, as the MCP specification asks of clients. An entry with `"type": "sse"` uses it
+  directly. Such servers used to fail with the 405 or 404 their endpoint gives a Streamable HTTP request.
+
+### Fixed
+
+- A server marked `"disabled": true` was started and linted anyway. It is listed as not started.
+- A placeholder was passed to the server as written: a server whose key was `${API_KEY}` was started with
+  that literal string for a key. A server whose placeholder cannot be filled in is now named, with what it
+  needs, and not started; when no server in a config can be started, the error says why for each.
+
 ## [0.2.2] - 2026-10-01
 
 Tool metadata comes from the server being linted, and a server can be built to make the linter slow or its report

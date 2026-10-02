@@ -53,9 +53,15 @@ node dist/cli.js stdio -- npx tsx examples/good-server/server.ts
 
 ## Features
 
-- **Four targets**: `stdio` (spawn a server), `http` (Streamable HTTP, with custom headers), `file` (a saved
-  `tools/list` result or a bare tool array), `config` (every server in a Claude Desktop / Claude Code
-  `.mcp.json`-style `mcpServers` map).
+- **Four targets**: `stdio` (spawn a server), `http` (Streamable HTTP, falling back to the older HTTP+SSE
+  transport, with custom headers), `file` (a saved `tools/list` result or a bare tool array), `config` (every
+  server in an MCP client's own configuration).
+- **Reads the config your client already has.** `mcpServers` (Claude Desktop, Claude Code's `.mcp.json`,
+  Cursor, Windsurf, Cline) and VS Code's `.vscode/mcp.json` (`servers`, with comments and trailing commas).
+  Placeholders are filled in the way the clients fill them: `${workspaceFolder}`, `${userHome}`,
+  `${env:NAME}` and `${input:id}` for VS Code, `${NAME}` and `${NAME:-default}` for Claude Code; `cwd` and
+  `envFile` are honored. A server marked `"disabled": true`, or one that needs a value mcplint was not given,
+  is named and left out, never started with a literal `${API_KEY}`.
 - **24 rules** across five categories — token budget, naming, descriptions, schema validity, and safety. Every
   rule has an id, a default severity, a rationale, and a doc page in [`docs/rules/`](docs/rules/).
 - **Five report formats**: colored terminal, JSON, [SARIF 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/)
@@ -83,6 +89,9 @@ mcplint file tools.json
 
 # Every server listed in a Claude Desktop / Claude Code .mcp.json
 mcplint config .mcp.json
+
+# Every server of a VS Code workspace, with a value for its ${input:api-key} placeholder
+mcplint config .vscode/mcp.json --input api-key="$API_KEY"
 
 # CI: fail the build on errors, write a SARIF log for code scanning
 mcplint stdio --fail-on error --format sarif --output mcplint.sarif -- node server.js
@@ -340,6 +349,10 @@ fix.
 - **`naming/collision` and `naming/shadowing` only fire across servers** (i.e. with `mcplint config`, or two
   `file` targets merged programmatically) — a single `stdio`/`http` run only ever sees one server, so there's
   nothing to collide with.
+- **`config` reads the common client formats, not every one.** Zed's `context_servers` and Codex's TOML are
+  not read. OAuth-protected remote servers (VS Code's `oauth` block) need a token passed as a header; mcplint
+  does not run an OAuth flow. VS Code's `command`-type inputs, which ask an extension for a value, can only be
+  given with `--input`.
 - **mcplint never calls `tools/call`.** It cannot detect a tool whose actual behavior diverges from its
   description — only what the definition itself says.
 - **Variation-selector decoding assumes one specific byte-encoding scheme.** A hidden run is still detected and

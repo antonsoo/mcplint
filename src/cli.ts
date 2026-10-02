@@ -23,7 +23,9 @@ Usage:
   mcplint stdio  [options] -- <command> [args...]
   mcplint http   <url> [options]
   mcplint file   <path.json> [options]
-  mcplint config <path.json> [options]
+  mcplint config <path.json> [options]   every server in an MCP client's config: Claude Desktop,
+                                         Claude Code .mcp.json, Cursor ("mcpServers"); VS Code
+                                         .vscode/mcp.json ("servers")
 
 Options:
   --budget <n>          Per-tool token budget (default 400).
@@ -34,6 +36,7 @@ Options:
   --config <path>        Path to a .mcplintrc.json (severities/ignore overrides).
   --ignore <rule[:name]> Suppress a rule, or a rule for one subject. Repeatable.
   -H, --header <k: v>    Extra HTTP header for the http target. Repeatable.
+  --input <id=value>     Value for a \${input:id} placeholder in a VS Code config. Repeatable.
   -h, --help             Show this help.
   -v, --version          Show the version.
 
@@ -63,6 +66,7 @@ async function main(): Promise<void> {
       config: { type: 'string' },
       ignore: { type: 'string', multiple: true },
       header: { type: 'string', short: 'H', multiple: true },
+      input: { type: 'string', multiple: true },
       help: { type: 'boolean', short: 'h' },
       version: { type: 'boolean', short: 'v' }
     }
@@ -126,10 +130,13 @@ async function main(): Promise<void> {
         process.stderr.write(
           chalk.yellow(`mcplint: "config" launches every server listed in ${path}. Only run this against configs you trust.\n`)
         );
+        const inputs = parseInputs(values.input);
         const collected = await collectConfig(path, {
           onServerStart: (entry) => process.stderr.write(chalk.dim(`  starting ${entry.key} (${entry.kind})...\n`)),
           onServerError: (entry, err) =>
-            process.stderr.write(chalk.red(`  ${entry.key}: failed to connect — ${(err as Error).message}\n`))
+            process.stderr.write(chalk.red(`  ${entry.key}: failed to connect — ${(err as Error).message}\n`)),
+          onServerSkipped: (server) => process.stderr.write(chalk.yellow(`  ${server.key}: not started — ${server.reason}\n`)),
+          ...(inputs ? { inputs } : {})
         });
         result = lint(collected, config);
         break;
@@ -186,6 +193,17 @@ function parseHeaders(list: string[] | undefined): Record<string, string> | unde
     const idx = entry.indexOf(':');
     if (idx === -1) fail(`invalid --header "${entry}" (expected "Name: value")`);
     out[entry.slice(0, idx).trim()] = entry.slice(idx + 1).trim();
+  }
+  return out;
+}
+
+function parseInputs(list: string[] | undefined): Record<string, string> | undefined {
+  if (!list || list.length === 0) return undefined;
+  const out: Record<string, string> = {};
+  for (const entry of list) {
+    const idx = entry.indexOf('=');
+    if (idx <= 0) fail(`invalid --input "${entry}" (expected "id=value")`);
+    out[entry.slice(0, idx)] = entry.slice(idx + 1);
   }
   return out;
 }

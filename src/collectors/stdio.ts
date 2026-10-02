@@ -8,6 +8,8 @@ export interface StdioTargetOptions {
   command: string;
   args: string[];
   env?: Record<string, string>;
+  /** Working directory for the server process; the current one if not given. */
+  cwd?: string;
   serverId?: string;
   label?: string;
 }
@@ -16,7 +18,8 @@ export async function collectStdio(opts: StdioTargetOptions): Promise<LintTarget
   const transport = new StdioClientTransport({
     command: opts.command,
     args: opts.args,
-    env: { ...processEnvAsStrings(), ...(opts.env ?? {}) }
+    env: { ...processEnvAsStrings(), ...(opts.env ?? {}) },
+    ...(opts.cwd ? { cwd: opts.cwd } : {})
   });
 
   const client = new Client({ name: 'mcplint', version: VERSION });
