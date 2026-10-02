@@ -2,6 +2,7 @@
 
 Lint your MCP server's tools the way the model sees them: token cost, clarity, and hidden instructions.
 
+[![npm](https://img.shields.io/npm/v/@antonsoloviev/mcplint)](https://www.npmjs.com/package/@antonsoloviev/mcplint)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Live demo](https://img.shields.io/badge/live%20demo-HTML%20report-35d0ba.svg)](https://antonsoo.github.io/mcplint/)
 
@@ -37,11 +38,11 @@ report._
 ## Quickstart
 
 ```sh
-npx --allow-git=root github:antonsoo/mcplint stdio -- node your-server.js
+npx @antonsoloviev/mcplint stdio -- node your-server.js
 ```
 
-That installs straight from GitHub: the npm package, `@antonsoloviev/mcplint`, isn't published yet. npm 12 needs `--allow-git=root` for a git-hosted package;
-older npm versions don't need the flag.
+That runs the published package ([`@antonsoloviev/mcplint`](https://www.npmjs.com/package/@antonsoloviev/mcplint)
+on npm; the command it installs is `mcplint`). `npm install -g @antonsoloviev/mcplint` puts it on your `PATH`.
 
 To build and try it from source instead (what the commands below were actually run against):
 
