@@ -22,6 +22,14 @@ All notable changes to this project are documented in this file.
   Opened from disk in Chromium and Firefox: no violations, the toggle works,
   and the report looks the same.
 
+### Accessibility
+
+- The HTML report, checked with axe-core (WCAG 2.1 A and AA, and its best-practice rules) in light and dark,
+  at desktop and phone widths: no findings now.
+  In the light theme the accent used for links (4.0:1), the severity chips
+  (3.8:1 to 4.0:1 on their own tint), the "good" label (4.25:1) and the dimmed
+  tag (3.0:1) are above 4.5:1. The report has an `h1` and a `main` landmark.
+
 ## [0.3.1] - 2026-10-02
 
 ### Fixed
