@@ -1,4 +1,4 @@
-import { readFile } from 'node:fs/promises';
+import { readTextFile } from '../core/read-text.js';
 import type { CollectedPrompt, CollectedResource, CollectedTool, LintTarget } from '../core/types.js';
 import { isPlainObject, promptArguments, stripBom } from '../core/schema-utils.js';
 
@@ -8,7 +8,7 @@ import { isPlainObject, promptArguments, stripBom } from '../core/schema-utils.j
  * `instructions` alongside it) or a bare array of tool objects.
  */
 export async function collectFile(path: string, serverId = 'file'): Promise<LintTarget> {
-  const raw = await readFile(path, 'utf8');
+  const raw = await readTextFile(path);
   let parsed: unknown;
   try {
     parsed = JSON.parse(stripBom(raw));

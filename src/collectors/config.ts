@@ -1,4 +1,4 @@
-import { readFile } from 'node:fs/promises';
+import { readTextFile } from '../core/read-text.js';
 import { homedir } from 'node:os';
 import { basename, dirname, isAbsolute, resolve } from 'node:path';
 import type { LintTarget } from '../core/types.js';
@@ -233,7 +233,7 @@ export interface CollectConfigOptions {
 }
 
 export async function collectConfig(path: string, opts: CollectConfigOptions = {}): Promise<LintTarget> {
-  const raw = await readFile(path, 'utf8');
+  const raw = await readTextFile(path);
   let parsed: unknown;
   try {
     parsed = JSON.parse(stripJsonComments(stripBom(raw)));
@@ -256,7 +256,7 @@ export async function collectConfig(path: string, opts: CollectConfigOptions = {
     try {
       let target: LintTarget;
       if (entry.kind === 'stdio') {
-        const fromFile = entry.envFile ? parseEnvFile(await readFile(entry.envFile, 'utf8')) : undefined;
+        const fromFile = entry.envFile ? parseEnvFile(await readTextFile(entry.envFile)) : undefined;
         const env = fromFile || entry.env ? { ...fromFile, ...entry.env } : undefined;
         target = await collectStdio({
           command: entry.command,

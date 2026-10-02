@@ -1,4 +1,4 @@
-import { readFile } from 'node:fs/promises';
+import { readTextFile } from './read-text.js';
 import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { McplintConfigFile, ResolvedConfig, Severity } from './types.js';
@@ -11,7 +11,7 @@ const CONFIG_CANDIDATES = ['.mcplintrc.json', 'mcplint.config.json'];
 export async function loadConfigFile(cwd: string, explicitPath?: string): Promise<McplintConfigFile> {
   const path = explicitPath ?? CONFIG_CANDIDATES.map((f) => resolve(cwd, f)).find((f) => existsSync(f));
   if (!path) return {};
-  const raw = await readFile(path, 'utf8');
+  const raw = await readTextFile(path);
   try {
     return JSON.parse(stripBom(raw)) as McplintConfigFile;
   } catch (err) {

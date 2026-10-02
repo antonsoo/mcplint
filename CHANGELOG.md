@@ -2,6 +2,17 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.3.2] - 2026-10-02
+
+### Fixed
+
+- A file saved by a Windows shell. `... > tools.json` in Windows PowerShell
+  writes UTF-16 with a byte-order mark, which `mcplint file` refused as "not
+  valid JSON: Unexpected token"; the same went for a client config, a
+  `.mcplintrc.json` and an env file saved that way. The mark decides the
+  encoding now, and a UTF-16 copy of a tools file lints exactly like the
+  UTF-8 one. (A UTF-8 mark was already handled.)
+
 ## [0.3.1] - 2026-10-02
 
 ### Fixed
