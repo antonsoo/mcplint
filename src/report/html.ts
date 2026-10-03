@@ -1,11 +1,12 @@
 import { createHash } from 'node:crypto';
+import { visibleControls } from '../core/unicode.js';
 import type { Finding, LintResult, Severity } from '../core/types.js';
 import { topOffenders } from '../core/lint.js';
 import { ruleSlug } from '../core/rule-slug.js';
 import { rulesById } from '../core/rules/index.js';
 
 function esc(s: string): string {
-  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  return visibleControls(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 function scoreBand(score: number): 'good' | 'mid' | 'bad' {

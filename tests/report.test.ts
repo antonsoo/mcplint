@@ -94,3 +94,18 @@ describe('names that are not well-formed text', () => {
   });
 });
 
+
+describe('text a server wrote', () => {
+  it('reaches no report as a raw control character, and every report shows it', () => {
+    const ESC = String.fromCharCode(0x1b);
+    const BEL = String.fromCharCode(0x07);
+    const hostile = lint(targetOf([tool({ name: `get${ESC}]0;pwned${BEL}`, description: `Weather.${ESC}[2J` })]), baseConfig());
+    const colour = new RegExp(`${ESC}\\[[0-9;]*m`, 'g');
+    for (const render of [renderTerminal, renderMarkdown, renderHtml]) {
+      const out = render(hostile).replace(colour, '');
+      expect(out).not.toContain(ESC);
+      expect(out).not.toContain(BEL);
+      expect(out).toContain('get\\x1b]0;pwned\\x07');
+    }
+  });
+});

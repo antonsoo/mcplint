@@ -9,6 +9,7 @@ import { collectConfig } from './collectors/config.js';
 import { lint, shouldFail } from './core/lint.js';
 import { loadConfigFile, resolveConfig } from './core/config.js';
 import { renderTerminal } from './report/terminal.js';
+import { visibleControls } from './core/unicode.js';
 import { renderJson } from './report/json.js';
 import { renderSarif } from './report/sarif.js';
 import { renderMarkdown } from './report/markdown.js';
@@ -48,7 +49,7 @@ Examples:
 `;
 
 function fail(message: string): never {
-  process.stderr.write(chalk.red(`mcplint: ${message}\n`));
+  process.stderr.write(chalk.red(`mcplint: ${visibleControls(message)}\n`));
   process.exit(2);
 }
 
@@ -134,8 +135,9 @@ async function main(): Promise<void> {
         const collected = await collectConfig(path, {
           onServerStart: (entry) => process.stderr.write(chalk.dim(`  starting ${entry.key} (${entry.kind})...\n`)),
           onServerError: (entry, err) =>
-            process.stderr.write(chalk.red(`  ${entry.key}: failed to connect — ${(err as Error).message}\n`)),
-          onServerSkipped: (server) => process.stderr.write(chalk.yellow(`  ${server.key}: not started — ${server.reason}\n`)),
+            process.stderr.write(chalk.red(`  ${visibleControls(entry.key)}: failed to connect — ${visibleControls((err as Error).message)}\n`)),
+          onServerSkipped: (server) =>
+            process.stderr.write(chalk.yellow(`  ${visibleControls(server.key)}: not started — ${visibleControls(server.reason)}\n`)),
           ...(inputs ? { inputs } : {})
         });
         result = lint(collected, config);

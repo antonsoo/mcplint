@@ -1,6 +1,7 @@
 import type { Finding, LintResult, Severity } from '../core/types.js';
 import { topOffenders } from '../core/lint.js';
 import { ruleSlug } from '../core/rule-slug.js';
+import { visibleControls as v } from '../core/unicode.js';
 
 const BADGE: Record<Severity, string> = { error: '🔴 error', warning: '🟡 warning', info: '🔵 info' };
 
@@ -40,7 +41,7 @@ export function renderMarkdown(result: LintResult): string {
     lines.push('');
     lines.push('| Tool | Est. tokens |');
     lines.push('| --- | --- |');
-    for (const o of offenders) lines.push(`| ${o.name} | ${o.tokens} |`);
+    for (const o of offenders) lines.push(`| ${v(o.name)} | ${o.tokens} |`);
   }
 
   const bySubject = groupBySubject(result.findings);
@@ -50,11 +51,11 @@ export function renderMarkdown(result: LintResult): string {
     for (const [key, findings] of [...bySubject.entries()].sort(([a], [b]) => a.localeCompare(b))) {
       const first = findings[0]!;
       lines.push('');
-      lines.push(`### ${first.subject.name} \`(${first.subject.kind}, ${first.serverId})\``);
+      lines.push(`### ${v(first.subject.name)} \`(${first.subject.kind}, ${v(first.serverId)})\``);
       lines.push('');
       for (const f of findings) {
-        lines.push(`- ${BADGE[f.severity]} [\`${f.ruleId}\`](docs/rules/${ruleSlug(f.ruleId)}.md) — ${f.message}`);
-        if (f.suggestion) lines.push(`  - *Suggestion:* ${f.suggestion}`);
+        lines.push(`- ${BADGE[f.severity]} [\`${f.ruleId}\`](docs/rules/${ruleSlug(f.ruleId)}.md) — ${v(f.message)}`);
+        if (f.suggestion) lines.push(`  - *Suggestion:* ${v(f.suggestion)}`);
       }
       void key;
     }

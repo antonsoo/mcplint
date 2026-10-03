@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import type { Finding, LintResult, Severity } from '../core/types.js';
 import { topOffenders } from '../core/lint.js';
+import { visibleControls as v } from '../core/unicode.js';
 
 const SEVERITY_COLOR: Record<Severity, (s: string) => string> = {
   error: chalk.bold.red,
@@ -87,16 +88,16 @@ export function renderTerminal(result: LintResult): string {
         : 'info';
     lines.push('');
     lines.push(
-      `  ${SEVERITY_COLOR[worst](SEVERITY_ICON[worst])} ${chalk.bold(first.subject.name)} ${chalk.dim(`(${first.subject.kind}, ${first.serverId})`)}`
+      `  ${SEVERITY_COLOR[worst](SEVERITY_ICON[worst])} ${chalk.bold(v(first.subject.name))} ${chalk.dim(`(${first.subject.kind}, ${v(first.serverId)})`)}`
     );
     for (const f of findings) {
       const prefix = `      ${f.severity.padEnd(7)} ${f.ruleId}  `;
-      const [firstLine, ...rest] = wrapIndented(f.message, prefix.length, width);
+      const [firstLine, ...rest] = wrapIndented(v(f.message), prefix.length, width);
       lines.push(`      ${SEVERITY_COLOR[f.severity](f.severity.padEnd(7))} ${chalk.dim(f.ruleId)}  ${firstLine}`);
       for (const row of rest) lines.push(row);
       if (f.suggestion) {
         const suggestionPrefix = '              -> ';
-        const [sFirst, ...sRest] = wrapIndented(f.suggestion, suggestionPrefix.length, width);
+        const [sFirst, ...sRest] = wrapIndented(v(f.suggestion), suggestionPrefix.length, width);
         lines.push(`              ${chalk.dim('->')} ${chalk.italic(sFirst)}`);
         for (const row of sRest) lines.push(chalk.italic(row));
       }
@@ -123,7 +124,7 @@ export function renderTerminal(result: LintResult): string {
     lines.push('');
     lines.push(`  ${chalk.bold('Top token offenders')}:`);
     for (const o of offenders) {
-      lines.push(`    ${String(o.tokens).padStart(5)} tok  ${o.name}`);
+      lines.push(`    ${String(o.tokens).padStart(5)} tok  ${v(o.name)}`);
     }
   }
 
