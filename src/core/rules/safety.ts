@@ -1,5 +1,11 @@
 import type { CollectedItem, Finding, Rule, RuleContext } from '../types.js';
-import { describeHiddenUnicodeCount, findHiddenUnicode, type HiddenUnicodeFinding, type HiddenUnicodeKind } from '../unicode.js';
+import {
+  describeHiddenUnicodeCount,
+  findControlCharacters,
+  findHiddenUnicode,
+  type HiddenUnicodeFinding,
+  type HiddenUnicodeKind
+} from '../unicode.js';
 import { schemaStrings } from '../schema-utils.js';
 
 /** Server `instructions` go into the model's context too, so the text-matching rules read them as a subject of their own. */
@@ -135,6 +141,41 @@ export const hiddenUnicode: Rule = {
             detail: hit.detail
           });
         }
+      }
+    }
+    return findings;
+  }
+};
+
+export const controlCharacters: Rule = {
+  id: 'safety/control-characters',
+  category: 'safety',
+  defaultSeverity: 'error',
+  summary: 'A name or text contains control characters, such as the ESC that starts a terminal escape sequence.',
+  rationale:
+    'Control characters have no place in tool metadata, and an escape sequence is an instruction to whatever ' +
+    'terminal shows the text: it can clear the screen, move the cursor back over what was shown, hide text, ' +
+    'retitle the window or write to the clipboard, so a person reviewing a tool list in a terminal sees ' +
+    'something other than what the model reads. See docs/rules/safety-control-characters.md.',
+  check(ctx: RuleContext): Finding[] {
+    const findings: Finding[] = [];
+    for (const item of allItems(ctx)) {
+      const fields = item.kind === 'server' ? textFields(item) : [{ field: 'name', text: item.name }, ...textFields(item)];
+      for (const { field, text } of fields) {
+        const hit = findControlCharacters(text);
+        if (!hit) continue;
+        const noun = hit.count === 1 ? 'control character' : 'control characters';
+        const sequences = hit.sequences.length
+          ? `, including terminal escape sequences: ${hit.sequences.map((s) => `"${s}"`).join(', ')}`
+          : '';
+        findings.push({
+          ruleId: this.id,
+          severity: this.defaultSeverity,
+          serverId: item.serverId,
+          subject: { kind: item.kind, name: item.name },
+          message: `${field}: ${hit.count} ${noun}${sequences}.`,
+          detail: hit.codepoints.slice(0, 12).join(' ') + (hit.codepoints.length > 12 ? ' ...' : '')
+        });
       }
     }
     return findings;
@@ -418,6 +459,7 @@ export const unchecked: Rule = {
 
 export const rules: Rule[] = [
   hiddenUnicode,
+  controlCharacters,
   promptInjection,
   secretAccess,
   crossToolReference,

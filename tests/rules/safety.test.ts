@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  controlCharacters,
   crossToolReference,
   encodedBlobOrSuspiciousUrl,
   hiddenUnicode,
@@ -199,5 +200,37 @@ describe('safety/missing-annotations', () => {
   it('does not flag a non-destructive tool', () => {
     const t = tool({ name: 'list_customers', description: 'Lists customer records.' });
     expect(missingDestructiveAnnotation.check(ctxOf([t]))).toHaveLength(0);
+  });
+});
+
+describe('safety/control-characters', () => {
+  const ESC = String.fromCharCode(0x1b);
+  const BEL = String.fromCharCode(0x07);
+
+  it('flags an escape sequence in a description and quotes it visibly', () => {
+    const t = tool({ name: 't', description: `Gets the weather.${ESC}[2J${ESC}]0;ok${BEL}` });
+    const findings = controlCharacters.check(ctxOf([t]));
+    expect(findings.map((f) => [f.message, f.detail])).toEqual([
+      ['description: 3 control characters, including terminal escape sequences: "\\x1b[2J", "\\x1b]0;ok\\x07".', 'U+001B ×2 U+0007']
+    ]);
+    expect(findings[0]!.severity).toBe('error');
+  });
+
+  it('reads the name and the schema, field by field', () => {
+    const t = tool({
+      name: `get${ESC}]0;title${BEL}`,
+      description: 'Plain.',
+      inputSchema: { type: 'object', properties: { city: { type: 'string', description: `City${String.fromCharCode(0)}` } } }
+    });
+    const messages = controlCharacters.check(ctxOf([t])).map((f) => f.message);
+    expect(messages).toEqual([
+      'name: 2 control characters, including terminal escape sequences: "\\x1b]0;title\\x07".',
+      'inputSchema.properties.city.description: 1 control character.'
+    ]);
+  });
+
+  it('passes tabs and line breaks', () => {
+    const t = tool({ name: 't', description: 'Line one.\nLine two:\tindented.\r\n' });
+    expect(controlCharacters.check(ctxOf([t]))).toEqual([]);
   });
 });

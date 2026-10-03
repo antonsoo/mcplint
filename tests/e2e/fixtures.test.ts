@@ -55,6 +55,14 @@ describe('poisoned-server fixture (e2e over stdio)', () => {
     expect(result.findings.some((f) => f.ruleId === 'safety/secret-access')).toBe(true);
   }, 30_000);
 
+  it('flags the escape codes that hide part of a description in a terminal', async () => {
+    const target = await collectStdio({ command: 'npx', args: ['tsx', poisonedServer] });
+    const result = lint(target, baseConfig());
+    const hit = result.findings.find((f) => f.ruleId === 'safety/control-characters');
+    expect(hit?.subject.name).toBe('get_forecast');
+    expect(hit?.message).toContain('"\\x1b[8m"');
+  }, 30_000);
+
   it('flags the prompt-injection, cross-tool-reference, and schema/invalid findings', async () => {
     const target = await collectStdio({ command: 'npx', args: ['tsx', poisonedServer] });
     const result = lint(target, baseConfig());

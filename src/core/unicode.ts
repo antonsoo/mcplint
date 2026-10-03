@@ -183,3 +183,55 @@ export function describeHiddenUnicodeCount(kind: HiddenUnicodeKind, count: numbe
   const [singular, plural] = KIND_LABEL[kind];
   return `${count} ${count === 1 ? singular : plural}`;
 }
+
+/**
+ * C0 and C1 control characters other than tab, line feed and carriage return, and DEL. None
+ * belongs in a name or a description, and ESC (U+001B) and the C1 introducers (U+009B CSI,
+ * U+009D OSC) start terminal escape sequences: text that reaches a terminal can clear the
+ * screen, move the cursor back to overwrite what was shown, hide text, retitle the window
+ * or, where a terminal allows OSC 52, write to the clipboard. Trail of Bits, "Deceiving users
+ * with ANSI terminal codes in MCP," 2025
+ * (https://blog.trailofbits.com/2025/04/29/deceiving-users-with-ansi-terminal-codes-in-mcp/).
+ */
+export function isControlCharacter(cp: number): boolean {
+  return (cp < 0x20 && cp !== 0x09 && cp !== 0x0a && cp !== 0x0d) || (cp >= 0x7f && cp <= 0x9f);
+}
+
+const CONTROL = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f-\u009f]/;
+const CONTROL_G = new RegExp(CONTROL.source, 'g');
+
+/** CSI and OSC sequences (7-bit and 8-bit introducers), and two-character ESC sequences. */
+const ESCAPE_SEQUENCE =
+  /\u001b\[[0-?]*[ -/]*[@-~]|\u001b\][^\u0007\u001b]*(?:\u0007|\u001b\\)?|\u001b[@-Z\-_]|\u009b[0-?]*[ -/]*[@-~]|\u009d[^\u0007\u009c]*[\u0007\u009c]?/g;
+
+export interface ControlCharacterFinding {
+  count: number;
+  /** The code points, with a count where one repeats: `U+001B ×2`. */
+  codepoints: string[];
+  /** The terminal escape sequences, written visibly (see visibleControls), at most five. */
+  sequences: string[];
+}
+
+export function findControlCharacters(text: string | undefined): ControlCharacterFinding | undefined {
+  if (!text || !CONTROL.test(text)) return undefined;
+  const seen = new Map<string, number>();
+  let count = 0;
+  for (const ch of text) {
+    const cp = ch.codePointAt(0) ?? 0;
+    if (!isControlCharacter(cp)) continue;
+    count += 1;
+    seen.set(fmt(cp), (seen.get(fmt(cp)) ?? 0) + 1);
+  }
+  const sequences = [...new Set((text.match(ESCAPE_SEQUENCE) ?? []).map(visibleControls))].slice(0, 5);
+  return { count, codepoints: [...seen].map(([cp, n]) => (n > 1 ? `${cp} ×${n}` : cp)), sequences };
+}
+
+/**
+ * `text` with every control character written as a visible escape (`\x1b`, `\x07`, `\x9b`),
+ * for printing text a server wrote: a report about a hostile server must not run its escape
+ * sequences in the reader's terminal, and should show them.
+ */
+export function visibleControls(text: string): string {
+  if (!CONTROL.test(text)) return text;
+  return text.replace(CONTROL_G, (ch) => `\\x${(ch.codePointAt(0) ?? 0).toString(16).padStart(2, '0')}`);
+}
