@@ -44,3 +44,14 @@ without spawning anything.
 mcplint itself doesn't execute anything from the servers it lints beyond the standard MCP handshake and
 `tools/list` (it never calls `tools/call`). If you find a way a malicious server could cause mcplint to execute
 code or exfiltrate data purely by being linted, please open a GitHub issue.
+
+## Community and private reports
+
+Please follow the [Code of Conduct](CODE_OF_CONDUCT.md). Anton Soloviev
+maintains this project and handles conduct reports at
+[anton@praviel.com](mailto:anton@praviel.com).
+
+Use the bug or improvement forms for public issues. For a suspected security
+vulnerability or a conduct concern, email the maintainer privately with the
+repository name and relevant details. Do not post credentials, personal data,
+private logs, or confidential documents in a public issue.
