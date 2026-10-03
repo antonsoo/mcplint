@@ -2,6 +2,21 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.3.3] - 2026-10-03
+
+### Security
+
+- New rule `safety/control-characters` (error): control characters in a name or in any text the model reads,
+  such as the terminal escape codes in Trail of Bits' "Deceiving users with ANSI terminal codes in MCP". A
+  description ending in `ESC[8m` and a second sentence shows only its first sentence in a terminal; the model
+  reads both. The finding quotes the escape sequences in visible form (`"\x1b[8m"`). The poisoned fixture has
+  a tool that does this (`get_forecast`), so its report has 14 tools and 33 findings.
+- mcplint printed text a server wrote as it came, escape codes included. A tool named
+  `get<ESC>]0;pwned<BEL>_weather` retitled the terminal mcplint ran in, an escape code in a description reached
+  the Markdown report, and an error about a malformed file quoted its bytes raw. The terminal, Markdown and
+  HTML reports and the error messages now write each control character as a visible escape (`\x1b`, `\x07`);
+  JSON and SARIF already escaped them.
+
 ## [0.3.2] - 2026-10-02
 
 ### Added
