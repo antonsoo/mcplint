@@ -16,10 +16,11 @@ const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const siteDir = join(root, 'site');
 
 const NAV = (active) => `
-<nav style="font:13px ui-monospace,monospace;padding:10px 20px;border-bottom:1px solid #1f2a37;background:#0b0f14;color:#8b98a5;display:flex;gap:16px;align-items:center">
+<nav style="font:13px ui-monospace,monospace;padding:10px 20px;border-bottom:1px solid #1f2a37;background:#0b0f14;color:#8b98a5;display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center">
   <strong style="color:#e6edf3">mcplint live demo</strong>
   <a href="./index.html" style="color:${active === 'poisoned' ? '#35d0ba' : '#8b98a5'}">poisoned fixture</a>
   <a href="./good.html" style="color:${active === 'good' ? '#35d0ba' : '#8b98a5'}">well-behaved fixture</a>
+  <a href="./incomplete.html" style="color:${active === 'incomplete' ? '#35d0ba' : '#8b98a5'}">incomplete collection</a>
   <a href="https://github.com/antonsoo/mcplint" style="margin-left:auto;color:#8b98a5">source &#8594;</a>
 </nav>`;
 
@@ -43,7 +44,7 @@ const HEAD = (title) => `
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="${OG_IMAGE}" />`;
 
-async function buildReport(fixture, outFile, navKey, title) {
+async function buildReport(fixture, outFile, navKey, title, command) {
   // Relative paths only: the "target" field in the rendered report echoes the
   // command verbatim, and this output is published to GitHub Pages — an
   // absolute path here would leak this machine's home directory publicly.
@@ -51,7 +52,7 @@ async function buildReport(fixture, outFile, navKey, title) {
   const server = join('examples', fixture, 'server.ts');
   const { stdout } = await run(
     process.execPath,
-    [cli, 'stdio', '--format', 'html', '--', 'npx', 'tsx', server],
+    [cli, 'stdio', '--format', 'html', '--', ...(command ?? ['npx', 'tsx', server])],
     { cwd: root, maxBuffer: 1024 * 1024 * 16 }
   );
   const withNav = stdout
@@ -66,6 +67,7 @@ async function main() {
   await mkdir(siteDir, { recursive: true });
   await buildReport('poisoned-server', 'index.html', 'poisoned', 'mcplint · sample report on a deliberately poisoned MCP server');
   await buildReport('good-server', 'good.html', 'good', 'mcplint · sample report on a well-behaved MCP server');
+  await buildReport('collection-evidence', 'incomplete.html', 'incomplete', 'mcplint · synthetic interrupted collection', ['node', 'tests/fixtures/servers/collection-evidence.mjs', 'partial']);
   await writeFile(join(siteDir, '.nojekyll'), '');
 }
 

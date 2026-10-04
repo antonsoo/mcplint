@@ -7,3 +7,5 @@ coverage/
 *.tsbuildinfo
 *.tgz
 .mcplint-cache/
+test-results/
+playwright-report/
