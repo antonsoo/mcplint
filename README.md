@@ -8,12 +8,12 @@ Lint your MCP server's tools the way the model sees them: token cost, clarity, a
 
 ## Why this exists
 
-Every tool an [MCP](https://modelcontextprotocol.io/) server exposes gets serialized into JSON and injected into
-the model's context on **every single request** — the whole `tools/list` response, not just the tools that get
-called. That creates three concrete problems:
+Clients can serialize many [MCP](https://modelcontextprotocol.io/) tool definitions into model context,
+including tools that are never called. The actual selection and repetition depend on the client. mcplint
+estimates the collected definitions and inspects their text before they reach that context. That creates three concrete problems:
 
 1. **Bloat.** A server with a dozen verbosely-described tools can burn thousands of tokens before the
-   conversation even starts, on every turn, whether or not any of them get used.
+   conversation even starts, when those definitions are included, whether or not any of them get used.
 2. **Ambiguity.** A tool named `run` or `query`, or a parameter with no description, forces the model to guess.
    Anthropic's own tool-use documentation calls detailed descriptions "by far the most important factor in tool
    performance" — and most real servers don't have them.
@@ -63,18 +63,24 @@ node dist/cli.js stdio -- npx tsx examples/good-server/server.ts
   `${env:NAME}` and `${input:id}` for VS Code, `${NAME}` and `${NAME:-default}` for Claude Code; `cwd` and
   `envFile` are honored. A server marked `"disabled": true`, or one that needs a value mcplint was not given,
   is named and left out, never started with a literal `${API_KEY}`.
-- **24 rules** across five categories — token budget, naming, descriptions, schema validity, and safety. Every
+- **26 rules** across six categories — token budget, naming, descriptions, schema validity, safety, and collection. Every
   rule has an id, a default severity, a rationale, and a doc page in [`docs/rules/`](docs/rules/).
 - **Five report formats**: colored terminal, JSON, [SARIF 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/)
   (for GitHub code scanning and friends), Markdown, and a self-contained, offline HTML report.
 - **`--fail-on error|warning`** for CI gating, plus a `.mcplintrc.json` for per-rule severity overrides and
   per-subject ignores.
-- **Reads everything the model reads.** Tools, prompts, resources and resource templates (following
+- **Inspects collected metadata.** Tools, prompts, resources and resource templates (following
   `nextCursor` pagination to the last page), plus the server's `instructions`. The safety rules (hidden
   Unicode, terminal escape codes, prompt injection, secret-access instructions) scan every string in a tool's
-  input and output schema at any depth, not just the top-level description: nested parameter descriptions,
-  array item schemas, `$defs`, enum and default values, and property names.
+  input and output schema within explicit inspection limits, beyond the top-level description: nested parameter descriptions,
+  array item schemas, `$defs`, structured enum/default/example values, extension keywords, and property names.
+  Reaching a limit produces `safety/unchecked`, never a silent pass.
+- **Collection coverage** in every report: retained pages, malformed entries, missing config inputs and failed
+  servers stay visible. Incomplete audits have no score and fail either `--fail-on` threshold. See
+  [scope, limits and API changes](docs/collection-coverage.md).
 - Never calls `tools/call` on anything it lints — it only ever does the MCP handshake plus `*/list`.
+
+![Incomplete audit with retained evidence and inert hostile text from a synthetic regression fixture](docs/assets/coverage-dark-1440.png)
 
 ## Usage
 
@@ -155,6 +161,7 @@ The full 14-tool report is browsable live at
 
 | Rule | Category | Default | What it catches |
 | --- | --- | --- | --- |
+| [`collection/incomplete`](docs/rules/collection-incomplete.md) | collection | error | Failed or unfinished collection, malformed entries, unavailable config servers. |
 | [`budget/tool-tokens`](docs/rules/budget-tool-tokens.md) | budget | warning | One tool's serialized definition exceeds `--budget` (default 400 tokens). |
 | [`budget/total-tokens`](docs/rules/budget-total-tokens.md) | budget | warning | The whole tool list exceeds `--total-budget`. |
 | [`naming/invalid-chars`](docs/rules/naming-invalid-chars.md) | naming | error | Name breaks the MCP spec's tool-name charset/length rules. |
@@ -272,7 +279,10 @@ worse per tool. Instead:
    at the same weights.
 4. The result is clamped to `[0, 100]`.
 
-A target with nothing collected, or where nothing triggered a rule, scores 100.
+A completed empty list, or a completed check with no findings, scores 100. Incomplete collection or checks
+have no score (`null` in JSON); an all-disabled config also has no score. Items are keyed by server, kind and
+name, so identical tool names on different servers receive separate quality penalties. A high score is not a
+safety verdict.
 
 ## Real-world run
 
@@ -319,7 +329,7 @@ full-schema and server-instructions scanning described above:
 No safety rule fired on any of them, including on the `instructions` that Context7 and beads-mcp send. The
 findings are documentation and cost: the sequential-thinking tool's single description is 2,781 characters,
 19 of code-index-mcp's parameters have no description, and beads-mcp's 18 tool definitions add up to about
-13,000 tokens (its largest, `update`, is ~2,347 on its own), which a client pays on every request. The version
+13,000 tokens (its largest, `update`, is ~2,347 on its own), when a client includes the full definitions. The version
 numbers are the packages' own; the servers' `initialize` responses report their SDK version instead
 (`1.30.0` and `3.4.5` for the two Python servers), which is worth knowing before trusting `serverInfo.version`.
 
@@ -392,7 +402,7 @@ checked by hand, not (only) by that workflow.
 
 [antonsoo.github.io/mcplint](https://antonsoo.github.io/mcplint/) is mcplint's own HTML report, generated by
 `npm run build:site` (`scripts/build-site.mjs`) against `examples/poisoned-server` (the default page) and
-`examples/good-server` (linked from the top nav) — the same report shown as screenshots above, live and
+`examples/good-server` and a synthetic interrupted-collection fixture (linked from the top nav) — the same report shown as screenshots above, live and
 clickable instead of a static image.
 
 ## Contributing

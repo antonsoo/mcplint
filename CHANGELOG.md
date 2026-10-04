@@ -2,6 +2,25 @@
 
 All notable changes to this project are documented in this file.
 
+## Unreleased
+
+- Preserve collection coverage and partial pages in every report. Failed advertised
+  methods, broken pagination, malformed entries, skipped inputs and failed config
+  servers no longer disappear into apparently successful audits.
+- Accept intentional empty saved lists and flag saved cursors as incomplete exports.
+- Bound list requests and pagination. Scan schema keys and strings iteratively,
+  including structured literals and extension keywords; expose limits as unchecked
+  work while retaining other tools' findings.
+- Incomplete audits have no score and fail either `--fail-on` threshold, even when
+  their diagnostic is suppressed. JSON adds collection records and completion;
+  score and token totals can be null. See `docs/collection-coverage.md`.
+- Make report status independent of its heuristic score. Add accessible coverage
+  tables, a synthetic interrupted-collection demo, and Chromium/Firefox regressions.
+- Keep untrusted Markdown metadata literal after rendering. Scope scoring, finding
+  groups and HTML anchors to server/kind/name identities.
+- Validate lint settings before collection, including severity values and positive
+  integer budgets, so malformed settings cannot weaken a CI gate.
+
 ## [0.3.3] - 2026-10-03
 
 ### Security

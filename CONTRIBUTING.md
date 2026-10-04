@@ -13,19 +13,20 @@ npm install
 ```sh
 npm run typecheck   # tsc --noEmit over src, tests, and examples
 npm run lint         # eslint --max-warnings=0
-npm test              # vitest, including the end-to-end fixture-server tests
-npm run build        # tsc -p tsconfig.json -> dist/
+npm run build        # build before CLI integration tests
+npm test             # unit tests and real stdio/HTTP/CLI workflows
+npm run test:browser # build the demo and check Chromium + Firefox reports
 ```
 
-All four must pass before a PR is merged; CI (`.github/workflows/ci.yml`) runs the same commands, plus a job
+All checks must pass before a PR is merged; CI (`.github/workflows/ci.yml`) runs the same commands, plus a job
 that dogfoods the built CLI against `examples/good-server` (must pass) and `examples/poisoned-server` (must
 fail — that's the point).
 
 ## Adding a rule
 
 1. Add the rule to the relevant file in `src/core/rules/` (`budget.ts`, `naming.ts`, `descriptions.ts`,
-   `schema.ts`, or `safety.ts`). Every rule needs `id`, `category`, `defaultSeverity`, `summary`, `rationale`,
-   and a `check(ctx)` function; export it from that file's `rules` array.
+   `schema.ts`, `safety.ts`, or `collection.ts`). Every rule needs `id`, `category`, `defaultSeverity`, `summary`, `rationale`,
+   and a `check(ctx)` function; register it in `src/core/rules/index.ts`.
 2. Add positive and negative unit tests in `tests/rules/<category>.test.ts`.
 3. Add `docs/rules/<id-with-slash-replaced-by-dash>.md` documenting what triggers it, why it matters (cite a
    real source if you're referencing a spec or a security write-up), an example, and how to fix it.
@@ -42,8 +43,8 @@ without spawning anything.
 ## Reporting a security issue
 
 mcplint itself doesn't execute anything from the servers it lints beyond the standard MCP handshake and
-`tools/list` (it never calls `tools/call`). If you find a way a malicious server could cause mcplint to execute
-code or exfiltrate data purely by being linted, please open a GitHub issue.
+list methods (it never calls `tools/call` or reads resource bodies). If you find a way a malicious server could cause mcplint to execute
+code or exfiltrate data purely by being linted, please use the private reporting channel below.
 
 ## Community and private reports
 
