@@ -17,6 +17,7 @@
   "files": [
     "dist",
     "docs/rules",
+    "docs/collection-coverage.md",
     "!dist/**/*.map"
   ],
   "author": "Anton Soloviev",

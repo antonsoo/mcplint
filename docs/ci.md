@@ -59,4 +59,10 @@ scanning, GitLab, and most other CI dashboards can ingest it directly (on GitHub
 - Omit `--fail-on` to lint without failing the build — useful for a first pass on an existing server, or to just
   publish the report.
 
+Either threshold also fails incomplete audits, including unavailable configured servers and unfinished
+checks. This remains true when their diagnostic is suppressed. The report preserves partial findings and
+collection evidence; JSON uses `summary.complete: false` and `summary.score: null`. Invalid lint settings
+exit 2 before collection. These coverage semantics are part of the unreleased source update; use a build
+containing that update before depending on them in CI. See [collection coverage](collection-coverage.md).
+
 Rule severities can be tuned per-repository in a `.mcplintrc.json` — see the main [README](../README.md#configuration).

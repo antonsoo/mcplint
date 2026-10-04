@@ -203,14 +203,14 @@ actually serializes into the tool list (`src/core/tokenizer.ts`).
 
 ### What the safety rules read
 
-A client serializes each tool's whole definition into the model's context, so an instruction hidden in a
-nested property's description, an enum value or a default is exactly as readable to the model as one in the
-tool's own description. `schemaStrings` (`src/core/schema-utils.ts`) walks the input and output schemas
-recursively (`properties`, `patternProperties`, `$defs`/`definitions`, `items`/`prefixItems`,
-`additionalProperties`, `anyOf`/`oneOf`/`allOf`, `not`/`if`/`then`/`else`, up to 64 levels) and yields every
-`description`, `title`, `default`, `const`, `$comment`, `enum` and `examples` string, plus every property name.
-Each finding names the exact path, e.g. `inputSchema.properties.ticket.properties.title.description`. Server
-`instructions` are scanned as a subject of their own, and prompt argument descriptions are included too.
+When a client includes a tool definition in model context, instructions inside nested properties and
+literal values are readable alongside its description. `scanSchemaStrings` (`src/core/schema-utils.ts`)
+iteratively visits strings and keys in input/output schemas, including structured literals and custom
+keywords. Its limits are 128 levels, 20,000 values and 2,000,000 UTF-16 text units per schema. Reaching a limit
+produces `safety/unchecked` and an incomplete audit. Retained text and other tools still receive checks.
+Findings identify their path; paths over 500 characters are explicitly shortened. Server `instructions`,
+item names/titles/descriptions, prompt argument names/descriptions and resource URI metadata are scanned too.
+External references are inspected as text, never fetched. See [coverage and limits](docs/collection-coverage.md).
 
 ### Hidden-Unicode detection
 
@@ -347,6 +347,8 @@ fix.
 
 ## Accuracy and limitations
 
+- **Coverage has explicit limits.** Reports distinguish completed collection from missing pages, malformed
+  entries, unavailable servers and unfinished checks. See [bounds and remaining limits](docs/collection-coverage.md#bounds-and-remaining-limits).
 - **Token counts are estimates.** o200k_base is a proxy for "roughly how expensive is this," not an exact count
   for Claude, Gemini, or any specific model's own tokenizer.
 - **The safety rules are pattern-based, not semantic.** `safety/prompt-injection` and `safety/secret-access`
@@ -388,7 +390,9 @@ fix.
 
 See [`examples/mcplintrc.example.json`](examples/mcplintrc.example.json). `severities` maps a rule id to
 `"error"`, `"warning"`, `"info"`, or `"off"`. `ignore` entries are either a bare rule id (suppressed everywhere)
-or `"ruleId:subjectName"` (suppressed for just that tool/prompt/resource).
+or `"ruleId:subjectName"` (suppressed for just that tool/prompt/resource). Invalid config shapes, severity
+values and non-positive or non-integer budgets are rejected before collection. Suppressing an incomplete
+collection or unchecked diagnostic does not remove its incomplete status or bypass `--fail-on`.
 
 ## CI
 
