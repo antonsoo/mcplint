@@ -90,7 +90,9 @@ describe('poisoned-server fixture (e2e over stdio)', () => {
     ]);
     const goodResult = lint(good, baseConfig());
     const poisonedResult = lint(poisoned, baseConfig({ failOn: 'error' }));
-    expect(poisonedResult.summary.score).toBeLessThan(goodResult.summary.score);
+    expect(goodResult.summary.complete).toBe(true);
+    expect(poisonedResult.summary.complete).toBe(true);
+    expect(poisonedResult.summary.score).toBeLessThan(goodResult.summary.score!);
     expect(poisonedResult.summary.bySeverity.error).toBeGreaterThan(0);
   }, 30_000);
 });

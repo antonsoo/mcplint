@@ -29,6 +29,8 @@ export function renderSarif(result: LintResult): string {
               }))
           }
         },
+        invocations: [{ executionSuccessful: result.summary.complete }],
+        properties: { collection: result.target.collection ?? [], complete: result.summary.complete, score: result.summary.score },
         results: result.findings.map((f) => ({
           ruleId: f.ruleId,
           level: LEVEL[f.severity],

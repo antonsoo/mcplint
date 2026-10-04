@@ -1,76 +1,45 @@
 import { readTextFile } from '../core/read-text.js';
-import type { CollectedPrompt, CollectedResource, CollectedTool, LintTarget } from '../core/types.js';
-import { isPlainObject, promptArguments, stripBom } from '../core/schema-utils.js';
+import type { CollectionRecord, LintTarget } from '../core/types.js';
+import { isPlainObject, stripBom } from '../core/schema-utils.js';
+import { appendItems } from './items.js';
+import { MAX_ITEMS } from './collect.js';
 
-/**
- * Accepts either a saved `tools/list` result (`{ tools: [...] }`, optionally
- * with `prompts`/`resources`/`resourceTemplates` and the server's
- * `instructions` alongside it) or a bare array of tool objects.
- */
+/** A saved list describes only the supplied snapshot, never a live server's complete inventory. */
 export async function collectFile(path: string, serverId = 'file'): Promise<LintTarget> {
   const raw = await readTextFile(path);
   let parsed: unknown;
-  try {
-    parsed = JSON.parse(stripBom(raw));
-  } catch (err) {
-    throw new Error(`${path} is not valid JSON: ${(err as Error).message}`);
+  try { parsed = JSON.parse(stripBom(raw)); }
+  catch (err) { throw new Error(`${path} is not valid JSON: ${(err as Error).message}`); }
+  if (Array.isArray(parsed)) parsed = { tools: parsed };
+  if (!isPlainObject(parsed)) throw new Error(`${path} must contain a tools array or a {tools, prompts, resources} object.`);
+  const keys = ['tools', 'prompts', 'resources', 'resourceTemplates'] as const;
+  if (!keys.some(key => Object.hasOwn(parsed, key)) && !Object.hasOwn(parsed, 'instructions')) {
+    throw new Error(`${path} has no "tools", "prompts", "resources" or "resourceTemplates" array.`);
   }
-
-  let toolsRaw: unknown[] = [];
-  let promptsRaw: unknown[] = [];
-  let resourcesRaw: unknown[] = [];
-  let instructions: string | undefined;
-
-  if (Array.isArray(parsed)) {
-    toolsRaw = parsed;
-  } else if (isPlainObject(parsed)) {
-    if (Array.isArray(parsed.tools)) toolsRaw = parsed.tools;
-    if (Array.isArray(parsed.prompts)) promptsRaw = parsed.prompts;
-    if (Array.isArray(parsed.resources)) resourcesRaw = parsed.resources;
-    if (Array.isArray(parsed.resourceTemplates)) resourcesRaw = [...resourcesRaw, ...(parsed.resourceTemplates as unknown[])];
-    if (typeof parsed.instructions === 'string') instructions = parsed.instructions;
-    if (toolsRaw.length === 0 && promptsRaw.length === 0 && resourcesRaw.length === 0 && instructions === undefined) {
-      throw new Error(`${path} has no "tools", "prompts", "resources" or "resourceTemplates" array.`);
-    }
-  } else {
-    throw new Error(`${path} must contain a tools array or a {tools, prompts, resources} object.`);
-  }
-
-  const tools: CollectedTool[] = toolsRaw.filter(isPlainObject).map((t) => ({
-    kind: 'tool',
-    name: typeof t.name === 'string' ? t.name : '(unnamed)',
-    ...(typeof t.title === 'string' ? { title: t.title } : {}),
-    ...(typeof t.description === 'string' ? { description: t.description } : {}),
-    inputSchema: t.inputSchema,
-    ...(t.outputSchema !== undefined ? { outputSchema: t.outputSchema } : {}),
-    ...(isPlainObject(t.annotations) ? { annotations: t.annotations } : {}),
-    serverId
-  }));
-
-  const prompts: CollectedPrompt[] = promptsRaw.filter(isPlainObject).map((p) => ({
-    kind: 'prompt',
-    name: typeof p.name === 'string' ? p.name : '(unnamed)',
-    ...(typeof p.title === 'string' ? { title: p.title } : {}),
-    ...(typeof p.description === 'string' ? { description: p.description } : {}),
-    ...(Array.isArray(p.arguments) ? { arguments: promptArguments(p.arguments) } : {}),
-    serverId
-  }));
-
-  const resources: CollectedResource[] = resourcesRaw.filter(isPlainObject).map((r) => ({
-    kind: 'resource',
-    name: typeof r.name === 'string' ? r.name : '(unnamed)',
-    ...(typeof r.title === 'string' ? { title: r.title } : {}),
-    ...(typeof r.description === 'string' ? { description: r.description } : {}),
-    ...(typeof r.uri === 'string' ? { uri: r.uri } : {}),
-    ...(typeof r.uriTemplate === 'string' ? { uriTemplate: r.uriTemplate } : {}),
-    ...(typeof r.mimeType === 'string' ? { mimeType: r.mimeType } : {}),
-    serverId
-  }));
-
-  return {
-    servers: [{ id: serverId, label: path, ...(instructions !== undefined ? { instructions } : {}) }],
-    tools,
-    prompts,
-    resources
+  const collection: CollectionRecord[] = [];
+  const target: LintTarget = {
+    servers: [{ id: serverId, label: path, ...(typeof parsed.instructions === 'string' ? { instructions: parsed.instructions } : {}) }],
+    tools: [], prompts: [], resources: [], collection
   };
+  for (const key of keys) {
+    if (!Object.hasOwn(parsed, key)) continue;
+    const values = parsed[key];
+    const record: CollectionRecord = { serverId, scope: key === 'resourceTemplates' ? 'resources/templates/list' : `${key}/list`,
+      status: 'complete', pages: 1, received: Array.isArray(values) ? values.length : 0, retained: 0 };
+    if (!Array.isArray(values)) {
+      record.status = 'incomplete'; record.detail = `Saved ${key} must be an array.`;
+    } else {
+      appendItems(target, key, values.slice(0, MAX_ITEMS), record);
+      if (values.length > MAX_ITEMS) {
+        record.status = 'incomplete'; record.detail = [record.detail, `Stopped at the ${MAX_ITEMS} item limit.`].filter(Boolean).join(' ');
+      }
+    }
+    collection.push(record);
+  }
+  const issues: string[] = [];
+  if (parsed.nextCursor !== undefined) issues.push('Saved nextCursor indicates uncollected pages (or a malformed cursor). Supply the complete list to audit it.');
+  if (Object.hasOwn(parsed, 'instructions') && typeof parsed.instructions !== 'string') issues.push('Saved instructions must be a string.');
+  collection.push({ serverId, scope: 'file', status: issues.length ? 'incomplete' : 'complete', pages: 0, received: 0, retained: 0,
+    detail: issues.join(' ') || 'Only the supplied snapshot was inspected; no server was contacted.' });
+  return target;
 }

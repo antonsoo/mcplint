@@ -33,6 +33,7 @@ type ServerEntry = StdioServerEntry | HttpServerEntry;
 export interface SkippedServer {
   key: string;
   reason: string;
+  disabled?: true;
 }
 
 export interface ServerConfig {
@@ -185,13 +186,16 @@ export function readServerConfig(config: unknown, ctx: ConfigContext = {}): Serv
   const entries: ServerEntry[] = [];
   const skipped: SkippedServer[] = [];
   for (const [key, value] of Object.entries(found.servers)) {
-    if (!isPlainObject(value)) continue;
+    if (!isPlainObject(value)) {
+      skipped.push({ key, reason: 'entry must be an object with a command or URL' });
+      continue;
+    }
     if (value.disabled === true) {
-      skipped.push({ key, reason: 'disabled in the config' });
+      skipped.push({ key, reason: 'disabled in the config', disabled: true });
       continue;
     }
     try {
-      if (typeof value.url === 'string') {
+      if (typeof value.url === 'string' && value.url.trim()) {
         entries.push({
           kind: 'http',
           key,
@@ -199,7 +203,7 @@ export function readServerConfig(config: unknown, ctx: ConfigContext = {}): Serv
           ...(isPlainObject(value.headers) ? { headers: fillMap(value.headers) } : {}),
           ...(value.type === 'sse' ? { sse: true as const } : {})
         });
-      } else if (typeof value.command === 'string') {
+      } else if (typeof value.command === 'string' && value.command.trim()) {
         const cwd = typeof value.cwd === 'string' ? fill(value.cwd) : found.vscode ? workspace : undefined;
         entries.push({
           kind: 'stdio',
@@ -210,7 +214,7 @@ export function readServerConfig(config: unknown, ctx: ConfigContext = {}): Serv
           ...(cwd !== undefined ? { cwd: isAbsolute(cwd) ? cwd : resolve(workspace, cwd) } : {}),
           ...(typeof value.envFile === 'string' ? { envFile: resolve(workspace, fill(value.envFile)) } : {})
         });
-      }
+      } else skipped.push({ key, reason: 'entry needs a non-empty command or URL' });
     } catch (err) {
       if (!(err instanceof Unresolved)) throw err;
       skipped.push({ key, reason: err.message });
@@ -242,15 +246,15 @@ export async function collectConfig(path: string, opts: CollectConfigOptions = {
   }
   const { entries, skipped } = readServerConfig(parsed, { path, ...(opts.inputs ? { inputs: opts.inputs } : {}) });
   for (const server of skipped) opts.onServerSkipped?.(server);
-  if (entries.length === 0) {
-    throw new Error(
-      skipped.length > 0
-        ? `${path} lists ${skipped.length} server${skipped.length === 1 ? '' : 's'}, and none can be started: ${skipped.map((s) => `${s.key} ${s.reason}`).join('; ')}.`
-        : `${path}'s server map has no entries with a "command" or "url".`
-    );
+  if (entries.length === 0 && skipped.length === 0) {
+    throw new Error(`${path}'s server map has no entries with a "command" or "url".`);
   }
 
-  const targets: LintTarget[] = [];
+  const targets: LintTarget[] = skipped.map(server => ({
+    servers: [{ id: server.key, label: server.key }], tools: [], prompts: [], resources: [],
+    collection: [{ serverId: server.key, scope: 'config', status: server.disabled ? 'disabled' : 'incomplete',
+      pages: 0, received: 0, retained: 0, detail: server.reason }]
+  }));
   for (const entry of entries) {
     opts.onServerStart?.(entry);
     try {
@@ -278,6 +282,9 @@ export async function collectConfig(path: string, opts: CollectConfigOptions = {
       targets.push(target);
     } catch (err) {
       opts.onServerError?.(entry, err);
+      targets.push({ servers: [{ id: entry.key, label: entry.key }], tools: [], prompts: [], resources: [],
+        collection: [{ serverId: entry.key, scope: 'connection', status: 'incomplete', pages: 0, received: 0, retained: 0,
+          detail: 'Could not connect or initialize. Check the command, URL, environment and authorization, then retry.' }] });
     }
   }
 

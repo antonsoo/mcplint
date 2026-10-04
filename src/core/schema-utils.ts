@@ -65,49 +65,68 @@ export function requiredNames(schema: JsonSchemaLike | undefined): string[] {
   return schema.required.filter((r): r is string => typeof r === 'string');
 }
 
-// Keywords whose string value is prose or a literal the model reads.
-const TEXT_KEYWORDS = ['description', 'title', 'default', 'const', '$comment'];
-// Keywords holding a list of literals the model reads.
-const LIST_KEYWORDS = ['enum', 'examples'];
-// Keywords mapping names to subschemas (the names are part of what the model reads, too).
-const MAP_KEYWORDS = ['properties', 'patternProperties', '$defs', 'definitions', 'dependentSchemas'];
-// Keywords holding one subschema or a list of them.
-const SUBSCHEMA_KEYWORDS = ['items', 'prefixItems', 'additionalProperties', 'unevaluatedProperties', 'contains', 'not', 'if', 'then', 'else', 'propertyNames', 'anyOf', 'oneOf', 'allOf'];
-const MAX_SCHEMA_DEPTH = 64;
+export const MAX_SCHEMA_DEPTH = 128;
+export const MAX_SCHEMA_NODES = 20_000;
+export const MAX_SCHEMA_TEXT = 2_000_000;
+export interface SchemaTextScan {
+  fields: { field: string; text: string }[];
+  issue?: string;
+}
 
-/**
- * Every string in a JSON Schema that ends up in the model's context: descriptions and titles at
- * any depth, enum/example/default/const literals, and property names. A client serializes the whole
- * schema into the prompt, so an instruction hidden in a nested property's description is just as
- * readable to the model as one in the tool's own description - and a linter that only reads the
- * top level misses it entirely.
+/** Walk actual JSON strings and keys, including structured literals and extension keywords.
+ * Iterators bound traversal memory. Limits are evidence, never silent successful checks.
+ * References are inspected as text; no URLs are fetched and no $refs are expanded.
  */
-export function schemaStrings(schema: unknown, path: string, depth = 0): { field: string; text: string }[] {
-  if (!isPlainObject(schema) || depth > MAX_SCHEMA_DEPTH) return [];
-  const out: { field: string; text: string }[] = [];
-  for (const key of TEXT_KEYWORDS) {
-    const value = schema[key];
-    if (typeof value === 'string' && value.length > 0) out.push({ field: `${path}.${key}`, text: value });
-  }
-  for (const key of LIST_KEYWORDS) {
-    const value = schema[key];
-    if (!Array.isArray(value)) continue;
-    value.forEach((item, i) => {
-      if (typeof item === 'string' && item.length > 0) out.push({ field: `${path}.${key}[${i}]`, text: item });
-    });
-  }
-  for (const key of MAP_KEYWORDS) {
-    const value = schema[key];
-    if (!isPlainObject(value)) continue;
-    for (const [name, sub] of Object.entries(value)) {
-      out.push({ field: `${path}.${key}.${name} (name)`, text: name });
-      out.push(...schemaStrings(sub, `${path}.${key}.${name}`, depth + 1));
+export function scanSchemaStrings(schema: unknown, path: string): SchemaTextScan {
+  const result: SchemaTextScan = { fields: [] };
+  let visited = 0;
+  let textSize = 0;
+  const ancestors = new Set<object>();
+  const shortPath = (value: string): string => value.length > 500 ? `${value.slice(0, 480)}...[path shortened]` : value;
+  type Entry = { value: unknown; path: string; depth: number; key?: string };
+  type Frame = { entries: Generator<Entry>; owner?: object };
+  function* entries(value: unknown, parent: string, depth: number): Generator<Entry> {
+    if (Array.isArray(value)) {
+      for (let i = 0; i < value.length; i++) yield { value: value[i], path: shortPath(`${parent}[${i}]`), depth };
+    } else if (isPlainObject(value)) {
+      for (const key in value) {
+        if (Object.hasOwn(value, key)) yield { value: value[key], path: shortPath(`${parent}.${key}`), depth, key };
+      }
     }
   }
-  for (const key of SUBSCHEMA_KEYWORDS) {
-    const value = schema[key];
-    if (Array.isArray(value)) value.forEach((sub, i) => out.push(...schemaStrings(sub, `${path}.${key}[${i}]`, depth + 1)));
-    else out.push(...schemaStrings(value, `${path}.${key}`, depth + 1));
+  const add = (field: string, text: string): void => {
+    if (!text) return;
+    const remaining = MAX_SCHEMA_TEXT - textSize;
+    if (text.length > remaining) result.issue ??= `Schema text exceeds the ${MAX_SCHEMA_TEXT} character inspection limit.`;
+    if (remaining > 0) result.fields.push({ field, text: text.slice(0, remaining) });
+    textSize += Math.min(text.length, remaining);
+  };
+  function* root(): Generator<Entry> { yield { value: schema, path, depth: 0 }; }
+  const stack: Frame[] = [{ entries: root() }];
+  while (stack.length) {
+    const frame = stack[stack.length - 1]!;
+    const next = frame.entries.next();
+    if (next.done) {
+      if (frame.owner) ancestors.delete(frame.owner);
+      stack.pop(); continue;
+    }
+    if (++visited > MAX_SCHEMA_NODES) { result.issue ??= `Schema exceeds the ${MAX_SCHEMA_NODES} value inspection limit.`; break; }
+    const entry = next.value;
+    if (entry.key !== undefined) add(`${entry.path} (name)`, entry.key);
+    if (entry.depth > MAX_SCHEMA_DEPTH) { result.issue ??= `Schema exceeds the ${MAX_SCHEMA_DEPTH} level inspection limit.`; continue; }
+    if (typeof entry.value === 'string') add(entry.path, entry.value);
+    else if (entry.value !== null && typeof entry.value === 'object') {
+      if (ancestors.has(entry.value)) { result.issue ??= 'Schema contains a cycle and is not JSON data.'; continue; }
+      ancestors.add(entry.value);
+      stack.push({ entries: entries(entry.value, entry.path, entry.depth + 1), owner: entry.value });
+    }
   }
-  return out;
+  return result;
+}
+
+/** Convenience API: callers must not mistake a truncated scan for a complete one. */
+export function schemaStrings(schema: unknown, path: string): { field: string; text: string }[] {
+  const scan = scanSchemaStrings(schema, path);
+  if (scan.issue) throw new Error(scan.issue);
+  return scan.fields;
 }

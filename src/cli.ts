@@ -33,7 +33,7 @@ Options:
   --total-budget <n>     Total token budget across all collected tools.
   --format <fmt>         terminal | json | sarif | markdown | html (default terminal).
   --output <path>        Write the report to a file instead of stdout.
-  --fail-on <level>      Exit 1 if findings at/above "warning" or "error" exist.
+  --fail-on <level>      Exit 1 for incomplete audits or findings at/above this level.
   --config <path>        Path to a .mcplintrc.json (severities/ignore overrides).
   --ignore <rule[:name]> Suppress a rule, or a rule for one subject. Repeatable.
   -H, --header <k: v>    Extra HTTP header for the http target. Repeatable.
@@ -129,11 +129,11 @@ async function main(): Promise<void> {
         const path = rest[0];
         if (!path) fail('config target requires a path, e.g. `mcplint config .mcp.json`');
         process.stderr.write(
-          chalk.yellow(`mcplint: "config" launches every server listed in ${path}. Only run this against configs you trust.\n`)
+          chalk.yellow(`mcplint: "config" launches every server listed in ${visibleControls(path)}. Only run this against configs you trust.\n`)
         );
         const inputs = parseInputs(values.input);
         const collected = await collectConfig(path, {
-          onServerStart: (entry) => process.stderr.write(chalk.dim(`  starting ${entry.key} (${entry.kind})...\n`)),
+          onServerStart: (entry) => process.stderr.write(chalk.dim(`  starting ${visibleControls(entry.key)} (${entry.kind})...\n`)),
           onServerError: (entry, err) =>
             process.stderr.write(chalk.red(`  ${visibleControls(entry.key)}: failed to connect — ${visibleControls((err as Error).message)}\n`)),
           onServerSkipped: (server) =>
@@ -153,7 +153,7 @@ async function main(): Promise<void> {
   const rendered = render(result, format);
   if (values.output) {
     await writeFile(values.output, rendered, 'utf8');
-    process.stderr.write(chalk.dim(`Report written to ${values.output}\n`));
+    process.stderr.write(chalk.dim(`Report written to ${visibleControls(values.output)}\n`));
   } else {
     process.stdout.write(rendered.endsWith('\n') ? rendered : `${rendered}\n`);
   }
@@ -181,7 +181,7 @@ function render(result: LintResult, format: string): string {
 
 function parsePositiveInt(flag: string, raw: string): number {
   const n = Number(raw);
-  if (!Number.isFinite(n) || n <= 0) fail(`${flag} must be a positive number, got "${raw}"`);
+  if (!Number.isSafeInteger(n) || n <= 0) fail(`${flag} must be a positive safe integer, got "${raw}"`);
   return n;
 }
 
@@ -214,6 +214,5 @@ function parseInputs(list: string[] | undefined): Record<string, string> | undef
 }
 
 main().catch((err: unknown) => {
-  process.stderr.write(chalk.red(`mcplint: unexpected error: ${(err as Error).stack ?? String(err)}\n`));
-  process.exit(2);
+  fail(err instanceof Error ? err.message : String(err));
 });

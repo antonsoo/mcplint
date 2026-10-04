@@ -3,22 +3,17 @@ import { visibleControls } from '../core/unicode.js';
 import type { Finding, LintResult, Severity } from '../core/types.js';
 import { topOffenders } from '../core/lint.js';
 import { ruleSlug } from '../core/rule-slug.js';
+import { auditStatus, coverageNote } from './coverage.js';
 import { rulesById } from '../core/rules/index.js';
 
 function esc(s: string): string {
   return visibleControls(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-function scoreBand(score: number): 'good' | 'mid' | 'bad' {
-  if (score >= 85) return 'good';
-  if (score >= 60) return 'mid';
-  return 'bad';
-}
-
 function groupBySubject(findings: Finding[]): Map<string, Finding[]> {
   const map = new Map<string, Finding[]>();
   for (const f of findings) {
-    const key = `${f.subject.kind}:${f.subject.name}:${f.serverId}`;
+    const key = JSON.stringify([f.serverId, f.subject.kind, f.subject.name]);
     const list = map.get(key) ?? [];
     list.push(f);
     map.set(key, list);
@@ -82,25 +77,25 @@ function severityRank(s: Severity): number {
 }
 
 function cssId(s: string): string {
-  return s.replace(/[^a-zA-Z0-9_-]/g, '_');
+  return createHash('sha256').update(s).digest('hex');
 }
 
-function scoreRing(score: number): string {
+function scoreRing(score: number | null): string {
   const r = 52;
   const c = 2 * Math.PI * r;
-  const offset = c * (1 - score / 100);
+  const offset = c * (1 - (score ?? 0) / 100);
   return `
-  <svg class="ring" width="140" height="140" viewBox="0 0 140 140" role="img" aria-label="Score ${score} out of 100">
+  <svg class="ring" width="140" height="140" viewBox="0 0 140 140" role="img" aria-label="${score === null ? 'Score unavailable' : `Score ${score} out of 100`}">
     <circle class="ring-track" cx="70" cy="70" r="${r}" />
     <circle class="ring-fill" cx="70" cy="70" r="${r}" stroke-dasharray="${c}" stroke-dashoffset="${offset}" />
-    <text x="70" y="66" class="ring-score">${score}</text>
-    <text x="70" y="88" class="ring-label">/ 100</text>
+    <text x="70" y="66" class="ring-score">${score ?? '?'}</text>
+    <text x="70" y="88" class="ring-label">${score === null ? 'unavailable' : '/ 100'}</text>
   </svg>`;
 }
 
 function offendersChart(result: LintResult): string {
   const offenders = topOffenders(result, 8).filter((o) => o.tokens > 0);
-  if (offenders.length === 0) return '<p class="muted">No tools collected.</p>';
+  if (offenders.length === 0) return `<p class="muted">${result.target.tools.length ? 'No token estimates available.' : 'No tools collected.'}</p>`;
   const max = Math.max(...offenders.map((o) => o.tokens), result.config.budget);
   return `
   <div class="bars">
@@ -154,22 +149,41 @@ export function renderHtml(result: LintResult): string {
   </header>
 
   <main>
-  <section class="hero">
+  <div class="audit-status ${summary.complete ? '' : 'audit-incomplete'}">
+    <h2>${auditStatus(result)}</h2>
+    <p>${coverageNote(result)}</p>
+  </div>
+  <section class="hero" aria-label="Audit summary">
     <div class="score-block">
       ${scoreRing(summary.score)}
-      <div class="score-band sev-${scoreBand(summary.score)}-text">${scoreBand(summary.score) === 'good' ? 'clean' : scoreBand(summary.score) === 'mid' ? 'needs work' : 'poor'}</div>
+      <div class="score-band">${summary.score === null ? 'Not scored' : 'Heuristic score'}</div>
     </div>
     <div class="stat-grid">
       <div class="stat"><span class="stat-value">${result.target.servers.length}</span><span class="stat-label">servers</span></div>
       <div class="stat"><span class="stat-value">${summary.toolCount}</span><span class="stat-label">tools</span></div>
       <div class="stat"><span class="stat-value">${summary.promptCount}</span><span class="stat-label">prompts</span></div>
       <div class="stat"><span class="stat-value">${summary.resourceCount}</span><span class="stat-label">resources</span></div>
-      <div class="stat"><span class="stat-value">~${summary.totalEstimatedTokens}</span><span class="stat-label">est. tokens</span></div>
+      <div class="stat"><span class="stat-value">${summary.totalEstimatedTokens === null ? '?' : `~${summary.totalEstimatedTokens}`} </span><span class="stat-label">est. tokens${summary.totalEstimatedTokens === null ? ' (unknown)' : ''}</span></div>
       <div class="stat sev-error-text"><span class="stat-value">${summary.bySeverity.error}</span><span class="stat-label">errors</span></div>
       <div class="stat sev-warning-text"><span class="stat-value">${summary.bySeverity.warning}</span><span class="stat-label">warnings</span></div>
       <div class="stat sev-info-text"><span class="stat-value">${summary.bySeverity.info}</span><span class="stat-label">info</span></div>
     </div>
   </section>
+
+  ${result.target.collection?.length ? `<section class="panel" aria-labelledby="coverage-heading">
+    <h2 id="coverage-heading">Collection coverage</h2>
+    <p class="coverage-help">Received counts include malformed entries. Retained counts include objects whose valid fields could still be checked. Unsupported methods and disabled servers were not inspected.</p>
+    <div class="coverage-scroll" role="region" aria-label="Collection coverage table" tabindex="0">
+      <table class="coverage-table">
+        <caption>Collection results by server and source</caption>
+        <thead><tr><th scope="col">Server / source</th><th scope="col">Status</th><th scope="col">Pages</th><th scope="col">Received</th><th scope="col">Retained</th></tr></thead>
+        <tbody>${result.target.collection.map(record => `<tr>
+          <th scope="row">${esc(record.serverId)}<span class="coverage-scope">${record.scope}</span>${record.detail ? `<span class="coverage-detail">${esc(record.detail)}</span>` : ''}</th>
+          <td class="${record.status === 'incomplete' ? 'sev-error-text' : ''}">${record.status}</td><td>${record.pages}</td><td>${record.received}</td><td>${record.retained}</td>
+        </tr>`).join('')}</tbody>
+      </table>
+    </div>
+  </section>` : ''}
 
   <section class="panel">
     <h2>Token budget<span class="hint">${esc(result.tokenizerName)} estimate</span></h2>
@@ -180,7 +194,7 @@ export function renderHtml(result: LintResult): string {
     <h2>Findings<span class="hint">${result.findings.length} total, grouped by server / tool / prompt / resource</span></h2>
     ${
       sortedKeys.length === 0
-        ? '<p class="empty">No findings. This target is clean against the configured rules and budget.</p>'
+        ? `<p class="empty">${summary.complete ? 'No findings against the configured rules and budget.' : 'No findings in retained data; audit gaps remain.'}</p>`
         : `<div class="subjects">${sortedKeys.map((k) => subjectCard(k, bySubject.get(k)!)).join('')}</div>`
     }
   </section>
@@ -340,6 +354,20 @@ code, .mono { font-family: var(--mono); }
   :root:not([data-theme="dark"]) .theme-toggle .icon-moon { display: block; }
 }
 
+.audit-status { margin: 0 0 24px; padding: 16px 20px; border-left: 4px solid var(--accent); background: var(--bg-elevated); }
+.audit-status h2 { margin: 0 0 6px; font-size: 22px; }
+.audit-status p { margin: 0; max-width: 72ch; }
+.audit-incomplete { border-color: var(--error); }
+.coverage-help { color: var(--text-muted); max-width: 72ch; }
+.coverage-scroll { overflow-x: auto; }
+.coverage-scroll:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.coverage-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+.coverage-table caption { text-align: left; color: var(--text-muted); padding-bottom: 10px; }
+.coverage-table th, .coverage-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.coverage-table th[scope="row"] { font-weight: 500; min-width: 220px; overflow-wrap: anywhere; }
+.coverage-scope, .coverage-detail { display: block; font-weight: 400; }
+.coverage-scope { color: var(--text-muted); margin: 3px 0; }
+.coverage-detail { max-width: 65ch; }
 .hero {
   display: flex;
   align-items: center;
@@ -430,7 +458,21 @@ code, .mono { font-family: var(--mono); }
 
 @media (max-width: 480px) {
   .stat-grid { grid-template-columns: repeat(2, auto); }
-  .hero { gap: 20px; }
+  .audit-status { margin: 0 0 24px; padding: 16px 20px; border-left: 4px solid var(--accent); background: var(--bg-elevated); }
+.audit-status h2 { margin: 0 0 6px; font-size: 22px; }
+.audit-status p { margin: 0; max-width: 72ch; }
+.audit-incomplete { border-color: var(--error); }
+.coverage-help { color: var(--text-muted); max-width: 72ch; }
+.coverage-scroll { overflow-x: auto; }
+.coverage-scroll:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.coverage-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+.coverage-table caption { text-align: left; color: var(--text-muted); padding-bottom: 10px; }
+.coverage-table th, .coverage-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.coverage-table th[scope="row"] { font-weight: 500; min-width: 220px; overflow-wrap: anywhere; }
+.coverage-scope, .coverage-detail { display: block; font-weight: 400; }
+.coverage-scope { color: var(--text-muted); margin: 3px 0; }
+.coverage-detail { max-width: 65ch; }
+.hero { gap: 20px; }
   .bar-row { grid-template-columns: 9ch 1fr 4ch; }
 }
 

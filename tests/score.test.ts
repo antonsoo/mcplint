@@ -4,15 +4,15 @@ import type { Finding } from '../src/core/types.js';
 import { targetOf, tool } from './helpers.js';
 
 function qualityFinding(severity: Finding['severity'], name = 't1'): Finding {
-  return { ruleId: 'description/too-short', severity, serverId: 's', subject: { kind: 'tool', name }, message: 'm' };
+  return { ruleId: 'description/too-short', severity, serverId: 's1', subject: { kind: 'tool', name }, message: 'm' };
 }
 
 function serverFinding(severity: Finding['severity']): Finding {
-  return { ruleId: 'naming/convention-consistency', severity, serverId: 's', subject: { kind: 'server', name: 's' }, message: 'm' };
+  return { ruleId: 'naming/convention-consistency', severity, serverId: 's1', subject: { kind: 'server', name: 's' }, message: 'm' };
 }
 
 function safetyFinding(severity: Finding['severity'], name = 't1'): Finding {
-  return { ruleId: 'safety/prompt-injection', severity, serverId: 's', subject: { kind: 'tool', name }, message: 'm' };
+  return { ruleId: 'safety/prompt-injection', severity, serverId: 's1', subject: { kind: 'tool', name }, message: 'm' };
 }
 
 describe('computeScore — quality component (averaged per item)', () => {

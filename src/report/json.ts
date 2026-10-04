@@ -6,6 +6,7 @@ export function renderJson(result: LintResult): string {
       generatedAt: result.generatedAt,
       tokenizer: result.tokenizerName,
       servers: result.target.servers,
+      collection: result.target.collection ?? [],
       summary: result.summary,
       findings: result.findings
     },

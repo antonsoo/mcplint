@@ -8,6 +8,7 @@ import { estimateToolTokens } from './tokenizer.js';
 
 export function lint(target: LintTarget, config: ResolvedConfig): LintResult {
   const findings: Finding[] = [];
+  let complete = !(target.collection ?? []).some(record => record.status === 'incomplete');
 
   for (const rule of allRules) {
     let raw: Finding[];
@@ -31,6 +32,8 @@ export function lint(target: LintTarget, config: ResolvedConfig): LintResult {
       ];
     }
     for (const finding of raw) {
+      // Suppressing a diagnostic cannot make missing evidence known.
+      if (finding.ruleId === UNCHECKED_RULE_ID) complete = false;
       const severity = effectiveSeverity(config, finding.ruleId, finding.severity);
       if (severity === 'off') continue;
       if (isIgnored(config, finding.ruleId, finding.subject.name)) continue;
@@ -45,6 +48,11 @@ export function lint(target: LintTarget, config: ResolvedConfig): LintResult {
     byRule[f.ruleId] = (byRule[f.ruleId] ?? 0) + 1;
   }
 
+  let totalEstimatedTokens: number | null = 0;
+  for (const tool of target.tools) {
+    try { totalEstimatedTokens += estimateToolTokens(tool); }
+    catch { totalEstimatedTokens = null; complete = false; break; }
+  }
   const summary: LintSummary = {
     totalFindings: findings.length,
     bySeverity,
@@ -52,8 +60,9 @@ export function lint(target: LintTarget, config: ResolvedConfig): LintResult {
     toolCount: target.tools.length,
     promptCount: target.prompts.length,
     resourceCount: target.resources.length,
-    totalEstimatedTokens: target.tools.reduce((sum, t) => sum + estimateToolTokens(t), 0),
-    score: computeScore(findings, target)
+    totalEstimatedTokens,
+    complete,
+    score: complete && !(target.collection?.length && target.collection.every(record => record.status === 'disabled')) ? computeScore(findings, target) : null
   };
 
   return {
@@ -69,6 +78,7 @@ export function lint(target: LintTarget, config: ResolvedConfig): LintResult {
 export function shouldFail(result: LintResult): boolean {
   const { failOn } = result.config;
   if (!failOn) return false;
+  if (!result.summary.complete) return true;
   if (failOn === 'error') return result.summary.bySeverity.error > 0;
   if (failOn === 'warning') return result.summary.bySeverity.error > 0 || result.summary.bySeverity.warning > 0;
   return result.summary.totalFindings > 0;
@@ -76,7 +86,10 @@ export function shouldFail(result: LintResult): boolean {
 
 export function topOffenders(result: LintResult, n = 5): { name: string; tokens: number }[] {
   return [...result.target.tools]
-    .map((t) => ({ name: t.name, tokens: estimateToolTokens(t) }))
+    .flatMap(t => {
+      try { return [{ name: t.name, tokens: estimateToolTokens(t) }]; }
+      catch { return []; } // Unknown estimates are excluded, never treated as zero.
+    })
     .sort((a, b) => b.tokens - a.tokens)
     .slice(0, n);
 }

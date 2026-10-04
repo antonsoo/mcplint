@@ -6,7 +6,7 @@ import {
   type HiddenUnicodeFinding,
   type HiddenUnicodeKind
 } from '../unicode.js';
-import { schemaStrings } from '../schema-utils.js';
+import { scanSchemaStrings } from '../schema-utils.js';
 
 /** Server `instructions` go into the model's context too, so the text-matching rules read them as a subject of their own. */
 interface InstructionsItem {
@@ -22,16 +22,23 @@ type ScannedItem = CollectedItem | InstructionsItem;
 function textFields(item: ScannedItem): { field: string; text: string }[] {
   const out: { field: string; text: string }[] = [];
   if (item.kind === 'server') return [{ field: 'instructions', text: item.description }];
+  out.push({ field: 'name', text: item.name });
   if (item.description) out.push({ field: 'description', text: item.description });
   if (item.title) out.push({ field: 'title', text: item.title });
   if (item.kind === 'tool') {
     if (typeof item.annotations?.title === 'string' && item.annotations.title) out.push({ field: 'annotations.title', text: item.annotations.title });
-    out.push(...schemaStrings(item.inputSchema, 'inputSchema'));
-    out.push(...schemaStrings(item.outputSchema, 'outputSchema'));
+    out.push(...scanSchemaStrings(item.inputSchema, 'inputSchema').fields);
+    out.push(...scanSchemaStrings(item.outputSchema, 'outputSchema').fields);
   }
   if (item.kind === 'prompt' && item.arguments) {
     for (const arg of item.arguments) {
+      out.push({ field: `arguments.${arg.name} (name)`, text: arg.name });
       if (arg.description) out.push({ field: `arguments.${arg.name}.description`, text: arg.description });
+    }
+  }
+  if (item.kind === 'resource') {
+    for (const field of ['uri', 'uriTemplate', 'mimeType'] as const) {
+      if (item[field]) out.push({ field, text: item[field] });
     }
   }
   return out;
@@ -160,7 +167,7 @@ export const controlCharacters: Rule = {
   check(ctx: RuleContext): Finding[] {
     const findings: Finding[] = [];
     for (const item of allItems(ctx)) {
-      const fields = item.kind === 'server' ? textFields(item) : [{ field: 'name', text: item.name }, ...textFields(item)];
+      const fields = textFields(item);
       for (const { field, text } of fields) {
         const hit = findControlCharacters(text);
         if (!hit) continue;
@@ -452,8 +459,17 @@ export const unchecked: Rule = {
     'Metadata malformed in a way a rule did not anticipate can make that rule fail. A linter that stops there, or ' +
     'carries on as if the rule had passed, can be evaded by adding one malformed field next to a poisoned ' +
     'description. The unfinished check is reported as an error instead: the server is unverified, not clean.',
-  check(): Finding[] {
-    return [];
+  check(ctx): Finding[] {
+    const findings: Finding[] = [];
+    for (const tool of ctx.target.tools) {
+      for (const field of ['inputSchema', 'outputSchema'] as const) {
+        const scan = scanSchemaStrings(tool[field], field);
+        if (scan.issue) findings.push({ ruleId: UNCHECKED_RULE_ID, severity: 'error', serverId: tool.serverId,
+          subject: { kind: 'tool', name: tool.name }, message: `${field}: ${scan.issue}`,
+          suggestion: 'Reduce the schema size or nesting and rerun. Retained text and other tools were still checked.' });
+      }
+    }
+    return findings;
   }
 };
 

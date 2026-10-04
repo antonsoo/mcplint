@@ -72,6 +72,20 @@ export interface LintTarget {
   tools: CollectedTool[];
   prompts: CollectedPrompt[];
   resources: CollectedResource[];
+  /** What was collected, including explicit gaps. Absent for caller-supplied library targets. */
+  collection?: CollectionRecord[];
+}
+
+export type ListMethod = 'tools/list' | 'prompts/list' | 'resources/list' | 'resources/templates/list';
+
+export interface CollectionRecord {
+  serverId: string;
+  scope: ListMethod | 'file' | 'connection' | 'config';
+  status: 'complete' | 'incomplete' | 'unsupported' | 'disabled';
+  pages: number;
+  received: number;
+  retained: number;
+  detail?: string;
 }
 
 export interface FindingSubject {
@@ -90,7 +104,7 @@ export interface Finding {
   suggestion?: string;
 }
 
-export type RuleCategory = 'budget' | 'naming' | 'description' | 'schema' | 'safety';
+export type RuleCategory = 'budget' | 'naming' | 'description' | 'schema' | 'safety' | 'collection';
 
 export interface RuleMeta {
   id: string;
@@ -135,9 +149,12 @@ export interface LintSummary {
   toolCount: number;
   promptCount: number;
   resourceCount: number;
-  totalEstimatedTokens: number;
-  /** 0-100, see src/core/score.ts for the formula. */
-  score: number;
+  /** Null when at least one tool could not be serialized for estimation. */
+  totalEstimatedTokens: number | null;
+  /** Whether collection and enabled checks finished. Does not certify safety. */
+  complete: boolean;
+  /** 0-100, or null when collection/checks are incomplete. */
+  score: number | null;
 }
 
 export interface LintResult {

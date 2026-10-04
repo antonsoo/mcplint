@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import type { Finding, LintResult, Severity } from '../core/types.js';
 import { topOffenders } from '../core/lint.js';
+import { auditStatus, coverageNote } from './coverage.js';
 import { visibleControls as v } from '../core/unicode.js';
 
 const SEVERITY_COLOR: Record<Severity, (s: string) => string> = {
@@ -48,7 +49,7 @@ function wrapIndented(text: string, indent: number, width: number): string[] {
 function groupBySubject(findings: Finding[]): Map<string, Finding[]> {
   const map = new Map<string, Finding[]>();
   for (const f of findings) {
-    const key = `${f.subject.kind}:${f.subject.name}:${f.serverId}`;
+    const key = JSON.stringify([f.serverId, f.subject.kind, f.subject.name]);
     const list = map.get(key) ?? [];
     list.push(f);
     map.set(key, list);
@@ -71,12 +72,19 @@ export function renderTerminal(result: LintResult): string {
   lines.push(chalk.bold.white(' mcplint ') + chalk.dim(`— ${result.tokenizerName} token estimates, ${result.generatedAt}`));
   lines.push(chalk.dim('─'.repeat(Math.min(70, width))));
 
+  lines.push(`  ${chalk.bold(auditStatus(result))}`);
+  lines.push(...wrapIndented(coverageNote(result), 2, width).map(line => `  ${line}`));
+  if (result.target.collection?.length) {
+    lines.push('', '  Collection coverage (pages / received / retained):');
+    for (const record of result.target.collection) {
+      lines.push(`    ${v(record.serverId)} | ${record.scope} | ${record.status} | ${record.pages} / ${record.received} / ${record.retained}`);
+      if (record.detail) lines.push(...wrapIndented(v(record.detail), 6, width).map(line => `      ${line}`));
+    }
+  }
   const bySubject = groupBySubject(result.findings);
   const sortedKeys = [...bySubject.keys()].sort();
 
-  if (sortedKeys.length === 0) {
-    lines.push(chalk.green('  No findings. Clean run against configured rules and budget.'));
-  }
+
 
   for (const key of sortedKeys) {
     const findings = bySubject.get(key)!;
@@ -112,7 +120,7 @@ export function renderTerminal(result: LintResult): string {
       `${chalk.bold('Prompts')}: ${summary.promptCount}   ` +
       `${chalk.bold('Resources')}: ${summary.resourceCount}`
   );
-  lines.push(`  ${chalk.bold('Estimated tokens')}: ~${summary.totalEstimatedTokens} across all tools`);
+  lines.push(`  ${chalk.bold('Estimated tokens')}: ${summary.totalEstimatedTokens === null ? 'unknown (some tools could not be estimated)' : `~${summary.totalEstimatedTokens} across retained tools`}`);
   lines.push(
     `  ${chalk.bold('Findings')}: ${chalk.red(`${summary.bySeverity.error} error`)}, ` +
       `${chalk.yellow(`${summary.bySeverity.warning} warning`)}, ` +
@@ -129,8 +137,7 @@ export function renderTerminal(result: LintResult): string {
   }
 
   lines.push('');
-  const color = scoreColor(summary.score);
-  lines.push(`  ${chalk.bold('Score')}: ${color(String(summary.score))} / 100`);
+  lines.push(summary.score === null ? '  Score: unavailable' : `  ${chalk.bold('Score')}: ${scoreColor(summary.score)(String(summary.score))} / 100`);
   lines.push('');
 
   return lines.join('\n');

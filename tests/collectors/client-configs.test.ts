@@ -79,7 +79,7 @@ describe('readServerConfig', () => {
   it('skips a disabled server, as the clients that write "disabled" do', () => {
     const { entries, skipped } = readServerConfig({ mcpServers: { on: { command: 'node' }, off: { command: 'node', disabled: true }, alsoOn: { command: 'node', disabled: false } } });
     expect(entries.map((e) => e.key)).toEqual(['on', 'alsoOn']);
-    expect(skipped).toEqual([{ key: 'off', reason: 'disabled in the config' }]);
+    expect(skipped).toEqual([{ key: 'off', reason: 'disabled in the config', disabled: true }]);
   });
 
   it("fills in Claude Code's ${VAR} and ${VAR:-default}, and skips a server whose variable is not set", () => {
@@ -180,9 +180,9 @@ describe('collectConfig on a VS Code workspace (e2e over stdio)', () => {
     expect(started).toEqual([`invoices@${workspace}`]);
     expect(skipped).toEqual([
       { key: 'billing', reason: 'needs the input "billing-key" (pass --input billing-key=<value>)' },
-      { key: 'archived', reason: 'disabled in the config' }
+      { key: 'archived', reason: 'disabled in the config', disabled: true }
     ]);
-    expect(target.servers.map((s) => s.id)).toEqual(['invoices']);
+    expect(target.servers.map((s) => s.id)).toEqual(['billing', 'archived', 'invoices']);
     expect(target.tools.map((t) => t.name).sort()).toEqual(['get_invoice_detail', 'list_invoices', 'void_invoice']);
   }, 60_000);
 
@@ -215,7 +215,8 @@ describe('collectConfig on a VS Code workspace (e2e over stdio)', () => {
   it('says so when no server in the file can be started', async () => {
     const path = join(workspace, '.vscode', 'only-inputs.json');
     writeFileSync(path, '{ "servers": { "billing": { "command": "x", "env": { "KEY": "${input:billing-key}" } }, "old": { "command": "y", "disabled": true } } }');
-    await expect(collectConfig(path)).rejects.toThrow(/lists 2 servers, and none can be started: billing needs the input "billing-key" .*; old disabled in the config\./);
+    const target = await collectConfig(path);
+    expect(target.collection?.map(record => record.status)).toEqual(['incomplete', 'disabled']);
   });
 
   it('reports a file that is not JSON even with comments allowed', async () => {

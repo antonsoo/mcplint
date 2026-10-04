@@ -105,7 +105,8 @@ describe('text a server wrote', () => {
       const out = render(hostile).replace(colour, '');
       expect(out).not.toContain(ESC);
       expect(out).not.toContain(BEL);
-      expect(out).toContain('get\\x1b]0;pwned\\x07');
+      if (render === renderMarkdown) expect(out).toContain('get&#92;x1b&#93;0;pwned&#92;x07');
+      else expect(out).toContain('get\\x1b]0;pwned\\x07');
     }
   });
 });

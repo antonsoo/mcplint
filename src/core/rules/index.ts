@@ -4,8 +4,9 @@ import { rules as namingRules } from './naming.js';
 import { rules as descriptionRules } from './descriptions.js';
 import { rules as schemaRules } from './schema.js';
 import { rules as safetyRules } from './safety.js';
+import { incompleteCollection } from './collection.js';
 
-export const allRules: Rule[] = [...budgetRules, ...namingRules, ...descriptionRules, ...schemaRules, ...safetyRules];
+export const allRules: Rule[] = [...budgetRules, ...namingRules, ...descriptionRules, ...schemaRules, ...safetyRules, incompleteCollection];
 
 export const rulesById: ReadonlyMap<string, Rule> = new Map(allRules.map((r) => [r.id, r]));
 

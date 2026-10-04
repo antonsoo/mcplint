@@ -37,9 +37,9 @@ function categoryOf(ruleId: string): string {
 
 export function computeScore(findings: Finding[], target: LintTarget): number {
   const perItem = new Map<string, number>();
-  for (const t of target.tools) perItem.set(`tool:${t.name}`, 100);
-  for (const p of target.prompts) perItem.set(`prompt:${p.name}`, 100);
-  for (const r of target.resources) perItem.set(`resource:${r.name}`, 100);
+  for (const item of [...target.tools, ...target.prompts, ...target.resources]) {
+    perItem.set(JSON.stringify([item.serverId, item.kind, item.name]), 100);
+  }
 
   let qualityServerPenalty = 0;
   let safetyPenalty = 0;
@@ -50,7 +50,7 @@ export function computeScore(findings: Finding[], target: LintTarget): number {
       safetyPenalty += weight;
       continue;
     }
-    const key = `${f.subject.kind}:${f.subject.name}`;
+    const key = JSON.stringify([f.serverId, f.subject.kind, f.subject.name]);
     if (perItem.has(key)) {
       perItem.set(key, (perItem.get(key) ?? 100) - weight);
     } else {

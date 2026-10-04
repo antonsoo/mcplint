@@ -65,3 +65,9 @@ describe('loadConfigFile', () => {
     await expect(loadConfigFile(dir)).rejects.toThrow(/Failed to parse/);
   });
 });
+
+describe('invalid settings cannot weaken an audit gate', () => {
+  it.each([null, [], true, '', { budget: -1 }, { budget: 1.5 }, { budget: NaN }, { totalBudget: Infinity }, { totalBudget: '400' }, { severities: { 'description/missing': 'eror' } }, { ignore: 'description/missing' }, { ignore: [null] }, { typo: 3 }].map(input => ({ input })))('rejects malformed config $input', ({ input }) => {
+    expect(() => resolveConfig({ file: input as never })).toThrow(/config/i);
+  });
+});
