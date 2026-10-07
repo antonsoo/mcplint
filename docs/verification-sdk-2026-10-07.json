@@ -1,0 +1,96 @@
+{
+  "node": "v20.20.2",
+  "sdk": "1.32.1",
+  "installed_outside_checkout": true,
+  "package_sha256": "a42711d3c3b694b095996548530f110b8a544e594047c4c33f446ec821e4ac59",
+  "cases": [
+    {
+      "case": "SDK-backed good stdio fixture",
+      "exit_code": 0,
+      "summary": {
+        "totalFindings": 0,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {},
+        "toolCount": 3,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 471,
+        "complete": true,
+        "score": 100
+      }
+    },
+    {
+      "case": "partial list preserves earlier page",
+      "exit_code": 1,
+      "summary": {
+        "totalFindings": 1,
+        "bySeverity": {
+          "error": 1,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {
+          "collection/incomplete": 1
+        },
+        "toolCount": 1,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 32,
+        "complete": false,
+        "score": null
+      }
+    },
+    {
+      "case": "saved poisoned metadata",
+      "exit_code": 1,
+      "summary": {
+        "totalFindings": 13,
+        "bySeverity": {
+          "error": 7,
+          "warning": 4,
+          "info": 2
+        },
+        "byRule": {
+          "naming/generic": 1,
+          "description/missing": 1,
+          "description/param-missing": 3,
+          "description/enum-unexplained": 1,
+          "schema/invalid": 1,
+          "schema/portability": 1,
+          "safety/hidden-unicode": 1,
+          "safety/prompt-injection": 2,
+          "safety/secret-access": 2
+        },
+        "toolCount": 4,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 464,
+        "complete": true,
+        "score": 41
+      }
+    }
+  ],
+  "source_commit": "cd7b907c4ee1ade6a25983c7166fe76a8139b7ae",
+  "source_map_commit": "d186ae09",
+  "local_only": true,
+  "locked_sdk": "1.31.0",
+  "locked_environment_node": "v26.7.0",
+  "tests": 273,
+  "browser_cases": 20,
+  "browser_engines": [
+    "chromium",
+    "firefox"
+  ],
+  "audit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  }
+}
