@@ -4,6 +4,9 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Require MCP SDK 1.31.0 or newer, which includes the OAuth credential issuer-binding
+  fix for GHSA-6qxp-vccf-f47h. Current mcplint transports do not configure an OAuth
+  provider. Patch the build dependency source-map-js to 1.2.2 as well.
 - Preserve collection coverage and partial pages in every report. Failed advertised
   methods, broken pagination, malformed entries, skipped inputs and failed config
   servers no longer disappear into apparently successful audits.
