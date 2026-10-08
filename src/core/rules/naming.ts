@@ -177,7 +177,7 @@ export const genericName: Rule = {
       // Generic when every word of the name is: "query", "run_action", "use_tool". One
       // specific word is enough to say what the tool is for. Flagging a generic last word
       // in a two-word name caught `create_task`, `overpass_query` and `distance_tool` on
-      // public servers: 81 findings there, where this makes 8.
+      // the registry census: 81 findings there, where this makes 8.
       const flagged = segments.length > 0 && segments.every((segment) => GENERIC_NAMES.has(segment.toLowerCase()));
       if (flagged) {
         findings.push({

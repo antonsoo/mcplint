@@ -223,7 +223,7 @@ const IMPORTANT_CLOSE_RE = /<\/important>/gi;
 
 /**
  * What a known attack technique looks like in text. Each is weak evidence alone: on the 11,545
- * tool definitions of the most-used public servers (studies/registry-census) a tool that scans
+ * tool definitions of 418 servers of one public registry (studies/registry-census) a tool that scans
  * for prompt injection names these phrases, a link shortener tells the model not to show a
  * signed URL, and nothing was an attack. An attack needs several of them at once, so one
  * signal is a warning and two on the same tool, prompt or resource are an error.
@@ -544,7 +544,7 @@ export const encodedBlobOrSuspiciousUrl: Rule = {
 /**
  * Verbs that name a destructive action. Looked for in the tool's name, split into words: in
  * descriptions they are mostly something else ("returns formatted text", "removes markdown from
- * the input"), and on public servers that reading flagged `strip_markdown` and `convert_to_md`.
+ * the input"), and on the registry census that reading flagged `strip_markdown` and `convert_to_md`.
  */
 const DESTRUCTIVE_VERB = /^(?:delete|remove|destroy|drop|purge|wipe|erase|terminate|kill|uninstall|truncate|revoke)[ds]?$/i;
 

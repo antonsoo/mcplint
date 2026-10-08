@@ -85,7 +85,7 @@ export const portability: Rule = {
     'schema less portable across the ecosystem than one using only the common subset.',
   check(ctx: RuleContext): Finding[] {
     const findings: Finding[] = [];
-    // Nine in ten tools on public servers have optional properties and no
+    // Nine in ten tools in the registry census have optional properties and no
     // `additionalProperties: false` (studies/registry-census), so this is said once per server
     // with a count. One note per tool was 10,692 notes that all said the same thing.
     const notStrict = new Map<string, string[]>();

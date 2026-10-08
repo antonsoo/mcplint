@@ -58,20 +58,28 @@ function isHighSurrogate(unit: number): boolean {
 }
 
 /**
- * Approximates what a client actually injects into context for one tool:
- * the JSON-serialized {name, description, inputSchema, outputSchema,
- * annotations}. This matches how every MCP client we've inspected renders
- * the tool list into the system/tool prompt, modulo whitespace.
+ * The text a model is given for one tool: its name, description and input schema, as compact
+ * JSON. The Anthropic Messages API tool format is `name`, `description` and `input_schema`;
+ * the OpenAI one is `type`, `name`, `description`, `parameters` and `strict`. Neither has a
+ * field for an output schema or for MCP annotations, so a client that follows them does not
+ * send either (an MCP client may send more: nothing here has inspected one). The key names
+ * differ between APIs by a token or two; the MCP names are kept.
  */
 export function serializeToolForBudget(tool: CollectedTool): string {
   const payload: Record<string, unknown> = { name: tool.name };
   if (tool.description) payload.description = tool.description;
   payload.inputSchema = tool.inputSchema;
-  if (tool.outputSchema) payload.outputSchema = tool.outputSchema;
-  if (tool.annotations) payload.annotations = tool.annotations;
   return JSON.stringify(payload);
 }
 
 export function estimateToolTokens(tool: CollectedTool): number {
   return estimateTokens(serializeToolForBudget(tool));
+}
+
+/**
+ * The output schema, which the budget does not count, as a figure of its own: what a client
+ * would add if it did put the schema in front of the model.
+ */
+export function estimateOutputSchemaTokens(tool: CollectedTool): number {
+  return tool.outputSchema ? estimateTokens(JSON.stringify(tool.outputSchema)) : 0;
 }

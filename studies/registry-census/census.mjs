@@ -3,6 +3,7 @@
 //
 //   npm run build && node studies/registry-census/census.mjs
 //   node studies/registry-census/census.mjs --label 0.3.3 --lib /path/to/node_modules/@antonsoloviev/mcplint/dist/index.js
+//   node studies/registry-census/census.mjs --label heldout --manifest manifest-heldout.json --servers heldout
 //
 // Each server's tool definitions (cache/servers/*.json, from collect.mjs) go through the
 // same `lint` the CLI runs. One row per server is written to cache/census-<label>.jsonl
@@ -22,11 +23,13 @@ const args = process.argv.slice(2);
 const option = (name, fallback) => (args.includes(name) ? args[args.indexOf(name) + 1] : fallback);
 const label = option('--label', 'current');
 const library = option('--lib', fileURLToPath(new URL('../../dist/index.js', import.meta.url)));
-const { collectFile, computeScore, estimateToolTokens, lint, resolveConfig } = await import(pathToFileURL(library).href);
+const manifestName = option('--manifest', 'manifest.json');
+const serversDir = option('--servers', 'servers');
+const { collectFile, computeScore, estimateToolTokens, estimateOutputSchemaTokens, lint, resolveConfig } = await import(pathToFileURL(library).href);
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const CACHE = join(HERE, 'cache');
-const manifest = JSON.parse(readFileSync(join(HERE, 'manifest.json'), 'utf8'));
+const manifest = JSON.parse(readFileSync(join(HERE, manifestName), 'utf8'));
 // `file: {}` rather than no argument: releases up to 0.3.3 require it.
 const config = resolveConfig({ file: {} });
 const rows = [];
@@ -34,7 +37,7 @@ const scratch = mkdtempSync(join(tmpdir(), 'mcplint-census-'));
 
 for (const server of manifest.servers) {
   if (!server.tools) continue;
-  const file = join(CACHE, 'servers', `${createHash('sha1').update(server.name).digest('hex')}.json`);
+  const file = join(CACHE, serversDir, `${createHash('sha1').update(server.name).digest('hex')}.json`);
   const row = { name: server.name, useCount: server.useCount, views: server.views };
   try {
     // The registry's record carries other fields, and null where a server has no prompts
@@ -56,6 +59,8 @@ for (const server of manifest.servers) {
       tools: target.tools.length,
       tokens: tokens.reduce((sum, n) => sum + n, 0),
       toolTokens: tokens,
+      // What the budget leaves out: output schemas (0.3.3 counted them in `tokens`).
+      outputSchemaTokens: target.tools.reduce((sum, tool) => sum + (estimateOutputSchemaTokens?.(tool) ?? 0), 0),
       score: computeScore(result.findings, target),
       findings: result.findings.map(f => ({
         rule: f.ruleId,

@@ -2,6 +2,7 @@
 // Summarise two censuses into results.json and print the tables the README quotes.
 //
 //   node studies/registry-census/report.mjs [--before 0.3.3] [--after current]
+import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -60,9 +61,28 @@ function verdicts(label) {
   };
 }
 
+/** Tool definitions in the registry's own records, for what the lint rows do not carry. */
+const recordOf = name =>
+  JSON.parse(readFileSync(join(HERE, 'cache', 'servers', `${createHash('sha1').update(name).digest('hex')}.json`), 'utf8'));
+
 const linted = read(labels.after).filter(row => !row.failed);
 const toolTokens = linted.flatMap(row => row.toolTokens);
 const serverTokens = linted.map(row => row.tokens);
+const heaviestServer = [...linted].sort((a, b) => b.tokens - a.tokens)[0];
+const withoutHeaviest = linted.filter(row => row !== heaviestServer);
+const definitionKeys = new Map();
+let definitions = 0;
+const perOwner = new Map();
+for (const row of linted) {
+  const owner = row.name.includes('/') ? row.name.split('/')[0] : '(registry-owned)';
+  perOwner.set(owner, (perOwner.get(owner) ?? 0) + 1);
+  for (const tool of recordOf(row.name).tools) {
+    const key = createHash('sha1').update(JSON.stringify([tool.name, tool.description ?? null, tool.inputSchema ?? null])).digest('hex');
+    definitionKeys.set(key, (definitionKeys.get(key) ?? 0) + 1);
+    definitions += 1;
+  }
+}
+const noTools = manifest.servers.filter(s => !s.tools);
 const results = {
   registry: manifest.registry,
   listingRead: manifest.listingRead,
@@ -71,14 +91,41 @@ const results = {
     mostUsed: manifest.servers.filter(s => s.views.includes('most used')).length,
     verified: manifest.servers.filter(s => s.views.includes('verified')).length,
     withToolDefinitions: linted.length,
+    registryTotal: JSON.parse(readFileSync(join(HERE, 'manifest-heldout.json'), 'utf8')).registryTotal,
+    withoutToolDefinitions: {
+      total: noTools.length,
+      emptyList: noTools.filter(s => s.tools === 0).length,
+      noList: noTools.filter(s => s.tools === null).length,
+      verifiedFlag: noTools.filter(s => s.verified).length,
+      notRemote: noTools.filter(s => !s.remote).length,
+    },
+    verifiedFlag: manifest.servers.filter(s => s.verified).length,
+    zeroUse: manifest.servers.filter(s => s.useCount === 0).length,
+    owners: perOwner.size,
+    registryOwned: perOwner.get('(registry-owned)'),
+    largestOwner: [...perOwner.entries()].filter(([owner]) => owner !== '(registry-owned)').sort((a, b) => b[1] - a[1])[0],
   },
   tools: toolTokens.length,
+  heaviestServer: {
+    name: heaviestServer.name,
+    toolShare: share(heaviestServer.tools, toolTokens.length),
+    tokenShare: share(heaviestServer.tokens, serverTokens.reduce((sum, n) => sum + n, 0)),
+    tokensPerToolWithout: percentiles(withoutHeaviest.flatMap(row => row.toolTokens)),
+  },
+  duplicateDefinitions: { definitions, distinct: definitionKeys.size, repeats: definitions - definitionKeys.size },
+  outputSchemas: {
+    note: 'tokens an output schema adds, which the budget does not count',
+    tokensPerServerWith: percentiles(linted.map(row => row.tokens + row.outputSchemaTokens)),
+    over16kWith: linted.filter(row => row.tokens + row.outputSchemaTokens > 16_000).length,
+    shareOfAllTokens: share(linted.reduce((s, r) => s + r.outputSchemaTokens, 0), linted.reduce((s, r) => s + r.tokens + r.outputSchemaTokens, 0)),
+  },
   toolsPerServer: percentiles(linted.map(row => row.tools)),
   tokensPerTool: { ...percentiles(toolTokens), over550: share(toolTokens.filter(t => t > 550).length, toolTokens.length) },
   tokensPerServer: {
     ...percentiles(serverTokens),
     over10k: share(serverTokens.filter(t => t > 10_000).length, linted.length),
     over16k: share(serverTokens.filter(t => t > 16_000).length, linted.length),
+    over16kCount: serverTokens.filter(t => t > 16_000).length,
     over25k: share(serverTokens.filter(t => t > 25_000).length, linted.length),
     over100k: serverTokens.filter(t => t > 100_000).length,
   },

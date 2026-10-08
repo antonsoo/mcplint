@@ -1,0 +1,1288 @@
+{
+ "attackRuleFindings": [
+  {
+   "id": "65f38feb7e",
+   "server": "agentlinehq/agentline",
+   "subject": "tool:make_outbound_call",
+   "rule": "safety/prompt-injection",
+   "severity": "warning",
+   "message": "inputSchema.properties.system_prompt.description matches the \"instruction override\" pattern: \"Override the agent's default system prompt\".",
+   "detail": "Override the agent's default system prompt",
+   "description": "Create Call\n\nMake an outbound phone call from your AI agent.\n\nInitiates a real phone call from the AI agent's phone number to the\nspecified destination. The agent uses its configured system prompt,\nvo",
+   "properties": [
+    "agent_id",
+    "voice_id",
+    "to_number",
+    "model_tier",
+    "system_prompt",
+    "from_number_id",
+    "initial_greeting"
+   ]
+  },
+  {
+   "id": "e72ea1a518",
+   "server": "celigo/celigo",
+   "subject": "tool:list_audit_log_entries",
+   "rule": "safety/encoded-blob",
+   "severity": "warning",
+   "message": "inputSchema.properties.after.examples[0] contains an opaque 84-character base64-like blob.",
+   "detail": "W3siJGRhdGUiOiIyMDI2LTA1LTAxVDAwOjAwOjAwLjAwMFoifSwiNjAwMDAw...",
+   "description": "List audit log entries (newest first). Returns a page `{ items, hasMore, paginationNote }` where each item includes `resourceType`, `_resourceId`, `fieldChanges[]` (fieldPath, oldValue, newValue), `by",
+   "properties": [
+    "to",
+    "from",
+    "after",
+    "limit",
+    "action",
+    "source",
+    "_byUserId",
+    "_resourceId",
+    "resourceType"
+   ]
+  },
+  {
+   "id": "18587bbe52",
+   "server": "docsie/connect",
+   "subject": "tool:analyze_video_with_dokuta",
+   "rule": "safety/prompt-injection",
+   "severity": "warning",
+   "message": "inputSchema.properties.force_reanalyze.description matches the \"concealment from the user\" pattern: \"do NOT tell the user\".",
+   "detail": "do NOT tell the user",
+   "description": "Analyze a video file or video URL using Dokuta for intelligent content extraction. Provide either file_id or video_url.",
+   "properties": [
+    "trial",
+    "file_id",
+    "doc_type",
+    "language",
+    "file_path",
+    "video_url",
+    "target_book_id",
+    "force_reanalyze",
+    "target_documentation_id"
+   ]
+  },
+  {
+   "id": "5f944a5936",
+   "server": "lithometric/collidemcp",
+   "subject": "tool:setup",
+   "rule": "safety/secret-access",
+   "severity": "warning",
+   "message": "description references MCP client config (holds other servers' credentials): \".mcp.json\".",
+   "detail": ".mcp.json",
+   "description": "Installation artifacts: the fenced AGENTS.md block (apply via\n        sync_agents_block), claude_settings to merge into the repo's\n        .claude/settings.json (auto-allows collide tool calls — no\n  ",
+   "properties": [
+    "mode",
+    "repo_id"
+   ]
+  },
+  {
+   "id": "28fda2ebb1",
+   "server": "product/botsify",
+   "subject": "tool:get-converse-history",
+   "rule": "safety/secret-access",
+   "severity": "error",
+   "message": "description tells the model to obtain a local secret and pass it on: \"Fetch converse conversation history via POST\".",
+   "detail": "Fetch converse conversation history via POST",
+   "description": "Fetch converse conversation history via POST /v1/converse/get-conversation for one fbId.",
+   "properties": [
+    "fbId"
+   ]
+  },
+  {
+   "id": "4b4b76755d",
+   "server": "youcam/Beauty",
+   "subject": "tool:AI-Bangs-Filter-Virtual-Try-On",
+   "rule": "safety/hidden-unicode",
+   "severity": "error",
+   "message": "description: 3 zero-width characters found.",
+   "detail": "U+200B ×3",
+   "description": "Try on Your Perfect Hair Bangs with AI\nRealistic Looks: Experiment with realistic bangs and discover the style that best complements your face.​\nVersatile Styling Options: Explore a wide range of bang",
+   "properties": [
+    "polling",
+    "request"
+   ]
+  },
+  {
+   "id": "cc9aeb51d1",
+   "server": "youcam/Beauty",
+   "subject": "tool:AI-Hair-Extension-Virtual-Try-On",
+   "rule": "safety/hidden-unicode",
+   "severity": "error",
+   "message": "description: 2 zero-width characters found.",
+   "detail": "U+200B ×2",
+   "description": "Discover Your Perfect Hair Extension Match with AI​\nExperiment with a variety of lengths—from long to extra-long—styles, colors, and bangs, all from the comfort of your device. No more guessing games—",
+   "properties": [
+    "polling",
+    "request"
+   ]
+  },
+  {
+   "id": "7cd706a24f",
+   "server": "youcam/Beauty",
+   "subject": "tool:AI-Hair-Volume-Virtual-Try-On",
+   "rule": "safety/hidden-unicode",
+   "severity": "error",
+   "message": "description: 1 zero-width character found.",
+   "detail": "U+200B",
+   "description": "Enhance Your Look with Fuller, More Voluminous Hair Instantly!​\nAdd natural volume to fine or thinning hair. Seamlessly fill gaps or add hair with AI. Works for all hair types: straight, curly, thin. ",
+   "properties": [
+    "polling",
+    "request"
+   ]
+  },
+  {
+   "id": "767ff65fa2",
+   "server": "sydium/sydium",
+   "subject": "tool:add_media",
+   "rule": "safety/prompt-injection",
+   "severity": "warning",
+   "message": "description matches the \"concealment from the user\" pattern: \"Do not tell the user\".",
+   "detail": "Do not tell the user",
+   "description": "Store an image or video in Sydium and return the media URL that publish_post and update_post require. Media MUST be hosted by Sydium - an external URL passed straight to publish_post is rejected - so ",
+   "properties": [
+    "url",
+    "file",
+    "postType"
+   ]
+  },
+  {
+   "id": "945ec61d88",
+   "server": "consentlayer/consentlayer",
+   "subject": "tool:check_installation",
+   "rule": "safety/prompt-injection",
+   "severity": "warning",
+   "message": "description matches the \"concealment from the user\" pattern: \"do not tell the user\".",
+   "detail": "do not tell the user",
+   "description": "Fetch the site's homepage and verify the ConsentLayer snippet is present in <head> without defer or async. Call this after the snippet has been deployed to confirm the install actually works — do not ",
+   "properties": [
+    "siteId"
+   ]
+  },
+  {
+   "id": "41253966e6",
+   "server": "admin-5bnq/kirah-local-services",
+   "subject": "tool:create_booking",
+   "rule": "safety/prompt-injection",
+   "severity": "warning",
+   "message": "description matches the \"concealment from the user\" pattern: \"do not tell the user\".",
+   "detail": "do not tell the user",
+   "description": "Book an exact ISO-8601 instant for a client (guest checkout: name + email, phone optional). Deposit-required tenants answer outcome payment_required with a payment_url to relay to your user; replay th",
+   "properties": [
+    "client",
+    "tenant",
+    "start_iso",
+    "service_id",
+    "provider_id",
+    "agent_metadata",
+    "idempotency_key",
+    "intake_responses"
+   ]
+  },
+  {
+   "id": "c414dc7a24",
+   "server": "wisecapy/capyhub",
+   "subject": "tool:slack_read_channel",
+   "rule": "safety/secret-access",
+   "severity": "error",
+   "message": "description tells the model to obtain a local secret and pass it on: \"Read recent messages and conversation history from a specific Slack channel by channel name (e.g. 'leads', '#general') or channel ",
+   "detail": "Read recent messages and conversation history from a specific Slack channel by channel name (e.g. 'leads', '#general') or channel ID. Use when inspecting Slack channel discussions or announcements. DO",
+   "description": "Read recent messages and conversation history from a specific Slack channel by channel name (e.g. 'leads', '#general') or channel ID. Use when inspecting Slack channel discussions or announcements. DO",
+   "properties": [
+    "limit",
+    "latest",
+    "oldest",
+    "channel"
+   ]
+  }
+ ],
+ "otherErrors": {
+  "byRule": {
+   "schema/invalid": 79,
+   "description/missing": 61,
+   "collection/incomplete": 4
+  },
+  "descriptionMissingChecked": 61,
+  "descriptionMissingReallyMissing": 61,
+  "schemaInvalid": [
+   {
+    "server": "z37/pypiwatch",
+    "subject": "tool:register",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/SpendingCapMode from id #"
+   },
+   {
+    "server": "z37/benchmark-catch-the-overpayment-v1",
+    "subject": "tool:benchmark_submit_answers",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/BenchmarkAnswerItem from id #"
+   },
+   {
+    "server": "z37/benchmark-catch-the-overpayment-v1",
+    "subject": "tool:register",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/SpendingCapMode from id #"
+   },
+   {
+    "server": "tin-computer/tin",
+    "subject": "tool:save_content_delivery_settings",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/DeliverySettings from id #"
+   },
+   {
+    "server": "tin-computer/tin",
+    "subject": "tool:edit_content_plan",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/ContentPlan from id #"
+   },
+   {
+    "server": "tin-computer/tin",
+    "subject": "tool:create_project_workflow",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/WorkflowSchedule from id #"
+   },
+   {
+    "server": "tin-computer/tin",
+    "subject": "tool:update_project_workflow",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/WorkflowSchedule from id #"
+   },
+   {
+    "server": "tin-computer/tin",
+    "subject": "tool:record_onboarding_picks",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/ConnectionPick from id #"
+   },
+   {
+    "server": "tin-computer/tin",
+    "subject": "tool:commit_project_changes",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/ProjectFileMutationInput from id #"
+   },
+   {
+    "server": "zoho/recruit",
+    "subject": "tool:metadata.fields.create",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/components/schemas/Id from id #"
+   },
+   {
+    "server": "zoho/recruit",
+    "subject": "tool:metadata.fields.update",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/components/schemas/Id from id #"
+   },
+   {
+    "server": "zoho/recruit",
+    "subject": "tool:metadata.fields.updateOne",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/components/schemas/Id from id #"
+   },
+   {
+    "server": "zoho/recruit",
+    "subject": "tool:metadata.customViews.list",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/components/schemas/SimpleFilterCriterionValueString from id #"
+   },
+   {
+    "server": "zoho/recruit",
+    "subject": "tool:metadata.profiles.list",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/components/schemas/SimpleFilterCriterionValueString from id #"
+   },
+   {
+    "server": "z37/npmwatch",
+    "subject": "tool:register",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/SpendingCapMode from id #"
+   },
+   {
+    "server": "tech-xosl/intentlink",
+    "subject": "tool:search_travel",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/TravelSearchType from id #"
+   },
+   {
+    "server": "w604408482/Tempi",
+    "subject": "tool:check_series",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/NumberFromString from id #"
+   },
+   {
+    "server": "w604408482/Tempi",
+    "subject": "tool:create_booking",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/Trim from id #"
+   },
+   {
+    "server": "openpatsnap/patsnap-triz-case-library",
+    "subject": "tool:search_triz_case",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/SortType from id #"
+   },
+   {
+    "server": "openpatsnap/patsnap-triz-case-library",
+    "subject": "tool:list_triz_search_terms",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/EnumField from id #"
+   },
+   {
+    "server": "valksor/livonian",
+    "subject": "tool:search_livonian",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/SearchLanguage from id #"
+   },
+   {
+    "server": "influship/influship-mcp",
+    "subject": "tool:search_creators",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/definitions/Platform from id #"
+   },
+   {
+    "server": "influship/influship-mcp",
+    "subject": "tool:semantic_search_creators",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/definitions/Platform from id #"
+   },
+   {
+    "server": "influship/influship-mcp",
+    "subject": "tool:autocomplete_creators",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/definitions/Platform from id #"
+   },
+   {
+    "server": "influship/influship-mcp",
+    "subject": "tool:find_lookalike_creators",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/definitions/Platform from id #"
+   },
+   {
+    "server": "influship/influship-mcp",
+    "subject": "tool:match_creators",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/definitions/Platform from id #"
+   },
+   {
+    "server": "influship/influship-mcp",
+    "subject": "tool:get_creator",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/definitions/Platform from id #"
+   },
+   {
+    "server": "influship/influship-mcp",
+    "subject": "tool:get_profile",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/definitions/Platform from id #"
+   },
+   {
+    "server": "influship/influship-mcp",
+    "subject": "tool:lookup_profiles",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/definitions/ProfileLookupItem from id #"
+   },
+   {
+    "server": "influship/influship-mcp",
+    "subject": "tool:get_posts",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/definitions/PostSort from id #"
+   },
+   {
+    "server": "z37/hnfrontpage",
+    "subject": "tool:register",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/SpendingCapMode from id #"
+   },
+   {
+    "server": "mechnotech/steledger",
+    "subject": "tool:store_memory_batch",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/MemoryItem from id #"
+   },
+   {
+    "server": "papaya/pay-any-bill",
+    "subject": "tool:analyze_bill",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/BillDescription from id #"
+   },
+   {
+    "server": "papaya/pay-any-bill",
+    "subject": "tool:check_payment_method",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/PaymentMethodCheckInput from id #"
+   },
+   {
+    "server": "papaya/pay-any-bill",
+    "subject": "tool:confirm_payment_intent",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/ConfirmInput from id #"
+   },
+   {
+    "server": "papaya/pay-any-bill",
+    "subject": "tool:get_new_auth_token",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/NewTokenInput from id #"
+   },
+   {
+    "server": "papaya/pay-any-bill",
+    "subject": "tool:fetch_bill_status",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/BillStatusInput from id #"
+   },
+   {
+    "server": "papaya/pay-any-bill",
+    "subject": "tool:request_bill_cancellation",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/BillStatusInput from id #"
+   },
+   {
+    "server": "bill-ying/bank-of-canada-foreign-exchange-docker",
+    "subject": "tool:get_exchange_rate",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/Currency from id #"
+   },
+   {
+    "server": "z37/benchmark-support-agent-trials",
+    "subject": "tool:benchmark_submit_answers",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/BenchmarkAnswerItem from id #"
+   },
+   {
+    "server": "z37/benchmark-support-agent-trials",
+    "subject": "tool:register",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/SpendingCapMode from id #"
+   },
+   {
+    "server": "deena-bandi004/Offerloop",
+    "subject": "tool:draft_outreach",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/ContactRef from id #"
+   },
+   {
+    "server": "frameo/frameo",
+    "subject": "tool:estimate_cost",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/QuoteItem from id #"
+   },
+   {
+    "server": "z37/biopreprintwatch",
+    "subject": "tool:register",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/SpendingCapMode from id #"
+   },
+   {
+    "server": "contact-agentia1984/mcp-marches-publics",
+    "subject": "tool:search_tenders",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/SearchTendersInput from id #"
+   },
+   {
+    "server": "contact-agentia1984/mcp-marches-publics",
+    "subject": "tool:get_tender",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/GetTenderInput from id #"
+   },
+   {
+    "server": "contact-agentia1984/mcp-marches-publics",
+    "subject": "tool:search_awarded_contracts",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/AwardedInput from id #"
+   },
+   {
+    "server": "contact-agentia1984/mcp-marches-publics",
+    "subject": "tool:company_lookup",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/CompanyInput from id #"
+   },
+   {
+    "server": "hector-codes92/pizzadeveloper",
+    "subject": "tool:update_features",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/__schema0 from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:title_optimizer",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/ProductFacts from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:claim_check",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/Marketplace from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:catalog_readiness",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/ProductFacts from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:listing_audit",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/ListingContent from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:listing_build",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/ProductFacts from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:ppc_kit",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/ProductFacts from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:omnichannel_pack",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/ProductFacts from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:marketplace_ads_kit",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/ProductFacts from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:marketplace_image_brief",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/ProductFacts from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:review_response",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/Marketplace from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:a_plus_content_brief",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/ProductFacts from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:keyword_gap",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/Marketplace from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:image_alt_text_pack",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/GalleryImageInput from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:pricing_what_if",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/Marketplace from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:promotion_profit_guard",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/PromotionScenarioInput from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:compliance_scan",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/Marketplace from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:bulk_csv_audit",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/Marketplace from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:brand_name_screen",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/Marketplace from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:holiday_copy_refresh",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/Marketplace from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:competitor_change_monitor",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/CompetitorListingSnapshot from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:email_flow_pack",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/ProductFacts from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:walmart_rich_media_brief",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/ProductFacts from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:ebay_item_specifics",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/ProductFacts from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:variation_family_plan",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/VariationChild from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:return_reason_analysis",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/ReturnReasonEntry from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:restock_plan",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/RestockSkuInput from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:listing_appeal",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/Marketplace from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:competitor_research",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/CompetitorResearchMode from id #"
+   },
+   {
+    "server": "friday-seller-tools/seller-tools",
+    "subject": "tool:marketplace_listing_copy_checker",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/Marketplace from id #"
+   },
+   {
+    "server": "z37/vergewatch",
+    "subject": "tool:register",
+    "message": "inputSchema does not compile as JSON Schema: can't resolve reference #/$defs/SpendingCapMode from id #"
+   }
+  ]
+ },
+ "warningPools": {
+  "description/param-missing": 3347,
+  "safety/missing-annotations": 455,
+  "naming/strict-client-compat": 412,
+  "description/near-duplicate": 336,
+  "description/too-short": 292,
+  "naming/generic": 26
+ },
+ "warningSample": [
+  {
+   "id": "6d13fe6c42",
+   "server": "gourragui-success/cherami",
+   "subject": "tool:send_draft",
+   "rule": "description/param-missing",
+   "severity": "warning",
+   "message": "Parameter \"draft_id\" has no description.",
+   "description": "Send a draft’s current saved content only when authorized by the human. It becomes frozen; repeated calls recover the same submission, never send another copy. Earlier retrieval does not lock content ",
+   "properties": [
+    "draft_id",
+    "idempotency_key"
+   ]
+  },
+  {
+   "id": "624f38feb1",
+   "server": "usewait/waitlist",
+   "subject": "tool:update_waitlist",
+   "rule": "description/param-missing",
+   "severity": "warning",
+   "message": "2 of 12 parameters have no description: \"name\", \"slug\".",
+   "description": "Update a waitlist: rename, change slug, set SEO fields, referral settings, or replace the page's reactCode.",
+   "properties": [
+    "name",
+    "slug",
+    "ogImage",
+    "idOrSlug",
+    "seoTitle",
+    "reactCode",
+    "description",
+    "seoKeywords",
+    "referralBoost",
+    "seoDescription",
+    "referralEnabled",
+    "referralMessage"
+   ]
+  },
+  {
+   "id": "c6764f4611",
+   "server": "hello-65wl/watchfor",
+   "subject": "tool:delete_alert_rule",
+   "rule": "description/param-missing",
+   "severity": "warning",
+   "message": "2 of 2 parameters have no description: \"rule_id\", \"monitor_id\".",
+   "description": "Delete a custom alert rule (write scope). System default rules cannot be deleted (403) — disable them with update_alert_rule enabled=false instead.",
+   "properties": [
+    "rule_id",
+    "monitor_id"
+   ]
+  },
+  {
+   "id": "08c30f924a",
+   "server": "buywhere/buywhere-mcp-server",
+   "subject": "tool:get_deals",
+   "rule": "description/param-missing",
+   "severity": "warning",
+   "message": "5 of 5 parameters have no description: \"limit\", \"offset\", \"country\", \"country_code\", \"min_discount\".",
+   "description": "Get discounted products sorted by discount percentage across all merchants. Returns original price, current price, and discount percentage.",
+   "properties": [
+    "limit",
+    "offset",
+    "country",
+    "country_code",
+    "min_discount"
+   ]
+  },
+  {
+   "id": "c27062cecd",
+   "server": "youcam/Beauty",
+   "subject": "tool:AI-Face-Reshape-Detection",
+   "rule": "description/param-missing",
+   "severity": "warning",
+   "message": "Parameter \"request\" has no description.",
+   "description": "Run an AI Face Reshape detection task.",
+   "properties": [
+    "polling",
+    "request"
+   ]
+  },
+  {
+   "id": "c164848af7",
+   "server": "support-efme/eclincher",
+   "subject": "tool:get_custom_report",
+   "rule": "description/param-missing",
+   "severity": "warning",
+   "message": "2 of 2 parameters have no description: \"brandId\", \"reportId\".",
+   "description": "Get data for a specific custom analytics report",
+   "properties": [
+    "brandId",
+    "reportId"
+   ]
+  },
+  {
+   "id": "df953d70ae",
+   "server": "agentsvc/agentsvc",
+   "subject": "tool:trends_hot",
+   "rule": "description/param-missing",
+   "severity": "warning",
+   "message": "5 of 5 parameters have no description: \"limit\", \"since\", \"country\", \"sources\", \"language\".",
+   "description": "What is trending right now: Hacker News top stories, GitHub trending repositories (stars today/week/month), most-read Wikipedia articles (any language edition), Google News top stories per country, Ba",
+   "properties": [
+    "limit",
+    "since",
+    "country",
+    "sources",
+    "language"
+   ]
+  },
+  {
+   "id": "289a774e53",
+   "server": "ana-bujosa/splitbasket-prices",
+   "subject": "tool:live_check",
+   "rule": "description/param-missing",
+   "severity": "warning",
+   "message": "2 of 4 parameters have no description: \"banner\", \"store_id\".",
+   "description": "Fetch prices from the retailer RIGHT NOW for up to 20 search terms at one store, when a cached price is too old for your purpose. Returns a job id and an ETA measured in minutes, not a price — poll wi",
+   "properties": [
+    "zip",
+    "banner",
+    "queries",
+    "store_id"
+   ]
+  },
+  {
+   "id": "32d0fb7cfb",
+   "server": "betterpost/betterpost",
+   "subject": "tool:betterpost_remove_source",
+   "rule": "safety/missing-annotations",
+   "severity": "warning",
+   "message": "The name says this tool destroys something, but annotations.destructiveHint and annotations.readOnlyHint are both unset.",
+   "description": "Removes a source from a project. Its already-gathered stories stay; the source is no longer fetched.",
+   "properties": [
+    "token",
+    "sourceId"
+   ]
+  },
+  {
+   "id": "600612fb12",
+   "server": "connectmachine/cm-mcp",
+   "subject": "tool:remove_events_from_contact",
+   "rule": "safety/missing-annotations",
+   "severity": "warning",
+   "message": "The name says this tool destroys something, but annotations.destructiveHint and annotations.readOnlyHint are both unset.",
+   "description": "Detach events from a contact by name.\n\n        Args:\n            contact_id: The contact UUID.\n            event_names: Event names to remove from the contact.\n\n        Returns:\n            Confirmati",
+   "properties": [
+    "contact_id",
+    "event_names"
+   ]
+  },
+  {
+   "id": "07cd99386d",
+   "server": "dart/dart",
+   "subject": "tool:delete_doc",
+   "rule": "safety/missing-annotations",
+   "severity": "warning",
+   "message": "The name says this tool destroys something, but annotations.destructiveHint and annotations.readOnlyHint are both unset.",
+   "description": "Move an existing doc to the trash, where it can be recovered if needed. Nothing else about the doc will be changed.",
+   "properties": [
+    "id"
+   ]
+  },
+  {
+   "id": "ca365c9661",
+   "server": "signalpipe/signalpipe",
+   "subject": "tool:remove_station",
+   "rule": "safety/missing-annotations",
+   "severity": "warning",
+   "message": "The name says this tool destroys something, but annotations.destructiveHint and annotations.readOnlyHint are both unset.",
+   "description": "Remove a station. Confirm with the operator first.\n\n    A station that never produced a lead is deleted. One that already produced\n    leads is switched off instead, to keep that history; the reply sa",
+   "properties": [
+    "station_id"
+   ]
+  },
+  {
+   "id": "11fd25f1e4",
+   "server": "antonioevans/railway-mcp",
+   "subject": "tool:variable_delete",
+   "rule": "safety/missing-annotations",
+   "severity": "warning",
+   "message": "The name says this tool destroys something, but annotations.destructiveHint and annotations.readOnlyHint are both unset.",
+   "description": "[API] Delete a variable for a service in a specific environment\n\n⚡️ Best for:\n  ✓ Removing unused configuration\n  ✓ Security cleanup\n  ✓ Configuration management\n\n⚠️ Not for:\n  × Temporary variable di",
+   "properties": [
+    "name",
+    "projectId",
+    "serviceId",
+    "environmentId"
+   ]
+  },
+  {
+   "id": "2a29032d1f",
+   "server": "zoho/recruit",
+   "subject": "tool:metadata.fields.delete",
+   "rule": "safety/missing-annotations",
+   "severity": "warning",
+   "message": "The name says this tool destroys something, but annotations.destructiveHint and annotations.readOnlyHint are both unset.",
+   "description": "Delete a custom field from a module. Field must not be used in workflows, approvals, scoring rules, or other configurations. Only one field can be deleted per request.",
+   "properties": [
+    "module",
+    "fieldId"
+   ]
+  },
+  {
+   "id": "4298db68e3",
+   "server": "gaopengbin/cesium-mcp-runtime",
+   "subject": "tool:removeLayer",
+   "rule": "safety/missing-annotations",
+   "severity": "warning",
+   "message": "The name says this tool destroys something, but annotations.destructiveHint and annotations.readOnlyHint are both unset.",
+   "description": "从地图上移除指定图层（按图层ID）",
+   "properties": [
+    "id"
+   ]
+  },
+  {
+   "id": "e0c18def08",
+   "server": "thomas-ggql/bootify",
+   "subject": "tool:deleteSecurityConfig",
+   "rule": "safety/missing-annotations",
+   "severity": "warning",
+   "message": "The name says this tool destroys something, but annotations.destructiveHint and annotations.readOnlyHint are both unset.",
+   "description": "Delete a security configuration by name.",
+   "properties": [
+    "name",
+    "projectId"
+   ]
+  },
+  {
+   "id": "ffabda849c",
+   "server": "automatelab/citation-intelligence-mcp",
+   "subject": "tool:signals.ai_overview",
+   "rule": "naming/strict-client-compat",
+   "severity": "warning",
+   "message": "Name contains a dot; some strict clients will reject it.",
+   "description": "Check whether Google shows an AI Overview for a query, and which URLs it cites. Uses SerpAPI (free tier: 100/month). Set SERPAPI_KEY.",
+   "properties": [
+    "hl",
+    "query",
+    "location"
+   ]
+  },
+  {
+   "id": "4cd1297955",
+   "server": "apibrasil/mcp",
+   "subject": "tool:apibrasil.reports.quick_stats",
+   "rule": "naming/strict-client-compat",
+   "severity": "warning",
+   "message": "Name contains a dot; some strict clients will reject it.",
+   "description": "Indicadores rápidos de consumo (GET /api/v2/reports/quick-stats).",
+   "properties": [
+    "page",
+    "bearer",
+    "end_date",
+    "per_page",
+    "start_date"
+   ]
+  },
+  {
+   "id": "32677a7528",
+   "server": "cfdb/chilean-football-db",
+   "subject": "tool:coach.compare",
+   "rule": "naming/strict-client-compat",
+   "severity": "warning",
+   "message": "Name contains a dot; some strict clients will reject it.",
+   "description": "Compare two coaches' win rates over their most recent tenure. Requires 'coach_a_name' and 'coach_b_name'.",
+   "properties": [
+    "coach_a_name",
+    "coach_b_name"
+   ]
+  },
+  {
+   "id": "64b5c340d7",
+   "server": "zoro/wealth",
+   "subject": "tool:wealth.fx.rates",
+   "rule": "naming/strict-client-compat",
+   "severity": "warning",
+   "message": "Name contains a dot; some strict clients will reject it.",
+   "description": "List stored FX rates (optional month=YYYY-MM per /api/currency-rates).",
+   "properties": [
+    "month",
+    "token"
+   ]
+  },
+  {
+   "id": "8f28e5ab9b",
+   "server": "wander8jackson/avocado-ai",
+   "subject": "tool:generate.image",
+   "rule": "naming/strict-client-compat",
+   "severity": "warning",
+   "message": "Name contains a dot; some strict clients will reject it.",
+   "description": "Generate an AI image using Avocado AI. Supports 19+ models including Flux Pro, Imagen 4, Ideogram V3, Recraft V4, SeedDream, and more. Returns the generated image URL. Costs 1-2 credits per image depe",
+   "properties": [
+    "model",
+    "prompt",
+    "num_images",
+    "aspect_ratio"
+   ]
+  },
+  {
+   "id": "fa43955951",
+   "server": "unbrowse/fastly",
+   "subject": "tool:unbrowse.cancel",
+   "rule": "naming/strict-client-compat",
+   "severity": "warning",
+   "message": "Name contains a dot; some strict clients will reject it.",
+   "description": "Cancel a run. Returns a receipt of dispatched, uncertain and unstarted effects.",
+   "properties": [
+    "runId"
+   ]
+  },
+  {
+   "id": "e8e8eb9456",
+   "server": "hi-wxsl/bunstation",
+   "subject": "tool:projects.files.update",
+   "rule": "naming/strict-client-compat",
+   "severity": "warning",
+   "message": "Name contains a dot; some strict clients will reject it.",
+   "description": "Stage a full replacement of an existing text file. It stays uncommitted until projects.changes.commit.",
+   "properties": [
+    "path",
+    "content",
+    "project_id"
+   ]
+  },
+  {
+   "id": "a2ba9e4d4b",
+   "server": "dakshshrivastav56/contradiction-mcp",
+   "subject": "tool:contradiction.conflicts.scan",
+   "rule": "naming/strict-client-compat",
+   "severity": "warning",
+   "message": "Name contains a dot; some strict clients will reject it.",
+   "description": "Discovers conflicting and inconsistent factual assertions across connected sources. Can scan the entire database, or scope the scan to a specific source, file, or single claim. Uses deterministic cand",
+   "properties": [
+    "limit",
+    "claimId",
+    "sourceId",
+    "minConfidence",
+    "includeDismissed"
+   ]
+  },
+  {
+   "id": "483a1c0928",
+   "server": "mccauleyloren56/agent-preflight",
+   "subject": "tool:url_ping",
+   "rule": "description/near-duplicate",
+   "severity": "warning",
+   "message": "\"url_ping\" and 5 other tools (\"access_check\", \"api_discovery\", \"product_intel\" and 2 more) have near-identical descriptions: each has at least 75% word overlap with another in the group.",
+   "description": "URL Ping. preflight distribution; x402 relay; swarm outreach; agent distribution; url intelligence; web safety; agent commerce; mcp; x402.",
+   "properties": [
+    "url",
+    "intent"
+   ]
+  },
+  {
+   "id": "87fd3b865b",
+   "server": "cfocoder/financial-modeling-prep-mcp-server",
+   "subject": "tool:getSMA",
+   "rule": "description/near-duplicate",
+   "severity": "warning",
+   "message": "\"getSMA\" and 4 other tools (\"getEMA\", \"getWMA\", \"getDEMA\" and 1 more) have near-identical descriptions: each has at least 75% word overlap with another in the group.",
+   "description": "Calculate the Simple Moving Average (SMA) for a stock using the FMP SMA API. This tool helps users analyze trends and identify potential buy or sell signals based on historical price data.",
+   "properties": [
+    "to",
+    "from",
+    "symbol",
+    "timeframe",
+    "periodLength"
+   ]
+  },
+  {
+   "id": "58f44c7c9b",
+   "server": "iteksmart/iTechSmart_ProofLink_MCP_Server",
+   "subject": "tool:ghl_create_contact",
+   "rule": "description/near-duplicate",
+   "severity": "warning",
+   "message": "\"ghl_create_contact\" and \"ghl_update_contact\" (iteksmart/iTechSmart_ProofLink_MCP_Server) have 79% word overlap in their descriptions.",
+   "description": "Create a contact in GoHighLevel CRM. Seals a ProofLink receipt.\n\nRequires scope: ghl:contacts:write. Every call governed by Arbiter constitutional policy and sealed with a ProofLink cryptographic rece",
+   "properties": [
+    "last",
+    "tags",
+    "email",
+    "first",
+    "phone",
+    "company"
+   ]
+  },
+  {
+   "id": "4446c3030f",
+   "server": "alex-jacobs08/tinyfn",
+   "subject": "tool:liters_to_gallons_us",
+   "rule": "description/near-duplicate",
+   "severity": "warning",
+   "message": "\"liters_to_gallons_us\" and 2 other tools (\"gallons_us_to_liters\", \"gallons_uk_to_liters\") have near-identical descriptions: each has at least 75% word overlap with another in the group.",
+   "description": "Convert liters to US gallons.",
+   "properties": [
+    "liters"
+   ]
+  },
+  {
+   "id": "a5db94bfb6",
+   "server": "qoory-ai/qoory",
+   "subject": "tool:get_fund_news",
+   "rule": "description/near-duplicate",
+   "severity": "warning",
+   "message": "\"get_fund_news\" and \"get_person_news\" (qoory-ai/qoory) have 86% word overlap in their descriptions.",
+   "description": "Fetch a bounded set of canonical news clusters for one fund identity by slug, without a fund logo field; linked entities may include handle-only x_account identities with image_url null.",
+   "properties": [
+    "days",
+    "slug",
+    "limit",
+    "language",
+    "sentiment"
+   ]
+  },
+  {
+   "id": "46db22f015",
+   "server": "cfocoder/financial-modeling-prep-mcp-server",
+   "subject": "tool:searchCUSIP",
+   "rule": "description/near-duplicate",
+   "severity": "warning",
+   "message": "\"searchCUSIP\" and \"searchISIN\" (cfocoder/financial-modeling-prep-mcp-server) have 79% word overlap in their descriptions.",
+   "description": "Easily search and retrieve financial securities information by CUSIP number using the FMP CUSIP API. Find key details such as company name, stock symbol, and market capitalization associated with the ",
+   "properties": [
+    "cusip"
+   ]
+  },
+  {
+   "id": "4a20242fdb",
+   "server": "yzsshen/mcp-demo",
+   "subject": "tool:icons",
+   "rule": "description/near-duplicate",
+   "severity": "warning",
+   "message": "\"icons\" and \"iconsDualCondition\" (yzsshen/mcp-demo) have 100% word overlap in their descriptions.",
+   "description": "Returns a forecast icon. Icon services in API are deprecated.",
+   "properties": [
+    "pathParams",
+    "queryParams"
+   ]
+  },
+  {
+   "id": "34dda1ee5f",
+   "server": "alex-jacobs08/tinyfn",
+   "subject": "tool:deg_to_rad",
+   "rule": "description/near-duplicate",
+   "severity": "warning",
+   "message": "\"deg_to_rad\" and \"rad_to_deg\" (alex-jacobs08/tinyfn) have 100% word overlap in their descriptions.",
+   "description": "Convert degrees to radians.",
+   "properties": [
+    "degrees"
+   ]
+  },
+  {
+   "id": "19d9374508",
+   "server": "cuilabs/qnsp",
+   "subject": "tool:qnsp_vault_list_secrets",
+   "rule": "description/too-short",
+   "severity": "warning",
+   "message": "Description is only 19 characters / 3 words: \"List vault secrets.\"",
+   "description": "List vault secrets.",
+   "properties": [
+    "limit"
+   ]
+  },
+  {
+   "id": "61aa241319",
+   "server": "youcam/Fashion",
+   "subject": "tool:AI-Fabric-Virtual-Try-On-Templates",
+   "rule": "description/too-short",
+   "severity": "warning",
+   "message": "Description is only 26 characters / 3 words: \"List predefined templates.\"",
+   "description": "List predefined templates.",
+   "properties": []
+  },
+  {
+   "id": "9bfba42975",
+   "server": "GigaChatTester/lichess-mcp",
+   "subject": "tool:join_simul",
+   "rule": "description/too-short",
+   "severity": "warning",
+   "message": "Description is only 12 characters / 3 words: \"Join a simul\"",
+   "description": "Join a simul",
+   "properties": [
+    "simulId"
+   ]
+  },
+  {
+   "id": "b6890f228e",
+   "server": "genm/switchbot-mcp",
+   "subject": "tool:control_device",
+   "rule": "description/too-short",
+   "severity": "warning",
+   "message": "Description is only 10 characters / 1 words: \"デバイスを制御します\"",
+   "description": "デバイスを制御します",
+   "properties": [
+    "command",
+    "deviceId"
+   ]
+  },
+  {
+   "id": "e0d155d249",
+   "server": "opcmenu/opcmenu",
+   "subject": "tool:set_notification_prefs",
+   "rule": "description/too-short",
+   "severity": "warning",
+   "message": "Description is only 32 characters / 1 words: \"【需要登录】更新当前用户的通知开关（只传想改的，其余保持不变）。\"",
+   "description": "【需要登录】更新当前用户的通知开关（只传想改的，其余保持不变）。",
+   "properties": [
+    "dms",
+    "drops",
+    "nudge",
+    "follows",
+    "matches",
+    "activities"
+   ]
+  },
+  {
+   "id": "d84051fbe8",
+   "server": "yzsshen/mcp-demo",
+   "subject": "tool:glossary",
+   "rule": "description/too-short",
+   "severity": "warning",
+   "message": "Description is only 22 characters / 3 words: \"Returns glossary terms\"",
+   "description": "Returns glossary terms",
+   "properties": []
+  },
+  {
+   "id": "b9ff0a0385",
+   "server": "lanonasis/lanonasis-mcp",
+   "subject": "tool:list_projects",
+   "rule": "description/too-short",
+   "severity": "warning",
+   "message": "Description is only 13 characters / 2 words: \"List projects\"",
+   "description": "List projects",
+   "properties": [
+    "organization_id"
+   ]
+  },
+  {
+   "id": "2cae7e9c3b",
+   "server": "belindoc/belindoc-mcp",
+   "subject": "tool:get_document_translation_status",
+   "rule": "description/too-short",
+   "severity": "warning",
+   "message": "Description is only 93 characters / 3 words: \"查询文档翻译任务状态。返回里不带下载地址——详情给的是上游默认生成的带水印版本，水印开关只对 get_document_translation_result 生效，要下载一律走那个工具。\"",
+   "description": "查询文档翻译任务状态。返回里不带下载地址——详情给的是上游默认生成的带水印版本，水印开关只对 get_document_translation_result 生效，要下载一律走那个工具。",
+   "properties": [
+    "locale",
+    "order_no"
+   ]
+  },
+  {
+   "id": "14810f9ab0",
+   "server": "instapods/instapods",
+   "subject": "tool:exec_command",
+   "rule": "naming/generic",
+   "severity": "warning",
+   "message": "\"exec_command\" is a generic action name; prefer one that names the resource or effect, e.g. \"list_widgets\" or \"delete_widget\" instead of a bare verb like \"exec_command\".",
+   "description": "Run a shell command inside a pod. Runs as the instapod user (not root). Use with care — executes arbitrary shell commands inside the pod.",
+   "properties": [
+    "name",
+    "command"
+   ]
+  },
+  {
+   "id": "f2403629ea",
+   "server": "ai-nitromoon/foundry-vtt-code",
+   "subject": "tool:query",
+   "rule": "naming/generic",
+   "severity": "warning",
+   "message": "\"query\" is a generic action name; prefer one that names the resource or effect, e.g. \"list_widgets\" or \"delete_widget\" instead of a bare verb like \"query\".",
+   "description": "Run a read-only script against the connected Foundry world. `code` is the body of an async function: call foundry.<domain>.<method>({ ... }) (see docs), use await, console.log, and return the value yo",
+   "properties": [
+    "code"
+   ]
+  },
+  {
+   "id": "632123f5ac",
+   "server": "derive-to/derive",
+   "subject": "tool:use",
+   "rule": "naming/generic",
+   "severity": "warning",
+   "message": "\"use\" is a generic action name; prefer one that names the resource or effect, e.g. \"list_widgets\" or \"delete_widget\" instead of a bare verb like \"use\".",
+   "description": "Give a context WORK (rate-limited): `context`+`instruction` opens a session, `session_id`+`instruction` follows up, `session_id` alone checks. Real runs take minutes, so a still-working response is NO",
+   "properties": [
+    "wait",
+    "state",
+    "answer",
+    "answers",
+    "context",
+    "progress",
+    "workspace",
+    "dedupe_key",
+    "session_id",
+    "instruction",
+    "result_artifact_id"
+   ]
+  },
+  {
+   "id": "19cff2aad8",
+   "server": "autoview/com",
+   "subject": "tool:command",
+   "rule": "naming/generic",
+   "severity": "warning",
+   "message": "\"command\" is a generic action name; prefer one that names the resource or effect, e.g. \"list_widgets\" or \"delete_widget\" instead of a bare verb like \"command\".",
+   "description": "Build an Autoview alert command string from structured order fields (symbol, side, quantity, type, price, trigger) without placing an order — the output is the value TradingView's create_alert `messag",
+   "properties": [
+    "live",
+    "side",
+    "type",
+    "unit",
+    "price",
+    "token",
+    "action",
+    "symbol",
+    "trigger",
+    "exchange",
+    "priceRef",
+    "quantity"
+   ]
+  },
+  {
+   "id": "90242d4214",
+   "server": "snack-wrap/bcd",
+   "subject": "tool:run_command",
+   "rule": "naming/generic",
+   "severity": "warning",
+   "message": "\"run_command\" is a generic action name; prefer one that names the resource or effect, e.g. \"list_widgets\" or \"delete_widget\" instead of a bare verb like \"run_command\".",
+   "description": "Run a shell command as the macOS user and return its combined stdout/stderr, ending with [exit=N]. For commands that outlast timeoutMs (max 120 s) or wait for input, use start_process. Prefer the dedi",
+   "properties": [
+    "cwd",
+    "command",
+    "deviceId",
+    "priority",
+    "timeoutMs",
+    "workSessionId"
+   ]
+  },
+  {
+   "id": "cc86a29402",
+   "server": "Streen9/react-mcp",
+   "subject": "tool:run-command",
+   "rule": "naming/generic",
+   "severity": "warning",
+   "message": "\"run-command\" is a generic action name; prefer one that names the resource or effect, e.g. \"list_widgets\" or \"delete_widget\" instead of a bare verb like \"run-command\".",
+   "description": "Run a terminal command",
+   "properties": [
+    "command",
+    "directory"
+   ]
+  },
+  {
+   "id": "3f2001e26b",
+   "server": "mcp-server/quantiia",
+   "subject": "tool:execute_query",
+   "rule": "naming/generic",
+   "severity": "warning",
+   "message": "\"execute_query\" is a generic action name; prefer one that names the resource or effect, e.g. \"list_widgets\" or \"delete_widget\" instead of a bare verb like \"execute_query\".",
+   "description": "Exécute une requête SQL SELECT sur le datawarehouse BigQuery du projet. Lecture seule, pas de modification des données.\n\n**Format des tables**: Utilisez `dataset.table` (ex: `prod_google_ads_v2.campai",
+   "properties": [
+    "sql",
+    "project_id"
+   ]
+  },
+  {
+   "id": "65ca3a25f0",
+   "server": "igor-vbfp/quintadb",
+   "subject": "tool:run_action",
+   "rule": "naming/generic",
+   "severity": "warning",
+   "message": "\"run_action\" is a generic action name; prefer one that names the resource or effect, e.g. \"list_widgets\" or \"delete_widget\" instead of a bare verb like \"run_action\".",
+   "description": "Запустити автоматизацію (action rule) для запису — відправити email, тригер webhook тощо. action_id — ID поля-кнопки дії",
+   "properties": [
+    "action_id",
+    "record_id"
+   ]
+  }
+ ]
+}

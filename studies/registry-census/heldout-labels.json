@@ -1,0 +1,305 @@
+{
+ "labeller": "read by hand by the study author, one pass, after the frozen rules were run; labels: attack-rule findings are benign / false alarm / real, not an attack / worth a look; warnings are correct / arguable / wrong",
+ "labels": [
+  {
+   "id": "65f38feb7e",
+   "label": "benign",
+   "note": "A parameter that overrides a voice agent's default prompt for one call; a feature, not an instruction to the model"
+  },
+  {
+   "id": "e72ea1a518",
+   "label": "benign",
+   "note": "An example pagination cursor, base64 of a JSON filter"
+  },
+  {
+   "id": "18587bbe52",
+   "label": "benign",
+   "note": "Tells the model not to claim a job started or credits were charged before the result says so; asks for honesty, not secrecy"
+  },
+  {
+   "id": "5f944a5936",
+   "label": "worth a look",
+   "note": "Returns a per-caller hook credential and says to write it under HOME and never commit it, and names .mcp.json and .claude/settings.json: an installer's instruction, plausible for the tool, and a reader should see it"
+  },
+  {
+   "id": "28fda2ebb1",
+   "label": "false alarm",
+   "note": "\"conversation history\" counts as a local secret and the HTTP verb POST as passing it on: the sentence describes the tool's own API call"
+  },
+  {
+   "id": "4b4b76755d",
+   "label": "real, not an attack",
+   "note": "Zero-width spaces at the end of sentences in marketing copy; the characters are there, nothing is hidden in them"
+  },
+  {
+   "id": "cc9aeb51d1",
+   "label": "real, not an attack",
+   "note": "Two zero-width spaces in the same style of copy"
+  },
+  {
+   "id": "7cd706a24f",
+   "label": "real, not an attack",
+   "note": "One zero-width space in the same style of copy"
+  },
+  {
+   "id": "767ff65fa2",
+   "label": "benign",
+   "note": "\"Do not tell the user that Sydium cannot accept their image\": tells the model not to give a wrong excuse"
+  },
+  {
+   "id": "945ec61d88",
+   "label": "benign",
+   "note": "\"do not tell the user the setup is done without it\": do not claim success before verifying"
+  },
+  {
+   "id": "41253966e6",
+   "label": "benign",
+   "note": "\"do not tell the user to hunt for the link in their confirmation email\": a workflow correction"
+  },
+  {
+   "id": "c414dc7a24",
+   "label": "false alarm",
+   "note": "A Slack reader: \"conversation history\" counts as a local secret and \"emails\" in \"DO NOT use for emails\" as passing it on"
+  },
+  {
+   "id": "6d13fe6c42",
+   "label": "correct",
+   "note": ""
+  },
+  {
+   "id": "624f38feb1",
+   "label": "arguable",
+   "note": "\"name\" and \"slug\" explain themselves"
+  },
+  {
+   "id": "c6764f4611",
+   "label": "arguable",
+   "note": "\"rule_id\", \"monitor_id\" explain themselves"
+  },
+  {
+   "id": "08c30f924a",
+   "label": "correct",
+   "note": "\"country\" next to \"country_code\" and \"min_discount\" are not self-explanatory"
+  },
+  {
+   "id": "c27062cecd",
+   "label": "correct",
+   "note": "An opaque \"request\" object"
+  },
+  {
+   "id": "c164848af7",
+   "label": "arguable",
+   "note": "Two id parameters"
+  },
+  {
+   "id": "df953d70ae",
+   "label": "correct",
+   "note": "\"sources\", \"since\" and \"language\" take undocumented values"
+  },
+  {
+   "id": "289a774e53",
+   "label": "correct",
+   "note": "\"banner\" and \"store_id\" are not self-explanatory"
+  },
+  {
+   "id": "32d0fb7cfb",
+   "label": "correct",
+   "note": "Removes a source"
+  },
+  {
+   "id": "600612fb12",
+   "label": "correct",
+   "note": "Detaches events from a contact"
+  },
+  {
+   "id": "07cd99386d",
+   "label": "correct",
+   "note": "Moves a doc to the trash"
+  },
+  {
+   "id": "ca365c9661",
+   "label": "correct",
+   "note": "Deletes or switches off a station"
+  },
+  {
+   "id": "11fd25f1e4",
+   "label": "correct",
+   "note": "Deletes a variable"
+  },
+  {
+   "id": "2a29032d1f",
+   "label": "correct",
+   "note": "Deletes a custom field"
+  },
+  {
+   "id": "4298db68e3",
+   "label": "arguable",
+   "note": "Removes a layer from a map view; nothing stored is destroyed"
+  },
+  {
+   "id": "e0c18def08",
+   "label": "correct",
+   "note": "Deletes a security configuration"
+  },
+  {
+   "id": "ffabda849c",
+   "label": "correct",
+   "note": "Name has a dot"
+  },
+  {
+   "id": "4cd1297955",
+   "label": "correct",
+   "note": "Name has dots"
+  },
+  {
+   "id": "32677a7528",
+   "label": "correct",
+   "note": "Name has a dot"
+  },
+  {
+   "id": "64b5c340d7",
+   "label": "correct",
+   "note": "Name has dots"
+  },
+  {
+   "id": "8f28e5ab9b",
+   "label": "correct",
+   "note": "Name has a dot"
+  },
+  {
+   "id": "fa43955951",
+   "label": "correct",
+   "note": "Name has a dot"
+  },
+  {
+   "id": "e8e8eb9456",
+   "label": "correct",
+   "note": "Name has dots"
+  },
+  {
+   "id": "a2ba9e4d4b",
+   "label": "correct",
+   "note": "Name has dots"
+  },
+  {
+   "id": "483a1c0928",
+   "label": "correct",
+   "note": "Keyword-stuffed descriptions that do not tell the tools apart"
+  },
+  {
+   "id": "87fd3b865b",
+   "label": "correct",
+   "note": "Boilerplate that does not say which average each tool computes"
+  },
+  {
+   "id": "58f44c7c9b",
+   "label": "correct",
+   "note": "Shared boilerplate; create and update are told apart only by the first clause"
+  },
+  {
+   "id": "4446c3030f",
+   "label": "wrong",
+   "note": "\"Convert liters to US gallons\" and \"Convert US gallons to liters\" differ in the one thing that matters, the direction"
+  },
+  {
+   "id": "a5db94bfb6",
+   "label": "arguable",
+   "note": "Shared boilerplate, differing in \"fund\" and \"person\""
+  },
+  {
+   "id": "46db22f015",
+   "label": "correct",
+   "note": "Shared boilerplate; CUSIP and ISIN differ only in one word"
+  },
+  {
+   "id": "4a20242fdb",
+   "label": "correct",
+   "note": "Identical descriptions for two tools"
+  },
+  {
+   "id": "34dda1ee5f",
+   "label": "wrong",
+   "note": "\"Convert degrees to radians\" and \"Convert radians to degrees\": the same words, opposite tools"
+  },
+  {
+   "id": "19d9374508",
+   "label": "arguable",
+   "note": "\"List vault secrets.\" is short and adequate"
+  },
+  {
+   "id": "61aa241319",
+   "label": "arguable",
+   "note": "\"List predefined templates.\" takes no parameters"
+  },
+  {
+   "id": "9bfba42975",
+   "label": "arguable",
+   "note": "\"Join a simul\" is short; a reader of chess knows it"
+  },
+  {
+   "id": "b6890f228e",
+   "label": "arguable",
+   "note": "Japanese, \"controls the device\": too thin, but \"1 words\" is a count of spaces"
+  },
+  {
+   "id": "e0d155d249",
+   "label": "wrong",
+   "note": "Chinese, one sentence that says what the tool does and what to pass; the word count sees one word"
+  },
+  {
+   "id": "d84051fbe8",
+   "label": "arguable",
+   "note": "\"Returns glossary terms\" takes no parameters"
+  },
+  {
+   "id": "b9ff0a0385",
+   "label": "arguable",
+   "note": "\"List projects\" is short and adequate"
+  },
+  {
+   "id": "2cae7e9c3b",
+   "label": "wrong",
+   "note": "Chinese, 93 characters that say what the tool returns and which tool to use for the download; the word count sees three words"
+  },
+  {
+   "id": "14810f9ab0",
+   "label": "arguable",
+   "note": "Runs a shell command: the name says so"
+  },
+  {
+   "id": "f2403629ea",
+   "label": "arguable",
+   "note": "Runs a read-only script; \"query\" is the tool's whole job"
+  },
+  {
+   "id": "632123f5ac",
+   "label": "correct",
+   "note": "\"use\" says nothing"
+  },
+  {
+   "id": "19cff2aad8",
+   "label": "correct",
+   "note": "\"command\" does not say it builds an alert string"
+  },
+  {
+   "id": "90242d4214",
+   "label": "arguable",
+   "note": "Runs a shell command: the name says so"
+  },
+  {
+   "id": "cc86a29402",
+   "label": "arguable",
+   "note": "Runs a terminal command: the name says so"
+  },
+  {
+   "id": "3f2001e26b",
+   "label": "arguable",
+   "note": "Runs a SQL SELECT: the name says so"
+  },
+  {
+   "id": "65ca3a25f0",
+   "label": "arguable",
+   "note": "Runs an automation action; \"action\" could be more specific"
+  }
+ ]
+}

@@ -4,9 +4,12 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
-- **The rules were recalibrated on 11,545 real tool definitions** (`studies/registry-census/`: the 418
-  most-used and verified servers of a public registry). 0.3.3 reported 14 attack errors on them, all false,
-  and 57.8 findings per server; this version reports none, 2 attack warnings, and 17.9 findings per server.
+- **The rules were recalibrated on 11,545 real tool definitions** (`studies/registry-census/`: 418 servers of
+  one public registry, from its first 500 listed rows and its verified view). 0.3.3 reported 14 attack errors
+  on them, none an attack, and 57.8 findings per server; this version reports none, 2 attack warnings, and
+  17.6 findings per server there. That is in-sample. On 886 servers not used for the rework it reports 5
+  errors and 7 warnings (0.3.3: 36 and 39); read by hand, none of the errors is an attack and two are false
+  alarms. One of three published poisoning examples (a WhatsApp takeover) is now a warning, not an error.
   - `safety/prompt-injection`, `safety/secret-access` and `safety/cross-tool-reference` report one attack
     signal as a warning and two on the same tool, prompt or resource as an error, and say which. A stated tool
     order is a note.
@@ -20,9 +23,12 @@ All notable changes to this project are documented in this file.
   - `naming/generic` fires only when every word of a name is generic.
   - `schema/portability` reports non-strict schemas once per server; `description/param-missing` once per
     tool.
-- Token budgets come from the same corpus: `--budget` defaults to 550 (was 400) and `--total-budget` to
-  16,000 (was unset), the 90th percentiles of real tools and servers. A budget finding says where the tool or
-  server stands among them.
+- Token counts are of what a model is given for a tool: name, description and input schema as compact JSON
+  (the Anthropic and OpenAI tool formats). Output schemas and annotations are no longer counted;
+  `estimateOutputSchemaTokens()` reports the former separately. Counts are o200k_base estimates, not Claude's.
+- `--total-budget` defaults to 16,000 tokens (was unset), 8% of a 200,000-token window; `--budget` stays 400.
+  Neither is a percentile. In the census, 8.9% of tools exceed 400 and 6.7% of servers exceed 16,000. A budget
+  finding says where the tool or server stands among the census servers.
 - The HTML report shows findings before the collection-coverage table when the audit is complete.
 - `resolveConfig()` works without arguments for library callers.
 - The attack fixture's `translate_text` now shadows a tool of another server (`send_email`), as the published

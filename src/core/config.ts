@@ -6,12 +6,12 @@ import { stripBom } from './schema-utils.js';
 import { z } from 'zod';
 
 /**
- * Per-tool and whole-list token budgets when none is configured: the 90th percentiles of
- * the most-used public servers (see ./census.ts), rounded. A tool over the first is among
- * the heaviest tenth of real tool definitions; a server over the second among the heaviest
- * tenth of servers.
+ * Per-tool and whole-list token budgets when none is configured. Round numbers, not
+ * percentiles: 400 tokens for one tool, and 16,000 for the whole list, 8% of a 200,000-token
+ * context window. In studies/registry-census, 8.9% of tool definitions exceed the first and
+ * 6.7% of servers the second (see ./census.ts).
  */
-export const DEFAULT_BUDGET = 550;
+export const DEFAULT_BUDGET = 400;
 export const DEFAULT_TOTAL_BUDGET = 16_000;
 
 const CONFIG_CANDIDATES = ['.mcplintrc.json', 'mcplint.config.json'];

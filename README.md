@@ -37,24 +37,28 @@ report._
 
 ## What real servers look like
 
-[**The registry census**](studies/registry-census/README.md) reads the tool definitions a public MCP registry
-publishes for its most-used and verified servers (418 servers, 11,545 tools, no server started or contacted)
-and lints all of them.
+[**The registry census**](studies/registry-census/README.md) reads the tool definitions that one public MCP
+registry (Smithery) publishes for 444 of the 19,041 servers it lists: its first 500 listed rows and its
+verified view. 418 publish tool definitions (11,545 tools); no server was started or contacted. Counts are
+o200k_base (GPT-4o's vocabulary) estimates of name, description and input schema, not Claude token counts.
 
 | Tool definitions cost | Median | 90% | 99% | Largest |
 | --- | ---: | ---: | ---: | ---: |
-| per tool | 133 tokens | 549 | 1,570 | 10,198 |
-| per server | 2,403 tokens | 16,336 | 63,126 | 202,728 |
+| per tool | 113 tokens | 374 | 1,050 | 7,093 |
+| per server | 1,700 tokens | 11,870 | 49,109 | 202,728 |
 
-One server in ten puts more than 16,000 tokens of tool definitions into context if a client loads its whole
-list; the most-used one in the listing defines 2,530 tools. mcplint's default budgets are those 90th
-percentiles, and a finding says where a tool or a server stands among real ones.
+About one of these servers in fifteen (28 of 418) puts more than 16,000 tokens of tool definitions into
+context if a client loads its whole list; the one with the highest use count defines 2,530 tools. On a random
+slice of 886 other servers, 4.2% did. mcplint's default budgets are round numbers (400 tokens a tool, 16,000 a
+server), and a finding says where a tool or a server stands among the census servers.
 
 The census also showed that the released attack rules were wrong about real servers: 0.3.3 reported 14 errors
-there, for text like an agency code `OECD.ENV` and "no API key needed). Returns ready-to-run YAML". The rules in
-this checkout (**unreleased**) were reworked against the corpus. One attack signal is now a warning and two on
-the same tool are an error; they report 0 errors and 2 warnings on those servers, and the published
-tool-poisoning and tool-shadowing descriptions as errors. Findings per server fell from 57.8 to 17.9.
+there, none an attack, for text like an agency code `OECD.ENV` and "no API key needed). Returns ready-to-run
+YAML". The rules in this checkout (**unreleased**) were reworked on those servers: one attack signal is now a
+warning and two on the same tool are an error. They report 0 errors and 2 warnings on the servers they were
+reworked on, which proves little. On 886 servers they had not seen they report 5 errors and 7 warnings (0.3.3:
+36 and 39); read by hand, none of the errors is an attack, two are false alarms. Two of the three published
+tool-poisoning examples are still errors; the third, a WhatsApp takeover, fell from an error to a warning.
 
 ## Quickstart
 
@@ -183,8 +187,8 @@ The full 14-tool report is browsable live at
 | Rule | Category | Default | What it catches |
 | --- | --- | --- | --- |
 | [`collection/incomplete`](docs/rules/collection-incomplete.md) | collection | error | Failed or unfinished collection, malformed entries, unavailable config servers. |
-| [`budget/tool-tokens`](docs/rules/budget-tool-tokens.md) | budget | warning | One tool's serialized definition exceeds `--budget` (default 550 tokens, the 90th percentile of real tools). |
-| [`budget/total-tokens`](docs/rules/budget-total-tokens.md) | budget | warning | The whole tool list exceeds `--total-budget` (default 16,000 tokens, the 90th percentile of real servers). |
+| [`budget/tool-tokens`](docs/rules/budget-tool-tokens.md) | budget | warning | One tool's serialized definition exceeds `--budget` (default 400 tokens; 8.9% of the census tools exceed it). |
+| [`budget/total-tokens`](docs/rules/budget-total-tokens.md) | budget | warning | The whole tool list exceeds `--total-budget` (default 16,000 tokens, 8% of a 200k window; 6.7% of the census servers exceed it). |
 | [`naming/invalid-chars`](docs/rules/naming-invalid-chars.md) | naming | error | Name breaks the MCP spec's tool-name charset/length rules. |
 | [`naming/strict-client-compat`](docs/rules/naming-strict-client-compat.md) | naming | warning | Spec-valid name that Anthropic/OpenAI strict validation would reject (a dot, or >64 chars). |
 | [`naming/convention-consistency`](docs/rules/naming-convention-consistency.md) | naming | info | A server mixes snake_case, camelCase, kebab-case, dot.case. |
@@ -216,11 +220,12 @@ The full 14-tool report is browsable live at
 mcplint estimates cost with the **o200k_base** byte-pair encoding — GPT-4o's tokenizer — via the pure-JS
 [`gpt-tokenizer`](https://www.npmjs.com/package/gpt-tokenizer) package. No vendor publishes Claude's tokenizer,
 and every model family (Claude, Gemini, Llama) uses a different vocabulary, so this is an estimate, not an exact
-count for any specific model — the report and every doc page say so explicitly. o200k_base is a reasonable
-proxy: a modern, large-vocabulary BPE broadly similar in granularity to other current tokenizers, and the one
-with a dependency-free JS implementation. Per-tool cost is the token count of
-`JSON.stringify({name, description, inputSchema, outputSchema, annotations})` — approximating what a client
-actually serializes into the tool list (`src/core/tokenizer.ts`).
+count for any specific model — the report and every doc page say so explicitly. Anthropic offers a token-counting
+endpoint that needs an API key; mcplint does not call it, and Anthropic's documentation says models from Claude
+Opus 4.7 on produce about 30% more tokens for the same text than earlier ones. o200k_base is the one tokenizer
+with a dependency-free JS implementation, and its counts may differ from a Claude model's in either direction.
+Per-tool cost is the token count of `JSON.stringify({name, description, inputSchema})`, which is what the
+Anthropic and OpenAI tool formats give a model; output schemas and annotations are not counted (`src/core/tokenizer.ts`).
 
 ### What the safety rules read
 
@@ -370,11 +375,13 @@ the [registry census](studies/registry-census/README.md) is where the rules met 
   `safety/cross-tool-reference` match documented phrasings (see `src/core/rules/safety.ts` for the exact
   patterns); an attacker who avoids those phrases, spreads the signals over several tools, or writes in a
   language other than English will not be caught.
-- **Precision was measured; recall was not.** On 11,545 real tool definitions, none known to be an attack, the
-  attack rules report no error and two warnings. There is no public corpus of poisoned servers, so what they
-  catch is known only for published demonstrations and this repository's fixture.
-- **The budgets describe one registry's most-used servers** as of October 2026, counted with a tokenizer that
-  is a proxy for any particular model's.
+- **False alarms were measured once, on a small sample; recall was barely measured.** On the 418 census servers
+  the attack rules report no error and two warnings, but they were reworked on those servers. On 886 servers
+  they had not seen, they report 5 errors and 7 warnings, none an attack. There is no public corpus of
+  poisoned servers, so recall is known only for three published demonstrations (one of which is now a warning,
+  not an error) and this repository's fixture.
+- **The budgets and the census describe 444 servers of one registry** as of October 2026 (2.3% of what it
+  lists), counted with a tokenizer that is a proxy for any particular model's.
 - **`description/near-duplicate` uses word-overlap (Jaccard similarity), not semantic similarity** — it will
   miss paraphrases and can over-trigger on two tools that legitimately share a lot of domain vocabulary.
 - **`naming/collision` and `naming/shadowing` only fire across servers** (i.e. with `mcplint config`, or two

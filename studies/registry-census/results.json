@@ -5,9 +5,56 @@
   "listed": 444,
   "mostUsed": 266,
   "verified": 183,
-  "withToolDefinitions": 418
+  "withToolDefinitions": 418,
+  "registryTotal": 19041,
+  "withoutToolDefinitions": {
+   "total": 26,
+   "emptyList": 12,
+   "noList": 14,
+   "verifiedFlag": 19,
+   "notRemote": 14
+  },
+  "verifiedFlag": 194,
+  "zeroUse": 82,
+  "owners": 292,
+  "registryOwned": 54,
+  "largestOwner": [
+   "cyanheads",
+   33
+  ]
  },
  "tools": 11545,
+ "heaviestServer": {
+  "name": "pipeworx/gateway",
+  "toolShare": 21.9,
+  "tokenShare": 9.7,
+  "tokensPerToolWithout": {
+   "p50": 138,
+   "p75": 245,
+   "p90": 428,
+   "p95": 598,
+   "p99": 1168,
+   "max": 7093
+  }
+ },
+ "duplicateDefinitions": {
+  "definitions": 11545,
+  "distinct": 11450,
+  "repeats": 95
+ },
+ "outputSchemas": {
+  "note": "tokens an output schema adds, which the budget does not count",
+  "tokensPerServerWith": {
+   "p50": 2387,
+   "p75": 6320,
+   "p90": 16257,
+   "p95": 28416,
+   "p99": 63108,
+   "max": 202728
+  },
+  "over16kWith": 42,
+  "shareOfAllTokens": 25
+ },
  "toolsPerServer": {
   "p50": 9,
   "p75": 22,
@@ -17,25 +64,26 @@
   "max": 2530
  },
  "tokensPerTool": {
-  "p50": 133,
-  "p75": 261,
-  "p90": 549,
-  "p95": 809,
-  "p99": 1570,
-  "max": 10198,
-  "over550": 10
+  "p50": 113,
+  "p75": 210,
+  "p90": 374,
+  "p95": 548,
+  "p99": 1050,
+  "max": 7093,
+  "over550": 5
  },
  "tokensPerServer": {
-  "p50": 2403,
-  "p75": 6340,
-  "p90": 16336,
-  "p95": 28556,
-  "p99": 63126,
+  "p50": 1700,
+  "p75": 4322,
+  "p90": 11870,
+  "p95": 21801,
+  "p99": 49109,
   "max": 202728,
-  "over10k": 15.6,
-  "over16k": 10,
-  "over25k": 6,
-  "over100k": 2
+  "over10k": 11,
+  "over16k": 6.7,
+  "over16kCount": 28,
+  "over25k": 3.8,
+  "over100k": 1
  },
  "heaviest": [
   {
@@ -45,23 +93,23 @@
   },
   {
    "tools": 271,
-   "tokens": 114222,
+   "tokens": 73157,
    "useCount": 10042
   },
   {
-   "tools": 92,
-   "tokens": 80070,
-   "useCount": 3573
-  },
-  {
-   "tools": 275,
-   "tokens": 78646,
-   "useCount": 34350
+   "tools": 293,
+   "tokens": 63108,
+   "useCount": 3348
   },
   {
    "tools": 290,
-   "tokens": 63126,
+   "tokens": 52686,
    "useCount": 0
+  },
+  {
+   "tools": 275,
+   "tokens": 49109,
+   "useCount": 34350
   }
  ],
  "before": {
@@ -385,9 +433,9 @@
  "after": {
   "label": "current",
   "servers": 418,
-  "findingsPerServer": 17.9,
+  "findingsPerServer": 17.6,
   "serversWithAnError": 3.3,
-  "serversWithAWarning": 70.3,
+  "serversWithAWarning": 69.9,
   "attackFindings": {
    "error": 0,
    "warning": 2,
@@ -402,6 +450,14 @@
     },
     "share": 99.8
    },
+   "budget/tool-tokens": {
+    "servers": 193,
+    "findings": 1032,
+    "severities": {
+     "warning": 1032
+    },
+    "share": 46.2
+   },
    "description/enum-unexplained": {
     "servers": 175,
     "findings": 1145,
@@ -409,14 +465,6 @@
      "info": 1145
     },
     "share": 41.9
-   },
-   "budget/tool-tokens": {
-    "servers": 173,
-    "findings": 1149,
-    "severities": {
-     "warning": 1149
-    },
-    "share": 41.4
    },
    "description/param-missing": {
     "servers": 130,
@@ -451,12 +499,12 @@
     "share": 14.6
    },
    "budget/total-tokens": {
-    "servers": 42,
-    "findings": 42,
+    "servers": 28,
+    "findings": 28,
     "severities": {
-     "warning": 42
+     "warning": 28
     },
-    "share": 10
+    "share": 6.7
    },
    "description/too-short": {
     "servers": 26,

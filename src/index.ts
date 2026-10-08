@@ -2,7 +2,7 @@ export * from './core/types.js';
 export { lint, shouldFail, topOffenders } from './core/lint.js';
 export { computeScore } from './core/score.js';
 export { loadConfigFile, resolveConfig, DEFAULT_BUDGET } from './core/config.js';
-export { estimateTokens, estimateToolTokens, TOKENIZER_NAME, TOKENIZER_DESCRIPTION } from './core/tokenizer.js';
+export { estimateTokens, estimateToolTokens, estimateOutputSchemaTokens, TOKENIZER_NAME, TOKENIZER_DESCRIPTION } from './core/tokenizer.js';
 export { findHiddenUnicode, hasHiddenUnicode } from './core/unicode.js';
 export { allRules, rulesById } from './core/rules/index.js';
 export { ruleSlug } from './core/rule-slug.js';

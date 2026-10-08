@@ -2,12 +2,14 @@
 
 **Category:** budget · **Default severity:** warning
 
-Fires when a single tool's serialized definition — `{name, description, inputSchema, outputSchema,
-annotations}` as JSON — costs more estimated tokens than the configured budget (default 550).
+Fires when a single tool's definition — `{name, description, inputSchema}` as compact JSON, which is what the
+Anthropic and OpenAI tool formats give a model; output schemas and annotations are not counted — costs more
+estimated tokens than the configured budget (default 400).
 
-The default is the 90th percentile of the 11,545 tool definitions in the [registry census](../../studies/registry-census/README.md): the median real tool costs
-133 tokens, three in four cost 261 or fewer, one in ten more than 549. A finding at or beyond that point says
-where the tool stands: "Heavier than 95% of tool definitions on the most-used public servers."
+The default is a round number. In the 11,545 tool definitions of the [registry census](../../studies/registry-census/README.md)
+the median tool costs 113 tokens and 8.9% cost more than 400 (nine in ten cost 374 or fewer). A finding at or
+beyond the 90th percentile says where the tool stands: "Heavier than 95% of tool definitions in the registry
+census." Those servers are 418 of the 19,041 a public registry lists, not a sample of all servers.
 
 ## Why it matters
 

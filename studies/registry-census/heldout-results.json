@@ -1,0 +1,97 @@
+{
+ "slice": {
+  "listed": 900,
+  "withToolDefinitions": 886,
+  "registryTotal": 19041,
+  "distinctReachedBySearch": 5535,
+  "queries": 80,
+  "noUse": 634,
+  "verifiedFlag": 12
+ },
+ "tokensPerServer": {
+  "p50": 1196,
+  "p90": 8248,
+  "p99": 36231,
+  "over16k": 37,
+  "over16kShare": 4.2
+ },
+ "tokensPerTool": {
+  "tools": 14254,
+  "p50": 130,
+  "p90": 446,
+  "over400Share": 12
+ },
+ "servers": 886,
+ "registryRead": "2026-10-08T10:57:54.024Z",
+ "findingsPerServer": {
+  "frozen": 11.5,
+  "released": 34.7
+ },
+ "attackRules": {
+  "released": {
+   "warning": 39,
+   "error": 36
+  },
+  "frozen": {
+   "warning": 7,
+   "error": 5
+  },
+  "errors": {
+   "read": 5,
+   "false alarm": 2,
+   "real, not an attack": 3
+  },
+  "warnings": {
+   "read": 7,
+   "benign": 6,
+   "worth a look": 1
+  }
+ },
+ "otherErrors": {
+  "schema/invalid": 79,
+  "description/missing": 61,
+  "collection/incomplete": 4
+ },
+ "descriptionMissing": {
+  "reported": 61,
+  "confirmed": 61
+ },
+ "warningSample": {
+  "description/param-missing": {
+   "pool": 3347,
+   "sampled": 8,
+   "correct": 5,
+   "arguable": 3
+  },
+  "safety/missing-annotations": {
+   "pool": 455,
+   "sampled": 8,
+   "correct": 7,
+   "arguable": 1
+  },
+  "naming/strict-client-compat": {
+   "pool": 412,
+   "sampled": 8,
+   "correct": 8
+  },
+  "description/near-duplicate": {
+   "pool": 336,
+   "sampled": 8,
+   "correct": 5,
+   "wrong": 2,
+   "arguable": 1
+  },
+  "description/too-short": {
+   "pool": 292,
+   "sampled": 8,
+   "arguable": 6,
+   "wrong": 2
+  },
+  "naming/generic": {
+   "pool": 26,
+   "sampled": 8,
+   "arguable": 6,
+   "correct": 2
+  }
+ }
+}

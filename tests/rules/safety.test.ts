@@ -146,7 +146,7 @@ describe('safety/secret-access', () => {
     expect(secretAccess.check(ctxOf([t])).map((f) => f.severity)).toEqual(['warning']);
   });
 
-  // From the tool definitions of the most-used public servers (studies/registry-census), as
+  // From the tool definitions of 418 servers of one public registry (studies/registry-census), as
   // written. The earlier patterns reported each as an error: ".env" anywhere, and "API key"
   // within 30 characters of the letters "read" (in "ready") or "send" (in "sendEmail").
   it.each([

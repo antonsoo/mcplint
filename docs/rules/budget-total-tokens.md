@@ -5,10 +5,12 @@
 Fires when the sum of every collected tool's estimated token cost exceeds the total budget: `--total-budget`
 (or `totalBudget` in `.mcplintrc.json`), and 16,000 tokens when none is set.
 
-The default is the 90th percentile of the 418 servers in the [registry census](../../studies/registry-census/README.md): the median server's tool list costs
-2,403 tokens, three in four cost 6,340 or fewer, one in ten more than 16,336, and the largest 202,728. For
-a single server the finding says where it stands: "Heavier than 95% of whole tool lists on the most-used
-public servers."
+The default is a round number, 8% of a 200,000-token context window. In the 418 servers of the
+[registry census](../../studies/registry-census/README.md) the median tool list costs 1,700 tokens (name,
+description and input schema, counted with o200k_base), three in four cost 4,322 or fewer, 6.7% cost more than
+16,000, and the largest 202,728. For a single server the finding says where it stands: "Heavier than 95% of
+whole tool lists in the registry census." Those servers are 418 of the 19,041 a public registry lists, not a
+sample of all servers.
 
 ## Why it matters
 

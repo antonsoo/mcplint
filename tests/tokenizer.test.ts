@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { encode } from 'gpt-tokenizer';
-import { estimateTokens, estimateToolTokens, serializeToolForBudget } from '../src/core/tokenizer.js';
+import { estimateOutputSchemaTokens, estimateTokens, estimateToolTokens, serializeToolForBudget } from '../src/core/tokenizer.js';
 import { tool } from './helpers.js';
 
 describe('estimateTokens', () => {
@@ -24,6 +24,29 @@ describe('serializeToolForBudget / estimateToolTokens', () => {
     const json = serializeToolForBudget(t);
     expect(json).not.toContain('description');
     expect(json).not.toContain('annotations');
+  });
+
+  it('counts what a model is given: name, description and input schema, not output schema or annotations', () => {
+    const t = tool({
+      name: 't',
+      description: 'Does a thing.',
+      inputSchema: { type: 'object', properties: { a: { type: 'string' } } },
+      outputSchema: { type: 'object', properties: { result: { type: 'string', description: 'x'.repeat(400) } } },
+      annotations: { readOnlyHint: true, title: 'A long title for the tool' }
+    });
+    expect(JSON.parse(serializeToolForBudget(t))).toEqual({
+      name: 't',
+      description: 'Does a thing.',
+      inputSchema: { type: 'object', properties: { a: { type: 'string' } } }
+    });
+    expect(estimateToolTokens(t)).toBe(estimateToolTokens({ ...t, outputSchema: undefined, annotations: undefined }));
+  });
+
+  it('reports the output schema as a figure of its own', () => {
+    const plain = tool({ name: 't' });
+    const typed = tool({ name: 't', outputSchema: { type: 'object', properties: { r: { type: 'string' } } } });
+    expect(estimateOutputSchemaTokens(plain)).toBe(0);
+    expect(estimateOutputSchemaTokens(typed)).toBeGreaterThan(5);
   });
 
   it('counts more tokens for a tool with a longer description', () => {

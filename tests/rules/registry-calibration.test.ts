@@ -16,8 +16,8 @@ import { ctxOf, tool } from '../helpers.js';
 
 /**
  * What the rules say about text as real servers write it. The quoted phrases and the tool
- * names are from the tool definitions of the most-used public servers
- * (studies/registry-census): 418 servers, 11,545 tools, none known to be an attack. The
+ * names are from the tool definitions of 418 servers of one public registry
+ * (studies/registry-census): 11,545 tools, none known to be an attack. The
  * released rules reported 14 attack errors on them and averaged 58 findings a server.
  */
 const safety = [promptInjection, secretAccess, crossToolReference, encodedBlobOrSuspiciousUrl];
@@ -137,18 +137,18 @@ describe('one finding where one thing is wrong', () => {
 });
 
 describe('budgets from real servers', () => {
-  it('defaults are the 90th percentiles, rounded', () => {
-    expect(DEFAULT_BUDGET).toBe(550);
+  it('defaults are round numbers that sit between the 90th and 95th percentiles of the census', () => {
+    expect(DEFAULT_BUDGET).toBe(400);
     expect(DEFAULT_TOTAL_BUDGET).toBe(16_000);
     expect(percentileExceeded(DEFAULT_BUDGET, TOOL_TOKEN_PERCENTILES)).toBe(90);
-    expect(percentileExceeded(DEFAULT_TOTAL_BUDGET - 1, SERVER_TOKEN_PERCENTILES)).toBe(75);
+    expect(percentileExceeded(DEFAULT_TOTAL_BUDGET, SERVER_TOKEN_PERCENTILES)).toBe(90);
     expect(percentileExceeded(100, TOOL_TOKEN_PERCENTILES)).toBeNull();
   });
 
   it('a heavy tool is told where it stands', () => {
     const heavy = tool({ name: 'everything', description: 'word '.repeat(1200) });
     const [finding] = toolTokens.check(ctxOf([heavy]));
-    expect(finding?.message).toMatch(/budget: 550\)\. Heavier than 9[05]% of tool definitions on the most-used public servers\.$/);
+    expect(finding?.message).toMatch(/budget: 400\)\. Heavier than 9\d% of tool definitions in the registry census\.$/);
   });
 
   it('a heavy server is flagged without any configuration', () => {
