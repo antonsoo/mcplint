@@ -2,7 +2,8 @@
 
 **Category:** description · **Default severity:** warning
 
-Fires once per `inputSchema.properties` entry that has no `description` field (or an empty one).
+Fires once per tool that has `inputSchema.properties` entries with no `description` field (or an empty one),
+and names them: `3 of 5 parameters have no description: "limit", "page", "cursor".`
 
 ## Why it matters
 

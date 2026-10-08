@@ -8,6 +8,9 @@ import { baseConfig } from './helpers.js';
 describe('resolveConfig', () => {
   it('falls back to DEFAULT_BUDGET with no file or flag', () => {
     expect(resolveConfig({ file: {} }).budget).toBe(DEFAULT_BUDGET);
+    // A library caller with no config file gets the same defaults.
+    expect(resolveConfig()).toEqual(resolveConfig({ file: {} }));
+    expect(resolveConfig({ budgetFlag: 250 }).budget).toBe(250);
   });
 
   it('prefers the CLI flag over the config file budget', () => {

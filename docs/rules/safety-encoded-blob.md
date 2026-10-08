@@ -6,6 +6,9 @@ Fires on two independent patterns in visible text: an opaque base64-looking run 
 whose host is a raw IPv4 address, a known link shortener (`bit.ly`, `tinyurl.com`), or an unusual TLD (`.xyz`,
 `.top`, `.zip`, `.click`, `.gq`, `.tk`).
 
+`$ref`, `$id`, `$schema` and `$anchor` values are not scanned for blobs: a JSON pointer is schema keywords
+joined by slashes, which is base64's alphabet, and long ones in real output schemas were being reported.
+
 ## Why it matters
 
 Long opaque blobs in a tool description are not documentation for a human or a model — they're either dead

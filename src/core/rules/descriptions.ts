@@ -95,18 +95,21 @@ export const paramMissingDescription: Rule = {
   check(ctx: RuleContext): Finding[] {
     const findings: Finding[] = [];
     for (const t of ctx.target.tools) {
-      const schema = asSchema(t.inputSchema);
-      for (const [name, prop] of schemaProperties(schema)) {
-        if (!prop.description || prop.description.trim().length === 0) {
-          findings.push({
-            ruleId: this.id,
-            severity: this.defaultSeverity,
-            serverId: t.serverId,
-            subject: { kind: 'tool', name: t.name },
-            message: `Parameter "${name}" has no description.`
-          });
-        }
-      }
+      const props = schemaProperties(asSchema(t.inputSchema));
+      const bare = props.filter(([, prop]) => !prop.description || prop.description.trim().length === 0).map(([name]) => name);
+      if (bare.length === 0) continue;
+      // One finding per tool: a tool with twelve bare parameters has one problem, not twelve.
+      const shown = bare.slice(0, 6).map((name) => `"${name}"`).join(', ') + (bare.length > 6 ? ` and ${bare.length - 6} more` : '');
+      findings.push({
+        ruleId: this.id,
+        severity: this.defaultSeverity,
+        serverId: t.serverId,
+        subject: { kind: 'tool', name: t.name },
+        message:
+          bare.length === 1
+            ? `Parameter ${shown} has no description.`
+            : `${bare.length} of ${props.length} parameters have no description: ${shown}.`
+      });
     }
     return findings;
   }

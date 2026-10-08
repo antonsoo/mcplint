@@ -85,6 +85,10 @@ export const portability: Rule = {
     'schema less portable across the ecosystem than one using only the common subset.',
   check(ctx: RuleContext): Finding[] {
     const findings: Finding[] = [];
+    // Nine in ten tools on public servers have optional properties and no
+    // `additionalProperties: false` (studies/registry-census), so this is said once per server
+    // with a count. One note per tool was 10,692 notes that all said the same thing.
+    const notStrict = new Map<string, string[]>();
     for (const t of ctx.target.tools) {
       const schema = asSchema(t.inputSchema);
       if (!schema) continue;
@@ -93,17 +97,7 @@ export const portability: Rule = {
       const required = new Set(Array.isArray(schema.required) ? schema.required : []);
       const hasOptional = props.some(([name]) => !required.has(name));
       if (hasOptional && props.length > 0 && schema.additionalProperties !== false) {
-        findings.push({
-          ruleId: this.id,
-          severity: this.defaultSeverity,
-          serverId: t.serverId,
-          subject: { kind: 'tool', name: t.name },
-          message:
-            'Has optional (non-required) properties and does not set `additionalProperties: false`. OpenAI ' +
-            'Structured Outputs / strict function calling requires every property to be listed in `required` and ' +
-            '`additionalProperties: false`; a schema that relies on truly-optional fields will need translation ' +
-            'before it can be used there. (https://platform.openai.com/docs/guides/structured-outputs)'
-        });
+        notStrict.set(t.serverId, [...(notStrict.get(t.serverId) ?? []), t.name]);
       }
 
       const externalRefs = collectRefs(schema).filter((ref) => !ref.startsWith('#'));
@@ -117,6 +111,21 @@ export const portability: Rule = {
             '(#/...) pointers, so an external ref may silently fail to resolve.'
         });
       }
+    }
+    for (const [serverId, names] of notStrict) {
+      const total = ctx.target.tools.filter((t) => t.serverId === serverId).length;
+      const shown = names.slice(0, 5).map((name) => `"${name}"`).join(', ') + (names.length > 5 ? ` and ${names.length - 5} more` : '');
+      findings.push({
+        ruleId: this.id,
+        severity: this.defaultSeverity,
+        serverId,
+        subject: { kind: 'server', name: serverId },
+        message:
+          `${names.length} of ${total} tools have optional properties and do not set \`additionalProperties: false\` ` +
+          `(${shown}). OpenAI Structured Outputs / strict function calling requires every property to be listed ` +
+          'in `required` and `additionalProperties: false`; these schemas need translation before they can be ' +
+          'used there. (https://platform.openai.com/docs/guides/structured-outputs)'
+      });
     }
     return findings;
   }

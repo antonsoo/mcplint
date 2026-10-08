@@ -6,6 +6,9 @@ Fires on two specific, cited constructs that are spec-valid but handled inconsis
 optional properties without `additionalProperties: false`, and `$ref` pointers to an external (non-`#/...`)
 location.
 
+The first is reported **once per server**, with the number of tools it applies to and the first few names.
+On the [registry census](../../studies/registry-census/README.md) it applies to 93% of all tools; one note per tool was 10,692 notes saying the same thing.
+
 ## Why it matters
 
 These are not spec violations — mcplint phrases them as portability suggestions, not errors, precisely because

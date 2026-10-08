@@ -23,21 +23,20 @@ describe('reference server fixtures (regression guard against new false positive
     expect(result.summary.toolCount).toBe(13);
     expect(result.summary.bySeverity.error).toBe(0);
     expect(result.summary.bySeverity.warning).toBe(1);
-    expect(result.summary.bySeverity.info).toBe(9);
+    expect(result.summary.bySeverity.info).toBe(4);
     expect(result.findings.map((f) => f.ruleId).sort()).toEqual(
       [
         'description/param-missing',
         'description/enum-unexplained',
         'description/enum-unexplained',
         'description/enum-unexplained',
-        'schema/portability',
-        'schema/portability',
-        'schema/portability',
-        'schema/portability',
-        'schema/portability',
         'schema/portability'
       ].sort()
     );
+    // Six tools are not strict-mode schemas; that is one note for the server, with the count.
+    const portability = result.findings.find((f) => f.ruleId === 'schema/portability');
+    expect(portability?.subject).toEqual({ kind: 'server', name: 'server-everything' });
+    expect(portability?.message).toMatch(/^6 of 13 tools have optional properties/);
   });
 
   it('server-filesystem: only the audited findings, zero errors, and every tool keeps its real annotations', async () => {
@@ -50,8 +49,9 @@ describe('reference server fixtures (regression guard against new false positive
     const result = lint(target, config);
     expect(result.summary.toolCount).toBe(14);
     expect(result.summary.bySeverity.error).toBe(0);
-    expect(result.summary.bySeverity.warning).toBe(19);
-    expect(result.summary.bySeverity.info).toBe(6);
+    // One finding per tool with undescribed parameters (12 tools), plus one near-duplicate pair.
+    expect(result.summary.bySeverity.warning).toBe(13);
+    expect(result.summary.bySeverity.info).toBe(1);
     expect(result.findings.every((f) => f.ruleId !== 'safety/missing-annotations')).toBe(true);
   });
 

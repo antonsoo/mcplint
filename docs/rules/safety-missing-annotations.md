@@ -2,9 +2,14 @@
 
 **Category:** safety · **Default severity:** warning
 
-Fires when a tool's name or description contains a destructive-sounding verb stem (`delete`, `remove`,
-`destroy`, `drop`, `purge`, `wipe`, `erase`/`eras-`, `terminat-`, `kill`, `uninstall`, `format`, `truncat-`,
-`revok-`) but its `annotations` object is missing, or has neither `destructiveHint` nor `readOnlyHint` set.
+Fires when a word of a tool's **name** is a destructive verb (`delete`, `remove`, `destroy`, `drop`, `purge`,
+`wipe`, `erase`, `terminate`, `kill`, `uninstall`, `truncate`, `revoke`, with `-s`/`-d` endings) but its
+`annotations` object is missing, or has neither `destructiveHint` nor `readOnlyHint` set. The name is split
+on `_`, `-`, `.` and camel case, so `removeItem` and `projects.environments.delete` are read.
+
+Descriptions are not read for this. On the [registry census](../../studies/registry-census/README.md)
+reading them flagged 909 tools, among them `strip_markdown` and `convert_to_md`, for words like "remove" and
+"format" in a sentence about something else; by name it is 199.
 
 ## Why it matters
 

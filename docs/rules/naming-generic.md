@@ -2,16 +2,14 @@
 
 **Category:** naming · **Default severity:** warning
 
-Fires when a tool's full name matches a list of generic verbs — `run`, `execute`, `exec`, `query`, `do`,
-`process`, `handle`, `call`, `invoke`, `action`, `perform`, `task`, `go`, `main`, `operation`, `op`, `command`,
-`cmd`, `tool`, `helper`, `util`, `misc`, `generic`, `request`, `submit` — or, for names of **one or two**
-`_`/`-`/`.`-delimited segments only, when the last segment does.
+Fires when **every** `_`/`-`/`.`-delimited word of a tool's name is on a list of generic words — `run`,
+`execute`, `exec`, `query`, `do`, `process`, `handle`, `call`, `invoke`, `action`, `perform`, `task`, `go`,
+`main`, `operation`, `op`, `command`, `cmd`, `tool`, `helper`, `util`, `misc`, `generic`, `request`, `submit`,
+`use`: `query`, `run_action`, `use_tool`.
 
-The segment count limit matters: a name like `db_query` (two segments, ambiguous) is flagged, but
-`simulate-research-query` or `trigger-long-running-operation` (three and four segments) are not, even though
-both end in a word on the list — a longer compound name already says something specific, and penalizing it for
-its last word alone produced real false positives against `@modelcontextprotocol/server-everything` during
-development (see the README's "Real-world run" section).
+One specific word is enough to say what a tool is for. An earlier version also flagged a generic last word
+in a two-word name; on the [registry census](../../studies/registry-census/README.md) that made 81 findings,
+`create_task`, `overpass_query` and `distance_tool` among them, where this rule makes 8.
 
 ## Why it matters
 

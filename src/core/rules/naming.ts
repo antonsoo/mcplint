@@ -45,7 +45,8 @@ const GENERIC_NAMES = new Set([
   'misc',
   'generic',
   'request',
-  'submit'
+  'submit',
+  'use'
 ]);
 
 function namesOf(ctx: RuleContext): CollectedTool[] {
@@ -173,14 +174,11 @@ export const genericName: Rule = {
     const findings: Finding[] = [];
     for (const tool of namesOf(ctx)) {
       const segments = tool.name.split(/[_.\-]/).filter(Boolean);
-      const last = segments[segments.length - 1]?.toLowerCase();
-      // The whole name being generic ("run") is always a problem. A generic *last*
-      // segment ("query" in "db_query") only is when the name has just 1-2 segments —
-      // a longer compound name like "simulate-research-query" or
-      // "trigger-long-running-operation" already says something specific even though
-      // its last word, in isolation, is on the generic list.
-      const flagged =
-        GENERIC_NAMES.has(tool.name.toLowerCase()) || (segments.length <= 2 && last !== undefined && GENERIC_NAMES.has(last));
+      // Generic when every word of the name is: "query", "run_action", "use_tool". One
+      // specific word is enough to say what the tool is for. Flagging a generic last word
+      // in a two-word name caught `create_task`, `overpass_query` and `distance_tool` on
+      // public servers: 81 findings there, where this makes 8.
+      const flagged = segments.length > 0 && segments.every((segment) => GENERIC_NAMES.has(segment.toLowerCase()));
       if (flagged) {
         findings.push({
           ruleId: this.id,

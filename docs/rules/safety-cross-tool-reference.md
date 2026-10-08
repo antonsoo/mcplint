@@ -2,9 +2,16 @@
 
 **Category:** safety · **Default severity:** warning
 
-Fires when a tool's text names a *different* tool that also exists in the same lint run, next to a coercive
-phrase — `must always call X`, `must never call X`, `always/never call X`, `must call X`, or `required to call
-X` (checked in both word orders, within a 60-character window).
+Fires on coercive wording — `must always`, `must never`, `always call`, `never call`, `must call`, `required to
+call` — within 80 characters of a tool **the same server does not define**: written as "the `X` tool", "tool
+`X`", or directly after the coercive phrase ("must always call `X`"). With several servers linted together
+(`mcplint config`) the finding names the server that owns the tool; for one server alone it says "a tool this
+server does not define". It is a warning, and an error beside a second attack signal (see
+`safety/prompt-injection`).
+
+Instructions about a server's own tools are not reported. On the [registry census](../../studies/registry-census/README.md) the earlier rule, which matched any
+other tool in the lint run, produced 15 warnings, all of them a server documenting its own workflow ("You
+must call resolve-library-id first").
 
 ## Why it matters
 
@@ -26,8 +33,8 @@ trigger the rule — only genuinely coercive compound phrases do.
 }
 ```
 
-`delete_customer` exists elsewhere in the same server/config — `translate_text` has no business dictating when
-it's called.
+If `delete_customer` belongs to another server, or to none this server defines, `translate_text` has no
+business dictating when it's called. If it is one of this server's own tools the rule says nothing.
 
 ## How to fix
 
@@ -38,6 +45,4 @@ coerce calls to another.
 ## Configuring
 
 Override severity with `"severities": {"safety/cross-tool-reference": "off"}`, or ignore one subject with
-`"ignore": ["safety/cross-tool-reference:<name>"]`. Unlike `naming/collision`/`naming/shadowing`, this rule
-works within a single server too — it only requires the referenced tool name to be present somewhere in the
-same lint run, same server or not.
+`"ignore": ["safety/cross-tool-reference:<name>"]`. Like `naming/collision`/`naming/shadowing`, it sees most with several servers linted together.

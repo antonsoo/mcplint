@@ -74,8 +74,17 @@ describe('naming/generic', () => {
     expect(genericName.check(ctxOf([tool({ name })]))).toHaveLength(1);
   });
 
-  it('flags a generic suffix after a namespace separator', () => {
-    expect(genericName.check(ctxOf([tool({ name: 'admin.run' })]))).toHaveLength(1);
+  it('flags a name whose every word is generic', () => {
+    for (const name of ['run_action', 'use_tool', 'execute.command']) {
+      expect(genericName.check(ctxOf([tool({ name })]))).toHaveLength(1);
+    }
+  });
+
+  it('does not flag a generic word beside a specific one', () => {
+    // Names from widely used public servers that the two-word rule used to report.
+    for (const name of ['create_task', 'overpass_query', 'distance_tool', 'admin.run', 'dry_run']) {
+      expect(genericName.check(ctxOf([tool({ name })]))).toHaveLength(0);
+    }
   });
 
   it('does not flag a specific, descriptive name', () => {

@@ -62,7 +62,7 @@ function textFieldsWithDecoded(item: ScannedItem): { field: string; text: string
   const extra: { field: string; text: string }[] = [];
   for (const { field, text } of out) {
     for (const hit of findHiddenUnicode(text)) {
-      if (!hit.benign && hit.decoded) extra.push({ field: `${field} [decoded hidden text]`, text: hit.decoded });
+      if (!hit.benign && hit.decoded) extra.push({ field: `${field}${DECODED_FIELD}`, text: hit.decoded });
     }
   }
   return [...out, ...extra];
@@ -200,7 +200,7 @@ interface Finder {
   find(text: string): string | undefined;
 }
 
-function matching(regex: RegExp, label: string): Finder {
+function matching<L extends string>(regex: RegExp, label: L): Finder & { label: L } {
   return { label, find: (text) => text.match(regex)?.[0] };
 }
 
@@ -221,50 +221,170 @@ function importantBlock(text: string): string | undefined {
 const IMPORTANT_OPEN_RE = /<important>/i;
 const IMPORTANT_CLOSE_RE = /<\/important>/gi;
 
-const INJECTION_PATTERNS: Finder[] = [
+/**
+ * What a known attack technique looks like in text. Each is weak evidence alone: on the 11,545
+ * tool definitions of the most-used public servers (studies/registry-census) a tool that scans
+ * for prompt injection names these phrases, a link shortener tells the model not to show a
+ * signed URL, and nothing was an attack. An attack needs several of them at once, so one
+ * signal is a warning and two on the same tool, prompt or resource are an error.
+ */
+type Signal =
+  | 'instruction override'
+  | 'concealment from the user'
+  | '<IMPORTANT> block'
+  | 'exfiltration instruction'
+  | 'credential store'
+  | 'instructions about another server\'s tool'
+  | 'hidden text';
+
+const INJECTION_PATTERNS: (Finder & { label: Signal })[] = [
   matching(/ignore\s+(all\s+|any\s+)?(previous|prior|above|earlier)\s+instructions?/i, 'instruction override'),
   matching(/disregard\s+(all\s+|any\s+)?(previous|prior|above)\s+instructions?/i, 'instruction override'),
+  // Verb first: "override your system prompt" is an instruction, "detects system prompt override" is a noun.
+  matching(/\b(?:override|ignore|replace|disregard|bypass|forget)\b.{0,30}\b(?:system\s+prompt|system\s+instructions|developer\s+message)\b/i, 'instruction override'),
   matching(/do\s+not\s+tell\s+(the\s+)?user/i, 'concealment from the user'),
   matching(/without\s+(telling|informing|notifying)\s+the\s+user/i, 'concealment from the user'),
   matching(/don'?t\s+(let|allow)\s+the\s+user\s+(know|see)/i, 'concealment from the user'),
   matching(/\b(?:do\s+not|don'?t|never)\s+(?:mention|reveal|disclose)\b[^.]{0,60}\bto\s+the\s+user\b/i, 'concealment from the user'),
   matching(/\b(?:do\s+not|don'?t|never)\s+(?:mention|reveal|disclose|tell\s+(?:the\s+)?user)\s+that\s+you\b/i, 'concealment from the user'),
-  { label: '<IMPORTANT> block', find: importantBlock },
-  matching(/\bsystem\s+prompt\b.{0,40}\b(override|ignore|replace)/i, 'system prompt override'),
+  { label: '<IMPORTANT> block', find: importantBlock }
+];
+
+/**
+ * Telling the model which tool to call first is how well-documented servers describe a
+ * workflow ("You MUST call resolve-library-id before query-docs"). It is reported as a note,
+ * and does not count as an attack signal.
+ */
+const ORDERING_PATTERNS: Finder[] = [
   matching(/you\s+must\s+always\s+call\s+this\s+tool\s+first/i, 'forced tool ordering'),
   matching(/this\s+is\s+(a\s+)?(mandatory|required)\s+(first\s+)?step/i, 'forced tool ordering')
 ];
 
+/** Places credentials live. A description that names one is unusual; alone it is not an instruction. */
+const CREDENTIAL_STORES: Pattern[] = [
+  { regex: /~\/\.ssh\b/i, label: '~/.ssh' },
+  { regex: /\.ssh\/id_[a-z0-9]+/i, label: 'SSH private key' },
+  { regex: /~\/\.aws\/credentials/i, label: 'AWS credentials file' },
+  { regex: /\/etc\/(passwd|shadow)\b/i, label: '/etc/passwd or /etc/shadow' },
+  { regex: /(?:~|\$HOME)\/\.(?:netrc|npmrc|pgpass|git-credentials)\b/i, label: 'credentials dotfile' },
+  { regex: /(?:~|\$HOME)\/\.(?:kube\/config|docker\/config\.json|config\/gh\/hosts\.yml)\b/i, label: 'cluster/registry/GitHub credentials' },
+  { regex: /application_default_credentials\.json/i, label: 'Google Cloud credentials' },
+  // A client's configuration, by where clients keep it. A bare "mcp.json" is also what a
+  // server calls its own manifest (/.well-known/mcp.json).
+  { regex: /(?:\.cursor|\.vscode|\.codeium|\.claude|\.config)[\\/][^\s"'`]*mcp\.json\b|(?<!\w)\.mcp\.json\b|claude_desktop_config\.json/i, label: 'MCP client config (holds other servers\' credentials)' }
+];
+
+/**
+ * The instruction a poisoned tool gives: get something that must not leave the machine, then
+ * put it somewhere the server will receive it. Three parts in order within a short span: a verb
+ * of obtaining, a local secret (a credential file, a dotenv file, the system prompt, the
+ * conversation), a verb of passing it on. The parts alone are everywhere in honest descriptions
+ * ("API key needed", "parses a .env file", "send the request"); the sequence is not.
+ */
+const OBTAIN = '(?:(?:read|open|cat|load|fetch|retrieve|copy|grab|collect|access)(?:e?s|ing)?|look(?:s|ing)?\\s+(?:at|in|up))';
+const LOCAL_SECRET =
+  '(?:~\\/\\.ssh|\\.ssh\\/id_[a-z0-9]+|\\bid_(?:rsa|ed25519|ecdsa)\\b|~\\/\\.aws\\/credentials|\\/etc\\/(?:passwd|shadow)' +
+  '|(?:~|\\$HOME)\\/\\.(?:netrc|npmrc|pgpass|git-credentials|kube\\/config|docker\\/config\\.json|config\\/gh\\/hosts\\.yml)' +
+  '|application_default_credentials\\.json|\\bmcp\\.json\\b|claude_desktop_config\\.json' +
+  '|(?<![A-Za-z0-9_])\\.env\\b|\\benv(?:ironment)?\\s+file\\b|\\bsystem\\s+prompt\\b|\\b(?:conversation|chat)\\s+history\\b)';
+const PASS_ON =
+  '(?:pass|send|include|put|add|append|attach|forward|encode|embed|upload|post|paste|write|insert|place|e?mail|transmit|exfiltrate|share|submit)(?:e?s|ing)?';
+const EXFILTRATION_RE = new RegExp(`\\b${OBTAIN}\\b[^\\n]{0,80}?${LOCAL_SECRET}[\\s\\S]{0,200}?\\b${PASS_ON}\\b`, 'i');
+
+const DECODED_FIELD = ' [decoded hidden text]';
+
+/**
+ * "Tool shadowing": one server's text telling the model how to use a tool that belongs to
+ * another. Seen from a single server, that is coercive wording about a tool the server does
+ * not define: "the send_email tool must always...", "must always call send_email". A server
+ * instructing the model about its own tools is documentation and is not matched.
+ */
+const COERCION = '(?:must\\s+always|must\\s+never|always\\s+call|never\\s+call|must\\s+call|required\\s+to\\s+call)';
+const TOOL_NAME = '[A-Za-z][A-Za-z0-9]*(?:[_-][A-Za-z0-9]+)+';
+const COERCION_RE = new RegExp(`\\b${COERCION}\\b`, 'i');
+const NAMED_TOOL_RE = new RegExp(
+  `\\bthe\\s+\`?(${TOOL_NAME})\`?\\s+tool\\b|\\btool\\s+\`?(${TOOL_NAME})\`?|\\b${COERCION}\\s+\`?(${TOOL_NAME})\`?`,
+  'gi'
+);
+
+/** The tools each server defines, for telling a server's own tools from someone else's. */
+function toolsByServer(ctx: RuleContext): Map<string, Set<string>> {
+  const owned = new Map<string, Set<string>>();
+  for (const tool of ctx.target.tools) owned.set(tool.serverId, (owned.get(tool.serverId) ?? new Set()).add(tool.name));
+  return owned;
+}
+
+function foreignToolInstruction(text: string, own: Set<string>): string | undefined {
+  for (const match of text.matchAll(NAMED_TOOL_RE)) {
+    const name = match[1] ?? match[2] ?? match[3];
+    if (name === undefined || own.has(name)) continue;
+    const around = text.slice(Math.max(0, match.index - 80), match.index + match[0].length + 80);
+    if (COERCION_RE.test(around)) return name;
+  }
+  return undefined;
+}
+
+/** Every attack signal present anywhere in one item's text, hidden text included. */
+function attackSignals(item: ScannedItem, own: Set<string>): Set<Signal> {
+  const signals = new Set<Signal>();
+  for (const { field, text } of textFieldsWithDecoded(item)) {
+    if (field.endsWith(DECODED_FIELD)) signals.add('hidden text');
+    for (const pattern of INJECTION_PATTERNS) if (pattern.find(text) !== undefined) signals.add(pattern.label);
+    if (EXFILTRATION_RE.test(text)) signals.add('exfiltration instruction');
+    if (CREDENTIAL_STORES.some((store) => store.regex.test(text))) signals.add('credential store');
+    if (foreignToolInstruction(text, own) !== undefined) signals.add('instructions about another server\'s tool');
+  }
+  return signals;
+}
+
+/** "Together with X and Y on the same tool" for a finding raised to an error by its company. */
+function corroboration(signals: Set<Signal>, own: Signal, kind: string): string {
+  const others = [...signals].filter((signal) => signal !== own);
+  if (others.length === 0) return '';
+  return ` Together with ${others.join(' and ')} on the same ${kind}, this is the shape of a tool-poisoning attack.`;
+}
+
 export const promptInjection: Rule = {
   id: 'safety/prompt-injection',
   category: 'safety',
-  defaultSeverity: 'error',
-  summary: 'Text contains a known prompt-injection pattern (instruction override, concealment, forced ordering).',
+  defaultSeverity: 'warning',
+  summary:
+    'Text contains a known prompt-injection pattern (instruction override, concealment, an <IMPORTANT> block). ' +
+    'A warning alone; an error beside a second attack signal on the same item or inside hidden text.',
   rationale:
     'A tool/prompt/resource description is part of the model\'s context on every turn. Phrases that try to ' +
-    'override the system prompt, hide actions from the user, or coerce a specific tool-call order are the same ' +
-    'patterns used in documented prompt-injection and tool-poisoning attacks against MCP servers.',
+    'override the system prompt or hide actions from the user are the patterns used in documented ' +
+    'prompt-injection and tool-poisoning attacks against MCP servers. One of them alone also occurs in honest ' +
+    'descriptions, so it takes two signals on one item to be reported as an error.',
   check(ctx: RuleContext): Finding[] {
     const findings: Finding[] = [];
+    const owned = toolsByServer(ctx);
     for (const item of allItems(ctx)) {
+      const signals = attackSignals(item, owned.get(item.serverId) ?? new Set());
       for (const { field, text } of textFieldsWithDecoded(item)) {
         const reported = new Set<string>();
-        const report = (label: string, matched: string): void => {
+        const report = (label: string, matched: string, severity: Finding['severity'], note: string): void => {
           // Two phrasings of the same technique in one field are one finding.
           if (reported.has(label)) return;
           reported.add(label);
           findings.push({
             ruleId: this.id,
-            severity: this.defaultSeverity,
+            severity,
             serverId: item.serverId,
             subject: { kind: item.kind, name: item.name },
-            message: `${field} matches the "${label}" pattern: ${JSON.stringify(matched.slice(0, 200))}`,
+            message: `${field} matches the "${label}" pattern: ${JSON.stringify(matched.slice(0, 200))}.${note}`,
             detail: matched.slice(0, 200)
           });
         };
         for (const pattern of INJECTION_PATTERNS) {
           const matched = pattern.find(text);
-          if (matched !== undefined) report(pattern.label, matched);
+          if (matched === undefined) continue;
+          const escalated = signals.size >= 2;
+          report(pattern.label, matched, escalated ? 'error' : 'warning', escalated ? corroboration(signals, pattern.label, item.kind) : '');
+        }
+        for (const pattern of ORDERING_PATTERNS) {
+          const matched = pattern.find(text);
+          if (matched !== undefined) report(pattern.label, matched, 'info', '');
         }
       }
     }
@@ -272,44 +392,53 @@ export const promptInjection: Rule = {
   }
 };
 
-const SECRET_PATH_PATTERNS: Pattern[] = [
-  { regex: /~\/\.ssh\b/i, label: '~/.ssh' },
-  { regex: /\.ssh\/id_[a-z]+/i, label: 'SSH private key' },
-  { regex: /\benv\s+file\b|\.env\b/i, label: '.env file' },
-  { regex: /~\/\.aws\/credentials/i, label: 'AWS credentials file' },
-  { regex: /\/etc\/(passwd|shadow)\b/i, label: '/etc/passwd or /etc/shadow' },
-  { regex: /(?:~|\$HOME)\/\.(?:netrc|npmrc|pgpass|git-credentials)\b/i, label: 'credentials dotfile' },
-  { regex: /(?:~|\$HOME)\/\.(?:kube\/config|docker\/config\.json|config\/gh\/hosts\.yml)\b/i, label: 'cluster/registry/GitHub credentials' },
-  { regex: /application_default_credentials\.json/i, label: 'Google Cloud credentials' },
-  { regex: /\bmcp\.json\b|claude_desktop_config\.json/i, label: 'MCP client config (holds other servers\' credentials)' },
-  { regex: /\bprivate\s+key\b.{0,30}\b(read|send|upload|cat|print|exfiltrate)/i, label: 'private key exfiltration' },
-  { regex: /\b(api|secret)[_\s-]?keys?\b.{0,30}\b(read|send|upload|exfiltrate)/i, label: 'API key exfiltration' }
-];
-
 export const secretAccess: Rule = {
   id: 'safety/secret-access',
   category: 'safety',
   defaultSeverity: 'error',
-  summary: 'Text instructs reading or exfiltrating credential material (~/.ssh, .env, cloud credentials).',
+  summary:
+    'Text instructs reading a local secret and passing it on (an error), or names a credential store ' +
+    '(a warning alone, an error beside another attack signal).',
   rationale:
-    'A legitimate tool has no reason to describe reading SSH keys, dotenv files, or cloud credential stores as ' +
-    'part of its own behavior; this is the signature of a tool trying to get an agent to read and leak secrets.',
+    'A legitimate tool has no reason to tell the model to read SSH keys, dotenv files, another server\'s ' +
+    'configuration or the system prompt and put the contents in a parameter; that is the signature of a tool ' +
+    'trying to get an agent to leak secrets. Mentioning an API key or a `.env` file is not: hundreds of honest ' +
+    'tools take one as input.',
   check(ctx: RuleContext): Finding[] {
     const findings: Finding[] = [];
+    const owned = toolsByServer(ctx);
     for (const item of allItems(ctx)) {
+      const signals = attackSignals(item, owned.get(item.serverId) ?? new Set());
       for (const { field, text } of textFieldsWithDecoded(item)) {
-        for (const pattern of SECRET_PATH_PATTERNS) {
+        const exfiltration = text.match(EXFILTRATION_RE);
+        if (exfiltration) {
+          findings.push({
+            ruleId: this.id,
+            severity: 'error',
+            serverId: item.serverId,
+            subject: { kind: item.kind, name: item.name },
+            message:
+              `${field} tells the model to obtain a local secret and pass it on: ` +
+              `${JSON.stringify(exfiltration[0].slice(0, 200))}.${corroboration(signals, 'exfiltration instruction', item.kind)}`,
+            detail: exfiltration[0].slice(0, 200)
+          });
+          // The instruction already names what it reads.
+          continue;
+        }
+        for (const pattern of CREDENTIAL_STORES) {
           const match = text.match(pattern.regex);
-          if (match) {
-            findings.push({
-              ruleId: this.id,
-              severity: this.defaultSeverity,
-              serverId: item.serverId,
-              subject: { kind: item.kind, name: item.name },
-              message: `${field} references ${pattern.label}: ${JSON.stringify(match[0].slice(0, 200))}`,
-              detail: match[0].slice(0, 200)
-            });
-          }
+          if (!match) continue;
+          const escalated = signals.size >= 2;
+          findings.push({
+            ruleId: this.id,
+            severity: escalated ? 'error' : 'warning',
+            serverId: item.serverId,
+            subject: { kind: item.kind, name: item.name },
+            message:
+              `${field} references ${pattern.label}: ${JSON.stringify(match[0].slice(0, 200))}.` +
+              (escalated ? corroboration(signals, 'credential store', item.kind) : ''),
+            detail: match[0].slice(0, 200)
+          });
         }
       }
     }
@@ -321,42 +450,45 @@ export const crossToolReference: Rule = {
   id: 'safety/cross-tool-reference',
   category: 'safety',
   defaultSeverity: 'warning',
-  summary: 'Description gives instructions about a different, named tool rather than describing itself.',
+  summary:
+    'Text gives instructions about a tool that belongs to a different server (a warning alone, an error beside ' +
+    'another attack signal).',
   rationale:
-    'A tool description that tells the model how to call *another* tool (rather than describing its own behavior) ' +
-    'is a documented tool-poisoning vector: it lets one server\'s tool silently rewrite how the model uses a tool ' +
-    'from a completely different, possibly trusted, server.',
+    'Text that tells the model how to call a tool of *another server* is a documented tool-poisoning vector ' +
+    '("tool shadowing"): it lets one server silently rewrite how the model uses a different, possibly trusted, ' +
+    'one. With several servers linted together (`mcplint config`) the other server is known by name; for one ' +
+    'server alone, coercive wording about a tool it does not define is reported. Instructions about a ' +
+    'server\'s own tools are ordinary documentation ("call resolve-library-id before query-docs") and are not.',
   check(ctx: RuleContext): Finding[] {
     const findings: Finding[] = [];
-    const allNames = new Set(ctx.target.tools.map((t) => t.name));
+    const owned = toolsByServer(ctx);
+    const serversOf = new Map<string, Set<string>>();
+    for (const tool of ctx.target.tools) {
+      serversOf.set(tool.name, (serversOf.get(tool.name) ?? new Set()).add(tool.serverId));
+    }
     for (const item of allItems(ctx)) {
+      const own = owned.get(item.serverId) ?? new Set<string>();
+      const signals = attackSignals(item, own);
       for (const { field, text } of textFields(item)) {
-        for (const name of allNames) {
-          if (name === item.name || name.length < 4) continue;
-          // Coercive compound phrases only — a lone "before"/"should" is normal "see also" cross-referencing
-          // (e.g. "call get_invoice_detail before this" in a legitimate description) and would false-positive
-          // on ordinary, helpful documentation. "must always call X" / "X must never" is not ordinary phrasing.
-          const kw = '(?:must\\s+always|must\\s+never|always\\s+call|never\\s+call|must\\s+call|required\\s+to\\s+call)';
-          const re = new RegExp(`(?:\\b${kw}\\b.{0,60}\\b${escapeRegExp(name)}\\b|\\b${escapeRegExp(name)}\\b.{0,60}\\b${kw}\\b)`, 'i');
-          if (re.test(text)) {
-            findings.push({
-              ruleId: this.id,
-              severity: this.defaultSeverity,
-              serverId: item.serverId,
-              subject: { kind: item.kind, name: item.name },
-              message: `${field} gives instructions referencing another tool, "${name}".`
-            });
-          }
-        }
+        const name = foreignToolInstruction(text, own);
+        if (name === undefined) continue;
+        const owners = serversOf.get(name);
+        const whose = owners ? `a tool of another server (${[...owners].join(', ')})` : 'a tool this server does not define';
+        const escalated = signals.size >= 2;
+        findings.push({
+          ruleId: this.id,
+          severity: escalated ? 'error' : 'warning',
+          serverId: item.serverId,
+          subject: { kind: item.kind, name: item.name },
+          message:
+            `${field} gives instructions about "${name}", ${whose}.` +
+            (escalated ? corroboration(signals, 'instructions about another server\'s tool', item.kind) : '')
+        });
       }
     }
     return findings;
   }
 };
-
-function escapeRegExp(s: string): string {
-  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
 
 const BASE64_RE = /(?:[A-Za-z0-9+/]{4}){20,}(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?/;
 const URL_RE = /https?:\/\/[^\s"'<>]+/gi;
@@ -378,7 +510,8 @@ export const encodedBlobOrSuspiciousUrl: Rule = {
     const findings: Finding[] = [];
     for (const item of allItems(ctx)) {
       for (const { field, text } of textFields(item)) {
-        const blobMatch = text.match(BASE64_RE);
+        // A `$ref` is a path of schema keywords joined by slashes, which is base64's alphabet.
+        const blobMatch = /\$(?:ref|id|schema|anchor)$/.test(field) ? null : text.match(BASE64_RE);
         if (blobMatch && blobMatch[0].length >= 80) {
           findings.push({
             ruleId: this.id,
@@ -408,16 +541,22 @@ export const encodedBlobOrSuspiciousUrl: Rule = {
   }
 };
 
-// Leading \b only (no trailing \b): matches "delete", "deletes", "deleting", "deleted", etc.,
-// and still matches at the start of a snake_case name like "delete_customer" (the transition into
-// "_" is not a \w/\W boundary, so a trailing \b would miss it).
-const DESTRUCTIVE_WORDS = /\b(delete|remove|destroy|drop|purge|wipe|eras|terminat|kill|uninstall|format|truncat|revok)/i;
+/**
+ * Verbs that name a destructive action. Looked for in the tool's name, split into words: in
+ * descriptions they are mostly something else ("returns formatted text", "removes markdown from
+ * the input"), and on public servers that reading flagged `strip_markdown` and `convert_to_md`.
+ */
+const DESTRUCTIVE_VERB = /^(?:delete|remove|destroy|drop|purge|wipe|erase|terminate|kill|uninstall|truncate|revoke)[ds]?$/i;
+
+function nameWords(name: string): string[] {
+  return name.replace(/([a-z0-9])([A-Z])/g, '$1 $2').split(/[^A-Za-z0-9]+/).filter(Boolean);
+}
 
 export const missingDestructiveAnnotation: Rule = {
   id: 'safety/missing-annotations',
   category: 'safety',
   defaultSeverity: 'warning',
-  summary: 'Tool name/description sounds destructive but declares no `destructiveHint`/`readOnlyHint` annotation.',
+  summary: 'Tool name contains a destructive verb but the tool declares no `destructiveHint`/`readOnlyHint` annotation.',
   rationale:
     'The MCP spec\'s tool annotations (readOnlyHint, destructiveHint, idempotentHint, openWorldHint — ' +
     'https://modelcontextprotocol.io/specification/2026-07-28/server/tools) exist so a client can gate ' +
@@ -427,8 +566,7 @@ export const missingDestructiveAnnotation: Rule = {
   check(ctx: RuleContext): Finding[] {
     const findings: Finding[] = [];
     for (const t of ctx.target.tools) {
-      const soundsDestructive = DESTRUCTIVE_WORDS.test(t.name) || (t.description ? DESTRUCTIVE_WORDS.test(t.description) : false);
-      if (!soundsDestructive) continue;
+      if (!nameWords(t.name).some((word) => DESTRUCTIVE_VERB.test(word))) continue;
       const a = t.annotations;
       if (!a || (a.destructiveHint === undefined && a.readOnlyHint === undefined)) {
         findings.push({
@@ -436,7 +574,7 @@ export const missingDestructiveAnnotation: Rule = {
           severity: this.defaultSeverity,
           serverId: t.serverId,
           subject: { kind: 'tool', name: t.name },
-          message: 'Name or description suggests a destructive action, but annotations.destructiveHint and annotations.readOnlyHint are both unset.'
+          message: 'The name says this tool destroys something, but annotations.destructiveHint and annotations.readOnlyHint are both unset.'
         });
       }
     }

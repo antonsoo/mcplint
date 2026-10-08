@@ -5,7 +5,14 @@ import type { McplintConfigFile, ResolvedConfig, Severity } from './types.js';
 import { stripBom } from './schema-utils.js';
 import { z } from 'zod';
 
-export const DEFAULT_BUDGET = 400;
+/**
+ * Per-tool and whole-list token budgets when none is configured: the 90th percentiles of
+ * the most-used public servers (see ./census.ts), rounded. A tool over the first is among
+ * the heaviest tenth of real tool definitions; a server over the second among the heaviest
+ * tenth of servers.
+ */
+export const DEFAULT_BUDGET = 550;
+export const DEFAULT_TOTAL_BUDGET = 16_000;
 
 const CONFIG_CANDIDATES = ['.mcplintrc.json', 'mcplint.config.json'];
 const positiveInteger = z.number().int().positive().max(Number.MAX_SAFE_INTEGER);
@@ -38,13 +45,14 @@ export async function loadConfigFile(cwd: string, explicitPath?: string): Promis
 }
 
 export interface ResolveConfigOptions {
-  file: McplintConfigFile;
+  /** A parsed config file. Omit it to lint with the defaults. */
+  file?: McplintConfigFile;
   budgetFlag?: number;
   failOnFlag?: Severity | null;
   ignoreFlags?: string[];
 }
 
-export function resolveConfig({ file, budgetFlag, failOnFlag, ignoreFlags }: ResolveConfigOptions): ResolvedConfig {
+export function resolveConfig({ file = {}, budgetFlag, failOnFlag, ignoreFlags }: ResolveConfigOptions = {}): ResolvedConfig {
   const checked = validateConfig(file);
   if (budgetFlag !== undefined && !positiveInteger.safeParse(budgetFlag).success) throw new Error('Invalid lint config: budget flag must be a positive safe integer.');
   if (ignoreFlags !== undefined && !z.array(z.string().min(1)).safeParse(ignoreFlags).success) throw new Error('Invalid lint config: ignore flags must be nonempty strings.');

@@ -3,7 +3,11 @@
 **Category:** budget · **Default severity:** warning
 
 Fires when a single tool's serialized definition — `{name, description, inputSchema, outputSchema,
-annotations}` as JSON — costs more estimated tokens than the configured budget (default 400).
+annotations}` as JSON — costs more estimated tokens than the configured budget (default 550).
+
+The default is the 90th percentile of the 11,545 tool definitions in the [registry census](../../studies/registry-census/README.md): the median real tool costs
+133 tokens, three in four cost 261 or fewer, one in ten more than 549. A finding at or beyond that point says
+where the tool stands: "Heavier than 95% of tool definitions on the most-used public servers."
 
 ## Why it matters
 

@@ -74,9 +74,12 @@ describe('safety rules read the full schema', () => {
   });
 
   it('coercive cross-tool instructions in a nested description', () => {
-    const victim = tool({ name: 'delete_repo', description: 'Deletes a repository.' });
+    const victim = tool({ name: 'delete_repo', description: 'Deletes a repository.', serverId: 'git-host' });
     const findings = crossToolReference.check(ctxOf([t, victim]));
     expect(findings.map((f) => f.subject.name)).toEqual(['create_ticket']);
+    // The same wording about one of the server's own tools is documentation.
+    const own = tool({ name: 'delete_repo', description: 'Deletes a repository.' });
+    expect(crossToolReference.check(ctxOf([t, own]))).toEqual([]);
   });
 });
 

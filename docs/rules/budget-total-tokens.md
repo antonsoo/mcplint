@@ -2,9 +2,13 @@
 
 **Category:** budget · **Default severity:** warning
 
-Fires when the sum of every collected tool's estimated token cost exceeds a configured total budget. Unlike
-every other rule, this one is opt-in: it only runs when `--total-budget` (or `totalBudget` in
-`.mcplintrc.json`) is set, because there's no sensible universal default for "how many tools is too many."
+Fires when the sum of every collected tool's estimated token cost exceeds the total budget: `--total-budget`
+(or `totalBudget` in `.mcplintrc.json`), and 16,000 tokens when none is set.
+
+The default is the 90th percentile of the 418 servers in the [registry census](../../studies/registry-census/README.md): the median server's tool list costs
+2,403 tokens, three in four cost 6,340 or fewer, one in ten more than 16,336, and the largest 202,728. For
+a single server the finding says where it stands: "Heavier than 95% of whole tool lists on the most-used
+public servers."
 
 ## Why it matters
 
