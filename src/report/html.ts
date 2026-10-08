@@ -127,6 +127,24 @@ export function renderHtml(result: LintResult): string {
     return wa - wb || a.localeCompare(b);
   });
 
+    // What was collected. A reader of a complete audit wants the findings first, so this goes
+  // after them; when something could not be collected it leads, because the findings below
+  // are then findings about part of the server.
+  const coveragePanel = result.target.collection?.length ? `<section class="panel" aria-labelledby="coverage-heading">
+    <h2 id="coverage-heading">Collection coverage</h2>
+    <p class="coverage-help">Received counts include malformed entries. Retained counts include objects whose valid fields could still be checked. Unsupported methods and disabled servers were not inspected.</p>
+    <div class="coverage-scroll" role="region" aria-label="Collection coverage table" tabindex="0">
+      <table class="coverage-table">
+        <caption>Collection results by server and source</caption>
+        <thead><tr><th scope="col">Server / source</th><th scope="col">Status</th><th scope="col">Pages</th><th scope="col">Received</th><th scope="col">Retained</th></tr></thead>
+        <tbody>${result.target.collection.map(record => `<tr>
+          <th scope="row">${esc(record.serverId)}<span class="coverage-scope">${record.scope}</span>${record.detail ? `<span class="coverage-detail">${esc(record.detail)}</span>` : ''}</th>
+          <td class="${record.status === 'incomplete' ? 'sev-error-text' : ''}">${record.status}</td><td>${record.pages}</td><td>${record.received}</td><td>${record.retained}</td>
+        </tr>`).join('')}</tbody>
+      </table>
+    </div>
+  </section>` : '';
+
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -170,20 +188,7 @@ export function renderHtml(result: LintResult): string {
     </div>
   </section>
 
-  ${result.target.collection?.length ? `<section class="panel" aria-labelledby="coverage-heading">
-    <h2 id="coverage-heading">Collection coverage</h2>
-    <p class="coverage-help">Received counts include malformed entries. Retained counts include objects whose valid fields could still be checked. Unsupported methods and disabled servers were not inspected.</p>
-    <div class="coverage-scroll" role="region" aria-label="Collection coverage table" tabindex="0">
-      <table class="coverage-table">
-        <caption>Collection results by server and source</caption>
-        <thead><tr><th scope="col">Server / source</th><th scope="col">Status</th><th scope="col">Pages</th><th scope="col">Received</th><th scope="col">Retained</th></tr></thead>
-        <tbody>${result.target.collection.map(record => `<tr>
-          <th scope="row">${esc(record.serverId)}<span class="coverage-scope">${record.scope}</span>${record.detail ? `<span class="coverage-detail">${esc(record.detail)}</span>` : ''}</th>
-          <td class="${record.status === 'incomplete' ? 'sev-error-text' : ''}">${record.status}</td><td>${record.pages}</td><td>${record.received}</td><td>${record.retained}</td>
-        </tr>`).join('')}</tbody>
-      </table>
-    </div>
-  </section>` : ''}
+  ${summary.complete ? '' : coveragePanel}
 
   <section class="panel">
     <h2>Token budget<span class="hint">${esc(result.tokenizerName)} estimate</span></h2>
@@ -198,6 +203,8 @@ export function renderHtml(result: LintResult): string {
         : `<div class="subjects">${sortedKeys.map((k) => subjectCard(k, bySubject.get(k)!)).join('')}</div>`
     }
   </section>
+
+  ${summary.complete ? coveragePanel : ''}
 
   </main>
   <footer class="footer">
