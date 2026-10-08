@@ -1,0 +1,548 @@
+{
+ "registry": "https://registry.smithery.ai",
+ "listingRead": "2026-10-08T04:05:29.492Z",
+ "servers": {
+  "listed": 444,
+  "mostUsed": 266,
+  "verified": 183,
+  "withToolDefinitions": 418
+ },
+ "tools": 11545,
+ "toolsPerServer": {
+  "p50": 9,
+  "p75": 22,
+  "p90": 46,
+  "p95": 70,
+  "p99": 290,
+  "max": 2530
+ },
+ "tokensPerTool": {
+  "p50": 133,
+  "p75": 261,
+  "p90": 549,
+  "p95": 809,
+  "p99": 1570,
+  "max": 10198,
+  "over550": 10
+ },
+ "tokensPerServer": {
+  "p50": 2403,
+  "p75": 6340,
+  "p90": 16336,
+  "p95": 28556,
+  "p99": 63126,
+  "max": 202728,
+  "over10k": 15.6,
+  "over16k": 10,
+  "over25k": 6,
+  "over100k": 2
+ },
+ "heaviest": [
+  {
+   "tools": 2530,
+   "tokens": 202728,
+   "useCount": 419019
+  },
+  {
+   "tools": 271,
+   "tokens": 114222,
+   "useCount": 10042
+  },
+  {
+   "tools": 92,
+   "tokens": 80070,
+   "useCount": 3573
+  },
+  {
+   "tools": 275,
+   "tokens": 78646,
+   "useCount": 34350
+  },
+  {
+   "tools": 290,
+   "tokens": 63126,
+   "useCount": 0
+  }
+ ],
+ "before": {
+  "label": "0.3.3",
+  "servers": 418,
+  "findingsPerServer": 57.8,
+  "serversWithAnError": 5.5,
+  "serversWithAWarning": 80.1,
+  "attackFindings": {
+   "error": 14,
+   "warning": 15,
+   "info": 0
+  },
+  "rules": {
+   "schema/portability": {
+    "servers": 417,
+    "findings": 10692,
+    "severities": {
+     "info": 10692
+    },
+    "share": 99.8
+   },
+   "budget/tool-tokens": {
+    "servers": 220,
+    "findings": 1768,
+    "severities": {
+     "warning": 1768
+    },
+    "share": 52.6
+   },
+   "safety/missing-annotations": {
+    "servers": 186,
+    "findings": 909,
+    "severities": {
+     "warning": 909
+    },
+    "share": 44.5
+   },
+   "description/enum-unexplained": {
+    "servers": 175,
+    "findings": 1145,
+    "severities": {
+     "info": 1145
+    },
+    "share": 41.9
+   },
+   "description/param-missing": {
+    "servers": 130,
+    "findings": 8024,
+    "severities": {
+     "warning": 8024
+    },
+    "share": 31.1
+   },
+   "description/too-long": {
+    "servers": 75,
+    "findings": 310,
+    "severities": {
+     "info": 310
+    },
+    "share": 17.9
+   },
+   "description/near-duplicate": {
+    "servers": 61,
+    "findings": 197,
+    "severities": {
+     "warning": 197
+    },
+    "share": 14.6
+   },
+   "naming/generic": {
+    "servers": 33,
+    "findings": 81,
+    "severities": {
+     "warning": 81
+    },
+    "share": 7.9
+   },
+   "description/too-short": {
+    "servers": 26,
+    "findings": 649,
+    "severities": {
+     "warning": 649
+    },
+    "share": 6.2
+   },
+   "schema/invalid": {
+    "servers": 12,
+    "findings": 26,
+    "severities": {
+     "error": 26
+    },
+    "share": 2.9
+   },
+   "safety/cross-tool-reference": {
+    "servers": 12,
+    "findings": 15,
+    "severities": {
+     "warning": 15
+    },
+    "share": 2.9
+   },
+   "naming/strict-client-compat": {
+    "servers": 12,
+    "findings": 338,
+    "severities": {
+     "warning": 338
+    },
+    "share": 2.9
+   },
+   "naming/convention-consistency": {
+    "servers": 8,
+    "findings": 8,
+    "severities": {
+     "info": 8
+    },
+    "share": 1.9
+   },
+   "safety/secret-access": {
+    "servers": 7,
+    "findings": 10,
+    "severities": {
+     "error": 10
+    },
+    "share": 1.7
+   },
+   "safety/prompt-injection": {
+    "servers": 3,
+    "findings": 4,
+    "severities": {
+     "error": 4
+    },
+    "share": 0.7
+   },
+   "description/missing": {
+    "servers": 2,
+    "findings": 3,
+    "severities": {
+     "error": 3
+    },
+    "share": 0.5
+   }
+  },
+  "attack": [
+   {
+    "rule": "safety/secret-access",
+    "severity": "error",
+    "subject": "tool:oecd_search_dataflows",
+    "message": "inputSchema.properties.agency.description references .env file: \".ENV\""
+   },
+   {
+    "rule": "safety/secret-access",
+    "severity": "error",
+    "subject": "tool:x711_ping_for_updates",
+    "message": "description references API key exfiltration: \"API-Key. Primary funding: send\""
+   },
+   {
+    "rule": "safety/prompt-injection",
+    "severity": "error",
+    "subject": "tool:prompt_injection_scan",
+    "message": "description matches the \"system prompt override\" pattern: \"system prompt override\""
+   },
+   {
+    "rule": "safety/secret-access",
+    "severity": "error",
+    "subject": "tool:detect_secrets",
+    "message": "inputSchema.properties.filename.description references .env file: \".env\""
+   },
+   {
+    "rule": "safety/secret-access",
+    "severity": "error",
+    "subject": "tool:generate_eval_yaml",
+    "message": "description references API key exfiltration: \"API key needed). Returns read\""
+   },
+   {
+    "rule": "safety/secret-access",
+    "severity": "error",
+    "subject": "tool:env_parse",
+    "message": "description references .env file: \".env\""
+   },
+   {
+    "rule": "safety/secret-access",
+    "severity": "error",
+    "subject": "tool:env_parse",
+    "message": "inputSchema.properties.input.description references .env file: \".env\""
+   },
+   {
+    "rule": "safety/secret-access",
+    "severity": "error",
+    "subject": "tool:sendEmailDemo",
+    "message": "description references API key exfiltration: \"API key and use send\""
+   },
+   {
+    "rule": "safety/cross-tool-reference",
+    "severity": "warning",
+    "subject": "tool:get_fare_routes",
+    "message": "description gives instructions referencing another tool, \"calculate_fare\"."
+   },
+   {
+    "rule": "safety/cross-tool-reference",
+    "severity": "warning",
+    "subject": "tool:get_route_stops_for_fare",
+    "message": "description gives instructions referencing another tool, \"get_fare_routes\"."
+   },
+   {
+    "rule": "safety/cross-tool-reference",
+    "severity": "warning",
+    "subject": "tool:resolve-library-id",
+    "message": "description gives instructions referencing another tool, \"query-docs\"."
+   },
+   {
+    "rule": "safety/cross-tool-reference",
+    "severity": "warning",
+    "subject": "tool:query-docs",
+    "message": "description gives instructions referencing another tool, \"resolve-library-id\"."
+   },
+   {
+    "rule": "safety/secret-access",
+    "severity": "error",
+    "subject": "tool:get_my_workspace",
+    "message": "description references API key exfiltration: \"API key or OAuth). Read\""
+   },
+   {
+    "rule": "safety/cross-tool-reference",
+    "severity": "warning",
+    "subject": "tool:get_dataset_schema",
+    "message": "description gives instructions referencing another tool, \"query_dataset\"."
+   },
+   {
+    "rule": "safety/secret-access",
+    "severity": "error",
+    "subject": "resource:manifest",
+    "message": "description references MCP client config (holds other servers' credentials): \"mcp.json\""
+   },
+   {
+    "rule": "safety/secret-access",
+    "severity": "error",
+    "subject": "tool:gas-prices",
+    "message": "description references API key exfiltration: \"API key needed. Use before send\""
+   },
+   {
+    "rule": "safety/cross-tool-reference",
+    "severity": "warning",
+    "subject": "tool:register",
+    "message": "description gives instructions referencing another tool, \"get_challenge\"."
+   },
+   {
+    "rule": "safety/cross-tool-reference",
+    "severity": "warning",
+    "subject": "tool:socrata_get_dataset",
+    "message": "description gives instructions referencing another tool, \"socrata_query_dataset\"."
+   },
+   {
+    "rule": "safety/prompt-injection",
+    "severity": "error",
+    "subject": "tool:microsoft_docs_search",
+    "message": "description matches the \"forced tool ordering\" pattern: \"This is a required step\""
+   },
+   {
+    "rule": "safety/cross-tool-reference",
+    "severity": "warning",
+    "subject": "tool:list_records_for_table",
+    "message": "description gives instructions referencing another tool, \"get_table_schema\"."
+   },
+   {
+    "rule": "safety/cross-tool-reference",
+    "severity": "warning",
+    "subject": "tool:get-actor-run",
+    "message": "description gives instructions referencing another tool, \"call-actor\"."
+   },
+   {
+    "rule": "safety/cross-tool-reference",
+    "severity": "warning",
+    "subject": "tool:get-actor-run",
+    "message": "description gives instructions referencing another tool, \"call-actor\"."
+   },
+   {
+    "rule": "safety/cross-tool-reference",
+    "severity": "warning",
+    "subject": "tool:transform-asset",
+    "message": "description gives instructions referencing another tool, \"get-tx-reference\"."
+   },
+   {
+    "rule": "safety/prompt-injection",
+    "severity": "error",
+    "subject": "tool:create_qr_code",
+    "message": "description matches the \"concealment from the user\" pattern: \"do not reveal the serialized content to the user\""
+   },
+   {
+    "rule": "safety/prompt-injection",
+    "severity": "error",
+    "subject": "tool:bulk_upload_validate",
+    "message": "description matches the \"concealment from the user\" pattern: \"DO NOT reveal the upload_url or any headers to the user\""
+   },
+   {
+    "rule": "safety/cross-tool-reference",
+    "severity": "warning",
+    "subject": "tool:nex_session_start",
+    "message": "description gives instructions referencing another tool, \"nex_guide\"."
+   },
+   {
+    "rule": "safety/cross-tool-reference",
+    "severity": "warning",
+    "subject": "tool:suggest_trade",
+    "message": "description gives instructions referencing another tool, \"analyze_market\"."
+   },
+   {
+    "rule": "safety/cross-tool-reference",
+    "severity": "warning",
+    "subject": "tool:close_position",
+    "message": "description gives instructions referencing another tool, \"get_portfolio\"."
+   },
+   {
+    "rule": "safety/cross-tool-reference",
+    "severity": "warning",
+    "subject": "tool:get_sanity_rules",
+    "message": "description gives instructions referencing another tool, \"list_sanity_rules\"."
+   }
+  ]
+ },
+ "after": {
+  "label": "current",
+  "servers": 418,
+  "findingsPerServer": 17.9,
+  "serversWithAnError": 3.3,
+  "serversWithAWarning": 70.3,
+  "attackFindings": {
+   "error": 0,
+   "warning": 2,
+   "info": 1
+  },
+  "rules": {
+   "schema/portability": {
+    "servers": 417,
+    "findings": 417,
+    "severities": {
+     "info": 417
+    },
+    "share": 99.8
+   },
+   "description/enum-unexplained": {
+    "servers": 175,
+    "findings": 1145,
+    "severities": {
+     "info": 1145
+    },
+    "share": 41.9
+   },
+   "budget/tool-tokens": {
+    "servers": 173,
+    "findings": 1149,
+    "severities": {
+     "warning": 1149
+    },
+    "share": 41.4
+   },
+   "description/param-missing": {
+    "servers": 130,
+    "findings": 2987,
+    "severities": {
+     "warning": 2987
+    },
+    "share": 31.1
+   },
+   "description/too-long": {
+    "servers": 75,
+    "findings": 310,
+    "severities": {
+     "info": 310
+    },
+    "share": 17.9
+   },
+   "safety/missing-annotations": {
+    "servers": 63,
+    "findings": 199,
+    "severities": {
+     "warning": 199
+    },
+    "share": 15.1
+   },
+   "description/near-duplicate": {
+    "servers": 61,
+    "findings": 197,
+    "severities": {
+     "warning": 197
+    },
+    "share": 14.6
+   },
+   "budget/total-tokens": {
+    "servers": 42,
+    "findings": 42,
+    "severities": {
+     "warning": 42
+    },
+    "share": 10
+   },
+   "description/too-short": {
+    "servers": 26,
+    "findings": 649,
+    "severities": {
+     "warning": 649
+    },
+    "share": 6.2
+   },
+   "schema/invalid": {
+    "servers": 12,
+    "findings": 26,
+    "severities": {
+     "error": 26
+    },
+    "share": 2.9
+   },
+   "naming/strict-client-compat": {
+    "servers": 12,
+    "findings": 338,
+    "severities": {
+     "warning": 338
+    },
+    "share": 2.9
+   },
+   "naming/generic": {
+    "servers": 8,
+    "findings": 8,
+    "severities": {
+     "warning": 8
+    },
+    "share": 1.9
+   },
+   "naming/convention-consistency": {
+    "servers": 8,
+    "findings": 8,
+    "severities": {
+     "info": 8
+    },
+    "share": 1.9
+   },
+   "description/missing": {
+    "servers": 2,
+    "findings": 3,
+    "severities": {
+     "error": 3
+    },
+    "share": 0.5
+   },
+   "safety/prompt-injection": {
+    "servers": 2,
+    "findings": 3,
+    "severities": {
+     "info": 1,
+     "warning": 2
+    },
+    "share": 0.5
+   },
+   "collection/incomplete": {
+    "servers": 1,
+    "findings": 1,
+    "severities": {
+     "error": 1
+    },
+    "share": 0.2
+   }
+  },
+  "attack": [
+   {
+    "rule": "safety/prompt-injection",
+    "severity": "info",
+    "subject": "tool:microsoft_docs_search",
+    "message": "description matches the \"forced tool ordering\" pattern: \"This is a required step\"."
+   },
+   {
+    "rule": "safety/prompt-injection",
+    "severity": "warning",
+    "subject": "tool:create_qr_code",
+    "message": "description matches the \"concealment from the user\" pattern: \"do not reveal the serialized content to the user\"."
+   },
+   {
+    "rule": "safety/prompt-injection",
+    "severity": "warning",
+    "subject": "tool:bulk_upload_validate",
+    "message": "description matches the \"concealment from the user\" pattern: \"DO NOT reveal the upload_url or any headers to the user\"."
+   }
+  ]
+ }
+}

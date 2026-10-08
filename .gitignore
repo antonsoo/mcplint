@@ -9,3 +9,6 @@ coverage/
 .mcplint-cache/
 test-results/
 playwright-report/
+
+# Downloads made by studies/*/collect.mjs
+studies/*/cache/

@@ -1,0 +1,5339 @@
+{
+ "registry": "https://registry.smithery.ai",
+ "listingRead": "2026-10-08T04:05:29.492Z",
+ "servers": [
+  {
+   "name": "pipeworx/gateway",
+   "useCount": 419019,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-22T22:02:16.040Z",
+   "tools": 2530,
+   "unavailable": null
+  },
+  {
+   "name": "henry-ships/sparkforge",
+   "useCount": 219896,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-01T17:38:26.389Z",
+   "tools": 33,
+   "unavailable": null
+  },
+  {
+   "name": "brave",
+   "useCount": 87579,
+   "views": [
+    "most used"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-09-05T18:07:47.018Z",
+   "tools": 8,
+   "unavailable": null
+  },
+  {
+   "name": "bouch/uk-due-diligence",
+   "useCount": 60881,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-29T12:37:02.016Z",
+   "tools": 16,
+   "unavailable": null
+  },
+  {
+   "name": "adamamer20/paper-search-mcp-openai",
+   "useCount": 59106,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-09-18T09:41:01.967Z",
+   "tools": 25,
+   "unavailable": null
+  },
+  {
+   "name": "gmail",
+   "useCount": 57738,
+   "views": [
+    "most used"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-11-26T14:34:03.393Z",
+   "tools": 31,
+   "unavailable": null
+  },
+  {
+   "name": "googlesheets",
+   "useCount": 56138,
+   "views": [
+    "most used"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-11-19T07:26:32.996Z",
+   "tools": 13,
+   "unavailable": null
+  },
+  {
+   "name": "theagenttimes/news",
+   "useCount": 43392,
+   "views": [
+    "most used",
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-02-09T15:49:42.877Z",
+   "tools": 18,
+   "unavailable": null
+  },
+  {
+   "name": "pubmed",
+   "useCount": 42137,
+   "views": [
+    "most used"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-27T15:51:54.407Z",
+   "tools": 7,
+   "unavailable": null
+  },
+  {
+   "name": "fenglucc/ko-financial-data",
+   "useCount": 40620,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-29T20:39:31.137Z",
+   "tools": 24,
+   "unavailable": null
+  },
+  {
+   "name": "jordan-s648/PolymarketScan",
+   "useCount": 39483,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-13T05:45:37.949Z",
+   "tools": 8,
+   "unavailable": null
+  },
+  {
+   "name": "oobe-protocol/sap-mcp",
+   "useCount": 34350,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-13T17:50:41.966Z",
+   "tools": 275,
+   "unavailable": null
+  },
+  {
+   "name": "emblemai/emblem-mcp",
+   "useCount": 25084,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-11T07:01:07.813Z",
+   "tools": 133,
+   "unavailable": null
+  },
+  {
+   "name": "creativelead/unclick",
+   "useCount": 24706,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-09T07:57:33.207Z",
+   "tools": 451,
+   "unavailable": null
+  },
+  {
+   "name": "onesignal/onesignal",
+   "useCount": 22491,
+   "views": [
+    "most used",
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-10T05:39:45.197Z",
+   "tools": 34,
+   "unavailable": null
+  },
+  {
+   "name": "nitrofire-q/gread",
+   "useCount": 21140,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-11T07:51:53.707Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "pinkpixel-dev/web-scout-mcp",
+   "useCount": 19558,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-09-20T02:39:43.601Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "smithery-ai/national-weather-service",
+   "useCount": 17177,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-05-29T01:08:09.249Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "ramboweb3/hivecast-x711",
+   "useCount": 16923,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-14T16:25:36.593Z",
+   "tools": 27,
+   "unavailable": null
+  },
+  {
+   "name": "subwayinfo",
+   "useCount": 16873,
+   "views": [
+    "most used"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-29T11:03:52.456Z",
+   "tools": 23,
+   "unavailable": null
+  },
+  {
+   "name": "deficlow/zipp",
+   "useCount": 16317,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-13T22:27:36.936Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "entia/entity-verification",
+   "useCount": 16045,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-03T21:48:17.545Z",
+   "tools": 12,
+   "unavailable": null
+  },
+  {
+   "name": "googlecalendar",
+   "useCount": 15718,
+   "views": [
+    "most used"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-11-19T07:13:02.101Z",
+   "tools": 9,
+   "unavailable": null
+  },
+  {
+   "name": "digby-oldridge/colour-memory-api",
+   "useCount": 15140,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-26T19:38:13.381Z",
+   "tools": 91,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/pubmed-mcp-server",
+   "useCount": 13948,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-19T23:24:52.596Z",
+   "tools": 10,
+   "unavailable": null
+  },
+  {
+   "name": "naver/search",
+   "useCount": 13327,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-18T08:57:33.736Z",
+   "tools": 12,
+   "unavailable": null
+  },
+  {
+   "name": "Nekzus/npm-sentinel-mcp",
+   "useCount": 13278,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-04-19T20:55:07.772Z",
+   "tools": 19,
+   "unavailable": null
+  },
+  {
+   "name": "OEvortex/ddg_search",
+   "useCount": 12697,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-08-22T08:26:28.974Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "NutriBalance/nutribalance-mcp",
+   "useCount": 12688,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-05T16:07:30.131Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/nist-nvd-mcp-server",
+   "useCount": 12481,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:24:03.135Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "bissell-skyler/cityparity",
+   "useCount": 12406,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-01T06:16:01.400Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "ia-qa/api",
+   "useCount": 12266,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-01T18:08:41.853Z",
+   "tools": 151,
+   "unavailable": null
+  },
+  {
+   "name": "slack",
+   "useCount": 12110,
+   "views": [
+    "most used"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-11-19T07:26:36.543Z",
+   "tools": 11,
+   "unavailable": null
+  },
+  {
+   "name": "framesail/framesail",
+   "useCount": 11533,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-09T04:20:33.905Z",
+   "tools": 68,
+   "unavailable": null
+  },
+  {
+   "name": "travis-kellogg1/coinrailz-mcp",
+   "useCount": 11447,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-12T16:42:37.547Z",
+   "tools": 66,
+   "unavailable": null
+  },
+  {
+   "name": "friso/compliancecheckup",
+   "useCount": 11175,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-19T17:04:24.873Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "hamid-vakilzadeh/mcpsemanticscholar",
+   "useCount": 10296,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-05-30T17:03:49.635Z",
+   "tools": 12,
+   "unavailable": null
+  },
+  {
+   "name": "aryankeluskar/polymarket-mcp",
+   "useCount": 10102,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-11-08T17:53:29.007Z",
+   "tools": 7,
+   "unavailable": null
+  },
+  {
+   "name": "pinksaltlamp75/Your-Echo-Agent-",
+   "useCount": 10070,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-20T16:53:55.282Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "getgapup/gapup-mcp",
+   "useCount": 10042,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-23T22:39:35.152Z",
+   "tools": 271,
+   "unavailable": null
+  },
+  {
+   "name": "isdaniel/mcp_weather_server",
+   "useCount": 9970,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-03-17T09:52:25.889Z",
+   "tools": 8,
+   "unavailable": null
+  },
+  {
+   "name": "vbhjckfd/lad-lviv-ua",
+   "useCount": 9780,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-29T19:48:25.451Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "pkobielak/social-superpowers",
+   "useCount": 9761,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-03T21:19:50.266Z",
+   "tools": 10,
+   "unavailable": null
+  },
+  {
+   "name": "aparajithn/agent-utils",
+   "useCount": 9739,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-05T14:38:26.228Z",
+   "tools": 18,
+   "unavailable": null
+  },
+  {
+   "name": "segellfosc-dev-ayfx/menjometre",
+   "useCount": 9534,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-11T21:40:33.617Z",
+   "tools": 48,
+   "unavailable": null
+  },
+  {
+   "name": "info-6d0w/backtesting-arena",
+   "useCount": 9340,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-05T07:43:57.441Z",
+   "tools": 65,
+   "unavailable": null
+  },
+  {
+   "name": "exa",
+   "useCount": 9181,
+   "views": [
+    "most used",
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2024-12-13T15:46:50.750Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/census-mcp-server",
+   "useCount": 9002,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T18:44:02.095Z",
+   "tools": 7,
+   "unavailable": null
+  },
+  {
+   "name": "intake-triage/steadyfetch",
+   "useCount": 8946,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-31T16:29:53.393Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "pipeworx/pipeworx",
+   "useCount": 8926,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-10T01:39:52.082Z",
+   "tools": 32,
+   "unavailable": null
+  },
+  {
+   "name": "tijaniismael62/revnuvo-dns",
+   "useCount": 8907,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-06T13:18:06.627Z",
+   "tools": 9,
+   "unavailable": null
+  },
+  {
+   "name": "xqb/vibe-pay",
+   "useCount": 8540,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-05T18:57:38.479Z",
+   "tools": 8,
+   "unavailable": null
+  },
+  {
+   "name": "favcrm/favcrm",
+   "useCount": 8514,
+   "views": [
+    "most used",
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-05-08T02:29:58.204Z",
+   "tools": 132,
+   "unavailable": null
+  },
+  {
+   "name": "listentosadhu/corpus",
+   "useCount": 8356,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-04T16:52:01.305Z",
+   "tools": 18,
+   "unavailable": null
+  },
+  {
+   "name": "openclaw-hal9000/romulus-31780",
+   "useCount": 8353,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-02T00:26:17.436Z",
+   "tools": 3,
+   "unavailable": null
+  },
+  {
+   "name": "primitivedotdev/primitive",
+   "useCount": 8352,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-09T20:20:37.114Z",
+   "tools": 28,
+   "unavailable": null
+  },
+  {
+   "name": "moodtrip/moodtrip-hotel-search",
+   "useCount": 8332,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-11T07:07:48.867Z",
+   "tools": 12,
+   "unavailable": null
+  },
+  {
+   "name": "lmktoday/commerce",
+   "useCount": 8243,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-06T17:50:30.536Z",
+   "tools": 13,
+   "unavailable": null
+  },
+  {
+   "name": "nexgendata-apify/github-mcp-server",
+   "useCount": 8233,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-03T08:36:28.554Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "googledrive",
+   "useCount": 8102,
+   "views": [
+    "most used"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-11-19T07:26:50.147Z",
+   "tools": 18,
+   "unavailable": null
+  },
+  {
+   "name": "industrylens/mcp",
+   "useCount": 8023,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-31T09:37:33.146Z",
+   "tools": 12,
+   "unavailable": null
+  },
+  {
+   "name": "virtualsms/virtualsms-mcp",
+   "useCount": 7933,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-15T05:59:07.281Z",
+   "tools": 18,
+   "unavailable": null
+  },
+  {
+   "name": "hithereiamaliff/mcp-malaysiatransit",
+   "useCount": 7889,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-11-06T18:51:42.216Z",
+   "tools": 43,
+   "unavailable": null
+  },
+  {
+   "name": "dev-7bd0/mcp-server",
+   "useCount": 7877,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-11T07:36:35.791Z",
+   "tools": 55,
+   "unavailable": null
+  },
+  {
+   "name": "malinoto/tracepass-mcp-server",
+   "useCount": 7835,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-09T19:41:49.033Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "vivaldoeuropes/vivaldo-product-discovery",
+   "useCount": 7716,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-25T19:12:05.172Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "delx/witness-protocol",
+   "useCount": 7637,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-19T13:54:57.921Z",
+   "tools": 54,
+   "unavailable": null
+  },
+  {
+   "name": "voidly/mcp-server",
+   "useCount": 7463,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-25T00:52:33.834Z",
+   "tools": 11,
+   "unavailable": null
+  },
+  {
+   "name": "gordgus/ignav-flights",
+   "useCount": 7205,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-17T13:05:24.052Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "delx/delx-mcp",
+   "useCount": 7043,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-08T15:26:17.816Z",
+   "tools": 94,
+   "unavailable": null
+  },
+  {
+   "name": "TitanSneaker/paper-search-mcp-openai-v2",
+   "useCount": 7042,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-10-31T17:12:41.013Z",
+   "tools": 25,
+   "unavailable": null
+  },
+  {
+   "name": "bigquery",
+   "useCount": 6986,
+   "views": [
+    "most used"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-27T16:39:28.926Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "iwantfyi/iwant",
+   "useCount": 6979,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-07T09:57:30.191Z",
+   "tools": 15,
+   "unavailable": null
+  },
+  {
+   "name": "zachary-royals/devmatch",
+   "useCount": 6937,
+   "views": [
+    "most used",
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-05-24T23:33:16.561Z",
+   "tools": 3,
+   "unavailable": null
+  },
+  {
+   "name": "nexgendata-apify/google-maps-mcp-server",
+   "useCount": 6766,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-03T08:36:07.794Z",
+   "tools": 3,
+   "unavailable": null
+  },
+  {
+   "name": "larrybuildsai/resultrail",
+   "useCount": 6708,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-21T13:05:26.999Z",
+   "tools": 3,
+   "unavailable": null
+  },
+  {
+   "name": "FaresYoussef94/aws-knowledge-mcp",
+   "useCount": 6621,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-09-16T12:38:25.214Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "king-of-the-grackles/discourse-forum-mcp",
+   "useCount": 6591,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-10T03:40:27.662Z",
+   "tools": 15,
+   "unavailable": null
+  },
+  {
+   "name": "capratesignals/cap-rate-signals",
+   "useCount": 6543,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-02T21:54:42.436Z",
+   "tools": 14,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/openalex-mcp-server",
+   "useCount": 6522,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-19T23:27:22.732Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "boar-network/blockchain-basic",
+   "useCount": 6463,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-02T14:17:13.628Z",
+   "tools": 37,
+   "unavailable": null
+  },
+  {
+   "name": "sincetomorrow/cultural-intelligence",
+   "useCount": 6429,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-04T20:16:10.202Z",
+   "tools": 33,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/wikipedia-mcp-server",
+   "useCount": 6422,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T18:20:08.992Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "aiwyn",
+   "useCount": 6395,
+   "views": [
+    "most used"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-27T16:37:13.132Z",
+   "tools": 10,
+   "unavailable": null
+  },
+  {
+   "name": "google/news",
+   "useCount": 6379,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-17T14:34:05.617Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "nexgendata-apify/finance-mcp-server",
+   "useCount": 6135,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-03T08:36:12.964Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "secureship/docs",
+   "useCount": 6130,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-18T16:21:40.611Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "j4th/mtg-mcp-server",
+   "useCount": 6124,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-24T15:18:55.083Z",
+   "tools": 69,
+   "unavailable": null
+  },
+  {
+   "name": "ThierryThevenet/talao",
+   "useCount": 6098,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-10-16T17:03:22.218Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "memxus/memxus",
+   "useCount": 6038,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-02T02:02:32.048Z",
+   "tools": 8,
+   "unavailable": null
+  },
+  {
+   "name": "nexgendata-apify/legal-mcp-server",
+   "useCount": 6026,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-03T08:36:33.416Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "nausika/nausika",
+   "useCount": 6022,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-18T13:55:53.614Z",
+   "tools": 19,
+   "unavailable": null
+  },
+  {
+   "name": "hjsh200219/fortuneteller",
+   "useCount": 5994,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-10-03T04:23:18.460Z",
+   "tools": 7,
+   "unavailable": null
+  },
+  {
+   "name": "EthanHenrickson/math-mcp",
+   "useCount": 5958,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-03-09T05:01:16.235Z",
+   "tools": 22,
+   "unavailable": null
+  },
+  {
+   "name": "github",
+   "useCount": 5908,
+   "views": [
+    "most used"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-11-19T07:26:28.312Z",
+   "tools": 86,
+   "unavailable": null
+  },
+  {
+   "name": "quelvio/mcp-server",
+   "useCount": 5904,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-18T16:11:52.005Z",
+   "tools": 3,
+   "unavailable": null
+  },
+  {
+   "name": "nexgendata-apify/redfin-mcp-server",
+   "useCount": 5877,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-03T08:36:36.292Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "ahmed2real/thinkzone",
+   "useCount": 5850,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-08-27T17:50:24.733Z",
+   "tools": 58,
+   "unavailable": null
+  },
+  {
+   "name": "defibabylon/defi-intel",
+   "useCount": 5847,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-25T18:44:54.165Z",
+   "tools": 10,
+   "unavailable": null
+  },
+  {
+   "name": "bouch/pinescript",
+   "useCount": 5840,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-29T14:54:15.617Z",
+   "tools": 10,
+   "unavailable": null
+  },
+  {
+   "name": "govbase/govbase",
+   "useCount": 5784,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-27T22:54:26.346Z",
+   "tools": 10,
+   "unavailable": null
+  },
+  {
+   "name": "OjasKord/url-safety-validator-mcp",
+   "useCount": 5626,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-04-22T07:55:25.372Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "upstash/context7-mcp",
+   "useCount": 5563,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-04-12T07:00:21.424Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/openfda-mcp-server",
+   "useCount": 5433,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:40:19.070Z",
+   "tools": 14,
+   "unavailable": null
+  },
+  {
+   "name": "DomainKits/domainkits",
+   "useCount": 5388,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-11T16:48:58.653Z",
+   "tools": 28,
+   "unavailable": null
+  },
+  {
+   "name": "loved0543/kdata-gate",
+   "useCount": 5352,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-12T17:43:46.791Z",
+   "tools": 13,
+   "unavailable": null
+  },
+  {
+   "name": "rabqatab/lexlink-ko-mcp",
+   "useCount": 5297,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-11-10T02:38:14.094Z",
+   "tools": 54,
+   "unavailable": null
+  },
+  {
+   "name": "cturkieh/france-data",
+   "useCount": 5260,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-12T22:32:29.410Z",
+   "tools": 37,
+   "unavailable": null
+  },
+  {
+   "name": "alperenkocyigit/authorprofilemcp",
+   "useCount": 5248,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-11-19T11:00:10.542Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/arxiv-mcp-server",
+   "useCount": 5173,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-19T23:38:10.843Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/open-meteo-mcp-server",
+   "useCount": 5161,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:37:55.223Z",
+   "tools": 11,
+   "unavailable": null
+  },
+  {
+   "name": "hithereiamaliff/mcp-datagovmy",
+   "useCount": 5119,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-07-26T14:24:25.244Z",
+   "tools": 31,
+   "unavailable": null
+  },
+  {
+   "name": "autario/data",
+   "useCount": 5089,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-05T19:51:24.917Z",
+   "tools": 58,
+   "unavailable": null
+  },
+  {
+   "name": "jalpp/chessagine",
+   "useCount": 5030,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-02-14T16:09:56.441Z",
+   "tools": 37,
+   "unavailable": null
+  },
+  {
+   "name": "etweisberg/mlb-mcp",
+   "useCount": 4958,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-06-30T06:34:33.874Z",
+   "tools": 46,
+   "unavailable": null
+  },
+  {
+   "name": "hello-oipe/Geppetto-Robot-Directory",
+   "useCount": 4913,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-13T22:25:51.988Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "spacepacket/e3d-ai",
+   "useCount": 4880,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-26T19:29:20.108Z",
+   "tools": 22,
+   "unavailable": null
+  },
+  {
+   "name": "net-service/xpoz",
+   "useCount": 4846,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-11-17T17:56:09.574Z",
+   "tools": 27,
+   "unavailable": null
+  },
+  {
+   "name": "kuibin-dev/hsk-mcp",
+   "useCount": 4831,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-13T10:07:08.860Z",
+   "tools": 13,
+   "unavailable": null
+  },
+  {
+   "name": "letoribo/mcp-graphql-enhanced",
+   "useCount": 4795,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-20T00:28:36.918Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "a7om/atom-mcp-server",
+   "useCount": 4780,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-04T13:40:58.193Z",
+   "tools": 8,
+   "unavailable": null
+  },
+  {
+   "name": "slmusayev/tls-radar",
+   "useCount": 4755,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-17T19:07:59.262Z",
+   "tools": 17,
+   "unavailable": null
+  },
+  {
+   "name": "rileycraig14/nexus-intelligence",
+   "useCount": 4735,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-12T06:58:46.799Z",
+   "tools": 20,
+   "unavailable": null
+  },
+  {
+   "name": "surprise-buddy/mcp-server",
+   "useCount": 4734,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-16T12:00:04.925Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/calculator-mcp-server",
+   "useCount": 4412,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-19T23:36:22.812Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "agonzalez/prueba-mcp-seeker",
+   "useCount": 4405,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-10-10T07:58:34.298Z",
+   "tools": 9,
+   "unavailable": null
+  },
+  {
+   "name": "jl-3044/agentndx",
+   "useCount": 4376,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-11T03:51:25.601Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "megamind-0x/skillaudit",
+   "useCount": 4310,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-02-15T13:10:26.062Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "brendan/parasure",
+   "useCount": 4198,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-26T06:16:24.346Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "cammac/IBANforge",
+   "useCount": 4179,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-15T13:41:20.031Z",
+   "tools": 11,
+   "unavailable": null
+  },
+  {
+   "name": "a2a/llm-orchestration-agent",
+   "useCount": 4178,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-31T17:21:09.829Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "satoshidata/wallet-intelligence",
+   "useCount": 4144,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-24T06:45:51.407Z",
+   "tools": 44,
+   "unavailable": null
+  },
+  {
+   "name": "gondola/gondola-ai",
+   "useCount": 4091,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-07-06T17:57:09.303Z",
+   "tools": 32,
+   "unavailable": null
+  },
+  {
+   "name": "icons8community/icons8mpc",
+   "useCount": 4064,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-09-18T14:52:21.950Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "kangletian/paper-mcp",
+   "useCount": 4064,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-07T07:46:25.224Z",
+   "tools": 38,
+   "unavailable": null
+  },
+  {
+   "name": "CaullenOmdahl/nextjs-react-tailwind-assistant",
+   "useCount": 4057,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-11-06T12:24:45.508Z",
+   "tools": 16,
+   "unavailable": null
+  },
+  {
+   "name": "ciprianpater/srv-d7aoqmh5pdvs7391dcqg",
+   "useCount": 4056,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-12T17:40:09.419Z",
+   "tools": 70,
+   "unavailable": null
+  },
+  {
+   "name": "infobip-mcp/search",
+   "useCount": 4015,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-10-16T10:16:33.757Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "ckbk/subwayinfo-nyc",
+   "useCount": 3955,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-01-29T05:01:47.419Z",
+   "tools": 22,
+   "unavailable": null
+  },
+  {
+   "name": "koreafintech/korean-crypto-mcp",
+   "useCount": 3930,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-02-21T07:34:28.418Z",
+   "tools": 7,
+   "unavailable": null
+  },
+  {
+   "name": "sennebels/transita",
+   "useCount": 3913,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-02T17:08:48.716Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "Himalayas/himalayas-mcp",
+   "useCount": 3874,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-02T02:06:46.092Z",
+   "tools": 34,
+   "unavailable": null
+  },
+  {
+   "name": "sfiorini/youtube-mcp",
+   "useCount": 3827,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-11-20T02:53:24.831Z",
+   "tools": 7,
+   "unavailable": null
+  },
+  {
+   "name": "arjunkmrm/grep",
+   "useCount": 3818,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-02-07T02:59:48.913Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "yakenator/web-inspector",
+   "useCount": 3818,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-02-15T00:16:48.370Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "heavysword1/AgentEcon",
+   "useCount": 3813,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-26T19:06:40.626Z",
+   "tools": 7,
+   "unavailable": null
+  },
+  {
+   "name": "abneesh/epl-mcp",
+   "useCount": 3796,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-20T19:54:54.361Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "FlashAlpha/options-analytics",
+   "useCount": 3787,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-31T07:23:08.902Z",
+   "tools": 71,
+   "unavailable": null
+  },
+  {
+   "name": "sasabasara/where_is_my_train_mcp",
+   "useCount": 3733,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-08-17T21:02:38.684Z",
+   "tools": 8,
+   "unavailable": null
+  },
+  {
+   "name": "blackboxfoundry/livedatalink",
+   "useCount": 3686,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-09T04:01:00.008Z",
+   "tools": 294,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/openstreetmap-mcp-server",
+   "useCount": 3676,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:47:08.136Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "qbtlabs/openmm-mcp",
+   "useCount": 3674,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-07T20:30:02.479Z",
+   "tools": 13,
+   "unavailable": null
+  },
+  {
+   "name": "jeremyd2255/clearmarket",
+   "useCount": 3665,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-09T15:47:34.263Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "cavasotti/doorvault",
+   "useCount": 3646,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-30T20:42:34.905Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "bbeksh/mcppedia",
+   "useCount": 3642,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-13T00:47:29.268Z",
+   "tools": 7,
+   "unavailable": null
+  },
+  {
+   "name": "theagenttimes/ucp-gateway",
+   "useCount": 3618,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-06-04T21:14:21.380Z",
+   "tools": 12,
+   "unavailable": null
+  },
+  {
+   "name": "logicroomx/crypto-mcp",
+   "useCount": 3601,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-07T11:22:15.719Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "li-fi/lifi-mcp",
+   "useCount": 3589,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-11T12:10:02.905Z",
+   "tools": 25,
+   "unavailable": null
+  },
+  {
+   "name": "azmartone67/dchub",
+   "useCount": 3573,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-05-03T20:01:20.823Z",
+   "tools": 92,
+   "unavailable": null
+  },
+  {
+   "name": "sgroy10/speclock",
+   "useCount": 3564,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-02-25T05:11:28.857Z",
+   "tools": 44,
+   "unavailable": null
+  },
+  {
+   "name": "tradeparadex/mcp-paradex-py",
+   "useCount": 3556,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-11T04:21:07.405Z",
+   "tools": 16,
+   "unavailable": null
+  },
+  {
+   "name": "naimterrache/bjj-belt-progress",
+   "useCount": 3549,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-13T15:55:23.164Z",
+   "tools": 11,
+   "unavailable": null
+  },
+  {
+   "name": "ralf/fyndling",
+   "useCount": 3540,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-06T07:53:36.943Z",
+   "tools": 8,
+   "unavailable": null
+  },
+  {
+   "name": "vdineshk/dominion-observatory",
+   "useCount": 3460,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-08T12:09:02.672Z",
+   "tools": 10,
+   "unavailable": null
+  },
+  {
+   "name": "shawnnygoh/arxiv-scout",
+   "useCount": 3426,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-02-26T21:40:15.934Z",
+   "tools": 8,
+   "unavailable": null
+  },
+  {
+   "name": "metavolve-labs/intelligence-aeternum",
+   "useCount": 3350,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-02-23T05:19:34.161Z",
+   "tools": 0,
+   "unavailable": null
+  },
+  {
+   "name": "thebrierfox/the-stall",
+   "useCount": 3348,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-05T19:22:22.990Z",
+   "tools": 293,
+   "unavailable": null
+  },
+  {
+   "name": "amalgix/document-intelligence",
+   "useCount": 3322,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-18T05:29:33.994Z",
+   "tools": 8,
+   "unavailable": null
+  },
+  {
+   "name": "XJTLUmedia/x23",
+   "useCount": 3292,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-02-03T13:28:47.502Z",
+   "tools": 34,
+   "unavailable": null
+  },
+  {
+   "name": "ahmednegm-1711/maqami-travel",
+   "useCount": 3255,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-02T20:10:43.831Z",
+   "tools": 41,
+   "unavailable": null
+  },
+  {
+   "name": "mirodn/mcp-server-public-transport",
+   "useCount": 3245,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-01-02T13:58:45.007Z",
+   "tools": 12,
+   "unavailable": null
+  },
+  {
+   "name": "joelasota/synmerco",
+   "useCount": 3239,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-25T00:20:20.854Z",
+   "tools": 46,
+   "unavailable": null
+  },
+  {
+   "name": "sailquery/niche",
+   "useCount": 3238,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-06-14T15:21:59.636Z",
+   "tools": 25,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/pubchem-mcp-server",
+   "useCount": 3212,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:51:59.108Z",
+   "tools": 10,
+   "unavailable": null
+  },
+  {
+   "name": "sidneybissoli/medical-terminologies-mcp",
+   "useCount": 3184,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-05-10T19:40:51.978Z",
+   "tools": 33,
+   "unavailable": null
+  },
+  {
+   "name": "lxxmng/ocean-schedules",
+   "useCount": 3149,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-02T15:13:46.629Z",
+   "tools": 9,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/openfoodfacts-mcp-server",
+   "useCount": 3148,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:40:53.137Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "joshuaogabriel/anchor-compliance",
+   "useCount": 3121,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-19T10:14:04.441Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "mostrecommendedbooks/books",
+   "useCount": 3060,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-04T19:05:41.512Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "oblipali/sms-marketing",
+   "useCount": 3028,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-01T10:26:04.720Z",
+   "tools": 22,
+   "unavailable": null
+  },
+  {
+   "name": "stexa-ai/voice-mcp",
+   "useCount": 3012,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-27T15:56:37.985Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "useorgx/orgx-mcp",
+   "useCount": 2951,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-31T22:52:31.291Z",
+   "tools": 41,
+   "unavailable": null
+  },
+  {
+   "name": "r-yoshikawa/shirabe-calendar",
+   "useCount": 2944,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-14T08:47:19.798Z",
+   "tools": 3,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/eur-lex-mcp-server",
+   "useCount": 2939,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:07:59.121Z",
+   "tools": 7,
+   "unavailable": null
+  },
+  {
+   "name": "middlebrick/api-security",
+   "useCount": 2930,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-27T06:36:08.156Z",
+   "tools": 3,
+   "unavailable": null
+  },
+  {
+   "name": "defi-io/smartcontract",
+   "useCount": 2929,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-27T23:38:07.614Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "philpof102/mainstreet",
+   "useCount": 2881,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-05T13:44:11.904Z",
+   "tools": 17,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/who-gho-mcp-server",
+   "useCount": 2866,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:59:29.145Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "worldmonitor/wm-mcp",
+   "useCount": 2840,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-05T12:54:29.431Z",
+   "tools": 39,
+   "unavailable": null
+  },
+  {
+   "name": "agentry/agent-registry",
+   "useCount": 2795,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-23T15:42:26.506Z",
+   "tools": 36,
+   "unavailable": null
+  },
+  {
+   "name": "OjasKord/local-model-suitability-mcp",
+   "useCount": 2764,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-04-13T06:56:34.973Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "erik-7clt/local-intel",
+   "useCount": 2761,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-04-21T02:19:44.034Z",
+   "tools": 20,
+   "unavailable": null
+  },
+  {
+   "name": "daniel-szerszen/redstone-finance",
+   "useCount": 2722,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-21T11:39:56.882Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/orcid-mcp-server",
+   "useCount": 2713,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:47:53.130Z",
+   "tools": 9,
+   "unavailable": null
+  },
+  {
+   "name": "bitget-ai/bitget-mcp",
+   "useCount": 2707,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-18T10:31:39.103Z",
+   "tools": 19,
+   "unavailable": null
+  },
+  {
+   "name": "benzsevern/devpilot",
+   "useCount": 2672,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-27T15:16:42.749Z",
+   "tools": 10,
+   "unavailable": null
+  },
+  {
+   "name": "senzing/entity-resolution",
+   "useCount": 2671,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-15T10:55:50.531Z",
+   "tools": 13,
+   "unavailable": null
+  },
+  {
+   "name": "mirabelloconsultancy/mcp-server",
+   "useCount": 2669,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-13T12:47:18.840Z",
+   "tools": 44,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/crossref-mcp-server",
+   "useCount": 2610,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T18:45:29.103Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "punitarani/fli",
+   "useCount": 2595,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-09-29T16:53:19.619Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "hello-uvza/sansfiction",
+   "useCount": 2590,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-13T17:36:21.057Z",
+   "tools": 16,
+   "unavailable": null
+  },
+  {
+   "name": "dynamoi/music-youtube-marketing-mcp",
+   "useCount": 2562,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-02-12T18:33:20.591Z",
+   "tools": 18,
+   "unavailable": null
+  },
+  {
+   "name": "dialogbrain/dialogbrain",
+   "useCount": 2553,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-11T14:50:15.366Z",
+   "tools": 16,
+   "unavailable": null
+  },
+  {
+   "name": "ajie-jiebang/jiebang-tools",
+   "useCount": 2539,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-17T04:46:20.177Z",
+   "tools": 20,
+   "unavailable": null
+  },
+  {
+   "name": "gigachadtrey/websimm",
+   "useCount": 2527,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-10-27T16:20:29.440Z",
+   "tools": 11,
+   "unavailable": null
+  },
+  {
+   "name": "sidneybissoli/ibge-br-mcp",
+   "useCount": 2521,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-01-18T13:06:00.033Z",
+   "tools": 23,
+   "unavailable": null
+  },
+  {
+   "name": "florian/weavely",
+   "useCount": 2515,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-09T14:42:45.559Z",
+   "tools": 13,
+   "unavailable": null
+  },
+  {
+   "name": "hamrun/hamrun",
+   "useCount": 2509,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-15T22:45:36.721Z",
+   "tools": 11,
+   "unavailable": null
+  },
+  {
+   "name": "keenable/web-search",
+   "useCount": 2498,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-06-18T17:03:59.643Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "fhl/fhl-mcp-server",
+   "useCount": 2469,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-12-29T07:21:03.430Z",
+   "tools": 28,
+   "unavailable": null
+  },
+  {
+   "name": "zlurp/zlurp",
+   "useCount": 2458,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-13T22:45:45.331Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "augiemazza/varrd",
+   "useCount": 2427,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-01T21:30:28.699Z",
+   "tools": 9,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/faostat-mcp-server",
+   "useCount": 2410,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:11:55.225Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "hi-10f9/vetted-consumer",
+   "useCount": 2408,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-17T22:37:36.525Z",
+   "tools": 9,
+   "unavailable": null
+  },
+  {
+   "name": "underground-district/ucd-mcp",
+   "useCount": 2406,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-09T18:06:12.705Z",
+   "tools": 21,
+   "unavailable": null
+  },
+  {
+   "name": "huggingface",
+   "useCount": 2405,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-29T10:16:16.666Z",
+   "tools": 8,
+   "unavailable": null
+  },
+  {
+   "name": "utkarshgupta885/sportiq",
+   "useCount": 2384,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-12T08:28:08.291Z",
+   "tools": 44,
+   "unavailable": null
+  },
+  {
+   "name": "jan-krat-kj4q/tulugar-real-estate",
+   "useCount": 2365,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-11T13:06:22.135Z",
+   "tools": 8,
+   "unavailable": null
+  },
+  {
+   "name": "stockfilm/stockfilm-mcp",
+   "useCount": 2325,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-20T05:44:36.945Z",
+   "tools": 0,
+   "unavailable": null
+  },
+  {
+   "name": "rafa/minhamorada-pt",
+   "useCount": 2314,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-29T11:23:43.474Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "gautamgb/mcpindex",
+   "useCount": 2306,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": false,
+   "created": "2026-07-15T22:23:40.978Z",
+   "tools": null,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/usaspending-mcp-server",
+   "useCount": 2289,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:58:15.220Z",
+   "tools": 16,
+   "unavailable": null
+  },
+  {
+   "name": "mr-gigiliiii/d3vtools",
+   "useCount": 2272,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-27T20:27:40.760Z",
+   "tools": 3,
+   "unavailable": null
+  },
+  {
+   "name": "adam-nntd/sickslip-verify",
+   "useCount": 2264,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-20T20:13:42.792Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "receiptor-ai/receiptor-mcp",
+   "useCount": 2260,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-28T01:24:11.815Z",
+   "tools": 51,
+   "unavailable": null
+  },
+  {
+   "name": "vdineshk/sg-company-lookup-mcp",
+   "useCount": 2235,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-11T04:11:19.085Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "bouch/whatdotheyknow",
+   "useCount": 2223,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-30T09:39:32.159Z",
+   "tools": 8,
+   "unavailable": null
+  },
+  {
+   "name": "standardaccounting/public-mcp",
+   "useCount": 2221,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-02T22:58:27.893Z",
+   "tools": 10,
+   "unavailable": null
+  },
+  {
+   "name": "jobly/jobly-mcp",
+   "useCount": 2218,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-16T21:20:37.126Z",
+   "tools": 29,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/federal-regulations-mcp-server",
+   "useCount": 2210,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:13:47.112Z",
+   "tools": 7,
+   "unavailable": null
+  },
+  {
+   "name": "kindrat86/mcp-deal-flow-signal",
+   "useCount": 2207,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-05T21:39:23.303Z",
+   "tools": 12,
+   "unavailable": null
+  },
+  {
+   "name": "aparajithn/agent-utils-mcp-new",
+   "useCount": 2196,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-07T07:32:54.659Z",
+   "tools": 18,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/fema-mcp-server",
+   "useCount": 2191,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:14:55.125Z",
+   "tools": 8,
+   "unavailable": null
+  },
+  {
+   "name": "lanchuske/local-mcp",
+   "useCount": 2174,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-03T10:13:00.257Z",
+   "tools": 203,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/libofcongress-mcp-server",
+   "useCount": 2162,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:19:16.396Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "icosaedro/toolsnap-mcp",
+   "useCount": 2080,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-23T22:29:32.749Z",
+   "tools": 17,
+   "unavailable": null
+  },
+  {
+   "name": "mansamarkets/mansa",
+   "useCount": 2025,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-02T20:05:42.818Z",
+   "tools": 14,
+   "unavailable": null
+  },
+  {
+   "name": "AITutor3/calculator-mcp-test",
+   "useCount": 2021,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-09-08T04:37:02.133Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/gutenberg-mcp-server",
+   "useCount": 1987,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:17:26.146Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "samimeshkor/dynamic-feed",
+   "useCount": 1977,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-30T14:34:49.383Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/national-parks-mcp-server",
+   "useCount": 1976,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:23:17.136Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "fruitflies/connect",
+   "useCount": 1950,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-28T16:44:56.383Z",
+   "tools": 22,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/reference-data-mcp-server",
+   "useCount": 1931,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:52:33.111Z",
+   "tools": 10,
+   "unavailable": null
+  },
+  {
+   "name": "meydancisezgi/gigora",
+   "useCount": 1922,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-09T20:08:46.598Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "alex-kenny-lee-vfjv/panko-food-safety",
+   "useCount": 1918,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-12T04:41:15.885Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/socrata-mcp-server",
+   "useCount": 1882,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:56:24.109Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "mirabelloconsultancy/investment-migration",
+   "useCount": 1882,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-04T13:22:00.892Z",
+   "tools": 9,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/protein-mcp-server",
+   "useCount": 1867,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:51:24.141Z",
+   "tools": 7,
+   "unavailable": null
+  },
+  {
+   "name": "chuhuoyuan/cloudflare",
+   "useCount": 1859,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-08-25T06:45:51.367Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "DeniseLewis200081/rail",
+   "useCount": 1829,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-07-07T08:56:38.025Z",
+   "tools": 8,
+   "unavailable": null
+  },
+  {
+   "name": "vinaybhosle/shippingrates-mcp-server",
+   "useCount": 1820,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-02-27T06:22:22.650Z",
+   "tools": 19,
+   "unavailable": null
+  },
+  {
+   "name": "koumoul/ademe-opendata",
+   "useCount": 1760,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-16T16:45:07.395Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "compoid/compoid-mcp",
+   "useCount": 1742,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-22T13:45:32.990Z",
+   "tools": 10,
+   "unavailable": null
+  },
+  {
+   "name": "do-droid/seoul-essentials",
+   "useCount": 1742,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-02-28T05:01:35.443Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "housingassist/tokyo-housing",
+   "useCount": 1712,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-03T19:18:33.831Z",
+   "tools": 7,
+   "unavailable": null
+  },
+  {
+   "name": "kinescope/kinescope-mcp",
+   "useCount": 1712,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-01-27T09:24:34.430Z",
+   "tools": 0,
+   "unavailable": null
+  },
+  {
+   "name": "lodikidsactivities/main",
+   "useCount": 1694,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-18T23:06:07.244Z",
+   "tools": 72,
+   "unavailable": null
+  },
+  {
+   "name": "info-07of/property-finance-mcp",
+   "useCount": 1674,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-19T19:05:03.711Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "dimitry/parse-mcp",
+   "useCount": 1639,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-05T13:26:33.927Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/exchange-rates-mcp-server",
+   "useCount": 1637,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:09:39.320Z",
+   "tools": 7,
+   "unavailable": null
+  },
+  {
+   "name": "simosphereai/simosphere-ai",
+   "useCount": 1629,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-06-06T11:16:53.331Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "daniel-abbay/compuute-scan-api",
+   "useCount": 1597,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-05-23T20:47:00.049Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "nimistu/nimistu",
+   "useCount": 1596,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-06-22T12:37:36.441Z",
+   "tools": 9,
+   "unavailable": null
+  },
+  {
+   "name": "vestara/america-law-graph",
+   "useCount": 1586,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-31T08:53:24.864Z",
+   "tools": 11,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/openlibrary-mcp-server",
+   "useCount": 1585,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:45:26.167Z",
+   "tools": 9,
+   "unavailable": null
+  },
+  {
+   "name": "spacemolt/gameserver",
+   "useCount": 1578,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-02-23T23:43:21.148Z",
+   "tools": 0,
+   "unavailable": null
+  },
+  {
+   "name": "Tavily",
+   "useCount": 1575,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-27T14:38:26.642Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "compress-new/compress-tokens",
+   "useCount": 1568,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-02-22T22:03:27.864Z",
+   "tools": 0,
+   "unavailable": null
+  },
+  {
+   "name": "janmacher02-xl8y/sec-edgar-mcp",
+   "useCount": 1568,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-04-19T19:15:34.681Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "seahbk1006/seahboonkeong-chat-bnmapi",
+   "useCount": 1565,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2025-10-28T14:10:29.594Z",
+   "tools": 26,
+   "unavailable": null
+  },
+  {
+   "name": "mdenius/titan-store",
+   "useCount": 1542,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-13T16:40:41.087Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "data-transform-agent/data-transform",
+   "useCount": 1505,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-03-07T05:12:01.952Z",
+   "tools": 3,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/imf-mcp-server",
+   "useCount": 1492,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:18:12.110Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "sidneybissoli/bcb-br-mcp",
+   "useCount": 1480,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-18T17:13:18.654Z",
+   "tools": 17,
+   "unavailable": null
+  },
+  {
+   "name": "securelend/financial-services",
+   "useCount": 1477,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-01-19T08:47:32.960Z",
+   "tools": 0,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/eia-energy-mcp-server",
+   "useCount": 1457,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:06:22.303Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "ogasurfproject-jpg/horizon-shield",
+   "useCount": 1450,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-17T04:55:10.046Z",
+   "tools": 13,
+   "unavailable": null
+  },
+  {
+   "name": "simon-9wwy/toolzy-mcp",
+   "useCount": 1447,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-13T15:21:52.151Z",
+   "tools": 3,
+   "unavailable": null
+  },
+  {
+   "name": "nuancesmen/aeotool",
+   "useCount": 1439,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-27T19:39:47.270Z",
+   "tools": 36,
+   "unavailable": null
+  },
+  {
+   "name": "support-i3bt/kpi-depot",
+   "useCount": 1434,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-21T20:06:42.639Z",
+   "tools": 3,
+   "unavailable": null
+  },
+  {
+   "name": "timothy-walton45/squeezeos-api",
+   "useCount": 1377,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-06-01T18:43:17.307Z",
+   "tools": 33,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/ourairports-mcp-server",
+   "useCount": 1344,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:49:17.127Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/bls-labor-mcp-server",
+   "useCount": 1334,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T18:40:38.595Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "cyanheads/reliefweb-mcp-server",
+   "useCount": 1304,
+   "views": [
+    "most used"
+   ],
+   "verified": false,
+   "remote": true,
+   "created": "2026-07-10T19:53:12.155Z",
+   "tools": 9,
+   "unavailable": null
+  },
+  {
+   "name": "sidneybissoli/senado-br-mcp-cloudflare",
+   "useCount": 1281,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-06-13T09:34:05.985Z",
+   "tools": 69,
+   "unavailable": null
+  },
+  {
+   "name": "microsoft/learn_mcp",
+   "useCount": 1272,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-09-24T07:14:32.607Z",
+   "tools": 3,
+   "unavailable": null
+  },
+  {
+   "name": "maximumsats/maximumsats",
+   "useCount": 1235,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-02-08T05:19:02.072Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "openzeppelin",
+   "useCount": 1077,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-29T10:51:12.972Z",
+   "tools": 8,
+   "unavailable": null
+  },
+  {
+   "name": "agentery/agentery-mcp",
+   "useCount": 972,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-07-09T15:25:24.594Z",
+   "tools": 19,
+   "unavailable": null
+  },
+  {
+   "name": "re-port-flow/reportflow-mcp",
+   "useCount": 869,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-06-05T19:41:47.042Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "blockscout/mcp-server",
+   "useCount": 738,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-06-05T11:59:08.605Z",
+   "tools": 16,
+   "unavailable": null
+  },
+  {
+   "name": "parallel/search",
+   "useCount": 723,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-10-10T12:20:10.580Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "gcampton/launch-planner",
+   "useCount": 632,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-04-29T00:54:55.652Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "hugeicons/mcp-server",
+   "useCount": 630,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-04-11T01:00:54.340Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "zev/lastlook-data",
+   "useCount": 571,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-05-15T06:21:03.799Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "aurelianflo/core",
+   "useCount": 539,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-04-05T23:53:57.251Z",
+   "tools": 9,
+   "unavailable": null
+  },
+  {
+   "name": "interpretai/postagent",
+   "useCount": 528,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-06-17T01:25:38.904Z",
+   "tools": 13,
+   "unavailable": null
+  },
+  {
+   "name": "gstcranes/public-discovery",
+   "useCount": 520,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-07-07T02:57:34.905Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "airtable",
+   "useCount": 500,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-11-19T12:46:21.705Z",
+   "tools": 23,
+   "unavailable": null
+  },
+  {
+   "name": "offshoreproz/agent-company",
+   "useCount": 473,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-06-17T20:23:05.302Z",
+   "tools": 11,
+   "unavailable": null
+  },
+  {
+   "name": "browserbase",
+   "useCount": 433,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2024-12-13T15:47:00.443Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "aleksander/vastlint",
+   "useCount": 404,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-04-30T06:34:51.066Z",
+   "tools": 13,
+   "unavailable": null
+  },
+  {
+   "name": "rolocache/agent-advisories",
+   "useCount": 396,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-07-03T01:53:24.646Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "twohalves/pharma-regulatory",
+   "useCount": 371,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-18T21:37:31.288Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "OjasKord/tender-mcp",
+   "useCount": 339,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-04-10T02:36:12.263Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "OjasKord/bizfile-mcp",
+   "useCount": 314,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-28T01:03:03.941Z",
+   "tools": 3,
+   "unavailable": null
+  },
+  {
+   "name": "degenlegion-com/waxseal",
+   "useCount": 303,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-06-28T10:13:44.624Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "brightdata",
+   "useCount": 300,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-04-16T16:00:52.595Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "excalidraw",
+   "useCount": 269,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-02-06T13:23:44.866Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "twohalves/food-safety",
+   "useCount": 253,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-16T08:14:57.731Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "attio",
+   "useCount": 242,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-11-19T12:48:02.399Z",
+   "tools": 34,
+   "unavailable": null
+  },
+  {
+   "name": "twohalves/cannabis-regulatory",
+   "useCount": 238,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-20T23:32:46.242Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "apify",
+   "useCount": 218,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-29T10:40:41.309Z",
+   "tools": 8,
+   "unavailable": null
+  },
+  {
+   "name": "LinkupPlatform/linkup-mcp-server",
+   "useCount": 190,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-10-16T15:47:41.596Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "Supabase",
+   "useCount": 177,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-10-02T02:02:48.986Z",
+   "tools": 29,
+   "unavailable": null
+  },
+  {
+   "name": "vivid/vivid-mcp",
+   "useCount": 177,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-02-18T18:29:05.426Z",
+   "tools": 0,
+   "unavailable": null
+  },
+  {
+   "name": "twohalves/chemical-safety",
+   "useCount": 122,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-16T16:25:01.995Z",
+   "tools": 3,
+   "unavailable": null
+  },
+  {
+   "name": "mem0ai/mem0-memory-mcp",
+   "useCount": 107,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-03-28T17:52:31.224Z",
+   "tools": 9,
+   "unavailable": null
+  },
+  {
+   "name": "mockhero/mockhero",
+   "useCount": 105,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-07-08T14:19:17.804Z",
+   "tools": 9,
+   "unavailable": null
+  },
+  {
+   "name": "aldred/guard-mail",
+   "useCount": 76,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-06-25T20:30:23.234Z",
+   "tools": 12,
+   "unavailable": null
+  },
+  {
+   "name": "nanobanana",
+   "useCount": 70,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-04-16T05:32:57.053Z",
+   "tools": 3,
+   "unavailable": null
+  },
+  {
+   "name": "genesis/proof-relay",
+   "useCount": 64,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-05-17T01:25:58.738Z",
+   "tools": 25,
+   "unavailable": null
+  },
+  {
+   "name": "mcp-hive/hive-servers",
+   "useCount": 64,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-02-06T17:56:58.016Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "sawftware-apps/commodities-sh",
+   "useCount": 61,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-07-25T12:11:08.158Z",
+   "tools": 11,
+   "unavailable": null
+  },
+  {
+   "name": "byte/byte-library",
+   "useCount": 56,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-05-24T23:27:26.842Z",
+   "tools": 15,
+   "unavailable": null
+  },
+  {
+   "name": "sawftware-apps/docimprint",
+   "useCount": 55,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-06-10T18:03:09.094Z",
+   "tools": 22,
+   "unavailable": null
+  },
+  {
+   "name": "apify/mcp",
+   "useCount": 52,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-12-11T07:54:14.390Z",
+   "tools": 8,
+   "unavailable": null
+  },
+  {
+   "name": "ScrapeGraphAI/scrapegraph-mcp",
+   "useCount": 50,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-08-11T10:54:45.733Z",
+   "tools": 8,
+   "unavailable": null
+  },
+  {
+   "name": "OjasKord/vat-validator-mcp",
+   "useCount": 42,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-04-08T06:25:56.627Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "sugra-systems/sugra-api",
+   "useCount": 37,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-07-22T09:29:28.535Z",
+   "tools": 11,
+   "unavailable": null
+  },
+  {
+   "name": "martinhnymann/nordic-data-mcp",
+   "useCount": 35,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-05-23T09:23:08.802Z",
+   "tools": 11,
+   "unavailable": null
+  },
+  {
+   "name": "meacheal-ai/mrc-data",
+   "useCount": 30,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-04-08T09:09:14.189Z",
+   "tools": 19,
+   "unavailable": null
+  },
+  {
+   "name": "infranodus/mcp-server-infranodus",
+   "useCount": 28,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-09-15T14:22:21.032Z",
+   "tools": 28,
+   "unavailable": null
+  },
+  {
+   "name": "alix-petkov/artistally",
+   "useCount": 27,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-07-20T16:25:08.916Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "antvis/mcp-server-chart",
+   "useCount": 27,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-04-28T05:45:33.503Z",
+   "tools": 0,
+   "unavailable": null
+  },
+  {
+   "name": "clawdio777/verity",
+   "useCount": 27,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-05-11T07:42:50.027Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "correkt/marketplace",
+   "useCount": 25,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-04-04T00:40:58.392Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "hakeemwarner95/acrelens",
+   "useCount": 25,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-05-05T16:15:37.118Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "gammarips/Options-Intelligence",
+   "useCount": 24,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-07-07T20:37:09.528Z",
+   "tools": 29,
+   "unavailable": null
+  },
+  {
+   "name": "metaview",
+   "useCount": 23,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-27T16:35:31.028Z",
+   "tools": 17,
+   "unavailable": null
+  },
+  {
+   "name": "OjasKord/data-compliance-mcp",
+   "useCount": 21,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-04-21T10:08:55.888Z",
+   "tools": 3,
+   "unavailable": null
+  },
+  {
+   "name": "thinair/data",
+   "useCount": 20,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-04-30T04:28:56.501Z",
+   "tools": 26,
+   "unavailable": null
+  },
+  {
+   "name": "clawdio777/aeonos",
+   "useCount": 18,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-05-11T05:19:08.238Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "datafor-b2b/dataforb2b",
+   "useCount": 17,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-05-14T18:05:50.928Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "twitch",
+   "useCount": 15,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-11-19T12:52:47.579Z",
+   "tools": 82,
+   "unavailable": null
+  },
+  {
+   "name": "canvascloudai/cloud-world-model",
+   "useCount": 12,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-07-27T21:00:16.497Z",
+   "tools": 9,
+   "unavailable": null
+  },
+  {
+   "name": "tako/tako",
+   "useCount": 12,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-06-21T18:26:50.501Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "skipshit/skipshit",
+   "useCount": 10,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-05-23T12:11:27.024Z",
+   "tools": 3,
+   "unavailable": null
+  },
+  {
+   "name": "sprouts",
+   "useCount": 10,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-27T16:37:25.194Z",
+   "tools": 0,
+   "unavailable": null
+  },
+  {
+   "name": "bugagent/bugagent-mcp",
+   "useCount": 9,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-06-07T02:58:33.213Z",
+   "tools": 109,
+   "unavailable": null
+  },
+  {
+   "name": "tldraw",
+   "useCount": 9,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-27T16:30:49.273Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "clay-inc/clay-mcp",
+   "useCount": 8,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-11-14T14:57:09.896Z",
+   "tools": 20,
+   "unavailable": null
+  },
+  {
+   "name": "easyweek/easyweek",
+   "useCount": 6,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-04-22T07:31:27.772Z",
+   "tools": 22,
+   "unavailable": null
+  },
+  {
+   "name": "pantrypersona",
+   "useCount": 6,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-02-07T03:04:22.647Z",
+   "tools": 18,
+   "unavailable": null
+  },
+  {
+   "name": "supermemory",
+   "useCount": 6,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-09-17T21:26:24.073Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "tabai/core",
+   "useCount": 4,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-02-03T15:57:24.688Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "cloudinary",
+   "useCount": 3,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-27T15:41:10.918Z",
+   "tools": 23,
+   "unavailable": null
+  },
+  {
+   "name": "cod-gb2l/StudioMeyer-Crew",
+   "useCount": 3,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-05-02T20:41:37.404Z",
+   "tools": 14,
+   "unavailable": null
+  },
+  {
+   "name": "databutton/databutton-mcp",
+   "useCount": 3,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-03-09T09:44:04.901Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "findadomain",
+   "useCount": 2,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-29T11:08:32.510Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "nimble/nimble-mcp",
+   "useCount": 2,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-22T08:49:06.265Z",
+   "tools": 18,
+   "unavailable": null
+  },
+  {
+   "name": "mem",
+   "useCount": 1,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-27T16:31:55.244Z",
+   "tools": 16,
+   "unavailable": null
+  },
+  {
+   "name": "abm-dev/gtm",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-06-06T12:25:05.419Z",
+   "tools": 13,
+   "unavailable": null
+  },
+  {
+   "name": "airops",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-27T16:33:59.637Z",
+   "tools": 49,
+   "unavailable": null
+  },
+  {
+   "name": "amazon",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-11-19T12:50:20.554Z",
+   "tools": null,
+   "unavailable": null
+  },
+  {
+   "name": "AudienseCo/mcp-audiense-insights",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-01-31T16:57:41.832Z",
+   "tools": 8,
+   "unavailable": null
+  },
+  {
+   "name": "battlenet",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-11-19T12:51:20.404Z",
+   "tools": null,
+   "unavailable": null
+  },
+  {
+   "name": "bitly",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-27T15:19:31.723Z",
+   "tools": 52,
+   "unavailable": null
+  },
+  {
+   "name": "boldsign",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-11-19T12:52:20.329Z",
+   "tools": null,
+   "unavailable": null
+  },
+  {
+   "name": "calclavia/ahref",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-10-02T05:39:27.431Z",
+   "tools": null,
+   "unavailable": null
+  },
+  {
+   "name": "close",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-27T16:31:51.349Z",
+   "tools": 62,
+   "unavailable": null
+  },
+  {
+   "name": "cod-gb2l/studiomeyer-memory",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-05-02T20:30:12.293Z",
+   "tools": 56,
+   "unavailable": null
+  },
+  {
+   "name": "coinvest/coinvest",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-05-25T21:21:54.211Z",
+   "tools": 34,
+   "unavailable": null
+  },
+  {
+   "name": "commonroom",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-27T15:19:31.749Z",
+   "tools": 3,
+   "unavailable": null
+  },
+  {
+   "name": "Databox-MCP/databox",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-02-16T13:00:02.711Z",
+   "tools": 0,
+   "unavailable": null
+  },
+  {
+   "name": "Decodo/decodo-mcp-server",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-06-18T08:45:53.317Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "deel",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-11-19T12:51:37.445Z",
+   "tools": null,
+   "unavailable": null
+  },
+  {
+   "name": "Desearch-ai/desearch",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-05-19T15:34:20.234Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "EduBase/MCP",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-03-13T19:00:56.244Z",
+   "tools": 137,
+   "unavailable": null
+  },
+  {
+   "name": "finstat/finstatai",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-07-27T02:03:50.573Z",
+   "tools": 66,
+   "unavailable": null
+  },
+  {
+   "name": "flatlandfi/flatland",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-04-19T21:58:50.694Z",
+   "tools": 32,
+   "unavailable": null
+  },
+  {
+   "name": "formio/mcp",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2026-08-03T21:11:01.540Z",
+   "tools": 21,
+   "unavailable": null
+  },
+  {
+   "name": "forum-labs/payfetch",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2026-07-06T19:00:43.677Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "front",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-11-19T12:50:09.252Z",
+   "tools": null,
+   "unavailable": null
+  },
+  {
+   "name": "githits/GitHits",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-08-03T12:14:50.508Z",
+   "tools": 15,
+   "unavailable": null
+  },
+  {
+   "name": "global-database",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-11T13:16:25.216Z",
+   "tools": 19,
+   "unavailable": null
+  },
+  {
+   "name": "go_to_webinar",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-11-19T12:51:53.397Z",
+   "tools": null,
+   "unavailable": null
+  },
+  {
+   "name": "grafbase",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-29T10:24:21.394Z",
+   "tools": 3,
+   "unavailable": null
+  },
+  {
+   "name": "groundroute-ai/web-search",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-06-14T19:45:46.542Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "happyscribe/happyscribe",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-05-06T16:16:33.716Z",
+   "tools": 30,
+   "unavailable": null
+  },
+  {
+   "name": "hex",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-10-29T20:48:36.262Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "hostsmith/mcp-server",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-05-07T08:18:57.237Z",
+   "tools": 9,
+   "unavailable": null
+  },
+  {
+   "name": "hyperd/hyperd-mcp",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2026-05-03T17:05:47.253Z",
+   "tools": 29,
+   "unavailable": null
+  },
+  {
+   "name": "infisical",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-04-17T19:48:05.194Z",
+   "tools": 58,
+   "unavailable": null
+  },
+  {
+   "name": "jam",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-27T15:19:31.717Z",
+   "tools": 15,
+   "unavailable": null
+  },
+  {
+   "name": "JigsawStack/ai-web-scraper",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-03-01T19:18:48.515Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "JigsawStack/ai-web-search",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-03-02T07:51:47.017Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "JigsawStack/image-generation",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-03-04T00:14:56.697Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "JigsawStack/jigsawstack-nsfw",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-07-09T18:08:28.362Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "JigsawStack/jigsawstack-object-detection",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-07-09T18:15:47.428Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "JigsawStack/jigsawstack-speech-to-text",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-07-09T18:25:01.804Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "JigsawStack/jigsawstack-text-to-speech",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-07-09T18:27:52.300Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "JigsawStack/translation",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-03-02T18:24:24.718Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "JigsawStack/vocr",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-03-03T20:21:44.797Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "jotform",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-27T16:31:08.337Z",
+   "tools": 6,
+   "unavailable": null
+  },
+  {
+   "name": "Kastalien-Research/thoughtbox",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-02-11T22:48:43.877Z",
+   "tools": 3,
+   "unavailable": null
+  },
+  {
+   "name": "keap",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-11-19T12:51:03.309Z",
+   "tools": null,
+   "unavailable": null
+  },
+  {
+   "name": "klaviyo",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-27T15:00:38.563Z",
+   "tools": 27,
+   "unavailable": null
+  },
+  {
+   "name": "KTrendz/bot-trading",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-02-09T14:48:20.249Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "laddro/career",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-05-11T23:41:10.362Z",
+   "tools": 18,
+   "unavailable": null
+  },
+  {
+   "name": "launchdarkly",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-29T10:04:57.821Z",
+   "tools": 15,
+   "unavailable": null
+  },
+  {
+   "name": "letta-ai/memory-mcp",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-09-08T02:24:37.453Z",
+   "tools": null,
+   "unavailable": null
+  },
+  {
+   "name": "liveblocks/liveblocks-mcp-server",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-04-29T14:24:43.461Z",
+   "tools": 39,
+   "unavailable": null
+  },
+  {
+   "name": "mailerlite",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-27T15:00:39.671Z",
+   "tools": 66,
+   "unavailable": null
+  },
+  {
+   "name": "mapbox",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-29T08:56:42.353Z",
+   "tools": 22,
+   "unavailable": null
+  },
+  {
+   "name": "motherduck",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-27T16:32:41.494Z",
+   "tools": 16,
+   "unavailable": null
+  },
+  {
+   "name": "netlify",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-27T15:51:54.512Z",
+   "tools": 9,
+   "unavailable": null
+  },
+  {
+   "name": "norman/norman-mcp",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-02-02T15:58:16.245Z",
+   "tools": 0,
+   "unavailable": null
+  },
+  {
+   "name": "OjasKord/document-integrity-validator-mcp",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-05-06T13:52:08.275Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "OjasKord/hs-code-classifier-mcp-server",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-04-24T05:35:01.000Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "parallel/tasks",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-09-16T16:34:10.689Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "paypal",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2025-09-04T17:37:53.758Z",
+   "tools": 4,
+   "unavailable": null
+  },
+  {
+   "name": "portio",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-29T11:03:07.892Z",
+   "tools": 9,
+   "unavailable": null
+  },
+  {
+   "name": "puremd/puremd-mcp",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-04-01T21:11:19.708Z",
+   "tools": 2,
+   "unavailable": null
+  },
+  {
+   "name": "recreation-gov",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-04-22T07:35:39.060Z",
+   "tools": 62,
+   "unavailable": null
+  },
+  {
+   "name": "ring_central",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-11-19T12:51:44.801Z",
+   "tools": null,
+   "unavailable": null
+  },
+  {
+   "name": "sage",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-11-19T12:52:07.095Z",
+   "tools": null,
+   "unavailable": null
+  },
+  {
+   "name": "sanity",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-02-12T22:52:33.411Z",
+   "tools": 41,
+   "unavailable": null
+  },
+  {
+   "name": "seatable/seatable-mcp",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-04T07:38:26.153Z",
+   "tools": 18,
+   "unavailable": null
+  },
+  {
+   "name": "service-c09f/riskmodels",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-06-09T23:39:57.141Z",
+   "tools": 15,
+   "unavailable": null
+  },
+  {
+   "name": "sidneybissoli/sih-br-mcp",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-09-25T21:36:24.986Z",
+   "tools": 12,
+   "unavailable": null
+  },
+  {
+   "name": "sidneybissoli/uis-mcp-server",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-09-17T14:13:43.699Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "simplescraper",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-29T10:51:12.950Z",
+   "tools": 0,
+   "unavailable": null
+  },
+  {
+   "name": "sophymarine/openregistry",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-05-12T02:57:34.690Z",
+   "tools": 10,
+   "unavailable": null
+  },
+  {
+   "name": "sparkient/sparkient",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-06-28T16:45:29.406Z",
+   "tools": 13,
+   "unavailable": null
+  },
+  {
+   "name": "synci",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-07-15T16:45:46.495Z",
+   "tools": 5,
+   "unavailable": null
+  },
+  {
+   "name": "thinair/geo",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-04-30T04:04:51.493Z",
+   "tools": 19,
+   "unavailable": null
+  },
+  {
+   "name": "thriya/thriya",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-06-25T13:52:26.813Z",
+   "tools": 290,
+   "unavailable": null
+  },
+  {
+   "name": "togethercomputer/mcp-server-tci",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-04-30T20:36:15.382Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "token-metrics/mcp",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-06-03T14:10:08.780Z",
+   "tools": null,
+   "unavailable": null
+  },
+  {
+   "name": "VapiAI/vapi-mcp-server",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-04-16T23:51:13.488Z",
+   "tools": 13,
+   "unavailable": null
+  },
+  {
+   "name": "zapier",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-27T15:41:10.697Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "zenable",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": true,
+   "created": "2026-03-29T11:03:07.919Z",
+   "tools": 1,
+   "unavailable": null
+  },
+  {
+   "name": "zoho_desk",
+   "useCount": 0,
+   "views": [
+    "verified"
+   ],
+   "verified": true,
+   "remote": false,
+   "created": "2025-11-19T12:51:17.035Z",
+   "tools": null,
+   "unavailable": null
+  }
+ ]
+}
