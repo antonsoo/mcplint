@@ -4,6 +4,29 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- **The rules were recalibrated on 11,545 real tool definitions** (`studies/registry-census/`: the 418
+  most-used and verified servers of a public registry). 0.3.3 reported 14 attack errors on them, all false,
+  and 57.8 findings per server; this version reports none, 2 attack warnings, and 17.9 findings per server.
+  - `safety/prompt-injection`, `safety/secret-access` and `safety/cross-tool-reference` report one attack
+    signal as a warning and two on the same tool, prompt or resource as an error, and say which. A stated tool
+    order is a note.
+  - `safety/secret-access` is an error for an instruction to obtain a local secret and pass it on, and a
+    warning for a credential store that is only named. A `.env` file or an API key merely mentioned is no
+    longer reported; a client's MCP configuration is matched by where clients keep it.
+  - `safety/cross-tool-reference` reports coercive wording about a tool the same server does not define. A
+    server's instructions about its own tools are not reported.
+  - `safety/missing-annotations` looks for a destructive verb in the tool's name, not in its description.
+  - `safety/encoded-blob` does not read `$ref`, `$id`, `$schema` or `$anchor` values as blobs.
+  - `naming/generic` fires only when every word of a name is generic.
+  - `schema/portability` reports non-strict schemas once per server; `description/param-missing` once per
+    tool.
+- Token budgets come from the same corpus: `--budget` defaults to 550 (was 400) and `--total-budget` to
+  16,000 (was unset), the 90th percentiles of real tools and servers. A budget finding says where the tool or
+  server stands among them.
+- The HTML report shows findings before the collection-coverage table when the audit is complete.
+- `resolveConfig()` works without arguments for library callers.
+- The attack fixture's `translate_text` now shadows a tool of another server (`send_email`), as the published
+  attack does, in place of one of its own.
 - Require MCP SDK 1.31.0 or newer, which includes the OAuth credential issuer-binding
   fix for GHSA-6qxp-vccf-f47h. Current mcplint transports do not configure an OAuth
   provider. Patch the build dependency source-map-js to 1.2.2 as well.
