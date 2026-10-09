@@ -1,0 +1,50 @@
+{
+  "node": "v26.7.0",
+  "elapsedMs": 3707.167999,
+  "samples": [
+    {
+      "schemas": 0,
+      "heapBytes": 34717592
+    },
+    {
+      "schemas": 500,
+      "heapBytes": 42061184
+    },
+    {
+      "schemas": 1000,
+      "heapBytes": 48080888
+    },
+    {
+      "schemas": 1500,
+      "heapBytes": 54141472
+    },
+    {
+      "schemas": 2000,
+      "heapBytes": 60000568
+    },
+    {
+      "schemas": 2500,
+      "heapBytes": 66018968
+    },
+    {
+      "schemas": 3000,
+      "heapBytes": 72089088
+    },
+    {
+      "schemas": 3500,
+      "heapBytes": 77934832
+    },
+    {
+      "schemas": 4000,
+      "heapBytes": 83774488
+    },
+    {
+      "schemas": 4500,
+      "heapBytes": 90020944
+    },
+    {
+      "schemas": 5000,
+      "heapBytes": 95850096
+    }
+  ]
+}

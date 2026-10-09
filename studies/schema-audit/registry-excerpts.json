@@ -1,0 +1,104 @@
+[
+  {
+    "registryServer": "mapbox",
+    "tool": "bbox_tool",
+    "sourceUrl": "https://registry.smithery.ai/servers/mapbox",
+    "sourceSha256": "4d9f64649e288750667154f04175cb01a04a1160cdd3a89f258006a93dea6511",
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "bbox": {
+          "type": "array",
+          "items": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "maxItems": 4,
+          "minItems": 4,
+          "description": "Bounding box as [minLon, minLat, maxLon, maxLat]"
+        }
+      },
+      "required": [
+        "bbox"
+      ]
+    }
+  },
+  {
+    "registryServer": "adamamer20/paper-search-mcp-openai",
+    "tool": "search",
+    "sourceUrl": "https://registry.smithery.ai/servers/adamamer20/paper-search-mcp-openai",
+    "sourceSha256": "b6407353bed1e10f0849473f289db24f230c2cbff30ea6e35c018f4c66466cdb",
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "_meta": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": true
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Meta",
+          "default": null
+        },
+        "content": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/TextContent"
+              },
+              {
+                "$ref": "#/$defs/ImageContent"
+              },
+              {
+                "$ref": "#/$defs/AudioContent"
+              },
+              {
+                "$ref": "#/$defs/ResourceLink"
+              },
+              {
+                "$ref": "#/$defs/EmbeddedResource"
+              }
+            ]
+          },
+          "title": "Content"
+        },
+        "isError": {
+          "type": "boolean",
+          "title": "Iserror",
+          "default": false
+        },
+        "structuredContent": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": true
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Structuredcontent",
+          "default": null
+        }
+      },
+      "required": [
+        "content"
+      ]
+    }
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "tools": [
+    {
+      "name": "read_broken_count",
+      "description": "Return the number of unpaid invoices in the archive.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "not-a-type"
+          }
+        }
+      }
+    }
+  ]
+}

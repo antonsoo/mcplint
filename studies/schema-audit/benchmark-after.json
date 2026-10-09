@@ -1,0 +1,10 @@
+{
+  "node": "v26.7.0",
+  "tools": 25799,
+  "outputs": 9055,
+  "findings": 306,
+  "elapsedMs": 25114.859673,
+  "initialHeapBytes": 34559456,
+  "retainedHeapBytes": 173640080,
+  "peakRssBytes": 738078720
+}

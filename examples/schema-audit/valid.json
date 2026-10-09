@@ -1,0 +1,95 @@
+{
+  "tools": [
+    {
+      "name": "read_invoice",
+      "description": "Read one invoice record by its exact identifier.",
+      "inputSchema": {
+        "$id": "https://example.invalid/invoice",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The invoice identifier."
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "$id": "https://example.invalid/invoice",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The invoice identifier."
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "read_revision",
+      "description": "Retrieve a historical invoice revision using its identifier and revision number.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "pair": {
+            "type": "array",
+            "description": "The invoice identifier and revision number.",
+            "items": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          }
+        },
+        "required": [
+          "pair"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "list_invoice_ids",
+      "description": "List the identifiers available in the invoice archive.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "read_invoice_copy",
+      "description": "Look up archived invoice details with the same record contract.",
+      "inputSchema": {
+        "$id": "https://example.invalid/invoice",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The invoice identifier."
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "node": "v26.7.0",
+  "rows": [
+    {
+      "mode": "valid",
+      "transport": "file",
+      "exit": 0,
+      "tools": 4,
+      "complete": true,
+      "score": 100,
+      "findings": []
+    },
+    {
+      "mode": "valid",
+      "transport": "stdio",
+      "exit": 0,
+      "tools": 4,
+      "complete": true,
+      "score": 100,
+      "findings": []
+    },
+    {
+      "mode": "valid",
+      "transport": "http",
+      "exit": 0,
+      "tools": 4,
+      "complete": true,
+      "score": 100,
+      "findings": []
+    },
+    {
+      "mode": "invalid",
+      "transport": "file",
+      "exit": 1,
+      "tools": 1,
+      "complete": true,
+      "score": 90,
+      "findings": [
+        {
+          "rule": "schema/invalid",
+          "subject": "read_broken_count",
+          "message": "outputSchema does not compile as JSON Schema: schema is invalid: data/properties/count/type must be equal to one of the allowed values, data/properties/count/type must be array, data/properties/count/type must match a schema in anyOf"
+        }
+      ]
+    },
+    {
+      "mode": "invalid",
+      "transport": "stdio",
+      "exit": 1,
+      "tools": 1,
+      "complete": true,
+      "score": 90,
+      "findings": [
+        {
+          "rule": "schema/invalid",
+          "subject": "read_broken_count",
+          "message": "outputSchema does not compile as JSON Schema: schema is invalid: data/properties/count/type must be equal to one of the allowed values, data/properties/count/type must be array, data/properties/count/type must match a schema in anyOf"
+        }
+      ]
+    },
+    {
+      "mode": "invalid",
+      "transport": "http",
+      "exit": 1,
+      "tools": 1,
+      "complete": true,
+      "score": 90,
+      "findings": [
+        {
+          "rule": "schema/invalid",
+          "subject": "read_broken_count",
+          "message": "outputSchema does not compile as JSON Schema: schema is invalid: data/properties/count/type must be equal to one of the allowed values, data/properties/count/type must be array, data/properties/count/type must match a schema in anyOf"
+        }
+      ]
+    },
+    {
+      "mode": "unresolved",
+      "transport": "file",
+      "exit": 1,
+      "tools": 1,
+      "complete": false,
+      "score": null,
+      "findings": [
+        {
+          "rule": "safety/unchecked",
+          "subject": "read_invoice_dependency",
+          "message": "outputSchema could not be fully checked: Unresolved schema reference \"https://example.invalid/invoice\". Only resources supplied within this schema and built-in meta-schemas are available; external schemas are not fetched."
+        }
+      ]
+    },
+    {
+      "mode": "unresolved",
+      "transport": "stdio",
+      "exit": 1,
+      "tools": 1,
+      "complete": false,
+      "score": null,
+      "findings": [
+        {
+          "rule": "safety/unchecked",
+          "subject": "read_invoice_dependency",
+          "message": "outputSchema could not be fully checked: Unresolved schema reference \"https://example.invalid/invoice\". Only resources supplied within this schema and built-in meta-schemas are available; external schemas are not fetched."
+        }
+      ]
+    },
+    {
+      "mode": "unresolved",
+      "transport": "http",
+      "exit": 1,
+      "tools": 1,
+      "complete": false,
+      "score": null,
+      "findings": [
+        {
+          "rule": "safety/unchecked",
+          "subject": "read_invoice_dependency",
+          "message": "outputSchema could not be fully checked: Unresolved schema reference \"https://example.invalid/invoice\". Only resources supplied within this schema and built-in meta-schemas are available; external schemas are not fetched."
+        }
+      ]
+    },
+    {
+      "mode": "mixed",
+      "transport": "file",
+      "exit": 1,
+      "tools": 6,
+      "complete": false,
+      "score": null,
+      "findings": [
+        {
+          "rule": "schema/invalid",
+          "subject": "read_broken_count",
+          "message": "outputSchema does not compile as JSON Schema: schema is invalid: data/properties/count/type must be equal to one of the allowed values, data/properties/count/type must be array, data/properties/count/type must match a schema in anyOf"
+        },
+        {
+          "rule": "safety/unchecked",
+          "subject": "read_invoice_dependency",
+          "message": "outputSchema could not be fully checked: Unresolved schema reference \"https://example.invalid/invoice\". Only resources supplied within this schema and built-in meta-schemas are available; external schemas are not fetched."
+        }
+      ]
+    },
+    {
+      "mode": "mixed",
+      "transport": "stdio",
+      "exit": 1,
+      "tools": 6,
+      "complete": false,
+      "score": null,
+      "findings": [
+        {
+          "rule": "schema/invalid",
+          "subject": "read_broken_count",
+          "message": "outputSchema does not compile as JSON Schema: schema is invalid: data/properties/count/type must be equal to one of the allowed values, data/properties/count/type must be array, data/properties/count/type must match a schema in anyOf"
+        },
+        {
+          "rule": "safety/unchecked",
+          "subject": "read_invoice_dependency",
+          "message": "outputSchema could not be fully checked: Unresolved schema reference \"https://example.invalid/invoice\". Only resources supplied within this schema and built-in meta-schemas are available; external schemas are not fetched."
+        }
+      ]
+    },
+    {
+      "mode": "mixed",
+      "transport": "http",
+      "exit": 1,
+      "tools": 6,
+      "complete": false,
+      "score": null,
+      "findings": [
+        {
+          "rule": "schema/invalid",
+          "subject": "read_broken_count",
+          "message": "outputSchema does not compile as JSON Schema: schema is invalid: data/properties/count/type must be equal to one of the allowed values, data/properties/count/type must be array, data/properties/count/type must match a schema in anyOf"
+        },
+        {
+          "rule": "safety/unchecked",
+          "subject": "read_invoice_dependency",
+          "message": "outputSchema could not be fully checked: Unresolved schema reference \"https://example.invalid/invoice\". Only resources supplied within this schema and built-in meta-schemas are available; external schemas are not fetched."
+        }
+      ]
+    }
+  ],
+  "suppression": {
+    "exit": 1,
+    "tools": 1,
+    "complete": false,
+    "score": null,
+    "findings": []
+  },
+  "sameProcess": {
+    "first": {
+      "tools": 1,
+      "complete": true,
+      "score": 100,
+      "findings": []
+    },
+    "repeated": {
+      "tools": 1,
+      "complete": true,
+      "score": 100,
+      "findings": []
+    },
+    "externalAfterEarlierAudit": {
+      "tools": 1,
+      "complete": false,
+      "score": null,
+      "findings": [
+        {
+          "rule": "safety/unchecked",
+          "subject": "read_invoice",
+          "message": "inputSchema could not be fully checked: Unresolved schema reference \"https://example.invalid/invoice\". Only resources supplied within this schema and built-in meta-schemas are available; external schemas are not fetched."
+        }
+      ]
+    }
+  },
+  "dialects": [
+    {
+      "uri": "http://json-schema.org/draft-06/schema#",
+      "tools": 1,
+      "complete": true,
+      "score": 95,
+      "findings": []
+    },
+    {
+      "uri": "http://json-schema.org/draft-07/schema#",
+      "tools": 1,
+      "complete": true,
+      "score": 95,
+      "findings": []
+    },
+    {
+      "uri": "https://json-schema.org/draft/2019-09/schema",
+      "tools": 1,
+      "complete": true,
+      "score": 95,
+      "findings": []
+    },
+    {
+      "uri": "https://json-schema.org/draft/2020-12/schema",
+      "tools": 1,
+      "complete": true,
+      "score": 95,
+      "findings": []
+    }
+  ]
+}

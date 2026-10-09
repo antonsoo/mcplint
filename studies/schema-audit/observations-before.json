@@ -1,0 +1,260 @@
+{
+  "node": "v26.7.0",
+  "rows": [
+    {
+      "mode": "valid",
+      "transport": "file",
+      "exit": 1,
+      "tools": 4,
+      "complete": true,
+      "score": 95,
+      "findings": [
+        {
+          "rule": "schema/invalid",
+          "subject": "read_revision",
+          "message": "inputSchema does not compile as JSON Schema: schema is invalid: data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean"
+        },
+        {
+          "rule": "schema/invalid",
+          "subject": "read_invoice_copy",
+          "message": "inputSchema does not compile as JSON Schema: schema with key or id \"https://example.invalid/invoice\" already exists"
+        }
+      ]
+    },
+    {
+      "mode": "valid",
+      "transport": "stdio",
+      "exit": 1,
+      "tools": 4,
+      "complete": true,
+      "score": 95,
+      "findings": [
+        {
+          "rule": "schema/invalid",
+          "subject": "read_revision",
+          "message": "inputSchema does not compile as JSON Schema: schema is invalid: data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean"
+        },
+        {
+          "rule": "schema/invalid",
+          "subject": "read_invoice_copy",
+          "message": "inputSchema does not compile as JSON Schema: schema with key or id \"https://example.invalid/invoice\" already exists"
+        }
+      ]
+    },
+    {
+      "mode": "valid",
+      "transport": "http",
+      "exit": 1,
+      "tools": 4,
+      "complete": true,
+      "score": 95,
+      "findings": [
+        {
+          "rule": "schema/invalid",
+          "subject": "read_revision",
+          "message": "inputSchema does not compile as JSON Schema: schema is invalid: data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean"
+        },
+        {
+          "rule": "schema/invalid",
+          "subject": "read_invoice_copy",
+          "message": "inputSchema does not compile as JSON Schema: schema with key or id \"https://example.invalid/invoice\" already exists"
+        }
+      ]
+    },
+    {
+      "mode": "invalid",
+      "transport": "file",
+      "exit": 0,
+      "tools": 1,
+      "complete": true,
+      "score": 100,
+      "findings": []
+    },
+    {
+      "mode": "invalid",
+      "transport": "stdio",
+      "exit": 0,
+      "tools": 1,
+      "complete": true,
+      "score": 100,
+      "findings": []
+    },
+    {
+      "mode": "invalid",
+      "transport": "http",
+      "exit": 0,
+      "tools": 1,
+      "complete": true,
+      "score": 100,
+      "findings": []
+    },
+    {
+      "mode": "unresolved",
+      "transport": "file",
+      "exit": 0,
+      "tools": 1,
+      "complete": true,
+      "score": 100,
+      "findings": []
+    },
+    {
+      "mode": "unresolved",
+      "transport": "stdio",
+      "exit": 0,
+      "tools": 1,
+      "complete": true,
+      "score": 100,
+      "findings": []
+    },
+    {
+      "mode": "unresolved",
+      "transport": "http",
+      "exit": 0,
+      "tools": 1,
+      "complete": true,
+      "score": 100,
+      "findings": []
+    },
+    {
+      "mode": "mixed",
+      "transport": "file",
+      "exit": 1,
+      "tools": 6,
+      "complete": true,
+      "score": 97,
+      "findings": [
+        {
+          "rule": "schema/invalid",
+          "subject": "read_revision",
+          "message": "inputSchema does not compile as JSON Schema: schema is invalid: data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean"
+        },
+        {
+          "rule": "schema/invalid",
+          "subject": "read_invoice_copy",
+          "message": "inputSchema does not compile as JSON Schema: schema with key or id \"https://example.invalid/invoice\" already exists"
+        }
+      ]
+    },
+    {
+      "mode": "mixed",
+      "transport": "stdio",
+      "exit": 1,
+      "tools": 6,
+      "complete": true,
+      "score": 97,
+      "findings": [
+        {
+          "rule": "schema/invalid",
+          "subject": "read_revision",
+          "message": "inputSchema does not compile as JSON Schema: schema is invalid: data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean"
+        },
+        {
+          "rule": "schema/invalid",
+          "subject": "read_invoice_copy",
+          "message": "inputSchema does not compile as JSON Schema: schema with key or id \"https://example.invalid/invoice\" already exists"
+        }
+      ]
+    },
+    {
+      "mode": "mixed",
+      "transport": "http",
+      "exit": 1,
+      "tools": 6,
+      "complete": true,
+      "score": 97,
+      "findings": [
+        {
+          "rule": "schema/invalid",
+          "subject": "read_revision",
+          "message": "inputSchema does not compile as JSON Schema: schema is invalid: data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean"
+        },
+        {
+          "rule": "schema/invalid",
+          "subject": "read_invoice_copy",
+          "message": "inputSchema does not compile as JSON Schema: schema with key or id \"https://example.invalid/invoice\" already exists"
+        }
+      ]
+    }
+  ],
+  "suppression": {
+    "exit": 0,
+    "tools": 1,
+    "complete": true,
+    "score": 100,
+    "findings": []
+  },
+  "sameProcess": {
+    "first": {
+      "tools": 1,
+      "complete": true,
+      "score": 100,
+      "findings": []
+    },
+    "repeated": {
+      "tools": 1,
+      "complete": true,
+      "score": 90,
+      "findings": [
+        {
+          "rule": "schema/invalid",
+          "subject": "read_invoice",
+          "message": "inputSchema does not compile as JSON Schema: schema with key or id \"https://example.invalid/invoice\" already exists"
+        }
+      ]
+    },
+    "externalAfterEarlierAudit": {
+      "tools": 1,
+      "complete": true,
+      "score": 94,
+      "findings": []
+    }
+  },
+  "dialects": [
+    {
+      "uri": "http://json-schema.org/draft-06/schema#",
+      "tools": 1,
+      "complete": true,
+      "score": 85,
+      "findings": [
+        {
+          "rule": "schema/invalid",
+          "subject": "read_invoice",
+          "message": "inputSchema does not compile as JSON Schema: schema is invalid: data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean"
+        }
+      ]
+    },
+    {
+      "uri": "http://json-schema.org/draft-07/schema#",
+      "tools": 1,
+      "complete": true,
+      "score": 85,
+      "findings": [
+        {
+          "rule": "schema/invalid",
+          "subject": "read_invoice",
+          "message": "inputSchema does not compile as JSON Schema: schema is invalid: data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean"
+        }
+      ]
+    },
+    {
+      "uri": "https://json-schema.org/draft/2019-09/schema",
+      "tools": 1,
+      "complete": true,
+      "score": 85,
+      "findings": [
+        {
+          "rule": "schema/invalid",
+          "subject": "read_invoice",
+          "message": "inputSchema does not compile as JSON Schema: schema is invalid: data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean, data/properties/pair/items must be object,boolean"
+        }
+      ]
+    },
+    {
+      "uri": "https://json-schema.org/draft/2020-12/schema",
+      "tools": 1,
+      "complete": true,
+      "score": 95,
+      "findings": []
+    }
+  ]
+}

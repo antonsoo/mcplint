@@ -1,0 +1,21 @@
+{
+  "tools": [
+    {
+      "name": "read_invoice_dependency",
+      "description": "Retrieve invoice details using the externally defined response contract.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "invoice": {
+            "$ref": "https://example.invalid/invoice"
+          }
+        }
+      }
+    }
+  ]
+}
