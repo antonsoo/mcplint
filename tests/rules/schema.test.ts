@@ -26,10 +26,10 @@ describe('schema/invalid', () => {
     });
     expect(validSchema.check(ctxOf([t]))).toHaveLength(0);
   });
-  it('does not flag a structurally valid schema that declares an older $schema draft (e.g. draft-07)', () => {
+  it('accepts a valid schema using its declared draft-07 dialect', () => {
     // Regression test: the reference "everything" server ships tools with
     // $schema: "http://json-schema.org/draft-07/schema#", which Ajv2020 cannot resolve as a meta-schema
-    // reference on its own. mcplint should judge structure, not draft conformance, and not flag this.
+    // reference on its own. Select the declared validator instead of discarding the dialect.
     const t = tool({
       name: 't',
       inputSchema: {

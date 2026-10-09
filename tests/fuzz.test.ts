@@ -1,7 +1,8 @@
 // Server metadata is untrusted input. The three reference servers' tool lists are mutated (fields
 // dropped, duplicated, renamed, replaced by values of the wrong type) and linted: nothing may
 // throw, and no rule may fail to run. `safety/unchecked` is the runner's backstop for a rule that
-// throws, so here it counts as a failure: a rule crash it would otherwise turn into a finding.
+// throws. Expected incomplete checks (unsupported dialects, missing references) must keep the
+// score unavailable; an unexpected rule exception still counts as a fuzz failure.
 import { expect, it } from 'vitest';
 import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -56,7 +57,12 @@ it('fuzz: mutated tool lists never crash the linter or a report', { timeout: 120
       const result = lint(target, baseConfig({ totalBudget: r() < 0.3 ? 500 : undefined }));
       topOffenders(result);
       renderTerminal(result); renderJson(result); renderSarif(result); renderMarkdown(result); renderHtml(result);
-      for (const f of result.findings) if (f.ruleId === 'safety/unchecked') bad.push(`seed ${seed}: ${f.message} ${f.detail ?? ''}`);
+      for (const f of result.findings) {
+        if (f.ruleId !== 'safety/unchecked') continue;
+        expect(result.summary.complete).toBe(false);
+        expect(result.summary.score).toBeNull();
+        if (f.message.startsWith('Rule ')) bad.push(`seed ${seed}: ${f.message} ${f.detail ?? ''}`);
+      }
       linted++;
     } catch (err) {
       bad.push(`seed ${seed}: ${(err as Error).stack?.split('\n').slice(0, 4).join(' | ')}`);

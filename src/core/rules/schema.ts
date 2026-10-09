@@ -1,74 +1,66 @@
-import { Ajv2020 } from 'ajv/dist/2020.js';
 import type { Finding, Rule, RuleContext } from '../types.js';
 import { asSchema, isPlainObject, schemaProperties } from '../schema-utils.js';
-
-// logger: false — Ajv warns to the console (not into any Finding) for things like an unrecognized
-// `format` keyword (e.g. real-world schemas commonly declare `format: "uri"`, which Ajv's core
-// doesn't validate without the separate ajv-formats package). That's not a finding mcplint reports,
-// so it shouldn't print raw noise into a user's terminal on every run against a server that uses it.
-const ajv = new Ajv2020({ strict: false, allErrors: true, logger: false });
+import { checkSchema, schemaNodes } from '../schema-validation.js';
+import { UNCHECKED_RULE_ID } from './safety.js';
 
 export const validSchema: Rule = {
   id: 'schema/invalid',
   category: 'schema',
   defaultSeverity: 'error',
-  summary: 'inputSchema is missing, not an object, not `type: "object"`, or fails JSON Schema compilation.',
+  summary: 'Tool input or output schema is malformed, or inputSchema does not have a `type: "object"` root.',
   rationale:
     'The MCP spec requires inputSchema to be "a valid JSON Schema object (not null)" with a `type: "object"` root ' +
-    '(https://modelcontextprotocol.io/specification/2026-07-28/server/tools#data-types). A tool whose schema does ' +
-    'not compile cannot be validated by the client or the server, and most clients will simply drop the tool.',
+    '(https://modelcontextprotocol.io/specification/2026-07-28/server/tools#data-types). Valid input and output ' +
+    'schemas let clients validate arguments and structured results; incomplete checks must remain visible.',
   check(ctx: RuleContext): Finding[] {
     const findings: Finding[] = [];
     for (const t of ctx.target.tools) {
-      const raw = t.inputSchema;
-      if (raw === null || raw === undefined) {
-        findings.push({
-          ruleId: this.id,
-          severity: this.defaultSeverity,
-          serverId: t.serverId,
-          subject: { kind: 'tool', name: t.name },
-          message: 'inputSchema is missing or null.'
-        });
-        continue;
-      }
-      if (!isPlainObject(raw)) {
-        findings.push({
-          ruleId: this.id,
-          severity: this.defaultSeverity,
-          serverId: t.serverId,
-          subject: { kind: 'tool', name: t.name },
-          message: `inputSchema must be an object, got ${Array.isArray(raw) ? 'array' : typeof raw}.`
-        });
-        continue;
-      }
-      const schema = asSchema(raw);
-      if (schema?.type !== 'object') {
-        findings.push({
-          ruleId: this.id,
-          severity: this.defaultSeverity,
-          serverId: t.serverId,
-          subject: { kind: 'tool', name: t.name },
-          message: `inputSchema.type must be "object", got ${JSON.stringify(schema?.type)}.`
-        });
-        continue;
-      }
-      try {
-        // Compile against the 2020-12 meta-schema regardless of what draft the tool's own `$schema`
-        // names (draft-07 is common in the wild, e.g. the reference "everything" server). Ajv would
-        // otherwise fail to *resolve* an unregistered draft-07/06/04 meta-schema and report the whole
-        // schema as invalid, when the actual keywords in use are perfectly valid, portable JSON Schema.
-        // This rule checks structural well-formedness, not strict draft conformance.
-        const withoutSchemaKeyword = { ...raw };
-        delete withoutSchemaKeyword.$schema;
-        ajv.compile(withoutSchemaKeyword);
-      } catch (err) {
-        findings.push({
-          ruleId: this.id,
-          severity: this.defaultSeverity,
-          serverId: t.serverId,
-          subject: { kind: 'tool', name: t.name },
-          message: `inputSchema does not compile as JSON Schema: ${(err as Error).message}`
-        });
+      for (const field of ['inputSchema', 'outputSchema'] as const) {
+        const raw = t[field];
+        if (field === 'outputSchema' && raw === undefined) continue;
+        if (raw === null || raw === undefined) {
+          findings.push({
+            ruleId: this.id,
+            severity: this.defaultSeverity,
+            serverId: t.serverId,
+            subject: { kind: 'tool', name: t.name },
+            message: `${field} is missing or null.`
+          });
+          continue;
+        }
+        if (!isPlainObject(raw)) {
+          findings.push({
+            ruleId: this.id,
+            severity: this.defaultSeverity,
+            serverId: t.serverId,
+            subject: { kind: 'tool', name: t.name },
+            message: `${field} must be an object, got ${Array.isArray(raw) ? 'array' : typeof raw}.`
+          });
+          continue;
+        }
+        if (field === 'inputSchema' && raw.type !== 'object') {
+          findings.push({
+            ruleId: this.id,
+            severity: this.defaultSeverity,
+            serverId: t.serverId,
+            subject: { kind: 'tool', name: t.name },
+            message: `inputSchema.type must be "object", got ${typeof raw.type === 'string'
+              ? JSON.stringify(raw.type.slice(0, 200)) : Array.isArray(raw.type) ? 'an array' : typeof raw.type}.`
+          });
+          continue;
+        }
+        const result = checkSchema(raw);
+        if (result.status !== 'valid') {
+          findings.push({
+            ruleId: result.status === 'unchecked' ? UNCHECKED_RULE_ID : this.id,
+            severity: this.defaultSeverity,
+            serverId: t.serverId,
+            subject: { kind: 'tool', name: t.name },
+            message: result.status === 'unchecked'
+              ? `${field} could not be fully checked: ${result.reason}`
+              : `${field} does not compile as JSON Schema: ${result.reason}`
+          });
+        }
       }
     }
     return findings;
@@ -107,8 +99,8 @@ export const portability: Rule = {
           severity: this.defaultSeverity,
           serverId: t.serverId,
           subject: { kind: 'tool', name: t.name },
-          message: `References external $ref(s) (${externalRefs.join(', ')}); some clients only resolve local ` +
-            '(#/...) pointers, so an external ref may silently fail to resolve.'
+          message: `Uses non-fragment $ref(s) (${externalRefs.join(', ')}); resolution may require bundled ` +
+            'resource IDs or external schemas, which some clients do not support.'
         });
       }
     }
@@ -131,16 +123,8 @@ export const portability: Rule = {
   }
 };
 
-function collectRefs(node: unknown, out: string[] = []): string[] {
-  if (Array.isArray(node)) {
-    for (const item of node) collectRefs(item, out);
-  } else if (isPlainObject(node)) {
-    for (const [key, value] of Object.entries(node)) {
-      if (key === '$ref' && typeof value === 'string') out.push(value);
-      else collectRefs(value, out);
-    }
-  }
-  return out;
+function collectRefs(schema: Record<string, unknown>): string[] {
+  return schemaNodes(schema).nodes.flatMap(node => typeof node.$ref === 'string' ? [node.$ref] : []);
 }
 
 export const rules: Rule[] = [validSchema, portability];
