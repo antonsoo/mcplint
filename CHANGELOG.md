@@ -4,6 +4,13 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Validate input and supplied output schemas independently, respecting draft-06, draft-07, 2019-09
+  and 2020-12. Clear compiled resources after every check, including failures: repeated `$id`s no
+  longer produce false errors or allow unrelated audits to resolve missing references.
+- Distinguish malformed schemas from unsupported dialects, unresolved references and compiler limits.
+  The latter leave the audit incomplete even when their diagnostic is suppressed. Bound traversal
+  before compilation and disable reference inlining. A retained registry replay finds 201 previously
+  unreported output-schema issues; see `studies/schema-audit/` for inputs, independent checks and limits.
 - **The rules were recalibrated on 11,545 real tool definitions** (`studies/registry-census/`: 418 servers of
   one public registry, from its first 500 listed rows and its verified view). 0.3.3 reported 14 attack errors
   on them, none an attack, and 57.8 findings per server; this version reports none, 2 attack warnings, and

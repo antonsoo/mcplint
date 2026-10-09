@@ -9,6 +9,11 @@ that the rules had not seen was run once, frozen, and read by hand.
 
 All token figures are o200k_base counts, GPT-4o's vocabulary: an estimate for any other model.
 
+The rule comparisons below are frozen at `b1438c0`. The subsequent
+[schema audit](../schema-audit/README.md) reuses these retained snapshots, adds output-schema checks,
+and distinguishes incomplete reference checks from definite schema errors. Its changed findings are
+reported separately; the historical totals below have not been rewritten.
+
 **What came out**
 
 - **About one server in fifteen (28 of 418, 6.7%) costs more than 16,000 tokens of tool definitions if a

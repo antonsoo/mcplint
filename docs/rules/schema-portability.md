@@ -3,8 +3,10 @@
 **Category:** schema · **Default severity:** info
 
 Fires on two specific, cited constructs that are spec-valid but handled inconsistently by some clients:
-optional properties without `additionalProperties: false`, and `$ref` pointers to an external (non-`#/...`)
-location.
+optional input properties without `additionalProperties: false`, and input-schema `$ref` values that
+do not start with `#`. A non-fragment reference can resolve to a bundled resource ID; it does not
+necessarily require a network request. Objects in `const`, `enum`, `default` and `examples` are data,
+not schema reference declarations.
 
 The first is reported **once per server**, with the number of tools it applies to and the first few names.
 On the [registry census](../../studies/registry-census/README.md) it applies to 93% of all tools; one note per tool was 10,692 notes saying the same thing.

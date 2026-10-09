@@ -202,7 +202,7 @@ The full 14-tool report is browsable live at
 | [`description/enum-unexplained`](docs/rules/description-enum-unexplained.md) | description | info | An enum's values are never explained. |
 | [`description/required-undeclared`](docs/rules/description-required-undeclared.md) | description | error | `required` lists a name not in `properties`. |
 | [`description/near-duplicate`](docs/rules/description-near-duplicate.md) | description | warning | Two tools with ≥75% word-overlap descriptions. |
-| [`schema/invalid`](docs/rules/schema-invalid.md) | schema | error | `inputSchema` missing, not `type: "object"`, or fails to compile. |
+| [`schema/invalid`](docs/rules/schema-invalid.md) | schema | error | Malformed input/output schema, or input root not `type: "object"`. |
 | [`schema/portability`](docs/rules/schema-portability.md) | schema | info | Constructs that some clients (OpenAI strict mode, external `$ref`) handle inconsistently; one note per server. |
 | [`safety/hidden-unicode`](docs/rules/safety-hidden-unicode.md) | safety | error | Zero-width, other invisible (Hangul fillers and similar), bidi-control, Unicode Tag, or variation-selector characters — decoded and shown. |
 | [`safety/control-characters`](docs/rules/safety-control-characters.md) | safety | error | Control characters in a name or text, such as the escape codes that hide or overwrite text in a terminal (Trail of Bits' MCP attack); shown visibly, never printed raw. |
@@ -281,13 +281,21 @@ clients.
 
 ### Schema validation
 
-`schema/invalid` compiles `inputSchema` with [Ajv](https://ajv.js.org/) (2020-12 dialect). One real finding from
-building this: the reference `@modelcontextprotocol/server-everything` ships tools with `$schema:
-"http://json-schema.org/draft-07/schema#"`, which Ajv2020 can't resolve as a meta-schema reference on its own —
-it would report every one of those tools as invalid, which is wrong (the schemas are perfectly valid JSON
-Schema; they just declare an older draft). mcplint strips the `$schema` keyword before compiling, since the goal
-is structural well-formedness, not strict draft conformance. `tests/rules/schema.test.ts` has a regression test
-for exactly this.
+Each tool's input and supplied output schema is checked independently with [Ajv](https://ajv.js.org/).
+The default dialect is 2020-12; explicit draft-06, draft-07, 2019-09 and 2020-12 declarations select their
+own validators. A valid draft-07 tuple is not rejected just because its syntax differs from 2020-12.
+
+Malformed schemas receive `schema/invalid`. Unsupported dialects, unresolved references and compiler
+limitations receive `safety/unchecked`, leave the score unavailable and fail any `--fail-on` threshold.
+References can resolve within the supplied schema, including bundled resource IDs, but never through
+another tool or an earlier audit. No reference URLs are fetched. Output schemas may describe non-object
+values; only input schemas require an object type at the root.
+
+This is metadata inspection, not execution or validation of real tool outputs. Format assertions and
+custom vocabularies are not checked. See [the rule's limits](docs/rules/schema-invalid.md), a
+[replay over files, stdio and HTTP](examples/schema-audit/README.md), and the
+[registry comparison](studies/schema-audit/README.md): 201 previously unreported output-schema findings
+across 25,799 retained tool definitions, checked without contacting those servers.
 
 ### Scoring
 
