@@ -6,7 +6,7 @@ request timer. A server that returns HTTP 200 and opens an event stream without
 an `endpoint` event leaves that phase waiting. After initialization, the final
 notification can also wait for an HTTP response outside the request timer.
 
-This work is local and unreleased. Code commit `eb34619` adds one budget for
+This work is unreleased. Code commit `eb34619` adds one budget for
 transport startup and the complete handshake: **30 seconds by default**, changed
 with `--connect-timeout <milliseconds>` or the `connectTimeoutMs` library option.
 A legacy HTTP fallback spends the remaining budget. Once initialization is done,
@@ -100,8 +100,8 @@ installed outside the repository, on both Node 26.7.0 and the declared minimum
 Node 20.0.0. Those installed-package results are linked above.
 
 The package version remains 0.3.3; this is a local build of the corrected source,
-not a new registry release. No branch, registry package, or hosted site was
-published by this work.
+not a new registry release. These source and package checks do not establish
+the version served by the hosted demo.
 
 ## Actual report and boundaries
 
