@@ -1,0 +1,100 @@
+[
+  {
+    "id": "missing-uri",
+    "snapshot": {
+      "resources": [
+        {
+          "name": "daily_report",
+          "description": "The daily report totals as CSV."
+        }
+      ]
+    }
+  },
+  {
+    "id": "missing-template",
+    "snapshot": {
+      "resourceTemplates": [
+        {
+          "name": "daily_report",
+          "description": "The daily report totals as CSV."
+        }
+      ]
+    }
+  },
+  {
+    "id": "template-is-not-uri",
+    "snapshot": {
+      "resources": [
+        {
+          "name": "daily_report",
+          "description": "The daily report totals as CSV.",
+          "uriTemplate": "report://{date}"
+        }
+      ]
+    }
+  },
+  {
+    "id": "uri-is-not-template",
+    "snapshot": {
+      "resourceTemplates": [
+        {
+          "name": "daily_report",
+          "description": "The daily report totals as CSV.",
+          "uri": "report://today"
+        }
+      ]
+    }
+  },
+  {
+    "id": "invalid-uri-type",
+    "snapshot": {
+      "resources": [
+        {
+          "name": "daily_report",
+          "description": "The daily report totals as CSV.",
+          "uri": 42
+        }
+      ]
+    }
+  },
+  {
+    "id": "valid-resource",
+    "snapshot": {
+      "resources": [
+        {
+          "name": "daily_report",
+          "description": "The daily report totals as CSV.",
+          "uri": "report://today"
+        }
+      ]
+    }
+  },
+  {
+    "id": "valid-template",
+    "snapshot": {
+      "resourceTemplates": [
+        {
+          "name": "daily_report",
+          "description": "The daily report totals as CSV.",
+          "uriTemplate": "report://{date}"
+        }
+      ]
+    }
+  },
+  {
+    "id": "retained-warning",
+    "snapshot": {
+      "resources": [
+        {
+          "name": "daily_report",
+          "description": "The daily report totals as CSV.",
+          "uri": "report://today"
+        },
+        {
+          "name": "incomplete_report",
+          "description": "The daily report contains a hidden​ character."
+        }
+      ]
+    }
+  }
+]

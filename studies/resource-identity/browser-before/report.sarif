@@ -1,0 +1,45 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "mcplint",
+          "informationUri": "https://github.com/antonsoo/mcplint",
+          "version": "0.3.3",
+          "rules": []
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "properties": {
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "complete": true,
+        "score": 100
+      },
+      "results": []
+    }
+  ]
+}

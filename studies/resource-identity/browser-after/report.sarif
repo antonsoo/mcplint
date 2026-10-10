@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "mcplint",
+          "informationUri": "https://github.com/antonsoo/mcplint",
+          "version": "0.3.3",
+          "rules": [
+            {
+              "id": "collection/incomplete",
+              "shortDescription": {
+                "text": "Some requested metadata could not be collected or decoded completely."
+              },
+              "fullDescription": {
+                "text": "A missing page, malformed entry or unavailable server is an audit gap, not an empty clean list. Retained metadata is still linted."
+              },
+              "helpUri": "https://github.com/antonsoo/mcplint/blob/main/docs/rules/collection-incomplete.md",
+              "properties": {
+                "category": "collection"
+              }
+            }
+          ]
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": false
+        }
+      ],
+      "properties": {
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "resources/list",
+            "status": "incomplete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "detail": "1 malformed resources entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uri required by this list."
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "complete": false,
+        "score": null
+      },
+      "results": [
+        {
+          "ruleId": "collection/incomplete",
+          "level": "error",
+          "message": {
+            "text": "resources/list: 1 malformed resources entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uri required by this list."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "mcp://file/server/file"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

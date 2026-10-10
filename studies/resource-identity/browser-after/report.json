@@ -1,0 +1,61 @@
+{
+  "generatedAt": "2026-10-10T20:09:52.543Z",
+  "tokenizer": "o200k_base",
+  "servers": [
+    {
+      "id": "file",
+      "label": "missing-uri.json"
+    }
+  ],
+  "collection": [
+    {
+      "serverId": "file",
+      "scope": "resources/list",
+      "status": "incomplete",
+      "pages": 1,
+      "received": 1,
+      "retained": 1,
+      "detail": "1 malformed resources entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uri required by this list."
+    },
+    {
+      "serverId": "file",
+      "scope": "file",
+      "status": "complete",
+      "pages": 0,
+      "received": 0,
+      "retained": 0,
+      "detail": "Only the supplied snapshot was inspected; no server was contacted."
+    }
+  ],
+  "summary": {
+    "totalFindings": 1,
+    "bySeverity": {
+      "error": 1,
+      "warning": 0,
+      "info": 0
+    },
+    "byRule": {
+      "collection/incomplete": 1
+    },
+    "toolCount": 0,
+    "promptCount": 0,
+    "resourceCount": 1,
+    "totalEstimatedTokens": 0,
+    "complete": false,
+    "score": null
+  },
+  "findings": [
+    {
+      "ruleId": "collection/incomplete",
+      "severity": "error",
+      "serverId": "file",
+      "subject": {
+        "kind": "server",
+        "name": "file"
+      },
+      "message": "resources/list: 1 malformed resources entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uri required by this list.",
+      "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+      "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+    }
+  ]
+}

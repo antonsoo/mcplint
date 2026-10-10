@@ -1,0 +1,94 @@
+{
+  "node": "v26.7.0",
+  "htmlSha256": "487508e3e944f5852e6185e6790bf651295c1426c2e82f7f221123e9537ffe91",
+  "records": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "errors": [],
+      "requests": [],
+      "summary": {
+        "totalFindings": 0,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {},
+        "toolCount": 0,
+        "promptCount": 0,
+        "resourceCount": 1,
+        "totalEstimatedTokens": 0,
+        "complete": true,
+        "score": 100
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "errors": [],
+      "requests": [],
+      "summary": {
+        "totalFindings": 0,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {},
+        "toolCount": 0,
+        "promptCount": 0,
+        "resourceCount": 1,
+        "totalEstimatedTokens": 0,
+        "complete": true,
+        "score": 100
+      }
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "errors": [],
+      "requests": [],
+      "summary": {
+        "totalFindings": 0,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {},
+        "toolCount": 0,
+        "promptCount": 0,
+        "resourceCount": 1,
+        "totalEstimatedTokens": 0,
+        "complete": true,
+        "score": 100
+      }
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "errors": [],
+      "requests": [],
+      "summary": {
+        "totalFindings": 0,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {},
+        "toolCount": 0,
+        "promptCount": 0,
+        "resourceCount": 1,
+        "totalEstimatedTokens": 0,
+        "complete": true,
+        "score": 100
+      }
+    }
+  ]
+}

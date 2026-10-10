@@ -1,0 +1,45 @@
+{
+  "generatedAt": "2026-10-10T20:08:01.812Z",
+  "tokenizer": "o200k_base",
+  "servers": [
+    {
+      "id": "file",
+      "label": "missing-uri.json"
+    }
+  ],
+  "collection": [
+    {
+      "serverId": "file",
+      "scope": "resources/list",
+      "status": "complete",
+      "pages": 1,
+      "received": 1,
+      "retained": 1
+    },
+    {
+      "serverId": "file",
+      "scope": "file",
+      "status": "complete",
+      "pages": 0,
+      "received": 0,
+      "retained": 0,
+      "detail": "Only the supplied snapshot was inspected; no server was contacted."
+    }
+  ],
+  "summary": {
+    "totalFindings": 0,
+    "bySeverity": {
+      "error": 0,
+      "warning": 0,
+      "info": 0
+    },
+    "byRule": {},
+    "toolCount": 0,
+    "promptCount": 0,
+    "resourceCount": 1,
+    "totalEstimatedTokens": 0,
+    "complete": true,
+    "score": 100
+  },
+  "findings": []
+}

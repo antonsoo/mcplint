@@ -4,6 +4,10 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Require `uri` on collected resources and `uriTemplate` on resource templates.
+  Missing identities now leave the audit incomplete and unscored, including
+  when diagnostics are suppressed; usable metadata remains available to safety rules.
+
 - Stop treating required names outside local `properties` as inherently invalid.
   Keep simple open-schema documentation warnings and closed-schema contradictions
   distinct; decline the heuristic for composed or referenced definitions.

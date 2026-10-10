@@ -33,6 +33,14 @@ and reported; the report gives the index of the first malformed entry, starting 
 zero. A retained object can still be malformed, so retained count is not a validity
 count. A malformed input schema is also checked by the schema rules.
 
+A concrete resource must have a string `uri`; a resource template must have a
+string `uriTemplate`. The opposite field does not substitute for the required
+one. Missing or invalid identities mark that list incomplete while preserving
+usable fields for safety checks. The report names the missing field.
+[Actual SDK connections, saved snapshots and report evidence](../studies/resource-identity/README.md).
+This checks field presence and type, not URI/template syntax, resource access
+permissions or whether the server can read the resource body.
+
 A config report names every entry, including failed connections, unresolved
 placeholders, invalid entries and disabled servers. An all-failed config therefore
 produces an inspectable incomplete report instead of a zero-server success.

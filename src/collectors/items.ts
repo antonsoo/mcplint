@@ -5,6 +5,7 @@ import { isPlainObject, promptArguments } from '../core/schema-utils.js';
 export function appendItems(target: LintTarget, key: 'tools' | 'prompts' | 'resources' | 'resourceTemplates', items: unknown[], record: CollectionRecord): void {
   let malformed = 0;
   let firstMalformed = -1;
+  let missingIdentity = 0;
   for (const [index, raw] of items.entries()) {
     const invalid = (): void => { malformed++; if (firstMalformed < 0) firstMalformed = index; };
     if (!isPlainObject(raw)) { invalid(); continue; }
@@ -31,6 +32,10 @@ export function appendItems(target: LintTarget, key: 'tools' | 'prompts' | 'reso
       target.prompts.push({ kind: 'prompt', ...common,
         ...(Array.isArray(raw.arguments) ? { arguments: promptArguments(raw.arguments) } : {}) });
     } else {
+      // Concrete resources and templates have different required identities.
+      // The other field cannot stand in for the one required by this list.
+      const identity = key === 'resources' ? 'uri' : 'uriTemplate';
+      if (typeof raw[identity] !== 'string') { bad = true; missingIdentity++; }
       for (const field of ['uri', 'uriTemplate', 'mimeType']) {
         if (raw[field] !== undefined && typeof raw[field] !== 'string') bad = true;
       }
@@ -44,6 +49,7 @@ export function appendItems(target: LintTarget, key: 'tools' | 'prompts' | 'reso
   }
   if (malformed) {
     record.status = 'incomplete';
-    record.detail = [record.detail, `${malformed} malformed ${key} entries; first at index ${firstMalformed}. Valid fields were retained where possible.`].filter(Boolean).join(' ');
+    record.detail = [record.detail, `${malformed} malformed ${key} entries; first at index ${firstMalformed}. Valid fields were retained where possible.`,
+      missingIdentity ? `${missingIdentity} ${missingIdentity === 1 ? 'entry lacks' : 'entries lack'} a string ${key === 'resources' ? 'uri' : 'uriTemplate'} required by this list.` : undefined].filter(Boolean).join(' ');
   }
 }

@@ -1,0 +1,10 @@
+{
+  "scope": "Cached registry resource metadata, no URI dereferencing or body reads.",
+  "inputHashes": "../required-properties/corpus.json",
+  "node": "v26.7.0",
+  "serversWithResources": 272,
+  "resources": 1603,
+  "templates": 0,
+  "missingRequiredIdentity": 0,
+  "changedCollections": 0
+}
