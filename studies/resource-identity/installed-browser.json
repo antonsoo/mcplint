@@ -1,0 +1,102 @@
+{
+  "node": "v26.7.0",
+  "htmlSha256": "8f52bf161804d71808fb9c9dbaf38f278393168c6c48fba3c262fe053cbdd414",
+  "records": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "errors": [],
+      "requests": [],
+      "summary": {
+        "totalFindings": 1,
+        "bySeverity": {
+          "error": 1,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {
+          "collection/incomplete": 1
+        },
+        "toolCount": 0,
+        "promptCount": 0,
+        "resourceCount": 1,
+        "totalEstimatedTokens": 0,
+        "complete": false,
+        "score": null
+      }
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "errors": [],
+      "requests": [],
+      "summary": {
+        "totalFindings": 1,
+        "bySeverity": {
+          "error": 1,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {
+          "collection/incomplete": 1
+        },
+        "toolCount": 0,
+        "promptCount": 0,
+        "resourceCount": 1,
+        "totalEstimatedTokens": 0,
+        "complete": false,
+        "score": null
+      }
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "errors": [],
+      "requests": [],
+      "summary": {
+        "totalFindings": 1,
+        "bySeverity": {
+          "error": 1,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {
+          "collection/incomplete": 1
+        },
+        "toolCount": 0,
+        "promptCount": 0,
+        "resourceCount": 1,
+        "totalEstimatedTokens": 0,
+        "complete": false,
+        "score": null
+      }
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "errors": [],
+      "requests": [],
+      "summary": {
+        "totalFindings": 1,
+        "bySeverity": {
+          "error": 1,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {
+          "collection/incomplete": 1
+        },
+        "toolCount": 0,
+        "promptCount": 0,
+        "resourceCount": 1,
+        "totalEstimatedTokens": 0,
+        "complete": false,
+        "score": null
+      }
+    }
+  ]
+}

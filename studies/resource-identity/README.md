@@ -61,3 +61,21 @@ syntax or template expansion, contact resource locations, test access permission
 or claim complete protocol conformance. Valid retained metadata still receives
 only a heuristic audit, not a safety certification. Source fixes and locally
 built tarballs are distinct from an npm release.
+
+## Installed package verification
+
+A clean clone of source `e2aa7b4` installed the lockfile, built a tarball, and
+passed lint, typecheck and 380 checks. The working production HTML reports also
+passed all 24 existing browser scenarios. A separate prefix installed only the
+locally built package and runtime dependencies. Both this study's replay and
+its counterpart pass on Node 26.7.0 and the declared minimum Node 20.0.0:
+[installed](installed.json), [minimum Node](installed-node20.json).
+The observed results equal the corrected source receipts (apart from the Node
+version field on the minimum runtime).
+
+Every compiled JavaScript file matches between working build, clean clone,
+and installation. The [artifact receipt](../resource-identity/installed-verification.json)
+records their hashes and the tarball SHA-256. Four additional offline workflows
+opened HTML produced by the installed CLI in Chromium and Firefox at 1440/375 px;
+JSON and SARIF agreed about incomplete coverage and withheld scoring.
+[Installed browser receipt](../resource-identity/installed-browser.json).

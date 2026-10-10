@@ -1,0 +1,312 @@
+{
+  "node": "v20.0.0",
+  "casesSha256": "943b3aa3e023b28cbe5eebdb8cd20a0419518914112cbba3d91ead627fd38fb3",
+  "results": [
+    {
+      "id": "all-of",
+      "validation": {
+        "compiles": true,
+        "acceptsInstance": true,
+        "acceptsEmpty": false
+      },
+      "exit": 0,
+      "summary": {
+        "totalFindings": 0,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {},
+        "toolCount": 1,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 58,
+        "complete": true,
+        "score": 100
+      },
+      "findings": [],
+      "failsOnWarning": false
+    },
+    {
+      "id": "reference",
+      "validation": {
+        "compiles": true,
+        "acceptsInstance": true,
+        "acceptsEmpty": false
+      },
+      "exit": 0,
+      "summary": {
+        "totalFindings": 0,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {},
+        "toolCount": 1,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 66,
+        "complete": true,
+        "score": 100
+      },
+      "findings": [],
+      "failsOnWarning": false
+    },
+    {
+      "id": "pattern",
+      "validation": {
+        "compiles": true,
+        "acceptsInstance": true,
+        "acceptsEmpty": false
+      },
+      "exit": 0,
+      "summary": {
+        "totalFindings": 0,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {},
+        "toolCount": 1,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 56,
+        "complete": true,
+        "score": 100
+      },
+      "findings": [],
+      "failsOnWarning": false
+    },
+    {
+      "id": "additional-schema",
+      "validation": {
+        "compiles": true,
+        "acceptsInstance": true,
+        "acceptsEmpty": false
+      },
+      "exit": 0,
+      "summary": {
+        "totalFindings": 0,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {},
+        "toolCount": 1,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 52,
+        "complete": true,
+        "score": 100
+      },
+      "findings": [],
+      "failsOnWarning": false
+    },
+    {
+      "id": "undocumented-open",
+      "validation": {
+        "compiles": true,
+        "acceptsInstance": true,
+        "acceptsEmpty": false
+      },
+      "exit": 0,
+      "summary": {
+        "totalFindings": 1,
+        "bySeverity": {
+          "error": 0,
+          "warning": 1,
+          "info": 0
+        },
+        "byRule": {
+          "description/required-undeclared": 1
+        },
+        "toolCount": 1,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 31,
+        "complete": true,
+        "score": 96
+      },
+      "findings": [
+        {
+          "ruleId": "description/required-undeclared",
+          "severity": "warning",
+          "serverId": "file",
+          "subject": {
+            "kind": "tool",
+            "name": "lookup_region"
+          },
+          "message": "\"region\" is required without a named property definition. This is valid in an open JSON Schema; check whether its type and usage need documenting."
+        }
+      ],
+      "failsOnWarning": true
+    },
+    {
+      "id": "direct-control",
+      "validation": {
+        "compiles": true,
+        "acceptsInstance": true,
+        "acceptsEmpty": false
+      },
+      "exit": 0,
+      "summary": {
+        "totalFindings": 0,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {},
+        "toolCount": 1,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 53,
+        "complete": true,
+        "score": 100
+      },
+      "findings": [],
+      "failsOnWarning": false
+    },
+    {
+      "id": "nested-is-not-root",
+      "validation": {
+        "compiles": true,
+        "acceptsInstance": true,
+        "acceptsEmpty": false
+      },
+      "exit": 0,
+      "summary": {
+        "totalFindings": 2,
+        "bySeverity": {
+          "error": 0,
+          "warning": 1,
+          "info": 1
+        },
+        "byRule": {
+          "description/required-undeclared": 1,
+          "schema/portability": 1
+        },
+        "toolCount": 1,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 69,
+        "complete": true,
+        "score": 95
+      },
+      "findings": [
+        {
+          "ruleId": "description/required-undeclared",
+          "severity": "warning",
+          "serverId": "file",
+          "subject": {
+            "kind": "tool",
+            "name": "lookup_region"
+          },
+          "message": "\"region\" is required without a named property definition. This is valid in an open JSON Schema; check whether its type and usage need documenting."
+        },
+        {
+          "ruleId": "schema/portability",
+          "severity": "info",
+          "serverId": "file",
+          "subject": {
+            "kind": "server",
+            "name": "file"
+          },
+          "message": "1 of 1 tools have optional properties and do not set `additionalProperties: false` (\"lookup_region\"). OpenAI Structured Outputs / strict function calling requires every property to be listed in `required` and `additionalProperties: false`; these schemas need translation before they can be used there. (https://platform.openai.com/docs/guides/structured-outputs)"
+        }
+      ],
+      "failsOnWarning": true
+    },
+    {
+      "id": "invalid-control",
+      "validation": {
+        "compiles": false
+      },
+      "exit": 1,
+      "summary": {
+        "totalFindings": 2,
+        "bySeverity": {
+          "error": 1,
+          "warning": 1,
+          "info": 0
+        },
+        "byRule": {
+          "description/param-missing": 1,
+          "schema/invalid": 1
+        },
+        "toolCount": 1,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 41,
+        "complete": true,
+        "score": 86
+      },
+      "findings": [
+        {
+          "ruleId": "description/param-missing",
+          "severity": "warning",
+          "serverId": "file",
+          "subject": {
+            "kind": "tool",
+            "name": "lookup_region"
+          },
+          "message": "Parameter \"region\" has no description."
+        },
+        {
+          "ruleId": "schema/invalid",
+          "severity": "error",
+          "serverId": "file",
+          "subject": {
+            "kind": "tool",
+            "name": "lookup_region"
+          },
+          "message": "inputSchema does not compile as JSON Schema: schema is invalid: data/properties/region/type must be equal to one of the allowed values, data/properties/region/type must be array, data/properties/region/type must match a schema in anyOf"
+        }
+      ],
+      "failsOnWarning": true
+    },
+    {
+      "id": "closed-contradiction",
+      "validation": {
+        "compiles": true,
+        "acceptsInstance": false,
+        "acceptsEmpty": false
+      },
+      "exit": 1,
+      "summary": {
+        "totalFindings": 1,
+        "bySeverity": {
+          "error": 1,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {
+          "description/required-undeclared": 1
+        },
+        "toolCount": 1,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 40,
+        "complete": true,
+        "score": 90
+      },
+      "findings": [
+        {
+          "ruleId": "description/required-undeclared",
+          "severity": "error",
+          "serverId": "file",
+          "subject": {
+            "kind": "tool",
+            "name": "lookup_region"
+          },
+          "message": "\"region\" is required but additionalProperties: false forbids it; no matching inputSchema.properties entry exists."
+        }
+      ],
+      "failsOnWarning": true
+    }
+  ]
+}

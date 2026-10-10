@@ -1,0 +1,59 @@
+{
+  "sourceCommit": "e2aa7b4",
+  "buildNode": "v26.7.0",
+  "minimumNode": "v20.0.0",
+  "tarball": {
+    "name": "antonsoloviev-mcplint-0.3.3.tgz",
+    "sha256": "a4b31984a47b09dad65a1e15be49e9d8faad570413d48939f05cc4cc23120ffc"
+  },
+  "compiledJavaScript": {
+    "cli.js": "2ba4e9c76c18d75fb7e0fcf3749786a0605b7a24fee3c6adbea2d066dceeae28",
+    "collectors/collect.js": "6f90711f6483f7ed8e9d0bb5fdd3ed189d8de3e1f0b6b7519ecd6aaae01ac6ac",
+    "collectors/config.js": "84ad3e12c9a3e5a1c32aad639859e4c8d10f5a7ee5e6880424a95a6cfcc2e21a",
+    "collectors/connect.js": "87d63dc871c48e354802fe539cab6e93663dd41bc296a0b9d4a498e81e76a787",
+    "collectors/file.js": "2d78a446e9b9e670f9d3c3f4e914afe2a1a5adac8ce3aae15ae39a757d484b2f",
+    "collectors/http.js": "c4edd2c1c24cdb4af8c568e2ca7e7030d36f347c7a85fe908cc91e2406177539",
+    "collectors/items.js": "4cc08668d820b0a8c0c9d7879ab978ab2d2d649e361e78f098263ee2a80f1791",
+    "collectors/stdio.js": "fa9a2d0e3aea01089a0d7d4ab0ec64efba53ca19900895fa5fad43cdecfc3617",
+    "core/census.js": "597558e3968cabe5b1a15e17deaf5a56ce4ab9e74d344c48edc263101c2ac4cc",
+    "core/config.js": "e2fdfad10e5302b61ef22ca0cd46b7ae1f81cd2f18feb2ab90d9389c231d11f0",
+    "core/lint.js": "b6d7d9118e2a1ed9e8f93085df557388d75ac93e079af1f50b0a8244fd8cc983",
+    "core/read-text.js": "2b81c31ac5de7c11e8d04a3a0122573ac84d11df6bffed3b4de6f68f249fa427",
+    "core/rule-slug.js": "7bde55c47ef23252c0a2f01183e9d7311a72b733446a5b96cd6ff3b9bc7978d5",
+    "core/rules/budget.js": "fc73892e831b70cb249914122b6f76cd4fd1dda93c1f9cc83a006c48fe7244e6",
+    "core/rules/collection.js": "e8b99bcaedacfae040896c9915beb4fc07964f4fb1a943dcb253d4146554590d",
+    "core/rules/descriptions.js": "e88066967c1c45747c38efe5ee0e04cdc2b58b8ffe594341ee96cda30a80b082",
+    "core/rules/index.js": "e16ef6921015cb59187dae7467c7b0cfe30709c43c70a63752dc89960eb262fe",
+    "core/rules/naming.js": "0f283817553b05d0aa9a7925a0458a579b9d7e3a367dfad93645e293196562c9",
+    "core/rules/safety.js": "29026cd6d82954fe3910444c9317f9f8db1168232e611f269757c744e5405686",
+    "core/rules/schema.js": "8546c7dca3c8566b31edf7ef77ee3a068a6d4298e8c362fd908585556f2c6320",
+    "core/schema-utils.js": "bdcfb91dc0b6b5a0f56b36786c35887346fe2f066a6ac2c844229618bb972923",
+    "core/schema-validation.js": "b213bf2073c9814bed063672017dc92c0382c326d8a8291b9364ed6bfbd169c8",
+    "core/score.js": "0493c2aa29e86bf9b35eca09d1276dd2e4b44e4d6c22735148893f14074b04be",
+    "core/tokenizer.js": "aa7f9a268c9940089c285d9c240e374c0aa02c9221bb82af1dd7ae0017b56336",
+    "core/types.js": "4246d4fd2648ad9bf3c769fd93f9cdd59dde2cc3df60e22adecf51fdd86816cc",
+    "core/unicode.js": "2a08760ecd345c02a40d7aae77216f021cb517d4e4914c878ba9dc9df112d456",
+    "index.js": "7b4778e4a9878591f123b9e24bf80f4ce88e3ed9a42baf6647ec847925ba732f",
+    "report/coverage.js": "c19a5c1b4142be5c034e55306187f4c7f5d688b68c5d6bf84b6c4b405e353d57",
+    "report/html.js": "b42f605410951a87553e440d5197fb90e05a9cb39946a11e41bac81d01400c61",
+    "report/json.js": "d2b115171c72406f485cd85911edbda080dd58ff5fab4c457de8bc48501c8e3c",
+    "report/markdown.js": "135316c9e681df8875f137e43bd90fb7e152f9a82dcef4c9de1fc6e3a7bb30c6",
+    "report/sarif.js": "486e22fc0422c20d79582817dca90b693fb152c1a62a31bc0f2d486fbabb2984",
+    "report/terminal.js": "0e2171dab1e483646cf1f1c1bfe835a90dc1e05dc41a285badcae9f1c6ef9680",
+    "version.js": "215ca1f5d200fd274c1db8775c343ed1abc249ff3afdcaaf06cf746f9b88a20b"
+  },
+  "cleanCheckout": {
+    "lockedInstall": true,
+    "lint": "passed",
+    "typecheck": "passed",
+    "tests": 380
+  },
+  "workingBrowserChecks": 24,
+  "installedBrowserWorkflows": 4,
+  "scope": "Locally built and installed artifact; not an npm registry release.",
+  "installedDependencies": {
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "ajv": "8.20.0",
+    "zod": "3.25.76"
+  }
+}

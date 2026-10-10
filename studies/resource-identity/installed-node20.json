@@ -1,0 +1,1137 @@
+{
+  "node": "v20.0.0",
+  "casesSha256": "eb534f29330f8dc52063b713564327738e1a6eda520e6c358e4d4ff193ef8d09",
+  "results": [
+    {
+      "id": "missing-uri",
+      "oracle": [
+        {
+          "list": "resources",
+          "index": 0,
+          "valid": false,
+          "issues": [
+            "uri"
+          ]
+        }
+      ],
+      "retainedNames": [
+        "daily_report"
+      ],
+      "gateFailsWithCollectionDiagnosticSuppressed": true,
+      "observations": [
+        {
+          "transport": "file",
+          "exit": 1,
+          "summary": {
+            "totalFindings": 1,
+            "bySeverity": {
+              "error": 1,
+              "warning": 0,
+              "info": 0
+            },
+            "byRule": {
+              "collection/incomplete": 1
+            },
+            "toolCount": 0,
+            "promptCount": 0,
+            "resourceCount": 1,
+            "totalEstimatedTokens": 0,
+            "complete": false,
+            "score": null
+          },
+          "collection": [
+            {
+              "serverId": "file",
+              "scope": "resources/list",
+              "status": "incomplete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1,
+              "detail": "1 malformed resources entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uri required by this list."
+            },
+            {
+              "serverId": "file",
+              "scope": "file",
+              "status": "complete",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Only the supplied snapshot was inspected; no server was contacted."
+            }
+          ],
+          "findings": [
+            {
+              "ruleId": "collection/incomplete",
+              "severity": "error",
+              "serverId": "file",
+              "subject": {
+                "kind": "server",
+                "name": "file"
+              },
+              "message": "resources/list: 1 malformed resources entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uri required by this list.",
+              "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+              "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+            }
+          ]
+        },
+        {
+          "transport": "stdio",
+          "exit": 1,
+          "summary": {
+            "totalFindings": 1,
+            "bySeverity": {
+              "error": 1,
+              "warning": 0,
+              "info": 0
+            },
+            "byRule": {
+              "collection/incomplete": 1
+            },
+            "toolCount": 0,
+            "promptCount": 0,
+            "resourceCount": 1,
+            "totalEstimatedTokens": 0,
+            "complete": false,
+            "score": null
+          },
+          "collection": [
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "tools/list",
+              "status": "unsupported",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Server did not advertise tools."
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "prompts/list",
+              "status": "unsupported",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Server did not advertise prompts."
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "resources/list",
+              "status": "incomplete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1,
+              "detail": "1 malformed resources entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uri required by this list."
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "resources/templates/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 0,
+              "retained": 0
+            }
+          ],
+          "findings": [
+            {
+              "ruleId": "collection/incomplete",
+              "severity": "error",
+              "serverId": "resource-identity-fixture",
+              "subject": {
+                "kind": "server",
+                "name": "resource-identity-fixture"
+              },
+              "message": "resources/list: 1 malformed resources entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uri required by this list.",
+              "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+              "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "missing-template",
+      "oracle": [
+        {
+          "list": "resourceTemplates",
+          "index": 0,
+          "valid": false,
+          "issues": [
+            "uriTemplate"
+          ]
+        }
+      ],
+      "retainedNames": [
+        "daily_report"
+      ],
+      "gateFailsWithCollectionDiagnosticSuppressed": true,
+      "observations": [
+        {
+          "transport": "file",
+          "exit": 1,
+          "summary": {
+            "totalFindings": 1,
+            "bySeverity": {
+              "error": 1,
+              "warning": 0,
+              "info": 0
+            },
+            "byRule": {
+              "collection/incomplete": 1
+            },
+            "toolCount": 0,
+            "promptCount": 0,
+            "resourceCount": 1,
+            "totalEstimatedTokens": 0,
+            "complete": false,
+            "score": null
+          },
+          "collection": [
+            {
+              "serverId": "file",
+              "scope": "resources/templates/list",
+              "status": "incomplete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1,
+              "detail": "1 malformed resourceTemplates entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uriTemplate required by this list."
+            },
+            {
+              "serverId": "file",
+              "scope": "file",
+              "status": "complete",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Only the supplied snapshot was inspected; no server was contacted."
+            }
+          ],
+          "findings": [
+            {
+              "ruleId": "collection/incomplete",
+              "severity": "error",
+              "serverId": "file",
+              "subject": {
+                "kind": "server",
+                "name": "file"
+              },
+              "message": "resources/templates/list: 1 malformed resourceTemplates entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uriTemplate required by this list.",
+              "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+              "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+            }
+          ]
+        },
+        {
+          "transport": "stdio",
+          "exit": 1,
+          "summary": {
+            "totalFindings": 1,
+            "bySeverity": {
+              "error": 1,
+              "warning": 0,
+              "info": 0
+            },
+            "byRule": {
+              "collection/incomplete": 1
+            },
+            "toolCount": 0,
+            "promptCount": 0,
+            "resourceCount": 1,
+            "totalEstimatedTokens": 0,
+            "complete": false,
+            "score": null
+          },
+          "collection": [
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "tools/list",
+              "status": "unsupported",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Server did not advertise tools."
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "prompts/list",
+              "status": "unsupported",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Server did not advertise prompts."
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "resources/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 0,
+              "retained": 0
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "resources/templates/list",
+              "status": "incomplete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1,
+              "detail": "1 malformed resourceTemplates entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uriTemplate required by this list."
+            }
+          ],
+          "findings": [
+            {
+              "ruleId": "collection/incomplete",
+              "severity": "error",
+              "serverId": "resource-identity-fixture",
+              "subject": {
+                "kind": "server",
+                "name": "resource-identity-fixture"
+              },
+              "message": "resources/templates/list: 1 malformed resourceTemplates entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uriTemplate required by this list.",
+              "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+              "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "template-is-not-uri",
+      "oracle": [
+        {
+          "list": "resources",
+          "index": 0,
+          "valid": false,
+          "issues": [
+            "uri"
+          ]
+        }
+      ],
+      "retainedNames": [
+        "daily_report"
+      ],
+      "gateFailsWithCollectionDiagnosticSuppressed": true,
+      "observations": [
+        {
+          "transport": "file",
+          "exit": 1,
+          "summary": {
+            "totalFindings": 1,
+            "bySeverity": {
+              "error": 1,
+              "warning": 0,
+              "info": 0
+            },
+            "byRule": {
+              "collection/incomplete": 1
+            },
+            "toolCount": 0,
+            "promptCount": 0,
+            "resourceCount": 1,
+            "totalEstimatedTokens": 0,
+            "complete": false,
+            "score": null
+          },
+          "collection": [
+            {
+              "serverId": "file",
+              "scope": "resources/list",
+              "status": "incomplete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1,
+              "detail": "1 malformed resources entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uri required by this list."
+            },
+            {
+              "serverId": "file",
+              "scope": "file",
+              "status": "complete",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Only the supplied snapshot was inspected; no server was contacted."
+            }
+          ],
+          "findings": [
+            {
+              "ruleId": "collection/incomplete",
+              "severity": "error",
+              "serverId": "file",
+              "subject": {
+                "kind": "server",
+                "name": "file"
+              },
+              "message": "resources/list: 1 malformed resources entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uri required by this list.",
+              "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+              "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+            }
+          ]
+        },
+        {
+          "transport": "stdio",
+          "exit": 1,
+          "summary": {
+            "totalFindings": 1,
+            "bySeverity": {
+              "error": 1,
+              "warning": 0,
+              "info": 0
+            },
+            "byRule": {
+              "collection/incomplete": 1
+            },
+            "toolCount": 0,
+            "promptCount": 0,
+            "resourceCount": 1,
+            "totalEstimatedTokens": 0,
+            "complete": false,
+            "score": null
+          },
+          "collection": [
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "tools/list",
+              "status": "unsupported",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Server did not advertise tools."
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "prompts/list",
+              "status": "unsupported",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Server did not advertise prompts."
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "resources/list",
+              "status": "incomplete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1,
+              "detail": "1 malformed resources entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uri required by this list."
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "resources/templates/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 0,
+              "retained": 0
+            }
+          ],
+          "findings": [
+            {
+              "ruleId": "collection/incomplete",
+              "severity": "error",
+              "serverId": "resource-identity-fixture",
+              "subject": {
+                "kind": "server",
+                "name": "resource-identity-fixture"
+              },
+              "message": "resources/list: 1 malformed resources entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uri required by this list.",
+              "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+              "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "uri-is-not-template",
+      "oracle": [
+        {
+          "list": "resourceTemplates",
+          "index": 0,
+          "valid": false,
+          "issues": [
+            "uriTemplate"
+          ]
+        }
+      ],
+      "retainedNames": [
+        "daily_report"
+      ],
+      "gateFailsWithCollectionDiagnosticSuppressed": true,
+      "observations": [
+        {
+          "transport": "file",
+          "exit": 1,
+          "summary": {
+            "totalFindings": 1,
+            "bySeverity": {
+              "error": 1,
+              "warning": 0,
+              "info": 0
+            },
+            "byRule": {
+              "collection/incomplete": 1
+            },
+            "toolCount": 0,
+            "promptCount": 0,
+            "resourceCount": 1,
+            "totalEstimatedTokens": 0,
+            "complete": false,
+            "score": null
+          },
+          "collection": [
+            {
+              "serverId": "file",
+              "scope": "resources/templates/list",
+              "status": "incomplete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1,
+              "detail": "1 malformed resourceTemplates entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uriTemplate required by this list."
+            },
+            {
+              "serverId": "file",
+              "scope": "file",
+              "status": "complete",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Only the supplied snapshot was inspected; no server was contacted."
+            }
+          ],
+          "findings": [
+            {
+              "ruleId": "collection/incomplete",
+              "severity": "error",
+              "serverId": "file",
+              "subject": {
+                "kind": "server",
+                "name": "file"
+              },
+              "message": "resources/templates/list: 1 malformed resourceTemplates entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uriTemplate required by this list.",
+              "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+              "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+            }
+          ]
+        },
+        {
+          "transport": "stdio",
+          "exit": 1,
+          "summary": {
+            "totalFindings": 1,
+            "bySeverity": {
+              "error": 1,
+              "warning": 0,
+              "info": 0
+            },
+            "byRule": {
+              "collection/incomplete": 1
+            },
+            "toolCount": 0,
+            "promptCount": 0,
+            "resourceCount": 1,
+            "totalEstimatedTokens": 0,
+            "complete": false,
+            "score": null
+          },
+          "collection": [
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "tools/list",
+              "status": "unsupported",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Server did not advertise tools."
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "prompts/list",
+              "status": "unsupported",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Server did not advertise prompts."
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "resources/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 0,
+              "retained": 0
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "resources/templates/list",
+              "status": "incomplete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1,
+              "detail": "1 malformed resourceTemplates entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uriTemplate required by this list."
+            }
+          ],
+          "findings": [
+            {
+              "ruleId": "collection/incomplete",
+              "severity": "error",
+              "serverId": "resource-identity-fixture",
+              "subject": {
+                "kind": "server",
+                "name": "resource-identity-fixture"
+              },
+              "message": "resources/templates/list: 1 malformed resourceTemplates entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uriTemplate required by this list.",
+              "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+              "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "invalid-uri-type",
+      "oracle": [
+        {
+          "list": "resources",
+          "index": 0,
+          "valid": false,
+          "issues": [
+            "uri"
+          ]
+        }
+      ],
+      "retainedNames": [
+        "daily_report"
+      ],
+      "gateFailsWithCollectionDiagnosticSuppressed": true,
+      "observations": [
+        {
+          "transport": "file",
+          "exit": 1,
+          "summary": {
+            "totalFindings": 1,
+            "bySeverity": {
+              "error": 1,
+              "warning": 0,
+              "info": 0
+            },
+            "byRule": {
+              "collection/incomplete": 1
+            },
+            "toolCount": 0,
+            "promptCount": 0,
+            "resourceCount": 1,
+            "totalEstimatedTokens": 0,
+            "complete": false,
+            "score": null
+          },
+          "collection": [
+            {
+              "serverId": "file",
+              "scope": "resources/list",
+              "status": "incomplete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1,
+              "detail": "1 malformed resources entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uri required by this list."
+            },
+            {
+              "serverId": "file",
+              "scope": "file",
+              "status": "complete",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Only the supplied snapshot was inspected; no server was contacted."
+            }
+          ],
+          "findings": [
+            {
+              "ruleId": "collection/incomplete",
+              "severity": "error",
+              "serverId": "file",
+              "subject": {
+                "kind": "server",
+                "name": "file"
+              },
+              "message": "resources/list: 1 malformed resources entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uri required by this list.",
+              "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+              "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+            }
+          ]
+        },
+        {
+          "transport": "stdio",
+          "exit": 1,
+          "summary": {
+            "totalFindings": 1,
+            "bySeverity": {
+              "error": 1,
+              "warning": 0,
+              "info": 0
+            },
+            "byRule": {
+              "collection/incomplete": 1
+            },
+            "toolCount": 0,
+            "promptCount": 0,
+            "resourceCount": 1,
+            "totalEstimatedTokens": 0,
+            "complete": false,
+            "score": null
+          },
+          "collection": [
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "tools/list",
+              "status": "unsupported",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Server did not advertise tools."
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "prompts/list",
+              "status": "unsupported",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Server did not advertise prompts."
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "resources/list",
+              "status": "incomplete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1,
+              "detail": "1 malformed resources entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uri required by this list."
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "resources/templates/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 0,
+              "retained": 0
+            }
+          ],
+          "findings": [
+            {
+              "ruleId": "collection/incomplete",
+              "severity": "error",
+              "serverId": "resource-identity-fixture",
+              "subject": {
+                "kind": "server",
+                "name": "resource-identity-fixture"
+              },
+              "message": "resources/list: 1 malformed resources entries; first at index 0. Valid fields were retained where possible. 1 entry lacks a string uri required by this list.",
+              "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+              "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "valid-resource",
+      "oracle": [
+        {
+          "list": "resources",
+          "index": 0,
+          "valid": true,
+          "issues": []
+        }
+      ],
+      "retainedNames": [
+        "daily_report"
+      ],
+      "gateFailsWithCollectionDiagnosticSuppressed": false,
+      "observations": [
+        {
+          "transport": "file",
+          "exit": 0,
+          "summary": {
+            "totalFindings": 0,
+            "bySeverity": {
+              "error": 0,
+              "warning": 0,
+              "info": 0
+            },
+            "byRule": {},
+            "toolCount": 0,
+            "promptCount": 0,
+            "resourceCount": 1,
+            "totalEstimatedTokens": 0,
+            "complete": true,
+            "score": 100
+          },
+          "collection": [
+            {
+              "serverId": "file",
+              "scope": "resources/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            },
+            {
+              "serverId": "file",
+              "scope": "file",
+              "status": "complete",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Only the supplied snapshot was inspected; no server was contacted."
+            }
+          ],
+          "findings": []
+        },
+        {
+          "transport": "stdio",
+          "exit": 0,
+          "summary": {
+            "totalFindings": 0,
+            "bySeverity": {
+              "error": 0,
+              "warning": 0,
+              "info": 0
+            },
+            "byRule": {},
+            "toolCount": 0,
+            "promptCount": 0,
+            "resourceCount": 1,
+            "totalEstimatedTokens": 0,
+            "complete": true,
+            "score": 100
+          },
+          "collection": [
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "tools/list",
+              "status": "unsupported",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Server did not advertise tools."
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "prompts/list",
+              "status": "unsupported",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Server did not advertise prompts."
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "resources/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "resources/templates/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 0,
+              "retained": 0
+            }
+          ],
+          "findings": []
+        }
+      ]
+    },
+    {
+      "id": "valid-template",
+      "oracle": [
+        {
+          "list": "resourceTemplates",
+          "index": 0,
+          "valid": true,
+          "issues": []
+        }
+      ],
+      "retainedNames": [
+        "daily_report"
+      ],
+      "gateFailsWithCollectionDiagnosticSuppressed": false,
+      "observations": [
+        {
+          "transport": "file",
+          "exit": 0,
+          "summary": {
+            "totalFindings": 0,
+            "bySeverity": {
+              "error": 0,
+              "warning": 0,
+              "info": 0
+            },
+            "byRule": {},
+            "toolCount": 0,
+            "promptCount": 0,
+            "resourceCount": 1,
+            "totalEstimatedTokens": 0,
+            "complete": true,
+            "score": 100
+          },
+          "collection": [
+            {
+              "serverId": "file",
+              "scope": "resources/templates/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            },
+            {
+              "serverId": "file",
+              "scope": "file",
+              "status": "complete",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Only the supplied snapshot was inspected; no server was contacted."
+            }
+          ],
+          "findings": []
+        },
+        {
+          "transport": "stdio",
+          "exit": 0,
+          "summary": {
+            "totalFindings": 0,
+            "bySeverity": {
+              "error": 0,
+              "warning": 0,
+              "info": 0
+            },
+            "byRule": {},
+            "toolCount": 0,
+            "promptCount": 0,
+            "resourceCount": 1,
+            "totalEstimatedTokens": 0,
+            "complete": true,
+            "score": 100
+          },
+          "collection": [
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "tools/list",
+              "status": "unsupported",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Server did not advertise tools."
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "prompts/list",
+              "status": "unsupported",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Server did not advertise prompts."
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "resources/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 0,
+              "retained": 0
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "resources/templates/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ],
+          "findings": []
+        }
+      ]
+    },
+    {
+      "id": "retained-warning",
+      "oracle": [
+        {
+          "list": "resources",
+          "index": 0,
+          "valid": true,
+          "issues": []
+        },
+        {
+          "list": "resources",
+          "index": 1,
+          "valid": false,
+          "issues": [
+            "uri"
+          ]
+        }
+      ],
+      "retainedNames": [
+        "daily_report",
+        "incomplete_report"
+      ],
+      "gateFailsWithCollectionDiagnosticSuppressed": true,
+      "observations": [
+        {
+          "transport": "file",
+          "exit": 1,
+          "summary": {
+            "totalFindings": 2,
+            "bySeverity": {
+              "error": 2,
+              "warning": 0,
+              "info": 0
+            },
+            "byRule": {
+              "safety/hidden-unicode": 1,
+              "collection/incomplete": 1
+            },
+            "toolCount": 0,
+            "promptCount": 0,
+            "resourceCount": 2,
+            "totalEstimatedTokens": 0,
+            "complete": false,
+            "score": null
+          },
+          "collection": [
+            {
+              "serverId": "file",
+              "scope": "resources/list",
+              "status": "incomplete",
+              "pages": 1,
+              "received": 2,
+              "retained": 2,
+              "detail": "1 malformed resources entries; first at index 1. Valid fields were retained where possible. 1 entry lacks a string uri required by this list."
+            },
+            {
+              "serverId": "file",
+              "scope": "file",
+              "status": "complete",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Only the supplied snapshot was inspected; no server was contacted."
+            }
+          ],
+          "findings": [
+            {
+              "ruleId": "safety/hidden-unicode",
+              "severity": "error",
+              "serverId": "file",
+              "subject": {
+                "kind": "resource",
+                "name": "incomplete_report"
+              },
+              "message": "description: 1 zero-width character found.",
+              "detail": "U+200B"
+            },
+            {
+              "ruleId": "collection/incomplete",
+              "severity": "error",
+              "serverId": "file",
+              "subject": {
+                "kind": "server",
+                "name": "file"
+              },
+              "message": "resources/list: 1 malformed resources entries; first at index 1. Valid fields were retained where possible. 1 entry lacks a string uri required by this list.",
+              "detail": "1 pages received; 2 entries received; 2 entries retained for linting.",
+              "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+            }
+          ]
+        },
+        {
+          "transport": "stdio",
+          "exit": 1,
+          "summary": {
+            "totalFindings": 2,
+            "bySeverity": {
+              "error": 2,
+              "warning": 0,
+              "info": 0
+            },
+            "byRule": {
+              "safety/hidden-unicode": 1,
+              "collection/incomplete": 1
+            },
+            "toolCount": 0,
+            "promptCount": 0,
+            "resourceCount": 2,
+            "totalEstimatedTokens": 0,
+            "complete": false,
+            "score": null
+          },
+          "collection": [
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "tools/list",
+              "status": "unsupported",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Server did not advertise tools."
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "prompts/list",
+              "status": "unsupported",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "detail": "Server did not advertise prompts."
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "resources/list",
+              "status": "incomplete",
+              "pages": 1,
+              "received": 2,
+              "retained": 2,
+              "detail": "1 malformed resources entries; first at index 1. Valid fields were retained where possible. 1 entry lacks a string uri required by this list."
+            },
+            {
+              "serverId": "resource-identity-fixture",
+              "scope": "resources/templates/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 0,
+              "retained": 0
+            }
+          ],
+          "findings": [
+            {
+              "ruleId": "safety/hidden-unicode",
+              "severity": "error",
+              "serverId": "resource-identity-fixture",
+              "subject": {
+                "kind": "resource",
+                "name": "incomplete_report"
+              },
+              "message": "description: 1 zero-width character found.",
+              "detail": "U+200B"
+            },
+            {
+              "ruleId": "collection/incomplete",
+              "severity": "error",
+              "serverId": "resource-identity-fixture",
+              "subject": {
+                "kind": "server",
+                "name": "resource-identity-fixture"
+              },
+              "message": "resources/list: 1 malformed resources entries; first at index 1. Valid fields were retained where possible. 1 entry lacks a string uri required by this list.",
+              "detail": "1 pages received; 2 entries received; 2 entries retained for linting.",
+              "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
