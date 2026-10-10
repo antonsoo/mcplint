@@ -1,0 +1,58 @@
+{
+  "python": "3.12.3",
+  "jsonschema": "4.10.3",
+  "cases": [
+    {
+      "id": "all-of",
+      "compiles": true,
+      "acceptsInstance": true,
+      "acceptsEmpty": false
+    },
+    {
+      "id": "reference",
+      "compiles": true,
+      "acceptsInstance": true,
+      "acceptsEmpty": false
+    },
+    {
+      "id": "pattern",
+      "compiles": true,
+      "acceptsInstance": true,
+      "acceptsEmpty": false
+    },
+    {
+      "id": "additional-schema",
+      "compiles": true,
+      "acceptsInstance": true,
+      "acceptsEmpty": false
+    },
+    {
+      "id": "undocumented-open",
+      "compiles": true,
+      "acceptsInstance": true,
+      "acceptsEmpty": false
+    },
+    {
+      "id": "direct-control",
+      "compiles": true,
+      "acceptsInstance": true,
+      "acceptsEmpty": false
+    },
+    {
+      "id": "nested-is-not-root",
+      "compiles": true,
+      "acceptsInstance": true,
+      "acceptsEmpty": false
+    },
+    {
+      "id": "invalid-control",
+      "compiles": false
+    },
+    {
+      "id": "closed-contradiction",
+      "compiles": true,
+      "acceptsInstance": false,
+      "acceptsEmpty": false
+    }
+  ]
+}

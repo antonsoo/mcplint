@@ -1,5 +1,5 @@
 import type { CollectedTool, Finding, Rule, RuleContext } from '../types.js';
-import { asSchema, requiredNames, schemaProperties } from '../schema-utils.js';
+import { asSchema, isPlainObject, requiredNames, schemaProperties } from '../schema-utils.js';
 
 const MIN_WORDS = 4;
 const MIN_CHARS = 20;
@@ -151,24 +151,35 @@ export const enumUnexplained: Rule = {
 export const requiredUndeclared: Rule = {
   id: 'description/required-undeclared',
   category: 'description',
-  defaultSeverity: 'error',
-  summary: 'inputSchema.required lists a parameter that is not declared in properties.',
+  defaultSeverity: 'warning',
+  summary: 'A simple input schema requires a parameter without a named property definition.',
   rationale:
-    'A required parameter with no matching property definition cannot be validated or explained to the model; ' +
-    'most clients will either drop the tool or send an incomplete call that the server has to reject.',
+    'JSON Schema permits required names outside properties. In a simple open schema this is a documentation ' +
+    'warning; with additionalProperties: false it is a contradiction. Composed, referenced and pattern-based ' +
+    'schemas can define parameters elsewhere and are outside this local-name heuristic.',
   check(ctx: RuleContext): Finding[] {
     const findings: Finding[] = [];
     for (const t of ctx.target.tools) {
       const schema = asSchema(t.inputSchema);
+      if (!schema) continue;
+      // Do not mistake a root-only name lookup for JSON Schema evaluation. In
+      // particular, a referenced or conditional schema may document this name.
+      // Do not execute untrusted patternProperties regexes to guess otherwise.
+      if (['$ref', '$dynamicRef', '$recursiveRef', 'allOf', 'anyOf', 'oneOf',
+        'if', 'then', 'else', 'dependentSchemas', 'dependencies'].some(key => Object.hasOwn(schema, key)) ||
+        (isPlainObject(schema.patternProperties) && Object.keys(schema.patternProperties).length > 0) ||
+        isPlainObject(schema.additionalProperties) || isPlainObject(schema.unevaluatedProperties)) continue;
       const propNames = new Set(schemaProperties(schema).map(([n]) => n));
       for (const req of requiredNames(schema)) {
         if (!propNames.has(req)) {
           findings.push({
             ruleId: this.id,
-            severity: this.defaultSeverity,
+            severity: schema.additionalProperties === false ? 'error' : this.defaultSeverity,
             serverId: t.serverId,
             subject: { kind: 'tool', name: t.name },
-            message: `"${req}" is required but not declared under inputSchema.properties.`
+            message: schema.additionalProperties === false
+              ? `"${req}" is required but additionalProperties: false forbids it; no matching inputSchema.properties entry exists.`
+              : `"${req}" is required without a named property definition. This is valid in an open JSON Schema; check whether its type and usage need documenting.`
           });
         }
       }

@@ -4,6 +4,10 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Stop treating required names outside local `properties` as inherently invalid.
+  Keep simple open-schema documentation warnings and closed-schema contradictions
+  distinct; decline the heuristic for composed or referenced definitions.
+
 - Bound transport startup and the entire MCP handshake with a per-server connection
   deadline (30 seconds by default; `--connect-timeout <ms>` / `connectTimeoutMs`).
   This covers SSE connections without an endpoint and stalled initialization notifications,

@@ -1,0 +1,166 @@
+[
+  {
+    "id": "all-of",
+    "schema": {
+      "type": "object",
+      "required": [
+        "region"
+      ],
+      "allOf": [
+        {
+          "properties": {
+            "region": {
+              "type": "string",
+              "description": "The account region used to select the storage location."
+            }
+          }
+        }
+      ]
+    },
+    "instance": {
+      "region": "us"
+    }
+  },
+  {
+    "id": "reference",
+    "schema": {
+      "type": "object",
+      "required": [
+        "region"
+      ],
+      "$defs": {
+        "location": {
+          "properties": {
+            "region": {
+              "type": "string",
+              "description": "The account region used to select the storage location."
+            }
+          }
+        }
+      },
+      "$ref": "#/$defs/location"
+    },
+    "instance": {
+      "region": "us"
+    }
+  },
+  {
+    "id": "pattern",
+    "schema": {
+      "type": "object",
+      "required": [
+        "region"
+      ],
+      "patternProperties": {
+        "^region$": {
+          "type": "string",
+          "description": "The account region used to select the storage location."
+        }
+      }
+    },
+    "instance": {
+      "region": "us"
+    }
+  },
+  {
+    "id": "additional-schema",
+    "schema": {
+      "type": "object",
+      "required": [
+        "region"
+      ],
+      "additionalProperties": {
+        "type": "string",
+        "description": "The account region used to select the storage location."
+      }
+    },
+    "instance": {
+      "region": "us"
+    }
+  },
+  {
+    "id": "undocumented-open",
+    "schema": {
+      "type": "object",
+      "required": [
+        "region"
+      ]
+    },
+    "instance": {
+      "region": "us"
+    }
+  },
+  {
+    "id": "direct-control",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "region": {
+          "type": "string",
+          "description": "The account region used to select the storage location."
+        }
+      },
+      "required": [
+        "region"
+      ]
+    },
+    "instance": {
+      "region": "us"
+    }
+  },
+  {
+    "id": "nested-is-not-root",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "object",
+          "properties": {
+            "region": {
+              "type": "string",
+              "description": "The account region used to select the storage location."
+            }
+          },
+          "description": "The storage destination."
+        }
+      },
+      "required": [
+        "region"
+      ]
+    },
+    "instance": {
+      "region": "us"
+    }
+  },
+  {
+    "id": "invalid-control",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "region": {
+          "type": "strng"
+        }
+      },
+      "required": [
+        "region"
+      ]
+    },
+    "instance": {
+      "region": "us"
+    }
+  },
+  {
+    "id": "closed-contradiction",
+    "schema": {
+      "type": "object",
+      "required": [
+        "region"
+      ],
+      "properties": {},
+      "additionalProperties": false
+    },
+    "instance": {
+      "region": "us"
+    }
+  }
+]

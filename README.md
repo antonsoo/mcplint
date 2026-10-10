@@ -205,7 +205,7 @@ The full 14-tool report is browsable live at
 | [`description/too-long`](docs/rules/description-too-long.md) | description | info | Over 1200 characters. |
 | [`description/param-missing`](docs/rules/description-param-missing.md) | description | warning | Parameters with no description, one finding per tool. |
 | [`description/enum-unexplained`](docs/rules/description-enum-unexplained.md) | description | info | An enum's values are never explained. |
-| [`description/required-undeclared`](docs/rules/description-required-undeclared.md) | description | error | `required` lists a name not in `properties`. |
+| [`description/required-undeclared`](docs/rules/description-required-undeclared.md) | description | warning | A simple schema requires an undocumented name; error if `additionalProperties: false` forbids it. |
 | [`description/near-duplicate`](docs/rules/description-near-duplicate.md) | description | warning | Two tools with ≥75% word-overlap descriptions. |
 | [`schema/invalid`](docs/rules/schema-invalid.md) | schema | error | Malformed input/output schema, or input root not `type: "object"`. |
 | [`schema/portability`](docs/rules/schema-portability.md) | schema | info | Constructs that some clients (OpenAI strict mode, external `$ref`) handle inconsistently; one note per server. |
