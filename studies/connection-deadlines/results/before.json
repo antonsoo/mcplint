@@ -1,0 +1,396 @@
+{
+  "node": "v26.7.0",
+  "scenarios": 11,
+  "disagreements": 9,
+  "results": [
+    {
+      "scenario": "sse-no-endpoint",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 5018.795942999999,
+      "exitCode": null,
+      "watchdogKilled": true,
+      "activeAtWatchdog": 1,
+      "stdioChildAlive": null,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/mcp",
+          "rpc": null
+        }
+      ],
+      "output": null,
+      "stderr": "",
+      "matchesExpected": false
+    },
+    {
+      "scenario": "sse-no-headers",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 5018.981738,
+      "exitCode": null,
+      "watchdogKilled": true,
+      "activeAtWatchdog": 1,
+      "stdioChildAlive": null,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/mcp",
+          "rpc": null
+        }
+      ],
+      "output": null,
+      "stderr": "",
+      "matchesExpected": false
+    },
+    {
+      "scenario": "http-no-initialize",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 5014.043453,
+      "exitCode": null,
+      "watchdogKilled": true,
+      "activeAtWatchdog": 1,
+      "stdioChildAlive": null,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "rpc": "initialize"
+        }
+      ],
+      "output": null,
+      "stderr": "",
+      "matchesExpected": false
+    },
+    {
+      "scenario": "http-no-notification",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 5013.113625,
+      "exitCode": null,
+      "watchdogKilled": true,
+      "activeAtWatchdog": 1,
+      "stdioChildAlive": null,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "rpc": "initialize"
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "rpc": "notifications/initialized"
+        }
+      ],
+      "output": null,
+      "stderr": "",
+      "matchesExpected": false
+    },
+    {
+      "scenario": "fallback-deadline",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 5015.850481000001,
+      "exitCode": null,
+      "watchdogKilled": true,
+      "activeAtWatchdog": 1,
+      "stdioChildAlive": null,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "rpc": "initialize"
+        },
+        {
+          "method": "GET",
+          "path": "/mcp",
+          "rpc": null
+        }
+      ],
+      "output": null,
+      "stderr": "",
+      "matchesExpected": false
+    },
+    {
+      "scenario": "http-500",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 5015.335525999999,
+      "exitCode": null,
+      "watchdogKilled": true,
+      "activeAtWatchdog": 1,
+      "stdioChildAlive": null,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "rpc": "initialize"
+        },
+        {
+          "method": "GET",
+          "path": "/mcp",
+          "rpc": null
+        }
+      ],
+      "output": null,
+      "stderr": "",
+      "matchesExpected": false
+    },
+    {
+      "scenario": "legacy-success",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 373.98339699999997,
+      "exitCode": 0,
+      "watchdogKilled": false,
+      "activeAtWatchdog": null,
+      "stdioChildAlive": null,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "rpc": "initialize"
+        },
+        {
+          "method": "GET",
+          "path": "/mcp",
+          "rpc": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "rpc": "initialize"
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "rpc": "notifications/initialized"
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "rpc": "tools/list"
+        }
+      ],
+      "output": {
+        "outcome": "report",
+        "tools": [
+          "read_status"
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 29,
+          "complete": true,
+          "score": 100
+        },
+        "collection": [
+          {
+            "serverId": "controlled-loopback",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "controlled-loopback",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "controlled-loopback",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "controlled-loopback",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "stderr": "",
+      "matchesExpected": true
+    },
+    {
+      "scenario": "slow-list",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 1116.8172120000017,
+      "exitCode": 0,
+      "watchdogKilled": false,
+      "activeAtWatchdog": null,
+      "stdioChildAlive": null,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "rpc": "initialize"
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "rpc": "notifications/initialized"
+        },
+        {
+          "method": "GET",
+          "path": "/mcp",
+          "rpc": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "rpc": "tools/list"
+        }
+      ],
+      "output": {
+        "outcome": "report",
+        "tools": [
+          "read_status"
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 29,
+          "complete": true,
+          "score": 100
+        },
+        "collection": [
+          {
+            "serverId": "controlled-loopback",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "controlled-loopback",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "controlled-loopback",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "controlled-loopback",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "stderr": "",
+      "matchesExpected": true
+    },
+    {
+      "scenario": "stdio-silent",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 5017.592755999998,
+      "exitCode": null,
+      "watchdogKilled": true,
+      "activeAtWatchdog": 0,
+      "stdioChildAlive": false,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [],
+      "output": null,
+      "stderr": "",
+      "matchesExpected": false
+    },
+    {
+      "scenario": "config-continues",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 5016.177759999999,
+      "exitCode": null,
+      "watchdogKilled": true,
+      "activeAtWatchdog": 1,
+      "stdioChildAlive": null,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/stalled",
+          "rpc": null
+        }
+      ],
+      "output": null,
+      "stderr": "",
+      "matchesExpected": false
+    },
+    {
+      "scenario": "cli-config",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 5015.776775000006,
+      "exitCode": null,
+      "watchdogKilled": true,
+      "activeAtWatchdog": 1,
+      "stdioChildAlive": null,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/stalled",
+          "rpc": null
+        }
+      ],
+      "output": null,
+      "stderr": "mcplint: \"config\" launches every server listed in <fixture-directory>/cli-config.json. Only run this against configs you trust.\n  starting stalled (http)...\n",
+      "matchesExpected": false
+    }
+  ]
+}

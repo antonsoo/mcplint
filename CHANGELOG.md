@@ -4,6 +4,14 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Bound transport startup and the entire MCP handshake with a per-server connection
+  deadline (30 seconds by default; `--connect-timeout <ms>` / `connectTimeoutMs`).
+  This covers SSE connections without an endpoint and stalled initialization notifications,
+  which were outside the SDK's request timeout. Config audits retain the timeout as
+  incomplete coverage and continue. HTTP legacy fallback shares the original deadline
+  and only follows an HTTP 4xx rejection before initialization succeeds.
+  [Before/after loopback and installed-package evidence](studies/connection-deadlines/README.md).
+
 - Validate input and supplied output schemas independently, respecting draft-06, draft-07, 2019-09
   and 2020-12. Clear compiled resources after every check, including failures: repeated `$id`s no
   longer produce false errors or allow unrelated audits to resolve missing references.

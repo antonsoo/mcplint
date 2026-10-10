@@ -59,6 +59,7 @@ Missing list fields in saved snapshots are outside that snapshot's scope.
 | --- | --- | --- |
 | One live list | 1,000 pages; 100,000 retained raw entries | Incomplete if more pages/entries remain. |
 | One live list request | 10 seconds, including progress extensions | Incomplete; prior pages retained. |
+| Connection and initialization, per server | 30 seconds by default; `--connect-timeout <ms>` | Single target exits 2; config entry is incomplete and collection proceeds to the next server. |
 | One live list operation | 60 seconds for requests across its pages | Incomplete; prior pages retained. |
 | One list in a saved file | 100,000 raw entries | Incomplete if entries are omitted. |
 | Safety text per input/output schema | 128 levels; 20,000 visited values; 2,000,000 UTF-16 units including keys | `safety/unchecked`; retained text and other tools still checked. |
@@ -74,6 +75,18 @@ before the item cap can be applied. The schema compiler, tokenizer and pairwise
 naming/description rules have their own costs. Use trusted-size exports and an
 external process timeout for hostile or very large servers. mcplint still never
 calls tools, reads resource bodies or renders remote icons.
+
+The connection budget covers transport startup, the `initialize` exchange and
+the final `notifications/initialized` send. An HTTP fallback uses the remaining
+budget; only an HTTP 4xx rejection before successful initialization triggers it.
+List collection has its separate limits after the handshake completes. Library
+callers can pass `connectTimeoutMs` to `collectHttp`, `collectStdio` or `collectConfig`;
+values must be integers from 1 through 2147483647. The default is 30000.
+The collector closes its transport on timeout. Scheduling and cleanup add to
+elapsed time: a directly spawned process that ignores EOF can take another two
+seconds to terminate through the SDK. This is not a deadline for the entire audit
+or a guarantee of terminating a server's detached descendants.
+[Actual connections, child-process checks and retained reports](../studies/connection-deadlines/README.md).
 
 ## CI and library consumers
 

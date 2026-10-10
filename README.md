@@ -103,6 +103,11 @@ node dist/cli.js stdio -- npx tsx examples/good-server/server.ts
 - **Collection coverage** in every report: retained pages, malformed entries, missing config inputs and failed
   servers stay visible. Incomplete audits have no score and fail either `--fail-on` threshold. See
   [scope, limits and API changes](docs/collection-coverage.md).
+- **Connection deadlines (source checkout).** A server has 30 seconds to open its transport and
+  complete initialization, including legacy HTTP fallback. Set `--connect-timeout <ms>` for slow
+  startup. A timed-out config entry remains incomplete while the next server is audited.
+  [Loopback reproduction, process cleanup and installed-package results](studies/connection-deadlines/README.md).
+  These changes are local and unreleased.
 - Never calls `tools/call` on anything it lints — it only ever does the MCP handshake plus `*/list`.
 
 ![Incomplete audit with retained evidence and inert hostile text from a synthetic regression fixture](docs/assets/coverage-dark-1440.png)

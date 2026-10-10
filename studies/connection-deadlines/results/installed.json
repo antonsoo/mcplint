@@ -1,0 +1,619 @@
+{
+  "node": "v26.7.0",
+  "scenarios": 11,
+  "disagreements": 0,
+  "results": [
+    {
+      "scenario": "sse-no-endpoint",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 859.498323,
+      "exitCode": 2,
+      "watchdogKilled": false,
+      "activeAtWatchdog": null,
+      "stdioChildAlive": null,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/mcp",
+          "rpc": null
+        }
+      ],
+      "output": {
+        "outcome": "error",
+        "name": "ConnectionTimeoutError",
+        "message": "Connection and initialization exceeded 500 ms. Check server startup and availability, or increase --connect-timeout."
+      },
+      "stderr": "",
+      "matchesExpected": true
+    },
+    {
+      "scenario": "sse-no-headers",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 802.5494259999999,
+      "exitCode": 2,
+      "watchdogKilled": false,
+      "activeAtWatchdog": null,
+      "stdioChildAlive": null,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/mcp",
+          "rpc": null
+        }
+      ],
+      "output": {
+        "outcome": "error",
+        "name": "ConnectionTimeoutError",
+        "message": "Connection and initialization exceeded 500 ms. Check server startup and availability, or increase --connect-timeout."
+      },
+      "stderr": "",
+      "matchesExpected": true
+    },
+    {
+      "scenario": "http-no-initialize",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 781.672024,
+      "exitCode": 2,
+      "watchdogKilled": false,
+      "activeAtWatchdog": null,
+      "stdioChildAlive": null,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "rpc": "initialize"
+        }
+      ],
+      "output": {
+        "outcome": "error",
+        "name": "ConnectionTimeoutError",
+        "message": "Connection and initialization exceeded 500 ms. Check server startup and availability, or increase --connect-timeout."
+      },
+      "stderr": "",
+      "matchesExpected": true
+    },
+    {
+      "scenario": "http-no-notification",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 782.1315129999998,
+      "exitCode": 2,
+      "watchdogKilled": false,
+      "activeAtWatchdog": null,
+      "stdioChildAlive": null,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "rpc": "initialize"
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "rpc": "notifications/initialized"
+        }
+      ],
+      "output": {
+        "outcome": "error",
+        "name": "ConnectionTimeoutError",
+        "message": "Connection and initialization exceeded 500 ms. Check server startup and availability, or increase --connect-timeout."
+      },
+      "stderr": "",
+      "matchesExpected": true
+    },
+    {
+      "scenario": "fallback-deadline",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 780.083717,
+      "exitCode": 2,
+      "watchdogKilled": false,
+      "activeAtWatchdog": null,
+      "stdioChildAlive": null,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "rpc": "initialize"
+        },
+        {
+          "method": "GET",
+          "path": "/mcp",
+          "rpc": null
+        }
+      ],
+      "output": {
+        "outcome": "error",
+        "name": "ConnectionTimeoutError",
+        "message": "Connection and initialization exceeded 500 ms. Check server startup and availability, or increase --connect-timeout."
+      },
+      "stderr": "",
+      "matchesExpected": true
+    },
+    {
+      "scenario": "http-500",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 292.89650600000004,
+      "exitCode": 2,
+      "watchdogKilled": false,
+      "activeAtWatchdog": null,
+      "stdioChildAlive": null,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "rpc": "initialize"
+        }
+      ],
+      "output": {
+        "outcome": "error",
+        "name": "Error",
+        "message": "Streamable HTTP error: Error POSTing to endpoint: controlled fixture outage"
+      },
+      "stderr": "",
+      "matchesExpected": true
+    },
+    {
+      "scenario": "legacy-success",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 376.4770209999997,
+      "exitCode": 0,
+      "watchdogKilled": false,
+      "activeAtWatchdog": null,
+      "stdioChildAlive": null,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "rpc": "initialize"
+        },
+        {
+          "method": "GET",
+          "path": "/mcp",
+          "rpc": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "rpc": "initialize"
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "rpc": "notifications/initialized"
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "rpc": "tools/list"
+        }
+      ],
+      "output": {
+        "outcome": "report",
+        "tools": [
+          "read_status"
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 29,
+          "complete": true,
+          "score": 100
+        },
+        "collection": [
+          {
+            "serverId": "controlled-loopback",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "controlled-loopback",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "controlled-loopback",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "controlled-loopback",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "stderr": "",
+      "matchesExpected": true
+    },
+    {
+      "scenario": "slow-list",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 1112.7394709999999,
+      "exitCode": 0,
+      "watchdogKilled": false,
+      "activeAtWatchdog": null,
+      "stdioChildAlive": null,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "rpc": "initialize"
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "rpc": "notifications/initialized"
+        },
+        {
+          "method": "GET",
+          "path": "/mcp",
+          "rpc": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "rpc": "tools/list"
+        }
+      ],
+      "output": {
+        "outcome": "report",
+        "tools": [
+          "read_status"
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 29,
+          "complete": true,
+          "score": 100
+        },
+        "collection": [
+          {
+            "serverId": "controlled-loopback",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "controlled-loopback",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "controlled-loopback",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "controlled-loopback",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "stderr": "",
+      "matchesExpected": true
+    },
+    {
+      "scenario": "stdio-silent",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 2781.8708069999993,
+      "exitCode": 2,
+      "watchdogKilled": false,
+      "activeAtWatchdog": null,
+      "stdioChildAlive": false,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [],
+      "output": {
+        "outcome": "error",
+        "name": "ConnectionTimeoutError",
+        "message": "Connection and initialization exceeded 500 ms. Check server startup and availability, or increase --connect-timeout."
+      },
+      "stderr": "",
+      "matchesExpected": true
+    },
+    {
+      "scenario": "config-continues",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 865.8344980000002,
+      "exitCode": 1,
+      "watchdogKilled": false,
+      "activeAtWatchdog": null,
+      "stdioChildAlive": null,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/stalled",
+          "rpc": null
+        },
+        {
+          "method": "POST",
+          "path": "/healthy",
+          "rpc": "initialize"
+        },
+        {
+          "method": "POST",
+          "path": "/healthy",
+          "rpc": "notifications/initialized"
+        },
+        {
+          "method": "GET",
+          "path": "/healthy",
+          "rpc": null
+        },
+        {
+          "method": "POST",
+          "path": "/healthy",
+          "rpc": "tools/list"
+        }
+      ],
+      "output": {
+        "outcome": "report",
+        "tools": [
+          "read_status"
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 29,
+          "complete": false,
+          "score": null
+        },
+        "collection": [
+          {
+            "serverId": "stalled",
+            "scope": "connection",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Connection and initialization exceeded 500 ms. Check server startup and availability, or increase --connect-timeout."
+          },
+          {
+            "serverId": "healthy",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "healthy",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "healthy",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "healthy",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "stderr": "",
+      "matchesExpected": true
+    },
+    {
+      "scenario": "cli-config",
+      "deadlineMs": 500,
+      "watchdogMs": 5000,
+      "elapsedMs": 902.844067,
+      "exitCode": 1,
+      "watchdogKilled": false,
+      "activeAtWatchdog": null,
+      "stdioChildAlive": null,
+      "activeResponsesAfterChildExit": 0,
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/stalled",
+          "rpc": null
+        },
+        {
+          "method": "POST",
+          "path": "/healthy",
+          "rpc": "initialize"
+        },
+        {
+          "method": "POST",
+          "path": "/healthy",
+          "rpc": "notifications/initialized"
+        },
+        {
+          "method": "GET",
+          "path": "/healthy",
+          "rpc": null
+        },
+        {
+          "method": "POST",
+          "path": "/healthy",
+          "rpc": "tools/list"
+        }
+      ],
+      "output": {
+        "generatedAt": "2026-10-10T07:03:45.127Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "stalled",
+            "label": "stalled"
+          },
+          {
+            "id": "healthy",
+            "label": "healthy",
+            "name": "controlled-loopback",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "stalled",
+            "scope": "connection",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Connection and initialization exceeded 500 ms. Check server startup and availability, or increase --connect-timeout."
+          },
+          {
+            "serverId": "healthy",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "healthy",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "healthy",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "healthy",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 29,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "stalled",
+            "subject": {
+              "kind": "server",
+              "name": "stalled"
+            },
+            "message": "connection: Connection and initialization exceeded 500 ms. Check server startup and availability, or increase --connect-timeout.",
+            "detail": "0 pages received; 0 entries received; 0 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "stderr": "mcplint: \"config\" launches every server listed in <fixture-directory>/cli-config.json. Only run this against configs you trust.\n  starting stalled (http)...\n  stalled: failed to connect — Connection and initialization exceeded 500 ms. Check server startup and availability, or increase --connect-timeout.\n  starting healthy (http)...\n",
+      "matchesExpected": true
+    }
+  ]
+}
