@@ -38,6 +38,7 @@ Options:
   --ignore <rule[:name]> Suppress a rule, or a rule for one subject. Repeatable.
   -H, --header <k: v>    Extra HTTP header for the http target. Repeatable.
   --input <id=value>     Value for a \${input:id} placeholder in a VS Code config. Repeatable.
+  --connect-timeout <ms> Connection and initialization deadline per server (default 30000).
   -h, --help             Show this help.
   -v, --version          Show the version.
 
@@ -68,6 +69,7 @@ async function main(): Promise<void> {
       ignore: { type: 'string', multiple: true },
       header: { type: 'string', short: 'H', multiple: true },
       input: { type: 'string', multiple: true },
+      'connect-timeout': { type: 'string' },
       help: { type: 'boolean', short: 'h' },
       version: { type: 'boolean', short: 'v' }
     }
@@ -100,13 +102,15 @@ async function main(): Promise<void> {
   if (values['total-budget'] !== undefined) config.totalBudget = parsePositiveInt('--total-budget', values['total-budget']);
 
   let result: LintResult;
+  const connectionOptions = values['connect-timeout'] === undefined ? {}
+    : { connectTimeoutMs: parsePositiveInt('--connect-timeout', values['connect-timeout']) };
 
   try {
     switch (target) {
       case 'stdio': {
         if (rest.length === 0) fail('stdio target requires a command after "--", e.g. `mcplint stdio -- node server.js`');
         const [command, ...args] = rest as [string, ...string[]];
-        const collected = await collectStdio({ command, args });
+        const collected = await collectStdio({ command, args, ...connectionOptions });
         result = lint(collected, config);
         break;
       }
@@ -114,7 +118,7 @@ async function main(): Promise<void> {
         const url = rest[0];
         if (!url) fail('http target requires a URL, e.g. `mcplint http https://example.com/mcp`');
         const headers = parseHeaders(values.header);
-        const collected = await collectHttp({ url, ...(headers ? { headers } : {}) });
+        const collected = await collectHttp({ url, ...(headers ? { headers } : {}), ...connectionOptions });
         result = lint(collected, config);
         break;
       }
@@ -133,6 +137,7 @@ async function main(): Promise<void> {
         );
         const inputs = parseInputs(values.input);
         const collected = await collectConfig(path, {
+          ...connectionOptions,
           onServerStart: (entry) => process.stderr.write(chalk.dim(`  starting ${visibleControls(entry.key)} (${entry.kind})...\n`)),
           onServerError: (entry, err) =>
             process.stderr.write(chalk.red(`  ${visibleControls(entry.key)}: failed to connect — ${visibleControls((err as Error).message)}\n`)),

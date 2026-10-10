@@ -6,6 +6,7 @@ import { isPlainObject, stripBom } from '../core/schema-utils.js';
 import { collectStdio } from './stdio.js';
 import { collectHttp } from './http.js';
 import { mergeTargets } from './collect.js';
+import { connectionBudget, ConnectionTimeoutError, type ConnectionOptions } from './connect.js';
 
 interface StdioServerEntry {
   kind: 'stdio';
@@ -228,7 +229,7 @@ export function parseServerEntries(config: unknown, ctx: ConfigContext = {}): Se
   return readServerConfig(config, ctx).entries;
 }
 
-export interface CollectConfigOptions {
+export interface CollectConfigOptions extends ConnectionOptions {
   onServerStart?: (entry: ServerEntry) => void;
   onServerError?: (entry: ServerEntry, error: unknown) => void;
   onServerSkipped?: (skipped: SkippedServer) => void;
@@ -237,6 +238,7 @@ export interface CollectConfigOptions {
 }
 
 export async function collectConfig(path: string, opts: CollectConfigOptions = {}): Promise<LintTarget> {
+  connectionBudget(opts.connectTimeoutMs); // Validate once, even if every server is disabled.
   const raw = await readTextFile(path);
   let parsed: unknown;
   try {
@@ -263,6 +265,7 @@ export async function collectConfig(path: string, opts: CollectConfigOptions = {
         const fromFile = entry.envFile ? parseEnvFile(await readTextFile(entry.envFile)) : undefined;
         const env = fromFile || entry.env ? { ...fromFile, ...entry.env } : undefined;
         target = await collectStdio({
+          connectTimeoutMs: opts.connectTimeoutMs,
           command: entry.command,
           args: entry.args,
           ...(env ? { env } : {}),
@@ -272,6 +275,7 @@ export async function collectConfig(path: string, opts: CollectConfigOptions = {
         });
       } else {
         target = await collectHttp({
+          connectTimeoutMs: opts.connectTimeoutMs,
           url: entry.url,
           ...(entry.headers ? { headers: entry.headers } : {}),
           ...(entry.sse ? { transport: 'sse' as const } : {}),
@@ -284,7 +288,8 @@ export async function collectConfig(path: string, opts: CollectConfigOptions = {
       opts.onServerError?.(entry, err);
       targets.push({ servers: [{ id: entry.key, label: entry.key }], tools: [], prompts: [], resources: [],
         collection: [{ serverId: entry.key, scope: 'connection', status: 'incomplete', pages: 0, received: 0, retained: 0,
-          detail: 'Could not connect or initialize. Check the command, URL, environment and authorization, then retry.' }] });
+          detail: err instanceof ConnectionTimeoutError ? err.message
+            : 'Could not connect or initialize. Check the command, URL, environment and authorization, then retry.' }] });
     }
   }
 

@@ -12,6 +12,7 @@ export { collectHttp } from './collectors/http.js';
 export { collectFile } from './collectors/file.js';
 export { collectConfig, parseServerEntries } from './collectors/config.js';
 export { mergeTargets } from './collectors/collect.js';
+export { DEFAULT_CONNECT_TIMEOUT_MS, ConnectionTimeoutError } from './collectors/connect.js';
 
 export { renderTerminal } from './report/terminal.js';
 export { renderJson } from './report/json.js';

@@ -3,8 +3,9 @@ import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js'
 import type { LintTarget } from '../core/types.js';
 import { collectFromClient } from './collect.js';
 import { VERSION } from '../version.js';
+import { connectionBudget, connectWithinBudget, type ConnectionOptions } from './connect.js';
 
-export interface StdioTargetOptions {
+export interface StdioTargetOptions extends ConnectionOptions {
   command: string;
   args: string[];
   env?: Record<string, string>;
@@ -15,6 +16,7 @@ export interface StdioTargetOptions {
 }
 
 export async function collectStdio(opts: StdioTargetOptions): Promise<LintTarget> {
+  const budget = connectionBudget(opts.connectTimeoutMs);
   const transport = new StdioClientTransport({
     command: opts.command,
     args: opts.args,
@@ -25,7 +27,7 @@ export async function collectStdio(opts: StdioTargetOptions): Promise<LintTarget
   const client = new Client({ name: 'mcplint', version: VERSION });
 
   try {
-    await client.connect(transport);
+    await connectWithinBudget(client, transport, budget);
     // Prefer the name the server itself declared in the `initialize` handshake
     // (serverInfo.name) over a generic "stdio" placeholder — much more useful
     // in reports and screenshots when linting a single server.

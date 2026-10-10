@@ -1,12 +1,13 @@
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { SSEClientTransport } from '@modelcontextprotocol/sdk/client/sse.js';
-import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js';
+import { StreamableHTTPClientTransport, StreamableHTTPError } from '@modelcontextprotocol/sdk/client/streamableHttp.js';
 import type { Transport } from '@modelcontextprotocol/sdk/shared/transport.js';
 import type { LintTarget } from '../core/types.js';
 import { collectFromClient } from './collect.js';
 import { VERSION } from '../version.js';
+import { connectionBudget, connectWithinBudget, type ConnectionOptions } from './connect.js';
 
-export interface HttpTargetOptions {
+export interface HttpTargetOptions extends ConnectionOptions {
   url: string;
   headers?: Record<string, string>;
   /**
@@ -19,10 +20,12 @@ export interface HttpTargetOptions {
   label?: string;
 }
 
-async function collectOver(transport: Transport, opts: HttpTargetOptions): Promise<LintTarget> {
-  const client = new Client({ name: 'mcplint', version: VERSION });
+async function collectOver(
+  transport: Transport, opts: HttpTargetOptions, budget: ReturnType<typeof connectionBudget>,
+  client = new Client({ name: 'mcplint', version: VERSION })
+): Promise<LintTarget> {
   try {
-    await client.connect(transport);
+    await connectWithinBudget(client, transport, budget);
     // See collectors/stdio.ts: prefer the server's own declared name over a
     // generic "http" placeholder when the caller didn't pin a serverId.
     const discoveredName = client.getServerVersion()?.name;
@@ -35,21 +38,23 @@ async function collectOver(transport: Transport, opts: HttpTargetOptions): Promi
 }
 
 export async function collectHttp(opts: HttpTargetOptions): Promise<LintTarget> {
+  const budget = connectionBudget(opts.connectTimeoutMs);
   const url = new URL(opts.url);
   const requestInit = opts.headers ? { headers: opts.headers } : undefined;
   const sse = (): Transport => new SSEClientTransport(url, { requestInit });
-  if (opts.transport === 'sse') return collectOver(sse(), opts);
+  if (opts.transport === 'sse') return collectOver(sse(), opts, budget);
 
+  const client = new Client({ name: 'mcplint', version: VERSION });
   try {
-    return await collectOver(new StreamableHTTPClientTransport(url, { requestInit }), opts);
+    return await collectOver(new StreamableHTTPClientTransport(url, { requestInit }), opts, budget, client);
   } catch (streamable) {
-    // A server that only speaks HTTP+SSE answers the first POST with a 4xx (typically 404 or
-    // 405). Anything else it says to the older transport decides the matter; if that fails too,
-    // the first error is the one about the transport the server most likely meant to offer.
-    try {
-      return await collectOver(sse(), opts);
-    } catch {
+    // Only a protocol rejection justifies trying legacy SSE. A timeout, server
+    // outage or invalid initialize response is not evidence of an older server.
+    if (client.getServerVersion() !== undefined ||
+      !(streamable instanceof StreamableHTTPError) || streamable.code === undefined ||
+      streamable.code < 400 || streamable.code >= 500) {
       throw streamable;
     }
+    return collectOver(sse(), opts, budget);
   }
 }
