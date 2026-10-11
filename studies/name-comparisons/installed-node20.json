@@ -1,0 +1,181 @@
+{
+  "node": "v20.0.0",
+  "heapMiB": 256,
+  "deadlineSeconds": 20,
+  "results": [
+    {
+      "case": "long-near",
+      "nameLengths": [
+        [
+          8198
+        ],
+        [
+          8198
+        ]
+      ],
+      "tools": 2,
+      "elapsedSeconds": 0.84,
+      "returncode": 1,
+      "timeout": false,
+      "outOfMemory": false,
+      "reportBytes": 120293,
+      "summary": {
+        "totalFindings": 10,
+        "bySeverity": {
+          "error": 2,
+          "warning": 8,
+          "info": 0
+        },
+        "byRule": {
+          "budget/tool-tokens": 2,
+          "naming/invalid-chars": 2,
+          "naming/strict-client-compat": 2,
+          "naming/shadowing": 1,
+          "description/near-duplicate": 1,
+          "safety/encoded-blob": 2
+        },
+        "toolCount": 2,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 2129,
+        "complete": true,
+        "score": 68
+      },
+      "shadowing": 1,
+      "inputSha256": [
+        "b831593a536ef70acdb1cfbfd27407c2cc1df20314b05dc27a546e59c6a4507e",
+        "a3191901d9eb168575f38f5edabb35fe301b2277c3930513557e9ee7b6938eb2"
+      ]
+    },
+    {
+      "case": "long-far",
+      "nameLengths": [
+        [
+          8198
+        ],
+        [
+          8198
+        ]
+      ],
+      "tools": 2,
+      "elapsedSeconds": 0.885,
+      "returncode": 1,
+      "timeout": false,
+      "outOfMemory": false,
+      "reportBytes": 95439,
+      "summary": {
+        "totalFindings": 9,
+        "bySeverity": {
+          "error": 2,
+          "warning": 7,
+          "info": 0
+        },
+        "byRule": {
+          "budget/tool-tokens": 2,
+          "naming/invalid-chars": 2,
+          "naming/strict-client-compat": 2,
+          "description/near-duplicate": 1,
+          "safety/encoded-blob": 2
+        },
+        "toolCount": 2,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 3150,
+        "complete": true,
+        "score": 72
+      },
+      "shadowing": 0,
+      "inputSha256": [
+        "b831593a536ef70acdb1cfbfd27407c2cc1df20314b05dc27a546e59c6a4507e",
+        "e8fab75c1e391afcf90b0be7dab12fca5141c079f331b1cd5db8be30a76e5fe2"
+      ]
+    },
+    {
+      "case": "length-skew",
+      "nameLengths": [
+        [
+          8198
+        ],
+        [
+          13
+        ]
+      ],
+      "tools": 2,
+      "elapsedSeconds": 0.884,
+      "returncode": 1,
+      "timeout": false,
+      "outOfMemory": false,
+      "reportBytes": 53179,
+      "summary": {
+        "totalFindings": 5,
+        "bySeverity": {
+          "error": 1,
+          "warning": 4,
+          "info": 0
+        },
+        "byRule": {
+          "budget/tool-tokens": 1,
+          "naming/invalid-chars": 1,
+          "naming/strict-client-compat": 1,
+          "description/near-duplicate": 1,
+          "safety/encoded-blob": 1
+        },
+        "toolCount": 2,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 1102,
+        "complete": true,
+        "score": 85
+      },
+      "shadowing": 0,
+      "inputSha256": [
+        "b831593a536ef70acdb1cfbfd27407c2cc1df20314b05dc27a546e59c6a4507e",
+        "ac836c287f03ae23edcb4fb10c7dc97965e071e6f0e53d929561597d0ade75cc"
+      ]
+    },
+    {
+      "case": "catalogue",
+      "nameLengths": [
+        [
+          30,
+          30,
+          30
+        ],
+        [
+          28,
+          28,
+          28
+        ]
+      ],
+      "tools": 1200,
+      "elapsedSeconds": 1.84,
+      "returncode": 0,
+      "timeout": false,
+      "outOfMemory": false,
+      "reportBytes": 3223,
+      "summary": {
+        "totalFindings": 2,
+        "bySeverity": {
+          "error": 0,
+          "warning": 2,
+          "info": 0
+        },
+        "byRule": {
+          "budget/total-tokens": 1,
+          "description/near-duplicate": 1
+        },
+        "toolCount": 1200,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 50400,
+        "complete": true,
+        "score": 96
+      },
+      "shadowing": 0,
+      "inputSha256": [
+        "9d24ddcf66897766895f1d860f0c647ee8c34234050ee3faddbfb4f96077e1a1",
+        "a25db13113c49a83c078307c16dbb0e77f820d843d668afab2da8f30735fb88d"
+      ]
+    }
+  ]
+}
