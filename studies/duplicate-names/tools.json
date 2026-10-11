@@ -1,0 +1,48 @@
+{
+  "tools": [
+    {
+      "name": "read_record",
+      "description": "Read an invoice by its stable identifier and return the recorded invoice details.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "invoice_id": {
+            "type": "string",
+            "description": "The stable identifier to read."
+          }
+        },
+        "required": [
+          "invoice_id"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "read_record",
+      "description": "Find the public customer profile matching a stable customer identifier.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "description": "The stable identifier to read."
+          }
+        },
+        "required": [
+          "customer_id"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    }
+  ]
+}

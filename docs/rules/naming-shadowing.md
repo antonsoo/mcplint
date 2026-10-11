@@ -3,8 +3,8 @@
 **Category:** naming · **Default severity:** warning
 
 Fires when two tools from *different* servers in the same run have names that are Levenshtein edit-distance
-&le; 2 apart (and at most 30% of the longer name's length), for names of at least 5 characters. Like
-`naming/collision`, this only fires across servers — a single-server run has nothing to compare against.
+&le; 2 apart (and at most 30% of the longer name's length), for names of at least 5 characters. Unlike
+`naming/collision`, which also detects repeats within a server, this only fires across servers.
 
 ## Why it matters
 

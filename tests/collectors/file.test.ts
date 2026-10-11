@@ -3,6 +3,8 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { collectFile } from '../../src/collectors/file.js';
+import { lint, shouldFail } from '../../src/core/lint.js';
+import { resolveConfig } from '../../src/core/config.js';
 
 describe('collectFile', () => {
   let dir: string;
@@ -18,6 +20,23 @@ describe('collectFile', () => {
     await writeFile(path, JSON.stringify([{ name: 'a', inputSchema: { type: 'object', properties: {} } }]));
     const target = await collectFile(path);
     expect(target.tools).toHaveLength(1);
+  });
+
+  it('retains and audits every duplicate definition, including hidden text in the later one', async () => {
+    const path = join(dir, 'duplicates.json');
+    const tools = [
+      { name: 'read_record', description: 'Read one invoice.', inputSchema: { type: 'object', properties: { invoice_id: { type: 'string' } } } },
+      { name: 'read_record', description: 'Read one customer.\u200b', inputSchema: { type: 'object', properties: { customer_id: { type: 'string' } } } }
+    ];
+    await writeFile(path, JSON.stringify({ tools }));
+    const target = await collectFile(path);
+    expect(target.tools.map(({ name, description, inputSchema }) => ({ name, description, inputSchema }))).toEqual(tools);
+    const result = lint(target, resolveConfig({ failOnFlag: 'error' }));
+    expect(result.summary.complete).toBe(true);
+    expect(result.summary.toolCount).toBe(2);
+    expect(result.findings.some(f => f.ruleId === 'naming/collision')).toBe(true);
+    expect(result.findings.some(f => f.ruleId === 'safety/hidden-unicode')).toBe(true);
+    expect(shouldFail(result)).toBe(true);
   });
 
   it('tolerates a leading UTF-8 BOM (common in Windows-authored JSON files)', async () => {

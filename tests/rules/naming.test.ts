@@ -99,9 +99,33 @@ describe('naming/collision', () => {
     expect(findings).toHaveLength(1);
   });
 
-  it('does not flag when only one server is in scope', () => {
+  it('does not flag one definition on one server', () => {
     const tools = [tool({ name: 'search', serverId: 'a' })];
     expect(collision.check(ctxOf(tools, {}, ['a']))).toHaveLength(0);
+  });
+
+  it('flags repeated definitions on one server without removing metadata', () => {
+    const tools = [tool({ name: 'read_record', description: 'Read an invoice.' }), tool({ name: 'read_record', description: 'Read a customer.' })];
+    const before = structuredClone(tools);
+    const findings = collision.check(ctxOf(tools));
+    expect(findings).toHaveLength(1);
+    expect(findings[0]).toMatchObject({ severity: 'error', serverId: 's1', subject: { kind: 'tool', name: 'read_record' } });
+    expect(findings[0]!.message).toContain('occurs 2 times');
+    expect(tools).toEqual(before);
+  });
+
+  it('flags identical repeats once per server as well as the cross-server collision', () => {
+    const tools = ['a', 'a', 'a', 'b', 'b', 'c'].map(serverId => tool({ name: 'read_record', serverId }));
+    const findings = collision.check(ctxOf(tools, {}, ['a', 'b', 'c']));
+    expect(findings.map(f => f.serverId)).toEqual(['a', 'b', 'a,b,c']);
+    expect(findings[0]!.message).toContain('occurs 3 times');
+    expect(findings[1]!.message).toContain('occurs 2 times');
+  });
+
+  it('compares exact, case-sensitive names without joining identity fields', () => {
+    const tools = [tool({ name: 'read_record' }), tool({ name: 'READ_RECORD' }),
+      tool({ name: 'b|c', serverId: 'a' }), tool({ name: 'c', serverId: 'a|b' })];
+    expect(collision.check(ctxOf(tools, {}, ['s1', 'a', 'a|b']))).toEqual([]);
   });
 
   it('does not flag two different names on two servers', () => {

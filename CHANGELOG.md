@@ -4,6 +4,11 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Detect repeated tool names within a single server, including across list pages.
+  Keep every definition available for schema and safety checks; `--fail-on error`
+  rejects the ambiguity. Exact-name comparisons remain case-sensitive.
+  [Reproductions and recorded public examples](studies/duplicate-names/README.md).
+
 - Replace the full name-comparison matrix with a five-diagonal edit-distance calculation.
   Long names from different servers no longer exhaust memory in `naming/shadowing`;
   comparisons retain the same two-edit cutoff, case folding and findings.

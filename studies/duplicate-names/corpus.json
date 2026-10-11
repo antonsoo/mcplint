@@ -1,0 +1,67 @@
+{
+  "node": "v26.7.0",
+  "results": [
+    {
+      "manifest": "manifest.json",
+      "manifestSha256": "00733eac99131ae49faa5df1eb596443bbd6f7619ea6ef6f8ddc50856fb9bbd0",
+      "servers": 418,
+      "tools": 11545,
+      "inputsSha256": "9de9ba10ba106a934acb87e0b4aa7633f756fd9afab2c46b98244fc3b282f72a",
+      "duplicates": [
+        {
+          "server": "emblemai/emblem-mcp",
+          "name": "getPolyMarketEvents",
+          "count": 2,
+          "distinctDescriptions": 2,
+          "distinctSchemas": 1,
+          "sourceSha256": "aa7d4221dbd1dc1b9394dba9b198a9542f4fc7dba9906e06c2aa7c31b8496872"
+        },
+        {
+          "server": "emblemai/emblem-mcp",
+          "name": "getPolyMarketEventsByTag",
+          "count": 2,
+          "distinctDescriptions": 2,
+          "distinctSchemas": 1,
+          "sourceSha256": "aa7d4221dbd1dc1b9394dba9b198a9542f4fc7dba9906e06c2aa7c31b8496872"
+        },
+        {
+          "server": "emblemai/emblem-mcp",
+          "name": "getPolyMarketTags",
+          "count": 2,
+          "distinctDescriptions": 2,
+          "distinctSchemas": 1,
+          "sourceSha256": "aa7d4221dbd1dc1b9394dba9b198a9542f4fc7dba9906e06c2aa7c31b8496872"
+        }
+      ],
+      "otherNamingRulesUnchanged": true,
+      "otherNamingFindingsSha256": "1833d5c2d5dc88aa7e8fcd6ed01d5d5fc5a41e0ef5c5853291254b60850852b3"
+    },
+    {
+      "manifest": "manifest-heldout.json",
+      "manifestSha256": "47524cca9ebec7f23db255fefd760ed1ac24188dd0b59c31d7e1e09c280f4c43",
+      "servers": 886,
+      "tools": 14254,
+      "inputsSha256": "558900d922fed02d8659d7a4e5f85be2e515cee6d64c78d8f7045cf885276674",
+      "duplicates": [
+        {
+          "server": "GigaChatTester/lichess-mcp",
+          "name": "create_challenge",
+          "count": 2,
+          "distinctDescriptions": 2,
+          "distinctSchemas": 2,
+          "sourceSha256": "8a6b22ac093ac0d8b949b6a06510c54e170b6daf8c3b21b98229ff6b2c92ac77"
+        },
+        {
+          "server": "GigaChatTester/lichess-mcp",
+          "name": "send_message",
+          "count": 2,
+          "distinctDescriptions": 1,
+          "distinctSchemas": 1,
+          "sourceSha256": "8a6b22ac093ac0d8b949b6a06510c54e170b6daf8c3b21b98229ff6b2c92ac77"
+        }
+      ],
+      "otherNamingRulesUnchanged": true,
+      "otherNamingFindingsSha256": "28281d272830a40a4a2e6f09a6e37b6e013de7fead0fff6273b1b09ec7c0babe"
+    }
+  ]
+}

@@ -66,6 +66,13 @@ be written; the same SDK server captures now produce complete reports and retain
 invalid-name findings. [Reproduction and unchanged registry findings](studies/name-comparisons/README.md).
 This change is unreleased.
 
+Repeated names within one server now produce `naming/collision` errors too,
+including repeats across list pages. A two-definition fixture previously passed
+with zero findings; it now fails `--fail-on error` while retaining both schemas.
+The cached registry replay contains five previously missed repeated names.
+[Reproduction and report examples](studies/duplicate-names/README.md). This is
+also an unreleased source change.
+
 ## Quickstart
 
 ```sh
@@ -204,7 +211,7 @@ The full 14-tool report is browsable live at
 | [`naming/strict-client-compat`](docs/rules/naming-strict-client-compat.md) | naming | warning | Spec-valid name that Anthropic/OpenAI strict validation would reject (a dot, or >64 chars). |
 | [`naming/convention-consistency`](docs/rules/naming-convention-consistency.md) | naming | info | A server mixes snake_case, camelCase, kebab-case, dot.case. |
 | [`naming/generic`](docs/rules/naming-generic.md) | naming | warning | A name with no specific word in it: `run`, `query`, `run_action`. |
-| [`naming/collision`](docs/rules/naming-collision.md) | naming | error | Two servers in one run expose an identically-named tool. |
+| [`naming/collision`](docs/rules/naming-collision.md) | naming | error | A tool name repeats within one server or across servers. |
 | [`naming/shadowing`](docs/rules/naming-shadowing.md) | naming | warning | Two servers expose near-identical tool names (edit distance ≤ 2). |
 | [`description/missing`](docs/rules/description-missing.md) | description | error | No description at all. |
 | [`description/too-short`](docs/rules/description-too-short.md) | description | warning | Under ~20 characters / 4 words. |
@@ -403,9 +410,10 @@ the [registry census](studies/registry-census/README.md) is where the rules met 
   lists), counted with a tokenizer that is a proxy for any particular model's.
 - **`description/near-duplicate` uses word-overlap (Jaccard similarity), not semantic similarity** — it will
   miss paraphrases and can over-trigger on two tools that legitimately share a lot of domain vocabulary.
-- **`naming/collision` and `naming/shadowing` only fire across servers** (i.e. with `mcplint config`, or two
-  `file` targets merged programmatically) — a single `stdio`/`http` run only ever sees one server, so there's
-  nothing to collide with.
+- **`naming/collision` also checks repeated names within one server**, including entries collected
+  on different pages. Names are case-sensitive and every definition is retained for other checks.
+  `naming/shadowing` only compares near-identical names across servers.
+  [Saved-list, paginated SDK and registry evidence](studies/duplicate-names/README.md).
 - **`config` reads the common client formats, not every one.** Zed's `context_servers` and Codex's TOML are
   not read. OAuth-protected remote servers (VS Code's `oauth` block) need a token passed as a header; mcplint
   does not run an OAuth flow. VS Code's `command`-type inputs, which ask an extension for a value, can only be

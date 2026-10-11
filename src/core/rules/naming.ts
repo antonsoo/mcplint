@@ -198,12 +198,11 @@ export const collision: Rule = {
   id: 'naming/collision',
   category: 'naming',
   defaultSeverity: 'error',
-  summary: 'Two or more servers in this run expose a tool with the identical name.',
+  summary: 'A tool name repeats within one server or across servers in this run.',
   rationale:
-    'Most MCP clients namespace or flatten tool lists from multiple servers; an exact name collision means one ' +
-    'tool silently shadows the other, and the model (and the user approving calls) cannot tell them apart.',
+    'MCP calls identify a tool by name, so repeated names within a server cannot select a unique definition. ' +
+    'Clients that combine multiple servers also need to disambiguate names shared across those servers.',
   check(ctx: RuleContext): Finding[] {
-    if (ctx.target.servers.length < 2) return [];
     const byName = new Map<string, CollectedTool[]>();
     for (const tool of namesOf(ctx)) {
       const list = byName.get(tool.name) ?? [];
@@ -213,14 +212,29 @@ export const collision: Rule = {
     const findings: Finding[] = [];
     for (const [name, tools] of byName) {
       if (tools.length < 2) continue;
-      const servers = [...new Set(tools.map((t) => t.serverId))];
+      const counts = new Map<string, number>();
+      for (const tool of tools) counts.set(tool.serverId, (counts.get(tool.serverId) ?? 0) + 1);
+      // Keep every definition available to other rules. Even identical entries
+      // can reveal overlapping pages or a broken server registration.
+      for (const [serverId, count] of counts) {
+        if (count < 2) continue;
+        findings.push({
+          ruleId: this.id,
+          severity: this.defaultSeverity,
+          serverId,
+          subject: { kind: 'tool', name },
+          message: `"${name}" occurs ${count} times in server "${serverId}"'s tool list; calls address tools by name and cannot select a definition.`,
+          suggestion: 'Give each distinct tool a unique name and remove repeated list entries, including overlaps between pages.'
+        });
+      }
+      const servers = [...counts.keys()];
       if (servers.length < 2) continue;
       findings.push({
         ruleId: this.id,
         severity: this.defaultSeverity,
         serverId: servers.join(','),
         subject: { kind: 'tool', name },
-        message: `"${name}" is defined identically by ${servers.length} servers: ${servers.join(', ')}.`
+        message: `"${name}" is exposed by ${servers.length} servers: ${servers.join(', ')}.`
       });
     }
     return findings;
