@@ -1,4 +1,5 @@
 import type { CollectedTool, Finding, Rule, RuleContext } from '../types.js';
+import { nameDistance } from '../name-distance.js';
 
 /**
  * Character/length rules per the MCP spec (2026-07-28), "Tool Names":
@@ -226,19 +227,6 @@ export const collision: Rule = {
   }
 };
 
-function levenshtein(a: string, b: string): number {
-  const dp: number[][] = Array.from({ length: a.length + 1 }, () => new Array<number>(b.length + 1).fill(0));
-  for (let j = 0; j <= b.length; j += 1) dp[0]![j] = j;
-  for (let i = 0; i <= a.length; i += 1) dp[i]![0] = i;
-  for (let i = 1; i <= a.length; i += 1) {
-    for (let j = 1; j <= b.length; j += 1) {
-      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
-      dp[i]![j] = Math.min(dp[i - 1]![j]! + 1, dp[i]![j - 1]! + 1, dp[i - 1]![j - 1]! + cost);
-    }
-  }
-  return dp[a.length]![b.length]!;
-}
-
 export const shadowing: Rule = {
   id: 'naming/shadowing',
   category: 'naming',
@@ -253,14 +241,15 @@ export const shadowing: Rule = {
     const findings: Finding[] = [];
     const tools = namesOf(ctx);
     const seen = new Set<string>();
+    const folded = tools.map(tool => tool.name.toLowerCase());
     for (let i = 0; i < tools.length; i += 1) {
       for (let j = i + 1; j < tools.length; j += 1) {
         const a = tools[i]!;
         const b = tools[j]!;
         if (a.serverId === b.serverId || a.name === b.name) continue;
-        const dist = levenshtein(a.name.toLowerCase(), b.name.toLowerCase());
         const maxLen = Math.max(a.name.length, b.name.length);
         if (maxLen < 5) continue;
+        const dist = nameDistance(folded[i]!, folded[j]!);
         if (dist > 0 && dist <= 2 && dist / maxLen <= 0.3) {
           const key = [a.name, b.name].sort().join('|');
           if (seen.has(key)) continue;

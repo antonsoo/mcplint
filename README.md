@@ -60,6 +60,12 @@ reworked on, which proves little. On 886 servers they had not seen they report 5
 36 and 39); read by hand, none of the errors is an attack, two are false alarms. Two of the three published
 tool-poisoning examples are still errors; the third, a WhatsApp takeover, fell from an error to a warning.
 
+The source checkout also keeps name comparisons usable when a server supplies long names.
+Two 8,198-character names previously exhausted a 256 MiB Node heap before an audit could
+be written; the same SDK server captures now produce complete reports and retain the
+invalid-name findings. [Reproduction and unchanged registry findings](studies/name-comparisons/README.md).
+This change is unreleased.
+
 ## Quickstart
 
 ```sh

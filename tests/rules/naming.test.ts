@@ -127,3 +127,13 @@ describe('naming/shadowing', () => {
     expect(shadowing.check(ctxOf(tools, {}, ['a', 'b']))).toHaveLength(0);
   });
 });
+
+it('preserves the shadowing length ratio, case-only exclusion, and two-edit cutoff', () => {
+  for (const [a, b, count] of [
+    ['abcde', 'abXYZ', 0], ['abcde', 'abcXY', 0],
+    ['abcdefg', 'abcdeXY', 1], ['fetch_item', 'FETCH_ITEM', 0],
+    ['fetch_items', 'fetch_item', 1], ['fetch_items', 'get_records', 0]
+  ] as const) {
+    expect(shadowing.check(ctxOf([tool({ name: a, serverId: 'a' }), tool({ name: b, serverId: 'b' })], {}, ['a', 'b']))).toHaveLength(count);
+  }
+});

@@ -4,6 +4,11 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Replace the full name-comparison matrix with a five-diagonal edit-distance calculation.
+  Long names from different servers no longer exhaust memory in `naming/shadowing`;
+  comparisons retain the same two-edit cutoff, case folding and findings.
+  [SDK captures and registry replay](studies/name-comparisons/README.md).
+
 - Require `uri` on collected resources and `uriTemplate` on resource templates.
   Missing identities now leave the audit incomplete and unscored, including
   when diagnostics are suppressed; usable metadata remains available to safety rules.

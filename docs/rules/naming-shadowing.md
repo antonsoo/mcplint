@@ -23,6 +23,20 @@ its own.
 
 Rename one of the two tools to be clearly distinct, or namespace both by server (as with `naming/collision`).
 
+## Calculation and limits
+
+The source checkout computes exact edit distances through two edits with two five-cell
+rows, stopping once no qualifying path remains. Longer distances are represented only as
+"more than two"; they never qualify for this rule. Matching prefixes and suffixes are
+removed before that calculation. Names are still lowercased and measured in JavaScript
+UTF-16 code units; this change does not add Unicode normalization. Case-only differences
+continue to produce no shadowing finding.
+
+The calculation uses constant scratch memory and at most linear work per name pair.
+The number of pairs across a large catalogue is still quadratic; this is not a deadline
+or a memory bound for the entire audit. Invalid names are still inspected and reported
+by the other rules. See the [retained SDK reproduction](../../studies/name-comparisons/README.md).
+
 ## Configuring
 
 Override severity with `"severities": {"naming/shadowing": "off"}`, or ignore one side of a specific pair with
