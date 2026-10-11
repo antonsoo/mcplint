@@ -20,6 +20,22 @@ export function isPlainObject(value: unknown): value is Record<string, unknown> 
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
+/** The wire protocol's declared hint types, not an assessment of actual tool behavior. */
+export function toolAnnotationIssues(value: unknown): string[] {
+  if (value === undefined) return [];
+  if (!isPlainObject(value)) return ['annotations must be an object'];
+  const issues: string[] = [];
+  if (value.title !== undefined && typeof value.title !== 'string') {
+    issues.push('annotations.title must be a string');
+  }
+  for (const field of ['readOnlyHint', 'destructiveHint', 'idempotentHint', 'openWorldHint']) {
+    if (value[field] !== undefined && typeof value[field] !== 'boolean') {
+      issues.push(`annotations.${field} must be a boolean`);
+    }
+  }
+  return issues;
+}
+
 /**
  * A schema as the rules read it. `description` is used as text by several rules, so one that
  * isn't a string (a number, an object) is dropped here and the rules see "no description";

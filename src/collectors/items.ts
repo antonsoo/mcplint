@@ -1,11 +1,12 @@
 import type { CollectionRecord, LintTarget } from '../core/types.js';
-import { isPlainObject, promptArguments } from '../core/schema-utils.js';
+import { isPlainObject, promptArguments, toolAnnotationIssues } from '../core/schema-utils.js';
 
 /** Shared by live and saved collectors, so malformed metadata cannot disappear in either path. */
 export function appendItems(target: LintTarget, key: 'tools' | 'prompts' | 'resources' | 'resourceTemplates', items: unknown[], record: CollectionRecord): void {
   let malformed = 0;
   let firstMalformed = -1;
   let missingIdentity = 0;
+  const annotationDetails: string[] = [];
   for (const [index, raw] of items.entries()) {
     const invalid = (): void => { malformed++; if (firstMalformed < 0) firstMalformed = index; };
     if (!isPlainObject(raw)) { invalid(); continue; }
@@ -20,7 +21,12 @@ export function appendItems(target: LintTarget, key: 'tools' | 'prompts' | 'reso
       ...(typeof raw.description === 'string' ? { description: raw.description } : {})
     };
     if (key === 'tools') {
-      if (raw.annotations !== undefined && !isPlainObject(raw.annotations)) bad = true;
+      const issues = toolAnnotationIssues(raw.annotations);
+      if (issues.length) {
+        bad = true;
+        // Fixed field names and expected types only, never arbitrary hint values.
+        if (annotationDetails.length < 3) annotationDetails.push(`entry ${index}: ${issues.join(', ')}`);
+      }
       target.tools.push({ kind: 'tool', ...common, inputSchema: raw.inputSchema,
         ...(raw.outputSchema !== undefined ? { outputSchema: raw.outputSchema } : {}),
         ...(isPlainObject(raw.annotations) ? { annotations: raw.annotations } : {}) });
@@ -50,6 +56,7 @@ export function appendItems(target: LintTarget, key: 'tools' | 'prompts' | 'reso
   if (malformed) {
     record.status = 'incomplete';
     record.detail = [record.detail, `${malformed} malformed ${key} entries; first at index ${firstMalformed}. Valid fields were retained where possible.`,
-      missingIdentity ? `${missingIdentity} ${missingIdentity === 1 ? 'entry lacks' : 'entries lack'} a string ${key === 'resources' ? 'uri' : 'uriTemplate'} required by this list.` : undefined].filter(Boolean).join(' ');
+      missingIdentity ? `${missingIdentity} ${missingIdentity === 1 ? 'entry lacks' : 'entries lack'} a string ${key === 'resources' ? 'uri' : 'uriTemplate'} required by this list.` : undefined,
+      annotationDetails.length ? `Annotation errors (up to three entries): ${annotationDetails.join('; ')}.` : undefined].filter(Boolean).join(' ');
   }
 }

@@ -568,13 +568,13 @@ export const missingDestructiveAnnotation: Rule = {
     for (const t of ctx.target.tools) {
       if (!nameWords(t.name).some((word) => DESTRUCTIVE_VERB.test(word))) continue;
       const a = t.annotations;
-      if (!a || (a.destructiveHint === undefined && a.readOnlyHint === undefined)) {
+      if (!a || (typeof a.destructiveHint !== 'boolean' && typeof a.readOnlyHint !== 'boolean')) {
         findings.push({
           ruleId: this.id,
           severity: this.defaultSeverity,
           serverId: t.serverId,
           subject: { kind: 'tool', name: t.name },
-          message: 'The name says this tool destroys something, but annotations.destructiveHint and annotations.readOnlyHint are both unset.'
+          message: 'The name says this tool destroys something, but neither annotations.destructiveHint nor annotations.readOnlyHint supplies a boolean value.'
         });
       }
     }
