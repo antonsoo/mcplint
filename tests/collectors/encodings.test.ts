@@ -4,6 +4,7 @@ import { join } from 'node:path';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { collectFile } from '../../src/collectors/file.js';
 import { loadConfigFile } from '../../src/core/config.js';
+import { decodeText, TextDecodingError } from '../../src/core/read-text.js';
 
 function utf16(source: string, bigEndian: boolean): Buffer {
   const bytes = Buffer.alloc(2 + source.length * 2);
@@ -49,5 +50,32 @@ describe('files saved by a Windows shell', () => {
     const path = join(dir, 'tools.json');
     await writeFile(path, Buffer.from([0x00, 0x01, 0x02, 0x7b]));
     await expect(collectFile(path)).rejects.toThrow(/tools\.json is not valid JSON/);
+  });
+
+  it.each([
+    ['UTF-8', Buffer.from([0x61, 0xc3, 0x62])],
+    ['UTF-8', Buffer.from([0x61, 0x80, 0x62])],
+    ['UTF-16LE', Buffer.from([0xff, 0xfe, 0x00, 0xd8, 0x62, 0x00])],
+    ['UTF-16BE', Buffer.from([0xfe, 0xff, 0xd8, 0x00, 0x00, 0x62])],
+    ['UTF-16LE', Buffer.from([0xff, 0xfe, 0x61])],
+    ['UTF-16BE', Buffer.from([0xfe, 0xff, 0x00])]
+  ])('rejects damaged %s instead of manufacturing replacement characters', (encoding, bytes) => {
+    expect(() => decodeText(bytes as Buffer)).toThrow(TextDecodingError);
+    expect(() => decodeText(bytes as Buffer)).toThrow(`invalid ${String(encoding)} text`);
+  });
+
+  it.each([false, true])('preserves intentional replacement characters and astral characters in UTF-16 (BE=%s)', bigEndian => {
+    expect(decodeText(utf16('café \ufffd \u{1f642}', bigEndian))).toBe('café \ufffd \u{1f642}');
+  });
+
+  it('preserves an intentional replacement character in valid UTF-8', () => {
+    expect(decodeText(Buffer.from('café \ufffd \u{1f642}'))).toBe('café \ufffd \u{1f642}');
+  });
+
+  it('refuses malformed description bytes before a saved tool list can be audited', async () => {
+    const path = join(dir, 'damaged-tools.json');
+    const prefix = Buffer.from('[{"name":"read_invoice","description":"Read ');
+    await writeFile(path, Buffer.concat([prefix, Buffer.from([0xc3]), Buffer.from(' invoice.","inputSchema":{"type":"object"}}]')]));
+    await expect(collectFile(path)).rejects.toThrow(TextDecodingError);
   });
 });
