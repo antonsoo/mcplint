@@ -1,0 +1,23 @@
+{
+  "sourceCommit": "2353df47a6451987e45a2a044c7df2eb2ae17b9b",
+  "cleanCheckout": "git archive followed by npm ci",
+  "node": "v26.7.0",
+  "npm": "12.0.1",
+  "checks": {
+    "lint": "passed",
+    "typecheck": "passed",
+    "tests": 389,
+    "browserWorkflows": 24,
+    "cleanCliCases": 5,
+    "installedCliCasesNode20": 5,
+    "installedCliCasesNode26": 5,
+    "installedReportFormatsNode20": 5,
+    "installedReportBrowserWorkflows": 4
+  },
+  "artifact": {
+    "name": "antonsoloviev-mcplint-0.3.3.tgz",
+    "sha256": "705feef69d45c5f0ecb4204db462a896e832a59595c8d735ee70dfcb2c470b7e"
+  },
+  "registryVersion": "0.3.3",
+  "registryPublished": false
+}

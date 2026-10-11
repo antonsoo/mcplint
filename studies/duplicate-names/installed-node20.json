@@ -1,0 +1,365 @@
+{
+  "node": "v20.0.0",
+  "inputSha256": "1b7f7f9ad342dd685a0b3436a05448809b30cd835ee99b369523bf157d1749a6",
+  "results": [
+    {
+      "kind": "different-definitions",
+      "exitCode": 1,
+      "summary": {
+        "totalFindings": 1,
+        "bySeverity": {
+          "error": 1,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {
+          "naming/collision": 1
+        },
+        "toolCount": 2,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 115,
+        "complete": true,
+        "score": 90
+      },
+      "collisions": [
+        {
+          "ruleId": "naming/collision",
+          "severity": "error",
+          "serverId": "file",
+          "subject": {
+            "kind": "tool",
+            "name": "read_record"
+          },
+          "message": "\"read_record\" occurs 2 times in server \"file\"'s tool list; calls address tools by name and cannot select a definition.",
+          "suggestion": "Give each distinct tool a unique name and remove repeated list entries, including overlaps between pages."
+        }
+      ],
+      "collection": [
+        {
+          "serverId": "file",
+          "scope": "tools/list",
+          "status": "complete",
+          "pages": 1,
+          "received": 2,
+          "retained": 2
+        },
+        {
+          "serverId": "file",
+          "scope": "file",
+          "status": "complete",
+          "pages": 0,
+          "received": 0,
+          "retained": 0,
+          "detail": "Only the supplied snapshot was inspected; no server was contacted."
+        }
+      ],
+      "requests": []
+    },
+    {
+      "kind": "identical-definitions",
+      "exitCode": 1,
+      "summary": {
+        "totalFindings": 1,
+        "bySeverity": {
+          "error": 1,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {
+          "naming/collision": 1
+        },
+        "toolCount": 2,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 118,
+        "complete": true,
+        "score": 90
+      },
+      "collisions": [
+        {
+          "ruleId": "naming/collision",
+          "severity": "error",
+          "serverId": "file",
+          "subject": {
+            "kind": "tool",
+            "name": "read_record"
+          },
+          "message": "\"read_record\" occurs 2 times in server \"file\"'s tool list; calls address tools by name and cannot select a definition.",
+          "suggestion": "Give each distinct tool a unique name and remove repeated list entries, including overlaps between pages."
+        }
+      ],
+      "collection": [
+        {
+          "serverId": "file",
+          "scope": "tools/list",
+          "status": "complete",
+          "pages": 1,
+          "received": 2,
+          "retained": 2
+        },
+        {
+          "serverId": "file",
+          "scope": "file",
+          "status": "complete",
+          "pages": 0,
+          "received": 0,
+          "retained": 0,
+          "detail": "Only the supplied snapshot was inspected; no server was contacted."
+        }
+      ],
+      "requests": []
+    },
+    {
+      "kind": "case-sensitive-control",
+      "exitCode": 0,
+      "summary": {
+        "totalFindings": 0,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {},
+        "toolCount": 2,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 115,
+        "complete": true,
+        "score": 100
+      },
+      "collisions": [],
+      "collection": [
+        {
+          "serverId": "file",
+          "scope": "tools/list",
+          "status": "complete",
+          "pages": 1,
+          "received": 2,
+          "retained": 2
+        },
+        {
+          "serverId": "file",
+          "scope": "file",
+          "status": "complete",
+          "pages": 0,
+          "received": 0,
+          "retained": 0,
+          "detail": "Only the supplied snapshot was inspected; no server was contacted."
+        }
+      ],
+      "requests": []
+    },
+    {
+      "kind": "paginated",
+      "exitCode": 1,
+      "summary": {
+        "totalFindings": 1,
+        "bySeverity": {
+          "error": 1,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {
+          "naming/collision": 1
+        },
+        "toolCount": 2,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 115,
+        "complete": true,
+        "score": 90
+      },
+      "collisions": [
+        {
+          "ruleId": "naming/collision",
+          "severity": "error",
+          "serverId": "duplicate-name-fixture",
+          "subject": {
+            "kind": "tool",
+            "name": "read_record"
+          },
+          "message": "\"read_record\" occurs 2 times in server \"duplicate-name-fixture\"'s tool list; calls address tools by name and cannot select a definition.",
+          "suggestion": "Give each distinct tool a unique name and remove repeated list entries, including overlaps between pages."
+        }
+      ],
+      "collection": [
+        {
+          "serverId": "duplicate-name-fixture",
+          "scope": "tools/list",
+          "status": "complete",
+          "pages": 2,
+          "received": 2,
+          "retained": 2
+        },
+        {
+          "serverId": "duplicate-name-fixture",
+          "scope": "prompts/list",
+          "status": "unsupported",
+          "pages": 0,
+          "received": 0,
+          "retained": 0,
+          "detail": "Server did not advertise prompts."
+        },
+        {
+          "serverId": "duplicate-name-fixture",
+          "scope": "resources/list",
+          "status": "unsupported",
+          "pages": 0,
+          "received": 0,
+          "retained": 0,
+          "detail": "Server did not advertise resources."
+        },
+        {
+          "serverId": "duplicate-name-fixture",
+          "scope": "resources/templates/list",
+          "status": "unsupported",
+          "pages": 0,
+          "received": 0,
+          "retained": 0,
+          "detail": "Server did not advertise resources."
+        }
+      ],
+      "requests": [
+        {
+          "method": "tools/list",
+          "page": 0
+        },
+        {
+          "method": "tools/list",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "kind": "within-and-across",
+      "exitCode": 1,
+      "summary": {
+        "totalFindings": 2,
+        "bySeverity": {
+          "error": 2,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {
+          "naming/collision": 2
+        },
+        "toolCount": 3,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 174,
+        "complete": true,
+        "score": 85
+      },
+      "collisions": [
+        {
+          "ruleId": "naming/collision",
+          "severity": "error",
+          "serverId": "invoices",
+          "subject": {
+            "kind": "tool",
+            "name": "read_record"
+          },
+          "message": "\"read_record\" occurs 2 times in server \"invoices\"'s tool list; calls address tools by name and cannot select a definition.",
+          "suggestion": "Give each distinct tool a unique name and remove repeated list entries, including overlaps between pages."
+        },
+        {
+          "ruleId": "naming/collision",
+          "severity": "error",
+          "serverId": "invoices,customers",
+          "subject": {
+            "kind": "tool",
+            "name": "read_record"
+          },
+          "message": "\"read_record\" is exposed by 2 servers: invoices, customers."
+        }
+      ],
+      "collection": [
+        {
+          "serverId": "invoices",
+          "scope": "tools/list",
+          "status": "complete",
+          "pages": 2,
+          "received": 2,
+          "retained": 2
+        },
+        {
+          "serverId": "invoices",
+          "scope": "prompts/list",
+          "status": "unsupported",
+          "pages": 0,
+          "received": 0,
+          "retained": 0,
+          "detail": "Server did not advertise prompts."
+        },
+        {
+          "serverId": "invoices",
+          "scope": "resources/list",
+          "status": "unsupported",
+          "pages": 0,
+          "received": 0,
+          "retained": 0,
+          "detail": "Server did not advertise resources."
+        },
+        {
+          "serverId": "invoices",
+          "scope": "resources/templates/list",
+          "status": "unsupported",
+          "pages": 0,
+          "received": 0,
+          "retained": 0,
+          "detail": "Server did not advertise resources."
+        },
+        {
+          "serverId": "customers",
+          "scope": "tools/list",
+          "status": "complete",
+          "pages": 1,
+          "received": 1,
+          "retained": 1
+        },
+        {
+          "serverId": "customers",
+          "scope": "prompts/list",
+          "status": "unsupported",
+          "pages": 0,
+          "received": 0,
+          "retained": 0,
+          "detail": "Server did not advertise prompts."
+        },
+        {
+          "serverId": "customers",
+          "scope": "resources/list",
+          "status": "unsupported",
+          "pages": 0,
+          "received": 0,
+          "retained": 0,
+          "detail": "Server did not advertise resources."
+        },
+        {
+          "serverId": "customers",
+          "scope": "resources/templates/list",
+          "status": "unsupported",
+          "pages": 0,
+          "received": 0,
+          "retained": 0,
+          "detail": "Server did not advertise resources."
+        }
+      ],
+      "requests": [
+        {
+          "method": "tools/list",
+          "page": 0
+        },
+        {
+          "method": "tools/list",
+          "page": 1
+        },
+        {
+          "method": "tools/list",
+          "page": 0
+        }
+      ]
+    }
+  ]
+}

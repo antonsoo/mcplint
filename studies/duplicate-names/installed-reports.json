@@ -1,0 +1,71 @@
+{
+  "formats": [
+    {
+      "format": "json",
+      "exitCode": 1,
+      "collisionRetained": true
+    },
+    {
+      "format": "sarif",
+      "exitCode": 1,
+      "collisionRetained": true
+    },
+    {
+      "format": "markdown",
+      "exitCode": 1,
+      "collisionRetained": true
+    },
+    {
+      "format": "terminal",
+      "exitCode": 1,
+      "collisionRetained": true
+    },
+    {
+      "format": "html",
+      "exitCode": 1,
+      "collisionRetained": true
+    }
+  ],
+  "browsers": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "findingVisible": true,
+      "retainedToolBars": 2,
+      "overflow": false,
+      "accessibilityViolations": 0,
+      "pageErrors": [],
+      "httpRequests": []
+    },
+    {
+      "engine": "chromium",
+      "width": 375,
+      "findingVisible": true,
+      "retainedToolBars": 2,
+      "overflow": false,
+      "accessibilityViolations": 0,
+      "pageErrors": [],
+      "httpRequests": []
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "findingVisible": true,
+      "retainedToolBars": 2,
+      "overflow": false,
+      "accessibilityViolations": 0,
+      "pageErrors": [],
+      "httpRequests": []
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "findingVisible": true,
+      "retainedToolBars": 2,
+      "overflow": false,
+      "accessibilityViolations": 0,
+      "pageErrors": [],
+      "httpRequests": []
+    }
+  ]
+}

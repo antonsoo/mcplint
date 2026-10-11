@@ -72,6 +72,21 @@ and [phone](../../docs/assets/duplicate-names/duplicates-375.png) screenshots
 were opened and inspected. The phone's coverage table scrolls within its
 keyboard-accessible region.
 
+## Clean checkout and installed package
+
+Source `2353df4` was archived into an empty directory and installed with `npm ci`.
+Lint, type checking, 389 checks and 24 Chromium/Firefox report workflows passed.
+The five controlled CLI cases passed again from that archive
+([clean capture](clean-cli.json)).
+
+The resulting tarball was installed separately. All five cases passed with
+Node 20.0.0 and Node 26.7.0 ([Node 20](installed-node20.json),
+[Node 26](installed-node26.json)). The installed Node 20 CLI produced all five
+report formats with the error and exit code 1. Its generated HTML passed the
+same four offline browser workflows ([report results](installed-reports.json)).
+The [verification receipt](verification.json) records the source and tarball
+SHA-256. No registry package or tag was published; npm still reports 0.3.3.
+
 ## Reproduce
 
 ```sh
