@@ -126,6 +126,23 @@ function scalarChoice(value: unknown): value is ScalarChoice {
 // differently from JSON.stringify while still naming the same numeric value.
 const NUMBER_MENTION = /(?<![\p{L}\p{N}_.,+-])[-+]?(?:\d+(?:\.\d+)?|\.\d+)(?:e[-+]?\d+)?(?![\p{L}\p{N}_]|[.,]\d)/giu;
 
+/** Compare decimal spellings without Number() rounding 1.00000000000000001
+ * to 1, or underflowing 1e-999 to 0. Finite enum numbers use their JSON spelling.
+ */
+function numericSpelling(text: string): string | undefined {
+  const match = /^([+-]?)(\d*)(?:\.(\d*))?(?:e([+-]?\d+))?$/iu.exec(text);
+  if (!match) return undefined;
+  const fraction = match[3] ?? '';
+  const digits = `${match[2]}${fraction}`.replace(/^0+/u, '');
+  if (!digits) return '0';
+  const significant = digits.replace(/0+$/u, '');
+  const exponent = Number(match[4] ?? 0);
+  // Such an exponent cannot match a finite enum number within the metadata
+  // text budget; avoid large-integer parsing or unsafe exponent arithmetic.
+  if (!Number.isSafeInteger(exponent) || Math.abs(exponent) > 1e9) return undefined;
+  return `${match[1] === '-' ? '-' : ''}${significant}e${exponent - fraction.length + digits.length - significant.length}`;
+}
+
 export const enumUnexplained: Rule = {
   id: 'description/enum-unexplained',
   category: 'description',
@@ -146,9 +163,12 @@ export const enumUnexplained: Rule = {
         if (!prop.enum.every(scalarChoice)) continue;
         const desc = (prop.description ?? '').toLowerCase();
         const words = new Set(desc.match(/[\p{L}\p{N}_]+/gu) ?? []);
-        const numbers = new Set([...desc.matchAll(NUMBER_MENTION)].map(match => Number(match[0])));
+        const numbers = new Set([...desc.matchAll(NUMBER_MENTION)].flatMap(match => {
+          const spelling = numericSpelling(match[0]);
+          return spelling === undefined ? [] : [spelling];
+        }));
         const mentioned = prop.enum.some(value => {
-          if (typeof value === 'number') return numbers.has(value);
+          if (typeof value === 'number') return numbers.has(numericSpelling(String(value))!);
           if (typeof value !== 'string') return words.has(JSON.stringify(value));
           if (value === '') return desc.includes('""') || desc.includes("''") || /\bempty\s+string\b/u.test(desc);
           if (!value.trim()) return desc.includes(JSON.stringify(value));

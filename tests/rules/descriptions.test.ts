@@ -73,6 +73,7 @@ describe('description/enum-unexplained', () => {
     { choices: [true, false], description: 'true enables it; false disables it.' },
     { choices: [null, 'automatic'], description: 'Use null to let the server choose.' },
     { choices: [1000, 2000], description: 'Use 1e3 for the shorter window.' },
+    { choices: [1.5, 2], description: 'Use 01.5000 for the shorter window.' },
     { choices: [-0.5, 0.5], description: 'Use -.5 to offset the value.' },
     { choices: ['', 'auto'], description: 'An empty string selects the default.' },
     { choices: ['', 'auto'], description: 'Use "" to select the default.' },
@@ -90,6 +91,11 @@ describe('description/enum-unexplained', () => {
   });
   it('renders missing scalar choices as JSON, keeping null and empty strings visible', () => {
     expect(checkChoices([null, '', 0, false], '')[0]?.message).toContain('[null,"",0,false]');
+  });
+  it('does not round or underflow numeric prose into a different choice', () => {
+    expect(checkChoices([1, 2], 'Use 1.00000000000000001 or 2.00000000000000001.')).toHaveLength(1);
+    expect(checkChoices([0, 1], 'Use 1e-999 or 1e9999999999999999999999999999.')).toHaveLength(1);
+    expect(checkChoices([0, 1], 'Use 0e9999999999999999999999999999 for zero.')).toEqual([]);
   });
   it('leaves structured choices to schema, description-presence and safety checks', () => {
     expect(checkChoices([{ toString: 'compact' }, { toString: 'verbose' }], 'Choose a formatting policy.')).toEqual([]);

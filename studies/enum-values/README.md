@@ -62,6 +62,8 @@ documentation. Other findings in these snapshots are not reassessed here.
 
 Numeric mentions use whole tokens: the choice `1` is not documented by `10`,
 `-1`, `1.5`, `1e3` or `v1`. A choice of `1000` can be mentioned as `1e3`.
+Decimal spellings are compared without floating-point rounding or underflow:
+`1.00000000000000001` does not document `1`, and `1e-999` does not document `0`.
 Boolean and null choices use whole words. An empty string requires quotes or
 `empty string`; whitespace-only choices require their quoted JSON spelling.
 Nonempty string matching retains its existing case-insensitive substring rule.
