@@ -6,6 +6,8 @@ import { collectStdio } from './collectors/stdio.js';
 import { collectHttp } from './collectors/http.js';
 import { collectFile } from './collectors/file.js';
 import { collectConfig } from './collectors/config.js';
+import { connectionBudget } from './collectors/connect.js';
+import { connectionFailureMessage } from './collectors/diagnostics.js';
 import { lint, shouldFail } from './core/lint.js';
 import { loadConfigFile, resolveConfig } from './core/config.js';
 import { renderTerminal } from './report/terminal.js';
@@ -104,13 +106,15 @@ async function main(): Promise<void> {
   let result: LintResult;
   const connectionOptions = values['connect-timeout'] === undefined ? {}
     : { connectTimeoutMs: parsePositiveInt('--connect-timeout', values['connect-timeout']) };
+  connectionBudget(connectionOptions.connectTimeoutMs);
 
   try {
     switch (target) {
       case 'stdio': {
         if (rest.length === 0) fail('stdio target requires a command after "--", e.g. `mcplint stdio -- node server.js`');
         const [command, ...args] = rest as [string, ...string[]];
-        const collected = await collectStdio({ command, args, ...connectionOptions });
+        const collected = await collectStdio({ command, args, ...connectionOptions })
+          .catch(error => fail(connectionFailureMessage(error)));
         result = lint(collected, config);
         break;
       }
@@ -118,7 +122,8 @@ async function main(): Promise<void> {
         const url = rest[0];
         if (!url) fail('http target requires a URL, e.g. `mcplint http https://example.com/mcp`');
         const headers = parseHeaders(values.header);
-        const collected = await collectHttp({ url, ...(headers ? { headers } : {}), ...connectionOptions });
+        const collected = await collectHttp({ url, ...(headers ? { headers } : {}), ...connectionOptions })
+          .catch(error => fail(connectionFailureMessage(error)));
         result = lint(collected, config);
         break;
       }
@@ -140,7 +145,7 @@ async function main(): Promise<void> {
           ...connectionOptions,
           onServerStart: (entry) => process.stderr.write(chalk.dim(`  starting ${visibleControls(entry.key)} (${entry.kind})...\n`)),
           onServerError: (entry, err) =>
-            process.stderr.write(chalk.red(`  ${visibleControls(entry.key)}: failed to connect — ${visibleControls((err as Error).message)}\n`)),
+            process.stderr.write(chalk.red(`  ${visibleControls(entry.key)}: ${connectionFailureMessage(err)}\n`)),
           onServerSkipped: (server) =>
             process.stderr.write(chalk.yellow(`  ${visibleControls(server.key)}: not started — ${visibleControls(server.reason)}\n`)),
           ...(inputs ? { inputs } : {})
@@ -201,7 +206,7 @@ function parseHeaders(list: string[] | undefined): Record<string, string> | unde
   const out: Record<string, string> = {};
   for (const entry of list) {
     const idx = entry.indexOf(':');
-    if (idx === -1) fail(`invalid --header "${entry}" (expected "Name: value")`);
+    if (idx <= 0) fail('invalid --header (expected "Name: value"; supplied value omitted)');
     out[entry.slice(0, idx).trim()] = entry.slice(idx + 1).trim();
   }
   return out;
@@ -212,7 +217,7 @@ function parseInputs(list: string[] | undefined): Record<string, string> | undef
   const out: Record<string, string> = {};
   for (const entry of list) {
     const idx = entry.indexOf('=');
-    if (idx <= 0) fail(`invalid --input "${entry}" (expected "id=value")`);
+    if (idx <= 0) fail('invalid --input (expected "id=value"; supplied value omitted)');
     out[entry.slice(0, idx)] = entry.slice(idx + 1);
   }
   return out;

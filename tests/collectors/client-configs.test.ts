@@ -222,6 +222,6 @@ describe('collectConfig on a VS Code workspace (e2e over stdio)', () => {
   it('reports a file that is not JSON even with comments allowed', async () => {
     const path = join(workspace, 'broken.json');
     writeFileSync(path, '{ "servers": { // unterminated\n');
-    await expect(collectConfig(path)).rejects.toThrow(/broken\.json is not valid JSON \(comments and trailing commas are allowed\): /);
+    await expect(collectConfig(path)).rejects.toThrow(/broken\.json is not valid JSON \(comments and trailing commas are allowed\).*Check the file syntax\./);
   });
 });

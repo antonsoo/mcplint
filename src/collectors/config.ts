@@ -6,7 +6,8 @@ import { isPlainObject, stripBom } from '../core/schema-utils.js';
 import { collectStdio } from './stdio.js';
 import { collectHttp } from './http.js';
 import { mergeTargets } from './collect.js';
-import { connectionBudget, ConnectionTimeoutError, type ConnectionOptions } from './connect.js';
+import { connectionBudget, type ConnectionOptions } from './connect.js';
+import { connectionFailureMessage } from './diagnostics.js';
 
 interface StdioServerEntry {
   kind: 'stdio';
@@ -244,7 +245,10 @@ export async function collectConfig(path: string, opts: CollectConfigOptions = {
   try {
     parsed = JSON.parse(stripJsonComments(stripBom(raw)));
   } catch (err) {
-    throw new Error(`${path} is not valid JSON (comments and trailing commas are allowed): ${(err as Error).message}`);
+    // JSON.parse can quote a nearby credential value in its diagnostic.
+    const position = err instanceof Error
+      ? / at position (\d+)(?: \(line \d+ column \d+\))?$/.exec(err.message)?.[1] : undefined;
+    throw new Error(`${path} is not valid JSON (comments and trailing commas are allowed)${position ? ` at position ${position}` : ''}. Check the file syntax.`);
   }
   const { entries, skipped } = readServerConfig(parsed, { path, ...(opts.inputs ? { inputs: opts.inputs } : {}) });
   for (const server of skipped) opts.onServerSkipped?.(server);
@@ -288,8 +292,7 @@ export async function collectConfig(path: string, opts: CollectConfigOptions = {
       opts.onServerError?.(entry, err);
       targets.push({ servers: [{ id: entry.key, label: entry.key }], tools: [], prompts: [], resources: [],
         collection: [{ serverId: entry.key, scope: 'connection', status: 'incomplete', pages: 0, received: 0, retained: 0,
-          detail: err instanceof ConnectionTimeoutError ? err.message
-            : 'Could not connect or initialize. Check the command, URL, environment and authorization, then retry.' }] });
+          detail: connectionFailureMessage(err) }] });
     }
   }
 
