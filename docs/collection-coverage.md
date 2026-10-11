@@ -98,6 +98,16 @@ or a guarantee of terminating a server's detached descendants.
 
 ## CI and library consumers
 
+Tool annotations receive field-level checks in live and saved lists:
+`title` must be a string; `readOnlyHint`, `destructiveHint`, `idempotentHint` and
+`openWorldHint` must be booleans when supplied. A string `"false"` is not a
+boolean declaration. Malformed fields make collection incomplete and the audit
+unscored; diagnostics name the field and expected type for up to three entries.
+The tool's raw annotation object and valid sibling tools remain retained, and
+usable titles still reach safety checks. Omitted annotations, boolean `false`,
+empty titles and unknown extension properties remain accepted. These type checks
+do not verify what a tool actually does. [SDK-backed captures](../studies/tool-annotations/README.md).
+
 With `--fail-on error` or `--fail-on warning`, an incomplete audit exits **1**,
 even if its diagnostic has been ignored or assigned a lower severity. Suppression
 does not change missing evidence into completed work. Without `--fail-on`, reports

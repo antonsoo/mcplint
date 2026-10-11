@@ -4,6 +4,12 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Validate tool annotation field types in both live and saved lists. String,
+  numeric or null hints no longer produce a complete audit or satisfy a
+  destructive tool's boolean hint declaration. Keep the malformed tool and
+  usable title alongside its valid siblings; report fixed field paths and
+  expected types. [SDK comparisons](studies/tool-annotations/README.md).
+
 - Keep HTTP response bodies and MCP initialization error text out of CLI stderr,
   including config-mode progress diagnostics. Preserve recognized HTTP/MCP/system
   codes and connection deadlines in bounded messages; healthy config entries

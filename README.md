@@ -124,6 +124,9 @@ node dist/cli.js stdio -- npx tsx examples/good-server/server.ts
   HTTP/MCP/system codes without copying response bodies or initialization error
   text into stderr. Malformed server-config and credential-argument diagnostics
   omit value excerpts. [Real transport captures and scope](studies/connection-diagnostics/README.md).
+- **Annotation types (source checkout).** String-valued behavior hints such as
+  `"readOnlyHint": "false"` leave an audit incomplete and unscored. Valid siblings
+  and usable titles remain inspectable. [Live/saved list checks against the SDK](studies/tool-annotations/README.md).
   These source changes have not been released to npm.
 - Never calls `tools/call` on anything it lints — it only ever does the MCP handshake plus `*/list`.
 
