@@ -52,6 +52,10 @@ failure, omit `--check`. Regressions additionally compare all five known fields
 against the SDK, including wrong scalar/container types, valid false values,
 extensions, suppressed diagnostics and usable titles.
 
+The combined [installed-package receipt](../input-decoding/results/verification.json)
+also verifies this study's six scenarios against the packed CLI on Node 26.7.0
+and the minimum Node 20.0.0, with the SDK resolved from the fresh installation.
+
 All fixtures are synthetic. No remote MCP server is contacted and no tool is
 called. A read-only scan of the existing 25,808-tool registry cache found no
 retained annotation objects, so that cache cannot estimate this defect's

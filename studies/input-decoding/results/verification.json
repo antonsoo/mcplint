@@ -1,0 +1,69 @@
+{
+  "source_commit": "307a5d2b70bd976fa1a9229ea1881ff0ae3a4051",
+  "implementation_commits": [
+    "6d20f54",
+    "9307f2f"
+  ],
+  "clean_archive": {
+    "install": "npm ci",
+    "node": "v26.7.0",
+    "sdk": "1.31.0",
+    "lint": "passed",
+    "typecheck": "passed",
+    "build": "passed",
+    "test_command": "npm test -- --maxWorkers=4",
+    "tests_passed": 441,
+    "test_files": 39
+  },
+  "artifact": {
+    "name": "antonsoloviev-mcplint-0.3.3.tgz",
+    "sha256": "7652b0724ae4666f9135248e32d511b2e13aa38071828a9ce2965e6418478c6d",
+    "pack_files": 102
+  },
+  "installed": {
+    "installation": "fresh prefix, packed tarball, ignore-scripts",
+    "sdk": "1.32.1",
+    "ajv": "8.20.0",
+    "zod": "3.25.76",
+    "runs": [
+      {
+        "node": "v26.7.0",
+        "diagnostics": {
+          "cases": 10,
+          "disagreements": 0,
+          "http_requests": 6,
+          "authorized_requests_unchanged": true
+        },
+        "annotations": {
+          "cases": 6,
+          "disagreements": 0
+        },
+        "decoding": {
+          "cases": 9,
+          "disagreements": 0
+        }
+      },
+      {
+        "node": "v20.0.0",
+        "diagnostics": {
+          "cases": 10,
+          "disagreements": 0,
+          "http_requests": 6,
+          "authorized_requests_unchanged": true
+        },
+        "annotations": {
+          "cases": 6,
+          "disagreements": 0
+        },
+        "decoding": {
+          "cases": 9,
+          "disagreements": 0
+        }
+      }
+    ]
+  },
+  "limits": [
+    "Synthetic loopback/stdio fixtures and local files; no remote MCP servers or real credentials.",
+    "Source update only; no npm release or hosted site deployment."
+  ]
+}

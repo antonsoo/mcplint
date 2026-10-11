@@ -36,6 +36,13 @@ An alternate built or installed CLI path can replace `dist/cli.js`. Omit
 `--check` to retain the behavior of a version known to fail. Additional byte-level
 regressions cover stray continuation bytes and truncated UTF-16 code units.
 
+[Installed-package verification](results/verification.json) records a clean
+archive install, lint, typecheck, build and 441 passing tests. The resulting
+tarball was installed in a separate directory: its CLI passes these nine cases,
+six annotation scenarios and ten connection-diagnostic scenarios on Node 26.7.0
+and the minimum supported Node 20.0.0. The receipt includes the archive commit,
+dependency versions and artifact SHA-256.
+
 The files and environment values are synthetic; no remote server or real
 credential is used. This does not detect text already corrupted before it was
 saved as valid Unicode, guess legacy encodings, or reject every unusual but valid
