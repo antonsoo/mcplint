@@ -1,0 +1,49 @@
+{
+  "source_commit": "2c04bc0161636fbd88a21b87ecea53584ea02836",
+  "implementation_commit": "edef58a",
+  "baseline_commit": "f8170b3c91fd4ff7cbce46661e64b833ef114576",
+  "clean_archive": {
+    "install": "npm ci",
+    "node": "v26.7.0",
+    "sdk": "1.31.0",
+    "lint": "passed",
+    "typecheck": "passed",
+    "build": "passed",
+    "test_command": "npm test -- --maxWorkers=4",
+    "test_files": 36,
+    "tests_passed": 397
+  },
+  "artifact": {
+    "name": "antonsoloviev-mcplint-0.3.3.tgz",
+    "sha256": "52d2cb571513c96b3cf7d9dd8a77c4f72e2ff931c3cb7ec6d3e32b59a98d3618",
+    "pack_files": 102
+  },
+  "installed": {
+    "npm_install": "fresh prefix, packed tarball, ignore-scripts",
+    "sdk": "1.32.1",
+    "ajv": "8.20.0",
+    "zod": "3.25.76",
+    "versions_command": "0.3.3",
+    "runs": [
+      {
+        "node": "v26.7.0",
+        "cases": 10,
+        "disagreements": 0,
+        "http_requests": 6,
+        "authorized_requests_unchanged": true
+      },
+      {
+        "node": "v20.0.0",
+        "cases": 10,
+        "disagreements": 0,
+        "http_requests": 6,
+        "authorized_requests_unchanged": true
+      }
+    ]
+  },
+  "limits": [
+    "No live remote MCP servers or real credentials.",
+    "No registry release or hosted site deployment.",
+    "An initial fully parallel source test run exceeded an existing one-second timing assertion (1.19 seconds); the source and clean suites passed with four workers. The timing threshold and implementation were unchanged."
+  ]
+}

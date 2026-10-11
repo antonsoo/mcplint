@@ -1,0 +1,148 @@
+{
+  "node": "v26.7.0",
+  "scope": "Built CLI, real SDK transports, loopback HTTP and synthetic stdio responses. No remote servers or real credentials.",
+  "cases": 10,
+  "disagreements": 0,
+  "http_requests": 6,
+  "authorized_requests_unchanged": true,
+  "results": [
+    {
+      "case": "direct-http-body",
+      "code": 2,
+      "signal": null,
+      "stderr": "mcplint: Could not connect or initialize (HTTP 503). Check the command, URL, environment and authorization, then retry.\n",
+      "checks": {
+        "finished": true,
+        "private_values_omitted": true,
+        "failure_exit": true,
+        "retains_http_status": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "direct-stdio-initialize",
+      "code": 2,
+      "signal": null,
+      "stderr": "mcplint: Could not connect or initialize (MCP error -32000). Check the command, URL, environment and authorization, then retry.\n",
+      "checks": {
+        "finished": true,
+        "private_values_omitted": true,
+        "failure_exit": true,
+        "retains_mcp_code": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "mixed-config/json",
+      "code": 1,
+      "signal": null,
+      "stderr": "mcplint: \"config\" launches every server listed in <scratch>/servers.json. Only run this against configs you trust.\n  starting broken_http (http)...\n  broken_http: Could not connect or initialize (HTTP 503). Check the command, URL, environment and authorization, then retry.\n  starting broken_stdio (stdio)...\n  broken_stdio: Could not connect or initialize (MCP error -32000). Check the command, URL, environment and authorization, then retry.\n  starting healthy (stdio)...\n",
+      "checks": {
+        "finished": true,
+        "private_values_omitted": true,
+        "failure_exit": true,
+        "retains_http_status": true,
+        "retains_mcp_code": true,
+        "healthy_tools_retained": true,
+        "incomplete": true,
+        "two_failed_connections": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "mixed-config/sarif",
+      "code": 1,
+      "signal": null,
+      "stderr": "mcplint: \"config\" launches every server listed in <scratch>/servers.json. Only run this against configs you trust.\n  starting broken_http (http)...\n  broken_http: Could not connect or initialize (HTTP 503). Check the command, URL, environment and authorization, then retry.\n  starting broken_stdio (stdio)...\n  broken_stdio: Could not connect or initialize (MCP error -32000). Check the command, URL, environment and authorization, then retry.\n  starting healthy (stdio)...\n",
+      "checks": {
+        "finished": true,
+        "private_values_omitted": true,
+        "failure_exit": true,
+        "retains_http_status": true,
+        "retains_mcp_code": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "mixed-config/html",
+      "code": 1,
+      "signal": null,
+      "stderr": "mcplint: \"config\" launches every server listed in <scratch>/servers.json. Only run this against configs you trust.\n  starting broken_http (http)...\n  broken_http: Could not connect or initialize (HTTP 503). Check the command, URL, environment and authorization, then retry.\n  starting broken_stdio (stdio)...\n  broken_stdio: Could not connect or initialize (MCP error -32000). Check the command, URL, environment and authorization, then retry.\n  starting healthy (stdio)...\n",
+      "checks": {
+        "finished": true,
+        "private_values_omitted": true,
+        "failure_exit": true,
+        "retains_http_status": true,
+        "retains_mcp_code": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "mixed-config/markdown",
+      "code": 1,
+      "signal": null,
+      "stderr": "mcplint: \"config\" launches every server listed in <scratch>/servers.json. Only run this against configs you trust.\n  starting broken_http (http)...\n  broken_http: Could not connect or initialize (HTTP 503). Check the command, URL, environment and authorization, then retry.\n  starting broken_stdio (stdio)...\n  broken_stdio: Could not connect or initialize (MCP error -32000). Check the command, URL, environment and authorization, then retry.\n  starting healthy (stdio)...\n",
+      "checks": {
+        "finished": true,
+        "private_values_omitted": true,
+        "failure_exit": true,
+        "retains_http_status": true,
+        "retains_mcp_code": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "mixed-config/terminal",
+      "code": 1,
+      "signal": null,
+      "stderr": "mcplint: \"config\" launches every server listed in <scratch>/servers.json. Only run this against configs you trust.\n  starting broken_http (http)...\n  broken_http: Could not connect or initialize (HTTP 503). Check the command, URL, environment and authorization, then retry.\n  starting broken_stdio (stdio)...\n  broken_stdio: Could not connect or initialize (MCP error -32000). Check the command, URL, environment and authorization, then retry.\n  starting healthy (stdio)...\n",
+      "checks": {
+        "finished": true,
+        "private_values_omitted": true,
+        "failure_exit": true,
+        "retains_http_status": true,
+        "retains_mcp_code": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "malformed-config",
+      "code": 2,
+      "signal": null,
+      "stderr": "mcplint: \"config\" launches every server listed in <scratch>/malformed.json. Only run this against configs you trust.\nmcplint: <scratch>/malformed.json is not valid JSON (comments and trailing commas are allowed). Check the file syntax.\n",
+      "checks": {
+        "finished": true,
+        "private_values_omitted": true,
+        "failure_exit": true,
+        "useful_syntax_error": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "malformed-header",
+      "code": 2,
+      "signal": null,
+      "stderr": "mcplint: invalid --header (expected \"Name: value\"; supplied value omitted)\n",
+      "checks": {
+        "finished": true,
+        "private_values_omitted": true,
+        "failure_exit": true,
+        "useful_header_error": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "malformed-input",
+      "code": 2,
+      "signal": null,
+      "stderr": "mcplint: \"config\" launches every server listed in <scratch>/servers.json. Only run this against configs you trust.\nmcplint: invalid --input (expected \"id=value\"; supplied value omitted)\n",
+      "checks": {
+        "finished": true,
+        "private_values_omitted": true,
+        "failure_exit": true,
+        "useful_input_error": true
+      },
+      "agrees": true
+    }
+  ]
+}

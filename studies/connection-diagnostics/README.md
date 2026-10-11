@@ -55,6 +55,15 @@ boundary, not a mocked report renderer.
 
 ## Scope
 
+The [verification receipt](results/verification.json) identifies the clean source
+commit and packed tarball SHA-256. A fresh archive passes install, lint, type
+checking, build and all 397 tests across 36 files. The full suite used four
+workers: an initial unrestricted run exceeded an existing one-second performance
+assertion, which was left unchanged. The installed tarball, with separately
+resolved dependencies, passes all ten captures on both
+[Node 26.7.0](results/installed-node26.json) and the declared minimum
+[Node 20.0.0](results/installed-node20.json).
+
 This source change does not publish a new registry version or anonymize reports.
 Server metadata and names, successful target labels, command arguments, URLs,
 file paths and a spawned server's own stderr can still contain sensitive values.
