@@ -102,6 +102,14 @@ build. The installed CLI passes the eight controlled workflows on both
 run from the installed executable. This is source and local-package evidence;
 the npm version remains unchanged.
 
+The source and [hosted static reports](https://antonsoo.github.io/mcplint/)
+are now published. The [publication receipt](publication.json) checks pinned
+source files and all three served HTML files against the verified build.
+Chromium and Firefox inspect the findings, no-findings and incomplete-audit
+reports at 375px, with offline theme controls and no page, CSP, network or
+accessibility errors. The site displays fixture reports; it does not audit
+visitor-supplied servers. These checks do not constitute an npm release.
+
 ## Reproduce
 
 Build source `48c74c3` separately and use its checkout as `BASELINE_ROOT`.
@@ -122,5 +130,4 @@ node studies/enum-values/corpus.mjs "$BASELINE_ROOT" studies/enum-values/corpus.
 ```
 
 The command checks manifest members only and stops if required snapshot files
-are unavailable. No registry publication or hosted deployment follows from
-these local checks alone.
+are unavailable. The reproduction commands do not publish anything.

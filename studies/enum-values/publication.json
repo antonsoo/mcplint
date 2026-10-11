@@ -1,0 +1,119 @@
+{
+  "verifiedBuildSource": "fdff59de9ff9f1872c284c2948211153d171ebaa",
+  "sourcePublished": "49b7ceb5688e0c1bd19d7e295b06e32e03380779",
+  "pagesPublished": "df5f219b817eed5414081a5052da0036a93b31a1",
+  "verifiedAtUTC": "2026-10-11T07:33:12Z",
+  "sourceFiles": [
+    {
+      "path": "src/core/rules/descriptions.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/49b7ceb5688e0c1bd19d7e295b06e32e03380779/src/core/rules/descriptions.ts",
+      "bytes": 14239,
+      "sha256": "86b94d811ab67a8624c92b7002044e97885dede0e9713277ad274e84b5261e82",
+      "matchesLocal": true
+    },
+    {
+      "path": "studies/enum-values/checks.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/49b7ceb5688e0c1bd19d7e295b06e32e03380779/studies/enum-values/checks.json",
+      "bytes": 17400,
+      "sha256": "05331e7a1d58dc558dd2058088c1ff67599cc514d1f99f5a887647a400ac9f2a",
+      "matchesLocal": true
+    }
+  ],
+  "servedReports": [
+    {
+      "path": "index.html",
+      "url": "https://antonsoo.github.io/mcplint/index.html?enum=df5f219b817eed5414081a5052da0036a93b31a1",
+      "bytes": 48082,
+      "sha256": "2f4f77eccc1c80a58f8949b01095cb45c44db2158f0d8606e11d5f9417c32745",
+      "matchesVerifiedBuild": true
+    },
+    {
+      "path": "good.html",
+      "url": "https://antonsoo.github.io/mcplint/good.html?enum=df5f219b817eed5414081a5052da0036a93b31a1",
+      "bytes": 19550,
+      "sha256": "cf0124c6bd5b167bf5d0d5267f5d25aea78f8e3f248844a8409ad8bdf63efe7c",
+      "matchesVerifiedBuild": true
+    },
+    {
+      "path": "incomplete.html",
+      "url": "https://antonsoo.github.io/mcplint/incomplete.html?enum=df5f219b817eed5414081a5052da0036a93b31a1",
+      "bytes": 20378,
+      "sha256": "bd76073bac2503c6abf77e9a5ea9f280cd75a73304e37966fae5f0e4e1d3acfb",
+      "matchesVerifiedBuild": true
+    }
+  ],
+  "scope": "Source and static HTML report deployment. No npm release; the hosted site displays fixture reports and does not audit visitor-supplied servers.",
+  "hostedBrowserChecks": [
+    {
+      "browser": "chromium",
+      "width": 375,
+      "reports": [
+        {
+          "file": "index.html",
+          "heading": "Findings to review",
+          "status": 200,
+          "offlineThemeToggle": true,
+          "noPageOverflow": true,
+          "accessibilityViolations": []
+        },
+        {
+          "file": "good.html",
+          "heading": "No findings",
+          "status": 200,
+          "offlineThemeToggle": true,
+          "noPageOverflow": true,
+          "accessibilityViolations": []
+        },
+        {
+          "file": "incomplete.html",
+          "heading": "Incomplete audit",
+          "status": 200,
+          "offlineThemeToggle": true,
+          "noPageOverflow": true,
+          "accessibilityViolations": []
+        }
+      ],
+      "pageErrors": [],
+      "externalRequests": [],
+      "cspViolations": []
+    },
+    {
+      "browser": "firefox",
+      "width": 375,
+      "reports": [
+        {
+          "file": "index.html",
+          "heading": "Findings to review",
+          "status": 200,
+          "offlineThemeToggle": true,
+          "noPageOverflow": true,
+          "accessibilityViolations": []
+        },
+        {
+          "file": "good.html",
+          "heading": "No findings",
+          "status": 200,
+          "offlineThemeToggle": true,
+          "noPageOverflow": true,
+          "accessibilityViolations": []
+        },
+        {
+          "file": "incomplete.html",
+          "heading": "Incomplete audit",
+          "status": 200,
+          "offlineThemeToggle": true,
+          "noPageOverflow": true,
+          "accessibilityViolations": []
+        }
+      ],
+      "pageErrors": [],
+      "externalRequests": [],
+      "cspViolations": []
+    }
+  ],
+  "browserLogs": {
+    "hosted-browser-initial.log": "7faef4a372402939486946431fe41c9bd61ac78b65380eb416b42cbc170da2a2",
+    "hosted-browser.log": "d588a7ba7f1745a4780b957980faa6bd295f2bb447c81756e84845323d3d6020"
+  },
+  "browserHarnessNote": "The first hosted check incorrectly treated an absent data-theme attribute as light although the emulated OS scheme was dark. Reading the effective scheme corrected the assertion. No product change was required; the final six report checks passed."
+}
