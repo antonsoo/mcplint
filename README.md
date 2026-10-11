@@ -163,18 +163,30 @@ mcplint stdio --fail-on error --format sarif --output mcplint.sarif -- node serv
 ```sh
 $ node dist/cli.js stdio -- npx tsx examples/good-server/server.ts
 
- mcplint — o200k_base token estimates, 2026-09-24T09:34:19.177Z
+ mcplint — o200k_base token estimates, 2026-10-11T07:31:40.899Z
 ──────────────────────────────────────────────────────────────────────
-  No findings. Clean run against configured rules and budget.
+  No findings
+  Scope: collected metadata and configured rules. A completed audit and a high score do not certify
+    that a server is safe.
+
+  Collection coverage (pages / received / retained):
+    mcplint-good-fixture | tools/list | complete | 1 / 3 / 3
+    mcplint-good-fixture | prompts/list | unsupported | 0 / 0 / 0
+      Server did not advertise prompts.
+    mcplint-good-fixture | resources/list | unsupported | 0 / 0 / 0
+      Server did not advertise resources.
+    mcplint-good-fixture | resources/templates/list | unsupported | 0 / 0 / 0
+      Server did not advertise resources.
+
 ──────────────────────────────────────────────────────────────────────
   Servers: 1   Tools: 3   Prompts: 0   Resources: 0
-  Estimated tokens: ~471 across all tools
+  Estimated tokens: ~400 across retained tools
   Findings: 0 error, 0 warning, 0 info
 
   Top token offenders:
-      208 tok  list_invoices
-      140 tok  void_invoice
-      123 tok  get_invoice_detail
+      189 tok  list_invoices
+      108 tok  void_invoice
+      103 tok  get_invoice_detail
 
   Score: 100 / 100
 ```

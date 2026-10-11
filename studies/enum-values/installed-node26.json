@@ -1,0 +1,484 @@
+{
+  "node": "v26.7.0",
+  "scope": "Controlled metadata, actual SDK server/client and CLI. Only tools/list is called; schemas are independently checked by schema-oracle.py.",
+  "cases": 8,
+  "disagreements": 0,
+  "results": [
+    {
+      "case": "file/scalar",
+      "code": 0,
+      "summary": {
+        "totalFindings": 1,
+        "bySeverity": {
+          "error": 0,
+          "warning": 1,
+          "info": 0
+        },
+        "byRule": {
+          "description/near-duplicate": 1
+        },
+        "toolCount": 3,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 171,
+        "complete": true,
+        "score": 99
+      },
+      "findings": [
+        {
+          "ruleId": "description/near-duplicate",
+          "severity": "warning",
+          "serverId": "file",
+          "subject": {
+            "kind": "tool",
+            "name": "numeric_mode"
+          },
+          "message": "\"numeric_mode\" and 2 other tools (\"boolean_mode\", \"nullable_mode\") have near-identical descriptions: each has at least 75% word overlap with another in the group."
+        }
+      ],
+      "checks": {
+        "strictSDKRetainsAllChoices": true,
+        "complete": true,
+        "toolsRetained": true,
+        "enumFindings": true,
+        "noSpuriousSchemaError": true,
+        "safetyStillInspectsStructuredValues": true,
+        "exitCode": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "stdio/scalar",
+      "code": 0,
+      "summary": {
+        "totalFindings": 1,
+        "bySeverity": {
+          "error": 0,
+          "warning": 1,
+          "info": 0
+        },
+        "byRule": {
+          "description/near-duplicate": 1
+        },
+        "toolCount": 3,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 171,
+        "complete": true,
+        "score": 99
+      },
+      "findings": [
+        {
+          "ruleId": "description/near-duplicate",
+          "severity": "warning",
+          "serverId": "enum-fixture",
+          "subject": {
+            "kind": "tool",
+            "name": "numeric_mode"
+          },
+          "message": "\"numeric_mode\" and 2 other tools (\"boolean_mode\", \"nullable_mode\") have near-identical descriptions: each has at least 75% word overlap with another in the group."
+        }
+      ],
+      "checks": {
+        "strictSDKRetainsAllChoices": true,
+        "complete": true,
+        "toolsRetained": true,
+        "enumFindings": true,
+        "noSpuriousSchemaError": true,
+        "safetyStillInspectsStructuredValues": true,
+        "exitCode": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "file/object",
+      "code": 0,
+      "summary": {
+        "totalFindings": 2,
+        "bySeverity": {
+          "error": 0,
+          "warning": 1,
+          "info": 1
+        },
+        "byRule": {
+          "description/enum-unexplained": 1,
+          "description/near-duplicate": 1
+        },
+        "toolCount": 2,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 117,
+        "complete": true,
+        "score": 98
+      },
+      "findings": [
+        {
+          "ruleId": "description/enum-unexplained",
+          "severity": "info",
+          "serverId": "file",
+          "subject": {
+            "kind": "tool",
+            "name": "simple_mode"
+          },
+          "message": "Parameter \"mode\" has scalar enum [\"fast\",\"safe\"] but its description mentions none of the values."
+        },
+        {
+          "ruleId": "description/near-duplicate",
+          "severity": "warning",
+          "serverId": "file",
+          "subject": {
+            "kind": "tool",
+            "name": "simple_mode"
+          },
+          "message": "\"simple_mode\" and \"structured_mode\" (file) have 100% word overlap in their descriptions."
+        }
+      ],
+      "checks": {
+        "strictSDKRetainsAllChoices": true,
+        "complete": true,
+        "toolsRetained": true,
+        "enumFindings": true,
+        "noSpuriousSchemaError": true,
+        "safetyStillInspectsStructuredValues": true,
+        "exitCode": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "stdio/object",
+      "code": 0,
+      "summary": {
+        "totalFindings": 2,
+        "bySeverity": {
+          "error": 0,
+          "warning": 1,
+          "info": 1
+        },
+        "byRule": {
+          "description/enum-unexplained": 1,
+          "description/near-duplicate": 1
+        },
+        "toolCount": 2,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 117,
+        "complete": true,
+        "score": 98
+      },
+      "findings": [
+        {
+          "ruleId": "description/enum-unexplained",
+          "severity": "info",
+          "serverId": "enum-fixture",
+          "subject": {
+            "kind": "tool",
+            "name": "simple_mode"
+          },
+          "message": "Parameter \"mode\" has scalar enum [\"fast\",\"safe\"] but its description mentions none of the values."
+        },
+        {
+          "ruleId": "description/near-duplicate",
+          "severity": "warning",
+          "serverId": "enum-fixture",
+          "subject": {
+            "kind": "tool",
+            "name": "simple_mode"
+          },
+          "message": "\"simple_mode\" and \"structured_mode\" (enum-fixture) have 100% word overlap in their descriptions."
+        }
+      ],
+      "checks": {
+        "strictSDKRetainsAllChoices": true,
+        "complete": true,
+        "toolsRetained": true,
+        "enumFindings": true,
+        "noSpuriousSchemaError": true,
+        "safetyStillInspectsStructuredValues": true,
+        "exitCode": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "file/boundaries",
+      "code": 0,
+      "summary": {
+        "totalFindings": 4,
+        "bySeverity": {
+          "error": 0,
+          "warning": 1,
+          "info": 3
+        },
+        "byRule": {
+          "description/enum-unexplained": 3,
+          "description/near-duplicate": 1
+        },
+        "toolCount": 3,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 174,
+        "complete": true,
+        "score": 98
+      },
+      "findings": [
+        {
+          "ruleId": "description/enum-unexplained",
+          "severity": "info",
+          "serverId": "file",
+          "subject": {
+            "kind": "tool",
+            "name": "numeric_boundary"
+          },
+          "message": "Parameter \"mode\" has scalar enum [1,2] but its description mentions none of the values."
+        },
+        {
+          "ruleId": "description/enum-unexplained",
+          "severity": "info",
+          "serverId": "file",
+          "subject": {
+            "kind": "tool",
+            "name": "empty_choice"
+          },
+          "message": "Parameter \"mode\" has scalar enum [\"\",\"safe\"] but its description mentions none of the values."
+        },
+        {
+          "ruleId": "description/enum-unexplained",
+          "severity": "info",
+          "serverId": "file",
+          "subject": {
+            "kind": "tool",
+            "name": "null_render"
+          },
+          "message": "Parameter \"mode\" has scalar enum [null,false] but its description mentions none of the values."
+        },
+        {
+          "ruleId": "description/near-duplicate",
+          "severity": "warning",
+          "serverId": "file",
+          "subject": {
+            "kind": "tool",
+            "name": "numeric_boundary"
+          },
+          "message": "\"numeric_boundary\" and 2 other tools (\"empty_choice\", \"null_render\") have near-identical descriptions: each has at least 75% word overlap with another in the group."
+        }
+      ],
+      "checks": {
+        "strictSDKRetainsAllChoices": true,
+        "complete": true,
+        "toolsRetained": true,
+        "enumFindings": true,
+        "noSpuriousSchemaError": true,
+        "safetyStillInspectsStructuredValues": true,
+        "exitCode": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "stdio/boundaries",
+      "code": 0,
+      "summary": {
+        "totalFindings": 4,
+        "bySeverity": {
+          "error": 0,
+          "warning": 1,
+          "info": 3
+        },
+        "byRule": {
+          "description/enum-unexplained": 3,
+          "description/near-duplicate": 1
+        },
+        "toolCount": 3,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 174,
+        "complete": true,
+        "score": 98
+      },
+      "findings": [
+        {
+          "ruleId": "description/enum-unexplained",
+          "severity": "info",
+          "serverId": "enum-fixture",
+          "subject": {
+            "kind": "tool",
+            "name": "numeric_boundary"
+          },
+          "message": "Parameter \"mode\" has scalar enum [1,2] but its description mentions none of the values."
+        },
+        {
+          "ruleId": "description/enum-unexplained",
+          "severity": "info",
+          "serverId": "enum-fixture",
+          "subject": {
+            "kind": "tool",
+            "name": "empty_choice"
+          },
+          "message": "Parameter \"mode\" has scalar enum [\"\",\"safe\"] but its description mentions none of the values."
+        },
+        {
+          "ruleId": "description/enum-unexplained",
+          "severity": "info",
+          "serverId": "enum-fixture",
+          "subject": {
+            "kind": "tool",
+            "name": "null_render"
+          },
+          "message": "Parameter \"mode\" has scalar enum [null,false] but its description mentions none of the values."
+        },
+        {
+          "ruleId": "description/near-duplicate",
+          "severity": "warning",
+          "serverId": "enum-fixture",
+          "subject": {
+            "kind": "tool",
+            "name": "numeric_boundary"
+          },
+          "message": "\"numeric_boundary\" and 2 other tools (\"empty_choice\", \"null_render\") have near-identical descriptions: each has at least 75% word overlap with another in the group."
+        }
+      ],
+      "checks": {
+        "strictSDKRetainsAllChoices": true,
+        "complete": true,
+        "toolsRetained": true,
+        "enumFindings": true,
+        "noSpuriousSchemaError": true,
+        "safetyStillInspectsStructuredValues": true,
+        "exitCode": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "file/structured_safety",
+      "code": 1,
+      "summary": {
+        "totalFindings": 3,
+        "bySeverity": {
+          "error": 3,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {
+          "safety/prompt-injection": 1,
+          "safety/secret-access": 2
+        },
+        "toolCount": 1,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 76,
+        "complete": true,
+        "score": 70
+      },
+      "findings": [
+        {
+          "ruleId": "safety/prompt-injection",
+          "severity": "error",
+          "serverId": "file",
+          "subject": {
+            "kind": "tool",
+            "name": "structured_warning"
+          },
+          "message": "inputSchema.properties.mode.enum[0].note matches the \"instruction override\" pattern: \"Ignore all previous instructions\". Together with credential store on the same tool, this is the shape of a tool-poisoning attack.",
+          "detail": "Ignore all previous instructions"
+        },
+        {
+          "ruleId": "safety/secret-access",
+          "severity": "error",
+          "serverId": "file",
+          "subject": {
+            "kind": "tool",
+            "name": "structured_warning"
+          },
+          "message": "inputSchema.properties.mode.enum[0].note references ~/.ssh: \"~/.ssh\". Together with instruction override on the same tool, this is the shape of a tool-poisoning attack.",
+          "detail": "~/.ssh"
+        },
+        {
+          "ruleId": "safety/secret-access",
+          "severity": "error",
+          "serverId": "file",
+          "subject": {
+            "kind": "tool",
+            "name": "structured_warning"
+          },
+          "message": "inputSchema.properties.mode.enum[0].note references SSH private key: \".ssh/id_rsa\". Together with instruction override on the same tool, this is the shape of a tool-poisoning attack.",
+          "detail": ".ssh/id_rsa"
+        }
+      ],
+      "checks": {
+        "strictSDKRetainsAllChoices": true,
+        "complete": true,
+        "toolsRetained": true,
+        "enumFindings": true,
+        "noSpuriousSchemaError": true,
+        "safetyStillInspectsStructuredValues": true,
+        "exitCode": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "stdio/structured_safety",
+      "code": 1,
+      "summary": {
+        "totalFindings": 3,
+        "bySeverity": {
+          "error": 3,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {
+          "safety/prompt-injection": 1,
+          "safety/secret-access": 2
+        },
+        "toolCount": 1,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 76,
+        "complete": true,
+        "score": 70
+      },
+      "findings": [
+        {
+          "ruleId": "safety/prompt-injection",
+          "severity": "error",
+          "serverId": "enum-fixture",
+          "subject": {
+            "kind": "tool",
+            "name": "structured_warning"
+          },
+          "message": "inputSchema.properties.mode.enum[0].note matches the \"instruction override\" pattern: \"Ignore all previous instructions\". Together with credential store on the same tool, this is the shape of a tool-poisoning attack.",
+          "detail": "Ignore all previous instructions"
+        },
+        {
+          "ruleId": "safety/secret-access",
+          "severity": "error",
+          "serverId": "enum-fixture",
+          "subject": {
+            "kind": "tool",
+            "name": "structured_warning"
+          },
+          "message": "inputSchema.properties.mode.enum[0].note references ~/.ssh: \"~/.ssh\". Together with instruction override on the same tool, this is the shape of a tool-poisoning attack.",
+          "detail": "~/.ssh"
+        },
+        {
+          "ruleId": "safety/secret-access",
+          "severity": "error",
+          "serverId": "enum-fixture",
+          "subject": {
+            "kind": "tool",
+            "name": "structured_warning"
+          },
+          "message": "inputSchema.properties.mode.enum[0].note references SSH private key: \".ssh/id_rsa\". Together with instruction override on the same tool, this is the shape of a tool-poisoning attack.",
+          "detail": ".ssh/id_rsa"
+        }
+      ],
+      "checks": {
+        "strictSDKRetainsAllChoices": true,
+        "complete": true,
+        "toolsRetained": true,
+        "enumFindings": true,
+        "noSpuriousSchemaError": true,
+        "safetyStillInspectsStructuredValues": true,
+        "exitCode": true
+      },
+      "agrees": true
+    }
+  ]
+}

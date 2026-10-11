@@ -86,6 +86,22 @@ and inspected; findings and coverage remain readable at 375px:
 - [Firefox desktop](../../docs/assets/enum-values/firefox-1440.png)
 - [Firefox mobile](../../docs/assets/enum-values/firefox-375.png)
 
+## Clean build and installed package
+
+A fresh archive of `fdff59d` passed `npm ci`, lint, typecheck, all 464 tests
+in 40 files, the build, and all 28 Chromium/Firefox workflows. Its eight
+CLI/SDK captures and regenerated schema-oracle JSON match the retained
+receipts byte for byte. [Commands, log hashes and package hashes](checks.json)
+also record a corrected verification-driver comparison: the oracle writes a
+JSON file and prints a status line; those are separate outputs.
+
+All 102 files in the locally packed installation match the clean archive's
+build. The installed CLI passes the eight controlled workflows on both
+[Node 26.7.0](installed-node26.json) and the minimum supported
+[Node 20.0.0](installed-node20.json). Both documented fixture commands also
+run from the installed executable. This is source and local-package evidence;
+the npm version remains unchanged.
+
 ## Reproduce
 
 Build source `48c74c3` separately and use its checkout as `BASELINE_ROOT`.
