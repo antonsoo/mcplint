@@ -1,0 +1,638 @@
+{
+  "scope": "Retained registry snapshots, this informational rule only. No model behavior or production usage is measured.",
+  "groups": [
+    {
+      "group": "servers",
+      "servers": 418,
+      "tools": 11545,
+      "beforeFindings": 1145,
+      "beforeFailures": 0,
+      "afterFindings": 1133,
+      "changedServers": 8,
+      "inputManifestSha256": "21007d7cfc346c6ada40f173f2ec7250a23cd7e2ad0223632cbac0526e1930e3",
+      "changes": [
+        {
+          "name": "augiemazza/varrd",
+          "inputSha256": "72c4099031086e60c7036c36a5e4d5b3bbfc9e12766850691f3c473e02e7f775",
+          "removed": [
+            "varrd_edges/depth"
+          ],
+          "added": [],
+          "evidence": [
+            {
+              "tool": "varrd_edges",
+              "parameter": "depth",
+              "enum": [
+                0,
+                1,
+                2
+              ],
+              "description": "0=free (markets + status), 1=$0.50 (direction, stats, trade levels for ALL active edges), 2=$1/edge or $5/all (full methodology + performance). Cheaper than a coffee."
+            }
+          ]
+        },
+        {
+          "name": "autario/data",
+          "inputSha256": "a3fdb53a2214a20aa04932e3b956421a3b2842dcb71ee6b195eb67e022c64dbe",
+          "removed": [
+            "projects/impact",
+            "update_app_manifest/tier"
+          ],
+          "added": [],
+          "evidence": [
+            {
+              "tool": "projects",
+              "parameter": "impact",
+              "enum": [
+                1,
+                2,
+                3,
+                4,
+                5
+              ],
+              "description": "Expected impact as a judgement: 1 low, 2 some, 3 clear, 4 high, 5 very high."
+            },
+            {
+              "tool": "update_app_manifest",
+              "parameter": "tier",
+              "enum": [
+                1,
+                2
+              ],
+              "description": "Runtime model. 2 = sandboxed custom app (the default for anything you build here). Only set this if you know you need 1."
+            }
+          ]
+        },
+        {
+          "name": "emblemai/emblem-mcp",
+          "inputSha256": "aa7d4221dbd1dc1b9394dba9b198a9542f4fc7dba9906e06c2aa7c31b8496872",
+          "removed": [
+            "openseaGetNFTListings/chainId",
+            "openseaGetNFTOffers/chainId",
+            "openseaGetTrendingCollections/chainId"
+          ],
+          "added": [],
+          "evidence": [
+            {
+              "tool": "openseaGetNFTListings",
+              "parameter": "chainId",
+              "enum": [
+                1,
+                137,
+                8453
+              ],
+              "description": "The chain ID (1=Ethereum, 137=Polygon, 8453=Base)"
+            },
+            {
+              "tool": "openseaGetNFTOffers",
+              "parameter": "chainId",
+              "enum": [
+                1,
+                137,
+                8453
+              ],
+              "description": "The chain ID (1=Ethereum, 137=Polygon, 8453=Base)"
+            },
+            {
+              "tool": "openseaGetTrendingCollections",
+              "parameter": "chainId",
+              "enum": [
+                1,
+                137,
+                8453
+              ],
+              "description": "Chain ID (1=Ethereum, 137=Polygon, etc.)"
+            }
+          ]
+        },
+        {
+          "name": "getgapup/gapup-mcp",
+          "inputSha256": "69c61276f7f6798c4c1a4e6b19f0c34c6db71bbd83b0a6eeec7d51b8bf5918f8",
+          "removed": [
+            "realtime_data_streams/depth"
+          ],
+          "added": [
+            "vuln_exploitability_forecast/cloudProvider"
+          ],
+          "evidence": [
+            {
+              "tool": "vuln_exploitability_forecast",
+              "parameter": "cloudProvider",
+              "enum": [
+                "aws",
+                "gcp",
+                "azure",
+                ""
+              ],
+              "description": null
+            },
+            {
+              "tool": "realtime_data_streams",
+              "parameter": "depth",
+              "enum": [
+                5,
+                10,
+                20,
+                50
+              ],
+              "description": "Orderbook depth (levels each side) for crypto_orderbook mode (default: 20)"
+            }
+          ]
+        },
+        {
+          "name": "ia-qa/api",
+          "inputSha256": "e9e38b55002cb640704cb318f23b6c4a8815f14cadba13ee1037329742961800",
+          "removed": [
+            "generate_eval_yaml/scenario_count",
+            "test_skill/scenario_count"
+          ],
+          "added": [],
+          "evidence": [
+            {
+              "tool": "generate_eval_yaml",
+              "parameter": "scenario_count",
+              "enum": [
+                3,
+                5,
+                8
+              ],
+              "description": "Number of scenarios to generate (default: 5). Covers happy path + edge cases + adversarial."
+            },
+            {
+              "tool": "test_skill",
+              "parameter": "scenario_count",
+              "enum": [
+                4,
+                6,
+                8,
+                10
+              ],
+              "description": "Number of test scenarios to generate: half trigger-positive, half trigger-negative. Default: 6."
+            }
+          ]
+        },
+        {
+          "name": "oobe-protocol/sap-mcp",
+          "inputSha256": "6b0665f7fdb273ceafcd463740e1dbe282f53ac50ce91a9499a1f8515c60863b",
+          "removed": [
+            "sap_escrow_build_create_transaction/settlementSecurity",
+            "sap_create_escrow_v2/settlementSecurity"
+          ],
+          "added": [],
+          "evidence": [
+            {
+              "tool": "sap_escrow_build_create_transaction",
+              "parameter": "settlementSecurity",
+              "enum": [
+                1,
+                2
+              ],
+              "description": "V2 settlement security mode. 1=CoSigned (requires coSigner). 2=DisputeWindow (recommended default; requires disputeWindowSlots > 0). SelfReport/0 is deprecated and rejected on-chain."
+            },
+            {
+              "tool": "sap_create_escrow_v2",
+              "parameter": "settlementSecurity",
+              "enum": [
+                1,
+                2
+              ],
+              "description": "V2 settlement security mode. 1=CoSigned (requires coSigner). 2=DisputeWindow (recommended default; requires disputeWindowSlots > 0). SelfReport/0 is deprecated and rejected on-chain."
+            }
+          ]
+        },
+        {
+          "name": "sidneybissoli/sih-br-mcp",
+          "inputSha256": "9b25e677ff225f14848831a6ae55a141802611968f915c81f45b84c04c09a269",
+          "removed": [
+            "get_hospitalization_rates/rate_per"
+          ],
+          "added": [],
+          "evidence": [
+            {
+              "tool": "get_hospitalization_rates",
+              "parameter": "rate_per",
+              "enum": [
+                1000,
+                10000,
+                100000
+              ],
+              "description": "Taxa por X habitantes (default: 100000)"
+            }
+          ]
+        },
+        {
+          "name": "thebrierfox/the-stall",
+          "inputSha256": "2ac6c5577c5c76dbd904bc2afa6da1842e0f5ba53dc805aba1f45d21ded20d16",
+          "removed": [
+            "cdp-market-depth/depth"
+          ],
+          "added": [],
+          "evidence": [
+            {
+              "tool": "cdp-market-depth",
+              "parameter": "depth",
+              "enum": [
+                3,
+                5,
+                10
+              ],
+              "description": "Number of order book levels to return on each side (bids + asks). 3, 5, or 10. Default 5."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "group": "heldout",
+      "servers": 886,
+      "tools": 14254,
+      "beforeFindings": 1806,
+      "beforeFailures": 0,
+      "afterFindings": 1790,
+      "changedServers": 13,
+      "inputManifestSha256": "2bcb76444895f3df3cbb7d245f03888493437ead8facc0c1635032314d3cb60b",
+      "changes": [
+        {
+          "name": "acedatacloud-mcp/mcp-sora",
+          "inputSha256": "4599c1dc8554fee69e87de5c8d1aa6c26a3dd4fdc626da8ee5eb56d2f18a669e",
+          "removed": [
+            "sora_generate_video/duration",
+            "sora_generate_video_from_image/duration",
+            "sora_generate_video_with_character/duration",
+            "sora_generate_video_v2/duration",
+            "sora_generate_video_v2_async/duration"
+          ],
+          "added": [],
+          "evidence": [
+            {
+              "tool": "sora_generate_video",
+              "parameter": "duration",
+              "enum": [
+                10,
+                15,
+                25
+              ],
+              "description": "Video duration in seconds. Options: 10, 15, or 25 (25 only available with sora-2-pro model)."
+            },
+            {
+              "tool": "sora_generate_video_from_image",
+              "parameter": "duration",
+              "enum": [
+                10,
+                15,
+                25
+              ],
+              "description": "Video duration in seconds. Options: 10, 15, or 25 (25 only for sora-2-pro)."
+            },
+            {
+              "tool": "sora_generate_video_with_character",
+              "parameter": "duration",
+              "enum": [
+                10,
+                15,
+                25
+              ],
+              "description": "Video duration in seconds. Options: 10, 15, or 25 (25 only for sora-2-pro)."
+            },
+            {
+              "tool": "sora_generate_video_v2",
+              "parameter": "duration",
+              "enum": [
+                4,
+                8,
+                12
+              ],
+              "description": "Video duration in seconds. Options: 4, 8, or 12."
+            },
+            {
+              "tool": "sora_generate_video_v2_async",
+              "parameter": "duration",
+              "enum": [
+                4,
+                8,
+                12
+              ],
+              "description": "Video duration in seconds. Options: 4, 8, or 12."
+            }
+          ]
+        },
+        {
+          "name": "betterstack",
+          "inputSha256": "bb7dc54e52c64c097f955de8cd7d19bc24a25fb52ec22e31ba887b795a2119d3",
+          "removed": [
+            "telemetry_update_error_state_tool/ignore_next_count"
+          ],
+          "added": [],
+          "evidence": [
+            {
+              "tool": "telemetry_update_error_state_tool",
+              "parameter": "ignore_next_count",
+              "enum": [
+                10,
+                100,
+                1000
+              ],
+              "description": "Number of next occurrences to ignore (only valid when state is 'ignored'). Must be 10, 100, or 1000"
+            }
+          ]
+        },
+        {
+          "name": "clickup",
+          "inputSha256": "c978ba46a729b71195ef920d8b2c4a4b103cfc5010507c2e1df6b823f4d02b6c",
+          "removed": [
+            "clickup_get_workspace_hierarchy/max_depth"
+          ],
+          "added": [],
+          "evidence": [
+            {
+              "tool": "clickup_get_workspace_hierarchy",
+              "parameter": "max_depth",
+              "enum": [
+                0,
+                1,
+                2
+              ],
+              "description": "Maximum depth of hierarchy to return: 0=spaces only, 1=spaces+folders, 2=spaces+folders+lists (default: 2)"
+            }
+          ]
+        },
+        {
+          "name": "hello-2jy9/tuneworks",
+          "inputSha256": "88a78f364c2f74e9bef0a61dd341f240cfc7a6775875fcea5c3a210c87fe3b5b",
+          "removed": [],
+          "added": [
+            "create_vehicle/transmissionType",
+            "update_vehicle/transmissionType"
+          ],
+          "evidence": [
+            {
+              "tool": "create_vehicle",
+              "parameter": "transmissionType",
+              "enum": [
+                "manual",
+                "automatic",
+                "cvt",
+                ""
+              ],
+              "description": null
+            },
+            {
+              "tool": "update_vehicle",
+              "parameter": "transmissionType",
+              "enum": [
+                "manual",
+                "automatic",
+                "cvt",
+                ""
+              ],
+              "description": null
+            }
+          ]
+        },
+        {
+          "name": "info-d51f/info-d51f",
+          "inputSha256": "368356d802b03865f0d68af73951ca2a8f6cb5b48b876a131e28aac6ceb6bab6",
+          "removed": [
+            "create_clips/segment_duration"
+          ],
+          "added": [],
+          "evidence": [
+            {
+              "tool": "create_clips",
+              "parameter": "segment_duration",
+              "enum": [
+                30,
+                50,
+                90
+              ],
+              "description": "Target clip length in seconds. 50 needs Creator, 90 needs Pro; default 30."
+            }
+          ]
+        },
+        {
+          "name": "leoeric13/popcraft",
+          "inputSha256": "d19b298379fbec536dcfcb9deb243155827b4d36ba7c23c9c050e73a048b4937",
+          "removed": [
+            "popcraft_generate_image/count",
+            "popcraft_generate_video/count",
+            "popcraft_generate_audio/clip_index",
+            "popcraft_upscale_image/scale",
+            "popcraft_upscale_video/fps",
+            "popcraft_upscale_video/scale"
+          ],
+          "added": [],
+          "evidence": [
+            {
+              "tool": "popcraft_generate_image",
+              "parameter": "count",
+              "enum": [
+                1,
+                2,
+                4
+              ],
+              "description": "Number of images: 1, 2, or 4 (Popcraft pricing tiers) — default 1"
+            },
+            {
+              "tool": "popcraft_generate_video",
+              "parameter": "count",
+              "enum": [
+                1,
+                2,
+                4
+              ],
+              "description": "Number of video variants: 1, 2, or 4 (Popcraft pricing tiers) — default 1"
+            },
+            {
+              "tool": "popcraft_generate_audio",
+              "parameter": "clip_index",
+              "enum": [
+                0,
+                1
+              ],
+              "description": "kind:\"music\" (Suno): which of the two rendered takes is the primary output — 0 (default) or 1"
+            },
+            {
+              "tool": "popcraft_upscale_image",
+              "parameter": "scale",
+              "enum": [
+                2,
+                4
+              ],
+              "description": "Upscale factor: 2 (default) or 4"
+            },
+            {
+              "tool": "popcraft_upscale_video",
+              "parameter": "fps",
+              "enum": [
+                24,
+                30,
+                60
+              ],
+              "description": "Output fps: 24, 30 (default), or 60 — above 30 roughly doubles the cost"
+            },
+            {
+              "tool": "popcraft_upscale_video",
+              "parameter": "scale",
+              "enum": [
+                2,
+                4
+              ],
+              "description": "Upscale factor: 2 (default) or 4"
+            }
+          ]
+        },
+        {
+          "name": "matfun93/betterimage",
+          "inputSha256": "1ecd490e7757c3f248076541f39d7aa498c088602829e6d4a4ff80a1405a4867",
+          "removed": [
+            "og_image_url/scale"
+          ],
+          "added": [],
+          "evidence": [
+            {
+              "tool": "og_image_url",
+              "parameter": "scale",
+              "enum": [
+                1,
+                2
+              ],
+              "description": "2 renders at twice the pixel size for high-DPI screens (a 1200x630 card becomes 2400x1260). Default 1."
+            }
+          ]
+        },
+        {
+          "name": "mochify/mochify",
+          "inputSha256": "ff77ab67dbf59d00c0e56f3e5d8a18b7d08d3cace128e832c8b62f78f241a07c",
+          "removed": [
+            "squish/rotate"
+          ],
+          "added": [],
+          "evidence": [
+            {
+              "tool": "squish",
+              "parameter": "rotate",
+              "enum": [
+                0,
+                90,
+                180,
+                270
+              ],
+              "description": "Clockwise rotation in degrees. Default: 0."
+            }
+          ]
+        },
+        {
+          "name": "mon/monacloud-remote",
+          "inputSha256": "9c99879189204facc00a60bea83245d76cbe8186291d8e91790c3e00264dc1cd",
+          "removed": [],
+          "added": [
+            "cloud_domain_registrant_set/gender"
+          ],
+          "evidence": [
+            {
+              "tool": "cloud_domain_registrant_set",
+              "parameter": "gender",
+              "enum": [
+                "male",
+                "female",
+                ""
+              ],
+              "description": "Giới tính — cá nhân .vn."
+            }
+          ]
+        },
+        {
+          "name": "naver/captcha",
+          "inputSha256": "76b3e7a9486eb099409cbd8607e07e30bc2c408b9ab4260f59c2a93b9b9f0efe",
+          "removed": [
+            "image_captcha/code",
+            "voice_captcha/code"
+          ],
+          "added": [],
+          "evidence": [
+            {
+              "tool": "image_captcha",
+              "parameter": "code",
+              "enum": [
+                0,
+                1
+              ],
+              "description": "0 to request a new captcha key. 1 to revalidate an existing key (followed by a submission of the user's transcription)."
+            },
+            {
+              "tool": "voice_captcha",
+              "parameter": "code",
+              "enum": [
+                0,
+                1
+              ],
+              "description": "0 to request a new captcha key. 1 to revalidate an existing key (followed by a submission of the user's transcription)."
+            }
+          ]
+        },
+        {
+          "name": "smings/agent-relay",
+          "inputSha256": "db3ccb880ebcf18c7e3543bb87facad5a01ae650aa218edf12b0f1a75be34a63",
+          "removed": [],
+          "added": [
+            "relay_register_agent/notificationChannel"
+          ],
+          "evidence": [
+            {
+              "tool": "relay_register_agent",
+              "parameter": "notificationChannel",
+              "enum": [
+                "telegram",
+                "discord",
+                "feishu",
+                "wecom",
+                "qq",
+                ""
+              ],
+              "description": null
+            }
+          ]
+        },
+        {
+          "name": "tallyfern/rates",
+          "inputSha256": "32a3e09074b58d511a7737488aaaca4916eb7f55bb87b3c4149668c08eecc91d",
+          "removed": [
+            "cra_automobile_allowance_rate/year"
+          ],
+          "added": [],
+          "evidence": [
+            {
+              "tool": "cra_automobile_allowance_rate",
+              "parameter": "year",
+              "enum": [
+                2026,
+                2025
+              ],
+              "description": "Calendar year (2026 or 2025). Default 2026."
+            }
+          ]
+        },
+        {
+          "name": "unyly/gateway",
+          "inputSha256": "8a872658f28dc5ac5ae4cbf5a837c73e482f38fae63cad6e0a4127f715867ee3",
+          "removed": [
+            "nectarin-intelligence-worker__demand_forecast/confidencePct"
+          ],
+          "added": [],
+          "evidence": [
+            {
+              "tool": "nectarin-intelligence-worker__demand_forecast",
+              "parameter": "confidencePct",
+              "enum": [
+                80,
+                90,
+                95
+              ],
+              "description": "Confidence band level (default 80)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

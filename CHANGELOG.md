@@ -4,6 +4,12 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Correct scalar enum description checks for numeric, boolean, null and empty
+  choices. Numeric mentions respect token boundaries; findings preserve null and
+  empty strings as JSON. Structured choices no longer trigger object coercion
+  failures or discard other enum findings; schema and safety checks still run.
+  [SDK/CLI and registry comparison](studies/enum-values/README.md).
+
 - Reject invalid UTF-8 and BOM-marked UTF-16 before decoding can silently change
   tool metadata, configuration or credentials. Preserve valid Windows encodings
   and literal replacement characters. A damaged per-server environment file

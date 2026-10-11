@@ -1,0 +1,132 @@
+{
+  "validator": "python-jsonschema",
+  "version": "4.10.3",
+  "results": [
+    {
+      "case": "scalar",
+      "tool": "numeric_mode",
+      "dialect": "http://json-schema.org/draft-07/schema#",
+      "schemaValid": true,
+      "allEnumChoicesValidate": true
+    },
+    {
+      "case": "scalar",
+      "tool": "numeric_mode",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "schemaValid": true,
+      "allEnumChoicesValidate": true
+    },
+    {
+      "case": "scalar",
+      "tool": "boolean_mode",
+      "dialect": "http://json-schema.org/draft-07/schema#",
+      "schemaValid": true,
+      "allEnumChoicesValidate": true
+    },
+    {
+      "case": "scalar",
+      "tool": "boolean_mode",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "schemaValid": true,
+      "allEnumChoicesValidate": true
+    },
+    {
+      "case": "scalar",
+      "tool": "nullable_mode",
+      "dialect": "http://json-schema.org/draft-07/schema#",
+      "schemaValid": true,
+      "allEnumChoicesValidate": true
+    },
+    {
+      "case": "scalar",
+      "tool": "nullable_mode",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "schemaValid": true,
+      "allEnumChoicesValidate": true
+    },
+    {
+      "case": "object",
+      "tool": "simple_mode",
+      "dialect": "http://json-schema.org/draft-07/schema#",
+      "schemaValid": true,
+      "allEnumChoicesValidate": true
+    },
+    {
+      "case": "object",
+      "tool": "simple_mode",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "schemaValid": true,
+      "allEnumChoicesValidate": true
+    },
+    {
+      "case": "object",
+      "tool": "structured_mode",
+      "dialect": "http://json-schema.org/draft-07/schema#",
+      "schemaValid": true,
+      "allEnumChoicesValidate": true
+    },
+    {
+      "case": "object",
+      "tool": "structured_mode",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "schemaValid": true,
+      "allEnumChoicesValidate": true
+    },
+    {
+      "case": "boundaries",
+      "tool": "numeric_boundary",
+      "dialect": "http://json-schema.org/draft-07/schema#",
+      "schemaValid": true,
+      "allEnumChoicesValidate": true
+    },
+    {
+      "case": "boundaries",
+      "tool": "numeric_boundary",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "schemaValid": true,
+      "allEnumChoicesValidate": true
+    },
+    {
+      "case": "boundaries",
+      "tool": "empty_choice",
+      "dialect": "http://json-schema.org/draft-07/schema#",
+      "schemaValid": true,
+      "allEnumChoicesValidate": true
+    },
+    {
+      "case": "boundaries",
+      "tool": "empty_choice",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "schemaValid": true,
+      "allEnumChoicesValidate": true
+    },
+    {
+      "case": "boundaries",
+      "tool": "null_render",
+      "dialect": "http://json-schema.org/draft-07/schema#",
+      "schemaValid": true,
+      "allEnumChoicesValidate": true
+    },
+    {
+      "case": "boundaries",
+      "tool": "null_render",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "schemaValid": true,
+      "allEnumChoicesValidate": true
+    },
+    {
+      "case": "structured_safety",
+      "tool": "structured_warning",
+      "dialect": "http://json-schema.org/draft-07/schema#",
+      "schemaValid": true,
+      "allEnumChoicesValidate": true
+    },
+    {
+      "case": "structured_safety",
+      "tool": "structured_warning",
+      "dialect": "https://json-schema.org/draft/2020-12/schema",
+      "schemaValid": true,
+      "allEnumChoicesValidate": true
+    }
+  ]
+}

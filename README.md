@@ -228,7 +228,7 @@ The full 14-tool report is browsable live at
 | [`description/too-short`](docs/rules/description-too-short.md) | description | warning | Under ~20 characters / 4 words. |
 | [`description/too-long`](docs/rules/description-too-long.md) | description | info | Over 1200 characters. |
 | [`description/param-missing`](docs/rules/description-param-missing.md) | description | warning | Parameters with no description, one finding per tool. |
-| [`description/enum-unexplained`](docs/rules/description-enum-unexplained.md) | description | info | An enum's values are never explained. |
+| [`description/enum-unexplained`](docs/rules/description-enum-unexplained.md) | description | info | A scalar enum has no literal choice mentioned in its description. |
 | [`description/required-undeclared`](docs/rules/description-required-undeclared.md) | description | warning | A simple schema requires an undocumented name; error if `additionalProperties: false` forbids it. |
 | [`description/near-duplicate`](docs/rules/description-near-duplicate.md) | description | warning | Two tools with ≥75% word-overlap descriptions. |
 | [`schema/invalid`](docs/rules/schema-invalid.md) | schema | error | Malformed input/output schema, or input root not `type: "object"`. |
@@ -404,6 +404,10 @@ the [registry census](studies/registry-census/README.md) is where the rules met 
 
 ## Accuracy and limitations
 
+- **Enum descriptions are a lexical heuristic.** Numeric, boolean and null
+  choices now count as literal mentions; an empty string no longer suppresses
+  every finding. Object/array choices remain subject to schema and safety checks,
+  but are outside this prose heuristic. [SDK and retained-registry evidence](studies/enum-values/README.md).
 - **Coverage has explicit limits.** Reports distinguish completed collection from missing pages, malformed
   entries, unavailable servers and unfinished checks. See [bounds and remaining limits](docs/collection-coverage.md#bounds-and-remaining-limits).
 - **Token counts are estimates.** o200k_base is a proxy for "roughly how expensive is this," not an exact count

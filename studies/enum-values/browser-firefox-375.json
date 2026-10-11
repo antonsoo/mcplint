@@ -1,0 +1,13 @@
+{
+  "browser": "firefox",
+  "width": 375,
+  "offline": true,
+  "completeReport": true,
+  "structuredToolRetained": true,
+  "nullAndEmptyStringsVisible": true,
+  "noPageOverflow": true,
+  "accessibilityViolations": [],
+  "pageErrors": [],
+  "externalRequests": [],
+  "cspViolations": []
+}
