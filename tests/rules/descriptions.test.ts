@@ -65,6 +65,37 @@ describe('description/param-missing', () => {
 });
 
 describe('description/enum-unexplained', () => {
+  const checkChoices = (choices: unknown[], description: string) => enumUnexplained.check(ctxOf([tool({
+    name: 'choose_mode', inputSchema: { type: 'object', properties: { mode: { enum: choices, description } } }
+  })]));
+  it.each([
+    { choices: [0, 1], description: '0 disables this option; 1 enables it.' },
+    { choices: [true, false], description: 'true enables it; false disables it.' },
+    { choices: [null, 'automatic'], description: 'Use null to let the server choose.' },
+    { choices: [1000, 2000], description: 'Use 1e3 for the shorter window.' },
+    { choices: [-0.5, 0.5], description: 'Use -.5 to offset the value.' },
+    { choices: ['', 'auto'], description: 'An empty string selects the default.' },
+    { choices: ['', 'auto'], description: 'Use "" to select the default.' },
+    { choices: [' ', 'auto'], description: 'Use " " to choose a single space.' }
+  ])('recognizes a scalar choice in $description', ({ choices, description }) => {
+    expect(checkChoices(choices, description)).toEqual([]);
+  });
+  it.each(['10', '-1', '1.5', '1e3', 'v1', '1,000'])('does not find numeric 1 inside %s', description => {
+    expect(checkChoices([1, 2], `Use ${description} for this option.`)).toHaveLength(1);
+  });
+  it('does not treat an empty choice, ordinary spaces or word fragments as an explanation', () => {
+    for (const choices of [['', 'auto'], [' ', 'auto'], [null, false]]) {
+      expect(checkChoices(choices, 'A nullable falsehood with ordinary spaces.')).toHaveLength(1);
+    }
+  });
+  it('renders missing scalar choices as JSON, keeping null and empty strings visible', () => {
+    expect(checkChoices([null, '', 0, false], '')[0]?.message).toContain('[null,"",0,false]');
+  });
+  it('leaves structured choices to schema, description-presence and safety checks', () => {
+    expect(checkChoices([{ toString: 'compact' }, { toString: 'verbose' }], 'Choose a formatting policy.')).toEqual([]);
+    expect(checkChoices([['fast'], ['safe']], 'Choose a policy.')).toEqual([]);
+    expect(checkChoices(['fast', { toString: null }], 'Choose a policy.')).toEqual([]);
+  });
   it('flags an enum whose values are never mentioned in the description', () => {
     const t = tool({
       name: 't',

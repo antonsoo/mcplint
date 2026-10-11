@@ -115,31 +115,52 @@ export const paramMissingDescription: Rule = {
   }
 };
 
+type ScalarChoice = string | number | boolean | null;
+function scalarChoice(value: unknown): value is ScalarChoice {
+  return value === null || typeof value === 'string' || typeof value === 'boolean' ||
+    (typeof value === 'number' && Number.isFinite(value));
+}
+
+// Whole numeric spellings: do not count the 1 in 10, -1, 1.5, 1e3 or v1 as
+// documentation for the choice 1. Exponents and signed decimals may be written
+// differently from JSON.stringify while still naming the same numeric value.
+const NUMBER_MENTION = /(?<![\p{L}\p{N}_.,+-])[-+]?(?:\d+(?:\.\d+)?|\.\d+)(?:e[-+]?\d+)?(?![\p{L}\p{N}_]|[.,]\d)/giu;
+
 export const enumUnexplained: Rule = {
   id: 'description/enum-unexplained',
   category: 'description',
   defaultSeverity: 'info',
-  summary: 'An enum parameter has more than one value but its description does not mention any of them.',
+  summary: 'A scalar enum parameter has more than one value but its description does not mention any of them.',
   rationale:
-    'When enum members are not self-explanatory (single letters, codes, abbreviations) the model needs the ' +
-    'description to spell out what each value means; an enum silently listed with no prose forces guessing.',
+    'A literal mention is a limited clue that a description documents an enum choice, not proof of a useful ' +
+    'explanation. This heuristic covers string, finite number, boolean and null choices. Enums containing ' +
+    'objects or arrays are outside its scope; their schema, description presence and safety checks still run.',
   check(ctx: RuleContext): Finding[] {
     const findings: Finding[] = [];
     for (const t of ctx.target.tools) {
       const schema = asSchema(t.inputSchema);
       for (const [name, prop] of schemaProperties(schema)) {
         if (!Array.isArray(prop.enum) || prop.enum.length < 2) continue;
+        // Structured choices cannot be assessed by looking for a word in prose.
+        // In particular, never coerce a JSON object's toString data property.
+        if (!prop.enum.every(scalarChoice)) continue;
         const desc = (prop.description ?? '').toLowerCase();
-        const mentioned = prop.enum.filter(
-          (v) => typeof v === 'string' && desc.includes(v.toLowerCase())
-        ).length;
-        if (mentioned === 0) {
+        const words = new Set(desc.match(/[\p{L}\p{N}_]+/gu) ?? []);
+        const numbers = new Set([...desc.matchAll(NUMBER_MENTION)].map(match => Number(match[0])));
+        const mentioned = prop.enum.some(value => {
+          if (typeof value === 'number') return numbers.has(value);
+          if (typeof value !== 'string') return words.has(JSON.stringify(value));
+          if (value === '') return desc.includes('""') || desc.includes("''") || /\bempty\s+string\b/u.test(desc);
+          if (!value.trim()) return desc.includes(JSON.stringify(value));
+          return desc.includes(value.toLowerCase());
+        });
+        if (!mentioned) {
           findings.push({
             ruleId: this.id,
             severity: this.defaultSeverity,
             serverId: t.serverId,
             subject: { kind: 'tool', name: t.name },
-            message: `Parameter "${name}" has enum [${prop.enum.join(', ')}] but its description explains none of the values.`
+            message: `Parameter "${name}" has scalar enum ${JSON.stringify(prop.enum)} but its description mentions none of the values.`
           });
         }
       }
