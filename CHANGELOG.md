@@ -4,6 +4,12 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Reject invalid UTF-8 and BOM-marked UTF-16 before decoding can silently change
+  tool metadata, configuration or credentials. Preserve valid Windows encodings
+  and literal replacement characters. A damaged per-server environment file
+  prevents that server from starting and leaves the audit incomplete.
+  [CLI byte-level reproductions](studies/input-decoding/README.md).
+
 - Validate tool annotation field types in both live and saved lists. String,
   numeric or null hints no longer produce a complete audit or satisfy a
   destructive tool's boolean hint declaration. Keep the malformed tool and

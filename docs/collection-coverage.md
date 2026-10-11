@@ -61,6 +61,14 @@ A saved file is only evidence about its contents. A complete snapshot report doe
 not mean mcplint contacted a server or proved that every live tool was included.
 Missing list fields in saved snapshots are outside that snapshot's scope.
 
+Saved lists, linter and server configuration, and environment files use strict
+UTF-8 decoding, or UTF-16LE/BE when the file starts with that encoding's byte-order
+mark. Invalid byte sequences are rejected instead of replaced before inspection.
+A damaged list/config file exits 2 without an audit; a damaged per-server
+`envFile` leaves that entry incomplete and prevents it from starting. A literal
+replacement character in correctly encoded text is valid input.
+[Actual file-byte and server-start captures](../studies/input-decoding/README.md).
+
 ## Bounds and remaining limits
 
 | Work | Bound | Result at the bound |

@@ -127,6 +127,10 @@ node dist/cli.js stdio -- npx tsx examples/good-server/server.ts
 - **Annotation types (source checkout).** String-valued behavior hints such as
   `"readOnlyHint": "false"` leave an audit incomplete and unscored. Valid siblings
   and usable titles remain inspectable. [Live/saved list checks against the SDK](studies/tool-annotations/README.md).
+- **Strict file decoding (source checkout).** Damaged UTF-8 or UTF-16 is rejected
+  before it can change audited text or a configured credential. UTF-8 (with or
+  without a BOM) and UTF-16 with a BOM remain supported.
+  [Byte-level CLI and process-start evidence](studies/input-decoding/README.md).
   These source changes have not been released to npm.
 - Never calls `tools/call` on anything it lints — it only ever does the MCP handshake plus `*/list`.
 

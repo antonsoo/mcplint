@@ -1,0 +1,181 @@
+{
+  "node": "v26.7.0",
+  "scope": "Synthetic byte-damaged files and local stdio fixture. No remote servers or real credentials.",
+  "cases": 9,
+  "disagreements": 0,
+  "results": [
+    {
+      "case": "invalid-utf8",
+      "code": 2,
+      "summary": null,
+      "stderr": "mcplint: Input contains invalid UTF-8 text. Save it as valid UTF-8 or UTF-16 with a byte-order mark, then retry.\n",
+      "checks": {
+        "expected_exit": true,
+        "no_report_from_changed_text": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "invalid-utf16le",
+      "code": 2,
+      "summary": null,
+      "stderr": "mcplint: Input contains invalid UTF-16LE text. Save it as valid UTF-8 or UTF-16 with a byte-order mark, then retry.\n",
+      "checks": {
+        "expected_exit": true,
+        "no_report_from_changed_text": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "invalid-utf16be",
+      "code": 2,
+      "summary": null,
+      "stderr": "mcplint: Input contains invalid UTF-16BE text. Save it as valid UTF-8 or UTF-16 with a byte-order mark, then retry.\n",
+      "checks": {
+        "expected_exit": true,
+        "no_report_from_changed_text": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "valid-utf8",
+      "code": 0,
+      "summary": {
+        "totalFindings": 0,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {},
+        "toolCount": 1,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 36,
+        "complete": true,
+        "score": 100
+      },
+      "stderr": "",
+      "checks": {
+        "expected_exit": true,
+        "complete": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "valid-utf8-bom",
+      "code": 0,
+      "summary": {
+        "totalFindings": 0,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {},
+        "toolCount": 1,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 35,
+        "complete": true,
+        "score": 100
+      },
+      "stderr": "",
+      "checks": {
+        "expected_exit": true,
+        "complete": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "valid-utf16le",
+      "code": 0,
+      "summary": {
+        "totalFindings": 0,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {},
+        "toolCount": 1,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 36,
+        "complete": true,
+        "score": 100
+      },
+      "stderr": "",
+      "checks": {
+        "expected_exit": true,
+        "complete": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "valid-utf16be",
+      "code": 0,
+      "summary": {
+        "totalFindings": 0,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {},
+        "toolCount": 1,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 36,
+        "complete": true,
+        "score": 100
+      },
+      "stderr": "",
+      "checks": {
+        "expected_exit": true,
+        "complete": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "invalid-utf8/config",
+      "code": 2,
+      "summary": null,
+      "stderr": "mcplint: \"config\" launches every server listed in <scratch>/config.json. Only run this against configs you trust.\nmcplint: Input contains invalid UTF-8 text. Save it as valid UTF-8 or UTF-16 with a byte-order mark, then retry.\n",
+      "checks": {
+        "expected_exit": true,
+        "no_report_from_changed_text": true,
+        "server_not_started": true
+      },
+      "agrees": true
+    },
+    {
+      "case": "invalid-utf8/envFile",
+      "code": 1,
+      "summary": {
+        "totalFindings": 1,
+        "bySeverity": {
+          "error": 1,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {
+          "collection/incomplete": 1
+        },
+        "toolCount": 0,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 0,
+        "complete": false,
+        "score": null
+      },
+      "stderr": "mcplint: \"config\" launches every server listed in <scratch>/envFile.json. Only run this against configs you trust.\n  starting controlled (stdio)...\n  controlled: Input contains invalid UTF-8 text. Save it as valid UTF-8 or UTF-16 with a byte-order mark, then retry.\n",
+      "checks": {
+        "expected_exit": true,
+        "incomplete": true,
+        "server_not_started": true
+      },
+      "agrees": true
+    }
+  ]
+}
