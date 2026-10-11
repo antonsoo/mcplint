@@ -106,6 +106,20 @@ connection/initialization errors for a single target exit **2** before a report.
 Config-target connection failures can be recorded, so those follow the report/gate
 behavior instead. An intentionally disabled-only config is not a gate failure.
 
+Connection diagnostics on stderr and in config coverage records omit raw SDK
+messages, response bodies and initialization error data. They retain recognized
+HTTP/MCP error numbers, a small allowlist of system codes, and the configured
+connection deadline. Server-config JSON syntax errors omit parser excerpts;
+invalid `--header` and `--input` syntax omits the supplied value. The
+[controlled captures](../studies/connection-diagnostics/README.md) exercise both
+output streams through the built CLI.
+
+Library collectors still reject with the original error, and `onServerError`
+still receives it. Use exported `connectionFailureMessage(error)` for a bounded
+display message. This is not report anonymization: collected metadata, server
+names, successful target labels, command arguments, URLs and file paths may
+contain sensitive material, and stdio child processes own their stderr output.
+
 Lint configuration is validated before collection. It must be an object with only
 `budget`, `totalBudget`, `severities` and `ignore`. Budgets must be positive safe
 integers. Severity values must be `error`, `warning`, `info` or `off`; ignore entries

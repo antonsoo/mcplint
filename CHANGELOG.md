@@ -4,6 +4,13 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Keep HTTP response bodies and MCP initialization error text out of CLI stderr,
+  including config-mode progress diagnostics. Preserve recognized HTTP/MCP/system
+  codes and connection deadlines in bounded messages; healthy config entries
+  continue to be inspected. Malformed server-config JSON and credential-bearing
+  `--header`/`--input` arguments no longer echo their values.
+  [Loopback captures and installed-package evidence](studies/connection-diagnostics/README.md).
+
 - Detect repeated tool names within a single server, including across list pages.
   Keep every definition available for schema and safety checks; `--fail-on error`
   rejects the ambiguity. Exact-name comparisons remain case-sensitive.
