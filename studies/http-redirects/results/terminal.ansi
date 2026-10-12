@@ -1,0 +1,15 @@
+mcplint / actual HTTP redirect captures
+Synthetic credentials; local peers; actual SDK clients and CLI
+
+Observed result                                     Before    After
+-------------------------------------------------------------------
+Cases that contacted the other origin                   53        0
+Receiver requests carrying the API key                  53        0
+Receiver requests carrying an MCP session ID             4        0
+Allowed same-origin cases completed                     12       12
+
+Actual blocked CLI diagnostic:
+mcplint: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials.
+
+Capture checks: 71/71 agree
+No package release or hosted deployment.

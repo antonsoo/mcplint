@@ -1,0 +1,5509 @@
+{
+  "node": "v20.0.0",
+  "scope": "Synthetic local peers; actual SDK clients and built CLI; no tool calls or external services.",
+  "cases": 71,
+  "disagreements": 0,
+  "cases_contacting_other_origin": 0,
+  "receiver_requests": 0,
+  "results": [
+    {
+      "entrypoint": "library",
+      "transport": "auto",
+      "kind": "initial",
+      "status": 301,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "auto",
+      "kind": "initial",
+      "status": 302,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "auto",
+      "kind": "initial",
+      "status": 303,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "auto",
+      "kind": "initial",
+      "status": 307,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "auto",
+      "kind": "initial",
+      "status": 308,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "auto",
+      "kind": "initialized",
+      "status": 307,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "auto",
+      "kind": "list",
+      "status": 307,
+      "outcome": {
+        "complete": false,
+        "tool_count": 0,
+        "tools": [],
+        "collection": [
+          {
+            "serverId": "redirect-fixture",
+            "scope": "tools/list",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Request for page 1 failed. Check server availability, authorization and response format, then retry."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "GET",
+          "path": "/mcp",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "auto",
+      "kind": "chain",
+      "status": 307,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/hop",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "auto",
+      "kind": "loop",
+      "status": 307,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect limit exceeded (20 redirects). Check the server URL and redirect configuration."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "auto",
+      "kind": "allowed",
+      "status": 307,
+      "outcome": {
+        "complete": true,
+        "tool_count": 1,
+        "tools": [
+          "read_status"
+        ],
+        "collection": [
+          {
+            "serverId": "redirect-fixture",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/mcp",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "GET",
+          "path": "/mcp",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/mcp",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/mcp",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "auto",
+      "kind": "allowed",
+      "status": 308,
+      "outcome": {
+        "complete": true,
+        "tool_count": 1,
+        "tools": [
+          "read_status"
+        ],
+        "collection": [
+          {
+            "serverId": "redirect-fixture",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/mcp",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "GET",
+          "path": "/mcp",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/mcp",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/mcp",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "sse",
+      "kind": "initial",
+      "status": 301,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "sse",
+      "kind": "initial",
+      "status": 302,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "sse",
+      "kind": "initial",
+      "status": 303,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "sse",
+      "kind": "initial",
+      "status": 307,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "sse",
+      "kind": "initial",
+      "status": 308,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "sse",
+      "kind": "initialized",
+      "status": 307,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "sse",
+      "kind": "list",
+      "status": 307,
+      "outcome": {
+        "complete": false,
+        "tool_count": 0,
+        "tools": [],
+        "collection": [
+          {
+            "serverId": "redirect-fixture",
+            "scope": "tools/list",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Request for page 1 failed. Check server availability, authorization and response format, then retry."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "sse",
+      "kind": "chain",
+      "status": 307,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/hop",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "sse",
+      "kind": "loop",
+      "status": 307,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect limit exceeded (20 redirects). Check the server URL and redirect configuration."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "sse",
+      "kind": "allowed",
+      "status": 307,
+      "outcome": {
+        "complete": true,
+        "tool_count": 1,
+        "tools": [
+          "read_status"
+        ],
+        "collection": [
+          {
+            "serverId": "redirect-fixture",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/v2/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "sse",
+      "kind": "allowed",
+      "status": 308,
+      "outcome": {
+        "complete": true,
+        "tool_count": 1,
+        "tools": [
+          "read_status"
+        ],
+        "collection": [
+          {
+            "serverId": "redirect-fixture",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/v2/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "sse",
+      "kind": "message",
+      "status": 308,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "fallback",
+      "kind": "initial",
+      "status": 301,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "fallback",
+      "kind": "initial",
+      "status": 302,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "fallback",
+      "kind": "initial",
+      "status": 303,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "fallback",
+      "kind": "initial",
+      "status": 307,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "fallback",
+      "kind": "initial",
+      "status": 308,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "fallback",
+      "kind": "initialized",
+      "status": 307,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "fallback",
+      "kind": "list",
+      "status": 307,
+      "outcome": {
+        "complete": false,
+        "tool_count": 0,
+        "tools": [],
+        "collection": [
+          {
+            "serverId": "redirect-fixture",
+            "scope": "tools/list",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Request for page 1 failed. Check server availability, authorization and response format, then retry."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "fallback",
+      "kind": "chain",
+      "status": 307,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/hop",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "fallback",
+      "kind": "loop",
+      "status": 307,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect limit exceeded (20 redirects). Check the server URL and redirect configuration."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "fallback",
+      "kind": "allowed",
+      "status": 307,
+      "outcome": {
+        "complete": true,
+        "tool_count": 1,
+        "tools": [
+          "read_status"
+        ],
+        "collection": [
+          {
+            "serverId": "redirect-fixture",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/v2/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "fallback",
+      "kind": "allowed",
+      "status": 308,
+      "outcome": {
+        "complete": true,
+        "tool_count": 1,
+        "tools": [
+          "read_status"
+        ],
+        "collection": [
+          {
+            "serverId": "redirect-fixture",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/v2/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "library",
+      "transport": "fallback",
+      "kind": "message",
+      "status": 308,
+      "outcome": {
+        "rejected": true,
+        "diagnostic": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "auto",
+      "kind": "initial",
+      "status": 301,
+      "outcome": {
+        "code": 2,
+        "signal": null,
+        "diagnostic": "mcplint: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "auto",
+      "kind": "initial",
+      "status": 302,
+      "outcome": {
+        "code": 2,
+        "signal": null,
+        "diagnostic": "mcplint: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "auto",
+      "kind": "initial",
+      "status": 303,
+      "outcome": {
+        "code": 2,
+        "signal": null,
+        "diagnostic": "mcplint: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "auto",
+      "kind": "initial",
+      "status": 307,
+      "outcome": {
+        "code": 2,
+        "signal": null,
+        "diagnostic": "mcplint: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "auto",
+      "kind": "initial",
+      "status": 308,
+      "outcome": {
+        "code": 2,
+        "signal": null,
+        "diagnostic": "mcplint: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "auto",
+      "kind": "initialized",
+      "status": 307,
+      "outcome": {
+        "code": 2,
+        "signal": null,
+        "diagnostic": "mcplint: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "auto",
+      "kind": "list",
+      "status": 307,
+      "outcome": {
+        "code": 1,
+        "signal": null,
+        "diagnostic": "",
+        "complete": false,
+        "tool_count": 0,
+        "collection": [
+          {
+            "serverId": "redirect-fixture",
+            "scope": "tools/list",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Request for page 1 failed. Check server availability, authorization and response format, then retry."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "GET",
+          "path": "/mcp",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "auto",
+      "kind": "chain",
+      "status": 307,
+      "outcome": {
+        "code": 2,
+        "signal": null,
+        "diagnostic": "mcplint: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/hop",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "auto",
+      "kind": "loop",
+      "status": 307,
+      "outcome": {
+        "code": 2,
+        "signal": null,
+        "diagnostic": "mcplint: HTTP redirect limit exceeded (20 redirects). Check the server URL and redirect configuration."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "auto",
+      "kind": "allowed",
+      "status": 307,
+      "outcome": {
+        "code": 0,
+        "signal": null,
+        "diagnostic": "",
+        "complete": true,
+        "tool_count": 1,
+        "collection": [
+          {
+            "serverId": "redirect-fixture",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/mcp",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "GET",
+          "path": "/mcp",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/mcp",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/mcp",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "auto",
+      "kind": "allowed",
+      "status": 308,
+      "outcome": {
+        "code": 0,
+        "signal": null,
+        "diagnostic": "",
+        "complete": true,
+        "tool_count": 1,
+        "collection": [
+          {
+            "serverId": "redirect-fixture",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/mcp",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "GET",
+          "path": "/mcp",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "GET",
+          "path": "/v2/mcp",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        },
+        {
+          "method": "POST",
+          "path": "/v2/mcp",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": "SYNTHETIC_SERVER_SESSION"
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "sse",
+      "kind": "initial",
+      "status": 301,
+      "outcome": {
+        "code": 1,
+        "signal": null,
+        "diagnostic": "mcplint: \"config\" launches every server listed in <scratch>/mcp.json. Only run this against configs you trust.\n  starting synthetic (http)...\n  synthetic: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials.",
+        "complete": false,
+        "tool_count": 0,
+        "collection": [
+          {
+            "serverId": "synthetic",
+            "scope": "connection",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "sse",
+      "kind": "initial",
+      "status": 302,
+      "outcome": {
+        "code": 1,
+        "signal": null,
+        "diagnostic": "mcplint: \"config\" launches every server listed in <scratch>/mcp.json. Only run this against configs you trust.\n  starting synthetic (http)...\n  synthetic: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials.",
+        "complete": false,
+        "tool_count": 0,
+        "collection": [
+          {
+            "serverId": "synthetic",
+            "scope": "connection",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "sse",
+      "kind": "initial",
+      "status": 303,
+      "outcome": {
+        "code": 1,
+        "signal": null,
+        "diagnostic": "mcplint: \"config\" launches every server listed in <scratch>/mcp.json. Only run this against configs you trust.\n  starting synthetic (http)...\n  synthetic: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials.",
+        "complete": false,
+        "tool_count": 0,
+        "collection": [
+          {
+            "serverId": "synthetic",
+            "scope": "connection",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "sse",
+      "kind": "initial",
+      "status": 307,
+      "outcome": {
+        "code": 1,
+        "signal": null,
+        "diagnostic": "mcplint: \"config\" launches every server listed in <scratch>/mcp.json. Only run this against configs you trust.\n  starting synthetic (http)...\n  synthetic: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials.",
+        "complete": false,
+        "tool_count": 0,
+        "collection": [
+          {
+            "serverId": "synthetic",
+            "scope": "connection",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "sse",
+      "kind": "initial",
+      "status": 308,
+      "outcome": {
+        "code": 1,
+        "signal": null,
+        "diagnostic": "mcplint: \"config\" launches every server listed in <scratch>/mcp.json. Only run this against configs you trust.\n  starting synthetic (http)...\n  synthetic: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials.",
+        "complete": false,
+        "tool_count": 0,
+        "collection": [
+          {
+            "serverId": "synthetic",
+            "scope": "connection",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "sse",
+      "kind": "initialized",
+      "status": 307,
+      "outcome": {
+        "code": 1,
+        "signal": null,
+        "diagnostic": "mcplint: \"config\" launches every server listed in <scratch>/mcp.json. Only run this against configs you trust.\n  starting synthetic (http)...\n  synthetic: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials.",
+        "complete": false,
+        "tool_count": 0,
+        "collection": [
+          {
+            "serverId": "synthetic",
+            "scope": "connection",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "sse",
+      "kind": "list",
+      "status": 307,
+      "outcome": {
+        "code": 1,
+        "signal": null,
+        "diagnostic": "mcplint: \"config\" launches every server listed in <scratch>/mcp.json. Only run this against configs you trust.\n  starting synthetic (http)...",
+        "complete": false,
+        "tool_count": 0,
+        "collection": [
+          {
+            "serverId": "synthetic",
+            "scope": "tools/list",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Request for page 1 failed. Check server availability, authorization and response format, then retry."
+          },
+          {
+            "serverId": "synthetic",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "synthetic",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "synthetic",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "sse",
+      "kind": "chain",
+      "status": 307,
+      "outcome": {
+        "code": 1,
+        "signal": null,
+        "diagnostic": "mcplint: \"config\" launches every server listed in <scratch>/mcp.json. Only run this against configs you trust.\n  starting synthetic (http)...\n  synthetic: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials.",
+        "complete": false,
+        "tool_count": 0,
+        "collection": [
+          {
+            "serverId": "synthetic",
+            "scope": "connection",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/hop",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "sse",
+      "kind": "loop",
+      "status": 307,
+      "outcome": {
+        "code": 1,
+        "signal": null,
+        "diagnostic": "mcplint: \"config\" launches every server listed in <scratch>/mcp.json. Only run this against configs you trust.\n  starting synthetic (http)...\n  synthetic: HTTP redirect limit exceeded (20 redirects). Check the server URL and redirect configuration.",
+        "complete": false,
+        "tool_count": 0,
+        "collection": [
+          {
+            "serverId": "synthetic",
+            "scope": "connection",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "HTTP redirect limit exceeded (20 redirects). Check the server URL and redirect configuration."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "sse",
+      "kind": "allowed",
+      "status": 307,
+      "outcome": {
+        "code": 0,
+        "signal": null,
+        "diagnostic": "mcplint: \"config\" launches every server listed in <scratch>/mcp.json. Only run this against configs you trust.\n  starting synthetic (http)...",
+        "complete": true,
+        "tool_count": 1,
+        "collection": [
+          {
+            "serverId": "synthetic",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "synthetic",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "synthetic",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/v2/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "sse",
+      "kind": "allowed",
+      "status": 308,
+      "outcome": {
+        "code": 0,
+        "signal": null,
+        "diagnostic": "mcplint: \"config\" launches every server listed in <scratch>/mcp.json. Only run this against configs you trust.\n  starting synthetic (http)...",
+        "complete": true,
+        "tool_count": 1,
+        "collection": [
+          {
+            "serverId": "synthetic",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "synthetic",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "synthetic",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/v2/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "sse",
+      "kind": "message",
+      "status": 308,
+      "outcome": {
+        "code": 1,
+        "signal": null,
+        "diagnostic": "mcplint: \"config\" launches every server listed in <scratch>/mcp.json. Only run this against configs you trust.\n  starting synthetic (http)...\n  synthetic: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials.",
+        "complete": false,
+        "tool_count": 0,
+        "collection": [
+          {
+            "serverId": "synthetic",
+            "scope": "connection",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "fallback",
+      "kind": "initial",
+      "status": 301,
+      "outcome": {
+        "code": 2,
+        "signal": null,
+        "diagnostic": "mcplint: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "fallback",
+      "kind": "initial",
+      "status": 302,
+      "outcome": {
+        "code": 2,
+        "signal": null,
+        "diagnostic": "mcplint: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "fallback",
+      "kind": "initial",
+      "status": 303,
+      "outcome": {
+        "code": 2,
+        "signal": null,
+        "diagnostic": "mcplint: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "fallback",
+      "kind": "initial",
+      "status": 307,
+      "outcome": {
+        "code": 2,
+        "signal": null,
+        "diagnostic": "mcplint: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "fallback",
+      "kind": "initial",
+      "status": 308,
+      "outcome": {
+        "code": 2,
+        "signal": null,
+        "diagnostic": "mcplint: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "fallback",
+      "kind": "initialized",
+      "status": 307,
+      "outcome": {
+        "code": 2,
+        "signal": null,
+        "diagnostic": "mcplint: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "fallback",
+      "kind": "list",
+      "status": 307,
+      "outcome": {
+        "code": 1,
+        "signal": null,
+        "diagnostic": "",
+        "complete": false,
+        "tool_count": 0,
+        "collection": [
+          {
+            "serverId": "redirect-fixture",
+            "scope": "tools/list",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Request for page 1 failed. Check server availability, authorization and response format, then retry."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "fallback",
+      "kind": "chain",
+      "status": 307,
+      "outcome": {
+        "code": 2,
+        "signal": null,
+        "diagnostic": "mcplint: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/hop",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "fallback",
+      "kind": "loop",
+      "status": 307,
+      "outcome": {
+        "code": 2,
+        "signal": null,
+        "diagnostic": "mcplint: HTTP redirect limit exceeded (20 redirects). Check the server URL and redirect configuration."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "fallback",
+      "kind": "allowed",
+      "status": 307,
+      "outcome": {
+        "code": 0,
+        "signal": null,
+        "diagnostic": "",
+        "complete": true,
+        "tool_count": 1,
+        "collection": [
+          {
+            "serverId": "redirect-fixture",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/v2/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "fallback",
+      "kind": "allowed",
+      "status": 308,
+      "outcome": {
+        "code": 0,
+        "signal": null,
+        "diagnostic": "",
+        "complete": true,
+        "tool_count": 1,
+        "collection": [
+          {
+            "serverId": "redirect-fixture",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "redirect-fixture",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/v2/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "fallback",
+      "kind": "message",
+      "status": 308,
+      "outcome": {
+        "code": 2,
+        "signal": null,
+        "diagnostic": "mcplint: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "expected_result": true,
+        "same_origin_credentials_retained": true,
+        "session_retained": true,
+        "no_credentials_in_diagnostic": true,
+        "bounded_loop": true,
+        "finished": true,
+        "actionable_redirect_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/sse",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    },
+    {
+      "entrypoint": "cli",
+      "transport": "mixed-config",
+      "kind": "mixed",
+      "status": 307,
+      "outcome": {
+        "code": 1,
+        "signal": null,
+        "complete": false,
+        "tool_count": 1,
+        "diagnostic": "mcplint: \"config\" launches every server listed in <scratch>/mixed.json. Only run this against configs you trust.\n  starting redirected (http)...\n  redirected: HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials.\n  starting healthy (http)...",
+        "collection": [
+          {
+            "serverId": "redirected",
+            "scope": "connection",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "HTTP redirect blocked: the destination has a different origin. Configure the intended final server URL explicitly before sending credentials."
+          },
+          {
+            "serverId": "healthy",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "healthy",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "healthy",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "healthy",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ]
+      },
+      "checks": {
+        "fixture_valid": true,
+        "no_cross_origin_request": true,
+        "healthy_server_retained": true,
+        "incomplete_unscored": true,
+        "failure_exit": true,
+        "connection_failure_retained": true,
+        "actionable_redirect_diagnostic": true,
+        "no_credentials_in_diagnostic": true
+      },
+      "agrees": true,
+      "source_requests": [
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "GET",
+          "path": "/v2/sse",
+          "body": "",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"clientInfo\":{\"name\":\"mcplint\",\"version\":\"0.3.3\"}},\"jsonrpc\":\"2.0\",\"id\":0}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"notifications/initialized\",\"jsonrpc\":\"2.0\"}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        },
+        {
+          "method": "POST",
+          "path": "/v2/messages",
+          "body": "{\"method\":\"tools/list\",\"params\":{},\"jsonrpc\":\"2.0\",\"id\":1}",
+          "api_key": "SYNTHETIC_API_KEY",
+          "authorization": "Bearer SYNTHETIC_BEARER",
+          "session": null
+        }
+      ],
+      "receiver_requests": [],
+      "fixture_failures": []
+    }
+  ]
+}
