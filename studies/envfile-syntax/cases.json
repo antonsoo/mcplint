@@ -1,0 +1,20 @@
+[
+  {"id":"plain","text":"MCPLINT_ENVFILE_TOKEN=synthetic-token\n","token":"synthetic-token"},
+  {"id":"bare-comment","text":"MCPLINT_ENVFILE_TOKEN=synthetic-token # fixture account\n","token":"synthetic-token"},
+  {"id":"double-quoted-comment","text":"MCPLINT_ENVFILE_TOKEN=\"synthetic-token\" # fixture account\n","token":"synthetic-token"},
+  {"id":"single-quoted-comment","text":"MCPLINT_ENVFILE_TOKEN='synthetic-token' # fixture account\n","token":"synthetic-token"},
+  {"id":"quoted-hash","text":"MCPLINT_ENVFILE_TOKEN=\"synthetic#token\" # preserve the quoted hash\n","token":"synthetic#token"},
+  {"id":"unquoted-hash","text":"MCPLINT_ENVFILE_TOKEN=synthetic-token#comment\n","token":"synthetic-token"},
+  {"id":"double-quoted-escapes","text":"MCPLINT_ENVFILE_TOKEN=\"line1\\nline2\\rline3\"\n","token":"line1\nline2\rline3"},
+  {"id":"single-quoted-escapes","text":"MCPLINT_ENVFILE_TOKEN='line1\\nline2'\n","token":"line1\\nline2"},
+  {"id":"backtick-quoted","text":"MCPLINT_ENVFILE_TOKEN=`synthetic#token` # fixture account\n","token":"synthetic#token"},
+  {"id":"colon-separator","text":"MCPLINT_ENVFILE_TOKEN: synthetic-token\n","token":"synthetic-token"},
+  {"id":"carriage-return-lines","text":"MCPLINT_ENVFILE_TOKEN=synthetic-token\rMCPLINT_ENVFILE_NOTE=second-line\r","token":"synthetic-token","note":"second-line"},
+  {"id":"export-comment","text":"export MCPLINT_ENVFILE_TOKEN=synthetic-token # exported account\n","token":"synthetic-token"},
+  {"id":"literal-placeholder","text":"MCPLINT_ENVFILE_TOKEN='${DO_NOT_EXPAND}'\n","token":"${DO_NOT_EXPAND}"},
+  {"id":"last-definition-wins","text":"MCPLINT_ENVFILE_TOKEN=old-token\nMCPLINT_ENVFILE_TOKEN=new-token\n","token":"new-token"},
+  {"id":"empty-quoted-comment","text":"MCPLINT_ENVFILE_TOKEN=\"\" # deliberately empty\n","token":""},
+  {"id":"utf8-bom","text":"\ufeffMCPLINT_ENVFILE_TOKEN=synthetic-token\r\n","token":"synthetic-token"},
+  {"id":"escaped-quote-hash","text":"MCPLINT_ENVFILE_TOKEN=\"synthetic\\\"#token\" # outside quote\n","token":"synthetic\\\"#token"},
+  {"id":"quoted-separators","text":"MCPLINT_ENVFILE_TOKEN=\"scheme:value=one#two\"\n","token":"scheme:value=one#two"}
+]

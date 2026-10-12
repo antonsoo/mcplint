@@ -8,6 +8,8 @@ import { collectHttp } from './http.js';
 import { mergeTargets } from './collect.js';
 import { connectionBudget, type ConnectionOptions } from './connect.js';
 import { connectionFailureMessage } from './diagnostics.js';
+import { parseEnvFile } from './env-file.js';
+export { parseEnvFile } from './env-file.js';
 
 interface StdioServerEntry {
   kind: 'stdio';
@@ -132,21 +134,6 @@ function substitute(value: string, workspace: string, ctx: ConfigContext, inputD
     }
     return whole;
   });
-}
-
-/** `KEY=value` lines, as a server's `envFile` holds them. */
-export function parseEnvFile(text: string): Record<string, string> {
-  const out: Record<string, string> = {};
-  for (const raw of stripBom(text).split(/\r?\n/)) {
-    const line = raw.trim().replace(/^export\s+/, '');
-    const eq = line.indexOf('=');
-    if (line === '' || line.startsWith('#') || eq <= 0) continue;
-    let value = line.slice(eq + 1).trim();
-    const quoted = /^(["'])(.*)\1$/s.exec(value);
-    if (quoted) value = quoted[2]!;
-    out[line.slice(0, eq).trim()] = value;
-  }
-  return out;
 }
 
 /**

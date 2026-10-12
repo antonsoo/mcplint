@@ -1,0 +1,278 @@
+{
+  "node": "v24.21.0",
+  "platform": "posix",
+  "cases": 18,
+  "matched": 18,
+  "records": [
+    {
+      "case": "plain",
+      "expected": {
+        "token": "synthetic-token",
+        "note": null
+      },
+      "observed": {
+        "token": "synthetic-token",
+        "note": null
+      },
+      "exitCode": 0,
+      "complete": true,
+      "tools": 1,
+      "matchesExpectation": true
+    },
+    {
+      "case": "bare-comment",
+      "expected": {
+        "token": "synthetic-token",
+        "note": null
+      },
+      "observed": {
+        "token": "synthetic-token",
+        "note": null
+      },
+      "exitCode": 0,
+      "complete": true,
+      "tools": 1,
+      "matchesExpectation": true
+    },
+    {
+      "case": "double-quoted-comment",
+      "expected": {
+        "token": "synthetic-token",
+        "note": null
+      },
+      "observed": {
+        "token": "synthetic-token",
+        "note": null
+      },
+      "exitCode": 0,
+      "complete": true,
+      "tools": 1,
+      "matchesExpectation": true
+    },
+    {
+      "case": "single-quoted-comment",
+      "expected": {
+        "token": "synthetic-token",
+        "note": null
+      },
+      "observed": {
+        "token": "synthetic-token",
+        "note": null
+      },
+      "exitCode": 0,
+      "complete": true,
+      "tools": 1,
+      "matchesExpectation": true
+    },
+    {
+      "case": "quoted-hash",
+      "expected": {
+        "token": "synthetic#token",
+        "note": null
+      },
+      "observed": {
+        "token": "synthetic#token",
+        "note": null
+      },
+      "exitCode": 0,
+      "complete": true,
+      "tools": 1,
+      "matchesExpectation": true
+    },
+    {
+      "case": "unquoted-hash",
+      "expected": {
+        "token": "synthetic-token",
+        "note": null
+      },
+      "observed": {
+        "token": "synthetic-token",
+        "note": null
+      },
+      "exitCode": 0,
+      "complete": true,
+      "tools": 1,
+      "matchesExpectation": true
+    },
+    {
+      "case": "double-quoted-escapes",
+      "expected": {
+        "token": "line1\nline2\rline3",
+        "note": null
+      },
+      "observed": {
+        "token": "line1\nline2\rline3",
+        "note": null
+      },
+      "exitCode": 0,
+      "complete": true,
+      "tools": 1,
+      "matchesExpectation": true
+    },
+    {
+      "case": "single-quoted-escapes",
+      "expected": {
+        "token": "line1\\nline2",
+        "note": null
+      },
+      "observed": {
+        "token": "line1\\nline2",
+        "note": null
+      },
+      "exitCode": 0,
+      "complete": true,
+      "tools": 1,
+      "matchesExpectation": true
+    },
+    {
+      "case": "backtick-quoted",
+      "expected": {
+        "token": "synthetic#token",
+        "note": null
+      },
+      "observed": {
+        "token": "synthetic#token",
+        "note": null
+      },
+      "exitCode": 0,
+      "complete": true,
+      "tools": 1,
+      "matchesExpectation": true
+    },
+    {
+      "case": "colon-separator",
+      "expected": {
+        "token": "synthetic-token",
+        "note": null
+      },
+      "observed": {
+        "token": "synthetic-token",
+        "note": null
+      },
+      "exitCode": 0,
+      "complete": true,
+      "tools": 1,
+      "matchesExpectation": true
+    },
+    {
+      "case": "carriage-return-lines",
+      "expected": {
+        "token": "synthetic-token",
+        "note": "second-line"
+      },
+      "observed": {
+        "token": "synthetic-token",
+        "note": "second-line"
+      },
+      "exitCode": 0,
+      "complete": true,
+      "tools": 1,
+      "matchesExpectation": true
+    },
+    {
+      "case": "export-comment",
+      "expected": {
+        "token": "synthetic-token",
+        "note": null
+      },
+      "observed": {
+        "token": "synthetic-token",
+        "note": null
+      },
+      "exitCode": 0,
+      "complete": true,
+      "tools": 1,
+      "matchesExpectation": true
+    },
+    {
+      "case": "literal-placeholder",
+      "expected": {
+        "token": "${DO_NOT_EXPAND}",
+        "note": null
+      },
+      "observed": {
+        "token": "${DO_NOT_EXPAND}",
+        "note": null
+      },
+      "exitCode": 0,
+      "complete": true,
+      "tools": 1,
+      "matchesExpectation": true
+    },
+    {
+      "case": "last-definition-wins",
+      "expected": {
+        "token": "new-token",
+        "note": null
+      },
+      "observed": {
+        "token": "new-token",
+        "note": null
+      },
+      "exitCode": 0,
+      "complete": true,
+      "tools": 1,
+      "matchesExpectation": true
+    },
+    {
+      "case": "empty-quoted-comment",
+      "expected": {
+        "token": "",
+        "note": null
+      },
+      "observed": {
+        "token": "",
+        "note": null
+      },
+      "exitCode": 0,
+      "complete": true,
+      "tools": 1,
+      "matchesExpectation": true
+    },
+    {
+      "case": "utf8-bom",
+      "expected": {
+        "token": "synthetic-token",
+        "note": null
+      },
+      "observed": {
+        "token": "synthetic-token",
+        "note": null
+      },
+      "exitCode": 0,
+      "complete": true,
+      "tools": 1,
+      "matchesExpectation": true
+    },
+    {
+      "case": "escaped-quote-hash",
+      "expected": {
+        "token": "synthetic\\\"#token",
+        "note": null
+      },
+      "observed": {
+        "token": "synthetic\\\"#token",
+        "note": null
+      },
+      "exitCode": 0,
+      "complete": true,
+      "tools": 1,
+      "matchesExpectation": true
+    },
+    {
+      "case": "quoted-separators",
+      "expected": {
+        "token": "scheme:value=one#two",
+        "note": null
+      },
+      "observed": {
+        "token": "scheme:value=one#two",
+        "note": null
+      },
+      "exitCode": 0,
+      "complete": true,
+      "tools": 1,
+      "matchesExpectation": true
+    }
+  ]
+}

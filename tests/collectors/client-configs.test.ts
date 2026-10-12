@@ -141,6 +141,10 @@ describe('parseEnvFile', () => {
   it('reads KEY=value lines', () => {
     expect(parseEnvFile('# comment\nA=1\nexport B="two words"\n\nC=\'x=y\'\n  D = spaced \nnot a line\n=nokey\n')).toEqual({ A: '1', B: 'two words', C: 'x=y', D: 'spaced' });
   });
+  const cases = JSON.parse(readFileSync(join(root, 'studies', 'envfile-syntax', 'cases.json'), 'utf8')) as Array<{ id: string; text: string; token: string; note?: string }>;
+  it.each(cases)('preserves the VS Code envFile value for $id', ({ text, token, note }) => {
+    expect(parseEnvFile(text)).toEqual({ MCPLINT_ENVFILE_TOKEN: token, ...(note === undefined ? {} : { MCPLINT_ENVFILE_NOTE: note }) });
+  });
 });
 
 describe('collectConfig on a VS Code workspace (e2e over stdio)', () => {
@@ -189,7 +193,7 @@ describe('collectConfig on a VS Code workspace (e2e over stdio)', () => {
   it('gives a server its working directory, its env file and its env, the env winning', async () => {
     const path = join(workspace, '.vscode', 'environment.json');
     mkdirSync(join(workspace, 'packages', 'api'), { recursive: true });
-    writeFileSync(join(workspace, 'packages', 'api', '.env'), 'FIXTURE_FROM_FILE=file value\nFIXTURE_BOTH=from the file\n');
+    writeFileSync(join(workspace, 'packages', 'api', '.env'), 'FIXTURE_FROM_FILE="file value" # optional note\nFIXTURE_BOTH=from the file # overridden in env\n');
     writeFileSync(
       path,
       JSON.stringify({

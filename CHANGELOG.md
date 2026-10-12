@@ -4,6 +4,12 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Read `envFile` comments and quoted values without appending comment text to
+  credentials. Preserve quoted hashes, decode double-quoted newline escapes,
+  and recognize backtick quotes, colon separators and CR-only lines used by
+  VS Code's parser. Explicit `env` entries and null removals still take priority.
+  [Reference-parser and actual launch checks](studies/envfile-syntax/README.md).
+
 - Honor null environment entries when launching configured stdio servers. A
   removal now overrides both inherited variables and `envFile`, including
   variables the MCP SDK normally inherits. Keep empty strings distinct and

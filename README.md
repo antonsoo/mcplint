@@ -104,6 +104,8 @@ node dist/cli.js stdio -- npx tsx examples/good-server/server.ts
   In the source checkout (unreleased), `"env": {"TOKEN": null}` removes that variable from the child,
   even if it comes from the parent or `envFile`; an empty string remains an empty string.
   [Actual child-process reproduction](studies/config-env-unset/README.md).
+  `envFile` also reads inline comments, quoted hashes and supported escape sequences as VS Code does;
+  [launch and reference-parser comparisons](studies/envfile-syntax/README.md) cover the source correction.
 - **26 rules** across six categories — token budget, naming, descriptions, schema validity, safety, and collection. Every
   rule has an id, a default severity, a rationale, and a doc page in [`docs/rules/`](docs/rules/).
 - **Five report formats**: colored terminal, JSON, [SARIF 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/)

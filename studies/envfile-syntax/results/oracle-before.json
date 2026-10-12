@@ -1,0 +1,192 @@
+{
+  "reference": {
+    "url": "https://raw.githubusercontent.com/microsoft/vscode/3b486b1ff92ac032974c6f589e7d5a46fe486067/src/vs/base/common/envfile.ts",
+    "bytes": 2823,
+    "sha256": "d1a3cbd96984e7bfa1e6db8795df96194a1c829dd66ed7401ad48fb6371de2da"
+  },
+  "node": "v24.21.0",
+  "cases": 18,
+  "expectationsMatchReference": true,
+  "matched": 6,
+  "records": [
+    {
+      "case": "plain",
+      "oracle": {
+        "MCPLINT_ENVFILE_TOKEN": "synthetic-token"
+      },
+      "observed": {
+        "MCPLINT_ENVFILE_TOKEN": "synthetic-token"
+      },
+      "matchesReference": true
+    },
+    {
+      "case": "bare-comment",
+      "oracle": {
+        "MCPLINT_ENVFILE_TOKEN": "synthetic-token"
+      },
+      "observed": {
+        "MCPLINT_ENVFILE_TOKEN": "synthetic-token # fixture account"
+      },
+      "matchesReference": false
+    },
+    {
+      "case": "double-quoted-comment",
+      "oracle": {
+        "MCPLINT_ENVFILE_TOKEN": "synthetic-token"
+      },
+      "observed": {
+        "MCPLINT_ENVFILE_TOKEN": "\"synthetic-token\" # fixture account"
+      },
+      "matchesReference": false
+    },
+    {
+      "case": "single-quoted-comment",
+      "oracle": {
+        "MCPLINT_ENVFILE_TOKEN": "synthetic-token"
+      },
+      "observed": {
+        "MCPLINT_ENVFILE_TOKEN": "'synthetic-token' # fixture account"
+      },
+      "matchesReference": false
+    },
+    {
+      "case": "quoted-hash",
+      "oracle": {
+        "MCPLINT_ENVFILE_TOKEN": "synthetic#token"
+      },
+      "observed": {
+        "MCPLINT_ENVFILE_TOKEN": "\"synthetic#token\" # preserve the quoted hash"
+      },
+      "matchesReference": false
+    },
+    {
+      "case": "unquoted-hash",
+      "oracle": {
+        "MCPLINT_ENVFILE_TOKEN": "synthetic-token"
+      },
+      "observed": {
+        "MCPLINT_ENVFILE_TOKEN": "synthetic-token#comment"
+      },
+      "matchesReference": false
+    },
+    {
+      "case": "double-quoted-escapes",
+      "oracle": {
+        "MCPLINT_ENVFILE_TOKEN": "line1\nline2\rline3"
+      },
+      "observed": {
+        "MCPLINT_ENVFILE_TOKEN": "line1\\nline2\\rline3"
+      },
+      "matchesReference": false
+    },
+    {
+      "case": "single-quoted-escapes",
+      "oracle": {
+        "MCPLINT_ENVFILE_TOKEN": "line1\\nline2"
+      },
+      "observed": {
+        "MCPLINT_ENVFILE_TOKEN": "line1\\nline2"
+      },
+      "matchesReference": true
+    },
+    {
+      "case": "backtick-quoted",
+      "oracle": {
+        "MCPLINT_ENVFILE_TOKEN": "synthetic#token"
+      },
+      "observed": {
+        "MCPLINT_ENVFILE_TOKEN": "`synthetic#token` # fixture account"
+      },
+      "matchesReference": false
+    },
+    {
+      "case": "colon-separator",
+      "oracle": {
+        "MCPLINT_ENVFILE_TOKEN": "synthetic-token"
+      },
+      "observed": {},
+      "matchesReference": false
+    },
+    {
+      "case": "carriage-return-lines",
+      "oracle": {
+        "MCPLINT_ENVFILE_TOKEN": "synthetic-token",
+        "MCPLINT_ENVFILE_NOTE": "second-line"
+      },
+      "observed": {
+        "MCPLINT_ENVFILE_TOKEN": "synthetic-token\rMCPLINT_ENVFILE_NOTE=second-line"
+      },
+      "matchesReference": false
+    },
+    {
+      "case": "export-comment",
+      "oracle": {
+        "MCPLINT_ENVFILE_TOKEN": "synthetic-token"
+      },
+      "observed": {
+        "MCPLINT_ENVFILE_TOKEN": "synthetic-token # exported account"
+      },
+      "matchesReference": false
+    },
+    {
+      "case": "literal-placeholder",
+      "oracle": {
+        "MCPLINT_ENVFILE_TOKEN": "${DO_NOT_EXPAND}"
+      },
+      "observed": {
+        "MCPLINT_ENVFILE_TOKEN": "${DO_NOT_EXPAND}"
+      },
+      "matchesReference": true
+    },
+    {
+      "case": "last-definition-wins",
+      "oracle": {
+        "MCPLINT_ENVFILE_TOKEN": "new-token"
+      },
+      "observed": {
+        "MCPLINT_ENVFILE_TOKEN": "new-token"
+      },
+      "matchesReference": true
+    },
+    {
+      "case": "empty-quoted-comment",
+      "oracle": {
+        "MCPLINT_ENVFILE_TOKEN": ""
+      },
+      "observed": {
+        "MCPLINT_ENVFILE_TOKEN": "\"\" # deliberately empty"
+      },
+      "matchesReference": false
+    },
+    {
+      "case": "utf8-bom",
+      "oracle": {
+        "MCPLINT_ENVFILE_TOKEN": "synthetic-token"
+      },
+      "observed": {
+        "MCPLINT_ENVFILE_TOKEN": "synthetic-token"
+      },
+      "matchesReference": true
+    },
+    {
+      "case": "escaped-quote-hash",
+      "oracle": {
+        "MCPLINT_ENVFILE_TOKEN": "synthetic\\\"#token"
+      },
+      "observed": {
+        "MCPLINT_ENVFILE_TOKEN": "\"synthetic\\\"#token\" # outside quote"
+      },
+      "matchesReference": false
+    },
+    {
+      "case": "quoted-separators",
+      "oracle": {
+        "MCPLINT_ENVFILE_TOKEN": "scheme:value=one#two"
+      },
+      "observed": {
+        "MCPLINT_ENVFILE_TOKEN": "scheme:value=one#two"
+      },
+      "matchesReference": true
+    }
+  ]
+}
