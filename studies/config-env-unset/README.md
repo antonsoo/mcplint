@@ -21,14 +21,17 @@ the config explicitly removes it with `null`.
 All baseline audits reported complete. The failure was the child environment,
 not a failure to enumerate the child that actually started.
 
+![Captured comparison of the actual child environments and collected tool counts](../../docs/assets/config-env-unset.png)
+
 ## Semantics and correction
 
 [VS Code's configuration reference](https://code.visualstudio.com/docs/agents/reference/mcp-configuration)
 allows null environment values. Its
-[process launcher](https://github.com/microsoft/vscode/blob/main/src/vs/workbench/api/node/extHostMcpNode.ts)
+[process launcher](https://github.com/microsoft/vscode/blob/3b486b1ff92ac032974c6f589e7d5a46fe486067/src/vs/workbench/api/node/extHostMcpNode.ts)
 loads the environment file before applying configured entries and converts null
 to an absent child variable. This was checked against the upstream source on
-2026-10-12. The three config layouts tested here are `servers`, `mcp.servers`,
+2026-10-12; the [reference receipt](results/reference.json) records the pinned
+file's hash. The three config layouts tested here are `servers`, `mcp.servers`,
 and `mcpServers`; mcplint applies the same explicit-removal behavior to each.
 
 mcplint now retains null through config parsing and environment-file merging.
@@ -68,3 +71,27 @@ The retained [baseline](results/before.json) matches 21/36 cases; the
 [corrected Node 24 run](results/after-node24.json) matches 36/36.
 These are controlled fixtures, not observations of a real credential leak or
 evidence that any public MCP server was affected.
+
+## Installed artifact and compatibility
+
+A clean git archive of `8a708d820287bbc195e37ce51cca1b86e05ed2ac` passed
+`npm ci`, lint, typecheck, 465 tests in 40 files, the CLI build, and 28 Chromium/
+Firefox report workflows at desktop and 375 px widths. `npm run build:site`
+produces `site/`; no hosted files were deployed. The retained terminal image
+was generated from `summarize.py` output and visually inspected.
+
+The tarball was installed offline outside the checkout. Its 102 package files
+match the archive exactly. All 96 source, test and selected configuration inputs
+match the clean archive. The [artifact receipt](results/artifacts.json) records
+their hashes and the actual commands' outcomes. The tarball is 105,458 bytes,
+SHA-256 `e5b6e256ada655718f52baeeadd4011bd55b3efdd3b53de6297ec8de238ec343`.
+
+The installed CLI reproduces all 36 expected cases on both
+[Node 20.0.0](results/after-node20.json) and Node 24.21.0. Their case records are
+identical to the source run. The clean archive uses the locked MCP SDK 1.31.0;
+the offline package installation resolves the compatible SDK 1.32.1. The good
+fixture still passes `--fail-on warning`, the poisoned fixture exits 1 under
+`--fail-on error`, and the Node 20 saved-tools command emits valid SARIF 2.1.0.
+
+Package version 0.3.3 is unchanged. These checks validate the source and local
+artifact, not a new registry release.

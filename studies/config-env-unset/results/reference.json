@@ -1,0 +1,9 @@
+{
+  "repository": "microsoft/vscode",
+  "commit": "3b486b1ff92ac032974c6f589e7d5a46fe486067",
+  "path": "src/vs/workbench/api/node/extHostMcpNode.ts",
+  "url": "https://raw.githubusercontent.com/microsoft/vscode/3b486b1ff92ac032974c6f589e7d5a46fe486067/src/vs/workbench/api/node/extHostMcpNode.ts",
+  "bytes": 8863,
+  "sha256": "a0b0cac56b190576b4058164de72874761d0d8e35d65dc2f115b4ce4581f9333",
+  "checkedBehavior": "envFile loaded before launch.env overrides; null becomes undefined"
+}
