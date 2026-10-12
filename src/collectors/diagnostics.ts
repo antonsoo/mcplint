@@ -3,6 +3,7 @@ import { StreamableHTTPError } from '@modelcontextprotocol/sdk/client/streamable
 import { McpError } from '@modelcontextprotocol/sdk/types.js';
 import { ConnectionTimeoutError } from './connect.js';
 import { TextDecodingError } from '../core/read-text.js';
+import { HttpRedirectError } from './http-redirects.js';
 
 const guidance = 'Check the command, URL, environment and authorization, then retry.';
 const systemCodes = new Set(['ENOENT', 'EACCES', 'EPERM', 'ECONNREFUSED', 'ECONNRESET',
@@ -13,7 +14,8 @@ const systemCodes = new Set(['ENOENT', 'EACCES', 'EPERM', 'ECONNREFUSED', 'ECONN
  * Raw errors remain available to library callers for deliberate local inspection.
  */
 export function connectionFailureMessage(error: unknown): string {
-  if (error instanceof ConnectionTimeoutError || error instanceof TextDecodingError) return error.message;
+  if (error instanceof ConnectionTimeoutError || error instanceof TextDecodingError ||
+      error instanceof HttpRedirectError) return error.message;
   let code: string | undefined;
   if ((error instanceof StreamableHTTPError || error instanceof SseError) &&
       Number.isInteger(error.code) && error.code! >= 100 && error.code! <= 599) {

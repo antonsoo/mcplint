@@ -6,6 +6,7 @@ import type { LintTarget } from '../core/types.js';
 import { collectFromClient } from './collect.js';
 import { VERSION } from '../version.js';
 import { connectionBudget, connectWithinBudget, type ConnectionOptions } from './connect.js';
+import { originBoundFetch, type HttpRedirectError } from './http-redirects.js';
 
 export interface HttpTargetOptions extends ConnectionOptions {
   url: string;
@@ -41,20 +42,27 @@ export async function collectHttp(opts: HttpTargetOptions): Promise<LintTarget> 
   const budget = connectionBudget(opts.connectTimeoutMs);
   const url = new URL(opts.url);
   const requestInit = opts.headers ? { headers: opts.headers } : undefined;
-  const sse = (): Transport => new SSEClientTransport(url, { requestInit });
-  if (opts.transport === 'sse') return collectOver(sse(), opts, budget);
-
-  const client = new Client({ name: 'mcplint', version: VERSION });
+  let redirectFailure: HttpRedirectError | undefined;
+  const fetch = originBoundFetch(url, error => { redirectFailure = error; });
+  const sse = (): Transport => new SSEClientTransport(url, { requestInit, fetch });
   try {
-    return await collectOver(new StreamableHTTPClientTransport(url, { requestInit }), opts, budget, client);
-  } catch (streamable) {
-    // Only a protocol rejection justifies trying legacy SSE. A timeout, server
-    // outage or invalid initialize response is not evidence of an older server.
-    if (client.getServerVersion() !== undefined ||
-      !(streamable instanceof StreamableHTTPError) || streamable.code === undefined ||
-      streamable.code < 400 || streamable.code >= 500) {
-      throw streamable;
+    if (opts.transport === 'sse') return await collectOver(sse(), opts, budget);
+    const client = new Client({ name: 'mcplint', version: VERSION });
+    try {
+      return await collectOver(new StreamableHTTPClientTransport(url, { requestInit, fetch }), opts, budget, client);
+    } catch (streamable) {
+      // Only a protocol rejection justifies trying legacy SSE. A timeout, server
+      // outage or invalid initialize response is not evidence of an older server.
+      if (redirectFailure || client.getServerVersion() !== undefined ||
+        !(streamable instanceof StreamableHTTPError) || streamable.code === undefined ||
+        streamable.code < 400 || streamable.code >= 500) {
+        throw streamable;
+      }
+      return await collectOver(sse(), opts, budget);
     }
-    return collectOver(sse(), opts, budget);
+  } catch (error) {
+    // EventSource wraps fetch rejections. Keep our bounded diagnostic without
+    // trusting a server-supplied message or echoing a Location URL's credentials.
+    throw redirectFailure ?? error;
   }
 }

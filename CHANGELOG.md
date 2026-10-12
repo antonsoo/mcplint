@@ -4,6 +4,12 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Keep remote collection requests within the configured HTTP origin, including
+  custom API keys and MCP session headers that native fetch forwards across
+  redirects. Check each hop in Streamable HTTP and legacy SSE, retain same-origin
+  redirects, bound loops, and report a safe actionable connection error.
+  [Actual SDK and CLI captures](studies/http-redirects/README.md).
+
 - Read `envFile` comments and quoted values without appending comment text to
   credentials. Preserve quoted hashes, decode double-quoted newline escapes,
   and recognize backtick quotes, colon separators and CR-only lines used by

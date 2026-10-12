@@ -163,6 +163,12 @@ mcplint config .vscode/mcp.json --input api-key="$API_KEY"
 mcplint stdio --fail-on error --format sarif --output mcplint.sarif -- node server.js
 ```
 
+HTTP redirects stay within the configured URL's origin (scheme, host and port),
+with a maximum of 20 hops per request. A redirect to another origin is rejected
+before headers or request bodies are sent there. Configure the intended final
+server URL explicitly if a service has moved. This also applies to legacy SSE
+and config entries. [Credential-boundary reproduction](studies/http-redirects/README.md).
+
 ### Example: the well-behaved fixture
 
 ```sh

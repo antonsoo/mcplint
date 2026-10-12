@@ -132,8 +132,18 @@ invalid `--header` and `--input` syntax omits the supplied value. The
 [controlled captures](../studies/connection-diagnostics/README.md) exercise both
 output streams through the built CLI.
 
-Library collectors still reject with the original error, and `onServerError`
-still receives it. Use exported `connectionFailureMessage(error)` for a bounded
+HTTP collection follows at most 20 redirects per request within the configured
+URL's origin (scheme, host and port). A different origin is rejected before
+sending headers or a body there, including after initialization and on legacy
+SSE message posts. API keys and session headers do not rely on fetch's special
+handling of `Authorization`. Configure the intended final URL explicitly when
+a service moves. Redirect diagnostics omit the destination URL and its query.
+An initialization rejection is a connection failure; a blocked list request
+leaves that list incomplete under the usual gate behavior above.
+
+Library collectors reject with the original error, except that an HTTP redirect
+rejection retains mcplint's own error when EventSource wraps it. `onServerError`
+receives that error. Use exported `connectionFailureMessage(error)` for a bounded
 display message. This is not report anonymization: collected metadata, server
 names, successful target labels, command arguments, URLs and file paths may
 contain sensitive material, and stdio child processes own their stderr output.
