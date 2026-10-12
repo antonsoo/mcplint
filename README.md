@@ -101,6 +101,9 @@ node dist/cli.js stdio -- npx tsx examples/good-server/server.ts
   `${env:NAME}` and `${input:id}` for VS Code, `${NAME}` and `${NAME:-default}` for Claude Code; `cwd` and
   `envFile` are honored. A server marked `"disabled": true`, or one that needs a value mcplint was not given,
   is named and left out, never started with a literal `${API_KEY}`.
+  In the source checkout (unreleased), `"env": {"TOKEN": null}` removes that variable from the child,
+  even if it comes from the parent or `envFile`; an empty string remains an empty string.
+  [Actual child-process reproduction](studies/config-env-unset/README.md).
 - **26 rules** across six categories — token budget, naming, descriptions, schema validity, safety, and collection. Every
   rule has an id, a default severity, a rationale, and a doc page in [`docs/rules/`](docs/rules/).
 - **Five report formats**: colored terminal, JSON, [SARIF 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/)

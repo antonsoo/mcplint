@@ -14,7 +14,7 @@ interface StdioServerEntry {
   key: string;
   command: string;
   args: string[];
-  env?: Record<string, string>;
+  env?: Record<string, string | null>;
   cwd?: string;
   /** A file of `KEY=value` lines to add to the server's environment; `env` wins over it. */
   envFile?: string;
@@ -179,10 +179,18 @@ export function readServerConfig(config: unknown, ctx: ConfigContext = {}): Serv
   const fillMap = (map: Record<string, unknown>): Record<string, string> => {
     const out: Record<string, string> = {};
     for (const [key, value] of Object.entries(map)) {
-      // VS Code allows numbers, and null for "leave this one unset".
       if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') out[key] = fill(String(value));
     }
     return out;
+  };
+  const fillEnv = (map: Record<string, unknown>): Record<string, string | null> => {
+    // A null entry removes a variable, including one inherited from the parent
+    // or supplied by envFile. Keep the removal until the child is spawned.
+    const entries: Array<[string, string | null]> = Object.entries(fillMap(map));
+    for (const [key, value] of Object.entries(map)) {
+      if (value === null) entries.push([key, null]);
+    }
+    return Object.fromEntries(entries);
   };
 
   const entries: ServerEntry[] = [];
@@ -212,7 +220,7 @@ export function readServerConfig(config: unknown, ctx: ConfigContext = {}): Serv
           key,
           command: fill(value.command),
           args: Array.isArray(value.args) ? value.args.map((arg) => fill(String(arg))) : [],
-          ...(isPlainObject(value.env) ? { env: fillMap(value.env) } : {}),
+          ...(isPlainObject(value.env) ? { env: fillEnv(value.env) } : {}),
           ...(cwd !== undefined ? { cwd: isAbsolute(cwd) ? cwd : resolve(workspace, cwd) } : {}),
           ...(typeof value.envFile === 'string' ? { envFile: resolve(workspace, fill(value.envFile)) } : {})
         });

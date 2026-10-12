@@ -1,0 +1,932 @@
+{
+  "node": "v24.21.0",
+  "platform": "posix",
+  "cases": 36,
+  "matched": 36,
+  "records": [
+    {
+      "shape": "servers",
+      "case": "inherit",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "parent-token",
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "parent-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "parent-token",
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "parent-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "servers",
+      "case": "remove-parent",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": null,
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "parent-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": null,
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "parent-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records"
+        ]
+      },
+      "toolCount": 1,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "servers",
+      "case": "remove-file",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": null,
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "parent-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": null,
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "parent-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records"
+        ]
+      },
+      "toolCount": 1,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "servers",
+      "case": "remove-sdk-default",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "parent-token",
+        "TERM": null,
+        "MCPLINT_FIXTURE_MODE": "parent-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "parent-token",
+          "TERM": null,
+          "MCPLINT_FIXTURE_MODE": "parent-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "servers",
+      "case": "remove-file-default",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "parent-token",
+        "TERM": null,
+        "MCPLINT_FIXTURE_MODE": "parent-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "parent-token",
+          "TERM": null,
+          "MCPLINT_FIXTURE_MODE": "parent-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "servers",
+      "case": "remove-all",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": null,
+        "TERM": null,
+        "MCPLINT_FIXTURE_MODE": null,
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": null,
+          "TERM": null,
+          "MCPLINT_FIXTURE_MODE": null,
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records"
+        ]
+      },
+      "toolCount": 1,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "servers",
+      "case": "empty-string",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "",
+        "TERM": "",
+        "MCPLINT_FIXTURE_MODE": "",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "",
+          "TERM": "",
+          "MCPLINT_FIXTURE_MODE": "",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records"
+        ]
+      },
+      "toolCount": 1,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "servers",
+      "case": "string-null",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "null",
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "parent-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "null",
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "parent-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "servers",
+      "case": "numeric-zero",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "parent-token",
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "0",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "parent-token",
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "0",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "servers",
+      "case": "boolean-false",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "parent-token",
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "false",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "parent-token",
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "false",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "servers",
+      "case": "file-values",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "file-token",
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "file-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "file-token",
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "file-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "servers",
+      "case": "explicit-wins",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "explicit-token",
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "explicit-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "explicit-token",
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "explicit-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcp.servers",
+      "case": "inherit",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "parent-token",
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "parent-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "parent-token",
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "parent-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcp.servers",
+      "case": "remove-parent",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": null,
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "parent-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": null,
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "parent-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records"
+        ]
+      },
+      "toolCount": 1,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcp.servers",
+      "case": "remove-file",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": null,
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "parent-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": null,
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "parent-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records"
+        ]
+      },
+      "toolCount": 1,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcp.servers",
+      "case": "remove-sdk-default",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "parent-token",
+        "TERM": null,
+        "MCPLINT_FIXTURE_MODE": "parent-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "parent-token",
+          "TERM": null,
+          "MCPLINT_FIXTURE_MODE": "parent-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcp.servers",
+      "case": "remove-file-default",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "parent-token",
+        "TERM": null,
+        "MCPLINT_FIXTURE_MODE": "parent-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "parent-token",
+          "TERM": null,
+          "MCPLINT_FIXTURE_MODE": "parent-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcp.servers",
+      "case": "remove-all",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": null,
+        "TERM": null,
+        "MCPLINT_FIXTURE_MODE": null,
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": null,
+          "TERM": null,
+          "MCPLINT_FIXTURE_MODE": null,
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records"
+        ]
+      },
+      "toolCount": 1,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcp.servers",
+      "case": "empty-string",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "",
+        "TERM": "",
+        "MCPLINT_FIXTURE_MODE": "",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "",
+          "TERM": "",
+          "MCPLINT_FIXTURE_MODE": "",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records"
+        ]
+      },
+      "toolCount": 1,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcp.servers",
+      "case": "string-null",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "null",
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "parent-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "null",
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "parent-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcp.servers",
+      "case": "numeric-zero",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "parent-token",
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "0",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "parent-token",
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "0",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcp.servers",
+      "case": "boolean-false",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "parent-token",
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "false",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "parent-token",
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "false",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcp.servers",
+      "case": "file-values",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "file-token",
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "file-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "file-token",
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "file-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcp.servers",
+      "case": "explicit-wins",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "explicit-token",
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "explicit-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "explicit-token",
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "explicit-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcpServers",
+      "case": "inherit",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "parent-token",
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "parent-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "parent-token",
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "parent-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcpServers",
+      "case": "remove-parent",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": null,
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "parent-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": null,
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "parent-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records"
+        ]
+      },
+      "toolCount": 1,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcpServers",
+      "case": "remove-file",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": null,
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "parent-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": null,
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "parent-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records"
+        ]
+      },
+      "toolCount": 1,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcpServers",
+      "case": "remove-sdk-default",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "parent-token",
+        "TERM": null,
+        "MCPLINT_FIXTURE_MODE": "parent-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "parent-token",
+          "TERM": null,
+          "MCPLINT_FIXTURE_MODE": "parent-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcpServers",
+      "case": "remove-file-default",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "parent-token",
+        "TERM": null,
+        "MCPLINT_FIXTURE_MODE": "parent-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "parent-token",
+          "TERM": null,
+          "MCPLINT_FIXTURE_MODE": "parent-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcpServers",
+      "case": "remove-all",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": null,
+        "TERM": null,
+        "MCPLINT_FIXTURE_MODE": null,
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": null,
+          "TERM": null,
+          "MCPLINT_FIXTURE_MODE": null,
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records"
+        ]
+      },
+      "toolCount": 1,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcpServers",
+      "case": "empty-string",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "",
+        "TERM": "",
+        "MCPLINT_FIXTURE_MODE": "",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "",
+          "TERM": "",
+          "MCPLINT_FIXTURE_MODE": "",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records"
+        ]
+      },
+      "toolCount": 1,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcpServers",
+      "case": "string-null",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "null",
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "parent-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "null",
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "parent-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcpServers",
+      "case": "numeric-zero",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "parent-token",
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "0",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "parent-token",
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "0",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcpServers",
+      "case": "boolean-false",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "parent-token",
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "false",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "parent-token",
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "false",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcpServers",
+      "case": "file-values",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "file-token",
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "file-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "file-token",
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "file-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    },
+    {
+      "shape": "mcpServers",
+      "case": "explicit-wins",
+      "expected": {
+        "MCPLINT_FIXTURE_TOKEN": "explicit-token",
+        "TERM": "fixture-term",
+        "MCPLINT_FIXTURE_MODE": "explicit-mode",
+        "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+      },
+      "observed": {
+        "environment": {
+          "MCPLINT_FIXTURE_TOKEN": "explicit-token",
+          "TERM": "fixture-term",
+          "MCPLINT_FIXTURE_MODE": "explicit-mode",
+          "MCPLINT_FIXTURE_KEEP": "unrelated-value"
+        },
+        "tools": [
+          "read_records",
+          "write_records"
+        ]
+      },
+      "toolCount": 2,
+      "complete": true,
+      "exitCode": 0,
+      "matchesExpectation": true
+    }
+  ]
+}

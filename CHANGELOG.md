@@ -4,6 +4,12 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Honor null environment entries when launching configured stdio servers. A
+  removal now overrides both inherited variables and `envFile`, including
+  variables the MCP SDK normally inherits. Keep empty strings distinct and
+  leave the parent environment unchanged.
+  [Child-process reproduction](studies/config-env-unset/README.md).
+
 - Correct scalar enum description checks for numeric, boolean, null and empty
   choices. Numeric mentions respect token boundaries; findings preserve null and
   empty strings as JSON. Structured choices no longer trigger object coercion

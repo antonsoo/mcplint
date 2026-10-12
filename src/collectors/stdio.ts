@@ -1,5 +1,5 @@
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
-import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
+import { getDefaultEnvironment, StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
 import type { LintTarget } from '../core/types.js';
 import { collectFromClient } from './collect.js';
 import { VERSION } from '../version.js';
@@ -8,7 +8,8 @@ import { connectionBudget, connectWithinBudget, type ConnectionOptions } from '.
 export interface StdioTargetOptions extends ConnectionOptions {
   command: string;
   args: string[];
-  env?: Record<string, string>;
+  /** Overrides for the child process; null removes an inherited variable. */
+  env?: Record<string, string | null>;
   /** Working directory for the server process; the current one if not given. */
   cwd?: string;
   serverId?: string;
@@ -17,10 +18,24 @@ export interface StdioTargetOptions extends ConnectionOptions {
 
 export async function collectStdio(opts: StdioTargetOptions): Promise<LintTarget> {
   const budget = connectionBudget(opts.connectTimeoutMs);
+  const env: Record<string, string | undefined> = { ...getDefaultEnvironment(), ...processEnvAsStrings() };
+  for (const [key, value] of Object.entries(opts.env ?? {})) {
+    // Windows environment names are case-insensitive. Override every spelling
+    // before Node chooses one, including spellings the SDK inherits by default.
+    if (process.platform === 'win32') {
+      for (const inherited of Object.keys(env)) {
+        if (inherited.toUpperCase() === key.toUpperCase()) env[inherited] = value ?? undefined;
+      }
+    }
+    env[key] = value ?? undefined;
+  }
   const transport = new StdioClientTransport({
     command: opts.command,
     args: opts.args,
-    env: { ...processEnvAsStrings(), ...(opts.env ?? {}) },
+    // Node omits undefined values. Keep those own properties through the SDK's
+    // default-env merge: deleting them would restore HOME, TERM, PATH, etc.
+    // The SDK forwards them to spawn but declares a narrower string-only type.
+    env: env as Record<string, string>,
     ...(opts.cwd ? { cwd: opts.cwd } : {})
   });
 

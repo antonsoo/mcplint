@@ -1,11 +1,11 @@
 // The configs MCP clients really keep: Claude's "mcpServers", VS Code's "servers" with comments
 // and placeholders, entries switched off, entries that need a secret. Formats per the clients'
 // own documentation (VS Code's "MCP configuration reference", Claude Code's .mcp.json).
-import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { homedir, tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { afterAll, describe, expect, it } from 'vitest';
+import { afterAll, describe, expect, it, vi } from 'vitest';
 import { collectConfig, parseEnvFile, parseServerEntries, readServerConfig, stripJsonComments, type SkippedServer } from '../../src/collectors/config.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -60,7 +60,7 @@ describe('readServerConfig', () => {
     expect(skipped).toEqual([]);
     expect(entries).toEqual([
       { kind: 'stdio', key: 'memory', command: 'npx', args: ['-y', '@modelcontextprotocol/server-memory'], cwd: workspace },
-      { kind: 'stdio', key: 'local', command: `${workspace}/bin/server`, args: ['--root', workspace], env: { PORT: '3000', HOME_DIR: homedir() }, cwd: join(workspace, 'packages', 'api') },
+      { kind: 'stdio', key: 'local', command: `${workspace}/bin/server`, args: ['--root', workspace], env: { PORT: '3000', DEBUG: null, HOME_DIR: homedir() }, cwd: join(workspace, 'packages', 'api') },
       { kind: 'http', key: 'context7', url: 'https://mcp.context7.com/mcp' },
       { kind: 'http', key: 'legacy', url: 'http://localhost:3001/sse', headers: { Authorization: 'Bearer t0k' }, sse: true }
     ]);
@@ -217,6 +217,43 @@ describe('collectConfig on a VS Code workspace (e2e over stdio)', () => {
     writeFileSync(path, '{ "servers": { "billing": { "command": "x", "env": { "KEY": "${input:billing-key}" } }, "old": { "command": "y", "disabled": true } } }');
     const target = await collectConfig(path);
     expect(target.collection?.map(record => record.status)).toEqual(['incomplete', 'disabled']);
+  });
+
+  it('removes inherited and envFile variables, including SDK defaults, only in the configured child', async () => {
+    vi.stubEnv('MCPLINT_FIXTURE_TOKEN', 'parent-token');
+    vi.stubEnv('TERM', 'fixture-term');
+    vi.stubEnv('MCPLINT_FIXTURE_MODE', 'parent-mode');
+    vi.stubEnv('MCPLINT_FIXTURE_KEEP', 'unrelated-value');
+    try {
+      const envFile = join(workspace, 'remove.env');
+      writeFileSync(envFile, 'MCPLINT_FIXTURE_TOKEN=file-token\nTERM=file-term\n');
+      const path = join(workspace, '.vscode', 'remove.json');
+      const server = join(root, 'studies', 'config-env-unset', 'server.mjs');
+      const entry = (name: string) => ({ command: process.execPath, args: [server, join(workspace, `${name}.json`)] });
+      writeFileSync(path, JSON.stringify({ servers: {
+        removed: { ...entry('removed'), envFile, env: { MCPLINT_FIXTURE_TOKEN: null, TERM: null, MCPLINT_FIXTURE_MODE: 0 } },
+        inherited: entry('inherited'),
+        empty: { ...entry('empty'), env: { MCPLINT_FIXTURE_TOKEN: '', TERM: '' } }
+      } }));
+      const target = await collectConfig(path);
+      const observed = (name: string) => JSON.parse(readFileSync(join(workspace, `${name}.json`), 'utf8')) as unknown;
+      expect(observed('removed')).toEqual({ environment: {
+        MCPLINT_FIXTURE_TOKEN: null, TERM: null, MCPLINT_FIXTURE_MODE: '0', MCPLINT_FIXTURE_KEEP: 'unrelated-value'
+      }, tools: ['read_records'] });
+      expect(observed('inherited')).toEqual({ environment: {
+        MCPLINT_FIXTURE_TOKEN: 'parent-token', TERM: 'fixture-term', MCPLINT_FIXTURE_MODE: 'parent-mode', MCPLINT_FIXTURE_KEEP: 'unrelated-value'
+      }, tools: ['read_records', 'write_records'] });
+      expect(observed('empty')).toEqual({ environment: {
+        MCPLINT_FIXTURE_TOKEN: '', TERM: '', MCPLINT_FIXTURE_MODE: 'parent-mode', MCPLINT_FIXTURE_KEEP: 'unrelated-value'
+      }, tools: ['read_records'] });
+      expect(target.tools.map(tool => [tool.serverId, tool.name])).toEqual([
+        ['removed', 'read_records'], ['inherited', 'read_records'], ['inherited', 'write_records'], ['empty', 'read_records']
+      ]);
+      expect(process.env.MCPLINT_FIXTURE_TOKEN).toBe('parent-token');
+      expect(process.env.TERM).toBe('fixture-term');
+    } finally {
+      vi.unstubAllEnvs();
+    }
   });
 
   it('reports a file that is not JSON even with comments allowed', async () => {
