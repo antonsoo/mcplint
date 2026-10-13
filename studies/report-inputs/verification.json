@@ -1,0 +1,1100 @@
+{
+  "implementationCommit": "e589ddf32867fd1af46369eac2e97028225a0edb",
+  "cleanArchive": {
+    "node": "v24.21.0",
+    "trackedFiles": 407,
+    "allTrackedFilesUnchanged": true,
+    "checks": [
+      {
+        "check": "install",
+        "exit": 0,
+        "seconds": 7.07
+      },
+      {
+        "check": "lint",
+        "exit": 0,
+        "seconds": 5.47
+      },
+      {
+        "check": "types",
+        "exit": 0,
+        "seconds": 2.45
+      },
+      {
+        "check": "unit",
+        "exit": 0,
+        "seconds": 29.72
+      },
+      {
+        "check": "build",
+        "exit": 0,
+        "seconds": 2.21
+      },
+      {
+        "check": "browser",
+        "exit": 0,
+        "seconds": 28.63
+      },
+      {
+        "check": "pack",
+        "exit": 0,
+        "seconds": 0.67
+      }
+    ],
+    "unitChecks": 534,
+    "browserChecks": 32
+  },
+  "package": {
+    "filename": "antonsoloviev-mcplint-0.3.3.tgz",
+    "bytes": 125714,
+    "sha256": "40140b169cdc76e0714bce899a55cb24f4280d7d93c37b1f3aed8d16c2ac9d7b"
+  },
+  "installations": [
+    {
+      "label": "minimum",
+      "node": "v20.0.0",
+      "sdk": "1.32.1",
+      "matchedDistFiles": 84,
+      "replay": {
+        "mode": "after",
+        "node": "v20.0.0",
+        "fixture": "tests/fixtures/reference-servers/server-filesystem.json",
+        "fixtureSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+        "cases": [
+          {
+            "kind": "definitions",
+            "alias": "direct",
+            "exit": 2,
+            "inputBytes": 20406,
+            "afterBytes": 20406,
+            "inputSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+            "afterSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "definitions",
+            "alias": "symlink",
+            "exit": 2,
+            "inputBytes": 20406,
+            "afterBytes": 20406,
+            "inputSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+            "afterSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "definitions",
+            "alias": "hardlink",
+            "exit": 2,
+            "inputBytes": 20406,
+            "afterBytes": 20406,
+            "inputSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+            "afterSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "definitions",
+            "alias": "parent-symlink",
+            "exit": 2,
+            "inputBytes": 20406,
+            "afterBytes": 20406,
+            "inputSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+            "afterSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "explicitConfig",
+            "alias": "direct",
+            "exit": 2,
+            "inputBytes": 15,
+            "afterBytes": 15,
+            "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "explicitConfig",
+            "alias": "symlink",
+            "exit": 2,
+            "inputBytes": 15,
+            "afterBytes": 15,
+            "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "explicitConfig",
+            "alias": "hardlink",
+            "exit": 2,
+            "inputBytes": 15,
+            "afterBytes": 15,
+            "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "explicitConfig",
+            "alias": "parent-symlink",
+            "exit": 2,
+            "inputBytes": 15,
+            "afterBytes": 15,
+            "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "automaticConfig",
+            "alias": "direct",
+            "exit": 2,
+            "inputBytes": 15,
+            "afterBytes": 15,
+            "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "automaticConfig",
+            "alias": "symlink",
+            "exit": 2,
+            "inputBytes": 15,
+            "afterBytes": 15,
+            "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "automaticConfig",
+            "alias": "hardlink",
+            "exit": 2,
+            "inputBytes": 15,
+            "afterBytes": 15,
+            "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "automaticConfig",
+            "alias": "parent-symlink",
+            "exit": 2,
+            "inputBytes": 15,
+            "afterBytes": 15,
+            "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "clientConfig",
+            "alias": "direct",
+            "exit": 2,
+            "inputBytes": 212,
+            "afterBytes": 212,
+            "inputSha256": "19db3e2044cb53f9f6836c1481c4fe131fb0c88ba799e5381fb243e81d969a85",
+            "afterSha256": "19db3e2044cb53f9f6836c1481c4fe131fb0c88ba799e5381fb243e81d969a85",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "clientConfig",
+            "alias": "symlink",
+            "exit": 2,
+            "inputBytes": 212,
+            "afterBytes": 212,
+            "inputSha256": "19db3e2044cb53f9f6836c1481c4fe131fb0c88ba799e5381fb243e81d969a85",
+            "afterSha256": "19db3e2044cb53f9f6836c1481c4fe131fb0c88ba799e5381fb243e81d969a85",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "clientConfig",
+            "alias": "hardlink",
+            "exit": 2,
+            "inputBytes": 212,
+            "afterBytes": 212,
+            "inputSha256": "19db3e2044cb53f9f6836c1481c4fe131fb0c88ba799e5381fb243e81d969a85",
+            "afterSha256": "19db3e2044cb53f9f6836c1481c4fe131fb0c88ba799e5381fb243e81d969a85",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "clientConfig",
+            "alias": "parent-symlink",
+            "exit": 2,
+            "inputBytes": 212,
+            "afterBytes": 212,
+            "inputSha256": "19db3e2044cb53f9f6836c1481c4fe131fb0c88ba799e5381fb243e81d969a85",
+            "afterSha256": "19db3e2044cb53f9f6836c1481c4fe131fb0c88ba799e5381fb243e81d969a85",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "envFile",
+            "alias": "direct",
+            "exit": 2,
+            "inputBytes": 35,
+            "afterBytes": 35,
+            "inputSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+            "afterSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "envFile",
+            "alias": "symlink",
+            "exit": 2,
+            "inputBytes": 35,
+            "afterBytes": 35,
+            "inputSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+            "afterSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "envFile",
+            "alias": "hardlink",
+            "exit": 2,
+            "inputBytes": 35,
+            "afterBytes": 35,
+            "inputSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+            "afterSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "envFile",
+            "alias": "parent-symlink",
+            "exit": 2,
+            "inputBytes": 35,
+            "afterBytes": 35,
+            "inputSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+            "afterSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+            "inputPreserved": true,
+            "serverStarted": false
+          }
+        ],
+        "safe": [
+          {
+            "format": "terminal",
+            "exit": 0,
+            "bytes": 3819,
+            "sha256": "9e9cdd61825346764c9979e7ed80386d69b4f73d19eb2e44675940bb2dbdf4fc",
+            "normalizedSha256": "4d2f5c1e6a3ef0c5f769a94e59498e128ac7e0a09774cda48a2fae8867271dba",
+            "removedGenerationTimestamps": 1,
+            "inputPreserved": true
+          },
+          {
+            "format": "json",
+            "exit": 0,
+            "bytes": 5496,
+            "sha256": "92377e2414c4b2a57be2ffb594651cb49d859deda5b3f67b1b4af3a8bf0d3b02",
+            "normalizedSha256": "343bfd21f2ccd1306bda8191efac25a1edc4bfaeed8aa2151817e9bc65acfff2",
+            "removedGenerationTimestamps": 1,
+            "inputPreserved": true
+          },
+          {
+            "format": "sarif",
+            "exit": 0,
+            "bytes": 10173,
+            "sha256": "7974bec572fd854d034ffbe1da9e10a0930ee7b288f13d4316cf15e36ea0ce3d",
+            "normalizedSha256": "7974bec572fd854d034ffbe1da9e10a0930ee7b288f13d4316cf15e36ea0ce3d",
+            "removedGenerationTimestamps": 0,
+            "inputPreserved": true
+          },
+          {
+            "format": "markdown",
+            "exit": 0,
+            "bytes": 4114,
+            "sha256": "1c74a02fe439a83bbb6665b2fe9406a1e5773fc9268af8d90b3ac21625d1d3ab",
+            "normalizedSha256": "36a8ae8dd564dbc2f4985ce999c4cfba2e615edc47a9e33f71d71cc1b0c0a9fa",
+            "removedGenerationTimestamps": 1,
+            "inputPreserved": true
+          },
+          {
+            "format": "html",
+            "exit": 0,
+            "bytes": 31537,
+            "sha256": "d5f3a7a2e77d3947ff81a35f1dc02336b164cd5d8235ed12643a11f19b85b680",
+            "normalizedSha256": "6ede652b618763e86edaf0d301bbbf00f525b6d568a9835c3593f8e58aa827b2",
+            "removedGenerationTimestamps": 1,
+            "inputPreserved": true
+          }
+        ]
+      },
+      "writeFailure": {
+        "mode": "after",
+        "limitBytes": 4096,
+        "cases": [
+          {
+            "kind": "report",
+            "exit": 2,
+            "osError": "EFBIG",
+            "inputPreserved": true,
+            "reportPreserved": true,
+            "reportBytes": 15,
+            "reportSha256": "643557674635dab8e7ca6f73e23bc7766ec4311268dd63a91b7ccd9b8ad24978",
+            "snapshotExists": false,
+            "temporaryFiles": 0
+          },
+          {
+            "kind": "snapshot",
+            "exit": 2,
+            "osError": "EFBIG",
+            "inputPreserved": true,
+            "reportPreserved": true,
+            "reportBytes": 15,
+            "reportSha256": "643557674635dab8e7ca6f73e23bc7766ec4311268dd63a91b7ccd9b8ad24978",
+            "snapshotExists": false,
+            "temporaryFiles": 0
+          }
+        ]
+      },
+      "metadataSdkWorkflow": {
+        "workload": "Actual SDK metadata collection; controlled revisions; no tools called",
+        "audits": {
+          "before": {
+            "summary": {
+              "totalFindings": 0,
+              "bySeverity": {
+                "error": 0,
+                "warning": 0,
+                "info": 0
+              },
+              "byRule": {},
+              "toolCount": 2,
+              "promptCount": 1,
+              "resourceCount": 3,
+              "totalEstimatedTokens": 137,
+              "complete": true,
+              "score": 100
+            },
+            "findings": []
+          },
+          "contract": {
+            "summary": {
+              "totalFindings": 0,
+              "bySeverity": {
+                "error": 0,
+                "warning": 0,
+                "info": 0
+              },
+              "byRule": {},
+              "toolCount": 2,
+              "promptCount": 1,
+              "resourceCount": 3,
+              "totalEstimatedTokens": 137,
+              "complete": true,
+              "score": 100
+            },
+            "findings": []
+          },
+          "after": {
+            "summary": {
+              "totalFindings": 0,
+              "bySeverity": {
+                "error": 0,
+                "warning": 0,
+                "info": 0
+              },
+              "byRule": {},
+              "toolCount": 2,
+              "promptCount": 1,
+              "resourceCount": 3,
+              "totalEstimatedTokens": 136,
+              "complete": true,
+              "score": 100
+            },
+            "findings": []
+          },
+          "reordered": {
+            "summary": {
+              "totalFindings": 0,
+              "bySeverity": {
+                "error": 0,
+                "warning": 0,
+                "info": 0
+              },
+              "byRule": {},
+              "toolCount": 2,
+              "promptCount": 1,
+              "resourceCount": 3,
+              "totalEstimatedTokens": 137,
+              "complete": true,
+              "score": 100
+            },
+            "findings": []
+          },
+          "partial": {
+            "summary": {
+              "totalFindings": 1,
+              "bySeverity": {
+                "error": 1,
+                "warning": 0,
+                "info": 0
+              },
+              "byRule": {
+                "collection/incomplete": 1
+              },
+              "toolCount": 1,
+              "promptCount": 1,
+              "resourceCount": 3,
+              "totalEstimatedTokens": 67,
+              "complete": false,
+              "score": null
+            },
+            "findings": [
+              {
+                "ruleId": "collection/incomplete",
+                "severity": "error",
+                "serverId": "metadata-review-fixture",
+                "subject": {
+                  "kind": "server",
+                  "name": "metadata-review-fixture"
+                },
+                "message": "tools/list: Request for page 2 failed. Check server availability, authorization and response format, then retry.",
+                "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+                "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+              }
+            ]
+          },
+          "duplicate": {
+            "summary": {
+              "totalFindings": 1,
+              "bySeverity": {
+                "error": 1,
+                "warning": 0,
+                "info": 0
+              },
+              "byRule": {
+                "naming/collision": 1
+              },
+              "toolCount": 2,
+              "promptCount": 1,
+              "resourceCount": 3,
+              "totalEstimatedTokens": 134,
+              "complete": true,
+              "score": 98
+            },
+            "findings": [
+              {
+                "ruleId": "naming/collision",
+                "severity": "error",
+                "serverId": "metadata-review-fixture",
+                "subject": {
+                  "kind": "tool",
+                  "name": "search_records"
+                },
+                "message": "\"search_records\" occurs 2 times in server \"metadata-review-fixture\"'s tool list; calls address tools by name and cannot select a definition.",
+                "suggestion": "Give each distinct tool a unique name and remove repeated list entries, including overlaps between pages."
+              }
+            ]
+          }
+        },
+        "comparisons": {
+          "contract": {
+            "exit": 1,
+            "complete": true,
+            "summary": {
+              "added": 0,
+              "removed": 0,
+              "changed": 2,
+              "unchanged": 5,
+              "unpaired": 0
+            },
+            "issues": []
+          },
+          "after": {
+            "exit": 1,
+            "complete": true,
+            "summary": {
+              "added": 1,
+              "removed": 1,
+              "changed": 5,
+              "unchanged": 1,
+              "unpaired": 0
+            },
+            "issues": []
+          },
+          "reordered": {
+            "exit": 0,
+            "complete": true,
+            "summary": {
+              "added": 0,
+              "removed": 0,
+              "changed": 0,
+              "unchanged": 7,
+              "unpaired": 0
+            },
+            "issues": []
+          },
+          "partial": {
+            "exit": 2,
+            "complete": false,
+            "summary": {
+              "added": 0,
+              "removed": 0,
+              "changed": 0,
+              "unchanged": 6,
+              "unpaired": 1
+            },
+            "issues": [
+              "After: metadata-review-fixture tools/list is incomplete.",
+              "metadata-review-fixture tools/list: coverage is complete before and incomplete after; absent definitions cannot be classified as added or removed."
+            ]
+          },
+          "duplicate": {
+            "exit": 2,
+            "complete": false,
+            "summary": {
+              "added": 0,
+              "removed": 1,
+              "changed": 0,
+              "unchanged": 5,
+              "unpaired": 3
+            },
+            "issues": [
+              "metadata-review-fixture tools/list: duplicate identity \"search_records\" (1 before, 2 after); no records were paired for this identity."
+            ]
+          }
+        },
+        "snapshotOverwriteRefused": true
+      },
+      "privateReportsAndSnapshots": true
+    },
+    {
+      "label": "current",
+      "node": "v24.21.0",
+      "sdk": "1.32.1",
+      "matchedDistFiles": 84,
+      "replay": {
+        "mode": "after",
+        "node": "v24.21.0",
+        "fixture": "tests/fixtures/reference-servers/server-filesystem.json",
+        "fixtureSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+        "cases": [
+          {
+            "kind": "definitions",
+            "alias": "direct",
+            "exit": 2,
+            "inputBytes": 20406,
+            "afterBytes": 20406,
+            "inputSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+            "afterSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "definitions",
+            "alias": "symlink",
+            "exit": 2,
+            "inputBytes": 20406,
+            "afterBytes": 20406,
+            "inputSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+            "afterSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "definitions",
+            "alias": "hardlink",
+            "exit": 2,
+            "inputBytes": 20406,
+            "afterBytes": 20406,
+            "inputSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+            "afterSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "definitions",
+            "alias": "parent-symlink",
+            "exit": 2,
+            "inputBytes": 20406,
+            "afterBytes": 20406,
+            "inputSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+            "afterSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "explicitConfig",
+            "alias": "direct",
+            "exit": 2,
+            "inputBytes": 15,
+            "afterBytes": 15,
+            "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "explicitConfig",
+            "alias": "symlink",
+            "exit": 2,
+            "inputBytes": 15,
+            "afterBytes": 15,
+            "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "explicitConfig",
+            "alias": "hardlink",
+            "exit": 2,
+            "inputBytes": 15,
+            "afterBytes": 15,
+            "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "explicitConfig",
+            "alias": "parent-symlink",
+            "exit": 2,
+            "inputBytes": 15,
+            "afterBytes": 15,
+            "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "automaticConfig",
+            "alias": "direct",
+            "exit": 2,
+            "inputBytes": 15,
+            "afterBytes": 15,
+            "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "automaticConfig",
+            "alias": "symlink",
+            "exit": 2,
+            "inputBytes": 15,
+            "afterBytes": 15,
+            "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "automaticConfig",
+            "alias": "hardlink",
+            "exit": 2,
+            "inputBytes": 15,
+            "afterBytes": 15,
+            "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "automaticConfig",
+            "alias": "parent-symlink",
+            "exit": 2,
+            "inputBytes": 15,
+            "afterBytes": 15,
+            "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "clientConfig",
+            "alias": "direct",
+            "exit": 2,
+            "inputBytes": 211,
+            "afterBytes": 211,
+            "inputSha256": "f8cbfd9435cb46443c2e120fd6e612bab76355312b25bbeeb5d687ccbb087b0e",
+            "afterSha256": "f8cbfd9435cb46443c2e120fd6e612bab76355312b25bbeeb5d687ccbb087b0e",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "clientConfig",
+            "alias": "symlink",
+            "exit": 2,
+            "inputBytes": 211,
+            "afterBytes": 211,
+            "inputSha256": "f8cbfd9435cb46443c2e120fd6e612bab76355312b25bbeeb5d687ccbb087b0e",
+            "afterSha256": "f8cbfd9435cb46443c2e120fd6e612bab76355312b25bbeeb5d687ccbb087b0e",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "clientConfig",
+            "alias": "hardlink",
+            "exit": 2,
+            "inputBytes": 211,
+            "afterBytes": 211,
+            "inputSha256": "f8cbfd9435cb46443c2e120fd6e612bab76355312b25bbeeb5d687ccbb087b0e",
+            "afterSha256": "f8cbfd9435cb46443c2e120fd6e612bab76355312b25bbeeb5d687ccbb087b0e",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "clientConfig",
+            "alias": "parent-symlink",
+            "exit": 2,
+            "inputBytes": 211,
+            "afterBytes": 211,
+            "inputSha256": "f8cbfd9435cb46443c2e120fd6e612bab76355312b25bbeeb5d687ccbb087b0e",
+            "afterSha256": "f8cbfd9435cb46443c2e120fd6e612bab76355312b25bbeeb5d687ccbb087b0e",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "envFile",
+            "alias": "direct",
+            "exit": 2,
+            "inputBytes": 35,
+            "afterBytes": 35,
+            "inputSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+            "afterSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "envFile",
+            "alias": "symlink",
+            "exit": 2,
+            "inputBytes": 35,
+            "afterBytes": 35,
+            "inputSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+            "afterSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "envFile",
+            "alias": "hardlink",
+            "exit": 2,
+            "inputBytes": 35,
+            "afterBytes": 35,
+            "inputSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+            "afterSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+            "inputPreserved": true,
+            "serverStarted": false
+          },
+          {
+            "kind": "envFile",
+            "alias": "parent-symlink",
+            "exit": 2,
+            "inputBytes": 35,
+            "afterBytes": 35,
+            "inputSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+            "afterSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+            "inputPreserved": true,
+            "serverStarted": false
+          }
+        ],
+        "safe": [
+          {
+            "format": "terminal",
+            "exit": 0,
+            "bytes": 3819,
+            "sha256": "1f0fba9247b34918f8e8f661884d95fb3e7204d2e011cd2a2373eb96a6bea4a0",
+            "normalizedSha256": "4d2f5c1e6a3ef0c5f769a94e59498e128ac7e0a09774cda48a2fae8867271dba",
+            "removedGenerationTimestamps": 1,
+            "inputPreserved": true
+          },
+          {
+            "format": "json",
+            "exit": 0,
+            "bytes": 5496,
+            "sha256": "19f5631fce641728f72f87981620a026f0fb348f21b52fce7be8e067897e067d",
+            "normalizedSha256": "343bfd21f2ccd1306bda8191efac25a1edc4bfaeed8aa2151817e9bc65acfff2",
+            "removedGenerationTimestamps": 1,
+            "inputPreserved": true
+          },
+          {
+            "format": "sarif",
+            "exit": 0,
+            "bytes": 10173,
+            "sha256": "7974bec572fd854d034ffbe1da9e10a0930ee7b288f13d4316cf15e36ea0ce3d",
+            "normalizedSha256": "7974bec572fd854d034ffbe1da9e10a0930ee7b288f13d4316cf15e36ea0ce3d",
+            "removedGenerationTimestamps": 0,
+            "inputPreserved": true
+          },
+          {
+            "format": "markdown",
+            "exit": 0,
+            "bytes": 4114,
+            "sha256": "fded64c20913af07584d0dadd2adc6e63377c120ff7708ede622bf9982f6426e",
+            "normalizedSha256": "36a8ae8dd564dbc2f4985ce999c4cfba2e615edc47a9e33f71d71cc1b0c0a9fa",
+            "removedGenerationTimestamps": 1,
+            "inputPreserved": true
+          },
+          {
+            "format": "html",
+            "exit": 0,
+            "bytes": 31537,
+            "sha256": "3bf8371d39f49d41250fea5ff9fb3a0a39578c95b8c6c26559bb97338010f68c",
+            "normalizedSha256": "6ede652b618763e86edaf0d301bbbf00f525b6d568a9835c3593f8e58aa827b2",
+            "removedGenerationTimestamps": 1,
+            "inputPreserved": true
+          }
+        ]
+      },
+      "writeFailure": {
+        "mode": "after",
+        "limitBytes": 4096,
+        "cases": [
+          {
+            "kind": "report",
+            "exit": 2,
+            "osError": "EFBIG",
+            "inputPreserved": true,
+            "reportPreserved": true,
+            "reportBytes": 15,
+            "reportSha256": "643557674635dab8e7ca6f73e23bc7766ec4311268dd63a91b7ccd9b8ad24978",
+            "snapshotExists": false,
+            "temporaryFiles": 0
+          },
+          {
+            "kind": "snapshot",
+            "exit": 2,
+            "osError": "EFBIG",
+            "inputPreserved": true,
+            "reportPreserved": true,
+            "reportBytes": 15,
+            "reportSha256": "643557674635dab8e7ca6f73e23bc7766ec4311268dd63a91b7ccd9b8ad24978",
+            "snapshotExists": false,
+            "temporaryFiles": 0
+          }
+        ]
+      },
+      "metadataSdkWorkflow": {
+        "workload": "Actual SDK metadata collection; controlled revisions; no tools called",
+        "audits": {
+          "before": {
+            "summary": {
+              "totalFindings": 0,
+              "bySeverity": {
+                "error": 0,
+                "warning": 0,
+                "info": 0
+              },
+              "byRule": {},
+              "toolCount": 2,
+              "promptCount": 1,
+              "resourceCount": 3,
+              "totalEstimatedTokens": 137,
+              "complete": true,
+              "score": 100
+            },
+            "findings": []
+          },
+          "contract": {
+            "summary": {
+              "totalFindings": 0,
+              "bySeverity": {
+                "error": 0,
+                "warning": 0,
+                "info": 0
+              },
+              "byRule": {},
+              "toolCount": 2,
+              "promptCount": 1,
+              "resourceCount": 3,
+              "totalEstimatedTokens": 137,
+              "complete": true,
+              "score": 100
+            },
+            "findings": []
+          },
+          "after": {
+            "summary": {
+              "totalFindings": 0,
+              "bySeverity": {
+                "error": 0,
+                "warning": 0,
+                "info": 0
+              },
+              "byRule": {},
+              "toolCount": 2,
+              "promptCount": 1,
+              "resourceCount": 3,
+              "totalEstimatedTokens": 136,
+              "complete": true,
+              "score": 100
+            },
+            "findings": []
+          },
+          "reordered": {
+            "summary": {
+              "totalFindings": 0,
+              "bySeverity": {
+                "error": 0,
+                "warning": 0,
+                "info": 0
+              },
+              "byRule": {},
+              "toolCount": 2,
+              "promptCount": 1,
+              "resourceCount": 3,
+              "totalEstimatedTokens": 137,
+              "complete": true,
+              "score": 100
+            },
+            "findings": []
+          },
+          "partial": {
+            "summary": {
+              "totalFindings": 1,
+              "bySeverity": {
+                "error": 1,
+                "warning": 0,
+                "info": 0
+              },
+              "byRule": {
+                "collection/incomplete": 1
+              },
+              "toolCount": 1,
+              "promptCount": 1,
+              "resourceCount": 3,
+              "totalEstimatedTokens": 67,
+              "complete": false,
+              "score": null
+            },
+            "findings": [
+              {
+                "ruleId": "collection/incomplete",
+                "severity": "error",
+                "serverId": "metadata-review-fixture",
+                "subject": {
+                  "kind": "server",
+                  "name": "metadata-review-fixture"
+                },
+                "message": "tools/list: Request for page 2 failed. Check server availability, authorization and response format, then retry.",
+                "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+                "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+              }
+            ]
+          },
+          "duplicate": {
+            "summary": {
+              "totalFindings": 1,
+              "bySeverity": {
+                "error": 1,
+                "warning": 0,
+                "info": 0
+              },
+              "byRule": {
+                "naming/collision": 1
+              },
+              "toolCount": 2,
+              "promptCount": 1,
+              "resourceCount": 3,
+              "totalEstimatedTokens": 134,
+              "complete": true,
+              "score": 98
+            },
+            "findings": [
+              {
+                "ruleId": "naming/collision",
+                "severity": "error",
+                "serverId": "metadata-review-fixture",
+                "subject": {
+                  "kind": "tool",
+                  "name": "search_records"
+                },
+                "message": "\"search_records\" occurs 2 times in server \"metadata-review-fixture\"'s tool list; calls address tools by name and cannot select a definition.",
+                "suggestion": "Give each distinct tool a unique name and remove repeated list entries, including overlaps between pages."
+              }
+            ]
+          }
+        },
+        "comparisons": {
+          "contract": {
+            "exit": 1,
+            "complete": true,
+            "summary": {
+              "added": 0,
+              "removed": 0,
+              "changed": 2,
+              "unchanged": 5,
+              "unpaired": 0
+            },
+            "issues": []
+          },
+          "after": {
+            "exit": 1,
+            "complete": true,
+            "summary": {
+              "added": 1,
+              "removed": 1,
+              "changed": 5,
+              "unchanged": 1,
+              "unpaired": 0
+            },
+            "issues": []
+          },
+          "reordered": {
+            "exit": 0,
+            "complete": true,
+            "summary": {
+              "added": 0,
+              "removed": 0,
+              "changed": 0,
+              "unchanged": 7,
+              "unpaired": 0
+            },
+            "issues": []
+          },
+          "partial": {
+            "exit": 2,
+            "complete": false,
+            "summary": {
+              "added": 0,
+              "removed": 0,
+              "changed": 0,
+              "unchanged": 6,
+              "unpaired": 1
+            },
+            "issues": [
+              "After: metadata-review-fixture tools/list is incomplete.",
+              "metadata-review-fixture tools/list: coverage is complete before and incomplete after; absent definitions cannot be classified as added or removed."
+            ]
+          },
+          "duplicate": {
+            "exit": 2,
+            "complete": false,
+            "summary": {
+              "added": 0,
+              "removed": 1,
+              "changed": 0,
+              "unchanged": 5,
+              "unpaired": 3
+            },
+            "issues": [
+              "metadata-review-fixture tools/list: duplicate identity \"search_records\" (1 before, 2 after); no records were paired for this identity."
+            ]
+          }
+        },
+        "snapshotOverwriteRefused": true
+      },
+      "privateReportsAndSnapshots": true
+    }
+  ],
+  "limits": [
+    "Local packed artifact only; no npm release or hosted deployment.",
+    "Normalize only the generation timestamp in formats that include it.",
+    "POSIX per-file limit causes EFBIG; this does not simulate disk exhaustion or power loss.",
+    "A successful new snapshot remains if a later report write fails."
+  ]
+}

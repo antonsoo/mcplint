@@ -76,3 +76,30 @@ The guard covers inputs read by mcplint, including resolved env-file paths,
 not arbitrary files opened by a launched server. It is not a filesystem lock,
 cannot protect shell redirection, and does not guarantee whole-machine
 power-loss recovery. No tool calls are executed by these checks.
+
+## Clean build and installed artifact
+
+Implementation `e589ddf32867fd1af46369eac2e97028225a0edb` was archived into a new
+directory. Under Node 24.21.0, fresh `npm ci`, lint, type checking, all 534 tests,
+build, 32 existing offline Chromium/Firefox report workflows, site build and
+`npm pack` passed. All 407 tracked files remained unchanged. The CLI screenshot
+was inspected; the browser run did not replace any retained screenshots.
+
+The 125,714-byte package was installed into two new directories with lifecycle
+scripts disabled:
+
+| Node | Resolved MCP SDK | Installed build files matching the clean build | Results |
+| --- | --- | ---: | --- |
+| 20.0.0 | 1.32.1 | 84 | Twenty guards, five report formats, both OS write failures, SDK snapshot/diff workflow pass |
+| 24.21.0 | 1.32.1 | 84 | Same checks pass |
+
+The installed SDK workflow collects controlled complete, reordered, changed,
+partial and duplicate metadata, saves snapshots, and renders comparisons.
+It preserves incomplete comparison states and refuses replacement of an
+existing snapshot. The package's ordinary report contents match the source
+under the same timestamp normalization, and created reports/snapshots have
+mode 0600 on POSIX. [Verification receipt](verification.json).
+
+Package SHA-256:
+`40140b169cdc76e0714bce899a55cb24f4280d7d93c37b1f3aed8d16c2ac9d7b`.
+Package version remains 0.3.3.
