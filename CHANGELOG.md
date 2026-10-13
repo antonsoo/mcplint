@@ -4,6 +4,13 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Protect file-audit definitions, explicit/discovered lint settings, MCP client
+  configs and their resolved `envFile` inputs from report/snapshot destinations.
+  Check aliases and both output paths before starting configured servers.
+  Replace reports atomically; keep exclusive snapshot creation and remove a
+  partial new snapshot on write failure. Preserve incomplete collection when
+  an unrelated env file is missing. [Before/after and OS-failure evidence](studies/report-inputs/README.md).
+
 - Capture full decoded list entries and collection coverage with `--snapshot`,
   then review updates with `mcplint diff` in terminal, JSON or offline HTML.
   Match tools/prompts by name and resources/templates by URI; retain unknown

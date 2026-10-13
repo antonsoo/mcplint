@@ -1,0 +1,275 @@
+{
+  "mode": "after",
+  "node": "v24.21.0",
+  "fixture": "tests/fixtures/reference-servers/server-filesystem.json",
+  "fixtureSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+  "cases": [
+    {
+      "kind": "definitions",
+      "alias": "direct",
+      "exit": 2,
+      "inputBytes": 20406,
+      "afterBytes": 20406,
+      "inputSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+      "afterSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+      "inputPreserved": true,
+      "serverStarted": false
+    },
+    {
+      "kind": "definitions",
+      "alias": "symlink",
+      "exit": 2,
+      "inputBytes": 20406,
+      "afterBytes": 20406,
+      "inputSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+      "afterSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+      "inputPreserved": true,
+      "serverStarted": false
+    },
+    {
+      "kind": "definitions",
+      "alias": "hardlink",
+      "exit": 2,
+      "inputBytes": 20406,
+      "afterBytes": 20406,
+      "inputSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+      "afterSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+      "inputPreserved": true,
+      "serverStarted": false
+    },
+    {
+      "kind": "definitions",
+      "alias": "parent-symlink",
+      "exit": 2,
+      "inputBytes": 20406,
+      "afterBytes": 20406,
+      "inputSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+      "afterSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+      "inputPreserved": true,
+      "serverStarted": false
+    },
+    {
+      "kind": "explicitConfig",
+      "alias": "direct",
+      "exit": 2,
+      "inputBytes": 15,
+      "afterBytes": 15,
+      "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "inputPreserved": true,
+      "serverStarted": false
+    },
+    {
+      "kind": "explicitConfig",
+      "alias": "symlink",
+      "exit": 2,
+      "inputBytes": 15,
+      "afterBytes": 15,
+      "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "inputPreserved": true,
+      "serverStarted": false
+    },
+    {
+      "kind": "explicitConfig",
+      "alias": "hardlink",
+      "exit": 2,
+      "inputBytes": 15,
+      "afterBytes": 15,
+      "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "inputPreserved": true,
+      "serverStarted": false
+    },
+    {
+      "kind": "explicitConfig",
+      "alias": "parent-symlink",
+      "exit": 2,
+      "inputBytes": 15,
+      "afterBytes": 15,
+      "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "inputPreserved": true,
+      "serverStarted": false
+    },
+    {
+      "kind": "automaticConfig",
+      "alias": "direct",
+      "exit": 2,
+      "inputBytes": 15,
+      "afterBytes": 15,
+      "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "inputPreserved": true,
+      "serverStarted": false
+    },
+    {
+      "kind": "automaticConfig",
+      "alias": "symlink",
+      "exit": 2,
+      "inputBytes": 15,
+      "afterBytes": 15,
+      "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "inputPreserved": true,
+      "serverStarted": false
+    },
+    {
+      "kind": "automaticConfig",
+      "alias": "hardlink",
+      "exit": 2,
+      "inputBytes": 15,
+      "afterBytes": 15,
+      "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "inputPreserved": true,
+      "serverStarted": false
+    },
+    {
+      "kind": "automaticConfig",
+      "alias": "parent-symlink",
+      "exit": 2,
+      "inputBytes": 15,
+      "afterBytes": 15,
+      "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "afterSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "inputPreserved": true,
+      "serverStarted": false
+    },
+    {
+      "kind": "clientConfig",
+      "alias": "direct",
+      "exit": 2,
+      "inputBytes": 211,
+      "afterBytes": 211,
+      "inputSha256": "f8cbfd9435cb46443c2e120fd6e612bab76355312b25bbeeb5d687ccbb087b0e",
+      "afterSha256": "f8cbfd9435cb46443c2e120fd6e612bab76355312b25bbeeb5d687ccbb087b0e",
+      "inputPreserved": true,
+      "serverStarted": false
+    },
+    {
+      "kind": "clientConfig",
+      "alias": "symlink",
+      "exit": 2,
+      "inputBytes": 211,
+      "afterBytes": 211,
+      "inputSha256": "f8cbfd9435cb46443c2e120fd6e612bab76355312b25bbeeb5d687ccbb087b0e",
+      "afterSha256": "f8cbfd9435cb46443c2e120fd6e612bab76355312b25bbeeb5d687ccbb087b0e",
+      "inputPreserved": true,
+      "serverStarted": false
+    },
+    {
+      "kind": "clientConfig",
+      "alias": "hardlink",
+      "exit": 2,
+      "inputBytes": 211,
+      "afterBytes": 211,
+      "inputSha256": "f8cbfd9435cb46443c2e120fd6e612bab76355312b25bbeeb5d687ccbb087b0e",
+      "afterSha256": "f8cbfd9435cb46443c2e120fd6e612bab76355312b25bbeeb5d687ccbb087b0e",
+      "inputPreserved": true,
+      "serverStarted": false
+    },
+    {
+      "kind": "clientConfig",
+      "alias": "parent-symlink",
+      "exit": 2,
+      "inputBytes": 211,
+      "afterBytes": 211,
+      "inputSha256": "f8cbfd9435cb46443c2e120fd6e612bab76355312b25bbeeb5d687ccbb087b0e",
+      "afterSha256": "f8cbfd9435cb46443c2e120fd6e612bab76355312b25bbeeb5d687ccbb087b0e",
+      "inputPreserved": true,
+      "serverStarted": false
+    },
+    {
+      "kind": "envFile",
+      "alias": "direct",
+      "exit": 2,
+      "inputBytes": 35,
+      "afterBytes": 35,
+      "inputSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+      "afterSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+      "inputPreserved": true,
+      "serverStarted": false
+    },
+    {
+      "kind": "envFile",
+      "alias": "symlink",
+      "exit": 2,
+      "inputBytes": 35,
+      "afterBytes": 35,
+      "inputSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+      "afterSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+      "inputPreserved": true,
+      "serverStarted": false
+    },
+    {
+      "kind": "envFile",
+      "alias": "hardlink",
+      "exit": 2,
+      "inputBytes": 35,
+      "afterBytes": 35,
+      "inputSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+      "afterSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+      "inputPreserved": true,
+      "serverStarted": false
+    },
+    {
+      "kind": "envFile",
+      "alias": "parent-symlink",
+      "exit": 2,
+      "inputBytes": 35,
+      "afterBytes": 35,
+      "inputSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+      "afterSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+      "inputPreserved": true,
+      "serverStarted": false
+    }
+  ],
+  "safe": [
+    {
+      "format": "terminal",
+      "exit": 0,
+      "bytes": 3819,
+      "sha256": "689960192a1557163890fd45eb25cdbde0f009fe744d258ff42aadc1e1aab3ad",
+      "normalizedSha256": "4d2f5c1e6a3ef0c5f769a94e59498e128ac7e0a09774cda48a2fae8867271dba",
+      "removedGenerationTimestamps": 1,
+      "inputPreserved": true
+    },
+    {
+      "format": "json",
+      "exit": 0,
+      "bytes": 5496,
+      "sha256": "1d9c02f335a88c5e47d64a737bc4feede2b2d3e2dcb1331c880e2b2d164789f6",
+      "normalizedSha256": "343bfd21f2ccd1306bda8191efac25a1edc4bfaeed8aa2151817e9bc65acfff2",
+      "removedGenerationTimestamps": 1,
+      "inputPreserved": true
+    },
+    {
+      "format": "sarif",
+      "exit": 0,
+      "bytes": 10173,
+      "sha256": "7974bec572fd854d034ffbe1da9e10a0930ee7b288f13d4316cf15e36ea0ce3d",
+      "normalizedSha256": "7974bec572fd854d034ffbe1da9e10a0930ee7b288f13d4316cf15e36ea0ce3d",
+      "removedGenerationTimestamps": 0,
+      "inputPreserved": true
+    },
+    {
+      "format": "markdown",
+      "exit": 0,
+      "bytes": 4114,
+      "sha256": "eb21afec63180ff8e4b87c1fe3318916507a07fa7f0ba63a97aa30f2edcba741",
+      "normalizedSha256": "36a8ae8dd564dbc2f4985ce999c4cfba2e615edc47a9e33f71d71cc1b0c0a9fa",
+      "removedGenerationTimestamps": 1,
+      "inputPreserved": true
+    },
+    {
+      "format": "html",
+      "exit": 0,
+      "bytes": 31537,
+      "sha256": "e70fff3e77e62a54aec3c4c0ccc4fb9daba006e4388d0dd330b3ec4bc258e5da",
+      "normalizedSha256": "6ede652b618763e86edaf0d301bbbf00f525b6d568a9835c3593f8e58aa827b2",
+      "removedGenerationTimestamps": 1,
+      "inputPreserved": true
+    }
+  ]
+}

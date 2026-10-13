@@ -36,7 +36,8 @@ it('protects snapshots from report aliases and rejects invalid comparison inputs
     await symlink(newSnapshot, outputAlias);
     const result = run(['file', source, '--snapshot', newSnapshot, '--output', outputAlias]);
     expect(result.status).toBe(2); expect(result.stderr).toContain('cannot replace');
-    expect(JSON.parse(await readFile(newSnapshot, 'utf8')) as unknown).toHaveProperty('format', 'mcplint-metadata-snapshot');
+    // Reject the known alias before creating either output or collecting metadata.
+    await expect(readFile(newSnapshot)).rejects.toMatchObject({ code: 'ENOENT' });
     for (const args of [[], ['--format', 'markdown'], ['--snapshot', join(directory, 'no.json')], ['--fail-on', 'error'], ['--output', snapshot]]) {
       const inputs = args.length ? [snapshot, snapshot] : [snapshot];
       expect(run(['diff', ...inputs, ...args]).status).toBe(2);

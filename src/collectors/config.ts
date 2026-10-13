@@ -226,6 +226,8 @@ export function parseServerEntries(config: unknown, ctx: ConfigContext = {}): Se
 }
 
 export interface CollectConfigOptions extends ConnectionOptions {
+  /** Resolved config/env-file inputs, before any server starts. A rejection aborts collection. */
+  onSourceFiles?: (paths: string[]) => void | Promise<void>;
   onServerStart?: (entry: ServerEntry) => void;
   onServerError?: (entry: ServerEntry, error: unknown) => void;
   onServerSkipped?: (skipped: SkippedServer) => void;
@@ -246,6 +248,7 @@ export async function collectConfig(path: string, opts: CollectConfigOptions = {
     throw new Error(`${path} is not valid JSON (comments and trailing commas are allowed)${position ? ` at position ${position}` : ''}. Check the file syntax.`);
   }
   const { entries, skipped } = readServerConfig(parsed, { path, ...(opts.inputs ? { inputs: opts.inputs } : {}) });
+  await opts.onSourceFiles?.([resolve(path), ...entries.flatMap(entry => entry.kind === 'stdio' && entry.envFile ? [entry.envFile] : [])]);
   for (const server of skipped) opts.onServerSkipped?.(server);
   if (entries.length === 0 && skipped.length === 0) {
     throw new Error(`${path}'s server map has no entries with a "command" or "url".`);

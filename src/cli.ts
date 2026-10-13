@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 import { parseArgs } from 'node:util';
-import { stat, writeFile } from 'node:fs/promises';
 import { createReadStream } from 'node:fs';
 import { resolve } from 'node:path';
 import chalk from 'chalk';
@@ -11,7 +10,8 @@ import { collectConfig } from './collectors/config.js';
 import { connectionBudget } from './collectors/connect.js';
 import { connectionFailureMessage } from './collectors/diagnostics.js';
 import { lint, shouldFail } from './core/lint.js';
-import { loadConfigFile, resolveConfig } from './core/config.js';
+import { findConfigFile, loadConfigFile, resolveConfig } from './core/config.js';
+import { validateOutputPaths, writeReport, writeSnapshot } from './report-file.js';
 import { renderTerminal } from './report/terminal.js';
 import { visibleControls } from './core/unicode.js';
 import { renderJson } from './report/json.js';
@@ -106,12 +106,11 @@ async function main(): Promise<void> {
     if (rest.length !== 2) fail('diff requires a before snapshot and an after snapshot.');
     if (Object.entries(values).some(([key, value]) => value !== undefined && !['format', 'output'].includes(key))) fail('diff accepts only --format and --output. Its exit codes are 0 unchanged, 1 changed, 2 incomplete or invalid.');
     if (!['terminal', 'json', 'html'].includes(format)) fail('diff supports terminal, json and html reports.');
-    if (values.output && rest.some(path => resolve(path) === resolve(values.output!))) fail('A diff report cannot replace either input snapshot.');
+    await validateOutputPaths(rest, { report: values.output });
     const comparison = compareMetadata(await readSnapshot(rest[0]!), await readSnapshot(rest[1]!));
     const rendered = format === 'json' ? JSON.stringify(comparison, null, 2) + '\n' : format === 'html' ? renderMetadataHtml(comparison) : renderMetadataTerminal(comparison);
     if (values.output) {
-      await protectInputs(values.output, rest);
-      await writeFile(values.output, rendered, 'utf8');
+      await writeReport(values.output, rendered, rest);
     }
     else process.stdout.write(rendered);
     process.exitCode = comparison.complete ? (comparison.changes.length ? 1 : 0) : 2;
@@ -120,7 +119,14 @@ async function main(): Promise<void> {
   if (values.snapshot && values.output && resolve(values.snapshot) === resolve(values.output)) fail('--snapshot and --output must use different paths.');
   if (values.snapshot && (target === 'file' || target === 'config') && rest[0] && resolve(values.snapshot) === resolve(rest[0])) fail('--snapshot cannot replace its input file.');
   const failOn = parseFailOn(values['fail-on']);
-  const configFile = await loadConfigFile(process.cwd(), values.config);
+  const configPath = findConfigFile(process.cwd(), values.config);
+  const inputPaths = [
+    ...((target === 'file' || target === 'config') && rest[0] ? [rest[0]] : []),
+    ...(configPath ? [configPath] : [])
+  ];
+  const outputPaths = { report: values.output, snapshot: values.snapshot };
+  await validateOutputPaths(inputPaths, outputPaths);
+  const configFile = await loadConfigFile(process.cwd(), configPath);
   const config = resolveConfig({
     file: configFile,
     ...(values.budget !== undefined ? { budgetFlag: parsePositiveInt('--budget', values.budget) } : {}),
@@ -166,6 +172,10 @@ async function main(): Promise<void> {
         const inputs = parseInputs(values.input);
         collected = await collectConfig(path, {
           ...connectionOptions,
+          onSourceFiles: async paths => {
+            inputPaths.push(...paths);
+            await validateOutputPaths(inputPaths, outputPaths);
+          },
           onServerStart: (entry) => process.stderr.write(chalk.dim(`  starting ${visibleControls(entry.key)} (${entry.kind})...\n`)),
           onServerError: (entry, err) =>
             process.stderr.write(chalk.red(`  ${visibleControls(entry.key)}: ${connectionFailureMessage(err)}\n`)),
@@ -183,16 +193,16 @@ async function main(): Promise<void> {
   }
 
   const result = lint(collected, config);
+  await validateOutputPaths(inputPaths, outputPaths);
   if (values.snapshot) {
     const snapshot = JSON.stringify(createMetadataSnapshot(collected), null, 2) + '\n';
     if (Buffer.byteLength(snapshot) > MAX_SNAPSHOT_BYTES) fail('Metadata exceeds the 50 MB snapshot limit.');
-    await writeFile(values.snapshot, snapshot, { encoding: 'utf8', flag: 'wx' });
+    await writeSnapshot(values.snapshot, snapshot, [...inputPaths, ...(values.output ? [values.output] : [])]);
     process.stderr.write(`Snapshot written to ${visibleControls(values.snapshot)}\n`);
   }
   const rendered = render(result, format);
   if (values.output) {
-    if (values.snapshot) await protectInputs(values.output, [values.snapshot]);
-    await writeFile(values.output, rendered, 'utf8');
+    await writeReport(values.output, rendered, [...inputPaths, ...(values.snapshot ? [values.snapshot] : [])]);
     process.stderr.write(chalk.dim(`Report written to ${visibleControls(values.output)}\n`));
   } else {
     process.stdout.write(rendered.endsWith('\n') ? rendered : `${rendered}\n`);
@@ -214,19 +224,6 @@ async function readSnapshot(path: string) {
     chunks.push(chunk);
   }
   return parseMetadataSnapshot(decodeText(Buffer.concat(chunks)));
-}
-
-/** Also catch existing symlink and hard-link aliases, not just identical path strings. */
-async function protectInputs(output: string, inputs: string[]): Promise<void> {
-  const destination = await stat(output).catch((error: unknown) => {
-    if (typeof error === 'object' && error !== null && 'code' in error && error.code === 'ENOENT') return undefined;
-    throw error;
-  });
-  if (!destination) return;
-  for (const input of inputs) {
-    const source = await stat(input);
-    if (source.dev === destination.dev && source.ino === destination.ino) throw new Error('A report cannot replace a metadata snapshot, including through a file alias.');
-  }
 }
 
 function render(result: LintResult, format: string): string {

@@ -1,0 +1,28 @@
+{
+  "mode": "after",
+  "limitBytes": 4096,
+  "cases": [
+    {
+      "kind": "report",
+      "exit": 2,
+      "osError": "EFBIG",
+      "inputPreserved": true,
+      "reportPreserved": true,
+      "reportBytes": 15,
+      "reportSha256": "643557674635dab8e7ca6f73e23bc7766ec4311268dd63a91b7ccd9b8ad24978",
+      "snapshotExists": false,
+      "temporaryFiles": 0
+    },
+    {
+      "kind": "snapshot",
+      "exit": 2,
+      "osError": "EFBIG",
+      "inputPreserved": true,
+      "reportPreserved": true,
+      "reportBytes": 15,
+      "reportSha256": "643557674635dab8e7ca6f73e23bc7766ec4311268dd63a91b7ccd9b8ad24978",
+      "snapshotExists": false,
+      "temporaryFiles": 0
+    }
+  ]
+}

@@ -191,6 +191,13 @@ mcplint config .vscode/mcp.json --input api-key="$API_KEY"
 mcplint stdio --fail-on error --format sarif --output mcplint.sarif -- node server.js
 ```
 
+In the source checkout, report/snapshot destinations cannot replace the input
+definitions, selected lint config, MCP client config or its resolved `envFile`
+inputs. File aliases and colliding outputs are checked before configured servers
+start. Existing reports are replaced atomically; snapshots require a new path,
+and failed new snapshot writes are removed. Output symlinks are refused and
+created files are private (0600 on POSIX). [Reproduction and limits](studies/report-inputs/README.md).
+
 HTTP redirects stay within the configured URL's origin (scheme, host and port),
 with a maximum of 20 hops per request. A redirect to another origin is rejected
 before headers or request bodies are sent there. Configure the intended final

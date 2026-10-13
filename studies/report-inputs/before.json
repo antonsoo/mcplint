@@ -1,0 +1,275 @@
+{
+  "mode": "before",
+  "node": "v24.21.0",
+  "fixture": "tests/fixtures/reference-servers/server-filesystem.json",
+  "fixtureSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+  "cases": [
+    {
+      "kind": "definitions",
+      "alias": "direct",
+      "exit": 0,
+      "inputBytes": 20406,
+      "afterBytes": 5496,
+      "inputSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+      "afterSha256": "34db751015eea03d6d5949f067739d07ef04bf8675f6ddaa2d90a57454025ee7",
+      "inputPreserved": false,
+      "serverStarted": false
+    },
+    {
+      "kind": "definitions",
+      "alias": "symlink",
+      "exit": 0,
+      "inputBytes": 20406,
+      "afterBytes": 5496,
+      "inputSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+      "afterSha256": "9ab5c4cb5b98bd8fd0851073291841249788e0e754e1020ad2b2e97ef3408d57",
+      "inputPreserved": false,
+      "serverStarted": false
+    },
+    {
+      "kind": "definitions",
+      "alias": "hardlink",
+      "exit": 0,
+      "inputBytes": 20406,
+      "afterBytes": 5496,
+      "inputSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+      "afterSha256": "13e066e4c63e01c6fe163c2f656b7444b7ca80ef717c2e800fed36f9b0cb5505",
+      "inputPreserved": false,
+      "serverStarted": false
+    },
+    {
+      "kind": "definitions",
+      "alias": "parent-symlink",
+      "exit": 0,
+      "inputBytes": 20406,
+      "afterBytes": 5496,
+      "inputSha256": "3f0bf9c7a961f54352fe4898cdb94f8e004e157baf131767f0ec81cd7588c7ce",
+      "afterSha256": "5737697f77ded518ff0da5b12ea370e8cbda66b75e266065df7fcfd10e222c10",
+      "inputPreserved": false,
+      "serverStarted": false
+    },
+    {
+      "kind": "explicitConfig",
+      "alias": "direct",
+      "exit": 0,
+      "inputBytes": 15,
+      "afterBytes": 5496,
+      "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "afterSha256": "2b6f47a6ca01debe8dc4b7f87b8c75ae5168981284273645ecce847687aec7da",
+      "inputPreserved": false,
+      "serverStarted": false
+    },
+    {
+      "kind": "explicitConfig",
+      "alias": "symlink",
+      "exit": 0,
+      "inputBytes": 15,
+      "afterBytes": 5496,
+      "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "afterSha256": "e63a7aa39eac8cf2e6640ca02c5e35d5d29cbe7e5cfaf98610f94f2c313ad1a0",
+      "inputPreserved": false,
+      "serverStarted": false
+    },
+    {
+      "kind": "explicitConfig",
+      "alias": "hardlink",
+      "exit": 0,
+      "inputBytes": 15,
+      "afterBytes": 5496,
+      "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "afterSha256": "dc31fb10211a1e1380cb93cf51dead0f6bb788e51b0f43b082f2f7240788d823",
+      "inputPreserved": false,
+      "serverStarted": false
+    },
+    {
+      "kind": "explicitConfig",
+      "alias": "parent-symlink",
+      "exit": 0,
+      "inputBytes": 15,
+      "afterBytes": 5496,
+      "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "afterSha256": "e93c7044fc7dd69ced1f5a3adfa26379834e9da4957c57405ba521e35c2f45cb",
+      "inputPreserved": false,
+      "serverStarted": false
+    },
+    {
+      "kind": "automaticConfig",
+      "alias": "direct",
+      "exit": 0,
+      "inputBytes": 15,
+      "afterBytes": 5496,
+      "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "afterSha256": "605d4b38fc0fc3077ba5f53b3c34175a06c6aebc2b1cfe503250343acf4b0998",
+      "inputPreserved": false,
+      "serverStarted": false
+    },
+    {
+      "kind": "automaticConfig",
+      "alias": "symlink",
+      "exit": 0,
+      "inputBytes": 15,
+      "afterBytes": 5496,
+      "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "afterSha256": "4458088cd63c9b6476a5699ab72a55e610b3d96d5a57c91d2c41f5d7f2e31c31",
+      "inputPreserved": false,
+      "serverStarted": false
+    },
+    {
+      "kind": "automaticConfig",
+      "alias": "hardlink",
+      "exit": 0,
+      "inputBytes": 15,
+      "afterBytes": 5496,
+      "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "afterSha256": "121c4d3b5552102be26c9e7254b3e630bd392abe21b9a16b7f34a4d6b9b5dd21",
+      "inputPreserved": false,
+      "serverStarted": false
+    },
+    {
+      "kind": "automaticConfig",
+      "alias": "parent-symlink",
+      "exit": 0,
+      "inputBytes": 15,
+      "afterBytes": 5496,
+      "inputSha256": "58dbe785f287a75f9da9bf4d7caa833f2d9547219b05debdd2a94b33e70dca96",
+      "afterSha256": "418b7d7e11b3f9a27e4d1bda371228421ab874783e18ce555ee81d0301752a0f",
+      "inputPreserved": false,
+      "serverStarted": false
+    },
+    {
+      "kind": "clientConfig",
+      "alias": "direct",
+      "exit": 0,
+      "inputBytes": 211,
+      "afterBytes": 1811,
+      "inputSha256": "f8cbfd9435cb46443c2e120fd6e612bab76355312b25bbeeb5d687ccbb087b0e",
+      "afterSha256": "f75a73e00d4e1a217654e48b6a72989e54dfbec4ee76189c6c7b1411131115fe",
+      "inputPreserved": false,
+      "serverStarted": true
+    },
+    {
+      "kind": "clientConfig",
+      "alias": "symlink",
+      "exit": 0,
+      "inputBytes": 211,
+      "afterBytes": 1812,
+      "inputSha256": "f8cbfd9435cb46443c2e120fd6e612bab76355312b25bbeeb5d687ccbb087b0e",
+      "afterSha256": "f30c53c8a230942907e1d3f8e891854e2044a7660c803e2ce2dafb8a01c5e54d",
+      "inputPreserved": false,
+      "serverStarted": true
+    },
+    {
+      "kind": "clientConfig",
+      "alias": "hardlink",
+      "exit": 0,
+      "inputBytes": 211,
+      "afterBytes": 1813,
+      "inputSha256": "f8cbfd9435cb46443c2e120fd6e612bab76355312b25bbeeb5d687ccbb087b0e",
+      "afterSha256": "f879b1e1eaed42e08ca2352615ec2de5be6d06ea28c49ecf67e63ac2d393b7f0",
+      "inputPreserved": false,
+      "serverStarted": true
+    },
+    {
+      "kind": "clientConfig",
+      "alias": "parent-symlink",
+      "exit": 0,
+      "inputBytes": 211,
+      "afterBytes": 1819,
+      "inputSha256": "f8cbfd9435cb46443c2e120fd6e612bab76355312b25bbeeb5d687ccbb087b0e",
+      "afterSha256": "27746550b34fc9cd7e097d1365d92b25d74ebbc05a369d41548bfe85bfba1cdf",
+      "inputPreserved": false,
+      "serverStarted": true
+    },
+    {
+      "kind": "envFile",
+      "alias": "direct",
+      "exit": 0,
+      "inputBytes": 35,
+      "afterBytes": 1806,
+      "inputSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+      "afterSha256": "77fa891809a5a0db71dcfcf4ccb9352d133aab2a3f7ad0f07f15f9a4e24c06b9",
+      "inputPreserved": false,
+      "serverStarted": true
+    },
+    {
+      "kind": "envFile",
+      "alias": "symlink",
+      "exit": 0,
+      "inputBytes": 35,
+      "afterBytes": 1807,
+      "inputSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+      "afterSha256": "c7ef799f34ada9d2aba06f8a04adfcfa1a5c3098d815e94e9a44ae90de0076ae",
+      "inputPreserved": false,
+      "serverStarted": true
+    },
+    {
+      "kind": "envFile",
+      "alias": "hardlink",
+      "exit": 0,
+      "inputBytes": 35,
+      "afterBytes": 1808,
+      "inputSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+      "afterSha256": "f0ebf5b265bfda9cff32367e21514bd9a703acef05fee4c0b2b846b731ffcbe0",
+      "inputPreserved": false,
+      "serverStarted": true
+    },
+    {
+      "kind": "envFile",
+      "alias": "parent-symlink",
+      "exit": 0,
+      "inputBytes": 35,
+      "afterBytes": 1814,
+      "inputSha256": "1c1993a9bac0d011aceb090e3d4e75d1daa0ba51b931a5083c7f96601441dddd",
+      "afterSha256": "f4c29fe7d10c0cc6d3e9eda790b494795e4de6b75becc15c153b47cda61248e4",
+      "inputPreserved": false,
+      "serverStarted": true
+    }
+  ],
+  "safe": [
+    {
+      "format": "terminal",
+      "exit": 0,
+      "bytes": 3819,
+      "sha256": "0023fd109e10bbe0fd8e73b20be41854de033787900ac644bfeb9227cadc6c99",
+      "normalizedSha256": "4d2f5c1e6a3ef0c5f769a94e59498e128ac7e0a09774cda48a2fae8867271dba",
+      "removedGenerationTimestamps": 1,
+      "inputPreserved": true
+    },
+    {
+      "format": "json",
+      "exit": 0,
+      "bytes": 5496,
+      "sha256": "da2dba712927197a5584a3b204be5b4c7e95947a27f56c804c799faa8076390f",
+      "normalizedSha256": "343bfd21f2ccd1306bda8191efac25a1edc4bfaeed8aa2151817e9bc65acfff2",
+      "removedGenerationTimestamps": 1,
+      "inputPreserved": true
+    },
+    {
+      "format": "sarif",
+      "exit": 0,
+      "bytes": 10173,
+      "sha256": "7974bec572fd854d034ffbe1da9e10a0930ee7b288f13d4316cf15e36ea0ce3d",
+      "normalizedSha256": "7974bec572fd854d034ffbe1da9e10a0930ee7b288f13d4316cf15e36ea0ce3d",
+      "removedGenerationTimestamps": 0,
+      "inputPreserved": true
+    },
+    {
+      "format": "markdown",
+      "exit": 0,
+      "bytes": 4114,
+      "sha256": "a6f5ad127eb1f90e3867e79b0af1f7bdadb8cab0efc5b8fcf1df559e8c3b82de",
+      "normalizedSha256": "36a8ae8dd564dbc2f4985ce999c4cfba2e615edc47a9e33f71d71cc1b0c0a9fa",
+      "removedGenerationTimestamps": 1,
+      "inputPreserved": true
+    },
+    {
+      "format": "html",
+      "exit": 0,
+      "bytes": 31537,
+      "sha256": "402253ef8e5a6a4cb6159c5a325c7f9dea38235532ceadf461c14a38a17fadde",
+      "normalizedSha256": "6ede652b618763e86edaf0d301bbbf00f525b6d568a9835c3593f8e58aa827b2",
+      "removedGenerationTimestamps": 1,
+      "inputPreserved": true
+    }
+  ]
+}

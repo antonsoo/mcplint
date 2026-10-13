@@ -31,8 +31,12 @@ function validateConfig(value: unknown): McplintConfigFile {
   return parsed.data;
 }
 
+export function findConfigFile(cwd: string, explicitPath?: string): string | undefined {
+  return explicitPath ?? CONFIG_CANDIDATES.map((f) => resolve(cwd, f)).find((f) => existsSync(f));
+}
+
 export async function loadConfigFile(cwd: string, explicitPath?: string): Promise<McplintConfigFile> {
-  const path = explicitPath ?? CONFIG_CANDIDATES.map((f) => resolve(cwd, f)).find((f) => existsSync(f));
+  const path = findConfigFile(cwd, explicitPath);
   if (!path) return {};
   const raw = await readTextFile(path);
   let parsed: unknown;
