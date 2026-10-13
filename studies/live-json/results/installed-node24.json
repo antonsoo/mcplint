@@ -1,0 +1,1423 @@
+{
+  "node": "v24.21.0",
+  "expectation": "after",
+  "synthetic": true,
+  "api": [
+    {
+      "mode": "stdio",
+      "captures": [
+        {
+          "name": "valid",
+          "raw_result": "{\"tools\":[{\"name\":\"read_sequence\",\"description\":\"Inspect a recorded sequence number without changing records or contacting another service.\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sequence\":{\"type\":\"integer\",\"description\":\"The minimum sequence number accepted by this synthetic local control.\",\"minimum\":9007199254740992}},\"required\":[\"sequence\"],\"additionalProperties\":false}}]}",
+          "filename": "stdio-valid.snapshot.json",
+          "sha256": "3e699b02615f1af31bdc3575b9d5026120c74fe149528197148bac75acc884df",
+          "snapshot": {
+            "collection": [
+              {
+                "pages": 1,
+                "received": 1,
+                "retained": 1,
+                "scope": "tools/list",
+                "serverId": "raw-json-control",
+                "status": "complete"
+              },
+              {
+                "detail": "Server did not advertise prompts.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "prompts/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/templates/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              }
+            ],
+            "createdAt": "2026-10-13T00:00:00.000Z",
+            "definitions": [
+              {
+                "scope": "tools/list",
+                "serverId": "raw-json-control",
+                "value": {
+                  "description": "Inspect a recorded sequence number without changing records or contacting another service.",
+                  "inputSchema": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "sequence": {
+                        "description": "The minimum sequence number accepted by this synthetic local control.",
+                        "minimum": 9007199254740992,
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "sequence"
+                    ],
+                    "type": "object"
+                  },
+                  "name": "read_sequence"
+                }
+              }
+            ],
+            "format": "mcplint-metadata-snapshot",
+            "schemaVersion": 1,
+            "servers": [
+              {
+                "capabilities": {
+                  "tools": {}
+                },
+                "id": "raw-json-control",
+                "serverInfo": {
+                  "name": "raw-json-control",
+                  "version": "1"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "rounded",
+          "raw_result": "{\"tools\":[{\"name\":\"read_sequence\",\"description\":\"Inspect a recorded sequence number without changing records or contacting another service.\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sequence\":{\"type\":\"integer\",\"description\":\"The minimum sequence number accepted by this synthetic local control.\",\"minimum\":9007199254740993}},\"required\":[\"sequence\"],\"additionalProperties\":false}}]}",
+          "filename": "stdio-rounded.snapshot.json",
+          "sha256": "7aac10b65ad781e1465791921cc4ff26796b71511d28019638485d56869ab1d7",
+          "snapshot": {
+            "collection": [
+              {
+                "detail": "Live server metadata could not be read faithfully. JSON number at character 345 would be rounded during analysis. mcplint cannot audit or compare this metadata without changing its numeric content.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "tools/list",
+                "serverId": "raw-json-control",
+                "status": "incomplete"
+              },
+              {
+                "detail": "Server did not advertise prompts.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "prompts/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/templates/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              }
+            ],
+            "createdAt": "2026-10-13T00:00:00.000Z",
+            "definitions": [],
+            "format": "mcplint-metadata-snapshot",
+            "schemaVersion": 1,
+            "servers": [
+              {
+                "capabilities": {
+                  "tools": {}
+                },
+                "id": "raw-json-control",
+                "serverInfo": {
+                  "name": "raw-json-control",
+                  "version": "1"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "duplicate-second-page",
+          "raw_result": "{\"tools\":[{\"name\":\"read_sequence\",\"description\":\"Inspect a recorded sequence number without changing records or contacting another service.\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sequence\":{\"type\":\"integer\",\"description\":\"The minimum sequence number accepted by this synthetic local control.\",\"minimum\":1,\"mini\\u006dum\":2}},\"required\":[\"sequence\"],\"additionalProperties\":false}}]}",
+          "filename": "stdio-duplicate-second-page.snapshot.json",
+          "sha256": "6a6b45b43d0d16fe5c74f3fe8186780c9f02a9e70d13efd3546982e3c534397f",
+          "snapshot": {
+            "collection": [
+              {
+                "detail": "Live server metadata could not be read faithfully. Duplicate JSON object field at character 347. Keep one explicit value per field before auditing or comparing metadata.",
+                "pages": 1,
+                "received": 1,
+                "retained": 1,
+                "scope": "tools/list",
+                "serverId": "raw-json-control",
+                "status": "incomplete"
+              },
+              {
+                "detail": "Server did not advertise prompts.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "prompts/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/templates/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              }
+            ],
+            "createdAt": "2026-10-13T00:00:00.000Z",
+            "definitions": [
+              {
+                "scope": "tools/list",
+                "serverId": "raw-json-control",
+                "value": {
+                  "inputSchema": {
+                    "type": "object"
+                  },
+                  "name": "first_page"
+                }
+              }
+            ],
+            "format": "mcplint-metadata-snapshot",
+            "schemaVersion": 1,
+            "servers": [
+              {
+                "capabilities": {
+                  "tools": {}
+                },
+                "id": "raw-json-control",
+                "serverInfo": {
+                  "name": "raw-json-control",
+                  "version": "1"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "comparison": {
+        "format": "mcplint-metadata-diff",
+        "schemaVersion": 1,
+        "before": {
+          "createdAt": "2026-10-13T00:00:00.000Z",
+          "sha256": "0ec1465d2a936b3f6aa6ddf66eb7ef30b01a65353ec4862eb87a6d41023b4a69",
+          "definitions": 1
+        },
+        "after": {
+          "createdAt": "2026-10-13T00:00:00.000Z",
+          "sha256": "09bc714d4db11ad86446c59c57c552a41a503050e72837cc0fcf44ec8bfb2ba4",
+          "definitions": 0
+        },
+        "complete": false,
+        "issues": [
+          "After: raw-json-control tools/list is incomplete.",
+          "raw-json-control tools/list: coverage is complete before and incomplete after; absent definitions cannot be classified as added or removed."
+        ],
+        "summary": {
+          "added": 0,
+          "removed": 0,
+          "changed": 0,
+          "unchanged": 1,
+          "unpaired": 1
+        },
+        "changes": [],
+        "coverage": {
+          "before": [
+            {
+              "pages": 1,
+              "received": 1,
+              "retained": 1,
+              "scope": "tools/list",
+              "serverId": "raw-json-control",
+              "status": "complete"
+            },
+            {
+              "detail": "Server did not advertise prompts.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "prompts/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            },
+            {
+              "detail": "Server did not advertise resources.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "resources/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            },
+            {
+              "detail": "Server did not advertise resources.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "resources/templates/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            }
+          ],
+          "after": [
+            {
+              "detail": "Live server metadata could not be read faithfully. JSON number at character 345 would be rounded during analysis. mcplint cannot audit or compare this metadata without changing its numeric content.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "tools/list",
+              "serverId": "raw-json-control",
+              "status": "incomplete"
+            },
+            {
+              "detail": "Server did not advertise prompts.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "prompts/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            },
+            {
+              "detail": "Server did not advertise resources.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "resources/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            },
+            {
+              "detail": "Server did not advertise resources.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "resources/templates/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            }
+          ]
+        },
+        "notes": [
+          "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+          "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+          "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+          "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+          "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+        ]
+      }
+    },
+    {
+      "mode": "json",
+      "captures": [
+        {
+          "name": "valid",
+          "raw_result": "{\"tools\":[{\"name\":\"read_sequence\",\"description\":\"Inspect a recorded sequence number without changing records or contacting another service.\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sequence\":{\"type\":\"integer\",\"description\":\"The minimum sequence number accepted by this synthetic local control.\",\"minimum\":9007199254740992}},\"required\":[\"sequence\"],\"additionalProperties\":false}}]}",
+          "filename": "json-valid.snapshot.json",
+          "sha256": "3e699b02615f1af31bdc3575b9d5026120c74fe149528197148bac75acc884df",
+          "snapshot": {
+            "collection": [
+              {
+                "pages": 1,
+                "received": 1,
+                "retained": 1,
+                "scope": "tools/list",
+                "serverId": "raw-json-control",
+                "status": "complete"
+              },
+              {
+                "detail": "Server did not advertise prompts.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "prompts/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/templates/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              }
+            ],
+            "createdAt": "2026-10-13T00:00:00.000Z",
+            "definitions": [
+              {
+                "scope": "tools/list",
+                "serverId": "raw-json-control",
+                "value": {
+                  "description": "Inspect a recorded sequence number without changing records or contacting another service.",
+                  "inputSchema": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "sequence": {
+                        "description": "The minimum sequence number accepted by this synthetic local control.",
+                        "minimum": 9007199254740992,
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "sequence"
+                    ],
+                    "type": "object"
+                  },
+                  "name": "read_sequence"
+                }
+              }
+            ],
+            "format": "mcplint-metadata-snapshot",
+            "schemaVersion": 1,
+            "servers": [
+              {
+                "capabilities": {
+                  "tools": {}
+                },
+                "id": "raw-json-control",
+                "serverInfo": {
+                  "name": "raw-json-control",
+                  "version": "1"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "rounded",
+          "raw_result": "{\"tools\":[{\"name\":\"read_sequence\",\"description\":\"Inspect a recorded sequence number without changing records or contacting another service.\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sequence\":{\"type\":\"integer\",\"description\":\"The minimum sequence number accepted by this synthetic local control.\",\"minimum\":9007199254740993}},\"required\":[\"sequence\"],\"additionalProperties\":false}}]}",
+          "filename": "json-rounded.snapshot.json",
+          "sha256": "7aac10b65ad781e1465791921cc4ff26796b71511d28019638485d56869ab1d7",
+          "snapshot": {
+            "collection": [
+              {
+                "detail": "Live server metadata could not be read faithfully. JSON number at character 345 would be rounded during analysis. mcplint cannot audit or compare this metadata without changing its numeric content.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "tools/list",
+                "serverId": "raw-json-control",
+                "status": "incomplete"
+              },
+              {
+                "detail": "Server did not advertise prompts.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "prompts/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/templates/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              }
+            ],
+            "createdAt": "2026-10-13T00:00:00.000Z",
+            "definitions": [],
+            "format": "mcplint-metadata-snapshot",
+            "schemaVersion": 1,
+            "servers": [
+              {
+                "capabilities": {
+                  "tools": {}
+                },
+                "id": "raw-json-control",
+                "serverInfo": {
+                  "name": "raw-json-control",
+                  "version": "1"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "duplicate-second-page",
+          "raw_result": "{\"tools\":[{\"name\":\"read_sequence\",\"description\":\"Inspect a recorded sequence number without changing records or contacting another service.\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sequence\":{\"type\":\"integer\",\"description\":\"The minimum sequence number accepted by this synthetic local control.\",\"minimum\":1,\"mini\\u006dum\":2}},\"required\":[\"sequence\"],\"additionalProperties\":false}}]}",
+          "filename": "json-duplicate-second-page.snapshot.json",
+          "sha256": "6a6b45b43d0d16fe5c74f3fe8186780c9f02a9e70d13efd3546982e3c534397f",
+          "snapshot": {
+            "collection": [
+              {
+                "detail": "Live server metadata could not be read faithfully. Duplicate JSON object field at character 347. Keep one explicit value per field before auditing or comparing metadata.",
+                "pages": 1,
+                "received": 1,
+                "retained": 1,
+                "scope": "tools/list",
+                "serverId": "raw-json-control",
+                "status": "incomplete"
+              },
+              {
+                "detail": "Server did not advertise prompts.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "prompts/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/templates/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              }
+            ],
+            "createdAt": "2026-10-13T00:00:00.000Z",
+            "definitions": [
+              {
+                "scope": "tools/list",
+                "serverId": "raw-json-control",
+                "value": {
+                  "inputSchema": {
+                    "type": "object"
+                  },
+                  "name": "first_page"
+                }
+              }
+            ],
+            "format": "mcplint-metadata-snapshot",
+            "schemaVersion": 1,
+            "servers": [
+              {
+                "capabilities": {
+                  "tools": {}
+                },
+                "id": "raw-json-control",
+                "serverInfo": {
+                  "name": "raw-json-control",
+                  "version": "1"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "comparison": {
+        "format": "mcplint-metadata-diff",
+        "schemaVersion": 1,
+        "before": {
+          "createdAt": "2026-10-13T00:00:00.000Z",
+          "sha256": "0ec1465d2a936b3f6aa6ddf66eb7ef30b01a65353ec4862eb87a6d41023b4a69",
+          "definitions": 1
+        },
+        "after": {
+          "createdAt": "2026-10-13T00:00:00.000Z",
+          "sha256": "09bc714d4db11ad86446c59c57c552a41a503050e72837cc0fcf44ec8bfb2ba4",
+          "definitions": 0
+        },
+        "complete": false,
+        "issues": [
+          "After: raw-json-control tools/list is incomplete.",
+          "raw-json-control tools/list: coverage is complete before and incomplete after; absent definitions cannot be classified as added or removed."
+        ],
+        "summary": {
+          "added": 0,
+          "removed": 0,
+          "changed": 0,
+          "unchanged": 1,
+          "unpaired": 1
+        },
+        "changes": [],
+        "coverage": {
+          "before": [
+            {
+              "pages": 1,
+              "received": 1,
+              "retained": 1,
+              "scope": "tools/list",
+              "serverId": "raw-json-control",
+              "status": "complete"
+            },
+            {
+              "detail": "Server did not advertise prompts.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "prompts/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            },
+            {
+              "detail": "Server did not advertise resources.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "resources/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            },
+            {
+              "detail": "Server did not advertise resources.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "resources/templates/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            }
+          ],
+          "after": [
+            {
+              "detail": "Live server metadata could not be read faithfully. JSON number at character 345 would be rounded during analysis. mcplint cannot audit or compare this metadata without changing its numeric content.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "tools/list",
+              "serverId": "raw-json-control",
+              "status": "incomplete"
+            },
+            {
+              "detail": "Server did not advertise prompts.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "prompts/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            },
+            {
+              "detail": "Server did not advertise resources.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "resources/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            },
+            {
+              "detail": "Server did not advertise resources.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "resources/templates/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            }
+          ]
+        },
+        "notes": [
+          "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+          "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+          "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+          "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+          "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+        ]
+      }
+    },
+    {
+      "mode": "streamable-sse",
+      "captures": [
+        {
+          "name": "valid",
+          "raw_result": "{\"tools\":[{\"name\":\"read_sequence\",\"description\":\"Inspect a recorded sequence number without changing records or contacting another service.\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sequence\":{\"type\":\"integer\",\"description\":\"The minimum sequence number accepted by this synthetic local control.\",\"minimum\":9007199254740992}},\"required\":[\"sequence\"],\"additionalProperties\":false}}]}",
+          "filename": "streamable-sse-valid.snapshot.json",
+          "sha256": "3e699b02615f1af31bdc3575b9d5026120c74fe149528197148bac75acc884df",
+          "snapshot": {
+            "collection": [
+              {
+                "pages": 1,
+                "received": 1,
+                "retained": 1,
+                "scope": "tools/list",
+                "serverId": "raw-json-control",
+                "status": "complete"
+              },
+              {
+                "detail": "Server did not advertise prompts.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "prompts/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/templates/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              }
+            ],
+            "createdAt": "2026-10-13T00:00:00.000Z",
+            "definitions": [
+              {
+                "scope": "tools/list",
+                "serverId": "raw-json-control",
+                "value": {
+                  "description": "Inspect a recorded sequence number without changing records or contacting another service.",
+                  "inputSchema": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "sequence": {
+                        "description": "The minimum sequence number accepted by this synthetic local control.",
+                        "minimum": 9007199254740992,
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "sequence"
+                    ],
+                    "type": "object"
+                  },
+                  "name": "read_sequence"
+                }
+              }
+            ],
+            "format": "mcplint-metadata-snapshot",
+            "schemaVersion": 1,
+            "servers": [
+              {
+                "capabilities": {
+                  "tools": {}
+                },
+                "id": "raw-json-control",
+                "serverInfo": {
+                  "name": "raw-json-control",
+                  "version": "1"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "rounded",
+          "raw_result": "{\"tools\":[{\"name\":\"read_sequence\",\"description\":\"Inspect a recorded sequence number without changing records or contacting another service.\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sequence\":{\"type\":\"integer\",\"description\":\"The minimum sequence number accepted by this synthetic local control.\",\"minimum\":9007199254740993}},\"required\":[\"sequence\"],\"additionalProperties\":false}}]}",
+          "filename": "streamable-sse-rounded.snapshot.json",
+          "sha256": "cf6a5afa801d88d2a024226e186af24ff5c61d4128533169c06578b231c0cc80",
+          "snapshot": {
+            "collection": [
+              {
+                "detail": "Live server metadata could not be read faithfully. JSON number at character 346 would be rounded during analysis. mcplint cannot audit or compare this metadata without changing its numeric content.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "tools/list",
+                "serverId": "raw-json-control",
+                "status": "incomplete"
+              },
+              {
+                "detail": "Server did not advertise prompts.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "prompts/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/templates/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              }
+            ],
+            "createdAt": "2026-10-13T00:00:00.000Z",
+            "definitions": [],
+            "format": "mcplint-metadata-snapshot",
+            "schemaVersion": 1,
+            "servers": [
+              {
+                "capabilities": {
+                  "tools": {}
+                },
+                "id": "raw-json-control",
+                "serverInfo": {
+                  "name": "raw-json-control",
+                  "version": "1"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "duplicate-second-page",
+          "raw_result": "{\"tools\":[{\"name\":\"read_sequence\",\"description\":\"Inspect a recorded sequence number without changing records or contacting another service.\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sequence\":{\"type\":\"integer\",\"description\":\"The minimum sequence number accepted by this synthetic local control.\",\"minimum\":1,\"mini\\u006dum\":2}},\"required\":[\"sequence\"],\"additionalProperties\":false}}]}",
+          "filename": "streamable-sse-duplicate-second-page.snapshot.json",
+          "sha256": "5e277463cee54d14394102e0ff6cc064789402f95f507b47560668f74c0e7c47",
+          "snapshot": {
+            "collection": [
+              {
+                "detail": "Live server metadata could not be read faithfully. Duplicate JSON object field at character 348. Keep one explicit value per field before auditing or comparing metadata.",
+                "pages": 1,
+                "received": 1,
+                "retained": 1,
+                "scope": "tools/list",
+                "serverId": "raw-json-control",
+                "status": "incomplete"
+              },
+              {
+                "detail": "Server did not advertise prompts.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "prompts/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/templates/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              }
+            ],
+            "createdAt": "2026-10-13T00:00:00.000Z",
+            "definitions": [
+              {
+                "scope": "tools/list",
+                "serverId": "raw-json-control",
+                "value": {
+                  "inputSchema": {
+                    "type": "object"
+                  },
+                  "name": "first_page"
+                }
+              }
+            ],
+            "format": "mcplint-metadata-snapshot",
+            "schemaVersion": 1,
+            "servers": [
+              {
+                "capabilities": {
+                  "tools": {}
+                },
+                "id": "raw-json-control",
+                "serverInfo": {
+                  "name": "raw-json-control",
+                  "version": "1"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "comparison": {
+        "format": "mcplint-metadata-diff",
+        "schemaVersion": 1,
+        "before": {
+          "createdAt": "2026-10-13T00:00:00.000Z",
+          "sha256": "0ec1465d2a936b3f6aa6ddf66eb7ef30b01a65353ec4862eb87a6d41023b4a69",
+          "definitions": 1
+        },
+        "after": {
+          "createdAt": "2026-10-13T00:00:00.000Z",
+          "sha256": "765bb41fb2f51aaadb1bbb02bd1f1188b41eccc51db41eb7937925b820ca7cf3",
+          "definitions": 0
+        },
+        "complete": false,
+        "issues": [
+          "After: raw-json-control tools/list is incomplete.",
+          "raw-json-control tools/list: coverage is complete before and incomplete after; absent definitions cannot be classified as added or removed."
+        ],
+        "summary": {
+          "added": 0,
+          "removed": 0,
+          "changed": 0,
+          "unchanged": 1,
+          "unpaired": 1
+        },
+        "changes": [],
+        "coverage": {
+          "before": [
+            {
+              "pages": 1,
+              "received": 1,
+              "retained": 1,
+              "scope": "tools/list",
+              "serverId": "raw-json-control",
+              "status": "complete"
+            },
+            {
+              "detail": "Server did not advertise prompts.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "prompts/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            },
+            {
+              "detail": "Server did not advertise resources.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "resources/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            },
+            {
+              "detail": "Server did not advertise resources.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "resources/templates/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            }
+          ],
+          "after": [
+            {
+              "detail": "Live server metadata could not be read faithfully. JSON number at character 346 would be rounded during analysis. mcplint cannot audit or compare this metadata without changing its numeric content.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "tools/list",
+              "serverId": "raw-json-control",
+              "status": "incomplete"
+            },
+            {
+              "detail": "Server did not advertise prompts.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "prompts/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            },
+            {
+              "detail": "Server did not advertise resources.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "resources/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            },
+            {
+              "detail": "Server did not advertise resources.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "resources/templates/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            }
+          ]
+        },
+        "notes": [
+          "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+          "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+          "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+          "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+          "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+        ]
+      }
+    },
+    {
+      "mode": "legacy-sse",
+      "captures": [
+        {
+          "name": "valid",
+          "raw_result": "{\"tools\":[{\"name\":\"read_sequence\",\"description\":\"Inspect a recorded sequence number without changing records or contacting another service.\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sequence\":{\"type\":\"integer\",\"description\":\"The minimum sequence number accepted by this synthetic local control.\",\"minimum\":9007199254740992}},\"required\":[\"sequence\"],\"additionalProperties\":false}}]}",
+          "filename": "legacy-sse-valid.snapshot.json",
+          "sha256": "3e699b02615f1af31bdc3575b9d5026120c74fe149528197148bac75acc884df",
+          "snapshot": {
+            "collection": [
+              {
+                "pages": 1,
+                "received": 1,
+                "retained": 1,
+                "scope": "tools/list",
+                "serverId": "raw-json-control",
+                "status": "complete"
+              },
+              {
+                "detail": "Server did not advertise prompts.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "prompts/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/templates/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              }
+            ],
+            "createdAt": "2026-10-13T00:00:00.000Z",
+            "definitions": [
+              {
+                "scope": "tools/list",
+                "serverId": "raw-json-control",
+                "value": {
+                  "description": "Inspect a recorded sequence number without changing records or contacting another service.",
+                  "inputSchema": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "sequence": {
+                        "description": "The minimum sequence number accepted by this synthetic local control.",
+                        "minimum": 9007199254740992,
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "sequence"
+                    ],
+                    "type": "object"
+                  },
+                  "name": "read_sequence"
+                }
+              }
+            ],
+            "format": "mcplint-metadata-snapshot",
+            "schemaVersion": 1,
+            "servers": [
+              {
+                "capabilities": {
+                  "tools": {}
+                },
+                "id": "raw-json-control",
+                "serverInfo": {
+                  "name": "raw-json-control",
+                  "version": "1"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "rounded",
+          "raw_result": "{\"tools\":[{\"name\":\"read_sequence\",\"description\":\"Inspect a recorded sequence number without changing records or contacting another service.\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sequence\":{\"type\":\"integer\",\"description\":\"The minimum sequence number accepted by this synthetic local control.\",\"minimum\":9007199254740993}},\"required\":[\"sequence\"],\"additionalProperties\":false}}]}",
+          "filename": "legacy-sse-rounded.snapshot.json",
+          "sha256": "cf6a5afa801d88d2a024226e186af24ff5c61d4128533169c06578b231c0cc80",
+          "snapshot": {
+            "collection": [
+              {
+                "detail": "Live server metadata could not be read faithfully. JSON number at character 346 would be rounded during analysis. mcplint cannot audit or compare this metadata without changing its numeric content.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "tools/list",
+                "serverId": "raw-json-control",
+                "status": "incomplete"
+              },
+              {
+                "detail": "Server did not advertise prompts.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "prompts/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/templates/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              }
+            ],
+            "createdAt": "2026-10-13T00:00:00.000Z",
+            "definitions": [],
+            "format": "mcplint-metadata-snapshot",
+            "schemaVersion": 1,
+            "servers": [
+              {
+                "capabilities": {
+                  "tools": {}
+                },
+                "id": "raw-json-control",
+                "serverInfo": {
+                  "name": "raw-json-control",
+                  "version": "1"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "duplicate-second-page",
+          "raw_result": "{\"tools\":[{\"name\":\"read_sequence\",\"description\":\"Inspect a recorded sequence number without changing records or contacting another service.\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sequence\":{\"type\":\"integer\",\"description\":\"The minimum sequence number accepted by this synthetic local control.\",\"minimum\":1,\"mini\\u006dum\":2}},\"required\":[\"sequence\"],\"additionalProperties\":false}}]}",
+          "filename": "legacy-sse-duplicate-second-page.snapshot.json",
+          "sha256": "5e277463cee54d14394102e0ff6cc064789402f95f507b47560668f74c0e7c47",
+          "snapshot": {
+            "collection": [
+              {
+                "detail": "Live server metadata could not be read faithfully. Duplicate JSON object field at character 348. Keep one explicit value per field before auditing or comparing metadata.",
+                "pages": 1,
+                "received": 1,
+                "retained": 1,
+                "scope": "tools/list",
+                "serverId": "raw-json-control",
+                "status": "incomplete"
+              },
+              {
+                "detail": "Server did not advertise prompts.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "prompts/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              },
+              {
+                "detail": "Server did not advertise resources.",
+                "pages": 0,
+                "received": 0,
+                "retained": 0,
+                "scope": "resources/templates/list",
+                "serverId": "raw-json-control",
+                "status": "unsupported"
+              }
+            ],
+            "createdAt": "2026-10-13T00:00:00.000Z",
+            "definitions": [
+              {
+                "scope": "tools/list",
+                "serverId": "raw-json-control",
+                "value": {
+                  "inputSchema": {
+                    "type": "object"
+                  },
+                  "name": "first_page"
+                }
+              }
+            ],
+            "format": "mcplint-metadata-snapshot",
+            "schemaVersion": 1,
+            "servers": [
+              {
+                "capabilities": {
+                  "tools": {}
+                },
+                "id": "raw-json-control",
+                "serverInfo": {
+                  "name": "raw-json-control",
+                  "version": "1"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "comparison": {
+        "format": "mcplint-metadata-diff",
+        "schemaVersion": 1,
+        "before": {
+          "createdAt": "2026-10-13T00:00:00.000Z",
+          "sha256": "0ec1465d2a936b3f6aa6ddf66eb7ef30b01a65353ec4862eb87a6d41023b4a69",
+          "definitions": 1
+        },
+        "after": {
+          "createdAt": "2026-10-13T00:00:00.000Z",
+          "sha256": "765bb41fb2f51aaadb1bbb02bd1f1188b41eccc51db41eb7937925b820ca7cf3",
+          "definitions": 0
+        },
+        "complete": false,
+        "issues": [
+          "After: raw-json-control tools/list is incomplete.",
+          "raw-json-control tools/list: coverage is complete before and incomplete after; absent definitions cannot be classified as added or removed."
+        ],
+        "summary": {
+          "added": 0,
+          "removed": 0,
+          "changed": 0,
+          "unchanged": 1,
+          "unpaired": 1
+        },
+        "changes": [],
+        "coverage": {
+          "before": [
+            {
+              "pages": 1,
+              "received": 1,
+              "retained": 1,
+              "scope": "tools/list",
+              "serverId": "raw-json-control",
+              "status": "complete"
+            },
+            {
+              "detail": "Server did not advertise prompts.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "prompts/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            },
+            {
+              "detail": "Server did not advertise resources.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "resources/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            },
+            {
+              "detail": "Server did not advertise resources.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "resources/templates/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            }
+          ],
+          "after": [
+            {
+              "detail": "Live server metadata could not be read faithfully. JSON number at character 346 would be rounded during analysis. mcplint cannot audit or compare this metadata without changing its numeric content.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "tools/list",
+              "serverId": "raw-json-control",
+              "status": "incomplete"
+            },
+            {
+              "detail": "Server did not advertise prompts.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "prompts/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            },
+            {
+              "detail": "Server did not advertise resources.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "resources/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            },
+            {
+              "detail": "Server did not advertise resources.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "resources/templates/list",
+              "serverId": "raw-json-control",
+              "status": "unsupported"
+            }
+          ]
+        },
+        "notes": [
+          "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+          "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+          "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+          "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+          "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+        ]
+      }
+    }
+  ],
+  "cli": [
+    {
+      "name": "valid",
+      "arguments": [
+        "stdio",
+        "--format",
+        "json",
+        "--fail-on",
+        "error",
+        "--snapshot",
+        "valid.json",
+        "--",
+        "node",
+        "server.mjs",
+        "{\"tools\":[{\"name\":\"read_sequence\",\"description\":\"Inspect a recorded sequence number without changing records or contacting another service.\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sequence\":{\"type\":\"integer\",\"description\":\"The minimum sequence number accepted by this synthetic local control.\",\"minimum\":9007199254740992}},\"required\":[\"sequence\"],\"additionalProperties\":false}}]}",
+        "first"
+      ],
+      "exit": 0,
+      "signal": null,
+      "stdout": "{\n  \"generatedAt\": \"2026-10-13T18:27:59.945Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"raw-json-control\",\n      \"label\": \"node server.mjs {\\\"tools\\\":[{\\\"name\\\":\\\"read_sequence\\\",\\\"description\\\":\\\"Inspect a recorded sequence number without changing records or contacting another service.\\\",\\\"inputSchema\\\":{\\\"type\\\":\\\"object\\\",\\\"properties\\\":{\\\"sequence\\\":{\\\"type\\\":\\\"integer\\\",\\\"description\\\":\\\"The minimum sequence number accepted by this synthetic local control.\\\",\\\"minimum\\\":9007199254740992}},\\\"required\\\":[\\\"sequence\\\"],\\\"additionalProperties\\\":false}}]} first\",\n      \"name\": \"raw-json-control\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"raw-json-control\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"raw-json-control\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise prompts.\"\n    },\n    {\n      \"serverId\": \"raw-json-control\",\n      \"scope\": \"resources/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    },\n    {\n      \"serverId\": \"raw-json-control\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 69,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "stderr": "Snapshot written to valid.json\n"
+    },
+    {
+      "name": "rounded",
+      "arguments": [
+        "stdio",
+        "--format",
+        "json",
+        "--fail-on",
+        "error",
+        "--snapshot",
+        "rounded.json",
+        "--",
+        "node",
+        "server.mjs",
+        "{\"tools\":[{\"name\":\"read_sequence\",\"description\":\"Inspect a recorded sequence number without changing records or contacting another service.\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"sequence\":{\"type\":\"integer\",\"description\":\"The minimum sequence number accepted by this synthetic local control.\",\"minimum\":9007199254740993}},\"required\":[\"sequence\"],\"additionalProperties\":false}}]}",
+        "first"
+      ],
+      "exit": 1,
+      "signal": null,
+      "stdout": "{\n  \"generatedAt\": \"2026-10-13T18:28:00.569Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"raw-json-control\",\n      \"label\": \"node server.mjs {\\\"tools\\\":[{\\\"name\\\":\\\"read_sequence\\\",\\\"description\\\":\\\"Inspect a recorded sequence number without changing records or contacting another service.\\\",\\\"inputSchema\\\":{\\\"type\\\":\\\"object\\\",\\\"properties\\\":{\\\"sequence\\\":{\\\"type\\\":\\\"integer\\\",\\\"description\\\":\\\"The minimum sequence number accepted by this synthetic local control.\\\",\\\"minimum\\\":9007199254740993}},\\\"required\\\":[\\\"sequence\\\"],\\\"additionalProperties\\\":false}}]} first\",\n      \"name\": \"raw-json-control\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"raw-json-control\",\n      \"scope\": \"tools/list\",\n      \"status\": \"incomplete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Live server metadata could not be read faithfully. JSON number at character 345 would be rounded during analysis. mcplint cannot audit or compare this metadata without changing its numeric content.\"\n    },\n    {\n      \"serverId\": \"raw-json-control\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise prompts.\"\n    },\n    {\n      \"serverId\": \"raw-json-control\",\n      \"scope\": \"resources/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    },\n    {\n      \"serverId\": \"raw-json-control\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 0,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 0,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"raw-json-control\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"raw-json-control\"\n      },\n      \"message\": \"tools/list: Live server metadata could not be read faithfully. JSON number at character 345 would be rounded during analysis. mcplint cannot audit or compare this metadata without changing its numeric content.\",\n      \"detail\": \"0 pages received; 0 entries received; 0 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "stderr": "Snapshot written to rounded.json\n"
+    },
+    {
+      "name": "diff",
+      "arguments": [
+        "diff",
+        "valid.json",
+        "rounded.json",
+        "--format",
+        "json"
+      ],
+      "exit": 2,
+      "signal": null,
+      "stdout": "{\n  \"format\": \"mcplint-metadata-diff\",\n  \"schemaVersion\": 1,\n  \"before\": {\n    \"createdAt\": \"2026-10-13T18:27:59.946Z\",\n    \"sha256\": \"166d3b65f3e114d0801ae44eb49be0981fa37d4ddf3746604cfbed1c2a5a9153\",\n    \"definitions\": 1\n  },\n  \"after\": {\n    \"createdAt\": \"2026-10-13T18:28:00.572Z\",\n    \"sha256\": \"0c1f1d7841f8cecd8ce96b9e1a71ea756f74fba59cc02f3c88693d64eb2ccd0b\",\n    \"definitions\": 0\n  },\n  \"complete\": false,\n  \"issues\": [\n    \"After: raw-json-control tools/list is incomplete.\",\n    \"raw-json-control tools/list: coverage is complete before and incomplete after; absent definitions cannot be classified as added or removed.\"\n  ],\n  \"summary\": {\n    \"added\": 0,\n    \"removed\": 0,\n    \"changed\": 0,\n    \"unchanged\": 1,\n    \"unpaired\": 1\n  },\n  \"changes\": [],\n  \"coverage\": {\n    \"before\": [\n      {\n        \"pages\": 1,\n        \"received\": 1,\n        \"retained\": 1,\n        \"scope\": \"tools/list\",\n        \"serverId\": \"raw-json-control\",\n        \"status\": \"complete\"\n      },\n      {\n        \"detail\": \"Server did not advertise prompts.\",\n        \"pages\": 0,\n        \"received\": 0,\n        \"retained\": 0,\n        \"scope\": \"prompts/list\",\n        \"serverId\": \"raw-json-control\",\n        \"status\": \"unsupported\"\n      },\n      {\n        \"detail\": \"Server did not advertise resources.\",\n        \"pages\": 0,\n        \"received\": 0,\n        \"retained\": 0,\n        \"scope\": \"resources/list\",\n        \"serverId\": \"raw-json-control\",\n        \"status\": \"unsupported\"\n      },\n      {\n        \"detail\": \"Server did not advertise resources.\",\n        \"pages\": 0,\n        \"received\": 0,\n        \"retained\": 0,\n        \"scope\": \"resources/templates/list\",\n        \"serverId\": \"raw-json-control\",\n        \"status\": \"unsupported\"\n      }\n    ],\n    \"after\": [\n      {\n        \"detail\": \"Live server metadata could not be read faithfully. JSON number at character 345 would be rounded during analysis. mcplint cannot audit or compare this metadata without changing its numeric content.\",\n        \"pages\": 0,\n        \"received\": 0,\n        \"retained\": 0,\n        \"scope\": \"tools/list\",\n        \"serverId\": \"raw-json-control\",\n        \"status\": \"incomplete\"\n      },\n      {\n        \"detail\": \"Server did not advertise prompts.\",\n        \"pages\": 0,\n        \"received\": 0,\n        \"retained\": 0,\n        \"scope\": \"prompts/list\",\n        \"serverId\": \"raw-json-control\",\n        \"status\": \"unsupported\"\n      },\n      {\n        \"detail\": \"Server did not advertise resources.\",\n        \"pages\": 0,\n        \"received\": 0,\n        \"retained\": 0,\n        \"scope\": \"resources/list\",\n        \"serverId\": \"raw-json-control\",\n        \"status\": \"unsupported\"\n      },\n      {\n        \"detail\": \"Server did not advertise resources.\",\n        \"pages\": 0,\n        \"received\": 0,\n        \"retained\": 0,\n        \"scope\": \"resources/templates/list\",\n        \"serverId\": \"raw-json-control\",\n        \"status\": \"unsupported\"\n      }\n    ]\n  },\n  \"notes\": [\n    \"This compares recorded metadata, not server code, tool behavior, returned content or safety.\",\n    \"Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.\",\n    \"Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.\",\n    \"Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.\",\n    \"Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison.\"\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "html",
+      "arguments": [
+        "diff",
+        "valid.json",
+        "rounded.json",
+        "--format",
+        "html",
+        "--output",
+        "diff.html"
+      ],
+      "exit": 2,
+      "signal": null,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "complete": true,
+  "html_sha256": "a9a8ea1e904aae851edb394cf173101fdadbfae4ef1dac52565569459b2e48ec"
+}

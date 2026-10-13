@@ -1,0 +1,287 @@
+{
+  "implementationCommit": "58fa1edd5b90d030c73aea5b77ff98611cd50b74",
+  "cleanArchiveFiles": 433,
+  "node": "24.21.0",
+  "steps": [
+    {
+      "name": "clean-install",
+      "command": [
+        "npm",
+        "ci",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "exit": 0,
+      "seconds": 6.65
+    },
+    {
+      "name": "clean-lint",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "exit": 0,
+      "seconds": 5.069
+    },
+    {
+      "name": "clean-types",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exit": 0,
+      "seconds": 2.394
+    },
+    {
+      "name": "clean-tests",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exit": 0,
+      "seconds": 26.301
+    },
+    {
+      "name": "clean-build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exit": 0,
+      "seconds": 1.874
+    },
+    {
+      "name": "clean-pack",
+      "command": [
+        "npm",
+        "pack",
+        "--ignore-scripts",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 0.593
+    }
+  ],
+  "package": {
+    "name": "antonsoloviev-mcplint-0.3.3.tgz",
+    "bytes": 132445,
+    "sha256": "33d7eadfbe73ca98e5d90b15dd8b672347c1b8480785153a165d820aa6bf9e4c",
+    "files": 121,
+    "unpackedBytes": 419592
+  },
+  "packageFiles": {
+    "LICENSE": "e26144be8673d69c175126ad8dcd9ed78431464f0b97120b799dc75ec7edb647",
+    "README.md": "b2e515f1d865ba196ca2deab2ba628b7c489003493ae1579ee88ac79b575f7e1",
+    "dist/cli.d.ts": "6f77e82bfb5dd3b1015dd92c63e427d505f9bbbdaa041cad6c704f41c553a536",
+    "dist/cli.js": "be76a91ac03cbc07d186fde4490a8a2c0a040adfa0835d2eacd7c7d714c92980",
+    "dist/collectors/collect.d.ts": "7c66583914d5e861fbddbc62d82a6f086bb97cd009e55ba5adf29897f2f370b1",
+    "dist/collectors/collect.js": "c75b2ec878dc45bde3bc2afe9005fbd30e6e4629584ee885af372b6b5fa34641",
+    "dist/collectors/config.d.ts": "596cff070ac5e38179874f263e7487ed21e80b9b421cae54cc76d4f40b54bb22",
+    "dist/collectors/config.js": "97efb65c1dfbd2df9e485a9671402023913c81b44b661707c9af71298ef0ac7c",
+    "dist/collectors/connect.d.ts": "5cd7f4cedd44ecb38bfc5bbc2e296b653686f72ba7b50e12afb4b424dfe4a294",
+    "dist/collectors/connect.js": "87d63dc871c48e354802fe539cab6e93663dd41bc296a0b9d4a498e81e76a787",
+    "dist/collectors/diagnostics.d.ts": "50fb02982941c7dac1488273181304695fec7edf8aed94cfe327482497d12a43",
+    "dist/collectors/diagnostics.js": "fdf2b800caa8b206168f81d207b87108effbb39edc9e2e79a656fc93cf176b8d",
+    "dist/collectors/env-file.d.ts": "056e1026b62802d66108b91622f31b290ab3ddf5f33a543bc8c321d82a635bdf",
+    "dist/collectors/env-file.js": "24e618ed7e1cd50da5c284d691e79e1ca10c0700d2aca73a59b8a71d5274a19f",
+    "dist/collectors/file.d.ts": "9ac6d0c21c6e24e39c05bbbda1a57deb14933080b8dbdc63da747b5884a4a867",
+    "dist/collectors/file.js": "b5ee4e5fd613bdb3e8853c50531e83756a164b429df7fb3eba27631272627520",
+    "dist/collectors/http-redirects.d.ts": "10f969b870e938862ec4d66c0488a0dc37d95c378397a07dbd08473ae001bde6",
+    "dist/collectors/http-redirects.js": "a71dba203b5073082eaeb7330972009aac2c24452b0910617627ef3d0feb7b94",
+    "dist/collectors/http.d.ts": "f2e1e0c9dae1951eecd0a3789d931b7d6b6d3ebdbb7a0a4970e11411da4d974f",
+    "dist/collectors/http.js": "bcb6358f9c14419d41262596f6feab536ccf790a2e4ebce3bcde71747d6a482f",
+    "dist/collectors/items.d.ts": "60de0019b10919f5e9bfdcdd4f90870d3e2f5615a6f6308a41433994c2cb8421",
+    "dist/collectors/items.js": "e337c25ad57f056426877eb04f042ae058053d889764c424ef67be512f638c1b",
+    "dist/collectors/live-json.d.ts": "5af7762f21f053c0479e7634643d234e4a12e5489ef1ee85e6bbaff0dcd3fb23",
+    "dist/collectors/live-json.js": "4bcbfcf9d7c6da44d8a4dc40c856f38bbd789db242b4f9f924bf1f479e591d7b",
+    "dist/collectors/stdio-transport.d.ts": "a91ce48223e57f521a094ed843656cb017acd1616b84cde7ae1fd9eb318fa99e",
+    "dist/collectors/stdio-transport.js": "27b907b44474ec10a5b9e9981f5b7ed1160bb00b5011b56cfa1534d22030d1cf",
+    "dist/collectors/stdio.d.ts": "0f2b5621d3f14b53cefce52ee7260fffa2d2ac42463e702758ebd88383d7e19d",
+    "dist/collectors/stdio.js": "a2f4ac6d2f38c690c6b17c3150b0f8e1f9a4f2ea9ccd3795aba6dd1877950f2c",
+    "dist/core/census.d.ts": "8b1cd6dba8b7d90befa7eea04c0a35c17ce842d069c2075ecb239cfc7ce3ca28",
+    "dist/core/census.js": "597558e3968cabe5b1a15e17deaf5a56ce4ab9e74d344c48edc263101c2ac4cc",
+    "dist/core/config.d.ts": "6b0ae939be14a649a110662f01157623e3f7dfd0613b243d618130dcd25b7b29",
+    "dist/core/config.js": "434dd44e8a3ea949e7434df4a1a7a08b8f73edd5e6e0cc75fa7dcd6b44fd873b",
+    "dist/core/lint.d.ts": "077956ef7de7dcd0e2f8e3fd22271608d03b666d6dc4e5b4d45464029e2b8645",
+    "dist/core/lint.js": "b6d7d9118e2a1ed9e8f93085df557388d75ac93e079af1f50b0a8244fd8cc983",
+    "dist/core/metadata.d.ts": "9a9bcf4f61daea8a7f435a57660b7e38a5b9de66fa394c341400521d99cca7c8",
+    "dist/core/metadata.js": "3cfa88a9826f0e5ab80f3ad4e6b50a74310504c8667e295608969763754b2ba1",
+    "dist/core/name-distance.d.ts": "86a72af12f0a32526dd9557a9301ce653d7924ef6933b59cf09ddb2faf38da03",
+    "dist/core/name-distance.js": "a928209a83a5d02c66bfb17eb6df970c883cb5a4040c8d9bd356dc64141405ac",
+    "dist/core/read-json.d.ts": "779b26d9b7dd71f65726496409b87d1464256dcc06fca45680adf8b121a21097",
+    "dist/core/read-json.js": "6be5e82d8c920ce6c6c82c53f10002fd85443c26f80a0dc4f5b2decb3f5b333e",
+    "dist/core/read-text.d.ts": "d619b3133220bd56b37eea1788e930509814afdfa0d08fef13c30269799540d2",
+    "dist/core/read-text.js": "6b39aee688d2580ba0ad1309bf1daf5097ec72758e7a15954cf50491e926c874",
+    "dist/core/rule-slug.d.ts": "dd6a9e56b870f26afea6cef3b697a252de6a0997986dca4875794d1db07ef359",
+    "dist/core/rule-slug.js": "7bde55c47ef23252c0a2f01183e9d7311a72b733446a5b96cd6ff3b9bc7978d5",
+    "dist/core/rules/budget.d.ts": "95c4ccfa64af272a7e7c8b5858db3f07b13114e2cfbed5242fb4c74cca170395",
+    "dist/core/rules/budget.js": "fc73892e831b70cb249914122b6f76cd4fd1dda93c1f9cc83a006c48fe7244e6",
+    "dist/core/rules/collection.d.ts": "e468b63ff04eec1eb9f63ed6d691d2ea327f5e4da68c3ac9d907456118c7f29a",
+    "dist/core/rules/collection.js": "e8b99bcaedacfae040896c9915beb4fc07964f4fb1a943dcb253d4146554590d",
+    "dist/core/rules/descriptions.d.ts": "5083770cf40bdb713464a75f5c98669a90b1ddcf3bca477ee25642c30f4e0473",
+    "dist/core/rules/descriptions.js": "8758f6868fee2d8c4d0f489c411108087f8ea4718306ca3fbb19501fa154ed7f",
+    "dist/core/rules/index.d.ts": "1e1f787ae5c961a425815adaf71d7c997e43cded63a9119bde8dc38978a908a5",
+    "dist/core/rules/index.js": "e16ef6921015cb59187dae7467c7b0cfe30709c43c70a63752dc89960eb262fe",
+    "dist/core/rules/naming.d.ts": "6e61fdade08a3c43a1ab68e3f5138cb330c4259879aea30d2e368e995e8b77cc",
+    "dist/core/rules/naming.js": "052273aae95742ad22a44d149e22d01a5ab7d463c74b56a5a473338eab42f64d",
+    "dist/core/rules/safety.d.ts": "a26b269059632f4da081f07aa519f7fc3af31fae1a302121346007d92facb1a3",
+    "dist/core/rules/safety.js": "27e553cd608bd5c26df522ff684a28a34881484acd200ae702757cf3fce5f178",
+    "dist/core/rules/schema.d.ts": "3da21e704ea74ddbb6a92376a3fdbc0788d2081dc696005cad41cb368f36c724",
+    "dist/core/rules/schema.js": "8546c7dca3c8566b31edf7ef77ee3a068a6d4298e8c362fd908585556f2c6320",
+    "dist/core/schema-utils.d.ts": "39b8665199e249c7fe12effbf06796beb43f34c46a7ddade6186a1296a40d417",
+    "dist/core/schema-utils.js": "e7dbae691cdcc804ef7a8287e8a8ec258525116e8624c25a2eb865ca6962c505",
+    "dist/core/schema-validation.d.ts": "4e7305c85a7aa9755300c72d14878f63859a771a1864884ba72891132c839fe4",
+    "dist/core/schema-validation.js": "b213bf2073c9814bed063672017dc92c0382c326d8a8291b9364ed6bfbd169c8",
+    "dist/core/score.d.ts": "61d86e82475c7f2feb9814084375d16f2812b695fb57946c1e66742ffc544fae",
+    "dist/core/score.js": "0493c2aa29e86bf9b35eca09d1276dd2e4b44e4d6c22735148893f14074b04be",
+    "dist/core/tokenizer.d.ts": "de87f81425fb629ea51e1d06408c54b4bd0e885e12cc85264cddbe2e0354f767",
+    "dist/core/tokenizer.js": "aa7f9a268c9940089c285d9c240e374c0aa02c9221bb82af1dd7ae0017b56336",
+    "dist/core/types.d.ts": "422686ce8c4768fc566630b4d88c2b89aee4239a3a6ee208664c4524e15e4fb5",
+    "dist/core/types.js": "4246d4fd2648ad9bf3c769fd93f9cdd59dde2cc3df60e22adecf51fdd86816cc",
+    "dist/core/unicode.d.ts": "7b9008230073582db52f1ab17cb671e787ba4fa576848e7157c4e6059ce39d28",
+    "dist/core/unicode.js": "2a08760ecd345c02a40d7aae77216f021cb517d4e4914c878ba9dc9df112d456",
+    "dist/index.d.ts": "b8e87c6664c669b93ccf19754d665fb7c5ee1bbccbb6ae8c9acaa8dcea5d5878",
+    "dist/index.js": "333017b3dec34f5cc3cf1524297604d7e1fbc7b642522be669e96f83ba913f7d",
+    "dist/report-file.d.ts": "f613e2635e883413bfa5aca222e9711dd494368ce88eaae7745e73cb48ecab11",
+    "dist/report-file.js": "a07bd7afe92d5552ecfbe0941559fb75b37d4a5557d31cd3ba328d94642a59ce",
+    "dist/report/coverage.d.ts": "0c762acff7e6598335a115fa2bb79ed828a60a90cd101a48c9e0ffbd9fa5f2af",
+    "dist/report/coverage.js": "c19a5c1b4142be5c034e55306187f4c7f5d688b68c5d6bf84b6c4b405e353d57",
+    "dist/report/html.d.ts": "02c58ea717d39d943c2822c062eb68e464e785cb4bc44c1385bd75c6b30cb61f",
+    "dist/report/html.js": "7ac78b2ba7a87d24e90057e3384eededbb31386f13a51fc6e15dc372665bd65f",
+    "dist/report/json.d.ts": "b9ffafcac31adafa33c31e296d4669ee63338c8c36bb8c81cf71b2f2355dd03d",
+    "dist/report/json.js": "d2b115171c72406f485cd85911edbda080dd58ff5fab4c457de8bc48501c8e3c",
+    "dist/report/markdown.d.ts": "1ff32145cccd6e5585fb60c320004f15597ad25db07feea54bbfa07eecc30727",
+    "dist/report/markdown.js": "135316c9e681df8875f137e43bd90fb7e152f9a82dcef4c9de1fc6e3a7bb30c6",
+    "dist/report/metadata-html.d.ts": "d18b0494455bee41112fd43bc2c980d2107b6d17c30c21c0b9c7e44793e9fb69",
+    "dist/report/metadata-html.js": "84e630dc693b55c9a4fd68cdae3be2b74bf870a41611793c80b85d723b57937e",
+    "dist/report/metadata.d.ts": "25ea86a1722fb69f367fab6c29bea8ae7eef0d1908f431f08210b8887a95c924",
+    "dist/report/metadata.js": "a8a1eaa1698cc9829671fba537ffbb04b59a03072f3173cf7681c02a4092da52",
+    "dist/report/sarif.d.ts": "31df1680eb70fc830b5c5bbab6b6a8b58a57a1009efa98e2a8cd3cb270baaba7",
+    "dist/report/sarif.js": "486e22fc0422c20d79582817dca90b693fb152c1a62a31bc0f2d486fbabb2984",
+    "dist/report/terminal.d.ts": "e226e1818b0e375885c127eafed514528b0d43cc556b7e8566401d7360b2aa7a",
+    "dist/report/terminal.js": "0e2171dab1e483646cf1f1c1bfe835a90dc1e05dc41a285badcae9f1c6ef9680",
+    "dist/version.d.ts": "163d434c0a5a486719193e1b9ba92d6ee9a212ae43c213c5e6e7b1233566127b",
+    "dist/version.js": "215ca1f5d200fd274c1db8775c343ed1abc249ff3afdcaaf06cf746f9b88a20b",
+    "docs/collection-coverage.md": "e20cde5a924d969c4b98633fb75628309543a5279b7a760d5c44e7846c6a5aee",
+    "docs/metadata-review.md": "5addd22c954f15045237329e3e561a125a2aed153084604215f1da4393228be8",
+    "docs/rules/budget-tool-tokens.md": "d38f17786f74187a26c98ef0b712348daf5b13090b15f91ece41ae2bc4952ee6",
+    "docs/rules/budget-total-tokens.md": "c0cc400b986c03e56eedd79417824ba3e138b90bddbcd0c1c497d90705b107bf",
+    "docs/rules/collection-incomplete.md": "543224c4a705ce7ab5756ad63c6fe9167c32dc77569f5ba0f05dc3403f06a0f8",
+    "docs/rules/description-enum-unexplained.md": "0c1d1fdbc405652feaed9a11acd76a19f36771dede49565aeacbfd56744c8409",
+    "docs/rules/description-missing.md": "d4c223eae202bac2f9c14f85a49ebd018d0e129aa0cb182f3b564e06ee8bf00a",
+    "docs/rules/description-near-duplicate.md": "68f5a9f25d3e5aefa905a00c1327d903d6ecc19afa07be7bf36bd8af14f5808f",
+    "docs/rules/description-param-missing.md": "6799c2dbaec74e3d9ecd62ee08f55e0bb2b2a35da8b856d26ff1fae73e824e20",
+    "docs/rules/description-required-undeclared.md": "2cccb0feaf46d23390fe7c83b84304ac60f9e2e11d184ee2bcdf9342a28f6291",
+    "docs/rules/description-too-long.md": "1674d51855d4b1338491d4f75af75f30e3835711fe8dd9b45d801550cb6e0fd9",
+    "docs/rules/description-too-short.md": "95f35ef6b2b9b98656ca8b65b85c0e4f74544b9ce1144d238d584a8372bf240d",
+    "docs/rules/naming-collision.md": "f48fac652a6a51d80b97af5121e627a8252fc2a015612554c58091ebc1bd2de5",
+    "docs/rules/naming-convention-consistency.md": "a45b616ccb962abcf4bb7ea24f523e1b15092a9bda769ee4aadcfb1b54cebe0f",
+    "docs/rules/naming-generic.md": "b27ab407eba6c0ff7ce46ad84bcf6635a31bf031b39884fcf326a96cf63a7113",
+    "docs/rules/naming-invalid-chars.md": "71f86dec01e5748515ca8cf5368833bc8ed43c42657f3ffab39577434e259031",
+    "docs/rules/naming-shadowing.md": "ee20b0d582aa2917d75e74f324a35ca8302dafa3cf7eed072b5a7ac5fb8f8242",
+    "docs/rules/naming-strict-client-compat.md": "13b40f371c3dc2ffc184e56b06f965c6cfc297ac30dbbee489a585e06b6c8700",
+    "docs/rules/safety-control-characters.md": "9ddd681f5397147a5f63e205d5d35aacdbd36b4fd0083d2761fc4cf4046e8378",
+    "docs/rules/safety-cross-tool-reference.md": "53dfb13369e0c430ea46f7cf884a7632fd522400ea1d435976fb2b29a0a3c1f5",
+    "docs/rules/safety-encoded-blob.md": "3f70978c39091bfe73c7a647ded6362e60d1cb923f72fe1c3d81b6a60afe23de",
+    "docs/rules/safety-hidden-unicode.md": "1fd096f504a45c507a65fcdf4ee5bca4fcc8f0c13b910228a7bc6b1d45f941a3",
+    "docs/rules/safety-missing-annotations.md": "b328482a1dabb57d8a6e33bcea45a60493ad7c4e137bf937c815919def3d2d71",
+    "docs/rules/safety-prompt-injection.md": "148c9a3a4b044cf69e37782e1754a3aad0c856099323d85dc8dbbe0ffb923f9b",
+    "docs/rules/safety-secret-access.md": "b91cb510751175c23cd36dcc2bd9b737ed89525fca8e3a3ec27c645553b77d8a",
+    "docs/rules/safety-unchecked.md": "e61989e133c5622653c2a0bc760f7fe1ba946bda49e3c08a1ce92d852781ac2e",
+    "docs/rules/schema-invalid.md": "24c84497263504b7558d67aa08d675aad4a5ce0be535d42206fcd9e4a785d154",
+    "docs/rules/schema-portability.md": "b18511fd2f27d14d0b82e09ae6806109cbdeedb53663645036b6c7eabfd5716e",
+    "package.json": "96794751ad94bb881a92b6f701668340818a7b91762172d7e446d8aa12020f3c"
+  },
+  "baseline": {
+    "commit": "842910b8f4e387613040943cc7ad11f8e16d2892",
+    "rebuiltFilesMatchedPreviousReceipt": 86
+  },
+  "validControls": {
+    "allFourTransportSnapshotsByteIdentical": true,
+    "cliSnapshotsMatchExceptCreatedAt": true,
+    "cliAuditsMatchExceptGeneratedAt": true
+  },
+  "installed": [
+    {
+      "node": "v20.0.0",
+      "packageFilesMatch": 121,
+      "allApiCapturesAndComparisonsMatchSource": true,
+      "cliExits": {
+        "valid": 0,
+        "rounded": 1,
+        "diff": 2,
+        "html": 2
+      },
+      "receipt": "installed-node20.json",
+      "runtimeDependencies": {
+        "@modelcontextprotocol/sdk": "1.32.1",
+        "eventsource": "3.0.7",
+        "eventsource-parser": "3.1.1",
+        "cross-spawn": "7.0.6",
+        "zod": "3.25.76",
+        "ajv": "8.20.0"
+      }
+    },
+    {
+      "node": "v24.21.0",
+      "packageFilesMatch": 121,
+      "allApiCapturesAndComparisonsMatchSource": true,
+      "cliExits": {
+        "valid": 0,
+        "rounded": 1,
+        "diff": 2,
+        "html": 2
+      },
+      "receipt": "installed-node24.json",
+      "runtimeDependencies": {
+        "@modelcontextprotocol/sdk": "1.32.1",
+        "eventsource": "3.0.7",
+        "eventsource-parser": "3.1.1",
+        "cross-spawn": "7.0.6",
+        "zod": "3.25.76",
+        "ajv": "8.20.0"
+      }
+    }
+  ],
+  "fullSuite": {
+    "files": 47,
+    "tests": 603,
+    "exit": 0
+  },
+  "scope": "Fresh source archive and fresh local tarball installs. No npm release or hosted deployment.",
+  "verificationNotes": "npm 12.0.1 installed the tarballs using host Node 26.7.0; the complete installed API and actual CLI replays ran separately under Node 20.0.0 and 24.21.0. npm ci ran on Node 24.21.0 and built the root package; npm policy blocked esbuild postinstall, but its platform binary and all 603 tests worked. Timings describe this run, not a performance guarantee.",
+  "browser": {
+    "receipt": "browser.json",
+    "source": "Fresh Node 24 tarball installation",
+    "report": "diff.html",
+    "inspectedScreenshots": [
+      {
+        "path": "docs/assets/live-json/chromium-1440.png",
+        "bytes": 183959,
+        "sha256": "9a3934e9d6cc144f79be671e660b461c28522c902764590753c33e771a233212"
+      },
+      {
+        "path": "docs/assets/live-json/chromium-375.png",
+        "bytes": 172142,
+        "sha256": "50942ea56367d550eb9bd57c2332ab7a3583520c9ea2c7a54b54289a662decbd"
+      },
+      {
+        "path": "docs/assets/live-json/firefox-1440.png",
+        "bytes": 217194,
+        "sha256": "107139d9ae6f1d824e4c0c4ecc04ca17bd1dd52873fe70250c47430ae556c170"
+      },
+      {
+        "path": "docs/assets/live-json/firefox-375.png",
+        "bytes": 208563,
+        "sha256": "e3db4f03e6f8f1764bf9c7a8b73b8743b36538e69d7fb35827e2926c629333bb"
+      }
+    ]
+  },
+  "harnessNotes": [
+    "The initial final-page notification fixture used two separate writes; collection could legitimately finish between them. The retained fixture sends the valid final page and invalid notification in one write, exercising the intended observed-message boundary.",
+    "The initial browser harness assumed a shortened heading and looked for numeric detail in the summary. Corrected selectors assert the actual complete heading and expand Collection coverage to inspect the reason. No application/report code changed; all four final offline workflows pass."
+  ]
+}

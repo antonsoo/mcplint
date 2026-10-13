@@ -35,9 +35,11 @@ for (const [engine, driver] of Object.entries({ chromium, firefox })) {
         });
         await context.setOffline(true);
         await page.goto(pathToFileURL(join(report, 'diff.html')).href);
-        await expect(page.locator('.md-title')).toHaveText('Comparison incomplete');
-        await expect(page.locator('#issues')).toContainText('rounded');
+        await expect(page.locator('.md-title')).toHaveText('Comparison incomplete; unchanged metadata is not established');
+        await expect(page.locator('#issues')).toContainText('tools/list is incomplete');
         await expect(page.locator('#changes')).toContainText('Collection gaps remain unresolved');
+        await page.locator('summary').filter({ hasText: /^Collection coverage$/ }).click();
+        await expect(page.locator('#coverage')).toContainText('would be rounded during analysis');
         const pending = page.waitForEvent('download');
         await page.getByRole('button', { name: 'Download complete JSON', exact: true }).click();
         assert.deepEqual(JSON.parse(await readFile(await (await pending).path(), 'utf8')), expected);

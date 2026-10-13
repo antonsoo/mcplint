@@ -51,6 +51,36 @@ incomplete. Child-process checks cover cooperative shutdown and a server that
 ignores both EOF and SIGTERM; collection returns after the direct child closes.
 Diagnostics do not echo server-controlled field names, literals or response text.
 
+## Retained verification
+
+[Before](results/before.json) and [after](results/after.json) retain the full
+API and CLI observations. The [artifact receipt](results/verification.json)
+records a byte-matched 433-file archive of implementation `58fa1ed`, locked
+installation, lint, type checking, 603 passing tests, build and pack. All 86
+rebuilt baseline runtime files also match the earlier committed artifact receipt.
+
+Fresh [Node 20.0.0](results/installed-node20.json) and
+[Node 24.21.0](results/installed-node24.json) installs each match all 121 shipped
+files and pass the complete replay. Their SDK resolves to 1.32.1, while the
+locked source uses 1.31.0; all API captures and comparisons remain identical.
+Valid CLI snapshots differ from baseline only in `createdAt`, and valid audit
+JSON differs only in `generatedAt`. The tarball is 132,445 bytes, SHA-256
+`33d7eadfbe73ca98e5d90b15dd8b672347c1b8480785153a165d820aa6bf9e4c`.
+
+The exact [installed CLI HTML report](results/diff.html) was opened offline in
+Chromium 153.0.8010.12 and Firefox 155.0 at 1440 px and 375 px. Each workflow
+expands the coverage reason and downloads JSON identical to the CLI comparison.
+There were no page errors, external requests, horizontal overflow or axe
+violations in these four views. [Browser observations](results/browser.json)
+retain the report hash and visible text. All four screenshots were inspected;
+the status and numeric-integrity reason remain readable at both sizes.
+
+![Installed incomplete comparison, Chromium at 375 px](../../docs/assets/live-json/chromium-375.png)
+
+The receipt also records corrected harness assumptions and npm's blocked
+dependency install script. Those did not require changes to report rendering
+or a package release. Timings describe these runs, not a latency guarantee.
+
 ## Boundaries
 
 - A failed live list can still produce a useful partial report or snapshot.

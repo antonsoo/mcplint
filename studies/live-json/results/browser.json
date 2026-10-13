@@ -1,0 +1,54 @@
+{
+  "reportBytes": 25316,
+  "reportSha256": "a9a8ea1e904aae851edb394cf173101fdadbfae4ef1dac52565569459b2e48ec",
+  "cases": [
+    {
+      "engine": "chromium",
+      "browser": "153.0.8010.12",
+      "width": 1440,
+      "offline": true,
+      "body": "[mcplint] metadata review\nToggle color theme\nComparison incomplete; unchanged metadata is not established\n\nReview the definitions and instructions collected before and after an update. A metadata comparison does not establish server behavior or safety.\n\n0 added\n0 removed\n0 changed\n1 unchanged\n1 unpaired\nCollection or identity gaps\nAfter: raw-json-control tools/list is incomplete.\nraw-json-control tools/list: coverage is complete before and incomplete after; absent definitions cannot be classified as added or removed.\nFind a definition or changed path\nChange type\nAll changes\nChanged\nAdded\nRemoved\nDownload complete JSON\n\n0 of 0 changed entries shown\n\nNo comparable changes were observed. Collection gaps remain unresolved.\n\nCollection coverage\nbefore: raw-json-control / tools/list\n\ncomplete / 1 pages / 1 received / 1 retained\n\nbefore: raw-json-control / prompts/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise prompts.\n\nbefore: raw-json-control / resources/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise resources.\n\nbefore: raw-json-control / resources/templates/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise resources.\n\nafter: raw-json-control / tools/list\n\nincomplete / 0 pages / 0 received / 0 retained\n\nLive server metadata could not be read faithfully. JSON number at character 345 would be rounded during analysis. mcplint cannot audit or compare this metadata without changing its numeric content.\n\nafter: raw-json-control / prompts/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise prompts.\n\nafter: raw-json-control / resources/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise resources.\n\nafter: raw-json-control / resources/templates/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise resources.\n\nSnapshot identities and comparison rules",
+      "downloadMatches": true,
+      "overflow": false,
+      "axeViolations": [],
+      "pageErrors": [],
+      "externalRequests": []
+    },
+    {
+      "engine": "chromium",
+      "browser": "153.0.8010.12",
+      "width": 375,
+      "offline": true,
+      "body": "[mcplint] metadata review\nToggle color theme\nComparison incomplete; unchanged metadata is not established\n\nReview the definitions and instructions collected before and after an update. A metadata comparison does not establish server behavior or safety.\n\n0 added\n0 removed\n0 changed\n1 unchanged\n1 unpaired\nCollection or identity gaps\nAfter: raw-json-control tools/list is incomplete.\nraw-json-control tools/list: coverage is complete before and incomplete after; absent definitions cannot be classified as added or removed.\nFind a definition or changed path\nChange type\nAll changes\nChanged\nAdded\nRemoved\nDownload complete JSON\n\n0 of 0 changed entries shown\n\nNo comparable changes were observed. Collection gaps remain unresolved.\n\nCollection coverage\nbefore: raw-json-control / tools/list\n\ncomplete / 1 pages / 1 received / 1 retained\n\nbefore: raw-json-control / prompts/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise prompts.\n\nbefore: raw-json-control / resources/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise resources.\n\nbefore: raw-json-control / resources/templates/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise resources.\n\nafter: raw-json-control / tools/list\n\nincomplete / 0 pages / 0 received / 0 retained\n\nLive server metadata could not be read faithfully. JSON number at character 345 would be rounded during analysis. mcplint cannot audit or compare this metadata without changing its numeric content.\n\nafter: raw-json-control / prompts/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise prompts.\n\nafter: raw-json-control / resources/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise resources.\n\nafter: raw-json-control / resources/templates/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise resources.\n\nSnapshot identities and comparison rules",
+      "downloadMatches": true,
+      "overflow": false,
+      "axeViolations": [],
+      "pageErrors": [],
+      "externalRequests": []
+    },
+    {
+      "engine": "firefox",
+      "browser": "155.0",
+      "width": 1440,
+      "offline": true,
+      "body": "[mcplint] metadata review\nToggle color theme\nComparison incomplete; unchanged metadata is not established\n\nReview the definitions and instructions collected before and after an update. A metadata comparison does not establish server behavior or safety.\n\n0 added\n0 removed\n0 changed\n1 unchanged\n1 unpaired\nCollection or identity gaps\nAfter: raw-json-control tools/list is incomplete.\nraw-json-control tools/list: coverage is complete before and incomplete after; absent definitions cannot be classified as added or removed.\nFind a definition or changed path\nChange type\nDownload complete JSON\n\n0 of 0 changed entries shown\n\nNo comparable changes were observed. Collection gaps remain unresolved.\n\nCollection coverage\nbefore: raw-json-control / tools/list\n\ncomplete / 1 pages / 1 received / 1 retained\n\nbefore: raw-json-control / prompts/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise prompts.\n\nbefore: raw-json-control / resources/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise resources.\n\nbefore: raw-json-control / resources/templates/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise resources.\n\nafter: raw-json-control / tools/list\n\nincomplete / 0 pages / 0 received / 0 retained\n\nLive server metadata could not be read faithfully. JSON number at character 345 would be rounded during analysis. mcplint cannot audit or compare this metadata without changing its numeric content.\n\nafter: raw-json-control / prompts/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise prompts.\n\nafter: raw-json-control / resources/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise resources.\n\nafter: raw-json-control / resources/templates/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise resources.\n\nSnapshot identities and comparison rules",
+      "downloadMatches": true,
+      "overflow": false,
+      "axeViolations": [],
+      "pageErrors": [],
+      "externalRequests": []
+    },
+    {
+      "engine": "firefox",
+      "browser": "155.0",
+      "width": 375,
+      "offline": true,
+      "body": "[mcplint] metadata review\nToggle color theme\nComparison incomplete; unchanged metadata is not established\n\nReview the definitions and instructions collected before and after an update. A metadata comparison does not establish server behavior or safety.\n\n0 added\n0 removed\n0 changed\n1 unchanged\n1 unpaired\nCollection or identity gaps\nAfter: raw-json-control tools/list is incomplete.\nraw-json-control tools/list: coverage is complete before and incomplete after; absent definitions cannot be classified as added or removed.\nFind a definition or changed path\nChange type\nDownload complete JSON\n\n0 of 0 changed entries shown\n\nNo comparable changes were observed. Collection gaps remain unresolved.\n\nCollection coverage\nbefore: raw-json-control / tools/list\n\ncomplete / 1 pages / 1 received / 1 retained\n\nbefore: raw-json-control / prompts/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise prompts.\n\nbefore: raw-json-control / resources/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise resources.\n\nbefore: raw-json-control / resources/templates/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise resources.\n\nafter: raw-json-control / tools/list\n\nincomplete / 0 pages / 0 received / 0 retained\n\nLive server metadata could not be read faithfully. JSON number at character 345 would be rounded during analysis. mcplint cannot audit or compare this metadata without changing its numeric content.\n\nafter: raw-json-control / prompts/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise prompts.\n\nafter: raw-json-control / resources/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise resources.\n\nafter: raw-json-control / resources/templates/list\n\nunsupported / 0 pages / 0 received / 0 retained\n\nServer did not advertise resources.\n\nSnapshot identities and comparison rules",
+      "downloadMatches": true,
+      "overflow": false,
+      "axeViolations": [],
+      "pageErrors": [],
+      "externalRequests": []
+    }
+  ]
+}

@@ -106,7 +106,7 @@ the original response too. A damaged list page yields an explicitly incomplete
 capture, retaining earlier valid pages; it cannot pass an unchanged diff.
 [Live-server reproduction](studies/live-json/README.md). These checks cannot
 recover values already lost in an older snapshot or a decoded library object.
-The study also captures the same official filesystem server under two dependency
+The saved-file study also captures the same official filesystem server under two dependency
 resolutions: its compiled entrypoint is identical, but 13 tool schemas change.
 These commands are **unreleased source features**; the npm package and hosted
 demo have not been updated for them.

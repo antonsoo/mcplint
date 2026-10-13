@@ -1,0 +1,111 @@
+{
+  "format": "mcplint-metadata-diff",
+  "schemaVersion": 1,
+  "before": {
+    "createdAt": "2026-10-13T18:27:59.946Z",
+    "sha256": "166d3b65f3e114d0801ae44eb49be0981fa37d4ddf3746604cfbed1c2a5a9153",
+    "definitions": 1
+  },
+  "after": {
+    "createdAt": "2026-10-13T18:28:00.572Z",
+    "sha256": "0c1f1d7841f8cecd8ce96b9e1a71ea756f74fba59cc02f3c88693d64eb2ccd0b",
+    "definitions": 0
+  },
+  "complete": false,
+  "issues": [
+    "After: raw-json-control tools/list is incomplete.",
+    "raw-json-control tools/list: coverage is complete before and incomplete after; absent definitions cannot be classified as added or removed."
+  ],
+  "summary": {
+    "added": 0,
+    "removed": 0,
+    "changed": 0,
+    "unchanged": 1,
+    "unpaired": 1
+  },
+  "changes": [],
+  "coverage": {
+    "before": [
+      {
+        "pages": 1,
+        "received": 1,
+        "retained": 1,
+        "scope": "tools/list",
+        "serverId": "raw-json-control",
+        "status": "complete"
+      },
+      {
+        "detail": "Server did not advertise prompts.",
+        "pages": 0,
+        "received": 0,
+        "retained": 0,
+        "scope": "prompts/list",
+        "serverId": "raw-json-control",
+        "status": "unsupported"
+      },
+      {
+        "detail": "Server did not advertise resources.",
+        "pages": 0,
+        "received": 0,
+        "retained": 0,
+        "scope": "resources/list",
+        "serverId": "raw-json-control",
+        "status": "unsupported"
+      },
+      {
+        "detail": "Server did not advertise resources.",
+        "pages": 0,
+        "received": 0,
+        "retained": 0,
+        "scope": "resources/templates/list",
+        "serverId": "raw-json-control",
+        "status": "unsupported"
+      }
+    ],
+    "after": [
+      {
+        "detail": "Live server metadata could not be read faithfully. JSON number at character 345 would be rounded during analysis. mcplint cannot audit or compare this metadata without changing its numeric content.",
+        "pages": 0,
+        "received": 0,
+        "retained": 0,
+        "scope": "tools/list",
+        "serverId": "raw-json-control",
+        "status": "incomplete"
+      },
+      {
+        "detail": "Server did not advertise prompts.",
+        "pages": 0,
+        "received": 0,
+        "retained": 0,
+        "scope": "prompts/list",
+        "serverId": "raw-json-control",
+        "status": "unsupported"
+      },
+      {
+        "detail": "Server did not advertise resources.",
+        "pages": 0,
+        "received": 0,
+        "retained": 0,
+        "scope": "resources/list",
+        "serverId": "raw-json-control",
+        "status": "unsupported"
+      },
+      {
+        "detail": "Server did not advertise resources.",
+        "pages": 0,
+        "received": 0,
+        "retained": 0,
+        "scope": "resources/templates/list",
+        "serverId": "raw-json-control",
+        "status": "unsupported"
+      }
+    ]
+  },
+  "notes": [
+    "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+    "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+    "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+    "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+    "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+  ]
+}
