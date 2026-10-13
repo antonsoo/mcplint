@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import type { CollectionRecord, LintTarget, ListMethod, MetadataDefinition, MetadataServer } from './types.js';
 import { isPlainObject } from './schema-utils.js';
+import { JsonIntegrityError, readJson } from './read-json.js';
 
 export const MAX_SNAPSHOT_BYTES = 50 * 1024 * 1024;
 const MAX_NODES = 1_000_000;
@@ -105,8 +106,11 @@ export function createMetadataSnapshot(target: LintTarget, createdAt = new Date(
 export function parseMetadataSnapshot(text: string): MetadataSnapshot {
   if (Buffer.byteLength(text) > MAX_SNAPSHOT_BYTES) throw new Error('Metadata exceeds the 50 MB snapshot limit.');
   let value: unknown;
-  try { value = JSON.parse(text); }
-  catch { throw new Error('Metadata snapshot is not valid JSON.'); }
+  try { value = readJson(text); }
+  catch (error) {
+    if (error instanceof JsonIntegrityError) throw new Error(`Metadata snapshot: ${error.message}`);
+    throw new Error('Metadata snapshot is not valid JSON.');
+  }
   validateMetadataSnapshot(value);
   return value;
 }

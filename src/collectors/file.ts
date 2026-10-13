@@ -1,4 +1,5 @@
 import { readTextFile } from '../core/read-text.js';
+import { JsonIntegrityError, readJson } from '../core/read-json.js';
 import type { CollectionRecord, LintTarget } from '../core/types.js';
 import { isPlainObject, stripBom } from '../core/schema-utils.js';
 import { appendItems } from './items.js';
@@ -8,8 +9,11 @@ import { MAX_ITEMS } from './collect.js';
 export async function collectFile(path: string, serverId = 'file'): Promise<LintTarget> {
   const raw = await readTextFile(path);
   let parsed: unknown;
-  try { parsed = JSON.parse(stripBom(raw)); }
-  catch (err) { throw new Error(`${path} is not valid JSON: ${(err as Error).message}`); }
+  try { parsed = readJson(stripBom(raw)); }
+  catch (err) {
+    if (err instanceof JsonIntegrityError) throw new Error(`${path}: ${err.message}`);
+    throw new Error(`${path} is not valid JSON: ${(err as Error).message}`);
+  }
   if (Array.isArray(parsed)) parsed = { tools: parsed };
   if (!isPlainObject(parsed)) throw new Error(`${path} must contain a tools array or a {tools, prompts, resources} object.`);
   const keys = ['tools', 'prompts', 'resources', 'resourceTemplates'] as const;

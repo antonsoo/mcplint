@@ -69,6 +69,17 @@ describe('collectFile', () => {
     await expect(collectFile(path)).rejects.toThrow(/not valid JSON/);
   });
 
+  it.each([
+    '{"tools":[],"tools":[{"name":"later"}]}',
+    '{"tools":[{"name":"first","\\u006eame":"last"}]}',
+    '{"tools":[{"name":"read_account","inputSchema":{"maximum":9007199254740993}}]}',
+    '{"tools":[{"name":"read_account","_meta":{"limit":1e-400}}]}',
+  ])('refuses saved metadata whose decoded content would change: %s', async (text) => {
+    const path = join(dir, 'ambiguous.json');
+    await writeFile(path, text);
+    await expect(collectFile(path)).rejects.toThrow(/Duplicate JSON|rounded|underflows/);
+  });
+
   it('throws when there is nothing to collect', async () => {
     const path = join(dir, 'empty.json');
     await writeFile(path, JSON.stringify({}));

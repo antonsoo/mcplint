@@ -4,6 +4,14 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Check saved metadata JSON before auditing or comparison: refuse duplicate
+  object fields, numeric overflow/underflow and decimal changes on serialization.
+  A constraint changing from `9007199254740992` to `9007199254740993` previously
+  became two equal snapshots and a successful unchanged diff. Refusal now
+  preserves prior reports and avoids writing a misleading snapshot. Ordinary
+  decimals, equivalent exponent spellings and duplicate list identities retain
+  their documented behavior. [CLI and Decimal evidence](studies/json-integrity/README.md).
+
 - Protect file-audit definitions, explicit/discovered lint settings, MCP client
   configs and their resolved `envFile` inputs from report/snapshot destinations.
   Check aliases and both output paths before starting configured servers.

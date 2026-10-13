@@ -81,6 +81,30 @@ Collection coverage records accompany the values. A versioned envelope validates
 server references, counts, duplicate scopes and finite JSON values when read.
 Ordinary lint JSON reports are not snapshots: they do not retain these entries.
 
+Saved tool inventories (`file`) and imported metadata snapshots are checked
+before their decoded values enter an audit or comparison. Duplicate object
+fields, including escaped spellings of the same name, are refused. Numbers
+that overflow, underflow to zero or change decimal value when JavaScript
+serializes them are also refused. For example, `9007199254740993` must not become
+`9007199254740992` and make a changed constraint appear unchanged. Exit 2 leaves
+an earlier report intact and creates no snapshot from the unsupported input.
+[CLI reproduction and retained controls](../studies/json-integrity/README.md).
+
+Equivalent numeric spellings such as `100`, `100.0` and `1e2` remain accepted,
+as do ordinary decimals such as `0.1`. This checks decimal serialization, not
+exact binary floating-point arithmetic. Keep numeric schema constraints numeric;
+use a string representation only where the producer's schema permits one.
+Duplicate definitions in an array are still retained and handled by the existing
+identity/coverage rules; they are different from duplicate fields in one object.
+Saved JSON has a 128-container nesting limit. Diagnostics identify the problem
+without quoting the offending field name or numeric literal.
+
+This check needs the original JSON text. It cannot recover values already lost
+in an older snapshot, a caller-supplied JavaScript object, or the MCP SDK's live
+transport decoding. Live snapshots still record SDK-decoded metadata. Client
+configuration and lint-configuration parsing are separate from these metadata
+input checks.
+
 Object key order and list-entry order do not count as changes. Arrays **inside**
 an entry remain ordered; strings remain exact; an absent key differs from `null`.
 Objects are compared at changed fields, while an array change displays the whole

@@ -1,0 +1,30 @@
+{
+  "cases": 33,
+  "before_intended_outcomes": 18,
+  "after_intended_outcomes": 33,
+  "unchanged_accepted_reports_and_snapshots": [
+    "file-ordinary",
+    "file-large-exact",
+    "file-equivalent-exponent",
+    "file-ordinary-decimal",
+    "file-subnormal",
+    "file-string-lookalikes",
+    "file-separate-objects",
+    "file-duplicate-list-identities",
+    "diff-unchanged",
+    "diff-changed-limit",
+    "diff-decimal-change",
+    "diff-equivalent-exponent",
+    "diff-key-order",
+    "diff-ordered-array"
+  ],
+  "byte_identical_html": [
+    "diff-unchanged",
+    "diff-changed-limit",
+    "diff-decimal-change",
+    "diff-equivalent-exponent",
+    "diff-key-order",
+    "diff-ordered-array"
+  ],
+  "report_normalization": "Only audit generatedAt and newly captured snapshot createdAt were omitted by the replay. Fixed-timestamp diff reports need no normalization."
+}

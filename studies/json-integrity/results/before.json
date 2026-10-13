@@ -1,0 +1,3120 @@
+{
+  "scope": "Synthetic saved tool inventories and snapshots through actual CLI capture/diff; only capture timestamps omitted from recorded JSON objects.",
+  "node": "v26.7.0",
+  "cases": 33,
+  "cli_invocations": 39,
+  "disagreements": 18,
+  "results": [
+    {
+      "case": "file-rounded-integer",
+      "expected_exit": 2,
+      "exit": 0,
+      "input_sha256": "ee451d9bcdd1b69169238aeee205028162506518899a5f2067a0e82ecdc53807",
+      "stderr": "Snapshot written to snapshot.json\nReport written to report.json\n",
+      "report_preserved": false,
+      "snapshot_written": true,
+      "snapshot": {
+        "collection": [
+          {
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "scope": "tools/list",
+            "serverId": "file",
+            "status": "complete"
+          },
+          {
+            "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "scope": "file",
+            "serverId": "file",
+            "status": "complete"
+          }
+        ],
+        "definitions": [
+          {
+            "scope": "tools/list",
+            "serverId": "file",
+            "value": {
+              "annotations": {
+                "destructiveHint": false,
+                "openWorldHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Read one account by its integer account ID without modifying stored records.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "account_id": {
+                    "description": "Identifier of the account to inspect.",
+                    "maximum": 9007199254740992,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "account_id"
+                ],
+                "type": "object"
+              },
+              "name": "read_account"
+            }
+          }
+        ],
+        "format": "mcplint-metadata-snapshot",
+        "schemaVersion": 1,
+        "servers": [
+          {
+            "id": "file"
+          }
+        ]
+      },
+      "report": {
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "input.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 67,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "checks": {
+        "exit": false,
+        "input_unchanged": true,
+        "report": false,
+        "snapshot": false,
+        "diagnostic": false,
+        "diagnostic_does_not_echo_private_key": true
+      },
+      "agrees": false,
+      "outcome_agrees": false
+    },
+    {
+      "case": "file-rounded-negative",
+      "expected_exit": 2,
+      "exit": 0,
+      "input_sha256": "ac40c08eaf7f4daff6dc3d3e0a6a87440eaae117711ac53ebe03b9f8315c8c41",
+      "stderr": "Snapshot written to snapshot.json\nReport written to report.json\n",
+      "report_preserved": false,
+      "snapshot_written": true,
+      "snapshot": {
+        "collection": [
+          {
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "scope": "tools/list",
+            "serverId": "file",
+            "status": "complete"
+          },
+          {
+            "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "scope": "file",
+            "serverId": "file",
+            "status": "complete"
+          }
+        ],
+        "definitions": [
+          {
+            "scope": "tools/list",
+            "serverId": "file",
+            "value": {
+              "annotations": {
+                "destructiveHint": false,
+                "openWorldHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Read one account by its integer account ID without modifying stored records.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "account_id": {
+                    "description": "Identifier of the account to inspect.",
+                    "maximum": -9007199254740992,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "account_id"
+                ],
+                "type": "object"
+              },
+              "name": "read_account"
+            }
+          }
+        ],
+        "format": "mcplint-metadata-snapshot",
+        "schemaVersion": 1,
+        "servers": [
+          {
+            "id": "file"
+          }
+        ]
+      },
+      "report": {
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "input.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 68,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "checks": {
+        "exit": false,
+        "input_unchanged": true,
+        "report": false,
+        "snapshot": false,
+        "diagnostic": false,
+        "diagnostic_does_not_echo_private_key": true
+      },
+      "agrees": false,
+      "outcome_agrees": false
+    },
+    {
+      "case": "file-rounded-decimal",
+      "expected_exit": 2,
+      "exit": 0,
+      "input_sha256": "ec68f6898e469aaf890dc3e14cc88fcefaa6bc241ad6760fe69c903392b57f6d",
+      "stderr": "Snapshot written to snapshot.json\nReport written to report.json\n",
+      "report_preserved": false,
+      "snapshot_written": true,
+      "snapshot": {
+        "collection": [
+          {
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "scope": "tools/list",
+            "serverId": "file",
+            "status": "complete"
+          },
+          {
+            "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "scope": "file",
+            "serverId": "file",
+            "status": "complete"
+          }
+        ],
+        "definitions": [
+          {
+            "scope": "tools/list",
+            "serverId": "file",
+            "value": {
+              "annotations": {
+                "destructiveHint": false,
+                "openWorldHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Read one account by its integer account ID without modifying stored records.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "account_id": {
+                    "description": "Identifier of the account to inspect.",
+                    "maximum": 0.1,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "account_id"
+                ],
+                "type": "object"
+              },
+              "name": "read_account"
+            }
+          }
+        ],
+        "format": "mcplint-metadata-snapshot",
+        "schemaVersion": 1,
+        "servers": [
+          {
+            "id": "file"
+          }
+        ]
+      },
+      "report": {
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "input.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 64,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "checks": {
+        "exit": false,
+        "input_unchanged": true,
+        "report": false,
+        "snapshot": false,
+        "diagnostic": false,
+        "diagnostic_does_not_echo_private_key": true
+      },
+      "agrees": false,
+      "outcome_agrees": false
+    },
+    {
+      "case": "file-underflow",
+      "expected_exit": 2,
+      "exit": 0,
+      "input_sha256": "a09feb5f53e98d18e0d6feb6ba4f4bfb170f4663fc311fae1f8dfefc2496d90e",
+      "stderr": "Snapshot written to snapshot.json\nReport written to report.json\n",
+      "report_preserved": false,
+      "snapshot_written": true,
+      "snapshot": {
+        "collection": [
+          {
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "scope": "tools/list",
+            "serverId": "file",
+            "status": "complete"
+          },
+          {
+            "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "scope": "file",
+            "serverId": "file",
+            "status": "complete"
+          }
+        ],
+        "definitions": [
+          {
+            "scope": "tools/list",
+            "serverId": "file",
+            "value": {
+              "annotations": {
+                "destructiveHint": false,
+                "openWorldHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Read one account by its integer account ID without modifying stored records.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "account_id": {
+                    "description": "Identifier of the account to inspect.",
+                    "maximum": 0,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "account_id"
+                ],
+                "type": "object"
+              },
+              "name": "read_account"
+            }
+          }
+        ],
+        "format": "mcplint-metadata-snapshot",
+        "schemaVersion": 1,
+        "servers": [
+          {
+            "id": "file"
+          }
+        ]
+      },
+      "report": {
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "input.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 62,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "checks": {
+        "exit": false,
+        "input_unchanged": true,
+        "report": false,
+        "snapshot": false,
+        "diagnostic": false,
+        "diagnostic_does_not_echo_private_key": true
+      },
+      "agrees": false,
+      "outcome_agrees": false
+    },
+    {
+      "case": "file-overflow",
+      "expected_exit": 2,
+      "exit": 2,
+      "input_sha256": "7884eec764ba67d6ab92ebbde542e7e7cbe5cb2ab3e7325e6eb15aed0560ccd4",
+      "stderr": "mcplint: Metadata must contain only finite JSON values.\n",
+      "report_preserved": true,
+      "snapshot_written": false,
+      "snapshot": null,
+      "report": null,
+      "checks": {
+        "exit": true,
+        "input_unchanged": true,
+        "report": true,
+        "snapshot": true,
+        "diagnostic": false,
+        "diagnostic_does_not_echo_private_key": true
+      },
+      "agrees": false,
+      "outcome_agrees": true
+    },
+    {
+      "case": "file-duplicate-name",
+      "expected_exit": 2,
+      "exit": 0,
+      "input_sha256": "680fbf1ee9cfd0187b60d4c5ef1f3d6072750e53178b78b53de743ca62136551",
+      "stderr": "Snapshot written to snapshot.json\nReport written to report.json\n",
+      "report_preserved": false,
+      "snapshot_written": true,
+      "snapshot": {
+        "collection": [
+          {
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "scope": "tools/list",
+            "serverId": "file",
+            "status": "complete"
+          },
+          {
+            "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "scope": "file",
+            "serverId": "file",
+            "status": "complete"
+          }
+        ],
+        "definitions": [
+          {
+            "scope": "tools/list",
+            "serverId": "file",
+            "value": {
+              "annotations": {
+                "destructiveHint": false,
+                "openWorldHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Read one account by its integer account ID without modifying stored records.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "account_id": {
+                    "description": "Identifier of the account to inspect.",
+                    "maximum": 100,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "account_id"
+                ],
+                "type": "object"
+              },
+              "name": "read_account"
+            }
+          }
+        ],
+        "format": "mcplint-metadata-snapshot",
+        "schemaVersion": 1,
+        "servers": [
+          {
+            "id": "file"
+          }
+        ]
+      },
+      "report": {
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "input.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 62,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "checks": {
+        "exit": false,
+        "input_unchanged": true,
+        "report": false,
+        "snapshot": false,
+        "diagnostic": false,
+        "diagnostic_does_not_echo_private_key": true
+      },
+      "agrees": false,
+      "outcome_agrees": false
+    },
+    {
+      "case": "file-duplicate-inventory",
+      "expected_exit": 2,
+      "exit": 0,
+      "input_sha256": "e3a3c8b3c4281ae420cf648569fa1c92727e54333894d7096a3ff29ce55be6f0",
+      "stderr": "Snapshot written to snapshot.json\nReport written to report.json\n",
+      "report_preserved": false,
+      "snapshot_written": true,
+      "snapshot": {
+        "collection": [
+          {
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "scope": "tools/list",
+            "serverId": "file",
+            "status": "complete"
+          },
+          {
+            "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "scope": "file",
+            "serverId": "file",
+            "status": "complete"
+          }
+        ],
+        "definitions": [
+          {
+            "scope": "tools/list",
+            "serverId": "file",
+            "value": {
+              "annotations": {
+                "destructiveHint": false,
+                "openWorldHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Read one account by its integer account ID without modifying stored records.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "account_id": {
+                    "description": "Identifier of the account to inspect.",
+                    "maximum": 100,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "account_id"
+                ],
+                "type": "object"
+              },
+              "name": "read_account"
+            }
+          }
+        ],
+        "format": "mcplint-metadata-snapshot",
+        "schemaVersion": 1,
+        "servers": [
+          {
+            "id": "file"
+          }
+        ]
+      },
+      "report": {
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "input.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 62,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "checks": {
+        "exit": false,
+        "input_unchanged": true,
+        "report": false,
+        "snapshot": false,
+        "diagnostic": false,
+        "diagnostic_does_not_echo_private_key": true
+      },
+      "agrees": false,
+      "outcome_agrees": false
+    },
+    {
+      "case": "file-escaped-duplicate",
+      "expected_exit": 2,
+      "exit": 0,
+      "input_sha256": "21a2b5d82b2f9b90af0da14bfa587b88f142e5586b1bfb40ba077dcef3a597ec",
+      "stderr": "Snapshot written to snapshot.json\nReport written to report.json\n",
+      "report_preserved": false,
+      "snapshot_written": true,
+      "snapshot": {
+        "collection": [
+          {
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "scope": "tools/list",
+            "serverId": "file",
+            "status": "complete"
+          },
+          {
+            "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "scope": "file",
+            "serverId": "file",
+            "status": "complete"
+          }
+        ],
+        "definitions": [
+          {
+            "scope": "tools/list",
+            "serverId": "file",
+            "value": {
+              "annotations": {
+                "destructiveHint": false,
+                "openWorldHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Read one account by its integer account ID without modifying stored records.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "account_id": {
+                    "description": "Identifier of the account to inspect.",
+                    "maximum": 100,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "account_id"
+                ],
+                "type": "object"
+              },
+              "name": "read_account"
+            }
+          }
+        ],
+        "format": "mcplint-metadata-snapshot",
+        "schemaVersion": 1,
+        "servers": [
+          {
+            "id": "file"
+          }
+        ]
+      },
+      "report": {
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "input.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 62,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "checks": {
+        "exit": false,
+        "input_unchanged": true,
+        "report": false,
+        "snapshot": false,
+        "diagnostic": false,
+        "diagnostic_does_not_echo_private_key": true
+      },
+      "agrees": false,
+      "outcome_agrees": false
+    },
+    {
+      "case": "file-duplicate-extension",
+      "expected_exit": 2,
+      "exit": 0,
+      "input_sha256": "0ed33a7e25e479ce9554e7338020929e3efee655471a9b48062e3415edcf3d3a",
+      "stderr": "Snapshot written to snapshot.json\nReport written to report.json\n",
+      "report_preserved": false,
+      "snapshot_written": true,
+      "snapshot": {
+        "collection": [
+          {
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "scope": "tools/list",
+            "serverId": "file",
+            "status": "complete"
+          },
+          {
+            "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "scope": "file",
+            "serverId": "file",
+            "status": "complete"
+          }
+        ],
+        "definitions": [
+          {
+            "scope": "tools/list",
+            "serverId": "file",
+            "value": {
+              "_meta": {
+                "secret-field-marker": 2
+              },
+              "annotations": {
+                "destructiveHint": false,
+                "openWorldHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Read one account by its integer account ID without modifying stored records.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "account_id": {
+                    "description": "Identifier of the account to inspect.",
+                    "maximum": 100,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "account_id"
+                ],
+                "type": "object"
+              },
+              "name": "read_account"
+            }
+          }
+        ],
+        "format": "mcplint-metadata-snapshot",
+        "schemaVersion": 1,
+        "servers": [
+          {
+            "id": "file"
+          }
+        ]
+      },
+      "report": {
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "input.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 62,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "checks": {
+        "exit": false,
+        "input_unchanged": true,
+        "report": false,
+        "snapshot": false,
+        "diagnostic": false,
+        "diagnostic_does_not_echo_private_key": true
+      },
+      "agrees": false,
+      "outcome_agrees": false
+    },
+    {
+      "case": "file-same-value-duplicate",
+      "expected_exit": 2,
+      "exit": 0,
+      "input_sha256": "f019a2f111a1345db0aeb39df0e0e8be211637fd27ac3558c01c37dc89c7f4c1",
+      "stderr": "Snapshot written to snapshot.json\nReport written to report.json\n",
+      "report_preserved": false,
+      "snapshot_written": true,
+      "snapshot": {
+        "collection": [
+          {
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "scope": "tools/list",
+            "serverId": "file",
+            "status": "complete"
+          },
+          {
+            "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "scope": "file",
+            "serverId": "file",
+            "status": "complete"
+          }
+        ],
+        "definitions": [
+          {
+            "scope": "tools/list",
+            "serverId": "file",
+            "value": {
+              "_meta": {
+                "x": 1
+              },
+              "annotations": {
+                "destructiveHint": false,
+                "openWorldHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Read one account by its integer account ID without modifying stored records.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "account_id": {
+                    "description": "Identifier of the account to inspect.",
+                    "maximum": 100,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "account_id"
+                ],
+                "type": "object"
+              },
+              "name": "read_account"
+            }
+          }
+        ],
+        "format": "mcplint-metadata-snapshot",
+        "schemaVersion": 1,
+        "servers": [
+          {
+            "id": "file"
+          }
+        ]
+      },
+      "report": {
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "input.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 62,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "checks": {
+        "exit": false,
+        "input_unchanged": true,
+        "report": false,
+        "snapshot": false,
+        "diagnostic": false,
+        "diagnostic_does_not_echo_private_key": true
+      },
+      "agrees": false,
+      "outcome_agrees": false
+    },
+    {
+      "case": "file-excessive-depth",
+      "expected_exit": 2,
+      "exit": 2,
+      "input_sha256": "68c0e35e9f3eb5f2340027346af518c8b8385a1b6df41639a01d0ad87ebc1660",
+      "stderr": "mcplint: Metadata exceeds the 1,000,000-node or 128-level comparison limit.\n",
+      "report_preserved": true,
+      "snapshot_written": false,
+      "snapshot": null,
+      "report": null,
+      "checks": {
+        "exit": true,
+        "input_unchanged": true,
+        "report": true,
+        "snapshot": true,
+        "diagnostic": false,
+        "diagnostic_does_not_echo_private_key": true
+      },
+      "agrees": false,
+      "outcome_agrees": true
+    },
+    {
+      "case": "file-invalid-syntax",
+      "expected_exit": 2,
+      "exit": 2,
+      "input_sha256": "a83e7bd6aba44b0db0cb63734fd6df9341782719dff0297b2ff6f8507ebe22fe",
+      "stderr": "mcplint: input.json is not valid JSON: Expected ',' or '}' after property value in JSON at position 411 (line 1 column 412)\n",
+      "report_preserved": true,
+      "snapshot_written": false,
+      "snapshot": null,
+      "report": null,
+      "checks": {
+        "exit": true,
+        "input_unchanged": true,
+        "report": true,
+        "snapshot": true,
+        "diagnostic": true,
+        "diagnostic_does_not_echo_private_key": true
+      },
+      "agrees": true,
+      "outcome_agrees": true
+    },
+    {
+      "case": "file-ordinary",
+      "expected_exit": 0,
+      "exit": 0,
+      "input_sha256": "591410a6c37d749a33dd485d207904fe40f334aad701ae7e6ea26b8ee71afab7",
+      "stderr": "Snapshot written to snapshot.json\nReport written to report.json\n",
+      "report_preserved": false,
+      "snapshot_written": true,
+      "snapshot": {
+        "collection": [
+          {
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "scope": "tools/list",
+            "serverId": "file",
+            "status": "complete"
+          },
+          {
+            "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "scope": "file",
+            "serverId": "file",
+            "status": "complete"
+          }
+        ],
+        "definitions": [
+          {
+            "scope": "tools/list",
+            "serverId": "file",
+            "value": {
+              "annotations": {
+                "destructiveHint": false,
+                "openWorldHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Read one account by its integer account ID without modifying stored records.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "account_id": {
+                    "description": "Identifier of the account to inspect.",
+                    "maximum": 100,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "account_id"
+                ],
+                "type": "object"
+              },
+              "name": "read_account"
+            }
+          }
+        ],
+        "format": "mcplint-metadata-snapshot",
+        "schemaVersion": 1,
+        "servers": [
+          {
+            "id": "file"
+          }
+        ]
+      },
+      "report": {
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "input.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 62,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "checks": {
+        "exit": true,
+        "input_unchanged": true,
+        "report": true,
+        "snapshot": true,
+        "diagnostic": true,
+        "diagnostic_does_not_echo_private_key": true
+      },
+      "agrees": true,
+      "outcome_agrees": true
+    },
+    {
+      "case": "file-large-exact",
+      "expected_exit": 0,
+      "exit": 0,
+      "input_sha256": "6de80cac391cd9ae23fc52c2b055f199839dee7c39c3f54ac2b35ffe3f365d7a",
+      "stderr": "Snapshot written to snapshot.json\nReport written to report.json\n",
+      "report_preserved": false,
+      "snapshot_written": true,
+      "snapshot": {
+        "collection": [
+          {
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "scope": "tools/list",
+            "serverId": "file",
+            "status": "complete"
+          },
+          {
+            "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "scope": "file",
+            "serverId": "file",
+            "status": "complete"
+          }
+        ],
+        "definitions": [
+          {
+            "scope": "tools/list",
+            "serverId": "file",
+            "value": {
+              "annotations": {
+                "destructiveHint": false,
+                "openWorldHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Read one account by its integer account ID without modifying stored records.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "account_id": {
+                    "description": "Identifier of the account to inspect.",
+                    "maximum": 9007199254740992,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "account_id"
+                ],
+                "type": "object"
+              },
+              "name": "read_account"
+            }
+          }
+        ],
+        "format": "mcplint-metadata-snapshot",
+        "schemaVersion": 1,
+        "servers": [
+          {
+            "id": "file"
+          }
+        ]
+      },
+      "report": {
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "input.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 67,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "checks": {
+        "exit": true,
+        "input_unchanged": true,
+        "report": true,
+        "snapshot": true,
+        "diagnostic": true,
+        "diagnostic_does_not_echo_private_key": true
+      },
+      "agrees": true,
+      "outcome_agrees": true
+    },
+    {
+      "case": "file-equivalent-exponent",
+      "expected_exit": 0,
+      "exit": 0,
+      "input_sha256": "8b74db73cd73d110aba3584efd87e6c39b65012cfb54a11d54ed3d725813a478",
+      "stderr": "Snapshot written to snapshot.json\nReport written to report.json\n",
+      "report_preserved": false,
+      "snapshot_written": true,
+      "snapshot": {
+        "collection": [
+          {
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "scope": "tools/list",
+            "serverId": "file",
+            "status": "complete"
+          },
+          {
+            "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "scope": "file",
+            "serverId": "file",
+            "status": "complete"
+          }
+        ],
+        "definitions": [
+          {
+            "scope": "tools/list",
+            "serverId": "file",
+            "value": {
+              "annotations": {
+                "destructiveHint": false,
+                "openWorldHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Read one account by its integer account ID without modifying stored records.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "account_id": {
+                    "description": "Identifier of the account to inspect.",
+                    "maximum": 100,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "account_id"
+                ],
+                "type": "object"
+              },
+              "name": "read_account"
+            }
+          }
+        ],
+        "format": "mcplint-metadata-snapshot",
+        "schemaVersion": 1,
+        "servers": [
+          {
+            "id": "file"
+          }
+        ]
+      },
+      "report": {
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "input.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 62,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "checks": {
+        "exit": true,
+        "input_unchanged": true,
+        "report": true,
+        "snapshot": true,
+        "diagnostic": true,
+        "diagnostic_does_not_echo_private_key": true
+      },
+      "agrees": true,
+      "outcome_agrees": true
+    },
+    {
+      "case": "file-ordinary-decimal",
+      "expected_exit": 0,
+      "exit": 0,
+      "input_sha256": "9103974ecb2049894763cea8556d5120bc35b1e41c6fe241b3a08e3daa1bb903",
+      "stderr": "Snapshot written to snapshot.json\nReport written to report.json\n",
+      "report_preserved": false,
+      "snapshot_written": true,
+      "snapshot": {
+        "collection": [
+          {
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "scope": "tools/list",
+            "serverId": "file",
+            "status": "complete"
+          },
+          {
+            "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "scope": "file",
+            "serverId": "file",
+            "status": "complete"
+          }
+        ],
+        "definitions": [
+          {
+            "scope": "tools/list",
+            "serverId": "file",
+            "value": {
+              "annotations": {
+                "destructiveHint": false,
+                "openWorldHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Read one account by its integer account ID without modifying stored records.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "account_id": {
+                    "description": "Identifier of the account to inspect.",
+                    "maximum": 0.1,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "account_id"
+                ],
+                "type": "object"
+              },
+              "name": "read_account"
+            }
+          }
+        ],
+        "format": "mcplint-metadata-snapshot",
+        "schemaVersion": 1,
+        "servers": [
+          {
+            "id": "file"
+          }
+        ]
+      },
+      "report": {
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "input.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 64,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "checks": {
+        "exit": true,
+        "input_unchanged": true,
+        "report": true,
+        "snapshot": true,
+        "diagnostic": true,
+        "diagnostic_does_not_echo_private_key": true
+      },
+      "agrees": true,
+      "outcome_agrees": true
+    },
+    {
+      "case": "file-subnormal",
+      "expected_exit": 0,
+      "exit": 0,
+      "input_sha256": "07bb080d0562eb39ec9bb29729bb371c60143a0fd074c3b568bc005bf088c2dc",
+      "stderr": "Snapshot written to snapshot.json\nReport written to report.json\n",
+      "report_preserved": false,
+      "snapshot_written": true,
+      "snapshot": {
+        "collection": [
+          {
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "scope": "tools/list",
+            "serverId": "file",
+            "status": "complete"
+          },
+          {
+            "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "scope": "file",
+            "serverId": "file",
+            "status": "complete"
+          }
+        ],
+        "definitions": [
+          {
+            "scope": "tools/list",
+            "serverId": "file",
+            "value": {
+              "_meta": {
+                "tiny": 5e-324
+              },
+              "annotations": {
+                "destructiveHint": false,
+                "openWorldHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Read one account by its integer account ID without modifying stored records.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "account_id": {
+                    "description": "Identifier of the account to inspect.",
+                    "maximum": 100,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "account_id"
+                ],
+                "type": "object"
+              },
+              "name": "read_account"
+            }
+          }
+        ],
+        "format": "mcplint-metadata-snapshot",
+        "schemaVersion": 1,
+        "servers": [
+          {
+            "id": "file"
+          }
+        ]
+      },
+      "report": {
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "input.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 62,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "checks": {
+        "exit": true,
+        "input_unchanged": true,
+        "report": true,
+        "snapshot": true,
+        "diagnostic": true,
+        "diagnostic_does_not_echo_private_key": true
+      },
+      "agrees": true,
+      "outcome_agrees": true
+    },
+    {
+      "case": "file-string-lookalikes",
+      "expected_exit": 0,
+      "exit": 0,
+      "input_sha256": "ae6580a360c81b57d297d87c378e89147f683ea30812171c1fd55e14c874273b",
+      "stderr": "Snapshot written to snapshot.json\nReport written to report.json\n",
+      "report_preserved": false,
+      "snapshot_written": true,
+      "snapshot": {
+        "collection": [
+          {
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "scope": "tools/list",
+            "serverId": "file",
+            "status": "complete"
+          },
+          {
+            "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "scope": "file",
+            "serverId": "file",
+            "status": "complete"
+          }
+        ],
+        "definitions": [
+          {
+            "scope": "tools/list",
+            "serverId": "file",
+            "value": {
+              "_meta": {
+                "text": "{\"x\":1e400,\"x\":9007199254740993}\\\""
+              },
+              "annotations": {
+                "destructiveHint": false,
+                "openWorldHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Read one account by its integer account ID without modifying stored records.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "account_id": {
+                    "description": "Identifier of the account to inspect.",
+                    "maximum": 100,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "account_id"
+                ],
+                "type": "object"
+              },
+              "name": "read_account"
+            }
+          }
+        ],
+        "format": "mcplint-metadata-snapshot",
+        "schemaVersion": 1,
+        "servers": [
+          {
+            "id": "file"
+          }
+        ]
+      },
+      "report": {
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "input.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 62,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "checks": {
+        "exit": true,
+        "input_unchanged": true,
+        "report": true,
+        "snapshot": true,
+        "diagnostic": true,
+        "diagnostic_does_not_echo_private_key": true
+      },
+      "agrees": true,
+      "outcome_agrees": true
+    },
+    {
+      "case": "file-separate-objects",
+      "expected_exit": 0,
+      "exit": 0,
+      "input_sha256": "65b3d7a0d9ce302dcc263730735300d48d671620919f0a5f0178423ad39b9ba7",
+      "stderr": "Snapshot written to snapshot.json\nReport written to report.json\n",
+      "report_preserved": false,
+      "snapshot_written": true,
+      "snapshot": {
+        "collection": [
+          {
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "scope": "tools/list",
+            "serverId": "file",
+            "status": "complete"
+          },
+          {
+            "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "scope": "file",
+            "serverId": "file",
+            "status": "complete"
+          }
+        ],
+        "definitions": [
+          {
+            "scope": "tools/list",
+            "serverId": "file",
+            "value": {
+              "_meta": {
+                "__proto__": {
+                  "name": 3
+                },
+                "a": {
+                  "name": 1
+                },
+                "b": {
+                  "name": 2
+                }
+              },
+              "annotations": {
+                "destructiveHint": false,
+                "openWorldHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Read one account by its integer account ID without modifying stored records.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "account_id": {
+                    "description": "Identifier of the account to inspect.",
+                    "maximum": 100,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "account_id"
+                ],
+                "type": "object"
+              },
+              "name": "read_account"
+            }
+          }
+        ],
+        "format": "mcplint-metadata-snapshot",
+        "schemaVersion": 1,
+        "servers": [
+          {
+            "id": "file"
+          }
+        ]
+      },
+      "report": {
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "input.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 62,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "checks": {
+        "exit": true,
+        "input_unchanged": true,
+        "report": true,
+        "snapshot": true,
+        "diagnostic": true,
+        "diagnostic_does_not_echo_private_key": true
+      },
+      "agrees": true,
+      "outcome_agrees": true
+    },
+    {
+      "case": "file-duplicate-list-identities",
+      "expected_exit": 0,
+      "exit": 0,
+      "input_sha256": "18ef791bdeaf42d0667effddd884ce496f8892cfd206d729d79da2dba6d4f539",
+      "stderr": "Snapshot written to snapshot.json\nReport written to report.json\n",
+      "report_preserved": false,
+      "snapshot_written": true,
+      "snapshot": {
+        "collection": [
+          {
+            "pages": 1,
+            "received": 2,
+            "retained": 2,
+            "scope": "tools/list",
+            "serverId": "file",
+            "status": "complete"
+          },
+          {
+            "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "scope": "file",
+            "serverId": "file",
+            "status": "complete"
+          }
+        ],
+        "definitions": [
+          {
+            "scope": "tools/list",
+            "serverId": "file",
+            "value": {
+              "annotations": {
+                "destructiveHint": false,
+                "openWorldHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Read one account by its integer account ID without modifying stored records.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "account_id": {
+                    "description": "Identifier of the account to inspect.",
+                    "maximum": 100,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "account_id"
+                ],
+                "type": "object"
+              },
+              "name": "read_account"
+            }
+          },
+          {
+            "scope": "tools/list",
+            "serverId": "file",
+            "value": {
+              "annotations": {
+                "destructiveHint": false,
+                "openWorldHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Read one account by its integer account ID without modifying stored records.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "account_id": {
+                    "description": "Identifier of the account to inspect.",
+                    "maximum": 100,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "account_id"
+                ],
+                "type": "object"
+              },
+              "name": "read_account"
+            }
+          }
+        ],
+        "format": "mcplint-metadata-snapshot",
+        "schemaVersion": 1,
+        "servers": [
+          {
+            "id": "file"
+          }
+        ]
+      },
+      "report": {
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "input.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 2,
+            "retained": 2
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "naming/collision": 1
+          },
+          "toolCount": 2,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 124,
+          "complete": true,
+          "score": 90
+        },
+        "findings": [
+          {
+            "ruleId": "naming/collision",
+            "severity": "error",
+            "serverId": "file",
+            "subject": {
+              "kind": "tool",
+              "name": "read_account"
+            },
+            "message": "\"read_account\" occurs 2 times in server \"file\"'s tool list; calls address tools by name and cannot select a definition.",
+            "suggestion": "Give each distinct tool a unique name and remove repeated list entries, including overlaps between pages."
+          }
+        ]
+      },
+      "checks": {
+        "exit": true,
+        "input_unchanged": true,
+        "report": true,
+        "snapshot": true,
+        "diagnostic": true,
+        "diagnostic_does_not_echo_private_key": true
+      },
+      "agrees": true,
+      "outcome_agrees": true
+    },
+    {
+      "case": "diff-rounded-integer",
+      "expected_exit": 2,
+      "exit": 0,
+      "before_sha256": "d29442f0737c64f10090b40d3651cde1507622b599a51f127c85540b7092a786",
+      "after_sha256": "d290611ee550775a9795539a2190f8b73052bfd28b60a882ec9208272a9a1e52",
+      "stderr": "",
+      "report_preserved": false,
+      "report": {
+        "format": "mcplint-metadata-diff",
+        "schemaVersion": 1,
+        "before": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "37ab60426aec81dc05b5eec8d79ccd15e567486d4042a7d9f3b5ce67650a6adc",
+          "definitions": 1
+        },
+        "after": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "37ab60426aec81dc05b5eec8d79ccd15e567486d4042a7d9f3b5ce67650a6adc",
+          "definitions": 1
+        },
+        "complete": true,
+        "issues": [],
+        "summary": {
+          "added": 0,
+          "removed": 0,
+          "changed": 0,
+          "unchanged": 2,
+          "unpaired": 0
+        },
+        "changes": [],
+        "coverage": {
+          "before": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ],
+          "after": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ]
+        },
+        "notes": [
+          "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+          "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+          "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+          "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+          "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+        ]
+      },
+      "html_sha256": null,
+      "checks": {
+        "exit": false,
+        "report": false,
+        "inputs_unchanged": true,
+        "diagnostic": false
+      },
+      "agrees": false,
+      "outcome_agrees": false
+    },
+    {
+      "case": "diff-rounded-before",
+      "expected_exit": 2,
+      "exit": 0,
+      "before_sha256": "d290611ee550775a9795539a2190f8b73052bfd28b60a882ec9208272a9a1e52",
+      "after_sha256": "d29442f0737c64f10090b40d3651cde1507622b599a51f127c85540b7092a786",
+      "stderr": "",
+      "report_preserved": false,
+      "report": {
+        "format": "mcplint-metadata-diff",
+        "schemaVersion": 1,
+        "before": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "37ab60426aec81dc05b5eec8d79ccd15e567486d4042a7d9f3b5ce67650a6adc",
+          "definitions": 1
+        },
+        "after": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "37ab60426aec81dc05b5eec8d79ccd15e567486d4042a7d9f3b5ce67650a6adc",
+          "definitions": 1
+        },
+        "complete": true,
+        "issues": [],
+        "summary": {
+          "added": 0,
+          "removed": 0,
+          "changed": 0,
+          "unchanged": 2,
+          "unpaired": 0
+        },
+        "changes": [],
+        "coverage": {
+          "before": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ],
+          "after": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ]
+        },
+        "notes": [
+          "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+          "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+          "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+          "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+          "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+        ]
+      },
+      "html_sha256": null,
+      "checks": {
+        "exit": false,
+        "report": false,
+        "inputs_unchanged": true,
+        "diagnostic": false
+      },
+      "agrees": false,
+      "outcome_agrees": false
+    },
+    {
+      "case": "diff-rounded-decimal",
+      "expected_exit": 2,
+      "exit": 0,
+      "before_sha256": "217a85ba1325087e889de765f2d8a8856e21f1ae5e0a02ec4ad6ddb08fb8a533",
+      "after_sha256": "527c4c123afc2c544acdc833edcb3872122d3fe2e4de280fdbb6bfe9a1dc6dde",
+      "stderr": "",
+      "report_preserved": false,
+      "report": {
+        "format": "mcplint-metadata-diff",
+        "schemaVersion": 1,
+        "before": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "1bf03e1f805a65391096d8bdbf428e934a445a54a22619dc66254da873e5ae43",
+          "definitions": 1
+        },
+        "after": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "1bf03e1f805a65391096d8bdbf428e934a445a54a22619dc66254da873e5ae43",
+          "definitions": 1
+        },
+        "complete": true,
+        "issues": [],
+        "summary": {
+          "added": 0,
+          "removed": 0,
+          "changed": 0,
+          "unchanged": 2,
+          "unpaired": 0
+        },
+        "changes": [],
+        "coverage": {
+          "before": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ],
+          "after": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ]
+        },
+        "notes": [
+          "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+          "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+          "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+          "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+          "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+        ]
+      },
+      "html_sha256": null,
+      "checks": {
+        "exit": false,
+        "report": false,
+        "inputs_unchanged": true,
+        "diagnostic": false
+      },
+      "agrees": false,
+      "outcome_agrees": false
+    },
+    {
+      "case": "diff-underflow",
+      "expected_exit": 2,
+      "exit": 0,
+      "before_sha256": "ec046d3d47aa9a28c2d3db607880ecc43d0b3d4f5ecddfee38523000d64b0e25",
+      "after_sha256": "60a415bc3ebaa79f577de3c8d7a0233df564ba476cf043b476091b45be94f7a1",
+      "stderr": "",
+      "report_preserved": false,
+      "report": {
+        "format": "mcplint-metadata-diff",
+        "schemaVersion": 1,
+        "before": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "fa953caa8e63d57dc15b721b007c6d444a8271c4776f396a4b11f686224a3431",
+          "definitions": 1
+        },
+        "after": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "fa953caa8e63d57dc15b721b007c6d444a8271c4776f396a4b11f686224a3431",
+          "definitions": 1
+        },
+        "complete": true,
+        "issues": [],
+        "summary": {
+          "added": 0,
+          "removed": 0,
+          "changed": 0,
+          "unchanged": 2,
+          "unpaired": 0
+        },
+        "changes": [],
+        "coverage": {
+          "before": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ],
+          "after": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ]
+        },
+        "notes": [
+          "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+          "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+          "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+          "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+          "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+        ]
+      },
+      "html_sha256": null,
+      "checks": {
+        "exit": false,
+        "report": false,
+        "inputs_unchanged": true,
+        "diagnostic": false
+      },
+      "agrees": false,
+      "outcome_agrees": false
+    },
+    {
+      "case": "diff-duplicate-field",
+      "expected_exit": 2,
+      "exit": 0,
+      "before_sha256": "5533d9ddab28b9d822627bb06da5b1bcefa5ec5566d979ecada3d3ec6a0d622b",
+      "after_sha256": "3ce92a26efb72be1a2aa61aee4924f9d018911a09884923f86327ee05bac50e0",
+      "stderr": "",
+      "report_preserved": false,
+      "report": {
+        "format": "mcplint-metadata-diff",
+        "schemaVersion": 1,
+        "before": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "c817dfbcd14b0688090330fac8a0f02beb0538ad07c0707d3075298d8db49024",
+          "definitions": 1
+        },
+        "after": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "c817dfbcd14b0688090330fac8a0f02beb0538ad07c0707d3075298d8db49024",
+          "definitions": 1
+        },
+        "complete": true,
+        "issues": [],
+        "summary": {
+          "added": 0,
+          "removed": 0,
+          "changed": 0,
+          "unchanged": 2,
+          "unpaired": 0
+        },
+        "changes": [],
+        "coverage": {
+          "before": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ],
+          "after": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ]
+        },
+        "notes": [
+          "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+          "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+          "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+          "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+          "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+        ]
+      },
+      "html_sha256": null,
+      "checks": {
+        "exit": false,
+        "report": false,
+        "inputs_unchanged": true,
+        "diagnostic": false
+      },
+      "agrees": false,
+      "outcome_agrees": false
+    },
+    {
+      "case": "diff-duplicate-envelope",
+      "expected_exit": 2,
+      "exit": 0,
+      "before_sha256": "5533d9ddab28b9d822627bb06da5b1bcefa5ec5566d979ecada3d3ec6a0d622b",
+      "after_sha256": "fdd972a07b9d8ae0381f8bf63b294dcdfc44c8d1946de3cdf2bcfe6afed6394c",
+      "stderr": "",
+      "report_preserved": false,
+      "report": {
+        "format": "mcplint-metadata-diff",
+        "schemaVersion": 1,
+        "before": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "c817dfbcd14b0688090330fac8a0f02beb0538ad07c0707d3075298d8db49024",
+          "definitions": 1
+        },
+        "after": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "c817dfbcd14b0688090330fac8a0f02beb0538ad07c0707d3075298d8db49024",
+          "definitions": 1
+        },
+        "complete": true,
+        "issues": [],
+        "summary": {
+          "added": 0,
+          "removed": 0,
+          "changed": 0,
+          "unchanged": 2,
+          "unpaired": 0
+        },
+        "changes": [],
+        "coverage": {
+          "before": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ],
+          "after": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ]
+        },
+        "notes": [
+          "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+          "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+          "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+          "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+          "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+        ]
+      },
+      "html_sha256": null,
+      "checks": {
+        "exit": false,
+        "report": false,
+        "inputs_unchanged": true,
+        "diagnostic": false
+      },
+      "agrees": false,
+      "outcome_agrees": false
+    },
+    {
+      "case": "diff-excessive-depth",
+      "expected_exit": 2,
+      "exit": 2,
+      "before_sha256": "5533d9ddab28b9d822627bb06da5b1bcefa5ec5566d979ecada3d3ec6a0d622b",
+      "after_sha256": "8ca7aac7d767111d9ffed0c1fb9b34a30cd96c0869205bd653922c75dbfd66f1",
+      "stderr": "mcplint: Metadata exceeds the 1,000,000-node or 128-level comparison limit.\n",
+      "report_preserved": true,
+      "report": null,
+      "html_sha256": null,
+      "checks": {
+        "exit": true,
+        "report": true,
+        "inputs_unchanged": true,
+        "diagnostic": false
+      },
+      "agrees": false,
+      "outcome_agrees": true
+    },
+    {
+      "case": "diff-unchanged",
+      "expected_exit": 0,
+      "exit": 0,
+      "before_sha256": "5533d9ddab28b9d822627bb06da5b1bcefa5ec5566d979ecada3d3ec6a0d622b",
+      "after_sha256": "5533d9ddab28b9d822627bb06da5b1bcefa5ec5566d979ecada3d3ec6a0d622b",
+      "stderr": "",
+      "report_preserved": false,
+      "report": {
+        "format": "mcplint-metadata-diff",
+        "schemaVersion": 1,
+        "before": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "c817dfbcd14b0688090330fac8a0f02beb0538ad07c0707d3075298d8db49024",
+          "definitions": 1
+        },
+        "after": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "c817dfbcd14b0688090330fac8a0f02beb0538ad07c0707d3075298d8db49024",
+          "definitions": 1
+        },
+        "complete": true,
+        "issues": [],
+        "summary": {
+          "added": 0,
+          "removed": 0,
+          "changed": 0,
+          "unchanged": 2,
+          "unpaired": 0
+        },
+        "changes": [],
+        "coverage": {
+          "before": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ],
+          "after": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ]
+        },
+        "notes": [
+          "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+          "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+          "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+          "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+          "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+        ]
+      },
+      "html_sha256": "ce24d5c2e269f6090f1b3d89618be9e1d89314fe4e4fa46f66bb74422c9a1070",
+      "checks": {
+        "exit": true,
+        "report": true,
+        "inputs_unchanged": true,
+        "diagnostic": true,
+        "html_exit": true
+      },
+      "agrees": true,
+      "outcome_agrees": true
+    },
+    {
+      "case": "diff-changed-limit",
+      "expected_exit": 1,
+      "exit": 1,
+      "before_sha256": "5533d9ddab28b9d822627bb06da5b1bcefa5ec5566d979ecada3d3ec6a0d622b",
+      "after_sha256": "dbba4c9360f73dc46452ce54394c36c5cfca46a5d1f756e63c5ad3f4dfe83f74",
+      "stderr": "",
+      "report_preserved": false,
+      "report": {
+        "format": "mcplint-metadata-diff",
+        "schemaVersion": 1,
+        "before": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "c817dfbcd14b0688090330fac8a0f02beb0538ad07c0707d3075298d8db49024",
+          "definitions": 1
+        },
+        "after": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "5618f32268617a22e9f993c8a81e25a857c3df74eca2eb422b2540745ef210be",
+          "definitions": 1
+        },
+        "complete": true,
+        "issues": [],
+        "summary": {
+          "added": 0,
+          "removed": 0,
+          "changed": 1,
+          "unchanged": 1,
+          "unpaired": 0
+        },
+        "changes": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "identity": "read_account",
+            "status": "changed",
+            "fields": [
+              {
+                "pointer": "/inputSchema/properties/account_id/maximum",
+                "before": {
+                  "present": true,
+                  "value": 100
+                },
+                "after": {
+                  "present": true,
+                  "value": 200
+                }
+              }
+            ]
+          }
+        ],
+        "coverage": {
+          "before": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ],
+          "after": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ]
+        },
+        "notes": [
+          "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+          "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+          "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+          "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+          "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+        ]
+      },
+      "html_sha256": "09125cad2aed6403fa04d0e20cdafcfd9d820dfc201382b988be6825aa95364d",
+      "checks": {
+        "exit": true,
+        "report": true,
+        "inputs_unchanged": true,
+        "diagnostic": true,
+        "html_exit": true
+      },
+      "agrees": true,
+      "outcome_agrees": true
+    },
+    {
+      "case": "diff-decimal-change",
+      "expected_exit": 1,
+      "exit": 1,
+      "before_sha256": "217a85ba1325087e889de765f2d8a8856e21f1ae5e0a02ec4ad6ddb08fb8a533",
+      "after_sha256": "91baeef8dd33dd4ed707400b09c1080b1465f430e7e4298fadb9aa23462e6c77",
+      "stderr": "",
+      "report_preserved": false,
+      "report": {
+        "format": "mcplint-metadata-diff",
+        "schemaVersion": 1,
+        "before": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "1bf03e1f805a65391096d8bdbf428e934a445a54a22619dc66254da873e5ae43",
+          "definitions": 1
+        },
+        "after": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "f6429e9be3fc0973d5d91428d0e797644caa654983a9f8585481600e23391a15",
+          "definitions": 1
+        },
+        "complete": true,
+        "issues": [],
+        "summary": {
+          "added": 0,
+          "removed": 0,
+          "changed": 1,
+          "unchanged": 1,
+          "unpaired": 0
+        },
+        "changes": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "identity": "read_account",
+            "status": "changed",
+            "fields": [
+              {
+                "pointer": "/inputSchema/properties/account_id/maximum",
+                "before": {
+                  "present": true,
+                  "value": 0.1
+                },
+                "after": {
+                  "present": true,
+                  "value": 0.2
+                }
+              }
+            ]
+          }
+        ],
+        "coverage": {
+          "before": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ],
+          "after": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ]
+        },
+        "notes": [
+          "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+          "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+          "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+          "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+          "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+        ]
+      },
+      "html_sha256": "943f57f5e9291109f4db1269aaebb8bcd6eff15dd9aaee2c1bef9960ece0565b",
+      "checks": {
+        "exit": true,
+        "report": true,
+        "inputs_unchanged": true,
+        "diagnostic": true,
+        "html_exit": true
+      },
+      "agrees": true,
+      "outcome_agrees": true
+    },
+    {
+      "case": "diff-equivalent-exponent",
+      "expected_exit": 0,
+      "exit": 0,
+      "before_sha256": "5533d9ddab28b9d822627bb06da5b1bcefa5ec5566d979ecada3d3ec6a0d622b",
+      "after_sha256": "864af327949eac98d56783ae657c1e0584edcc59726d01e466f745f1893a9fd4",
+      "stderr": "",
+      "report_preserved": false,
+      "report": {
+        "format": "mcplint-metadata-diff",
+        "schemaVersion": 1,
+        "before": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "c817dfbcd14b0688090330fac8a0f02beb0538ad07c0707d3075298d8db49024",
+          "definitions": 1
+        },
+        "after": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "c817dfbcd14b0688090330fac8a0f02beb0538ad07c0707d3075298d8db49024",
+          "definitions": 1
+        },
+        "complete": true,
+        "issues": [],
+        "summary": {
+          "added": 0,
+          "removed": 0,
+          "changed": 0,
+          "unchanged": 2,
+          "unpaired": 0
+        },
+        "changes": [],
+        "coverage": {
+          "before": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ],
+          "after": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ]
+        },
+        "notes": [
+          "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+          "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+          "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+          "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+          "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+        ]
+      },
+      "html_sha256": "ce24d5c2e269f6090f1b3d89618be9e1d89314fe4e4fa46f66bb74422c9a1070",
+      "checks": {
+        "exit": true,
+        "report": true,
+        "inputs_unchanged": true,
+        "diagnostic": true,
+        "html_exit": true
+      },
+      "agrees": true,
+      "outcome_agrees": true
+    },
+    {
+      "case": "diff-key-order",
+      "expected_exit": 0,
+      "exit": 0,
+      "before_sha256": "6a06bad010e95d6574226e10ee19ead7af9593ea31028c5020dbbe6d732f0a41",
+      "after_sha256": "b02c8efee63953a6653fe3440974df6fd9a994a8a2cfaea6ddf2e508092759b5",
+      "stderr": "",
+      "report_preserved": false,
+      "report": {
+        "format": "mcplint-metadata-diff",
+        "schemaVersion": 1,
+        "before": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "247a84f17fcc7544ca78ca53bac0dc971ddf4c4ff4bbd816ebafb013d0e9dcca",
+          "definitions": 1
+        },
+        "after": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "247a84f17fcc7544ca78ca53bac0dc971ddf4c4ff4bbd816ebafb013d0e9dcca",
+          "definitions": 1
+        },
+        "complete": true,
+        "issues": [],
+        "summary": {
+          "added": 0,
+          "removed": 0,
+          "changed": 0,
+          "unchanged": 2,
+          "unpaired": 0
+        },
+        "changes": [],
+        "coverage": {
+          "before": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ],
+          "after": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ]
+        },
+        "notes": [
+          "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+          "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+          "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+          "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+          "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+        ]
+      },
+      "html_sha256": "b68c79d3fd38fac8b2885104b18291f0bf89d21a3a326943c6c76ad1850a6041",
+      "checks": {
+        "exit": true,
+        "report": true,
+        "inputs_unchanged": true,
+        "diagnostic": true,
+        "html_exit": true
+      },
+      "agrees": true,
+      "outcome_agrees": true
+    },
+    {
+      "case": "diff-ordered-array",
+      "expected_exit": 1,
+      "exit": 1,
+      "before_sha256": "bf4ff9b4543cbddb266e0056919b6b01b65a77df676c1af9c2ac89960cc3a096",
+      "after_sha256": "e6e3ab3463e43f734671524dbef8cd1fbac1e36568e7bb2bff86034787c84d8a",
+      "stderr": "",
+      "report_preserved": false,
+      "report": {
+        "format": "mcplint-metadata-diff",
+        "schemaVersion": 1,
+        "before": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "1a99144c3506bcc44f65dea2662207959c70fa707652bb117056ced7a2f59398",
+          "definitions": 1
+        },
+        "after": {
+          "createdAt": "2026-10-13T00:00:00Z",
+          "sha256": "fc60d1158cb766a3daf66d9c810ddc67cf5941d0070c91f1ac20af94616da440",
+          "definitions": 1
+        },
+        "complete": true,
+        "issues": [],
+        "summary": {
+          "added": 0,
+          "removed": 0,
+          "changed": 1,
+          "unchanged": 1,
+          "unpaired": 0
+        },
+        "changes": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "identity": "read_account",
+            "status": "changed",
+            "fields": [
+              {
+                "pointer": "/_meta",
+                "before": {
+                  "present": true,
+                  "value": [
+                    1,
+                    2
+                  ]
+                },
+                "after": {
+                  "present": true,
+                  "value": [
+                    2,
+                    1
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "coverage": {
+          "before": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ],
+          "after": [
+            {
+              "serverId": "file",
+              "scope": "tools/list",
+              "status": "complete",
+              "pages": 1,
+              "received": 1,
+              "retained": 1
+            }
+          ]
+        },
+        "notes": [
+          "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+          "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+          "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+          "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+          "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+        ]
+      },
+      "html_sha256": "521522f21649843ca936c3ab5d6e7e826de6e9e287e2fd6f006ef6318178aaef",
+      "checks": {
+        "exit": true,
+        "report": true,
+        "inputs_unchanged": true,
+        "diagnostic": true,
+        "html_exit": true
+      },
+      "agrees": true,
+      "outcome_agrees": true
+    }
+  ],
+  "outcome_disagreements": 15
+}

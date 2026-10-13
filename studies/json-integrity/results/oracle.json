@@ -1,0 +1,12 @@
+{
+  "scope": "Independent Decimal check of the numeric guard's decimal serialization contract.\n\nUses deterministic constructed numbers, not production metadata. JavaScript\nprovides its native serialization; Python Decimal decides exact decimal equality.\n",
+  "seed": 20261013,
+  "cases": 2413,
+  "expected": {
+    "accepted": 938,
+    "refused": 1475
+  },
+  "input_sha256": "6dc545edc19595ddb1e921b32bba0d349e7272427acae5c1b991effcd5a29208",
+  "results_sha256": "19e92a483455a8dae79a09aff779cefb97963b555ff2a3c25dc5561633e1d5d1",
+  "disagreements": []
+}

@@ -96,6 +96,13 @@ invented removals. The HTML report runs offline and downloads the full compariso
 ![Offline metadata comparison showing a changed extension field and a parameter maximum changing from 100 to 200](docs/assets/metadata-review/chromium-1440.png)
 
 [User guide](docs/metadata-review.md) and [reproducible study](studies/metadata-diff/README.md).
+
+Saved metadata now refuses duplicate JSON fields and numbers that would change
+during decoding and serialization. A [reproduced integer-limit change](studies/json-integrity/README.md)
+previously captured as the same rounded value on both sides and passed the diff
+as unchanged. Unsupported input now exits 2 before replacing a report or saving
+a misleading snapshot. This source-only check cannot recover values already
+lost in an older snapshot or live transport decoding.
 The study also captures the same official filesystem server under two dependency
 resolutions: its compiled entrypoint is identical, but 13 tool schemas change.
 These commands are **unreleased source features**; the npm package and hosted
