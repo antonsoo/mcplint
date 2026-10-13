@@ -4,6 +4,14 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Capture full decoded list entries and collection coverage with `--snapshot`,
+  then review updates with `mcplint diff` in terminal, JSON or offline HTML.
+  Match tools/prompts by name and resources/templates by URI; retain unknown
+  fields, missing/null distinctions and exact string changes. Incomplete pages
+  and duplicate identities cannot establish an unchanged inventory or invent
+  removals. Preserve existing snapshots, including report path aliases.
+  [SDK and official-server dependency captures](studies/metadata-diff/README.md).
+
 - Keep remote collection requests within the configured HTTP origin, including
   custom API keys and MCP session headers that native fetch forwards across
   redirects. Check each hop in Streamable HTTP and legacy SSE, retain same-origin

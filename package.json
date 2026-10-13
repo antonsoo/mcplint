@@ -18,6 +18,7 @@
     "dist",
     "docs/rules",
     "docs/collection-coverage.md",
+    "docs/metadata-review.md",
     "!dist/**/*.map"
   ],
   "author": "Anton Soloviev",

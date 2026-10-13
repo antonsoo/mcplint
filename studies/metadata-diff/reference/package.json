@@ -1,0 +1,22 @@
+{
+  "version": "2025.8.21",
+  "license": "MIT",
+  "gitHead": "b5ba7184b9c3024a3101cb665de603abbe91ea87",
+  "dist": {
+    "shasum": "2591636c4a5242b8756831abbe5ac14a5fd68336",
+    "tarball": "https://registry.npmjs.org/@modelcontextprotocol/server-filesystem/-/server-filesystem-2025.8.21.tgz",
+    "fileCount": 11,
+    "integrity": "sha512-Kk+E+lAuAQPLhrJlrsboEdwTBxWU0DYfsuELIuP3Nvfn8Kvd72BU6KVjhEa5EjbC4YckQDCxH9VJK47x6psxow==",
+    "signatures": [
+      {
+        "sig": "MEQCIDwoqQz8zAlOV8vnvfoTcPw2L0H8/AxnjiuP9Mti51EqAiAtrbUUxxuCK/XJj/N2wox6+Ug9uLUiwV2Z7aAuEfN3pw==",
+        "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+      }
+    ],
+    "unpackedSize": 146140
+  },
+  "repository": {
+    "url": "git+https://github.com/modelcontextprotocol/servers.git",
+    "type": "git"
+  }
+}

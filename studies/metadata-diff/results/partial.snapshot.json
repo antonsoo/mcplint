@@ -1,0 +1,149 @@
+{
+  "collection": [
+    {
+      "detail": "Request for page 2 failed. Check server availability, authorization and response format, then retry.",
+      "pages": 1,
+      "received": 1,
+      "retained": 1,
+      "scope": "tools/list",
+      "serverId": "metadata-review-fixture",
+      "status": "incomplete"
+    },
+    {
+      "pages": 1,
+      "received": 1,
+      "retained": 1,
+      "scope": "prompts/list",
+      "serverId": "metadata-review-fixture",
+      "status": "complete"
+    },
+    {
+      "pages": 1,
+      "received": 2,
+      "retained": 2,
+      "scope": "resources/list",
+      "serverId": "metadata-review-fixture",
+      "status": "complete"
+    },
+    {
+      "pages": 1,
+      "received": 1,
+      "retained": 1,
+      "scope": "resources/templates/list",
+      "serverId": "metadata-review-fixture",
+      "status": "complete"
+    }
+  ],
+  "createdAt": "2026-10-13T00:12:45.471Z",
+  "definitions": [
+    {
+      "scope": "tools/list",
+      "serverId": "metadata-review-fixture",
+      "value": {
+        "_meta": {
+          "fixture/origin": "controlled-local-server",
+          "fixture/review": "original"
+        },
+        "annotations": {
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false,
+          "readOnlyHint": true
+        },
+        "description": "Search stored records and return their identifiers, without reading document contents or changing storage.",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {
+            "limit": {
+              "description": "Maximum number of records to return.",
+              "maximum": 100,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "limit"
+          ],
+          "type": "object"
+        },
+        "name": "search_records",
+        "outputSchema": {
+          "properties": {
+            "ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "ids"
+          ],
+          "type": "object"
+        }
+      }
+    },
+    {
+      "scope": "prompts/list",
+      "serverId": "metadata-review-fixture",
+      "value": {
+        "arguments": [
+          {
+            "description": "The record to review.",
+            "name": "record",
+            "required": false
+          }
+        ],
+        "description": "Review the record summary against the current policy.",
+        "name": "review_record"
+      }
+    },
+    {
+      "scope": "resources/list",
+      "serverId": "metadata-review-fixture",
+      "value": {
+        "description": "Catalog schema revision one.",
+        "mimeType": "application/json",
+        "name": "schema",
+        "uri": "fixture:///catalog"
+      }
+    },
+    {
+      "scope": "resources/list",
+      "serverId": "metadata-review-fixture",
+      "value": {
+        "description": "Policy schema, independent of the catalog.",
+        "mimeType": "application/json",
+        "name": "schema",
+        "uri": "fixture:///policy"
+      }
+    },
+    {
+      "scope": "resources/templates/list",
+      "serverId": "metadata-review-fixture",
+      "value": {
+        "description": "Metadata about a named collection.",
+        "mimeType": "application/json",
+        "name": "collection",
+        "uriTemplate": "fixture:///{collection}"
+      }
+    }
+  ],
+  "format": "mcplint-metadata-snapshot",
+  "schemaVersion": 1,
+  "servers": [
+    {
+      "capabilities": {
+        "prompts": {},
+        "resources": {},
+        "tools": {}
+      },
+      "id": "metadata-review-fixture",
+      "instructions": "Review the record summary before accepting an export.",
+      "serverInfo": {
+        "name": "metadata-review-fixture",
+        "version": "1.0.0"
+      }
+    }
+  ]
+}

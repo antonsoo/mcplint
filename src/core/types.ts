@@ -74,9 +74,24 @@ export interface LintTarget {
   resources: CollectedResource[];
   /** What was collected, including explicit gaps. Absent for caller-supplied library targets. */
   collection?: CollectionRecord[];
+  /** Decoded protocol metadata before lint projection; does not copy collector launch configuration. */
+  metadata?: { servers: MetadataServer[]; definitions: MetadataDefinition[] };
 }
 
 export type ListMethod = 'tools/list' | 'prompts/list' | 'resources/list' | 'resources/templates/list';
+
+export interface MetadataServer {
+  id: string;
+  serverInfo?: unknown;
+  capabilities?: unknown;
+  instructions?: unknown;
+}
+
+export interface MetadataDefinition {
+  serverId: string;
+  scope: ListMethod;
+  value: unknown;
+}
 
 export interface CollectionRecord {
   serverId: string;

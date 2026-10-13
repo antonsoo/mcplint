@@ -1,0 +1,18 @@
+{
+  "workload": "Synthetic; 4,000 definitions, ten parameters each, 400 changed bounds. In-memory comparison only, excluding collection, file decoding and HTML rendering.",
+  "node": "v26.7.0",
+  "platform": "linux",
+  "arch": "x64",
+  "cpus": 14,
+  "memoryGiB": 47,
+  "beforeBytes": 3755175,
+  "afterBytes": 3755175,
+  "samplesMs": [
+    236.28491199999996,
+    220.07986900000003,
+    210.7982320000001,
+    212.1696750000001,
+    206.57975599999986
+  ],
+  "medianMs": 212.1696750000001
+}

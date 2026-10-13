@@ -1,0 +1,884 @@
+{
+  "format": "mcplint-metadata-diff",
+  "schemaVersion": 1,
+  "before": {
+    "createdAt": "2026-10-13T00:23:41.141Z",
+    "sha256": "6ee0d761cba8db428b92738e05cc20c94f166c83c5ebc32c4b486252c66c2358",
+    "definitions": 14
+  },
+  "after": {
+    "createdAt": "2026-10-13T00:23:41.820Z",
+    "sha256": "0b1ca601811e647dce02479187f1a1880e7807f962ea757c286061547a499f0f",
+    "definitions": 14
+  },
+  "complete": true,
+  "issues": [],
+  "summary": {
+    "added": 0,
+    "removed": 0,
+    "changed": 13,
+    "unchanged": 2,
+    "unpaired": 0
+  },
+  "changes": [
+    {
+      "serverId": "filesystem",
+      "scope": "tools/list",
+      "identity": "create_directory",
+      "status": "changed",
+      "fields": [
+        {
+          "pointer": "/inputSchema/additionalProperties",
+          "before": {
+            "present": true,
+            "value": false
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/properties",
+          "before": {
+            "present": true,
+            "value": {
+              "path": {
+                "type": "string"
+              }
+            }
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/required",
+          "before": {
+            "present": true,
+            "value": [
+              "path"
+            ]
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/type",
+          "before": {
+            "present": true,
+            "value": "object"
+          },
+          "after": {
+            "present": false
+          }
+        }
+      ]
+    },
+    {
+      "serverId": "filesystem",
+      "scope": "tools/list",
+      "identity": "directory_tree",
+      "status": "changed",
+      "fields": [
+        {
+          "pointer": "/inputSchema/additionalProperties",
+          "before": {
+            "present": true,
+            "value": false
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/properties",
+          "before": {
+            "present": true,
+            "value": {
+              "path": {
+                "type": "string"
+              }
+            }
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/required",
+          "before": {
+            "present": true,
+            "value": [
+              "path"
+            ]
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/type",
+          "before": {
+            "present": true,
+            "value": "object"
+          },
+          "after": {
+            "present": false
+          }
+        }
+      ]
+    },
+    {
+      "serverId": "filesystem",
+      "scope": "tools/list",
+      "identity": "edit_file",
+      "status": "changed",
+      "fields": [
+        {
+          "pointer": "/inputSchema/additionalProperties",
+          "before": {
+            "present": true,
+            "value": false
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/properties",
+          "before": {
+            "present": true,
+            "value": {
+              "dryRun": {
+                "default": false,
+                "description": "Preview changes using git-style diff format",
+                "type": "boolean"
+              },
+              "edits": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "newText": {
+                      "description": "Text to replace with",
+                      "type": "string"
+                    },
+                    "oldText": {
+                      "description": "Text to search for - must match exactly",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "oldText",
+                    "newText"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "path": {
+                "type": "string"
+              }
+            }
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/required",
+          "before": {
+            "present": true,
+            "value": [
+              "path",
+              "edits"
+            ]
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/type",
+          "before": {
+            "present": true,
+            "value": "object"
+          },
+          "after": {
+            "present": false
+          }
+        }
+      ]
+    },
+    {
+      "serverId": "filesystem",
+      "scope": "tools/list",
+      "identity": "get_file_info",
+      "status": "changed",
+      "fields": [
+        {
+          "pointer": "/inputSchema/additionalProperties",
+          "before": {
+            "present": true,
+            "value": false
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/properties",
+          "before": {
+            "present": true,
+            "value": {
+              "path": {
+                "type": "string"
+              }
+            }
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/required",
+          "before": {
+            "present": true,
+            "value": [
+              "path"
+            ]
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/type",
+          "before": {
+            "present": true,
+            "value": "object"
+          },
+          "after": {
+            "present": false
+          }
+        }
+      ]
+    },
+    {
+      "serverId": "filesystem",
+      "scope": "tools/list",
+      "identity": "list_directory",
+      "status": "changed",
+      "fields": [
+        {
+          "pointer": "/inputSchema/additionalProperties",
+          "before": {
+            "present": true,
+            "value": false
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/properties",
+          "before": {
+            "present": true,
+            "value": {
+              "path": {
+                "type": "string"
+              }
+            }
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/required",
+          "before": {
+            "present": true,
+            "value": [
+              "path"
+            ]
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/type",
+          "before": {
+            "present": true,
+            "value": "object"
+          },
+          "after": {
+            "present": false
+          }
+        }
+      ]
+    },
+    {
+      "serverId": "filesystem",
+      "scope": "tools/list",
+      "identity": "list_directory_with_sizes",
+      "status": "changed",
+      "fields": [
+        {
+          "pointer": "/inputSchema/additionalProperties",
+          "before": {
+            "present": true,
+            "value": false
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/properties",
+          "before": {
+            "present": true,
+            "value": {
+              "path": {
+                "type": "string"
+              },
+              "sortBy": {
+                "default": "name",
+                "description": "Sort entries by name or size",
+                "enum": [
+                  "name",
+                  "size"
+                ],
+                "type": "string"
+              }
+            }
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/required",
+          "before": {
+            "present": true,
+            "value": [
+              "path"
+            ]
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/type",
+          "before": {
+            "present": true,
+            "value": "object"
+          },
+          "after": {
+            "present": false
+          }
+        }
+      ]
+    },
+    {
+      "serverId": "filesystem",
+      "scope": "tools/list",
+      "identity": "move_file",
+      "status": "changed",
+      "fields": [
+        {
+          "pointer": "/inputSchema/additionalProperties",
+          "before": {
+            "present": true,
+            "value": false
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/properties",
+          "before": {
+            "present": true,
+            "value": {
+              "destination": {
+                "type": "string"
+              },
+              "source": {
+                "type": "string"
+              }
+            }
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/required",
+          "before": {
+            "present": true,
+            "value": [
+              "source",
+              "destination"
+            ]
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/type",
+          "before": {
+            "present": true,
+            "value": "object"
+          },
+          "after": {
+            "present": false
+          }
+        }
+      ]
+    },
+    {
+      "serverId": "filesystem",
+      "scope": "tools/list",
+      "identity": "read_file",
+      "status": "changed",
+      "fields": [
+        {
+          "pointer": "/inputSchema/additionalProperties",
+          "before": {
+            "present": true,
+            "value": false
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/properties",
+          "before": {
+            "present": true,
+            "value": {
+              "head": {
+                "description": "If provided, returns only the first N lines of the file",
+                "type": "number"
+              },
+              "path": {
+                "type": "string"
+              },
+              "tail": {
+                "description": "If provided, returns only the last N lines of the file",
+                "type": "number"
+              }
+            }
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/required",
+          "before": {
+            "present": true,
+            "value": [
+              "path"
+            ]
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/type",
+          "before": {
+            "present": true,
+            "value": "object"
+          },
+          "after": {
+            "present": false
+          }
+        }
+      ]
+    },
+    {
+      "serverId": "filesystem",
+      "scope": "tools/list",
+      "identity": "read_media_file",
+      "status": "changed",
+      "fields": [
+        {
+          "pointer": "/inputSchema/additionalProperties",
+          "before": {
+            "present": true,
+            "value": false
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/properties",
+          "before": {
+            "present": true,
+            "value": {
+              "path": {
+                "type": "string"
+              }
+            }
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/required",
+          "before": {
+            "present": true,
+            "value": [
+              "path"
+            ]
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/type",
+          "before": {
+            "present": true,
+            "value": "object"
+          },
+          "after": {
+            "present": false
+          }
+        }
+      ]
+    },
+    {
+      "serverId": "filesystem",
+      "scope": "tools/list",
+      "identity": "read_multiple_files",
+      "status": "changed",
+      "fields": [
+        {
+          "pointer": "/inputSchema/additionalProperties",
+          "before": {
+            "present": true,
+            "value": false
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/properties",
+          "before": {
+            "present": true,
+            "value": {
+              "paths": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            }
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/required",
+          "before": {
+            "present": true,
+            "value": [
+              "paths"
+            ]
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/type",
+          "before": {
+            "present": true,
+            "value": "object"
+          },
+          "after": {
+            "present": false
+          }
+        }
+      ]
+    },
+    {
+      "serverId": "filesystem",
+      "scope": "tools/list",
+      "identity": "read_text_file",
+      "status": "changed",
+      "fields": [
+        {
+          "pointer": "/inputSchema/additionalProperties",
+          "before": {
+            "present": true,
+            "value": false
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/properties",
+          "before": {
+            "present": true,
+            "value": {
+              "head": {
+                "description": "If provided, returns only the first N lines of the file",
+                "type": "number"
+              },
+              "path": {
+                "type": "string"
+              },
+              "tail": {
+                "description": "If provided, returns only the last N lines of the file",
+                "type": "number"
+              }
+            }
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/required",
+          "before": {
+            "present": true,
+            "value": [
+              "path"
+            ]
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/type",
+          "before": {
+            "present": true,
+            "value": "object"
+          },
+          "after": {
+            "present": false
+          }
+        }
+      ]
+    },
+    {
+      "serverId": "filesystem",
+      "scope": "tools/list",
+      "identity": "search_files",
+      "status": "changed",
+      "fields": [
+        {
+          "pointer": "/inputSchema/additionalProperties",
+          "before": {
+            "present": true,
+            "value": false
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/properties",
+          "before": {
+            "present": true,
+            "value": {
+              "excludePatterns": {
+                "default": [],
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "path": {
+                "type": "string"
+              },
+              "pattern": {
+                "type": "string"
+              }
+            }
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/required",
+          "before": {
+            "present": true,
+            "value": [
+              "path",
+              "pattern"
+            ]
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/type",
+          "before": {
+            "present": true,
+            "value": "object"
+          },
+          "after": {
+            "present": false
+          }
+        }
+      ]
+    },
+    {
+      "serverId": "filesystem",
+      "scope": "tools/list",
+      "identity": "write_file",
+      "status": "changed",
+      "fields": [
+        {
+          "pointer": "/inputSchema/additionalProperties",
+          "before": {
+            "present": true,
+            "value": false
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/properties",
+          "before": {
+            "present": true,
+            "value": {
+              "content": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              }
+            }
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/required",
+          "before": {
+            "present": true,
+            "value": [
+              "path",
+              "content"
+            ]
+          },
+          "after": {
+            "present": false
+          }
+        },
+        {
+          "pointer": "/inputSchema/type",
+          "before": {
+            "present": true,
+            "value": "object"
+          },
+          "after": {
+            "present": false
+          }
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "before": [
+      {
+        "pages": 1,
+        "received": 14,
+        "retained": 14,
+        "scope": "tools/list",
+        "serverId": "filesystem",
+        "status": "complete"
+      },
+      {
+        "detail": "Server did not advertise prompts.",
+        "pages": 0,
+        "received": 0,
+        "retained": 0,
+        "scope": "prompts/list",
+        "serverId": "filesystem",
+        "status": "unsupported"
+      },
+      {
+        "detail": "Server did not advertise resources.",
+        "pages": 0,
+        "received": 0,
+        "retained": 0,
+        "scope": "resources/list",
+        "serverId": "filesystem",
+        "status": "unsupported"
+      },
+      {
+        "detail": "Server did not advertise resources.",
+        "pages": 0,
+        "received": 0,
+        "retained": 0,
+        "scope": "resources/templates/list",
+        "serverId": "filesystem",
+        "status": "unsupported"
+      }
+    ],
+    "after": [
+      {
+        "pages": 1,
+        "received": 14,
+        "retained": 14,
+        "scope": "tools/list",
+        "serverId": "filesystem",
+        "status": "complete"
+      },
+      {
+        "detail": "Server did not advertise prompts.",
+        "pages": 0,
+        "received": 0,
+        "retained": 0,
+        "scope": "prompts/list",
+        "serverId": "filesystem",
+        "status": "unsupported"
+      },
+      {
+        "detail": "Server did not advertise resources.",
+        "pages": 0,
+        "received": 0,
+        "retained": 0,
+        "scope": "resources/list",
+        "serverId": "filesystem",
+        "status": "unsupported"
+      },
+      {
+        "detail": "Server did not advertise resources.",
+        "pages": 0,
+        "received": 0,
+        "retained": 0,
+        "scope": "resources/templates/list",
+        "serverId": "filesystem",
+        "status": "unsupported"
+      }
+    ]
+  },
+  "notes": [
+    "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+    "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+    "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+    "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+    "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+  ]
+}

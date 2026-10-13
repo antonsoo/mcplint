@@ -73,8 +73,10 @@ export async function collectFromClient(client: Client, serverId: string, label:
     ...(instructions !== undefined ? { instructions } : {})
   };
   const collection: CollectionRecord[] = [];
-  const target: LintTarget = { servers: [server], tools: [], prompts: [], resources: [], collection };
   const capabilities = client.getServerCapabilities();
+  const target: LintTarget = { servers: [server], tools: [], prompts: [], resources: [], collection,
+    metadata: { servers: [{ id: serverId, ...(version !== undefined ? { serverInfo: version } : {}),
+      ...(instructions !== undefined ? { instructions } : {}), ...(capabilities !== undefined ? { capabilities } : {}) }], definitions: [] } };
   const lists = [
     ['tools/list', 'tools', 'tools'], ['prompts/list', 'prompts', 'prompts'],
     ['resources/list', 'resources', 'resources'], ['resources/templates/list', 'resourceTemplates', 'resources']
@@ -97,6 +99,9 @@ export function mergeTargets(targets: LintTarget[]): LintTarget {
   return {
     servers: targets.flatMap(t => t.servers), tools: targets.flatMap(t => t.tools),
     prompts: targets.flatMap(t => t.prompts), resources: targets.flatMap(t => t.resources),
-    collection: targets.flatMap(t => t.collection ?? [])
+    collection: targets.flatMap(t => t.collection ?? []),
+    ...(targets.every(t => t.metadata) ? { metadata: {
+      servers: targets.flatMap(t => t.metadata!.servers), definitions: targets.flatMap(t => t.metadata!.definitions)
+    } } : {})
   };
 }

@@ -217,7 +217,7 @@ export function renderHtml(result: LintResult): string {
 }
 
 /** The report's one script: the light/dark toggle. */
-const THEME_SCRIPT = `
+export const THEME_SCRIPT = `
 (function () {
   var STORAGE_KEY = 'mcplint-theme';
   var root = document.documentElement;
@@ -256,7 +256,7 @@ const REPORT_CSP = [
   "form-action 'none'",
 ].join('; ');
 
-const CSS = `
+export const CSS = `
 :root {
   --bg: #0b0f14;
   --bg-elevated: #121821;

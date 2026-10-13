@@ -20,3 +20,7 @@ export { renderJson } from './report/json.js';
 export { renderSarif } from './report/sarif.js';
 export { renderMarkdown } from './report/markdown.js';
 export { renderHtml } from './report/html.js';
+
+export * from './core/metadata.js';
+export { renderMetadataTerminal } from './report/metadata.js';
+export { renderMetadataHtml } from './report/metadata-html.js';

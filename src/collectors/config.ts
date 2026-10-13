@@ -253,6 +253,7 @@ export async function collectConfig(path: string, opts: CollectConfigOptions = {
 
   const targets: LintTarget[] = skipped.map(server => ({
     servers: [{ id: server.key, label: server.key }], tools: [], prompts: [], resources: [],
+    metadata: { servers: [{ id: server.key }], definitions: [] },
     collection: [{ serverId: server.key, scope: 'config', status: server.disabled ? 'disabled' : 'incomplete',
       pages: 0, received: 0, retained: 0, detail: server.reason }]
   }));
@@ -286,6 +287,7 @@ export async function collectConfig(path: string, opts: CollectConfigOptions = {
     } catch (err) {
       opts.onServerError?.(entry, err);
       targets.push({ servers: [{ id: entry.key, label: entry.key }], tools: [], prompts: [], resources: [],
+        metadata: { servers: [{ id: entry.key }], definitions: [] },
         collection: [{ serverId: entry.key, scope: 'connection', status: 'incomplete', pages: 0, received: 0, retained: 0,
           detail: connectionFailureMessage(err) }] });
     }

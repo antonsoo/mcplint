@@ -8,6 +8,8 @@ export function appendItems(target: LintTarget, key: 'tools' | 'prompts' | 'reso
   let missingIdentity = 0;
   const annotationDetails: string[] = [];
   for (const [index, raw] of items.entries()) {
+    target.metadata?.definitions.push({ serverId: record.serverId,
+      scope: key === 'resourceTemplates' ? 'resources/templates/list' : `${key}/list`, value: raw });
     const invalid = (): void => { malformed++; if (firstMalformed < 0) firstMalformed = index; };
     if (!isPlainObject(raw)) { invalid(); continue; }
     let bad = typeof raw.name !== 'string';

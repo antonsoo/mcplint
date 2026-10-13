@@ -19,7 +19,8 @@ export async function collectFile(path: string, serverId = 'file'): Promise<Lint
   const collection: CollectionRecord[] = [];
   const target: LintTarget = {
     servers: [{ id: serverId, label: path, ...(typeof parsed.instructions === 'string' ? { instructions: parsed.instructions } : {}) }],
-    tools: [], prompts: [], resources: [], collection
+    tools: [], prompts: [], resources: [], collection,
+    metadata: { servers: [{ id: serverId, ...(Object.hasOwn(parsed, 'instructions') ? { instructions: parsed.instructions } : {}) }], definitions: [] }
   };
   for (const key of keys) {
     if (!Object.hasOwn(parsed, key)) continue;

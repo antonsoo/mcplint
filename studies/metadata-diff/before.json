@@ -1,0 +1,53 @@
+{
+  "workload": "Controlled SDK metadata revisions, no tools called",
+  "cases": [
+    {
+      "revision": "before",
+      "summary": {
+        "totalFindings": 0,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {},
+        "toolCount": 2,
+        "promptCount": 1,
+        "resourceCount": 3,
+        "totalEstimatedTokens": 137,
+        "complete": true,
+        "score": 100
+      },
+      "findings": [],
+      "wireMaximum": [
+        100,
+        100
+      ],
+      "reportContainsDefinitions": false
+    },
+    {
+      "revision": "contract",
+      "summary": {
+        "totalFindings": 0,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {},
+        "toolCount": 2,
+        "promptCount": 1,
+        "resourceCount": 3,
+        "totalEstimatedTokens": 137,
+        "complete": true,
+        "score": 100
+      },
+      "findings": [],
+      "wireMaximum": [
+        200,
+        200
+      ],
+      "reportContainsDefinitions": false
+    }
+  ]
+}

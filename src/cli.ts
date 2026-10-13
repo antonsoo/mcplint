@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 import { parseArgs } from 'node:util';
-import { writeFile } from 'node:fs/promises';
+import { stat, writeFile } from 'node:fs/promises';
+import { createReadStream } from 'node:fs';
+import { resolve } from 'node:path';
 import chalk from 'chalk';
 import { collectStdio } from './collectors/stdio.js';
 import { collectHttp } from './collectors/http.js';
@@ -16,13 +18,18 @@ import { renderJson } from './report/json.js';
 import { renderSarif } from './report/sarif.js';
 import { renderMarkdown } from './report/markdown.js';
 import { renderHtml } from './report/html.js';
-import type { LintResult, Severity } from './core/types.js';
+import { createMetadataSnapshot, parseMetadataSnapshot, compareMetadata, MAX_SNAPSHOT_BYTES } from './core/metadata.js';
+import { decodeText } from './core/read-text.js';
+import { renderMetadataHtml } from './report/metadata-html.js';
+import { renderMetadataTerminal } from './report/metadata.js';
+import type { LintTarget, LintResult, Severity } from './core/types.js';
 import { VERSION } from './version.js';
 
 
 const HELP = `mcplint ${VERSION} — lint MCP server tools the way the model sees them.
 
 Usage:
+  mcplint diff <before.json> <after.json> [--format terminal|json|html] [--output <path>]
   mcplint stdio  [options] -- <command> [args...]
   mcplint http   <url> [options]
   mcplint file   <path.json> [options]
@@ -31,6 +38,7 @@ Usage:
                                          .vscode/mcp.json ("servers")
 
 Options:
+  --snapshot <path>     Save decoded metadata and coverage to a new snapshot file.
   --budget <n>          Per-tool token budget (default 400).
   --total-budget <n>     Total token budget across all collected tools.
   --format <fmt>         terminal | json | sarif | markdown | html (default terminal).
@@ -66,6 +74,7 @@ async function main(): Promise<void> {
       'total-budget': { type: 'string' },
       format: { type: 'string', default: 'terminal' },
       output: { type: 'string' },
+      snapshot: { type: 'string' },
       'fail-on': { type: 'string' },
       config: { type: 'string' },
       ignore: { type: 'string', multiple: true },
@@ -88,12 +97,29 @@ async function main(): Promise<void> {
   }
 
   const [target, ...rest] = positionals;
-  const failOn = parseFailOn(values['fail-on']);
   const format = values.format ?? 'terminal';
   if (!['terminal', 'json', 'sarif', 'markdown', 'html'].includes(format)) {
     fail(`unknown --format "${format}" (expected terminal, json, sarif, markdown, or html)`);
   }
 
+  if (target === 'diff') {
+    if (rest.length !== 2) fail('diff requires a before snapshot and an after snapshot.');
+    if (Object.entries(values).some(([key, value]) => value !== undefined && !['format', 'output'].includes(key))) fail('diff accepts only --format and --output. Its exit codes are 0 unchanged, 1 changed, 2 incomplete or invalid.');
+    if (!['terminal', 'json', 'html'].includes(format)) fail('diff supports terminal, json and html reports.');
+    if (values.output && rest.some(path => resolve(path) === resolve(values.output!))) fail('A diff report cannot replace either input snapshot.');
+    const comparison = compareMetadata(await readSnapshot(rest[0]!), await readSnapshot(rest[1]!));
+    const rendered = format === 'json' ? JSON.stringify(comparison, null, 2) + '\n' : format === 'html' ? renderMetadataHtml(comparison) : renderMetadataTerminal(comparison);
+    if (values.output) {
+      await protectInputs(values.output, rest);
+      await writeFile(values.output, rendered, 'utf8');
+    }
+    else process.stdout.write(rendered);
+    process.exitCode = comparison.complete ? (comparison.changes.length ? 1 : 0) : 2;
+    return;
+  }
+  if (values.snapshot && values.output && resolve(values.snapshot) === resolve(values.output)) fail('--snapshot and --output must use different paths.');
+  if (values.snapshot && (target === 'file' || target === 'config') && rest[0] && resolve(values.snapshot) === resolve(rest[0])) fail('--snapshot cannot replace its input file.');
+  const failOn = parseFailOn(values['fail-on']);
   const configFile = await loadConfigFile(process.cwd(), values.config);
   const config = resolveConfig({
     file: configFile,
@@ -103,7 +129,7 @@ async function main(): Promise<void> {
   });
   if (values['total-budget'] !== undefined) config.totalBudget = parsePositiveInt('--total-budget', values['total-budget']);
 
-  let result: LintResult;
+  let collected: LintTarget;
   const connectionOptions = values['connect-timeout'] === undefined ? {}
     : { connectTimeoutMs: parsePositiveInt('--connect-timeout', values['connect-timeout']) };
   connectionBudget(connectionOptions.connectTimeoutMs);
@@ -113,25 +139,22 @@ async function main(): Promise<void> {
       case 'stdio': {
         if (rest.length === 0) fail('stdio target requires a command after "--", e.g. `mcplint stdio -- node server.js`');
         const [command, ...args] = rest as [string, ...string[]];
-        const collected = await collectStdio({ command, args, ...connectionOptions })
+        collected = await collectStdio({ command, args, ...connectionOptions })
           .catch(error => fail(connectionFailureMessage(error)));
-        result = lint(collected, config);
         break;
       }
       case 'http': {
         const url = rest[0];
         if (!url) fail('http target requires a URL, e.g. `mcplint http https://example.com/mcp`');
         const headers = parseHeaders(values.header);
-        const collected = await collectHttp({ url, ...(headers ? { headers } : {}), ...connectionOptions })
+        collected = await collectHttp({ url, ...(headers ? { headers } : {}), ...connectionOptions })
           .catch(error => fail(connectionFailureMessage(error)));
-        result = lint(collected, config);
         break;
       }
       case 'file': {
         const path = rest[0];
         if (!path) fail('file target requires a path, e.g. `mcplint file tools.json`');
-        const collected = await collectFile(path);
-        result = lint(collected, config);
+        collected = await collectFile(path);
         break;
       }
       case 'config': {
@@ -141,7 +164,7 @@ async function main(): Promise<void> {
           chalk.yellow(`mcplint: "config" launches every server listed in ${visibleControls(path)}. Only run this against configs you trust.\n`)
         );
         const inputs = parseInputs(values.input);
-        const collected = await collectConfig(path, {
+        collected = await collectConfig(path, {
           ...connectionOptions,
           onServerStart: (entry) => process.stderr.write(chalk.dim(`  starting ${visibleControls(entry.key)} (${entry.kind})...\n`)),
           onServerError: (entry, err) =>
@@ -150,7 +173,6 @@ async function main(): Promise<void> {
             process.stderr.write(chalk.yellow(`  ${visibleControls(server.key)}: not started — ${visibleControls(server.reason)}\n`)),
           ...(inputs ? { inputs } : {})
         });
-        result = lint(collected, config);
         break;
       }
       default:
@@ -160,8 +182,16 @@ async function main(): Promise<void> {
     fail((err as Error).message);
   }
 
+  const result = lint(collected, config);
+  if (values.snapshot) {
+    const snapshot = JSON.stringify(createMetadataSnapshot(collected), null, 2) + '\n';
+    if (Buffer.byteLength(snapshot) > MAX_SNAPSHOT_BYTES) fail('Metadata exceeds the 50 MB snapshot limit.');
+    await writeFile(values.snapshot, snapshot, { encoding: 'utf8', flag: 'wx' });
+    process.stderr.write(`Snapshot written to ${visibleControls(values.snapshot)}\n`);
+  }
   const rendered = render(result, format);
   if (values.output) {
+    if (values.snapshot) await protectInputs(values.output, [values.snapshot]);
     await writeFile(values.output, rendered, 'utf8');
     process.stderr.write(chalk.dim(`Report written to ${visibleControls(values.output)}\n`));
   } else {
@@ -172,6 +202,31 @@ async function main(): Promise<void> {
   // way out here, and exiting at once cut it at the pipe's 64 KB buffer -- only when the lint
   // failed, which is when the report is wanted.
   if (shouldFail(result)) process.exitCode = 1;
+}
+
+async function readSnapshot(path: string) {
+  const chunks: Buffer[] = [];
+  let size = 0;
+  for await (const value of createReadStream(path)) {
+    const chunk = value as Buffer;
+    size += chunk.length;
+    if (size > MAX_SNAPSHOT_BYTES) throw new Error('Metadata exceeds the 50 MB snapshot limit.');
+    chunks.push(chunk);
+  }
+  return parseMetadataSnapshot(decodeText(Buffer.concat(chunks)));
+}
+
+/** Also catch existing symlink and hard-link aliases, not just identical path strings. */
+async function protectInputs(output: string, inputs: string[]): Promise<void> {
+  const destination = await stat(output).catch((error: unknown) => {
+    if (typeof error === 'object' && error !== null && 'code' in error && error.code === 'ENOENT') return undefined;
+    throw error;
+  });
+  if (!destination) return;
+  for (const input of inputs) {
+    const source = await stat(input);
+    if (source.dev === destination.dev && source.ino === destination.ino) throw new Error('A report cannot replace a metadata snapshot, including through a file alias.');
+  }
 }
 
 function render(result: LintResult, format: string): string {

@@ -1,0 +1,210 @@
+{
+  "workload": "Actual SDK metadata collection; controlled revisions; no tools called",
+  "audits": {
+    "before": {
+      "summary": {
+        "totalFindings": 0,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {},
+        "toolCount": 2,
+        "promptCount": 1,
+        "resourceCount": 3,
+        "totalEstimatedTokens": 137,
+        "complete": true,
+        "score": 100
+      },
+      "findings": []
+    },
+    "contract": {
+      "summary": {
+        "totalFindings": 0,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {},
+        "toolCount": 2,
+        "promptCount": 1,
+        "resourceCount": 3,
+        "totalEstimatedTokens": 137,
+        "complete": true,
+        "score": 100
+      },
+      "findings": []
+    },
+    "after": {
+      "summary": {
+        "totalFindings": 0,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {},
+        "toolCount": 2,
+        "promptCount": 1,
+        "resourceCount": 3,
+        "totalEstimatedTokens": 136,
+        "complete": true,
+        "score": 100
+      },
+      "findings": []
+    },
+    "reordered": {
+      "summary": {
+        "totalFindings": 0,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {},
+        "toolCount": 2,
+        "promptCount": 1,
+        "resourceCount": 3,
+        "totalEstimatedTokens": 137,
+        "complete": true,
+        "score": 100
+      },
+      "findings": []
+    },
+    "partial": {
+      "summary": {
+        "totalFindings": 1,
+        "bySeverity": {
+          "error": 1,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {
+          "collection/incomplete": 1
+        },
+        "toolCount": 1,
+        "promptCount": 1,
+        "resourceCount": 3,
+        "totalEstimatedTokens": 67,
+        "complete": false,
+        "score": null
+      },
+      "findings": [
+        {
+          "ruleId": "collection/incomplete",
+          "severity": "error",
+          "serverId": "metadata-review-fixture",
+          "subject": {
+            "kind": "server",
+            "name": "metadata-review-fixture"
+          },
+          "message": "tools/list: Request for page 2 failed. Check server availability, authorization and response format, then retry.",
+          "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+          "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+        }
+      ]
+    },
+    "duplicate": {
+      "summary": {
+        "totalFindings": 1,
+        "bySeverity": {
+          "error": 1,
+          "warning": 0,
+          "info": 0
+        },
+        "byRule": {
+          "naming/collision": 1
+        },
+        "toolCount": 2,
+        "promptCount": 1,
+        "resourceCount": 3,
+        "totalEstimatedTokens": 134,
+        "complete": true,
+        "score": 98
+      },
+      "findings": [
+        {
+          "ruleId": "naming/collision",
+          "severity": "error",
+          "serverId": "metadata-review-fixture",
+          "subject": {
+            "kind": "tool",
+            "name": "search_records"
+          },
+          "message": "\"search_records\" occurs 2 times in server \"metadata-review-fixture\"'s tool list; calls address tools by name and cannot select a definition.",
+          "suggestion": "Give each distinct tool a unique name and remove repeated list entries, including overlaps between pages."
+        }
+      ]
+    }
+  },
+  "comparisons": {
+    "contract": {
+      "exit": 1,
+      "complete": true,
+      "summary": {
+        "added": 0,
+        "removed": 0,
+        "changed": 2,
+        "unchanged": 5,
+        "unpaired": 0
+      },
+      "issues": []
+    },
+    "after": {
+      "exit": 1,
+      "complete": true,
+      "summary": {
+        "added": 1,
+        "removed": 1,
+        "changed": 5,
+        "unchanged": 1,
+        "unpaired": 0
+      },
+      "issues": []
+    },
+    "reordered": {
+      "exit": 0,
+      "complete": true,
+      "summary": {
+        "added": 0,
+        "removed": 0,
+        "changed": 0,
+        "unchanged": 7,
+        "unpaired": 0
+      },
+      "issues": []
+    },
+    "partial": {
+      "exit": 2,
+      "complete": false,
+      "summary": {
+        "added": 0,
+        "removed": 0,
+        "changed": 0,
+        "unchanged": 6,
+        "unpaired": 1
+      },
+      "issues": [
+        "After: metadata-review-fixture tools/list is incomplete.",
+        "metadata-review-fixture tools/list: coverage is complete before and incomplete after; absent definitions cannot be classified as added or removed."
+      ]
+    },
+    "duplicate": {
+      "exit": 2,
+      "complete": false,
+      "summary": {
+        "added": 0,
+        "removed": 1,
+        "changed": 0,
+        "unchanged": 5,
+        "unpaired": 3
+      },
+      "issues": [
+        "metadata-review-fixture tools/list: duplicate identity \"search_records\" (1 before, 2 after); no records were paired for this identity."
+      ]
+    }
+  },
+  "snapshotOverwriteRefused": true
+}

@@ -1,0 +1,351 @@
+{
+  "format": "mcplint-metadata-diff",
+  "schemaVersion": 1,
+  "before": {
+    "createdAt": "2026-10-13T00:12:43.406Z",
+    "sha256": "0af99b6199d4df02365c10a70a2fbf993fbc9a5fce03053534a64afe72a7471a",
+    "definitions": 6
+  },
+  "after": {
+    "createdAt": "2026-10-13T00:12:44.441Z",
+    "sha256": "7d2d00866312c348d872609b80b53c9b26011ce8bbc18d3d8408f22c98724550",
+    "definitions": 6
+  },
+  "complete": true,
+  "issues": [],
+  "summary": {
+    "added": 1,
+    "removed": 1,
+    "changed": 5,
+    "unchanged": 1,
+    "unpaired": 0
+  },
+  "changes": [
+    {
+      "serverId": "metadata-review-fixture",
+      "scope": "server",
+      "identity": "metadata-review-fixture",
+      "status": "changed",
+      "fields": [
+        {
+          "pointer": "/instructions",
+          "before": {
+            "present": true,
+            "value": "Review the record summary before accepting an export."
+          },
+          "after": {
+            "present": true,
+            "value": "Review the complete record before accepting an export."
+          }
+        }
+      ]
+    },
+    {
+      "serverId": "metadata-review-fixture",
+      "scope": "tools/list",
+      "identity": "export_records",
+      "status": "added",
+      "fields": [
+        {
+          "pointer": "",
+          "before": {
+            "present": false
+          },
+          "after": {
+            "present": true,
+            "value": {
+              "_meta": {
+                "fixture/origin": "controlled-local-server",
+                "fixture/review": "new"
+              },
+              "annotations": {
+                "destructiveHint": false,
+                "idempotentHint": true,
+                "openWorldHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Export matching record identifiers as a local report. Does not upload records or contact another service.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "limit": {
+                    "description": "Maximum number of records to return.",
+                    "maximum": 200,
+                    "minimum": 1,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "limit"
+                ],
+                "type": "object"
+              },
+              "name": "export_records",
+              "outputSchema": {
+                "properties": {
+                  "ids": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "ids"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "serverId": "metadata-review-fixture",
+      "scope": "tools/list",
+      "identity": "read_record",
+      "status": "removed",
+      "fields": [
+        {
+          "pointer": "",
+          "before": {
+            "present": true,
+            "value": {
+              "_meta": {
+                "fixture/origin": "controlled-local-server",
+                "fixture/review": "original"
+              },
+              "annotations": {
+                "destructiveHint": false,
+                "idempotentHint": true,
+                "openWorldHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Read a stored record and return its contents. Does not modify the record or contact another service.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "limit": {
+                    "description": "Maximum number of records to return.",
+                    "maximum": 100,
+                    "minimum": 1,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "limit"
+                ],
+                "type": "object"
+              },
+              "name": "read_record",
+              "outputSchema": {
+                "properties": {
+                  "ids": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "ids"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "after": {
+            "present": false
+          }
+        }
+      ]
+    },
+    {
+      "serverId": "metadata-review-fixture",
+      "scope": "tools/list",
+      "identity": "search_records",
+      "status": "changed",
+      "fields": [
+        {
+          "pointer": "/_meta/fixture~1review",
+          "before": {
+            "present": true,
+            "value": "original"
+          },
+          "after": {
+            "present": true,
+            "value": "new"
+          }
+        },
+        {
+          "pointer": "/inputSchema/properties/limit/maximum",
+          "before": {
+            "present": true,
+            "value": 100
+          },
+          "after": {
+            "present": true,
+            "value": 200
+          }
+        }
+      ]
+    },
+    {
+      "serverId": "metadata-review-fixture",
+      "scope": "prompts/list",
+      "identity": "review_record",
+      "status": "changed",
+      "fields": [
+        {
+          "pointer": "/arguments",
+          "before": {
+            "present": true,
+            "value": [
+              {
+                "description": "The record to review.",
+                "name": "record",
+                "required": false
+              }
+            ]
+          },
+          "after": {
+            "present": true,
+            "value": [
+              {
+                "description": "The record to review.",
+                "name": "record",
+                "required": true
+              }
+            ]
+          }
+        },
+        {
+          "pointer": "/description",
+          "before": {
+            "present": true,
+            "value": "Review the record summary against the current policy."
+          },
+          "after": {
+            "present": true,
+            "value": "Review the complete record against the current policy."
+          }
+        }
+      ]
+    },
+    {
+      "serverId": "metadata-review-fixture",
+      "scope": "resources/list",
+      "identity": "fixture:///catalog",
+      "status": "changed",
+      "fields": [
+        {
+          "pointer": "/description",
+          "before": {
+            "present": true,
+            "value": "Catalog schema revision one."
+          },
+          "after": {
+            "present": true,
+            "value": "Catalog schema revision two."
+          }
+        }
+      ]
+    },
+    {
+      "serverId": "metadata-review-fixture",
+      "scope": "resources/templates/list",
+      "identity": "fixture:///{collection}",
+      "status": "changed",
+      "fields": [
+        {
+          "pointer": "/mimeType",
+          "before": {
+            "present": true,
+            "value": "application/json"
+          },
+          "after": {
+            "present": true,
+            "value": "text/csv"
+          }
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "before": [
+      {
+        "pages": 2,
+        "received": 2,
+        "retained": 2,
+        "scope": "tools/list",
+        "serverId": "metadata-review-fixture",
+        "status": "complete"
+      },
+      {
+        "pages": 1,
+        "received": 1,
+        "retained": 1,
+        "scope": "prompts/list",
+        "serverId": "metadata-review-fixture",
+        "status": "complete"
+      },
+      {
+        "pages": 1,
+        "received": 2,
+        "retained": 2,
+        "scope": "resources/list",
+        "serverId": "metadata-review-fixture",
+        "status": "complete"
+      },
+      {
+        "pages": 1,
+        "received": 1,
+        "retained": 1,
+        "scope": "resources/templates/list",
+        "serverId": "metadata-review-fixture",
+        "status": "complete"
+      }
+    ],
+    "after": [
+      {
+        "pages": 2,
+        "received": 2,
+        "retained": 2,
+        "scope": "tools/list",
+        "serverId": "metadata-review-fixture",
+        "status": "complete"
+      },
+      {
+        "pages": 1,
+        "received": 1,
+        "retained": 1,
+        "scope": "prompts/list",
+        "serverId": "metadata-review-fixture",
+        "status": "complete"
+      },
+      {
+        "pages": 1,
+        "received": 2,
+        "retained": 2,
+        "scope": "resources/list",
+        "serverId": "metadata-review-fixture",
+        "status": "complete"
+      },
+      {
+        "pages": 1,
+        "received": 1,
+        "retained": 1,
+        "scope": "resources/templates/list",
+        "serverId": "metadata-review-fixture",
+        "status": "complete"
+      }
+    ]
+  },
+  "notes": [
+    "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+    "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+    "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+    "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+    "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+  ]
+}

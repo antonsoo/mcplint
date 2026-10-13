@@ -73,6 +73,34 @@ The cached registry replay contains five previously missed repeated names.
 [Reproduction and report examples](studies/duplicate-names/README.md). This is
 also an unreleased source change.
 
+### Review what changed after an update
+
+A passing audit does not mean a server still exposes the same contract. In a
+controlled SDK server, changing two parameter bounds from 100 to 200 left both
+audits at 100/100 with zero findings and the same token estimate. The source
+checkout now saves metadata snapshots and compares their actual fields:
+
+```sh
+node dist/cli.js config .mcp.json --snapshot before.json
+# Update the server or its dependencies, then capture again.
+node dist/cli.js config .mcp.json --snapshot after.json
+node dist/cli.js diff before.json after.json --format html --output changes.html
+```
+
+The last command exits 1 when metadata changed, 0 when recorded metadata is
+unchanged, and 2 when collection or identity gaps prevent a complete comparison.
+Snapshots retain schemas, descriptions, annotations, unknown list-entry fields,
+and the initialization metadata exposed by the SDK. Failed pages never become
+invented removals. The HTML report runs offline and downloads the full comparison.
+
+![Offline metadata comparison showing a changed extension field and a parameter maximum changing from 100 to 200](docs/assets/metadata-review/chromium-1440.png)
+
+[User guide](docs/metadata-review.md) and [reproducible study](studies/metadata-diff/README.md).
+The study also captures the same official filesystem server under two dependency
+resolutions: its compiled entrypoint is identical, but 13 tool schemas change.
+These commands are **unreleased source features**; the npm package and hosted
+demo have not been updated for them.
+
 ## Quickstart
 
 ```sh

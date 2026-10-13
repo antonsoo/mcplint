@@ -12,3 +12,4 @@ playwright-report/
 
 # Downloads made by studies/*/collect.mjs
 studies/*/cache/
+studies/metadata-diff/results/*.html

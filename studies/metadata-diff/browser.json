@@ -1,0 +1,156 @@
+{
+  "cases": [
+    {
+      "engine": "chromium",
+      "browser": "153.0.8010.12",
+      "width": 1440,
+      "offline": true,
+      "completeReport": {
+        "added": 1,
+        "removed": 1,
+        "changed": 5,
+        "unchanged": 1,
+        "unpaired": 0
+      },
+      "incompleteReport": {
+        "added": 0,
+        "removed": 0,
+        "changed": 0,
+        "unchanged": 6,
+        "unpaired": 1
+      },
+      "downloadsMatchUnfilteredJson": true,
+      "downloads": 4,
+      "body": "[mcplint] metadata review\nToggle color theme\nRecorded metadata changed\n\nReview the definitions and instructions collected before and after an update. A metadata comparison does not establish server behavior or safety.\n\n1 added\n1 removed\n5 changed\n1 unchanged\n0 unpaired\nFind a definition or changed path\nChange type\nAll changes\nChanged\nAdded\nRemoved\nDownload complete JSON\n\n1 of 7 changed entries shown\n\nCHANGEDsearch_records\nmetadata-review-fixture / tools/list / 2 changed fields\n/_meta/fixture~1review\nBEFORE\n\"original\"\nAFTER\n\"new\"\n/inputSchema/properties/limit/maximum\nBEFORE\n100\nAFTER\n200\nCollection coverage\nSnapshot identities and comparison rules",
+      "axeViolations": [],
+      "pageErrors": [],
+      "externalRequests": [],
+      "files": [
+        {
+          "name": "after.html",
+          "bytes": 28049,
+          "sha256": "d209c3e9e2b85a21177b12d0430cc273c86e6700bd80d202732aadcf963cb290"
+        },
+        {
+          "name": "partial.html",
+          "bytes": 24993,
+          "sha256": "d3fc328d25f19e214c7ad1071b686b62c5a982fc87d04f49f6159649a38844be"
+        }
+      ]
+    },
+    {
+      "engine": "chromium",
+      "browser": "153.0.8010.12",
+      "width": 375,
+      "offline": true,
+      "completeReport": {
+        "added": 1,
+        "removed": 1,
+        "changed": 5,
+        "unchanged": 1,
+        "unpaired": 0
+      },
+      "incompleteReport": {
+        "added": 0,
+        "removed": 0,
+        "changed": 0,
+        "unchanged": 6,
+        "unpaired": 1
+      },
+      "downloadsMatchUnfilteredJson": true,
+      "downloads": 4,
+      "body": "[mcplint] metadata review\nToggle color theme\nRecorded metadata changed\n\nReview the definitions and instructions collected before and after an update. A metadata comparison does not establish server behavior or safety.\n\n1 added\n1 removed\n5 changed\n1 unchanged\n0 unpaired\nFind a definition or changed path\nChange type\nAll changes\nChanged\nAdded\nRemoved\nDownload complete JSON\n\n1 of 7 changed entries shown\n\nCHANGEDsearch_records\nmetadata-review-fixture / tools/list / 2 changed fields\n/_meta/fixture~1review\nBEFORE\n\"original\"\nAFTER\n\"new\"\n/inputSchema/properties/limit/maximum\nBEFORE\n100\nAFTER\n200\nCollection coverage\nSnapshot identities and comparison rules",
+      "axeViolations": [],
+      "pageErrors": [],
+      "externalRequests": [],
+      "files": [
+        {
+          "name": "after.html",
+          "bytes": 28049,
+          "sha256": "d209c3e9e2b85a21177b12d0430cc273c86e6700bd80d202732aadcf963cb290"
+        },
+        {
+          "name": "partial.html",
+          "bytes": 24993,
+          "sha256": "d3fc328d25f19e214c7ad1071b686b62c5a982fc87d04f49f6159649a38844be"
+        }
+      ]
+    },
+    {
+      "engine": "firefox",
+      "browser": "155.0",
+      "width": 1440,
+      "offline": true,
+      "completeReport": {
+        "added": 1,
+        "removed": 1,
+        "changed": 5,
+        "unchanged": 1,
+        "unpaired": 0
+      },
+      "incompleteReport": {
+        "added": 0,
+        "removed": 0,
+        "changed": 0,
+        "unchanged": 6,
+        "unpaired": 1
+      },
+      "downloadsMatchUnfilteredJson": true,
+      "downloads": 4,
+      "body": "[mcplint] metadata review\nToggle color theme\nRecorded metadata changed\n\nReview the definitions and instructions collected before and after an update. A metadata comparison does not establish server behavior or safety.\n\n1 added\n1 removed\n5 changed\n1 unchanged\n0 unpaired\nFind a definition or changed path\nChange type\nDownload complete JSON\n\n1 of 7 changed entries shown\n\nCHANGEDsearch_records\nmetadata-review-fixture / tools/list / 2 changed fields\n/_meta/fixture~1review\nBEFORE\n\"original\"\nAFTER\n\"new\"\n/inputSchema/properties/limit/maximum\nBEFORE\n100\nAFTER\n200\nCollection coverage\nSnapshot identities and comparison rules",
+      "axeViolations": [],
+      "pageErrors": [],
+      "externalRequests": [],
+      "files": [
+        {
+          "name": "after.html",
+          "bytes": 28049,
+          "sha256": "d209c3e9e2b85a21177b12d0430cc273c86e6700bd80d202732aadcf963cb290"
+        },
+        {
+          "name": "partial.html",
+          "bytes": 24993,
+          "sha256": "d3fc328d25f19e214c7ad1071b686b62c5a982fc87d04f49f6159649a38844be"
+        }
+      ]
+    },
+    {
+      "engine": "firefox",
+      "browser": "155.0",
+      "width": 375,
+      "offline": true,
+      "completeReport": {
+        "added": 1,
+        "removed": 1,
+        "changed": 5,
+        "unchanged": 1,
+        "unpaired": 0
+      },
+      "incompleteReport": {
+        "added": 0,
+        "removed": 0,
+        "changed": 0,
+        "unchanged": 6,
+        "unpaired": 1
+      },
+      "downloadsMatchUnfilteredJson": true,
+      "downloads": 4,
+      "body": "[mcplint] metadata review\nToggle color theme\nRecorded metadata changed\n\nReview the definitions and instructions collected before and after an update. A metadata comparison does not establish server behavior or safety.\n\n1 added\n1 removed\n5 changed\n1 unchanged\n0 unpaired\nFind a definition or changed path\nChange type\nDownload complete JSON\n\n1 of 7 changed entries shown\n\nCHANGEDsearch_records\nmetadata-review-fixture / tools/list / 2 changed fields\n/_meta/fixture~1review\nBEFORE\n\"original\"\nAFTER\n\"new\"\n/inputSchema/properties/limit/maximum\nBEFORE\n100\nAFTER\n200\nCollection coverage\nSnapshot identities and comparison rules",
+      "axeViolations": [],
+      "pageErrors": [],
+      "externalRequests": [],
+      "files": [
+        {
+          "name": "after.html",
+          "bytes": 28049,
+          "sha256": "d209c3e9e2b85a21177b12d0430cc273c86e6700bd80d202732aadcf963cb290"
+        },
+        {
+          "name": "partial.html",
+          "bytes": 24993,
+          "sha256": "d3fc328d25f19e214c7ad1071b686b62c5a982fc87d04f49f6159649a38844be"
+        }
+      ]
+    }
+  ]
+}

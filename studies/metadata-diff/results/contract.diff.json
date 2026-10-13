@@ -1,0 +1,140 @@
+{
+  "format": "mcplint-metadata-diff",
+  "schemaVersion": 1,
+  "before": {
+    "createdAt": "2026-10-13T00:12:43.406Z",
+    "sha256": "0af99b6199d4df02365c10a70a2fbf993fbc9a5fce03053534a64afe72a7471a",
+    "definitions": 6
+  },
+  "after": {
+    "createdAt": "2026-10-13T00:12:43.915Z",
+    "sha256": "3287d5f32444ad46e908c76fcf792a024e0a98786fd9858922925fc9d35a50d2",
+    "definitions": 6
+  },
+  "complete": true,
+  "issues": [],
+  "summary": {
+    "added": 0,
+    "removed": 0,
+    "changed": 2,
+    "unchanged": 5,
+    "unpaired": 0
+  },
+  "changes": [
+    {
+      "serverId": "metadata-review-fixture",
+      "scope": "tools/list",
+      "identity": "read_record",
+      "status": "changed",
+      "fields": [
+        {
+          "pointer": "/inputSchema/properties/limit/maximum",
+          "before": {
+            "present": true,
+            "value": 100
+          },
+          "after": {
+            "present": true,
+            "value": 200
+          }
+        }
+      ]
+    },
+    {
+      "serverId": "metadata-review-fixture",
+      "scope": "tools/list",
+      "identity": "search_records",
+      "status": "changed",
+      "fields": [
+        {
+          "pointer": "/inputSchema/properties/limit/maximum",
+          "before": {
+            "present": true,
+            "value": 100
+          },
+          "after": {
+            "present": true,
+            "value": 200
+          }
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "before": [
+      {
+        "pages": 2,
+        "received": 2,
+        "retained": 2,
+        "scope": "tools/list",
+        "serverId": "metadata-review-fixture",
+        "status": "complete"
+      },
+      {
+        "pages": 1,
+        "received": 1,
+        "retained": 1,
+        "scope": "prompts/list",
+        "serverId": "metadata-review-fixture",
+        "status": "complete"
+      },
+      {
+        "pages": 1,
+        "received": 2,
+        "retained": 2,
+        "scope": "resources/list",
+        "serverId": "metadata-review-fixture",
+        "status": "complete"
+      },
+      {
+        "pages": 1,
+        "received": 1,
+        "retained": 1,
+        "scope": "resources/templates/list",
+        "serverId": "metadata-review-fixture",
+        "status": "complete"
+      }
+    ],
+    "after": [
+      {
+        "pages": 2,
+        "received": 2,
+        "retained": 2,
+        "scope": "tools/list",
+        "serverId": "metadata-review-fixture",
+        "status": "complete"
+      },
+      {
+        "pages": 1,
+        "received": 1,
+        "retained": 1,
+        "scope": "prompts/list",
+        "serverId": "metadata-review-fixture",
+        "status": "complete"
+      },
+      {
+        "pages": 1,
+        "received": 2,
+        "retained": 2,
+        "scope": "resources/list",
+        "serverId": "metadata-review-fixture",
+        "status": "complete"
+      },
+      {
+        "pages": 1,
+        "received": 1,
+        "retained": 1,
+        "scope": "resources/templates/list",
+        "serverId": "metadata-review-fixture",
+        "status": "complete"
+      }
+    ]
+  },
+  "notes": [
+    "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+    "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+    "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+    "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+    "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+  ]
+}
