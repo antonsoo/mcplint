@@ -1,9 +1,11 @@
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
-import { getDefaultEnvironment, StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
+import { getDefaultEnvironment } from '@modelcontextprotocol/sdk/client/stdio.js';
 import type { LintTarget } from '../core/types.js';
 import { collectFromClient } from './collect.js';
 import { VERSION } from '../version.js';
 import { connectionBudget, connectWithinBudget, type ConnectionOptions } from './connect.js';
+import { GuardedStdioTransport } from './stdio-transport.js';
+import { retainIntegrityFailure } from './live-json.js';
 
 export interface StdioTargetOptions extends ConnectionOptions {
   command: string;
@@ -29,13 +31,11 @@ export async function collectStdio(opts: StdioTargetOptions): Promise<LintTarget
     }
     env[key] = value ?? undefined;
   }
-  const transport = new StdioClientTransport({
+  const transport = new GuardedStdioTransport({
     command: opts.command,
     args: opts.args,
-    // Node omits undefined values. Keep those own properties through the SDK's
-    // default-env merge: deleting them would restore HOME, TERM, PATH, etc.
-    // The SDK forwards them to spawn but declares a narrower string-only type.
-    env: env as Record<string, string>,
+    // Node omits undefined values, preserving explicit environment removals.
+    env,
     ...(opts.cwd ? { cwd: opts.cwd } : {})
   });
 
@@ -51,9 +51,14 @@ export async function collectStdio(opts: StdioTargetOptions): Promise<LintTarget
     // Keep the label as the literal command by default — it's what makes a report
     // reproducible (see the "target" field in the HTML/terminal header).
     const label = opts.label ?? `${opts.command} ${opts.args.join(' ')}`.trim();
-    return await collectFromClient(client, serverId, label);
+    return retainIntegrityFailure(await collectFromClient(client, serverId, label), transport.integrityError);
+  } catch (error) {
+    throw transport.integrityError ?? error;
   } finally {
     await client.close().catch(() => undefined);
+    // A guard-triggered close already detaches the transport from the client.
+    // Still join process cleanup before returning a partial report or failure.
+    await transport.close().catch(() => undefined);
   }
 }
 

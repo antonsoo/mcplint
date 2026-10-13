@@ -118,7 +118,9 @@ node --expose-gc studies/json-integrity/benchmark.mjs dist/core/read-json.js
 
 The check covers raw saved inventories and snapshot imports. It cannot recover
 precision or overwritten keys from an older snapshot, a decoded library object,
-or live MCP metadata already decoded by the SDK. Client configs and lint configs
+or live MCP metadata already decoded by the SDK. The subsequent
+[live-transport repair](../live-json/README.md) checks new live responses before
+SDK decoding; this study records the earlier saved-file repair. Client configs and lint configs
 keep their existing separate parsers. Declaring a schema limit as a string changes
 its meaning; do that only when the producer's schema actually allows a string.
 

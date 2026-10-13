@@ -77,6 +77,8 @@ replacement character in correctly encoded text is valid input.
 | One live list request | 10 seconds, including progress extensions | Incomplete; prior pages retained. |
 | Connection and initialization, per server | 30 seconds by default; `--connect-timeout <ms>` | Single target exits 2; config entry is incomplete and collection proceeds to the next server. |
 | One live list operation | 60 seconds for requests across its pages | Incomplete; prior pages retained. |
+| One stdio message | 10 MiB, including line endings | Connection fails during initialization; otherwise incomplete, retaining prior pages. |
+| One metadata JSON message or saved input | 128 container levels | Refused before its decoded values enter analysis. Live collection retains earlier pages as incomplete. |
 | One list in a saved file | 100,000 raw entries | Incomplete if entries are omitted. |
 | Safety text per input/output schema | 128 levels; 20,000 visited values; 2,000,000 UTF-16 units including keys | `safety/unchecked`; retained text and other tools still checked. |
 
@@ -86,8 +88,9 @@ It does not expand `$ref` or fetch referenced URLs. Diagnostic paths longer than
 500 characters are shortened; this does not shorten the key's scanned text.
 
 These bounds are not a sandbox or an overall memory/CPU guarantee. File reading and
-JSON decoding still read the input into memory. Network response decoding occurs
-before the item cap can be applied. The schema compiler, tokenizer and pairwise
+JSON decoding still read the input into memory. HTTP JSON bodies and SSE events
+are buffered and parsed before the item cap can be applied; they have no new
+overall byte ceiling. The schema compiler, tokenizer and pairwise
 naming/description rules have their own costs. Use trusted-size exports and an
 external process timeout for hostile or very large servers. mcplint still never
 calls tools, reads resource bodies or renders remote icons.
@@ -99,8 +102,9 @@ List collection has its separate limits after the handshake completes. Library
 callers can pass `connectTimeoutMs` to `collectHttp`, `collectStdio` or `collectConfig`;
 values must be integers from 1 through 2147483647. The default is 30000.
 The collector closes its transport on timeout. Scheduling and cleanup add to
-elapsed time: a directly spawned process that ignores EOF can take another two
-seconds to terminate through the SDK. This is not a deadline for the entire audit
+elapsed time: a directly spawned process receives EOF, then SIGTERM after two
+seconds and SIGKILL after another two seconds if needed. Cleanup waits for the
+direct child to close. This is not a deadline for the entire audit
 or a guarantee of terminating a server's detached descendants.
 [Actual connections, child-process checks and retained reports](../studies/connection-deadlines/README.md).
 

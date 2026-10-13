@@ -101,8 +101,11 @@ Saved metadata now refuses duplicate JSON fields and numbers that would change
 during decoding and serialization. A [reproduced integer-limit change](studies/json-integrity/README.md)
 previously captured as the same rounded value on both sides and passed the diff
 as unchanged. Unsupported input now exits 2 before replacing a report or saving
-a misleading snapshot. This source-only check cannot recover values already
-lost in an older snapshot or live transport decoding.
+a misleading snapshot. Live stdio, HTTP JSON and both SSE transports now check
+the original response too. A damaged list page yields an explicitly incomplete
+capture, retaining earlier valid pages; it cannot pass an unchanged diff.
+[Live-server reproduction](studies/live-json/README.md). These checks cannot
+recover values already lost in an older snapshot or a decoded library object.
 The study also captures the same official filesystem server under two dependency
 resolutions: its compiled entrypoint is identical, but 13 tool schemas change.
 These commands are **unreleased source features**; the npm package and hosted

@@ -4,6 +4,13 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Check original live MCP JSON before SDK decoding on stdio, HTTP JSON and both
+  SSE transports. Duplicate fields, changed numeric values, malformed JSON and
+  invalid UTF-8 now make collection explicitly incomplete, retaining prior valid
+  pages. Damaged initialization fails the connection. Preserve SSE framing and
+  safe diagnostics; close the affected connection and join direct-child cleanup.
+  [Four-transport and CLI reproduction](studies/live-json/README.md).
+
 - Check saved metadata JSON before auditing or comparison: refuse duplicate
   object fields, numeric overflow/underflow and decimal changes on serialization.
   A constraint changing from `9007199254740992` to `9007199254740993` previously

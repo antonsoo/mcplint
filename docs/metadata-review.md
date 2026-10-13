@@ -96,14 +96,22 @@ exact binary floating-point arithmetic. Keep numeric schema constraints numeric;
 use a string representation only where the producer's schema permits one.
 Duplicate definitions in an array are still retained and handled by the existing
 identity/coverage rules; they are different from duplicate fields in one object.
-Saved JSON has a 128-container nesting limit. Diagnostics identify the problem
+Metadata JSON has a 128-container nesting limit. Diagnostics identify the problem
 without quoting the offending field name or numeric literal.
 
+Live stdio, HTTP JSON, Streamable HTTP SSE and legacy SSE apply the same check
+before handing response bytes to the SDK. Invalid UTF-8 and malformed JSON are
+also refused. A damaged list page stops collection and retains earlier valid
+pages with an incomplete record. The audit can write this partial snapshot or
+report (`--fail-on error` exits 1); a diff involving it exits 2, never claiming
+missing entries were removed. A damaged initialize response fails the connection
+instead (single-target CLI exit 2). SSE comments, endpoint events and retry
+fields retain their protocol meaning. [Live reproduction](../studies/live-json/README.md).
+
 This check needs the original JSON text. It cannot recover values already lost
-in an older snapshot, a caller-supplied JavaScript object, or the MCP SDK's live
-transport decoding. Live snapshots still record SDK-decoded metadata. Client
-configuration and lint-configuration parsing are separate from these metadata
-input checks.
+in an older snapshot or a caller-supplied JavaScript object. Live snapshots still
+record SDK-decoded metadata, after checking the original text. Client
+configuration and lint-configuration parsing are separate from these checks.
 
 Object key order and list-entry order do not count as changes. Arrays **inside**
 an entry remain ordered; strings remain exact; an absent key differs from `null`.
@@ -120,9 +128,10 @@ baseline automatically.
 
 ## Limits
 
-- A snapshot compares decoded JSON. JavaScript number decoding can lose precision
-  for large integers; duplicate object keys and original whitespace are not
-  preserved. It is not a wire-byte archive.
+- A snapshot compares decoded JSON, not original whitespace or numeric spelling.
+  Text inputs refuse duplicate fields and numbers whose decimal value would
+  change on serialization. Caller-supplied objects and older captures may have
+  already lost that evidence. A snapshot is not a wire-byte archive.
 - Initialization metadata is limited to the fields exposed by the client SDK.
   Unknown initialization-envelope extensions and transport headers are outside
   the snapshot. List entries retain their decoded extension fields.
