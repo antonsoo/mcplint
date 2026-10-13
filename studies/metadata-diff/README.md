@@ -114,3 +114,24 @@ comparisons after one warm-up had a median of 212.2 ms on Node 26.7.0, Linux x64
 under WSL2, 14 logical CPUs and about 47 GiB reported memory. This excludes live
 collection, file decoding and HTML rendering; it is not a production latency
 claim. Full values remain in JSON; the DOM pages definitions and fields.
+
+## Clean archive and installed package
+
+[Verification receipt](verification.json) for implementation `ca3d865`:
+
+| Check | Observed result |
+| --- | --- |
+| Fresh Node 24.21.0 archive | Install, lint, types and builds passed; all 396 tracked files unchanged |
+| Unit and CLI checks | 507 passed, including real SDK pagination and file-alias protection |
+| Chromium/Firefox regression checks | 32 passed, including new paging and hostile-value workflows |
+| Installed tarball | 124,051 bytes, 113 entries; tested on Node 20.0.0 and 24.21.0 |
+| Compiled artifact equality | All 82 packaged compiled files match the clean build and checkout |
+| Actual installed CLI captures | Six SDK revisions on both runtimes; correct changed/unchanged/incomplete exits |
+| Installed HTML | Complete and partial reports byte-identical to all retained offline-browser report hashes |
+| Reference reconstruction | Both retained dependency locks installed unchanged; Node 24 reproduced the same 13 schema changes |
+
+The tarball SHA-256 is
+`25bc213fe29904992ae28231a00ad43f558e2f9291ad8cb5bc1fae76474418d1`.
+It includes the metadata-review guide. This is local packed-artifact verification,
+not an npm release. The package version remains 0.3.3. The final evidence-only
+commit adds this receipt and section without changing product or package files.

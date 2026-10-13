@@ -1,0 +1,290 @@
+{
+  "cleanArchive": {
+    "sourceCommit": "ca3d86569fc8893e1d6ef8ccb456e7ef39e7f481",
+    "node": "v24.21.0",
+    "checks": [
+      {
+        "name": "install",
+        "exit": 0
+      },
+      {
+        "name": "lint",
+        "exit": 0
+      },
+      {
+        "name": "typecheck",
+        "exit": 0
+      },
+      {
+        "name": "unit-cli",
+        "exit": 0
+      },
+      {
+        "name": "browser",
+        "exit": 0
+      }
+    ],
+    "trackedFilesUnchanged": 396
+  },
+  "checks": {
+    "unitAndCli": 507,
+    "browser": 32,
+    "lint": "passed",
+    "typecheck": "passed",
+    "build": "passed"
+  },
+  "package": {
+    "sourceCommit": "ca3d86569fc8893e1d6ef8ccb456e7ef39e7f481",
+    "pack": {
+      "name": "@antonsoloviev/mcplint",
+      "version": "0.3.3",
+      "bytes": 124051,
+      "sha256": "25bc213fe29904992ae28231a00ad43f558e2f9291ad8cb5bc1fae76474418d1",
+      "fileCount": 113
+    },
+    "sourceAndCleanCompiledFilesMatch": 82,
+    "installed": [
+      {
+        "node": "v20.0.0",
+        "binVersion": "0.3.3",
+        "compiledFilesMatch": 82,
+        "guideIncluded": true,
+        "sdkReplay": {
+          "contract": {
+            "exit": 1,
+            "complete": true,
+            "summary": {
+              "added": 0,
+              "removed": 0,
+              "changed": 2,
+              "unchanged": 5,
+              "unpaired": 0
+            },
+            "issues": []
+          },
+          "after": {
+            "exit": 1,
+            "complete": true,
+            "summary": {
+              "added": 1,
+              "removed": 1,
+              "changed": 5,
+              "unchanged": 1,
+              "unpaired": 0
+            },
+            "issues": []
+          },
+          "reordered": {
+            "exit": 0,
+            "complete": true,
+            "summary": {
+              "added": 0,
+              "removed": 0,
+              "changed": 0,
+              "unchanged": 7,
+              "unpaired": 0
+            },
+            "issues": []
+          },
+          "partial": {
+            "exit": 2,
+            "complete": false,
+            "summary": {
+              "added": 0,
+              "removed": 0,
+              "changed": 0,
+              "unchanged": 6,
+              "unpaired": 1
+            },
+            "issues": [
+              "After: metadata-review-fixture tools/list is incomplete.",
+              "metadata-review-fixture tools/list: coverage is complete before and incomplete after; absent definitions cannot be classified as added or removed."
+            ]
+          },
+          "duplicate": {
+            "exit": 2,
+            "complete": false,
+            "summary": {
+              "added": 0,
+              "removed": 1,
+              "changed": 0,
+              "unchanged": 5,
+              "unpaired": 3
+            },
+            "issues": [
+              "metadata-review-fixture tools/list: duplicate identity \"search_records\" (1 before, 2 after); no records were paired for this identity."
+            ]
+          }
+        },
+        "referenceSchemasChanged": 13,
+        "html": [
+          {
+            "report": "after",
+            "bytes": 28049,
+            "sha256": "d209c3e9e2b85a21177b12d0430cc273c86e6700bd80d202732aadcf963cb290",
+            "matchesOfflineBrowserTestedHtml": true
+          },
+          {
+            "report": "partial",
+            "bytes": 24993,
+            "sha256": "d3fc328d25f19e214c7ad1071b686b62c5a982fc87d04f49f6159649a38844be",
+            "matchesOfflineBrowserTestedHtml": true
+          }
+        ]
+      },
+      {
+        "node": "v24.21.0",
+        "binVersion": "0.3.3",
+        "compiledFilesMatch": 82,
+        "guideIncluded": true,
+        "sdkReplay": {
+          "contract": {
+            "exit": 1,
+            "complete": true,
+            "summary": {
+              "added": 0,
+              "removed": 0,
+              "changed": 2,
+              "unchanged": 5,
+              "unpaired": 0
+            },
+            "issues": []
+          },
+          "after": {
+            "exit": 1,
+            "complete": true,
+            "summary": {
+              "added": 1,
+              "removed": 1,
+              "changed": 5,
+              "unchanged": 1,
+              "unpaired": 0
+            },
+            "issues": []
+          },
+          "reordered": {
+            "exit": 0,
+            "complete": true,
+            "summary": {
+              "added": 0,
+              "removed": 0,
+              "changed": 0,
+              "unchanged": 7,
+              "unpaired": 0
+            },
+            "issues": []
+          },
+          "partial": {
+            "exit": 2,
+            "complete": false,
+            "summary": {
+              "added": 0,
+              "removed": 0,
+              "changed": 0,
+              "unchanged": 6,
+              "unpaired": 1
+            },
+            "issues": [
+              "After: metadata-review-fixture tools/list is incomplete.",
+              "metadata-review-fixture tools/list: coverage is complete before and incomplete after; absent definitions cannot be classified as added or removed."
+            ]
+          },
+          "duplicate": {
+            "exit": 2,
+            "complete": false,
+            "summary": {
+              "added": 0,
+              "removed": 1,
+              "changed": 0,
+              "unchanged": 5,
+              "unpaired": 3
+            },
+            "issues": [
+              "metadata-review-fixture tools/list: duplicate identity \"search_records\" (1 before, 2 after); no records were paired for this identity."
+            ]
+          }
+        },
+        "referenceSchemasChanged": 13,
+        "html": [
+          {
+            "report": "after",
+            "bytes": 28049,
+            "sha256": "d209c3e9e2b85a21177b12d0430cc273c86e6700bd80d202732aadcf963cb290",
+            "matchesOfflineBrowserTestedHtml": true
+          },
+          {
+            "report": "partial",
+            "bytes": 24993,
+            "sha256": "d3fc328d25f19e214c7ad1071b686b62c5a982fc87d04f49f6159649a38844be",
+            "matchesOfflineBrowserTestedHtml": true
+          }
+        ]
+      }
+    ]
+  },
+  "referenceLockReconstruction": {
+    "package": "@modelcontextprotocol/server-filesystem@2025.8.21",
+    "interpretation": "Current fresh installs of one historical package under two dependency resolutions, not a reconstruction of its original publication environment.",
+    "changedPackageRecords": [
+      "node_modules/zod"
+    ],
+    "evidence": {
+      "zod3": {
+        "node": "v24.21.0",
+        "serverCompiledSha256": "ce7bdceccfac6d848687bc7067167c72269bc3dbb6312261f5e9b9f481286ec7",
+        "packageLockSha256": "abb99c4af3d3666dce6a2a4dfe92ca7b6498860130aa88ffa7e89d1c01660d4e",
+        "serverVersion": "2025.8.21",
+        "zodVersion": "3.25.76",
+        "definitions": 14,
+        "rawProbeMatchesSnapshot": true,
+        "toolsCalled": 0,
+        "readTextFileSchema": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "tail": {
+              "type": "number",
+              "description": "If provided, returns only the last N lines of the file"
+            },
+            "head": {
+              "type": "number",
+              "description": "If provided, returns only the first N lines of the file"
+            }
+          },
+          "required": [
+            "path"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        }
+      },
+      "zod4": {
+        "node": "v24.21.0",
+        "serverCompiledSha256": "ce7bdceccfac6d848687bc7067167c72269bc3dbb6312261f5e9b9f481286ec7",
+        "packageLockSha256": "777e3c28d8e5e6fba2468cee8d8bfbd2f3d57a256ce005e86c53e44ca3e0e791",
+        "serverVersion": "2025.8.21",
+        "zodVersion": "4.6.7",
+        "definitions": 14,
+        "rawProbeMatchesSnapshot": true,
+        "toolsCalled": 0,
+        "readTextFileSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        }
+      }
+    },
+    "comparison": {
+      "exit": 1,
+      "complete": true,
+      "summary": {
+        "added": 0,
+        "removed": 0,
+        "changed": 13,
+        "unchanged": 2,
+        "unpaired": 0
+      }
+    }
+  },
+  "publication": "Source only; package remains 0.3.3. No tag, registry release or hosted-demo deployment."
+}
