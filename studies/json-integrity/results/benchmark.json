@@ -1,0 +1,35 @@
+{
+  "scope": "Synthetic inventory; parsing only. Two warmups, six alternating timed samples, explicit GC before each when available. Shared-host timings are descriptive, not a regression threshold.",
+  "node": "v24.21.0",
+  "machine": {
+    "platform": "linux",
+    "release": "6.18.54.1-microsoft-standard-WSL2",
+    "cpu": "AMD Ryzen 7 7800X3D 8-Core Processor",
+    "available_cpus": 14
+  },
+  "tools": 5000,
+  "bytes": 515574,
+  "input_sha256": "056fcb9af1120b72107acd60ea07dc7ccf3e531862278926a48586cd8d391cdb",
+  "samples_ms": {
+    "native": [
+      3.8363390000000095,
+      3.8887210000000323,
+      6.217713000000003,
+      4.251480000000015,
+      7.0927560000000085,
+      2.4899709999999686
+    ],
+    "checked": [
+      35.56188300000002,
+      62.91686599999997,
+      43.958279999999945,
+      46.763005999999905,
+      24.208284999999933,
+      27.36371900000006
+    ]
+  },
+  "median_ms": {
+    "native": 4.070100500000024,
+    "checked": 39.760081499999984
+  }
+}

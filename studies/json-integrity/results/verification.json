@@ -1,0 +1,292 @@
+{
+  "implementationCommit": "63f55df0e5681edef321df652711b39573e55d81",
+  "steps": [
+    {
+      "name": "clean-install",
+      "command": [
+        "npm",
+        "ci"
+      ],
+      "exit": 0,
+      "seconds": 12.464
+    },
+    {
+      "name": "clean-lint",
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "exit": 0,
+      "seconds": 7.12
+    },
+    {
+      "name": "clean-types",
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exit": 0,
+      "seconds": 2.662
+    },
+    {
+      "name": "clean-tests",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exit": 0,
+      "seconds": 36.624
+    },
+    {
+      "name": "clean-build",
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "exit": 0,
+      "seconds": 1.905
+    },
+    {
+      "name": "clean-pack",
+      "command": [
+        "npm",
+        "pack",
+        "--json",
+        "--pack-destination",
+        "<scratch>"
+      ],
+      "exit": 0,
+      "seconds": 2.633
+    },
+    {
+      "name": "node20-install",
+      "command": [
+        "npm",
+        "install",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund",
+        "<scratch>/antonsoloviev-mcplint-0.3.3.tgz"
+      ],
+      "exit": 0,
+      "seconds": 5.039
+    },
+    {
+      "name": "node20-replay",
+      "command": [
+        "/tmp/claude-1000/ghostchars-atomic-repair/node20/node_modules/node-linux-x64/bin/node",
+        "<scratch>/clean-63f55df/studies/json-integrity/replay.mjs",
+        "<scratch>/installed-node20/node_modules/@antonsoloviev/mcplint/dist/cli.js",
+        "<scratch>/node20-replay",
+        "check"
+      ],
+      "exit": 0,
+      "seconds": 18.896
+    },
+    {
+      "name": "node20-oracle",
+      "command": [
+        "python3",
+        "<scratch>/clean-63f55df/studies/json-integrity/oracle.py",
+        "--module",
+        "<scratch>/installed-node20/node_modules/@antonsoloviev/mcplint/dist/core/read-json.js",
+        "--node",
+        "/tmp/claude-1000/ghostchars-atomic-repair/node20/node_modules/node-linux-x64/bin/node"
+      ],
+      "exit": 0,
+      "seconds": 0.11
+    },
+    {
+      "name": "node20-version",
+      "command": [
+        "/tmp/claude-1000/ghostchars-atomic-repair/node20/node_modules/node-linux-x64/bin/node",
+        "<scratch>/installed-node20/node_modules/@antonsoloviev/mcplint/dist/cli.js",
+        "--version"
+      ],
+      "exit": 0,
+      "seconds": 0.38
+    },
+    {
+      "name": "node24-install",
+      "command": [
+        "npm",
+        "install",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund",
+        "<scratch>/antonsoloviev-mcplint-0.3.3.tgz"
+      ],
+      "exit": 0,
+      "seconds": 4.687
+    },
+    {
+      "name": "node24-replay",
+      "command": [
+        "/tmp/claude-1000/stutterscope-frame-gaps/node24/node_modules/node-linux-x64/bin/node",
+        "<scratch>/clean-63f55df/studies/json-integrity/replay.mjs",
+        "<scratch>/installed-node24/node_modules/@antonsoloviev/mcplint/dist/cli.js",
+        "<scratch>/node24-replay",
+        "check"
+      ],
+      "exit": 0,
+      "seconds": 14.686
+    },
+    {
+      "name": "node24-oracle",
+      "command": [
+        "python3",
+        "<scratch>/clean-63f55df/studies/json-integrity/oracle.py",
+        "--module",
+        "<scratch>/installed-node24/node_modules/@antonsoloviev/mcplint/dist/core/read-json.js",
+        "--node",
+        "/tmp/claude-1000/stutterscope-frame-gaps/node24/node_modules/node-linux-x64/bin/node"
+      ],
+      "exit": 0,
+      "seconds": 0.102
+    },
+    {
+      "name": "node24-version",
+      "command": [
+        "/tmp/claude-1000/stutterscope-frame-gaps/node24/node_modules/node-linux-x64/bin/node",
+        "<scratch>/installed-node24/node_modules/@antonsoloviev/mcplint/dist/cli.js",
+        "--version"
+      ],
+      "exit": 0,
+      "seconds": 0.321
+    }
+  ],
+  "installed": [
+    {
+      "label": "node20",
+      "node": "v20.0.0",
+      "cases": 33,
+      "cliInvocations": 39,
+      "disagreements": 0,
+      "allReportsSnapshotsExitsAndHtmlMatchSource": true,
+      "onlyNativeSyntaxDiagnosticDifferences": [
+        {
+          "case": "file-invalid-syntax",
+          "source": "mcplint: input.json is not valid JSON: Expected ',' or '}' after property value in JSON at position 411 (line 1 column 412)\n",
+          "installed": "mcplint: input.json is not valid JSON: Expected ',' or '}' after property value in JSON at position 411\n"
+        }
+      ],
+      "oracleCases": 2413,
+      "oracleMatchesSource": true,
+      "packageFilesMatch": 86
+    },
+    {
+      "label": "node24",
+      "node": "v24.21.0",
+      "cases": 33,
+      "cliInvocations": 39,
+      "disagreements": 0,
+      "allReportsSnapshotsExitsAndHtmlMatchSource": true,
+      "onlyNativeSyntaxDiagnosticDifferences": [],
+      "oracleCases": 2413,
+      "oracleMatchesSource": true,
+      "packageFilesMatch": 86
+    }
+  ],
+  "package": {
+    "name": "antonsoloviev-mcplint-0.3.3.tgz",
+    "bytes": 128074,
+    "sha256": "9dc355bcabed28b3121d1af02e89e79c3df441d4b3a57429ed5cf6fd29223138"
+  },
+  "archive": {
+    "trackedFiles": 419,
+    "allBytesUnchanged": true
+  },
+  "packageFiles": {
+    "cli.js": "be76a91ac03cbc07d186fde4490a8a2c0a040adfa0835d2eacd7c7d714c92980",
+    "report-file.d.ts": "f613e2635e883413bfa5aca222e9711dd494368ce88eaae7745e73cb48ecab11",
+    "cli.d.ts": "6f77e82bfb5dd3b1015dd92c63e427d505f9bbbdaa041cad6c704f41c553a536",
+    "index.js": "333017b3dec34f5cc3cf1524297604d7e1fbc7b642522be669e96f83ba913f7d",
+    "version.js": "215ca1f5d200fd274c1db8775c343ed1abc249ff3afdcaaf06cf746f9b88a20b",
+    "version.d.ts": "163d434c0a5a486719193e1b9ba92d6ee9a212ae43c213c5e6e7b1233566127b",
+    "report-file.js": "a07bd7afe92d5552ecfbe0941559fb75b37d4a5557d31cd3ba328d94642a59ce",
+    "index.d.ts": "b8e87c6664c669b93ccf19754d665fb7c5ee1bbccbb6ae8c9acaa8dcea5d5878",
+    "report/coverage.js": "c19a5c1b4142be5c034e55306187f4c7f5d688b68c5d6bf84b6c4b405e353d57",
+    "report/json.js": "d2b115171c72406f485cd85911edbda080dd58ff5fab4c457de8bc48501c8e3c",
+    "report/html.d.ts": "02c58ea717d39d943c2822c062eb68e464e785cb4bc44c1385bd75c6b30cb61f",
+    "report/metadata-html.d.ts": "d18b0494455bee41112fd43bc2c980d2107b6d17c30c21c0b9c7e44793e9fb69",
+    "report/terminal.js": "0e2171dab1e483646cf1f1c1bfe835a90dc1e05dc41a285badcae9f1c6ef9680",
+    "report/sarif.d.ts": "31df1680eb70fc830b5c5bbab6b6a8b58a57a1009efa98e2a8cd3cb270baaba7",
+    "report/markdown.d.ts": "1ff32145cccd6e5585fb60c320004f15597ad25db07feea54bbfa07eecc30727",
+    "report/terminal.d.ts": "e226e1818b0e375885c127eafed514528b0d43cc556b7e8566401d7360b2aa7a",
+    "report/json.d.ts": "b9ffafcac31adafa33c31e296d4669ee63338c8c36bb8c81cf71b2f2355dd03d",
+    "report/metadata.d.ts": "25ea86a1722fb69f367fab6c29bea8ae7eef0d1908f431f08210b8887a95c924",
+    "report/metadata.js": "a8a1eaa1698cc9829671fba537ffbb04b59a03072f3173cf7681c02a4092da52",
+    "report/sarif.js": "486e22fc0422c20d79582817dca90b693fb152c1a62a31bc0f2d486fbabb2984",
+    "report/metadata-html.js": "84e630dc693b55c9a4fd68cdae3be2b74bf870a41611793c80b85d723b57937e",
+    "report/html.js": "7ac78b2ba7a87d24e90057e3384eededbb31386f13a51fc6e15dc372665bd65f",
+    "report/coverage.d.ts": "0c762acff7e6598335a115fa2bb79ed828a60a90cd101a48c9e0ffbd9fa5f2af",
+    "report/markdown.js": "135316c9e681df8875f137e43bd90fb7e152f9a82dcef4c9de1fc6e3a7bb30c6",
+    "collectors/http-redirects.d.ts": "10f969b870e938862ec4d66c0488a0dc37d95c378397a07dbd08473ae001bde6",
+    "collectors/config.js": "97efb65c1dfbd2df9e485a9671402023913c81b44b661707c9af71298ef0ac7c",
+    "collectors/stdio.d.ts": "0f2b5621d3f14b53cefce52ee7260fffa2d2ac42463e702758ebd88383d7e19d",
+    "collectors/http-redirects.js": "a71dba203b5073082eaeb7330972009aac2c24452b0910617627ef3d0feb7b94",
+    "collectors/http.d.ts": "f2e1e0c9dae1951eecd0a3789d931b7d6b6d3ebdbb7a0a4970e11411da4d974f",
+    "collectors/env-file.js": "24e618ed7e1cd50da5c284d691e79e1ca10c0700d2aca73a59b8a71d5274a19f",
+    "collectors/diagnostics.js": "a6bfc7a35c4211b64d887413b8f6ee2c7685393d0f69533c0b0ab9288b80281c",
+    "collectors/items.d.ts": "60de0019b10919f5e9bfdcdd4f90870d3e2f5615a6f6308a41433994c2cb8421",
+    "collectors/diagnostics.d.ts": "50fb02982941c7dac1488273181304695fec7edf8aed94cfe327482497d12a43",
+    "collectors/collect.d.ts": "7c66583914d5e861fbddbc62d82a6f086bb97cd009e55ba5adf29897f2f370b1",
+    "collectors/http.js": "24c8fd5c49491989a389c1a62dbd391e2bd7c3fda2703376b9214fabae95409c",
+    "collectors/connect.js": "87d63dc871c48e354802fe539cab6e93663dd41bc296a0b9d4a498e81e76a787",
+    "collectors/stdio.js": "cd923383a1e426848cc89803f82e6f4c064116959c63bb2a93dfbb5304cc8c66",
+    "collectors/config.d.ts": "596cff070ac5e38179874f263e7487ed21e80b9b421cae54cc76d4f40b54bb22",
+    "collectors/collect.js": "c75b2ec878dc45bde3bc2afe9005fbd30e6e4629584ee885af372b6b5fa34641",
+    "collectors/env-file.d.ts": "056e1026b62802d66108b91622f31b290ab3ddf5f33a543bc8c321d82a635bdf",
+    "collectors/connect.d.ts": "5cd7f4cedd44ecb38bfc5bbc2e296b653686f72ba7b50e12afb4b424dfe4a294",
+    "collectors/file.d.ts": "9ac6d0c21c6e24e39c05bbbda1a57deb14933080b8dbdc63da747b5884a4a867",
+    "collectors/file.js": "b5ee4e5fd613bdb3e8853c50531e83756a164b429df7fb3eba27631272627520",
+    "collectors/items.js": "e337c25ad57f056426877eb04f042ae058053d889764c424ef67be512f638c1b",
+    "core/tokenizer.js": "aa7f9a268c9940089c285d9c240e374c0aa02c9221bb82af1dd7ae0017b56336",
+    "core/config.js": "434dd44e8a3ea949e7434df4a1a7a08b8f73edd5e6e0cc75fa7dcd6b44fd873b",
+    "core/name-distance.js": "a928209a83a5d02c66bfb17eb6df970c883cb5a4040c8d9bd356dc64141405ac",
+    "core/census.d.ts": "8b1cd6dba8b7d90befa7eea04c0a35c17ce842d069c2075ecb239cfc7ce3ca28",
+    "core/unicode.d.ts": "7b9008230073582db52f1ab17cb671e787ba4fa576848e7157c4e6059ce39d28",
+    "core/read-json.js": "6be5e82d8c920ce6c6c82c53f10002fd85443c26f80a0dc4f5b2decb3f5b333e",
+    "core/rule-slug.d.ts": "dd6a9e56b870f26afea6cef3b697a252de6a0997986dca4875794d1db07ef359",
+    "core/read-text.d.ts": "d619b3133220bd56b37eea1788e930509814afdfa0d08fef13c30269799540d2",
+    "core/schema-validation.js": "b213bf2073c9814bed063672017dc92c0382c326d8a8291b9364ed6bfbd169c8",
+    "core/read-json.d.ts": "779b26d9b7dd71f65726496409b87d1464256dcc06fca45680adf8b121a21097",
+    "core/score.d.ts": "61d86e82475c7f2feb9814084375d16f2812b695fb57946c1e66742ffc544fae",
+    "core/score.js": "0493c2aa29e86bf9b35eca09d1276dd2e4b44e4d6c22735148893f14074b04be",
+    "core/tokenizer.d.ts": "de87f81425fb629ea51e1d06408c54b4bd0e885e12cc85264cddbe2e0354f767",
+    "core/schema-utils.js": "e7dbae691cdcc804ef7a8287e8a8ec258525116e8624c25a2eb865ca6962c505",
+    "core/schema-validation.d.ts": "4e7305c85a7aa9755300c72d14878f63859a771a1864884ba72891132c839fe4",
+    "core/metadata.d.ts": "9a9bcf4f61daea8a7f435a57660b7e38a5b9de66fa394c341400521d99cca7c8",
+    "core/metadata.js": "3cfa88a9826f0e5ab80f3ad4e6b50a74310504c8667e295608969763754b2ba1",
+    "core/rule-slug.js": "7bde55c47ef23252c0a2f01183e9d7311a72b733446a5b96cd6ff3b9bc7978d5",
+    "core/read-text.js": "6b39aee688d2580ba0ad1309bf1daf5097ec72758e7a15954cf50491e926c874",
+    "core/types.d.ts": "422686ce8c4768fc566630b4d88c2b89aee4239a3a6ee208664c4524e15e4fb5",
+    "core/lint.js": "b6d7d9118e2a1ed9e8f93085df557388d75ac93e079af1f50b0a8244fd8cc983",
+    "core/config.d.ts": "6b0ae939be14a649a110662f01157623e3f7dfd0613b243d618130dcd25b7b29",
+    "core/unicode.js": "2a08760ecd345c02a40d7aae77216f021cb517d4e4914c878ba9dc9df112d456",
+    "core/lint.d.ts": "077956ef7de7dcd0e2f8e3fd22271608d03b666d6dc4e5b4d45464029e2b8645",
+    "core/name-distance.d.ts": "86a72af12f0a32526dd9557a9301ce653d7924ef6933b59cf09ddb2faf38da03",
+    "core/types.js": "4246d4fd2648ad9bf3c769fd93f9cdd59dde2cc3df60e22adecf51fdd86816cc",
+    "core/schema-utils.d.ts": "39b8665199e249c7fe12effbf06796beb43f34c46a7ddade6186a1296a40d417",
+    "core/census.js": "597558e3968cabe5b1a15e17deaf5a56ce4ab9e74d344c48edc263101c2ac4cc",
+    "core/rules/naming.js": "052273aae95742ad22a44d149e22d01a5ab7d463c74b56a5a473338eab42f64d",
+    "core/rules/collection.d.ts": "e468b63ff04eec1eb9f63ed6d691d2ea327f5e4da68c3ac9d907456118c7f29a",
+    "core/rules/descriptions.js": "8758f6868fee2d8c4d0f489c411108087f8ea4718306ca3fbb19501fa154ed7f",
+    "core/rules/collection.js": "e8b99bcaedacfae040896c9915beb4fc07964f4fb1a943dcb253d4146554590d",
+    "core/rules/schema.js": "8546c7dca3c8566b31edf7ef77ee3a068a6d4298e8c362fd908585556f2c6320",
+    "core/rules/schema.d.ts": "3da21e704ea74ddbb6a92376a3fdbc0788d2081dc696005cad41cb368f36c724",
+    "core/rules/safety.js": "27e553cd608bd5c26df522ff684a28a34881484acd200ae702757cf3fce5f178",
+    "core/rules/index.js": "e16ef6921015cb59187dae7467c7b0cfe30709c43c70a63752dc89960eb262fe",
+    "core/rules/naming.d.ts": "6e61fdade08a3c43a1ab68e3f5138cb330c4259879aea30d2e368e995e8b77cc",
+    "core/rules/budget.js": "fc73892e831b70cb249914122b6f76cd4fd1dda93c1f9cc83a006c48fe7244e6",
+    "core/rules/descriptions.d.ts": "5083770cf40bdb713464a75f5c98669a90b1ddcf3bca477ee25642c30f4e0473",
+    "core/rules/safety.d.ts": "a26b269059632f4da081f07aa519f7fc3af31fae1a302121346007d92facb1a3",
+    "core/rules/budget.d.ts": "95c4ccfa64af272a7e7c8b5858db3f07b13114e2cfbed5242fb4c74cca170395",
+    "core/rules/index.d.ts": "1e1f787ae5c961a425815adaf71d7c997e43cded63a9119bde8dc38978a908a5"
+  },
+  "scope": "Clean archive and two fresh local package installations; npm installation used Node 24, then CLI/runtime/oracle exercised Node 20.0.0 and Node 24.21.0. No package release or hosted deployment.",
+  "verificationNotes": "The initial Node 20 comparison asserted identical stderr for a native JSON syntax error. V8 on Node 20 omits the line/column suffix. All 33 case checks had passed; resumed verification retains that diagnostic difference and checks all remaining fields exactly. No application or archived files were changed."
+}

@@ -92,6 +92,28 @@ the seed and full input/result hashes. This does not claim exact binary
 arithmetic: normal `0.1` and `5e-324` serialize to their original decimal values
 and remain accepted.
 
+## Packaged runtime and parsing cost
+
+[Clean-artifact verification](results/verification.json) archives implementation
+`63f55df`, performs a fresh locked installation, lint, type checking, all 565
+checks, compilation and `npm pack`. Two fresh local package installations then
+run the full 33-case/39-invocation replay and the 2,413-case Decimal oracle on
+Node 20.0.0 and Node 24.21.0. Reports, snapshots, exit codes and HTML hashes match
+the corrected source. Full receipts: [Node 20](results/installed-node20.json),
+[Node 24](results/installed-node24.json). Package installation itself used Node 24.
+The native syntax-error diagnostic on Node 20 omits the newer V8 line/column
+suffix; the receipt retains that difference. Application files were unchanged.
+
+The [parsing measurement](results/benchmark.json) uses a constructed inventory
+of 5,000 definitions (515,574 bytes). On this 14-CPU-affinity WSL2 host with a
+Ryzen 7 7800X3D and Node 24.21.0, median native parsing was 4.07 ms and parsing
+with the guard was 39.76 ms across six alternating measured samples after two
+warmups. This is parser overhead, not full audit latency or a performance gate.
+
+```sh
+node --expose-gc studies/json-integrity/benchmark.mjs dist/core/read-json.js
+```
+
 ## Boundaries
 
 The check covers raw saved inventories and snapshot imports. It cannot recover
