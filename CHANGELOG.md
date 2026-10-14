@@ -183,6 +183,10 @@ All notable changes to this project are documented in this file.
 
 ### Fixed
 
+- Explicit non-complete discovery result discriminators mark live and saved
+  collection incomplete while preserving supplied definitions. Pagination stops
+  at that response; opaque state/input requests are not copied or fulfilled.
+
 - A file saved by a Windows shell. `... > tools.json` in Windows PowerShell
   writes UTF-16 with a byte-order mark, which `mcplint file` refused as "not
   valid JSON: Unexpected token"; the same went for a client config, a

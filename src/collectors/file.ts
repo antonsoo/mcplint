@@ -4,6 +4,7 @@ import type { CollectionRecord, LintTarget } from '../core/types.js';
 import { isPlainObject, stripBom } from '../core/schema-utils.js';
 import { appendItems } from './items.js';
 import { MAX_ITEMS } from './collect.js';
+import { listResultIssue } from './list-result.js';
 
 /** A saved list describes only the supplied snapshot, never a live server's complete inventory. */
 export async function collectFile(path: string, serverId = 'file'): Promise<LintTarget> {
@@ -42,6 +43,8 @@ export async function collectFile(path: string, serverId = 'file'): Promise<Lint
     collection.push(record);
   }
   const issues: string[] = [];
+  const resultIssue = listResultIssue(parsed);
+  if (resultIssue) issues.push(resultIssue);
   if (parsed.nextCursor !== undefined) issues.push('Saved nextCursor indicates uncollected pages (or a malformed cursor). Supply the complete list to audit it.');
   if (Object.hasOwn(parsed, 'instructions') && typeof parsed.instructions !== 'string') issues.push('Saved instructions must be a string.');
   collection.push({ serverId, scope: 'file', status: issues.length ? 'incomplete' : 'complete', pages: 0, received: 0, retained: 0,

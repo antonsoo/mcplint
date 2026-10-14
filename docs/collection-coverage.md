@@ -27,6 +27,15 @@ is Method Not Found. A later request failing retains earlier pages. Repeated
 cursors, invalid cursors and missing list arrays are explicit gaps. Empty string
 cursors are followed like any other string; only an absent `nextCursor` ends a list.
 
+An explicit `resultType` other than `complete` also leaves discovery coverage
+unverified. `input_required` is forbidden on list requests by the
+[MCP multi round-trip rules](https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/mrtr#supported-requests).
+Unknown or malformed discriminators are unsupported. Supplied definitions are
+retained, but that pagination stream stops; no input request is fulfilled and
+opaque request state is not copied into diagnostics or snapshots. Legacy
+responses without the discriminator remain supported.
+[Native SDK and saved-response replay](../studies/result-types/README.md).
+
 Malformed objects retain usable fields, with a synthetic name if necessary. Scalar
 and null entries cannot become tool/prompt/resource objects. Both cases are counted
 and reported; the report gives the index of the first malformed entry, starting at
@@ -54,7 +63,9 @@ connection errors are also available in the CLI's stderr progress output.
 
 An empty `tools`, `prompts`, `resources` or `resourceTemplates` array is valid. A
 saved `nextCursor` means the snapshot has uncollected pages, so the audit is
-incomplete. Present fields with the wrong type are reported even if other lists are
+incomplete. A present non-complete result discriminator also marks the
+file incomplete, preventing metadata comparisons from claiming removals.
+Present fields with the wrong type are reported even if other lists are
 usable. Files without any recognized list or instructions field are rejected.
 
 A saved file is only evidence about its contents. A complete snapshot report does

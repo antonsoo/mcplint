@@ -5,6 +5,7 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { collectFile } from '../../src/collectors/file.js';
 import { lint, shouldFail } from '../../src/core/lint.js';
 import { resolveConfig } from '../../src/core/config.js';
+import { compareMetadata, createMetadataSnapshot } from '../../src/core/metadata.js';
 
 describe('collectFile', () => {
   let dir: string;
@@ -13,6 +14,50 @@ describe('collectFile', () => {
   });
   afterEach(async () => {
     await rm(dir, { recursive: true, force: true });
+  });
+
+  it.each(['input_required', 'partial', '', null, true, 7, ['complete'], { resultType: 'complete' }])(
+    'retains saved definitions without certifying an incomplete response: %j', async resultType => {
+      const path = join(dir, 'incomplete.json');
+      await writeFile(path, JSON.stringify({ resultType, requestState: 'SYNTHETIC_PRIVATE_STATE',
+        inputRequests: { login: { method: 'elicitation/create' } }, tools: [
+          { name: 'read_record', inputSchema: { type: 'object' } }
+        ] }));
+      const target = await collectFile(path);
+      expect(target.tools).toHaveLength(1);
+      const result = lint(target, resolveConfig({ failOnFlag: 'error' }));
+      expect(result.summary.complete).toBe(false);
+      expect(result.summary.score).toBeNull();
+      expect(shouldFail(result)).toBe(true);
+      expect(JSON.stringify(target)).not.toContain('SYNTHETIC_PRIVATE_STATE');
+      expect(JSON.stringify(target)).not.toContain('elicitation/create');
+    }
+  );
+
+  it('does not claim removed definitions when a saved discovery response is non-complete', async () => {
+    const path = join(dir, 'list.json');
+    const tools = [
+      { name: 'first', inputSchema: { type: 'object' } },
+      { name: 'unknown-now', inputSchema: { type: 'object' } }
+    ];
+    await writeFile(path, JSON.stringify({ tools }));
+    const before = createMetadataSnapshot(await collectFile(path));
+    await writeFile(path, JSON.stringify({ tools: tools.slice(0, 1), resultType: 'input_required' }));
+    const after = createMetadataSnapshot(await collectFile(path));
+    const diff = compareMetadata(before, after);
+    expect(diff.complete).toBe(false);
+    expect(diff.summary.removed).toBe(0);
+    expect(diff.changes).toEqual([]);
+  });
+
+  it('accepts explicit complete snapshots and nested resultType data', async () => {
+    const path = join(dir, 'complete.json');
+    await writeFile(path, JSON.stringify({ resultType: 'complete', tools: [
+      { name: 'read_record', inputSchema: { type: 'object', properties: {
+        payload: { const: { resultType: 'input_required' } }
+      } } }
+    ] }));
+    expect((await collectFile(path)).collection?.every(record => record.status === 'complete')).toBe(true);
   });
 
   it('accepts a bare array of tools', async () => {

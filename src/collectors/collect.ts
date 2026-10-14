@@ -3,6 +3,7 @@ import type { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { ErrorCode } from '@modelcontextprotocol/sdk/types.js';
 import type { CollectionRecord, LintTarget, ListMethod, ServerInfo } from '../core/types.js';
 import { appendItems } from './items.js';
+import { listResultIssue } from './list-result.js';
 
 // Validate the envelope ourselves, retaining usable items even when its cursor is malformed.
 // SDK listTools() validates the entire list and would hide good tools next to a malformed one.
@@ -47,12 +48,15 @@ export async function listAll(client: Pick<Client, 'request'>, method: ListMetho
       return finish('incomplete', `Request for page ${page + 1} failed. Check server availability, authorization and response format, then retry.`);
     }
     pages++;
+    const resultIssue = listResultIssue(result);
     const values = result[key];
-    if (!Array.isArray(values)) return finish('incomplete', `Page ${page + 1} has no valid ${key} array.`);
+    if (!Array.isArray(values)) return finish('incomplete', resultIssue ?? `Page ${page + 1} has no valid ${key} array.`);
     received += values.length;
     const remaining = MAX_ITEMS - items.length;
     for (let i = 0; i < Math.min(values.length, remaining); i++) items.push(values[i]);
-    if (values.length > remaining) return finish('incomplete', `Stopped at the ${MAX_ITEMS} item limit; remaining items were not inspected.`);
+    if (values.length > remaining) return finish('incomplete', [resultIssue,
+      `Stopped at the ${MAX_ITEMS} item limit; remaining items were not inspected.`].filter(Boolean).join(' '));
+    if (resultIssue) return finish('incomplete', `Page ${page + 1}: ${resultIssue}`);
     if (result.nextCursor === undefined) return finish('complete');
     if (typeof result.nextCursor !== 'string') return finish('incomplete', `Page ${page + 1} has a non-string nextCursor.`);
     cursor = result.nextCursor;

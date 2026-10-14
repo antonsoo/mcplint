@@ -35,6 +35,12 @@ _Real, unedited `mcplint stdio --format html -- npx tsx examples/poisoned-server
 [antonsoo.github.io/mcplint](https://antonsoo.github.io/mcplint/), or see [Usage](#usage) below for the terminal
 report._
 
+The source checkout marks explicitly non-complete discovery responses as audit
+gaps. A tool array beside `resultType: "input_required"` no longer produces a
+complete 100-point report and passing CI gate. Definitions remain available for
+linting; [SDK, saved-response and metadata-comparison evidence](studies/result-types/README.md)
+is retained. This correction is not yet an npm release or hosted update.
+
 ## What real servers look like
 
 [**The registry census**](studies/registry-census/README.md) reads the tool definitions that one public MCP

@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { listAll, MAX_ITEMS, MAX_PAGES } from '../../src/collectors/collect.js';
 
-type Page = { tools: unknown[]; nextCursor?: string };
+type Page = { tools: unknown[]; nextCursor?: string; resultType?: unknown; requestState?: string };
 
 function fakeClient(pages: Record<string, Page | Error>) {
   const calls: (string | undefined)[] = [];
@@ -19,6 +19,40 @@ function fakeClient(pages: Record<string, Page | Error>) {
 }
 
 describe('listAll', () => {
+  it.each(['input_required', 'partial', '', null, true, 7, ['complete'], { resultType: 'complete' }])(
+    'retains a non-complete page without following its cursor: %j', async resultType => {
+      const client = fakeClient({
+        '': { tools: [{ name: 'first' }], nextCursor: 'p2' },
+        p2: { tools: [{ name: 'retained' }], resultType, nextCursor: 'p3', requestState: 'SYNTHETIC_PRIVATE_STATE' },
+        p3: { tools: [{ name: 'not-collected' }] }
+      });
+      const result = await listAll(client as never, 'tools/list', 'tools');
+      expect(result).toMatchObject({ status: 'incomplete', pages: 2, received: 2,
+        items: [{ name: 'first' }, { name: 'retained' }] });
+      expect(client.calls).toEqual([undefined, 'p2']);
+      expect(result.detail).toContain('completion');
+      expect(JSON.stringify(result)).not.toContain('SYNTHETIC_PRIVATE_STATE');
+    }
+  );
+
+  it('accepts explicit complete results and ignores nested discriminator text', async () => {
+    const values = [{ name: 'literal', inputSchema: { type: 'object', properties: {
+      payload: { const: { resultType: 'input_required' } } } } }];
+    const client = fakeClient({ '': { tools: values, resultType: 'complete' } });
+    expect(await listAll(client as never, 'tools/list', 'tools')).toMatchObject({
+      status: 'complete', pages: 1, received: 1, items: values
+    });
+  });
+
+  it('does not echo arbitrary discriminator values or mislabel missing items as a successful list', async () => {
+    const secret = 'SYNTHETIC_SECRET_DISCRIMINATOR';
+    const result = await listAll({ request: () => Promise.resolve({ tools: [], resultType: secret }) } as never, 'tools/list', 'tools');
+    expect(result.status).toBe('incomplete');
+    expect(JSON.stringify(result)).not.toContain(secret);
+    const missing = await listAll({ request: () => Promise.resolve({ resultType: 'input_required', requestState: secret }) } as never, 'tools/list', 'tools');
+    expect(missing.status).toBe('incomplete');
+    expect(missing.detail).toContain('input_required');
+  });
   it('follows nextCursor through every page', async () => {
     const client = fakeClient({ '': { tools: [{ name: 'a' }], nextCursor: 'p2' }, p2: { tools: [{ name: 'b' }], nextCursor: 'p3' }, p3: { tools: [{ name: 'c' }] } });
     const items = await listAll(client as never, 'tools/list', 'tools');
