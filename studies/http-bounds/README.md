@@ -130,3 +130,11 @@ normalization. The package is 135,137 bytes, SHA-256
 [Verification receipt](results/verification.json) retains commands, file digests,
 installed replay receipts and limits. `verify.py` checks the clean build, consumer,
 before/after observations and actual browser downloads before writing it.
+
+The source and verification commits are public on `main` at
+`70073142eb2316091a16704ec000869bc5e8fafc`. All 51 changed files were fetched
+from pinned public raw URLs and matched byte for byte to the clean local source.
+[Public source receipt](results/public-source.json) records each size and SHA-256.
+The upload response timed out after the body was sent; independent remote-head
+and public-byte checks establish publication. No registry release or manual
+hosted deployment was performed.
