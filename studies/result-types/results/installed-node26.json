@@ -1,0 +1,3544 @@
+{
+  "label": "bad0e5f-packed-node26",
+  "node": "v26.7.0",
+  "sdkVersion": "1.32.1",
+  "runtime": {
+    "collectors/collect.js": "c262eec7f9d5dae9512be9b09042b6e0abcbff7bf2ba9f1a4fd270a995b497b6",
+    "collectors/file.js": "c62ab1177c829a9346743f12de8f456cb862f8850e6cfc8edab9df2538356e7e",
+    "collectors/list-result.js": "3ec002ba9e7789c0a5fe71a69cdfd37fcd29fa634ac3d8e90d80358200ca1109"
+  },
+  "workflows": 34,
+  "disagreements": 0,
+  "records": [
+    {
+      "id": "legacy-control",
+      "kind": "native-stdio",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": true,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:36.597Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:36.597Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "legacy-control",
+      "kind": "saved-file",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": true,
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:36.930Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:36.930Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"complete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Only the supplied snapshot was inspected; no server was contacted.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "explicit-complete",
+      "kind": "native-stdio",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": true,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:37.369Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:37.369Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "explicit-complete",
+      "kind": "saved-file",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": true,
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:37.693Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:37.693Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"complete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Only the supplied snapshot was inspected; no server was contacted.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "nested-literal-control",
+      "kind": "native-stdio",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": true,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "3ba2379e0e3bd503e6c1066d0cbf31228c5507f2d65c817ba06230a8ed1aa657",
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:38.144Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 68,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:38.144Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 68,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "nested-literal-control",
+      "kind": "saved-file",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": true,
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:38.476Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 68,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:38.476Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"complete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Only the supplied snapshot was inspected; no server was contacted.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 68,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "input-required-tools",
+      "kind": "native-stdio",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "detail": "Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.",
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "incomplete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:38.918Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "incomplete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "detail": "Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified."
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "synthetic-result-type",
+            "subject": {
+              "kind": "server",
+              "name": "synthetic-result-type"
+            },
+            "message": "tools/list: Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.",
+            "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:38.918Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"incomplete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1,\n      \"detail\": \"Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\"\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"synthetic-result-type\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"synthetic-result-type\"\n      },\n      \"message\": \"tools/list: Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\",\n      \"detail\": \"1 pages received; 1 entries received; 1 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "input-required-tools",
+      "kind": "saved-file",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:39.231Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified."
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "file",
+            "subject": {
+              "kind": "server",
+              "name": "file"
+            },
+            "message": "file: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.",
+            "detail": "0 pages received; 0 entries received; 0 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:39.231Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"incomplete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"file\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"file\"\n      },\n      \"message\": \"file: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\",\n      \"detail\": \"0 pages received; 0 entries received; 0 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "input-required-prompts",
+      "kind": "native-stdio",
+      "agrees": true,
+      "scope": "prompts/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "detail": "Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.",
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "incomplete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:39.695Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "incomplete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "detail": "Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified."
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "synthetic-result-type",
+            "subject": {
+              "kind": "server",
+              "name": "synthetic-result-type"
+            },
+            "message": "prompts/list: Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.",
+            "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:39.695Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"incomplete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1,\n      \"detail\": \"Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\"\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"synthetic-result-type\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"synthetic-result-type\"\n      },\n      \"message\": \"prompts/list: Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\",\n      \"detail\": \"1 pages received; 1 entries received; 1 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "input-required-prompts",
+      "kind": "saved-file",
+      "agrees": true,
+      "scope": "prompts/list",
+      "expectedComplete": false,
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:39.989Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified."
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 0,
+          "promptCount": 1,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 0,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "file",
+            "subject": {
+              "kind": "server",
+              "name": "file"
+            },
+            "message": "file: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.",
+            "detail": "0 pages received; 0 entries received; 0 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:39.989Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"incomplete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 0,\n    \"promptCount\": 1,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 0,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"file\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"file\"\n      },\n      \"message\": \"file: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\",\n      \"detail\": \"0 pages received; 0 entries received; 0 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "input-required-resources",
+      "kind": "native-stdio",
+      "agrees": true,
+      "scope": "resources/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "detail": "Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.",
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "incomplete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:40.424Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "incomplete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "detail": "Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified."
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "synthetic-result-type",
+            "subject": {
+              "kind": "server",
+              "name": "synthetic-result-type"
+            },
+            "message": "resources/list: Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.",
+            "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:40.424Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"incomplete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1,\n      \"detail\": \"Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\"\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"synthetic-result-type\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"synthetic-result-type\"\n      },\n      \"message\": \"resources/list: Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\",\n      \"detail\": \"1 pages received; 1 entries received; 1 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "input-required-resources",
+      "kind": "saved-file",
+      "agrees": true,
+      "scope": "resources/list",
+      "expectedComplete": false,
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:40.688Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified."
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 0,
+          "promptCount": 0,
+          "resourceCount": 1,
+          "totalEstimatedTokens": 0,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "file",
+            "subject": {
+              "kind": "server",
+              "name": "file"
+            },
+            "message": "file: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.",
+            "detail": "0 pages received; 0 entries received; 0 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:40.688Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"incomplete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 0,\n    \"promptCount\": 0,\n    \"resourceCount\": 1,\n    \"totalEstimatedTokens\": 0,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"file\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"file\"\n      },\n      \"message\": \"file: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\",\n      \"detail\": \"0 pages received; 0 entries received; 0 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "input-required-resourceTemplates",
+      "kind": "native-stdio",
+      "agrees": true,
+      "scope": "resources/templates/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "detail": "Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.",
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "incomplete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:41.146Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "incomplete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "detail": "Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified."
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "synthetic-result-type",
+            "subject": {
+              "kind": "server",
+              "name": "synthetic-result-type"
+            },
+            "message": "resources/templates/list: Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.",
+            "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:41.146Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"incomplete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1,\n      \"detail\": \"Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"synthetic-result-type\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"synthetic-result-type\"\n      },\n      \"message\": \"resources/templates/list: Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\",\n      \"detail\": \"1 pages received; 1 entries received; 1 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "input-required-resourceTemplates",
+      "kind": "saved-file",
+      "agrees": true,
+      "scope": "resources/templates/list",
+      "expectedComplete": false,
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:41.450Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified."
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 0,
+          "promptCount": 0,
+          "resourceCount": 1,
+          "totalEstimatedTokens": 0,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "file",
+            "subject": {
+              "kind": "server",
+              "name": "file"
+            },
+            "message": "file: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.",
+            "detail": "0 pages received; 0 entries received; 0 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:41.450Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"incomplete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 0,\n    \"promptCount\": 0,\n    \"resourceCount\": 1,\n    \"totalEstimatedTokens\": 0,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"file\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"file\"\n      },\n      \"message\": \"file: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\",\n      \"detail\": \"0 pages received; 0 entries received; 0 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "unsupported-0",
+      "kind": "native-stdio",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "detail": "Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.",
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "incomplete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:41.951Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "incomplete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "detail": "Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified."
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "synthetic-result-type",
+            "subject": {
+              "kind": "server",
+              "name": "synthetic-result-type"
+            },
+            "message": "tools/list: Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.",
+            "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:41.951Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"incomplete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1,\n      \"detail\": \"Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.\"\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"synthetic-result-type\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"synthetic-result-type\"\n      },\n      \"message\": \"tools/list: Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.\",\n      \"detail\": \"1 pages received; 1 entries received; 1 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "unsupported-0",
+      "kind": "saved-file",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:42.273Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Discovery response has an unsupported or malformed resultType. List completion is unverified."
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "file",
+            "subject": {
+              "kind": "server",
+              "name": "file"
+            },
+            "message": "file: Discovery response has an unsupported or malformed resultType. List completion is unverified.",
+            "detail": "0 pages received; 0 entries received; 0 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:42.273Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"incomplete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Discovery response has an unsupported or malformed resultType. List completion is unverified.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"file\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"file\"\n      },\n      \"message\": \"file: Discovery response has an unsupported or malformed resultType. List completion is unverified.\",\n      \"detail\": \"0 pages received; 0 entries received; 0 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "unsupported-1",
+      "kind": "native-stdio",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "detail": "Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.",
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "incomplete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:42.756Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "incomplete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "detail": "Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified."
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "synthetic-result-type",
+            "subject": {
+              "kind": "server",
+              "name": "synthetic-result-type"
+            },
+            "message": "tools/list: Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.",
+            "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:42.756Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"incomplete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1,\n      \"detail\": \"Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.\"\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"synthetic-result-type\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"synthetic-result-type\"\n      },\n      \"message\": \"tools/list: Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.\",\n      \"detail\": \"1 pages received; 1 entries received; 1 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "unsupported-1",
+      "kind": "saved-file",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:43.072Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Discovery response has an unsupported or malformed resultType. List completion is unverified."
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "file",
+            "subject": {
+              "kind": "server",
+              "name": "file"
+            },
+            "message": "file: Discovery response has an unsupported or malformed resultType. List completion is unverified.",
+            "detail": "0 pages received; 0 entries received; 0 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:43.072Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"incomplete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Discovery response has an unsupported or malformed resultType. List completion is unverified.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"file\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"file\"\n      },\n      \"message\": \"file: Discovery response has an unsupported or malformed resultType. List completion is unverified.\",\n      \"detail\": \"0 pages received; 0 entries received; 0 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "unsupported-2",
+      "kind": "native-stdio",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "detail": "Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.",
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "incomplete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:43.539Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "incomplete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "detail": "Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified."
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "synthetic-result-type",
+            "subject": {
+              "kind": "server",
+              "name": "synthetic-result-type"
+            },
+            "message": "tools/list: Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.",
+            "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:43.539Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"incomplete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1,\n      \"detail\": \"Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.\"\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"synthetic-result-type\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"synthetic-result-type\"\n      },\n      \"message\": \"tools/list: Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.\",\n      \"detail\": \"1 pages received; 1 entries received; 1 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "unsupported-2",
+      "kind": "saved-file",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:43.868Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Discovery response has an unsupported or malformed resultType. List completion is unverified."
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "file",
+            "subject": {
+              "kind": "server",
+              "name": "file"
+            },
+            "message": "file: Discovery response has an unsupported or malformed resultType. List completion is unverified.",
+            "detail": "0 pages received; 0 entries received; 0 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:43.868Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"incomplete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Discovery response has an unsupported or malformed resultType. List completion is unverified.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"file\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"file\"\n      },\n      \"message\": \"file: Discovery response has an unsupported or malformed resultType. List completion is unverified.\",\n      \"detail\": \"0 pages received; 0 entries received; 0 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "unsupported-3",
+      "kind": "native-stdio",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "detail": "Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.",
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "incomplete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:44.346Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "incomplete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "detail": "Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified."
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "synthetic-result-type",
+            "subject": {
+              "kind": "server",
+              "name": "synthetic-result-type"
+            },
+            "message": "tools/list: Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.",
+            "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:44.346Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"incomplete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1,\n      \"detail\": \"Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.\"\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"synthetic-result-type\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"synthetic-result-type\"\n      },\n      \"message\": \"tools/list: Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.\",\n      \"detail\": \"1 pages received; 1 entries received; 1 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "unsupported-3",
+      "kind": "saved-file",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:44.678Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Discovery response has an unsupported or malformed resultType. List completion is unverified."
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "file",
+            "subject": {
+              "kind": "server",
+              "name": "file"
+            },
+            "message": "file: Discovery response has an unsupported or malformed resultType. List completion is unverified.",
+            "detail": "0 pages received; 0 entries received; 0 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:44.678Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"incomplete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Discovery response has an unsupported or malformed resultType. List completion is unverified.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"file\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"file\"\n      },\n      \"message\": \"file: Discovery response has an unsupported or malformed resultType. List completion is unverified.\",\n      \"detail\": \"0 pages received; 0 entries received; 0 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "unsupported-4",
+      "kind": "native-stdio",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "detail": "Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.",
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "incomplete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:45.159Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "incomplete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "detail": "Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified."
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "synthetic-result-type",
+            "subject": {
+              "kind": "server",
+              "name": "synthetic-result-type"
+            },
+            "message": "tools/list: Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.",
+            "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:45.159Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"incomplete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1,\n      \"detail\": \"Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.\"\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"synthetic-result-type\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"synthetic-result-type\"\n      },\n      \"message\": \"tools/list: Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.\",\n      \"detail\": \"1 pages received; 1 entries received; 1 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "unsupported-4",
+      "kind": "saved-file",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:45.508Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Discovery response has an unsupported or malformed resultType. List completion is unverified."
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "file",
+            "subject": {
+              "kind": "server",
+              "name": "file"
+            },
+            "message": "file: Discovery response has an unsupported or malformed resultType. List completion is unverified.",
+            "detail": "0 pages received; 0 entries received; 0 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:45.508Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"incomplete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Discovery response has an unsupported or malformed resultType. List completion is unverified.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"file\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"file\"\n      },\n      \"message\": \"file: Discovery response has an unsupported or malformed resultType. List completion is unverified.\",\n      \"detail\": \"0 pages received; 0 entries received; 0 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "unsupported-5",
+      "kind": "native-stdio",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "detail": "Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.",
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "incomplete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:45.981Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "incomplete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "detail": "Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified."
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "synthetic-result-type",
+            "subject": {
+              "kind": "server",
+              "name": "synthetic-result-type"
+            },
+            "message": "tools/list: Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.",
+            "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:45.981Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"incomplete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1,\n      \"detail\": \"Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.\"\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"synthetic-result-type\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"synthetic-result-type\"\n      },\n      \"message\": \"tools/list: Page 1: Discovery response has an unsupported or malformed resultType. List completion is unverified.\",\n      \"detail\": \"1 pages received; 1 entries received; 1 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "unsupported-5",
+      "kind": "saved-file",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:46.314Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Discovery response has an unsupported or malformed resultType. List completion is unverified."
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "file",
+            "subject": {
+              "kind": "server",
+              "name": "file"
+            },
+            "message": "file: Discovery response has an unsupported or malformed resultType. List completion is unverified.",
+            "detail": "0 pages received; 0 entries received; 0 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:46.314Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"incomplete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Discovery response has an unsupported or malformed resultType. List completion is unverified.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"file\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"file\"\n      },\n      \"message\": \"file: Discovery response has an unsupported or malformed resultType. List completion is unverified.\",\n      \"detail\": \"0 pages received; 0 entries received; 0 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "late-page",
+      "kind": "native-stdio",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "tools/list",
+          "cursor": "second"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "detail": "Page 2: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.",
+          "pages": 2,
+          "received": 2,
+          "retained": 2,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "incomplete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 5,
+      "definitionsSha256": "0c79d2986b7c67ec68d271c4b005a8784ae4999b0cf75ba388759c86b2a7a5f8",
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:46.765Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "incomplete",
+            "pages": 2,
+            "received": 2,
+            "retained": 2,
+            "detail": "Page 2: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified."
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 2,
+          "bySeverity": {
+            "error": 1,
+            "warning": 1,
+            "info": 0
+          },
+          "byRule": {
+            "description/near-duplicate": 1,
+            "collection/incomplete": 1
+          },
+          "toolCount": 2,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 102,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "description/near-duplicate",
+            "severity": "warning",
+            "serverId": "synthetic-result-type",
+            "subject": {
+              "kind": "tool",
+              "name": "read_record"
+            },
+            "message": "\"read_record\" and \"read_other\" (synthetic-result-type) have 100% word overlap in their descriptions."
+          },
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "synthetic-result-type",
+            "subject": {
+              "kind": "server",
+              "name": "synthetic-result-type"
+            },
+            "message": "tools/list: Page 2: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.",
+            "detail": "2 pages received; 2 entries received; 2 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:46.765Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"incomplete\",\n      \"pages\": 2,\n      \"received\": 2,\n      \"retained\": 2,\n      \"detail\": \"Page 2: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\"\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 2,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 1,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"description/near-duplicate\": 1,\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 2,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 102,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"description/near-duplicate\",\n      \"severity\": \"warning\",\n      \"serverId\": \"synthetic-result-type\",\n      \"subject\": {\n        \"kind\": \"tool\",\n        \"name\": \"read_record\"\n      },\n      \"message\": \"\\\"read_record\\\" and \\\"read_other\\\" (synthetic-result-type) have 100% word overlap in their descriptions.\"\n    },\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"synthetic-result-type\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"synthetic-result-type\"\n      },\n      \"message\": \"tools/list: Page 2: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\",\n      \"detail\": \"2 pages received; 2 entries received; 2 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "late-page",
+      "kind": "saved-file",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:47.104Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified. Saved nextCursor indicates uncollected pages (or a malformed cursor). Supply the complete list to audit it."
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "file",
+            "subject": {
+              "kind": "server",
+              "name": "file"
+            },
+            "message": "file: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified. Saved nextCursor indicates uncollected pages (or a malformed cursor). Supply the complete list to audit it.",
+            "detail": "0 pages received; 0 entries received; 0 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:47.104Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"incomplete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified. Saved nextCursor indicates uncollected pages (or a malformed cursor). Supply the complete list to audit it.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"file\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"file\"\n      },\n      \"message\": \"file: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified. Saved nextCursor indicates uncollected pages (or a malformed cursor). Supply the complete list to audit it.\",\n      \"detail\": \"0 pages received; 0 entries received; 0 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "suppressed-gap",
+      "kind": "native-stdio",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "detail": "Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.",
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "incomplete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:47.581Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "incomplete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "detail": "Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified."
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": false,
+          "score": null
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:47.581Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"incomplete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1,\n      \"detail\": \"Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\"\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "suppressed-gap",
+      "kind": "saved-file",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:47.901Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": false,
+          "score": null
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:47.901Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"incomplete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "retained-hidden-text",
+      "kind": "native-stdio",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "detail": "Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.",
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "incomplete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "3be364a5b1eae8260d71e507f69ef4d07bed1b71f5cf170323bbc980edaf8eef",
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:48.373Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "incomplete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "detail": "Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified."
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 2,
+          "bySeverity": {
+            "error": 2,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "safety/hidden-unicode": 1,
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 52,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "safety/hidden-unicode",
+            "severity": "error",
+            "serverId": "synthetic-result-type",
+            "subject": {
+              "kind": "tool",
+              "name": "read_record"
+            },
+            "message": "description: 1 zero-width character found.",
+            "detail": "U+200B"
+          },
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "synthetic-result-type",
+            "subject": {
+              "kind": "server",
+              "name": "synthetic-result-type"
+            },
+            "message": "tools/list: Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.",
+            "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:48.373Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"incomplete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1,\n      \"detail\": \"Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\"\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 2,\n    \"bySeverity\": {\n      \"error\": 2,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"safety/hidden-unicode\": 1,\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 52,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"safety/hidden-unicode\",\n      \"severity\": \"error\",\n      \"serverId\": \"synthetic-result-type\",\n      \"subject\": {\n        \"kind\": \"tool\",\n        \"name\": \"read_record\"\n      },\n      \"message\": \"description: 1 zero-width character found.\",\n      \"detail\": \"U+200B\"\n    },\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"synthetic-result-type\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"synthetic-result-type\"\n      },\n      \"message\": \"tools/list: Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\",\n      \"detail\": \"1 pages received; 1 entries received; 1 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "retained-hidden-text",
+      "kind": "saved-file",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:34:48.714Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified."
+          }
+        ],
+        "summary": {
+          "totalFindings": 2,
+          "bySeverity": {
+            "error": 2,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "safety/hidden-unicode": 1,
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 52,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "safety/hidden-unicode",
+            "severity": "error",
+            "serverId": "file",
+            "subject": {
+              "kind": "tool",
+              "name": "read_record"
+            },
+            "message": "description: 1 zero-width character found.",
+            "detail": "U+200B"
+          },
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "file",
+            "subject": {
+              "kind": "server",
+              "name": "file"
+            },
+            "message": "file: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.",
+            "detail": "0 pages received; 0 entries received; 0 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:34:48.714Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"incomplete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 2,\n    \"bySeverity\": {\n      \"error\": 2,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"safety/hidden-unicode\": 1,\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 52,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"safety/hidden-unicode\",\n      \"severity\": \"error\",\n      \"serverId\": \"file\",\n      \"subject\": {\n        \"kind\": \"tool\",\n        \"name\": \"read_record\"\n      },\n      \"message\": \"description: 1 zero-width character found.\",\n      \"detail\": \"U+200B\"\n    },\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"file\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"file\"\n      },\n      \"message\": \"file: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\",\n      \"detail\": \"0 pages received; 0 entries received; 0 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "saved-disappearance",
+      "kind": "metadata-diff",
+      "agrees": true,
+      "diff": {
+        "format": "mcplint-metadata-diff",
+        "schemaVersion": 1,
+        "before": {
+          "createdAt": "2026-10-14T00:00:00.000Z",
+          "sha256": "a560005a36ce899c5ca80f8ad5540bcbd8b379680cf5c7f5db0b82f37c59fc6c",
+          "definitions": 2
+        },
+        "after": {
+          "createdAt": "2026-10-14T00:00:00.000Z",
+          "sha256": "f00285e9329fda3e3133c05cdf7dcd69a74e74407fd78f082f2d7f9969cca0ee",
+          "definitions": 1
+        },
+        "complete": false,
+        "issues": [
+          "After: file file is incomplete.",
+          "file tools/list: coverage is complete before and complete after; absent definitions cannot be classified as added or removed."
+        ],
+        "summary": {
+          "added": 0,
+          "removed": 0,
+          "changed": 0,
+          "unchanged": 1,
+          "unpaired": 2
+        },
+        "changes": [],
+        "coverage": {
+          "before": [
+            {
+              "pages": 1,
+              "received": 2,
+              "retained": 2,
+              "scope": "tools/list",
+              "serverId": "file",
+              "status": "complete"
+            },
+            {
+              "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "file",
+              "serverId": "file",
+              "status": "complete"
+            }
+          ],
+          "after": [
+            {
+              "pages": 1,
+              "received": 1,
+              "retained": 1,
+              "scope": "tools/list",
+              "serverId": "file",
+              "status": "complete"
+            },
+            {
+              "detail": "Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "file",
+              "serverId": "file",
+              "status": "incomplete"
+            }
+          ]
+        },
+        "notes": [
+          "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+          "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+          "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+          "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+          "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+        ]
+      }
+    },
+    {
+      "id": "saved-disappearance-cli",
+      "kind": "metadata-diff-cli",
+      "agrees": true,
+      "exitCode": 2,
+      "report": {
+        "format": "mcplint-metadata-diff",
+        "schemaVersion": 1,
+        "before": {
+          "createdAt": "2026-10-14T00:00:00.000Z",
+          "sha256": "a560005a36ce899c5ca80f8ad5540bcbd8b379680cf5c7f5db0b82f37c59fc6c",
+          "definitions": 2
+        },
+        "after": {
+          "createdAt": "2026-10-14T00:00:00.000Z",
+          "sha256": "f00285e9329fda3e3133c05cdf7dcd69a74e74407fd78f082f2d7f9969cca0ee",
+          "definitions": 1
+        },
+        "complete": false,
+        "issues": [
+          "After: file file is incomplete.",
+          "file tools/list: coverage is complete before and complete after; absent definitions cannot be classified as added or removed."
+        ],
+        "summary": {
+          "added": 0,
+          "removed": 0,
+          "changed": 0,
+          "unchanged": 1,
+          "unpaired": 2
+        },
+        "changes": [],
+        "coverage": {
+          "before": [
+            {
+              "pages": 1,
+              "received": 2,
+              "retained": 2,
+              "scope": "tools/list",
+              "serverId": "file",
+              "status": "complete"
+            },
+            {
+              "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "file",
+              "serverId": "file",
+              "status": "complete"
+            }
+          ],
+          "after": [
+            {
+              "pages": 1,
+              "received": 1,
+              "retained": 1,
+              "scope": "tools/list",
+              "serverId": "file",
+              "status": "complete"
+            },
+            {
+              "detail": "Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "file",
+              "serverId": "file",
+              "status": "incomplete"
+            }
+          ]
+        },
+        "notes": [
+          "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+          "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+          "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+          "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+          "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+        ]
+      },
+      "rawStdout": "{\n  \"format\": \"mcplint-metadata-diff\",\n  \"schemaVersion\": 1,\n  \"before\": {\n    \"createdAt\": \"2026-10-14T00:00:00.000Z\",\n    \"sha256\": \"a560005a36ce899c5ca80f8ad5540bcbd8b379680cf5c7f5db0b82f37c59fc6c\",\n    \"definitions\": 2\n  },\n  \"after\": {\n    \"createdAt\": \"2026-10-14T00:00:00.000Z\",\n    \"sha256\": \"f00285e9329fda3e3133c05cdf7dcd69a74e74407fd78f082f2d7f9969cca0ee\",\n    \"definitions\": 1\n  },\n  \"complete\": false,\n  \"issues\": [\n    \"After: file file is incomplete.\",\n    \"file tools/list: coverage is complete before and complete after; absent definitions cannot be classified as added or removed.\"\n  ],\n  \"summary\": {\n    \"added\": 0,\n    \"removed\": 0,\n    \"changed\": 0,\n    \"unchanged\": 1,\n    \"unpaired\": 2\n  },\n  \"changes\": [],\n  \"coverage\": {\n    \"before\": [\n      {\n        \"pages\": 1,\n        \"received\": 2,\n        \"retained\": 2,\n        \"scope\": \"tools/list\",\n        \"serverId\": \"file\",\n        \"status\": \"complete\"\n      },\n      {\n        \"detail\": \"Only the supplied snapshot was inspected; no server was contacted.\",\n        \"pages\": 0,\n        \"received\": 0,\n        \"retained\": 0,\n        \"scope\": \"file\",\n        \"serverId\": \"file\",\n        \"status\": \"complete\"\n      }\n    ],\n    \"after\": [\n      {\n        \"pages\": 1,\n        \"received\": 1,\n        \"retained\": 1,\n        \"scope\": \"tools/list\",\n        \"serverId\": \"file\",\n        \"status\": \"complete\"\n      },\n      {\n        \"detail\": \"Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.\",\n        \"pages\": 0,\n        \"received\": 0,\n        \"retained\": 0,\n        \"scope\": \"file\",\n        \"serverId\": \"file\",\n        \"status\": \"incomplete\"\n      }\n    ]\n  },\n  \"notes\": [\n    \"This compares recorded metadata, not server code, tool behavior, returned content or safety.\",\n    \"Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.\",\n    \"Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.\",\n    \"Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.\",\n    \"Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison.\"\n  ]\n}\n",
+      "rawStderr": ""
+    }
+  ]
+}

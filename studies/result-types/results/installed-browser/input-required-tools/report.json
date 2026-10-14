@@ -1,0 +1,78 @@
+{
+  "generatedAt": "2026-10-14T13:35:22.593Z",
+  "tokenizer": "o200k_base",
+  "servers": [
+    {
+      "id": "synthetic-result-type",
+      "label": "node server.mjs case.json calls.jsonl",
+      "name": "synthetic-result-type",
+      "version": "1"
+    }
+  ],
+  "collection": [
+    {
+      "serverId": "synthetic-result-type",
+      "scope": "tools/list",
+      "status": "incomplete",
+      "pages": 1,
+      "received": 1,
+      "retained": 1,
+      "detail": "Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified."
+    },
+    {
+      "serverId": "synthetic-result-type",
+      "scope": "prompts/list",
+      "status": "complete",
+      "pages": 1,
+      "received": 1,
+      "retained": 1
+    },
+    {
+      "serverId": "synthetic-result-type",
+      "scope": "resources/list",
+      "status": "complete",
+      "pages": 1,
+      "received": 1,
+      "retained": 1
+    },
+    {
+      "serverId": "synthetic-result-type",
+      "scope": "resources/templates/list",
+      "status": "complete",
+      "pages": 1,
+      "received": 1,
+      "retained": 1
+    }
+  ],
+  "summary": {
+    "totalFindings": 1,
+    "bySeverity": {
+      "error": 1,
+      "warning": 0,
+      "info": 0
+    },
+    "byRule": {
+      "collection/incomplete": 1
+    },
+    "toolCount": 1,
+    "promptCount": 1,
+    "resourceCount": 2,
+    "totalEstimatedTokens": 51,
+    "complete": false,
+    "score": null
+  },
+  "findings": [
+    {
+      "ruleId": "collection/incomplete",
+      "severity": "error",
+      "serverId": "synthetic-result-type",
+      "subject": {
+        "kind": "server",
+        "name": "synthetic-result-type"
+      },
+      "message": "tools/list: Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified.",
+      "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+      "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+    }
+  ]
+}

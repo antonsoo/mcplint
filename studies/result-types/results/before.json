@@ -1,0 +1,3226 @@
+{
+  "label": "before-f808ea0",
+  "node": "v26.7.0",
+  "sdkVersion": "1.31.0",
+  "runtime": {
+    "collectors/collect.js": "c75b2ec878dc45bde3bc2afe9005fbd30e6e4629584ee885af372b6b5fa34641",
+    "collectors/file.js": "b5ee4e5fd613bdb3e8853c50531e83756a164b429df7fb3eba27631272627520"
+  },
+  "workflows": 34,
+  "disagreements": 27,
+  "records": [
+    {
+      "id": "legacy-control",
+      "kind": "native-stdio",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": true,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:18.421Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:18.421Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "legacy-control",
+      "kind": "saved-file",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": true,
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:18.850Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:18.850Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"complete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Only the supplied snapshot was inspected; no server was contacted.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "explicit-complete",
+      "kind": "native-stdio",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": true,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:19.467Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:19.467Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "explicit-complete",
+      "kind": "saved-file",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": true,
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:19.902Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:19.902Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"complete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Only the supplied snapshot was inspected; no server was contacted.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "nested-literal-control",
+      "kind": "native-stdio",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": true,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "3ba2379e0e3bd503e6c1066d0cbf31228c5507f2d65c817ba06230a8ed1aa657",
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:20.490Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 68,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:20.490Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 68,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "nested-literal-control",
+      "kind": "saved-file",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": true,
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:20.891Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 68,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:20.891Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"complete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Only the supplied snapshot was inspected; no server was contacted.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 68,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "input-required-tools",
+      "kind": "native-stdio",
+      "agrees": false,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:21.476Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:21.476Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "input-required-tools",
+      "kind": "saved-file",
+      "agrees": false,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:21.880Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:21.880Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"complete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Only the supplied snapshot was inspected; no server was contacted.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "input-required-prompts",
+      "kind": "native-stdio",
+      "agrees": false,
+      "scope": "prompts/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:22.466Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:22.466Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "input-required-prompts",
+      "kind": "saved-file",
+      "agrees": false,
+      "scope": "prompts/list",
+      "expectedComplete": false,
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:22.810Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 0,
+          "promptCount": 1,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 0,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:22.810Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"complete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Only the supplied snapshot was inspected; no server was contacted.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 0,\n    \"promptCount\": 1,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 0,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "input-required-resources",
+      "kind": "native-stdio",
+      "agrees": false,
+      "scope": "resources/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:23.369Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:23.369Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "input-required-resources",
+      "kind": "saved-file",
+      "agrees": false,
+      "scope": "resources/list",
+      "expectedComplete": false,
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:23.747Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 0,
+          "promptCount": 0,
+          "resourceCount": 1,
+          "totalEstimatedTokens": 0,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:23.747Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"complete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Only the supplied snapshot was inspected; no server was contacted.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 0,\n    \"promptCount\": 0,\n    \"resourceCount\": 1,\n    \"totalEstimatedTokens\": 0,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "input-required-resourceTemplates",
+      "kind": "native-stdio",
+      "agrees": false,
+      "scope": "resources/templates/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:24.318Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:24.318Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "input-required-resourceTemplates",
+      "kind": "saved-file",
+      "agrees": false,
+      "scope": "resources/templates/list",
+      "expectedComplete": false,
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:24.708Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 0,
+          "promptCount": 0,
+          "resourceCount": 1,
+          "totalEstimatedTokens": 0,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:24.708Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"complete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Only the supplied snapshot was inspected; no server was contacted.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 0,\n    \"promptCount\": 0,\n    \"resourceCount\": 1,\n    \"totalEstimatedTokens\": 0,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "unsupported-0",
+      "kind": "native-stdio",
+      "agrees": false,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:25.318Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:25.318Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "unsupported-0",
+      "kind": "saved-file",
+      "agrees": false,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:25.698Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:25.698Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"complete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Only the supplied snapshot was inspected; no server was contacted.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "unsupported-1",
+      "kind": "native-stdio",
+      "agrees": false,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:26.236Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:26.236Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "unsupported-1",
+      "kind": "saved-file",
+      "agrees": false,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:26.633Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:26.633Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"complete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Only the supplied snapshot was inspected; no server was contacted.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "unsupported-2",
+      "kind": "native-stdio",
+      "agrees": false,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:27.170Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:27.170Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "unsupported-2",
+      "kind": "saved-file",
+      "agrees": false,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:27.534Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:27.534Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"complete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Only the supplied snapshot was inspected; no server was contacted.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "unsupported-3",
+      "kind": "native-stdio",
+      "agrees": false,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:28.081Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:28.081Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "unsupported-3",
+      "kind": "saved-file",
+      "agrees": false,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:28.479Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:28.479Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"complete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Only the supplied snapshot was inspected; no server was contacted.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "unsupported-4",
+      "kind": "native-stdio",
+      "agrees": false,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:29.073Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:29.073Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "unsupported-4",
+      "kind": "saved-file",
+      "agrees": false,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:29.463Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:29.463Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"complete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Only the supplied snapshot was inspected; no server was contacted.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "unsupported-5",
+      "kind": "native-stdio",
+      "agrees": false,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:30.171Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:30.171Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "unsupported-5",
+      "kind": "saved-file",
+      "agrees": false,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:30.595Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:30.595Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"complete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Only the supplied snapshot was inspected; no server was contacted.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "late-page",
+      "kind": "native-stdio",
+      "agrees": false,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "tools/list",
+          "cursor": "second"
+        },
+        {
+          "method": "tools/list",
+          "cursor": "unresolved"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 3,
+          "received": 3,
+          "retained": 3,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 6,
+      "definitionsSha256": "4abd2b8e9d32825671b1402a283fdbb2e0bbc093024613353f32ce6304ec32ba",
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:31.232Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 3,
+            "received": 3,
+            "retained": 3
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 0,
+            "warning": 1,
+            "info": 0
+          },
+          "byRule": {
+            "description/near-duplicate": 1
+          },
+          "toolCount": 3,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 154,
+          "complete": true,
+          "score": 99
+        },
+        "findings": [
+          {
+            "ruleId": "description/near-duplicate",
+            "severity": "warning",
+            "serverId": "synthetic-result-type",
+            "subject": {
+              "kind": "tool",
+              "name": "read_record"
+            },
+            "message": "\"read_record\" and 2 other tools (\"read_other\", \"read_unresolved\") have near-identical descriptions: each has at least 75% word overlap with another in the group."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:31.232Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 3,\n      \"received\": 3,\n      \"retained\": 3\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 1,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"description/near-duplicate\": 1\n    },\n    \"toolCount\": 3,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 154,\n    \"complete\": true,\n    \"score\": 99\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"description/near-duplicate\",\n      \"severity\": \"warning\",\n      \"serverId\": \"synthetic-result-type\",\n      \"subject\": {\n        \"kind\": \"tool\",\n        \"name\": \"read_record\"\n      },\n      \"message\": \"\\\"read_record\\\" and 2 other tools (\\\"read_other\\\", \\\"read_unresolved\\\") have near-identical descriptions: each has at least 75% word overlap with another in the group.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "late-page",
+      "kind": "saved-file",
+      "agrees": true,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:31.640Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "incomplete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Saved nextCursor indicates uncollected pages (or a malformed cursor). Supply the complete list to audit it."
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "file",
+            "subject": {
+              "kind": "server",
+              "name": "file"
+            },
+            "message": "file: Saved nextCursor indicates uncollected pages (or a malformed cursor). Supply the complete list to audit it.",
+            "detail": "0 pages received; 0 entries received; 0 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:31.640Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"incomplete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Saved nextCursor indicates uncollected pages (or a malformed cursor). Supply the complete list to audit it.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"file\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"file\"\n      },\n      \"message\": \"file: Saved nextCursor indicates uncollected pages (or a malformed cursor). Supply the complete list to audit it.\",\n      \"detail\": \"0 pages received; 0 entries received; 0 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "suppressed-gap",
+      "kind": "native-stdio",
+      "agrees": false,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "73b170c98d6f139d4f9df230a28d371995cbd3b64c0cd24fa834d70044ce5023",
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:32.170Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:32.170Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "suppressed-gap",
+      "kind": "saved-file",
+      "agrees": false,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:32.554Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 51,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:32.554Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"complete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Only the supplied snapshot was inspected; no server was contacted.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 51,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "retained-hidden-text",
+      "kind": "native-stdio",
+      "agrees": false,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "calls": [
+        {
+          "method": "initialize",
+          "protocolVersion": "2025-11-25"
+        },
+        {
+          "method": "notifications/initialized"
+        },
+        {
+          "method": "tools/list"
+        },
+        {
+          "method": "prompts/list"
+        },
+        {
+          "method": "resources/list"
+        },
+        {
+          "method": "resources/templates/list"
+        }
+      ],
+      "collection": [
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "tools/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "prompts/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        },
+        {
+          "pages": 1,
+          "received": 1,
+          "retained": 1,
+          "scope": "resources/templates/list",
+          "serverId": "synthetic-result-type",
+          "status": "complete"
+        }
+      ],
+      "retainedDefinitions": 4,
+      "definitionsSha256": "3be364a5b1eae8260d71e507f69ef4d07bed1b71f5cf170323bbc980edaf8eef",
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:33.112Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "synthetic-result-type",
+            "label": "node server.mjs case.json calls.jsonl",
+            "name": "synthetic-result-type",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "prompts/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "synthetic-result-type",
+            "scope": "resources/templates/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "safety/hidden-unicode": 1
+          },
+          "toolCount": 1,
+          "promptCount": 1,
+          "resourceCount": 2,
+          "totalEstimatedTokens": 52,
+          "complete": true,
+          "score": 90
+        },
+        "findings": [
+          {
+            "ruleId": "safety/hidden-unicode",
+            "severity": "error",
+            "serverId": "synthetic-result-type",
+            "subject": {
+              "kind": "tool",
+              "name": "read_record"
+            },
+            "message": "description: 1 zero-width character found.",
+            "detail": "U+200B"
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:33.112Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"synthetic-result-type\",\n      \"label\": \"node server.mjs case.json calls.jsonl\",\n      \"name\": \"synthetic-result-type\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"synthetic-result-type\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"safety/hidden-unicode\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 1,\n    \"resourceCount\": 2,\n    \"totalEstimatedTokens\": 52,\n    \"complete\": true,\n    \"score\": 90\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"safety/hidden-unicode\",\n      \"severity\": \"error\",\n      \"serverId\": \"synthetic-result-type\",\n      \"subject\": {\n        \"kind\": \"tool\",\n        \"name\": \"read_record\"\n      },\n      \"message\": \"description: 1 zero-width character found.\",\n      \"detail\": \"U+200B\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to snapshot.json\n"
+    },
+    {
+      "id": "retained-hidden-text",
+      "kind": "saved-file",
+      "agrees": false,
+      "scope": "tools/list",
+      "expectedComplete": false,
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-14T13:17:33.539Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "file",
+            "label": "saved.json"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "file",
+            "scope": "file",
+            "status": "complete",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Only the supplied snapshot was inspected; no server was contacted."
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "safety/hidden-unicode": 1
+          },
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 52,
+          "complete": true,
+          "score": 90
+        },
+        "findings": [
+          {
+            "ruleId": "safety/hidden-unicode",
+            "severity": "error",
+            "serverId": "file",
+            "subject": {
+              "kind": "tool",
+              "name": "read_record"
+            },
+            "message": "description: 1 zero-width character found.",
+            "detail": "U+200B"
+          }
+        ]
+      },
+      "rawStdout": "{\n  \"generatedAt\": \"2026-10-14T13:17:33.539Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"file\",\n      \"label\": \"saved.json\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1\n    },\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"file\",\n      \"status\": \"complete\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Only the supplied snapshot was inspected; no server was contacted.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"safety/hidden-unicode\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 52,\n    \"complete\": true,\n    \"score\": 90\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"safety/hidden-unicode\",\n      \"severity\": \"error\",\n      \"serverId\": \"file\",\n      \"subject\": {\n        \"kind\": \"tool\",\n        \"name\": \"read_record\"\n      },\n      \"message\": \"description: 1 zero-width character found.\",\n      \"detail\": \"U+200B\"\n    }\n  ]\n}\n",
+      "rawStderr": "Snapshot written to saved-snapshot.json\n"
+    },
+    {
+      "id": "saved-disappearance",
+      "kind": "metadata-diff",
+      "agrees": false,
+      "diff": {
+        "format": "mcplint-metadata-diff",
+        "schemaVersion": 1,
+        "before": {
+          "createdAt": "2026-10-14T00:00:00.000Z",
+          "sha256": "a560005a36ce899c5ca80f8ad5540bcbd8b379680cf5c7f5db0b82f37c59fc6c",
+          "definitions": 2
+        },
+        "after": {
+          "createdAt": "2026-10-14T00:00:00.000Z",
+          "sha256": "4d71001e1ee313e665adf59c750eb2deb3ba0caec18f4e06688cdad5530f0a6a",
+          "definitions": 1
+        },
+        "complete": true,
+        "issues": [],
+        "summary": {
+          "added": 0,
+          "removed": 1,
+          "changed": 0,
+          "unchanged": 2,
+          "unpaired": 0
+        },
+        "changes": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "identity": "second",
+            "status": "removed",
+            "fields": [
+              {
+                "pointer": "",
+                "before": {
+                  "present": true,
+                  "value": {
+                    "description": "Read the first synthetic record.",
+                    "inputSchema": {
+                      "type": "object"
+                    },
+                    "name": "second"
+                  }
+                },
+                "after": {
+                  "present": false
+                }
+              }
+            ]
+          }
+        ],
+        "coverage": {
+          "before": [
+            {
+              "pages": 1,
+              "received": 2,
+              "retained": 2,
+              "scope": "tools/list",
+              "serverId": "file",
+              "status": "complete"
+            },
+            {
+              "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "file",
+              "serverId": "file",
+              "status": "complete"
+            }
+          ],
+          "after": [
+            {
+              "pages": 1,
+              "received": 1,
+              "retained": 1,
+              "scope": "tools/list",
+              "serverId": "file",
+              "status": "complete"
+            },
+            {
+              "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "file",
+              "serverId": "file",
+              "status": "complete"
+            }
+          ]
+        },
+        "notes": [
+          "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+          "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+          "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+          "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+          "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+        ]
+      }
+    },
+    {
+      "id": "saved-disappearance-cli",
+      "kind": "metadata-diff-cli",
+      "agrees": false,
+      "exitCode": 1,
+      "report": {
+        "format": "mcplint-metadata-diff",
+        "schemaVersion": 1,
+        "before": {
+          "createdAt": "2026-10-14T00:00:00.000Z",
+          "sha256": "a560005a36ce899c5ca80f8ad5540bcbd8b379680cf5c7f5db0b82f37c59fc6c",
+          "definitions": 2
+        },
+        "after": {
+          "createdAt": "2026-10-14T00:00:00.000Z",
+          "sha256": "4d71001e1ee313e665adf59c750eb2deb3ba0caec18f4e06688cdad5530f0a6a",
+          "definitions": 1
+        },
+        "complete": true,
+        "issues": [],
+        "summary": {
+          "added": 0,
+          "removed": 1,
+          "changed": 0,
+          "unchanged": 2,
+          "unpaired": 0
+        },
+        "changes": [
+          {
+            "serverId": "file",
+            "scope": "tools/list",
+            "identity": "second",
+            "status": "removed",
+            "fields": [
+              {
+                "pointer": "",
+                "before": {
+                  "present": true,
+                  "value": {
+                    "description": "Read the first synthetic record.",
+                    "inputSchema": {
+                      "type": "object"
+                    },
+                    "name": "second"
+                  }
+                },
+                "after": {
+                  "present": false
+                }
+              }
+            ]
+          }
+        ],
+        "coverage": {
+          "before": [
+            {
+              "pages": 1,
+              "received": 2,
+              "retained": 2,
+              "scope": "tools/list",
+              "serverId": "file",
+              "status": "complete"
+            },
+            {
+              "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "file",
+              "serverId": "file",
+              "status": "complete"
+            }
+          ],
+          "after": [
+            {
+              "pages": 1,
+              "received": 1,
+              "retained": 1,
+              "scope": "tools/list",
+              "serverId": "file",
+              "status": "complete"
+            },
+            {
+              "detail": "Only the supplied snapshot was inspected; no server was contacted.",
+              "pages": 0,
+              "received": 0,
+              "retained": 0,
+              "scope": "file",
+              "serverId": "file",
+              "status": "complete"
+            }
+          ]
+        },
+        "notes": [
+          "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+          "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+          "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+          "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+          "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+        ]
+      },
+      "rawStdout": "{\n  \"format\": \"mcplint-metadata-diff\",\n  \"schemaVersion\": 1,\n  \"before\": {\n    \"createdAt\": \"2026-10-14T00:00:00.000Z\",\n    \"sha256\": \"a560005a36ce899c5ca80f8ad5540bcbd8b379680cf5c7f5db0b82f37c59fc6c\",\n    \"definitions\": 2\n  },\n  \"after\": {\n    \"createdAt\": \"2026-10-14T00:00:00.000Z\",\n    \"sha256\": \"4d71001e1ee313e665adf59c750eb2deb3ba0caec18f4e06688cdad5530f0a6a\",\n    \"definitions\": 1\n  },\n  \"complete\": true,\n  \"issues\": [],\n  \"summary\": {\n    \"added\": 0,\n    \"removed\": 1,\n    \"changed\": 0,\n    \"unchanged\": 2,\n    \"unpaired\": 0\n  },\n  \"changes\": [\n    {\n      \"serverId\": \"file\",\n      \"scope\": \"tools/list\",\n      \"identity\": \"second\",\n      \"status\": \"removed\",\n      \"fields\": [\n        {\n          \"pointer\": \"\",\n          \"before\": {\n            \"present\": true,\n            \"value\": {\n              \"description\": \"Read the first synthetic record.\",\n              \"inputSchema\": {\n                \"type\": \"object\"\n              },\n              \"name\": \"second\"\n            }\n          },\n          \"after\": {\n            \"present\": false\n          }\n        }\n      ]\n    }\n  ],\n  \"coverage\": {\n    \"before\": [\n      {\n        \"pages\": 1,\n        \"received\": 2,\n        \"retained\": 2,\n        \"scope\": \"tools/list\",\n        \"serverId\": \"file\",\n        \"status\": \"complete\"\n      },\n      {\n        \"detail\": \"Only the supplied snapshot was inspected; no server was contacted.\",\n        \"pages\": 0,\n        \"received\": 0,\n        \"retained\": 0,\n        \"scope\": \"file\",\n        \"serverId\": \"file\",\n        \"status\": \"complete\"\n      }\n    ],\n    \"after\": [\n      {\n        \"pages\": 1,\n        \"received\": 1,\n        \"retained\": 1,\n        \"scope\": \"tools/list\",\n        \"serverId\": \"file\",\n        \"status\": \"complete\"\n      },\n      {\n        \"detail\": \"Only the supplied snapshot was inspected; no server was contacted.\",\n        \"pages\": 0,\n        \"received\": 0,\n        \"retained\": 0,\n        \"scope\": \"file\",\n        \"serverId\": \"file\",\n        \"status\": \"complete\"\n      }\n    ]\n  },\n  \"notes\": [\n    \"This compares recorded metadata, not server code, tool behavior, returned content or safety.\",\n    \"Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.\",\n    \"Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.\",\n    \"Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.\",\n    \"Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison.\"\n  ]\n}\n",
+      "rawStderr": ""
+    }
+  ]
+}

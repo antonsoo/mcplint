@@ -34,8 +34,9 @@ The collector does not execute input requests, retry them with user input or
 copy opaque `requestState`/`inputRequests` into audit diagnostics or snapshots.
 Unknown discriminator values are not echoed in messages. This is a discovery
 boundary correction, not full support for the newer transport or multi
-round-trip protocol. The real replay uses SDK 1.31.0 and its negotiated
-2025-11-25 contract to transport deliberately contradictory response fixtures.
+round-trip protocol. The clean-source replay uses SDK 1.31.0; fresh tarball
+installs resolve 1.32.1. Both use their negotiated 2025-11-25 contract to
+transport deliberately contradictory response fixtures.
 These are synthetic defects, not observations about a production server.
 
 ## Reproduction
@@ -70,3 +71,59 @@ module hashes, SDK versions, request transcripts and definition digests.
 To reproduce the baseline, build `git archive f808ea0` and pass that directory
 as `--engine-root`, adding `--observe-only`. Consumer files stay in a fresh
 temporary directory, with the case and server sources retained for inspection.
+
+## Installed artifact and report verification
+
+At implementation commit `bad0e5f`, a fresh Node 24.21.0 archive/install passes
+lint, typecheck, **623 tests**, the same **623 tests in a German locale**, and
+**32 existing Chromium/Firefox workflows**. The well-behaved SDK fixture passes
+the warning gate; the poisoned fixture exits 1 at the error gate.
+
+| Tested consumer | SDK | Native CLI, saved-file and comparison workflows | Disagreements |
+|---|---|---:|---:|
+| Baseline source, Node 26.7.0 | 1.31.0 | 34 | 27 |
+| Clean corrected source, Node 24.21.0 | 1.31.0 | 34 | 0 |
+| Fresh tarball install, Node 20.0.0 | 1.32.1 | 34 | 0 |
+| Fresh tarball install, Node 26.7.0 | 1.32.1 | 34 | 0 |
+
+The [verification receipt](results/verification.json) records all 448 archived
+files matching the implementation commit, all 184 build files matching between
+Node 24 and 26, and all 123 package files matching each fresh installation.
+Installed audit reports and comparisons match the clean source, excluding only
+the audit timestamp. Six valid-control reports match the baseline; all fifteen
+non-paginated native definition inventories retain the same canonical digest.
+The late-page fixture intentionally retains two pages rather than the baseline's
+unverified third page.
+
+The local tarball is **133,503 bytes**, SHA-256
+`5db67efcab082c2fb6d6d567bf62dec421858c0bb220880af46ef7592c9b9124`.
+The exact Node 20.0.0 installed bin also runs the version, saved-file terminal
+and SARIF commands. npm 12 on Node 26 performed installation; the consumers
+then ran under their stated Node versions.
+
+[`browser.mjs`](browser.mjs) captures actual CLI JSON/HTML stdout from the SDK
+fixture for ordinary and suppressed collection diagnostics. The baseline and
+corrected source pass [16 offline workflows](results/browser.json); the fresh
+installed artifact passes [8 more](results/installed-browser.json), across
+Chromium/Firefox at 1440 and 375 px. All six HTML files byte-match a local HTTP
+response before the exact files are opened offline. Each view checks the verdict,
+score availability, keyboard theme control, accessibility, page overflow, script
+errors, CSP violations and external requests. Twelve screenshots were inspected.
+
+![Baseline SDK-backed report incorrectly shows score 100 and complete discovery](../../docs/assets/result-types/before-chromium-1440.png)
+
+![The fresh installed CLI retains the tool but shows incomplete discovery and an unavailable score](../../docs/assets/result-types/installed-chromium-1440.png)
+
+These are screenshots of the unedited standalone HTML stdout. The actual target
+command, visible in each report, is `node server.mjs case.json calls.jsonl`.
+The complete CLI argument list is in `browser.mjs`; the fixture is synthetic.
+
+```sh
+node studies/result-types/browser.mjs /tmp/baseline-source \
+  /tmp/corrected-source /tmp/result-types-browser
+```
+
+The package retains version 0.3.3. This is an unreleased source snapshot and a
+locally packed artifact, not the npm artifact already published at that version.
+No npm release, tag or hosted deployment is part of this correction. Evidence-only
+files added after the implementation commit do not change the archived product.

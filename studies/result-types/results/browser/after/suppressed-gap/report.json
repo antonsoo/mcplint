@@ -1,0 +1,63 @@
+{
+  "generatedAt": "2026-10-14T13:30:39.247Z",
+  "tokenizer": "o200k_base",
+  "servers": [
+    {
+      "id": "synthetic-result-type",
+      "label": "node server.mjs case.json calls.jsonl",
+      "name": "synthetic-result-type",
+      "version": "1"
+    }
+  ],
+  "collection": [
+    {
+      "serverId": "synthetic-result-type",
+      "scope": "tools/list",
+      "status": "incomplete",
+      "pages": 1,
+      "received": 1,
+      "retained": 1,
+      "detail": "Page 1: Discovery response is marked input_required, which is not permitted for list requests. List completion is unverified."
+    },
+    {
+      "serverId": "synthetic-result-type",
+      "scope": "prompts/list",
+      "status": "complete",
+      "pages": 1,
+      "received": 1,
+      "retained": 1
+    },
+    {
+      "serverId": "synthetic-result-type",
+      "scope": "resources/list",
+      "status": "complete",
+      "pages": 1,
+      "received": 1,
+      "retained": 1
+    },
+    {
+      "serverId": "synthetic-result-type",
+      "scope": "resources/templates/list",
+      "status": "complete",
+      "pages": 1,
+      "received": 1,
+      "retained": 1
+    }
+  ],
+  "summary": {
+    "totalFindings": 0,
+    "bySeverity": {
+      "error": 0,
+      "warning": 0,
+      "info": 0
+    },
+    "byRule": {},
+    "toolCount": 1,
+    "promptCount": 1,
+    "resourceCount": 2,
+    "totalEstimatedTokens": 51,
+    "complete": false,
+    "score": null
+  },
+  "findings": []
+}
