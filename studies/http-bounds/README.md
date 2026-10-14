@@ -109,3 +109,24 @@ records the exact local path/input hash and that limitation.
 
 These are source and local artifact observations. No npm release, version tag or
 manual hosted deployment is included.
+
+## Clean and installed verification
+
+Implementation `3c93355ff4d160075a97b500570509ebd6739dae` was checked from a fresh
+Node 24.21.0 archive on 2026-10-14. Install, lint, strict types, all 636 tests
+in both default and German locales, build, 32 browser checks and both real fixture
+servers passed their expected gates. The good server passes; the deliberately
+poisoned server fails. Full unit runs used two workers without relaxing assertions
+or deadlines. All 525 implementation and 492 baseline archive files match their
+original bytes, including after checks. All 188 built files match the working
+Node 26 build.
+
+The locally packed 0.3.3 artifact was installed in an empty consumer. All 125
+package files match the clean build and consumer. Clean Node 24, installed exact
+Node 20.0.0 and installed Node 26.7.0 each passed all nine live workflows plus the
+HTML export, with matching report data after only timestamp/ephemeral-URL
+normalization. The package is 135,137 bytes, SHA-256
+`5d433da9f43eaf281b3dc03cbd781ad1b5edcd06e3b0e5da9a8555c34e0500d6`.
+[Verification receipt](results/verification.json) retains commands, file digests,
+installed replay receipts and limits. `verify.py` checks the clean build, consumer,
+before/after observations and actual browser downloads before writing it.

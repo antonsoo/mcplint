@@ -1,0 +1,32 @@
+# mcplint report
+
+Generated 2026-10-14T22:07:33.059Z · tokenizer: o200k_base
+
+**No findings**
+
+Scope: collected metadata and configured rules. A completed audit and a high score do not certify that a server is safe.
+
+**Score: 100 / 100**
+
+## Collection coverage
+
+| Server | Scope | Status | Pages | Received | Retained | Detail |
+| --- | --- | --- | ---: | ---: | ---: | --- |
+| mcplint-good-fixture | tools/list | complete | 1 | 3 | 3 |  |
+| mcplint-good-fixture | prompts/list | unsupported | 0 | 0 | 0 | Server did not advertise prompts&#46; |
+| mcplint-good-fixture | resources/list | unsupported | 0 | 0 | 0 | Server did not advertise resources&#46; |
+| mcplint-good-fixture | resources/templates/list | unsupported | 0 | 0 | 0 | Server did not advertise resources&#46; |
+
+| Servers | Tools | Prompts | Resources | Est. tokens | Errors | Warnings | Info |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | 3 | 0 | 0 | ~400  | 0 | 0 | 0 |
+
+## Top token offenders
+
+| Tool | Est. tokens |
+| --- | --- |
+| list&#95;invoices | 189 |
+| void&#95;invoice | 108 |
+| get&#95;invoice&#95;detail | 103 |
+
+No findings against configured rules.

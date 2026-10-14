@@ -1,0 +1,13 @@
+
+> @antonsoloviev/mcplint@0.3.3 test
+> vitest run --maxWorkers=2
+
+
+ RUN  v5.0.2 /tmp/claude-1000/mcplint-http-verify/clean
+
+
+ Test Files  48 passed (48)
+      Tests  636 passed (636)
+   Start at  15:05:03
+   Duration  63.73s (tests 93%, import 4%, transform 2%)
+

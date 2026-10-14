@@ -1,0 +1,13 @@
+{
+  "node": "v20.0.0",
+  "workflows": 10,
+  "allExitStatesCorrect": true,
+  "reportsMatchSource": true,
+  "normalization": "Generation timestamp and ephemeral loopback URL label only.",
+  "sourceCapture": "after.json",
+  "sourceCaptureSha256": "7063d01f542f338baa5d3009b46fcee57b0e6f516b85e46aa0f570e9b7737402",
+  "rawCapture": {
+    "bytes": 36640,
+    "sha256": "e5f6184e10f5027c24037e87664d3254566c460ed1f3c1ec78f60696be804958"
+  }
+}

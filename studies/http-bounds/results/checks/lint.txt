@@ -1,0 +1,4 @@
+
+> @antonsoloviev/mcplint@0.3.3 lint
+> eslint . --max-warnings=0
+

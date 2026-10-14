@@ -1,0 +1,60 @@
+
+> @antonsoloviev/mcplint@0.3.3 test:browser
+> npm run build:site && playwright test
+
+
+> @antonsoloviev/mcplint@0.3.3 build:site
+> npm run build && node scripts/build-site.mjs
+
+
+> @antonsoloviev/mcplint@0.3.3 build
+> tsc -p tsconfig.json
+
+wrote site/index.html (48078 bytes)
+wrote site/good.html (19547 bytes)
+wrote site/incomplete.html (20375 bytes)
+
+Running 32 tests using 2 workers
+
+(node:2774293) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2774294) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [chromium] › tests/browser/enum-values.spec.mjs:23:34 › scalar enum evidence remains readable offline at 1440px (1.3s)
+  ✓   2 [chromium] › tests/browser/enum-values.spec.mjs:23:34 › scalar enum evidence remains readable offline at 375px (1.3s)
+  ✓   4 [chromium] › tests/browser/metadata.spec.mjs:20:34 › metadata report pages fields and retains hostile full values at 375px (308ms)
+  ✓   3 [chromium] › tests/browser/metadata.spec.mjs:20:34 › metadata report pages fields and retains hostile full values at 1440px (324ms)
+  ✓   6 [chromium] › tests/browser/reports.spec.mjs:78:3 › findings verdict is independent of score (620ms)
+  ✓   5 [chromium] › tests/browser/reports.spec.mjs:40:3 › offline evidence 1440px dark (752ms)
+  ✓   7 [chromium] › tests/browser/reports.spec.mjs:78:3 › disabled verdict is independent of score (606ms)
+  ✓   9 [chromium] › tests/browser/reports.spec.mjs:85:1 › Markdown metadata stays literal after real GFM rendering (103ms)
+  ✓  10 [chromium] › tests/browser/reports.spec.mjs:97:1 › theme toggle works when storage is unavailable (161ms)
+  ✓   8 [chromium] › tests/browser/reports.spec.mjs:40:3 › offline evidence 1440px light (797ms)
+  ✓  11 [chromium] › tests/browser/reports.spec.mjs:108:1 › built demo navigation keeps three distinct audit outcomes usable on a phone (889ms)
+  ✓  12 [chromium] › tests/browser/reports.spec.mjs:40:3 › offline evidence 375px dark (983ms)
+  ✓  13 [chromium] › tests/browser/schema-audit.spec.mjs:26:3 › schema findings remain readable offline at 1440px (757ms)
+  ✓  14 [chromium] › tests/browser/reports.spec.mjs:40:3 › offline evidence 375px light (866ms)
+  ✓  16 [chromium] › tests/browser/reports.spec.mjs:78:3 › clean verdict is independent of score (636ms)
+  ✓  15 [chromium] › tests/browser/schema-audit.spec.mjs:26:3 › schema findings remain readable offline at 375px (770ms)
+(node:2774815) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2774809) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  17 [firefox] › tests/browser/enum-values.spec.mjs:23:34 › scalar enum evidence remains readable offline at 375px (2.1s)
+  ✓  18 [firefox] › tests/browser/enum-values.spec.mjs:23:34 › scalar enum evidence remains readable offline at 1440px (2.2s)
+  ✓  19 [firefox] › tests/browser/metadata.spec.mjs:20:34 › metadata report pages fields and retains hostile full values at 1440px (661ms)
+  ✓  20 [firefox] › tests/browser/metadata.spec.mjs:20:34 › metadata report pages fields and retains hostile full values at 375px (620ms)
+  ✓  21 [firefox] › tests/browser/reports.spec.mjs:40:3 › offline evidence 1440px dark (1.1s)
+  ✓  22 [firefox] › tests/browser/reports.spec.mjs:78:3 › findings verdict is independent of score (973ms)
+  ✓  23 [firefox] › tests/browser/reports.spec.mjs:40:3 › offline evidence 1440px light (1.2s)
+  ✓  24 [firefox] › tests/browser/reports.spec.mjs:78:3 › disabled verdict is independent of score (921ms)
+  ✓  26 [firefox] › tests/browser/reports.spec.mjs:85:1 › Markdown metadata stays literal after real GFM rendering (366ms)
+  ✓  27 [firefox] › tests/browser/reports.spec.mjs:97:1 › theme toggle works when storage is unavailable (384ms)
+  ✓  25 [firefox] › tests/browser/reports.spec.mjs:40:3 › offline evidence 375px dark (1.4s)
+  ✓  28 [firefox] › tests/browser/reports.spec.mjs:108:1 › built demo navigation keeps three distinct audit outcomes usable on a phone (1.4s)
+  ✓  29 [firefox] › tests/browser/reports.spec.mjs:40:3 › offline evidence 375px light (1.3s)
+  ✓  30 [firefox] › tests/browser/schema-audit.spec.mjs:26:3 › schema findings remain readable offline at 1440px (1.2s)
+  ✓  31 [firefox] › tests/browser/reports.spec.mjs:78:3 › clean verdict is independent of score (962ms)
+  ✓  32 [firefox] › tests/browser/schema-audit.spec.mjs:26:3 › schema findings remain readable offline at 375px (1.1s)
+
+  32 passed (18.9s)
