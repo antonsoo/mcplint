@@ -1,0 +1,381 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-R13UI60sXCupoY4yOmNdfdY1Cy3eWSpYOcx4Jl64kv0=' 'sha256-q0gCXP0ZALI2WVhe07tshEqh8gpfQlwtRLbARlNgO8c='; base-uri 'none'; form-action 'none'"><title>mcplint metadata comparison</title><style>
+:root {
+  --bg: #0b0f14;
+  --bg-elevated: #121821;
+  --bg-inset: #0e141c;
+  --border: #1f2a37;
+  --text: #e6edf3;
+  --text-muted: #8b98a5;
+  --accent: #35d0ba;
+  --error: #ff6b6b;
+  --warning: #f5a623;
+  --info: #4ea1ff;
+  --ok: #35d399;
+  --mono: ui-monospace, "SFMono-Regular", "IBM Plex Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --sans: ui-sans-serif, -apple-system, "Segoe UI", "IBM Plex Sans", Roboto, Helvetica, Arial, sans-serif;
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  --bg: #f7f8fa;
+  --bg-elevated: #ffffff;
+  --bg-inset: #eef1f4;
+  --border: #dce3e9;
+  --text: #0e1620;
+  --text-muted: #5b6b7a;
+  --accent: #0d8070;
+  --error: #ae282f;
+  --warning: #87520a;
+  --info: #1a5caf;
+  --ok: #157c53;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f7f8fa;
+    --bg-elevated: #ffffff;
+    --bg-inset: #eef1f4;
+    --border: #dce3e9;
+    --text: #0e1620;
+    --text-muted: #5b6b7a;
+    --accent: #0d8070;
+    --error: #ae282f;
+    --warning: #87520a;
+    --info: #1a5caf;
+    --ok: #157c53;
+    color-scheme: light;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); }
+code, .mono { font-family: var(--mono); }
+.page { max-width: 960px; margin: 0 auto; padding: 20px 20px 60px; }
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0 18px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.brand { margin: 0; line-height: inherit; font-family: var(--mono); font-weight: 700; font-size: 16px; letter-spacing: 0.02em; }
+.brand .bracket { color: var(--accent); }
+.target {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text-muted);
+  background: var(--bg-inset);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 3px 8px;
+  max-width: 40ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.meta { font-family: var(--mono); font-size: 12px; color: var(--text-muted); margin-left: auto; }
+.theme-toggle {
+  background: var(--bg-inset);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  width: 30px; height: 30px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+}
+.theme-toggle:hover { border-color: var(--accent); }
+.theme-toggle svg { stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; }
+.theme-toggle .icon-moon { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .theme-toggle .icon-sun { display: none; }
+  :root:not([data-theme="dark"]) .theme-toggle .icon-moon { display: block; }
+}
+
+.audit-status { margin: 0 0 24px; padding: 16px 20px; border-left: 4px solid var(--accent); background: var(--bg-elevated); }
+.audit-status h2 { margin: 0 0 6px; font-size: 22px; }
+.audit-status p { margin: 0; max-width: 72ch; }
+.audit-incomplete { border-color: var(--error); }
+.coverage-help { color: var(--text-muted); max-width: 72ch; }
+.coverage-scroll { overflow-x: auto; }
+.coverage-scroll:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.coverage-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+.coverage-table caption { text-align: left; color: var(--text-muted); padding-bottom: 10px; }
+.coverage-table th, .coverage-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.coverage-table th[scope="row"] { font-weight: 500; min-width: 220px; overflow-wrap: anywhere; }
+.coverage-scope, .coverage-detail { display: block; font-weight: 400; }
+.coverage-scope { color: var(--text-muted); margin: 3px 0; }
+.coverage-detail { max-width: 65ch; }
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.score-block { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.ring { transform: rotate(-90deg); }
+.ring-track { fill: none; stroke: var(--border); stroke-width: 10; }
+.ring-fill { fill: none; stroke: var(--accent); stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 0.6s ease; }
+.ring-score { transform: rotate(90deg); transform-origin: 70px 70px; font-family: var(--mono); font-size: 34px; font-weight: 700; fill: var(--text); text-anchor: middle; }
+.ring-label { transform: rotate(90deg); transform-origin: 70px 70px; font-family: var(--mono); font-size: 11px; fill: var(--text-muted); text-anchor: middle; }
+.score-band { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+.stat-grid { display: grid; grid-template-columns: repeat(4, auto); gap: 18px 28px; flex: 1; min-width: 260px; }
+.stat { display: flex; flex-direction: column; }
+.stat-value { font-family: var(--mono); font-size: 22px; font-weight: 700; }
+.stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+.panel {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+}
+.panel h2 { margin: 0 0 14px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; display: flex; align-items: baseline; gap: 10px; }
+.panel h2 .hint { font-size: 11px; text-transform: none; letter-spacing: 0; color: var(--text-muted); font-weight: 400; }
+
+.bars { display: flex; flex-direction: column; gap: 8px; }
+.bar-row { display: grid; grid-template-columns: 14ch 1fr 6ch; align-items: center; gap: 10px; font-family: var(--mono); font-size: 12px; }
+.bar-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-muted); }
+.bar-track { background: var(--bg-inset); border-radius: 4px; height: 10px; overflow: hidden; }
+.bar-fill { height: 100%; background: var(--accent); border-radius: 4px; }
+.bar-fill.over { background: var(--warning); }
+.bar-value { text-align: right; }
+.budget-note { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+
+.subjects { display: flex; flex-direction: column; gap: 14px; }
+.subject { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.subject-head {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 14px; background: var(--bg-inset); border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.subject-head h3 { margin: 0; font-size: 14px; font-family: var(--mono); }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.dot.sev-error { background: var(--error); }
+.dot.sev-warning { background: var(--warning); }
+.dot.sev-info { background: var(--info); }
+.tag { font-size: 11px; color: var(--text-muted); border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; }
+.tag.muted { color: var(--text-muted); }
+.count { margin-left: auto; font-size: 11px; color: var(--text-muted); font-family: var(--mono); }
+
+.findings { list-style: none; margin: 0; padding: 0; }
+.finding { padding: 12px 14px; border-left: 3px solid transparent; border-top: 1px solid var(--border); }
+.finding:first-child { border-top: none; }
+.finding.sev-error { border-left-color: var(--error); }
+.finding.sev-warning { border-left-color: var(--warning); }
+.finding.sev-info { border-left-color: var(--info); }
+.finding-head { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap; }
+.sev-chip { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; padding: 1px 6px; border-radius: 4px; }
+.sev-chip.sev-error { color: var(--error); background: color-mix(in srgb, var(--error) 16%, transparent); }
+.sev-chip.sev-warning { color: var(--warning); background: color-mix(in srgb, var(--warning) 16%, transparent); }
+.sev-chip.sev-info { color: var(--info); background: color-mix(in srgb, var(--info) 16%, transparent); }
+.rule-id { font-family: var(--mono); font-size: 12px; text-decoration: none; }
+.rule-id:hover { text-decoration: underline; }
+.finding-msg { margin: 0 0 4px; }
+.suggestion { margin: 6px 0 0; color: var(--text-muted); font-size: 13px; font-style: italic; }
+.suggestion .arrow { color: var(--accent); font-style: normal; margin-right: 2px; }
+.detail { margin: 6px 0 0; padding: 8px 10px; background: var(--bg-inset); border: 1px solid var(--border); border-radius: 6px; font-size: 12px; white-space: pre-wrap; word-break: break-word; }
+
+.hexstrip { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 0; padding: 8px; background: var(--bg-inset); border: 1px solid var(--border); border-radius: 6px; }
+.hexstrip .cp { font-family: var(--mono); font-size: 11px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 3px; padding: 2px 5px; color: var(--accent); }
+
+.sev-error-text { color: var(--error); }
+.sev-warning-text { color: var(--warning); }
+.sev-info-text { color: var(--info); }
+.sev-good-text { color: var(--ok); }
+.sev-mid-text { color: var(--warning); }
+.sev-bad-text { color: var(--error); }
+
+.empty { color: var(--text-muted); }
+.muted { color: var(--text-muted); }
+
+.footer { text-align: center; color: var(--text-muted); font-size: 12px; margin-top: 30px; }
+
+@media (max-width: 480px) {
+  .stat-grid { grid-template-columns: repeat(2, auto); }
+  .audit-status { margin: 0 0 24px; padding: 16px 20px; border-left: 4px solid var(--accent); background: var(--bg-elevated); }
+.audit-status h2 { margin: 0 0 6px; font-size: 22px; }
+.audit-status p { margin: 0; max-width: 72ch; }
+.audit-incomplete { border-color: var(--error); }
+.coverage-help { color: var(--text-muted); max-width: 72ch; }
+.coverage-scroll { overflow-x: auto; }
+.coverage-scroll:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.coverage-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+.coverage-table caption { text-align: left; color: var(--text-muted); padding-bottom: 10px; }
+.coverage-table th, .coverage-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.coverage-table th[scope="row"] { font-weight: 500; min-width: 220px; overflow-wrap: anywhere; }
+.coverage-scope, .coverage-detail { display: block; font-weight: 400; }
+.coverage-scope { color: var(--text-muted); margin: 3px 0; }
+.coverage-detail { max-width: 65ch; }
+.hero { gap: 20px; }
+  .bar-row { grid-template-columns: 9ch 1fr 4ch; }
+}
+
+*:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+
+.md-header { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; margin-bottom:24px; }
+.md-header h1 { margin:0; font:600 20px var(--mono); }
+.md-title { font-size:28px; line-height:1.25; margin:0 0 12px; }
+.md-subtitle { max-width:75ch; color:var(--text-muted); }
+.md-stats { display:flex; flex-wrap:wrap; gap:12px 24px; padding:18px 0; border-block:1px solid var(--border); margin:24px 0; font-family:var(--mono); }
+.md-controls { display:flex; flex-wrap:wrap; gap:16px; align-items:end; }
+.md-controls label { display:flex; flex-direction:column; gap:4px; flex:1; min-width:160px; }
+.md-controls label:first-child { flex:3; }
+button,input,select { background:var(--bg-elevated); color:var(--text); border:1px solid var(--text-muted); border-radius:4px; padding:8px 10px; font:inherit; max-width:100%; }
+button { cursor:pointer; } button:disabled { opacity:.6; cursor:default; }
+input:focus-visible,select:focus-visible,summary:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+.md-card { margin:14px 0; border:1px solid var(--border); background:var(--bg-elevated); border-radius:6px; overflow:hidden; }
+.md-card>summary { padding:14px 16px; cursor:pointer; overflow-wrap:anywhere; }
+.md-card>summary strong { font-family:var(--mono); }
+.md-card>summary .muted { display:block; font-size:12px; margin-top:4px; }
+.md-status { display:inline-block; font:600 11px var(--mono); letter-spacing:.06em; margin-right:12px; }
+.status-added { color:var(--ok); } .status-removed { color:var(--error); } .status-changed { color:var(--warning); }
+.md-field { padding:0 16px 18px; border-top:1px solid var(--border); }
+.md-field h3 { font-size:13px; overflow-wrap:anywhere; }
+.md-pair { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:12px; }
+.md-value { min-width:0; padding:12px; background:var(--bg-inset); border-radius:4px; }
+.md-value h4 { margin:0 0 10px; font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--text-muted); }
+.md-value pre { white-space:pre-wrap; overflow-wrap:anywhere; font:12px/1.6 var(--mono); margin:0; }
+.md-value p { font-size:12px; }
+.md-pages { display:flex; gap:12px; align-items:center; justify-content:space-between; padding:12px 16px; }
+.md-pages[hidden] { display:none; }
+.md-coverage { border-bottom:1px solid var(--border); padding:10px 0; overflow-wrap:anywhere; }
+.md-coverage p { margin:3px 0; }
+.md-evidence { margin-top:28px; } .md-evidence>summary { cursor:pointer; font-weight:600; }
+.md-capture { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:20px; }
+.md-capture code { font-size:11px; overflow-wrap:anywhere; }
+.md-issues { border-left:4px solid var(--error); padding:14px 18px; margin:20px 0; background:var(--bg-elevated); overflow-wrap:anywhere; }
+.md-issues h2 { margin:0; font-size:18px; } .md-issues ul { padding-left:20px; }
+#notes { padding-left:20px; } #notes li { margin:8px 0; }
+@media(max-width:600px) { .page { padding:16px 14px 40px; } .md-title { font-size:24px; } .md-pair,.md-capture { grid-template-columns:1fr; } .md-stats { gap:12px 16px; font-size:13px; } }
+</style></head>
+<body><div class="page"><header class="md-header"><h1>[mcplint] metadata review</h1><button id="theme-toggle" type="button">Toggle color theme</button></header>
+<main><h2 class="md-title">Comparison incomplete; unchanged metadata is not established</h2><p class="md-subtitle">Review the definitions and instructions collected before and after an update. A metadata comparison does not establish server behavior or safety.</p>
+<div class="md-stats"><span>0 added</span><span>0 removed</span><span>0 changed</span><span>2 unchanged</span><span>1 unpaired</span></div>
+<section class="md-issues"><h2>Collection or identity gaps</h2><ul id="issues"></ul></section>
+
+<div class="md-controls"><label>Find a definition or changed path<input type="search" id="query" autocomplete="off"></label><label>Change type<select id="status-filter"><option value="all">All changes</option><option value="changed">Changed</option><option value="added">Added</option><option value="removed">Removed</option></select></label><button id="download" type="button">Download complete JSON</button></div>
+<p id="results" class="muted" aria-live="polite"></p><div id="changes"></div>
+<details class="md-evidence"><summary>Collection coverage</summary><div id="coverage"></div></details>
+<details class="md-evidence"><summary>Snapshot identities and comparison rules</summary>
+<div class="md-capture"><div><h3>Before</h3><p>2026-10-14T21:51:07.904Z</p><code>22f26d44be67b18433e0bc2319d0dc99db3e932cff83ccf8614dcd1e40558bff</code></div><div><h3>After</h3><p>2026-10-14T21:51:08.469Z</p><code>da88a861bfd2af22a42fa272d13fc1ff85f105fd493b7b9f41d316214412e9d8</code></div></div><ul id="notes"></ul>
+<p class="muted">Control and invisible formatting characters are escaped in previews. Values over 6,000 characters are previewed; downloads retain original values.</p></details>
+<noscript><p>This interactive report requires JavaScript. Generate --format json or --format terminal for a script-free report.</p></noscript>
+</main></div><script type="application/json" id="metadata-data">{"format":"mcplint-metadata-diff","schemaVersion":1,"before":{"createdAt":"2026-10-14T21:51:07.904Z","sha256":"22f26d44be67b18433e0bc2319d0dc99db3e932cff83ccf8614dcd1e40558bff","definitions":2},"after":{"createdAt":"2026-10-14T21:51:08.469Z","sha256":"da88a861bfd2af22a42fa272d13fc1ff85f105fd493b7b9f41d316214412e9d8","definitions":1},"complete":false,"issues":["After: http-byte-bound-control tools/list is incomplete.","http-byte-bound-control tools/list: coverage is complete before and incomplete after; absent definitions cannot be classified as added or removed."],"summary":{"added":0,"removed":0,"changed":0,"unchanged":2,"unpaired":1},"changes":[],"coverage":{"before":[{"pages":2,"received":2,"retained":2,"scope":"tools/list","serverId":"http-byte-bound-control","status":"complete"},{"detail":"Server did not advertise prompts.","pages":0,"received":0,"retained":0,"scope":"prompts/list","serverId":"http-byte-bound-control","status":"unsupported"},{"detail":"Server did not advertise resources.","pages":0,"received":0,"retained":0,"scope":"resources/list","serverId":"http-byte-bound-control","status":"unsupported"},{"detail":"Server did not advertise resources.","pages":0,"received":0,"retained":0,"scope":"resources/templates/list","serverId":"http-byte-bound-control","status":"unsupported"}],"after":[{"detail":"Live server metadata could not be read faithfully. An HTTP JSON response exceeded the 10 MiB read limit.","pages":1,"received":1,"retained":1,"scope":"tools/list","serverId":"http-byte-bound-control","status":"incomplete"},{"detail":"Server did not advertise prompts.","pages":0,"received":0,"retained":0,"scope":"prompts/list","serverId":"http-byte-bound-control","status":"unsupported"},{"detail":"Server did not advertise resources.","pages":0,"received":0,"retained":0,"scope":"resources/list","serverId":"http-byte-bound-control","status":"unsupported"},{"detail":"Server did not advertise resources.","pages":0,"received":0,"retained":0,"scope":"resources/templates/list","serverId":"http-byte-bound-control","status":"unsupported"}]},"notes":["This compares recorded metadata, not server code, tool behavior, returned content or safety.","Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.","Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.","Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.","Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."]}</script><script>
+(function () {
+  var STORAGE_KEY = 'mcplint-theme';
+  var root = document.documentElement;
+  var toggle = document.getElementById('theme-toggle');
+  function apply(theme) {
+    if (theme === 'light' || theme === 'dark') root.setAttribute('data-theme', theme);
+    else root.removeAttribute('data-theme');
+  }
+  var saved = null;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+  apply(saved);
+  if (toggle) {
+    toggle.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = current === 'dark' ? 'light' : 'dark';
+      apply(next);
+      try { localStorage.setItem(STORAGE_KEY, next); } catch (e) {}
+    });
+  }
+})();
+</script><script>
+(function () {
+  'use strict';
+  const data = JSON.parse(document.getElementById('metadata-data').textContent);
+  const visible = (text, lines = false) => String(text).replace(/[\p{Cc}\p{Cf}\p{Default_Ignorable_Code_Point}]/gu, ch => lines && (ch === '\n' || ch === '\t') ? ch : '\\u{' + ch.codePointAt(0).toString(16) + '}');
+  function el(tag, text, className) {
+    const node = document.createElement(tag);
+    if (text !== undefined) node.textContent = visible(text);
+    if (className) node.className = className;
+    return node;
+  }
+  function button(text, action) {
+    const node = el('button', text); node.type = 'button'; node.addEventListener('click', action); return node;
+  }
+  function paged(items, size, label, draw) {
+    const box = el('div'); let page = 0;
+    const content = el('div'), controls = el('div', undefined, 'md-pages'), status = el('span');
+    const previous = button('Previous', () => { page--; render(); }); previous.setAttribute('aria-label', 'Previous ' + label);
+    const next = button('Next', () => { page++; render(); }); next.setAttribute('aria-label', 'Next ' + label);
+    status.setAttribute('aria-live', 'polite');
+    controls.append(previous, status, next); box.append(content, controls);
+    function render() {
+      content.replaceChildren(...items.slice(page * size, (page + 1) * size).map(draw));
+      status.textContent = items.length ? (page * size + 1) + '-' + Math.min(items.length, (page + 1) * size) + ' of ' + items.length : '0 of 0';
+      previous.disabled = page === 0; next.disabled = (page + 1) * size >= items.length;
+      controls.hidden = items.length <= size;
+    }
+    render(); return box;
+  }
+  function valueCell(label, value) {
+    const cell = el('div', undefined, 'md-value'); cell.append(el('h4', label));
+    const full = value.present ? JSON.stringify(value.value, null, 2) : '(absent)';
+    const pre = el('pre'); pre.textContent = visible(full.slice(0, 6000), true); cell.append(pre);
+    if (full.length > 6000) cell.append(el('p', 'Preview: first 6,000 of ' + full.length + ' characters. Download JSON for the complete value.', 'muted'));
+    return cell;
+  }
+  function card(change, index) {
+    const item = el('details', undefined, 'md-card');
+    const summary = el('summary');
+    summary.append(el('span', change.status.toUpperCase(), 'md-status status-' + change.status),
+      el('strong', change.identity), el('span', change.serverId + ' / ' + change.scope + ' / ' + change.fields.length + ' changed fields', 'muted'));
+    item.append(summary);
+    let built = false;
+    item.addEventListener('toggle', () => {
+      if (!item.open || built) return; built = true;
+      item.append(paged(change.fields, 10, 'fields for ' + change.identity, field => {
+        const row = el('section', undefined, 'md-field'); row.append(el('h3', field.pointer || '(whole definition)', 'mono'));
+        const pair = el('div', undefined, 'md-pair'); pair.append(valueCell('Before', field.before), valueCell('After', field.after)); row.append(pair); return row;
+      }));
+    });
+    if (index === 0) item.open = true;
+    return item;
+  }
+  const list = document.getElementById('changes');
+  const query = document.getElementById('query'), filter = document.getElementById('status-filter');
+  const searchable = data.changes.map(change => (change.serverId + '\n' + change.scope + '\n' + change.identity + '\n' + change.fields.map(f => f.pointer).join('\n')).toLowerCase());
+  function render() {
+    const text = query.value.toLowerCase();
+    const rows = data.changes.filter((change, index) => (filter.value === 'all' || change.status === filter.value) && searchable[index].includes(text));
+    document.getElementById('results').textContent = rows.length + ' of ' + data.changes.length + ' changed entries shown';
+    list.replaceChildren(rows.length ? paged(rows, 20, 'changed entries', card) : el('p', data.changes.length ? 'No changes match these filters.' : data.complete ? 'No recorded metadata changes.' : 'No comparable changes were observed. Collection gaps remain unresolved.'));
+  }
+  query.addEventListener('input', render); filter.addEventListener('change', render); render();
+  const issues = document.getElementById('issues');
+  for (const issue of data.issues) issues.append(el('li', issue));
+  const coverage = document.getElementById('coverage');
+  coverage.append(paged(['before', 'after'].flatMap(side => data.coverage[side].map(record => ({ side, record }))), 20, 'coverage records', entry => {
+    const row = el('div', undefined, 'md-coverage'); const r = entry.record;
+    row.append(el('strong', entry.side + ': ' + r.serverId + ' / ' + r.scope),
+      el('p', r.status + ' / ' + r.pages + ' pages / ' + r.received + ' received / ' + r.retained + ' retained'),
+      el('p', r.detail || '', 'muted')); return row;
+  }));
+  for (const note of data.notes) document.getElementById('notes').append(el('li', note));
+  document.getElementById('download').addEventListener('click', () => {
+    const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2) + '\n'], { type: 'application/json' }));
+    const link = document.createElement('a'); link.href = url; link.download = 'mcplint-metadata-diff.json'; link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+})();
+</script></body></html>

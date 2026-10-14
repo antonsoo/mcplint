@@ -1,0 +1,82 @@
+{
+  "collection": [
+    {
+      "pages": 2,
+      "received": 2,
+      "retained": 2,
+      "scope": "tools/list",
+      "serverId": "http-byte-bound-control",
+      "status": "complete"
+    },
+    {
+      "detail": "Server did not advertise prompts.",
+      "pages": 0,
+      "received": 0,
+      "retained": 0,
+      "scope": "prompts/list",
+      "serverId": "http-byte-bound-control",
+      "status": "unsupported"
+    },
+    {
+      "detail": "Server did not advertise resources.",
+      "pages": 0,
+      "received": 0,
+      "retained": 0,
+      "scope": "resources/list",
+      "serverId": "http-byte-bound-control",
+      "status": "unsupported"
+    },
+    {
+      "detail": "Server did not advertise resources.",
+      "pages": 0,
+      "received": 0,
+      "retained": 0,
+      "scope": "resources/templates/list",
+      "serverId": "http-byte-bound-control",
+      "status": "unsupported"
+    }
+  ],
+  "createdAt": "2026-10-14T21:52:19.580Z",
+  "definitions": [
+    {
+      "scope": "tools/list",
+      "serverId": "http-byte-bound-control",
+      "value": {
+        "description": "Read a recorded local sequence number without changing any records.",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {},
+          "type": "object"
+        },
+        "name": "read_sequence"
+      }
+    },
+    {
+      "scope": "tools/list",
+      "serverId": "http-byte-bound-control",
+      "value": {
+        "description": "Read a recorded local record without changing it or contacting another service.",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {},
+          "type": "object"
+        },
+        "name": "read_record"
+      }
+    }
+  ],
+  "format": "mcplint-metadata-snapshot",
+  "schemaVersion": 1,
+  "servers": [
+    {
+      "capabilities": {
+        "tools": {}
+      },
+      "id": "http-byte-bound-control",
+      "serverInfo": {
+        "name": "http-byte-bound-control",
+        "version": "1"
+      }
+    }
+  ]
+}

@@ -1,0 +1,795 @@
+{
+  "node": "v26.7.0",
+  "expectation": "after",
+  "heapMiB": 256,
+  "synthetic": true,
+  "cases": [
+    {
+      "label": "json-sdk-control",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "mcplint",
+        "http",
+        "http://127.0.0.1:45497/mcp",
+        "--format",
+        "json",
+        "--fail-on",
+        "error",
+        "--snapshot",
+        "json-sdk-control.snapshot.json"
+      ],
+      "seconds": 0.466453933,
+      "exit": 0,
+      "signal": null,
+      "stdout": "{\n  \"generatedAt\": \"2026-10-14T21:51:07.903Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"http-byte-bound-control\",\n      \"label\": \"http://127.0.0.1:45497/mcp\",\n      \"name\": \"http-byte-bound-control\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 2,\n      \"received\": 2,\n      \"retained\": 2\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise prompts.\"\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"resources/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 2,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 72,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "stderr": "Snapshot written to json-sdk-control.snapshot.json\n",
+      "mode": "json",
+      "attack": false,
+      "methods": [
+        "initialize",
+        "notifications/initialized",
+        "tools/list",
+        "tools/list"
+      ],
+      "wire": [],
+      "report": {
+        "generatedAt": "2026-10-14T21:51:07.903Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "http-byte-bound-control",
+            "label": "http://127.0.0.1:45497/mcp",
+            "name": "http-byte-bound-control",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 2,
+            "received": 2,
+            "retained": 2
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 2,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 72,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      }
+    },
+    {
+      "label": "json-oversized-second-page",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "mcplint",
+        "http",
+        "http://127.0.0.1:46085/mcp",
+        "--format",
+        "json",
+        "--fail-on",
+        "error",
+        "--snapshot",
+        "json-oversized-second-page.snapshot.json"
+      ],
+      "seconds": 0.551068874,
+      "exit": 1,
+      "signal": null,
+      "stdout": "{\n  \"generatedAt\": \"2026-10-14T21:51:08.467Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"http-byte-bound-control\",\n      \"label\": \"http://127.0.0.1:46085/mcp\",\n      \"name\": \"http-byte-bound-control\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"tools/list\",\n      \"status\": \"incomplete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1,\n      \"detail\": \"Live server metadata could not be read faithfully. An HTTP JSON response exceeded the 10 MiB read limit.\"\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise prompts.\"\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"resources/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 35,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"http-byte-bound-control\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"http-byte-bound-control\"\n      },\n      \"message\": \"tools/list: Live server metadata could not be read faithfully. An HTTP JSON response exceeded the 10 MiB read limit.\",\n      \"detail\": \"1 pages received; 1 entries received; 1 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "stderr": "Snapshot written to json-oversized-second-page.snapshot.json\n",
+      "mode": "json",
+      "attack": true,
+      "methods": [
+        "initialize",
+        "notifications/initialized",
+        "tools/list",
+        "tools/list"
+      ],
+      "wire": [
+        {
+          "id": 2,
+          "constructedBytes": 100663420,
+          "constructedSha256": "e7773b4c5bdb1784b1b6ff559e0ee3b38162c59262e5fa43be707ab67553f66e",
+          "attemptedBytes": 14680151,
+          "prefix": "{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":{\"tools\":[{\"name\":\"oversized_metadata\",\"description\":\"",
+          "padding": "96 repetitions of 1 MiB ASCII x",
+          "suffix": "\",\"inputSchema\":{\"type\":\"object\"}}]}}"
+        }
+      ],
+      "report": {
+        "generatedAt": "2026-10-14T21:51:08.467Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "http-byte-bound-control",
+            "label": "http://127.0.0.1:46085/mcp",
+            "name": "http-byte-bound-control",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "tools/list",
+            "status": "incomplete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "detail": "Live server metadata could not be read faithfully. An HTTP JSON response exceeded the 10 MiB read limit."
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 35,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "http-byte-bound-control",
+            "subject": {
+              "kind": "server",
+              "name": "http-byte-bound-control"
+            },
+            "message": "tools/list: Live server metadata could not be read faithfully. An HTTP JSON response exceeded the 10 MiB read limit.",
+            "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      }
+    },
+    {
+      "label": "json-oversized-initialize",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "mcplint",
+        "http",
+        "http://127.0.0.1:46499/mcp",
+        "--format",
+        "json",
+        "--fail-on",
+        "error",
+        "--snapshot",
+        "json-oversized-initialize.snapshot.json"
+      ],
+      "seconds": 0.497138608,
+      "exit": 2,
+      "signal": null,
+      "stdout": "",
+      "stderr": "mcplint: Live server metadata could not be read faithfully. An HTTP JSON response exceeded the 10 MiB read limit.\n",
+      "mode": "json",
+      "attack": "initialize",
+      "methods": [
+        "initialize"
+      ],
+      "wire": [
+        {
+          "id": 0,
+          "constructedBytes": 100663470,
+          "constructedSha256": "b37eb6a7bc86c3ffa9579f2357ab72085170356946256e546be22e83d97ee6f9",
+          "attemptedBytes": 20971691,
+          "prefix": "{\"jsonrpc\":\"2.0\",\"id\":0,\"result\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{\"tools\":{}},\"serverInfo\":{\"name\":\"http-byte-bound-control\",\"version\":\"1\"},\"instructions\":\"",
+          "padding": "96 repetitions of 1 MiB ASCII x",
+          "suffix": "\"}}"
+        }
+      ],
+      "report": null
+    },
+    {
+      "label": "streamable-sse-sdk-control",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "mcplint",
+        "http",
+        "http://127.0.0.1:46293/mcp",
+        "--format",
+        "json",
+        "--fail-on",
+        "error",
+        "--snapshot",
+        "streamable-sse-sdk-control.snapshot.json"
+      ],
+      "seconds": 0.44552289199999995,
+      "exit": 0,
+      "signal": null,
+      "stdout": "{\n  \"generatedAt\": \"2026-10-14T21:51:09.440Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"http-byte-bound-control\",\n      \"label\": \"http://127.0.0.1:46293/mcp\",\n      \"name\": \"http-byte-bound-control\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 2,\n      \"received\": 2,\n      \"retained\": 2\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise prompts.\"\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"resources/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 2,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 72,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "stderr": "Snapshot written to streamable-sse-sdk-control.snapshot.json\n",
+      "mode": "streamable-sse",
+      "attack": false,
+      "methods": [
+        "initialize",
+        "notifications/initialized",
+        "tools/list",
+        "tools/list"
+      ],
+      "wire": [],
+      "report": {
+        "generatedAt": "2026-10-14T21:51:09.440Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "http-byte-bound-control",
+            "label": "http://127.0.0.1:46293/mcp",
+            "name": "http-byte-bound-control",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 2,
+            "received": 2,
+            "retained": 2
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 2,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 72,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      }
+    },
+    {
+      "label": "streamable-sse-oversized-second-page",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "mcplint",
+        "http",
+        "http://127.0.0.1:45099/mcp",
+        "--format",
+        "json",
+        "--fail-on",
+        "error",
+        "--snapshot",
+        "streamable-sse-oversized-second-page.snapshot.json"
+      ],
+      "seconds": 0.5706756300000002,
+      "exit": 1,
+      "signal": null,
+      "stdout": "{\n  \"generatedAt\": \"2026-10-14T21:51:10.027Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"http-byte-bound-control\",\n      \"label\": \"http://127.0.0.1:45099/mcp\",\n      \"name\": \"http-byte-bound-control\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"tools/list\",\n      \"status\": \"incomplete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1,\n      \"detail\": \"Live server metadata could not be read faithfully. An SSE line or event data exceeded the 10 MiB read limit.\"\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise prompts.\"\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"resources/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 35,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"http-byte-bound-control\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"http-byte-bound-control\"\n      },\n      \"message\": \"tools/list: Live server metadata could not be read faithfully. An SSE line or event data exceeded the 10 MiB read limit.\",\n      \"detail\": \"1 pages received; 1 entries received; 1 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "stderr": "Snapshot written to streamable-sse-oversized-second-page.snapshot.json\n",
+      "mode": "streamable-sse",
+      "attack": true,
+      "methods": [
+        "initialize",
+        "notifications/initialized",
+        "tools/list",
+        "tools/list"
+      ],
+      "wire": [
+        {
+          "id": 2,
+          "constructedBytes": 100663460,
+          "constructedSha256": "63bfd7f23638f32db804dc4513bc38dae09b2dd9f2c9c5d1e1899c35808e5502",
+          "attemptedBytes": 14680187,
+          "prefix": "id: observed\r\nevent: message\r\ndata: {\"jsonrpc\":\"2.0\",\"id\":2,\"result\":{\"tools\":[{\"name\":\"oversized_metadata\",\"description\":\"",
+          "padding": "96 repetitions of 1 MiB ASCII x",
+          "suffix": "\",\"inputSchema\":{\"type\":\"object\"}}]}}\r\n\r\n"
+        }
+      ],
+      "report": {
+        "generatedAt": "2026-10-14T21:51:10.027Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "http-byte-bound-control",
+            "label": "http://127.0.0.1:45099/mcp",
+            "name": "http-byte-bound-control",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "tools/list",
+            "status": "incomplete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "detail": "Live server metadata could not be read faithfully. An SSE line or event data exceeded the 10 MiB read limit."
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 35,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "http-byte-bound-control",
+            "subject": {
+              "kind": "server",
+              "name": "http-byte-bound-control"
+            },
+            "message": "tools/list: Live server metadata could not be read faithfully. An SSE line or event data exceeded the 10 MiB read limit.",
+            "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      }
+    },
+    {
+      "label": "streamable-sse-oversized-initialize",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "mcplint",
+        "http",
+        "http://127.0.0.1:46021/mcp",
+        "--format",
+        "json",
+        "--fail-on",
+        "error",
+        "--snapshot",
+        "streamable-sse-oversized-initialize.snapshot.json"
+      ],
+      "seconds": 0.5068193040000001,
+      "exit": 2,
+      "signal": null,
+      "stdout": "",
+      "stderr": "mcplint: Live server metadata could not be read faithfully. An SSE line or event data exceeded the 10 MiB read limit.\n",
+      "mode": "streamable-sse",
+      "attack": "initialize",
+      "methods": [
+        "initialize"
+      ],
+      "wire": [
+        {
+          "id": 0,
+          "constructedBytes": 100663510,
+          "constructedSha256": "037a85862b0bd24b2ab0dbcdd008462ef39076c9d5b424e72904d8c361732758",
+          "attemptedBytes": 20971727,
+          "prefix": "id: observed\r\nevent: message\r\ndata: {\"jsonrpc\":\"2.0\",\"id\":0,\"result\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{\"tools\":{}},\"serverInfo\":{\"name\":\"http-byte-bound-control\",\"version\":\"1\"},\"instructions\":\"",
+          "padding": "96 repetitions of 1 MiB ASCII x",
+          "suffix": "\"}}\r\n\r\n"
+        }
+      ],
+      "report": null
+    },
+    {
+      "label": "legacy-sse-sdk-control",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "mcplint",
+        "http",
+        "http://127.0.0.1:46103/sse",
+        "--format",
+        "json",
+        "--fail-on",
+        "error",
+        "--snapshot",
+        "legacy-sse-sdk-control.snapshot.json"
+      ],
+      "seconds": 0.46373173600000017,
+      "exit": 0,
+      "signal": null,
+      "stdout": "{\n  \"generatedAt\": \"2026-10-14T21:51:11.018Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"http-byte-bound-control\",\n      \"label\": \"http://127.0.0.1:46103/sse\",\n      \"name\": \"http-byte-bound-control\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 2,\n      \"received\": 2,\n      \"retained\": 2\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise prompts.\"\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"resources/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 2,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 72,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "stderr": "Snapshot written to legacy-sse-sdk-control.snapshot.json\n",
+      "mode": "legacy-sse",
+      "attack": false,
+      "methods": [
+        "initialize",
+        "notifications/initialized",
+        "tools/list",
+        "tools/list"
+      ],
+      "wire": [],
+      "report": {
+        "generatedAt": "2026-10-14T21:51:11.018Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "http-byte-bound-control",
+            "label": "http://127.0.0.1:46103/sse",
+            "name": "http-byte-bound-control",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 2,
+            "received": 2,
+            "retained": 2
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 2,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 72,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      }
+    },
+    {
+      "label": "legacy-sse-oversized-second-page",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "mcplint",
+        "http",
+        "http://127.0.0.1:45525/sse",
+        "--format",
+        "json",
+        "--fail-on",
+        "error",
+        "--snapshot",
+        "legacy-sse-oversized-second-page.snapshot.json"
+      ],
+      "seconds": 0.5960898940000002,
+      "exit": 1,
+      "signal": null,
+      "stdout": "{\n  \"generatedAt\": \"2026-10-14T21:51:11.632Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"http-byte-bound-control\",\n      \"label\": \"http://127.0.0.1:45525/sse\",\n      \"name\": \"http-byte-bound-control\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"tools/list\",\n      \"status\": \"incomplete\",\n      \"pages\": 1,\n      \"received\": 1,\n      \"retained\": 1,\n      \"detail\": \"Live server metadata could not be read faithfully. An SSE line or event data exceeded the 10 MiB read limit.\"\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise prompts.\"\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"resources/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 1,\n    \"bySeverity\": {\n      \"error\": 1,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {\n      \"collection/incomplete\": 1\n    },\n    \"toolCount\": 1,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 35,\n    \"complete\": false,\n    \"score\": null\n  },\n  \"findings\": [\n    {\n      \"ruleId\": \"collection/incomplete\",\n      \"severity\": \"error\",\n      \"serverId\": \"http-byte-bound-control\",\n      \"subject\": {\n        \"kind\": \"server\",\n        \"name\": \"http-byte-bound-control\"\n      },\n      \"message\": \"tools/list: Live server metadata could not be read faithfully. An SSE line or event data exceeded the 10 MiB read limit.\",\n      \"detail\": \"1 pages received; 1 entries received; 1 entries retained for linting.\",\n      \"suggestion\": \"Resolve this collection gap and rerun before relying on the report for the whole target.\"\n    }\n  ]\n}\n",
+      "stderr": "Snapshot written to legacy-sse-oversized-second-page.snapshot.json\n",
+      "mode": "legacy-sse",
+      "attack": true,
+      "methods": [
+        "initialize",
+        "notifications/initialized",
+        "tools/list",
+        "tools/list"
+      ],
+      "wire": [
+        {
+          "id": 2,
+          "constructedBytes": 100663460,
+          "constructedSha256": "63bfd7f23638f32db804dc4513bc38dae09b2dd9f2c9c5d1e1899c35808e5502",
+          "attemptedBytes": 13631611,
+          "prefix": "id: observed\r\nevent: message\r\ndata: {\"jsonrpc\":\"2.0\",\"id\":2,\"result\":{\"tools\":[{\"name\":\"oversized_metadata\",\"description\":\"",
+          "padding": "96 repetitions of 1 MiB ASCII x",
+          "suffix": "\",\"inputSchema\":{\"type\":\"object\"}}]}}\r\n\r\n"
+        }
+      ],
+      "report": {
+        "generatedAt": "2026-10-14T21:51:11.632Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "http-byte-bound-control",
+            "label": "http://127.0.0.1:45525/sse",
+            "name": "http-byte-bound-control",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "tools/list",
+            "status": "incomplete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1,
+            "detail": "Live server metadata could not be read faithfully. An SSE line or event data exceeded the 10 MiB read limit."
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 1,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {
+            "collection/incomplete": 1
+          },
+          "toolCount": 1,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 35,
+          "complete": false,
+          "score": null
+        },
+        "findings": [
+          {
+            "ruleId": "collection/incomplete",
+            "severity": "error",
+            "serverId": "http-byte-bound-control",
+            "subject": {
+              "kind": "server",
+              "name": "http-byte-bound-control"
+            },
+            "message": "tools/list: Live server metadata could not be read faithfully. An SSE line or event data exceeded the 10 MiB read limit.",
+            "detail": "1 pages received; 1 entries received; 1 entries retained for linting.",
+            "suggestion": "Resolve this collection gap and rerun before relying on the report for the whole target."
+          }
+        ]
+      }
+    },
+    {
+      "label": "legacy-sse-oversized-initialize",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "mcplint",
+        "http",
+        "http://127.0.0.1:46007/sse",
+        "--format",
+        "json",
+        "--fail-on",
+        "error",
+        "--snapshot",
+        "legacy-sse-oversized-initialize.snapshot.json"
+      ],
+      "seconds": 0.4824961319999993,
+      "exit": 2,
+      "signal": null,
+      "stdout": "",
+      "stderr": "mcplint: Live server metadata could not be read faithfully. An SSE line or event data exceeded the 10 MiB read limit.\n",
+      "mode": "legacy-sse",
+      "attack": "initialize",
+      "methods": [
+        "initialize"
+      ],
+      "wire": [
+        {
+          "id": 0,
+          "constructedBytes": 100663510,
+          "constructedSha256": "037a85862b0bd24b2ab0dbcdd008462ef39076c9d5b424e72904d8c361732758",
+          "attemptedBytes": 19923151,
+          "prefix": "id: observed\r\nevent: message\r\ndata: {\"jsonrpc\":\"2.0\",\"id\":0,\"result\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{\"tools\":{}},\"serverInfo\":{\"name\":\"http-byte-bound-control\",\"version\":\"1\"},\"instructions\":\"",
+          "padding": "96 repetitions of 1 MiB ASCII x",
+          "suffix": "\"}}\r\n\r\n"
+        }
+      ],
+      "report": null
+    }
+  ],
+  "complete": true,
+  "driverSha256": "ce230699ae1fea14eb8aa544167d9793b81d47edd0e7a212df3cf8adcb90cb5f",
+  "html": {
+    "label": "incomplete-html",
+    "command": [
+      "node",
+      "--max-old-space-size=256",
+      "mcplint",
+      "http",
+      "http://127.0.0.1:45561/mcp",
+      "--format",
+      "html",
+      "--fail-on",
+      "error",
+      "--output",
+      "incomplete.html"
+    ],
+    "seconds": 0.47505560100000005,
+    "exit": 1,
+    "signal": null,
+    "stdout": "",
+    "stderr": "Report written to incomplete.html\n",
+    "bytes": 18589,
+    "sha256": "839a07e3229535426a5d02e48e8222d3f0d4cc1746530e9b07e1da96c7e4fc02"
+  }
+}

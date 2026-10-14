@@ -4,6 +4,15 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Bound decompressed HTTP JSON responses and SSE lines/joined event data at
+  10 MiB before metadata/SDK decoding. A labelled 96 MiB response previously
+  aborted the CLI under a 256 MiB V8 heap cap. Oversized initialization now
+  fails with a diagnostic; later responses retain prior pages as incomplete,
+  without a score or invented metadata removals. Completed heartbeats and
+  separate small events do not accumulate toward a lifetime stream byte limit.
+  [Three-transport CLI and offline-report evidence](studies/http-bounds/README.md).
+  Source update only; no npm release or manual hosted deployment.
+
 - Check original live MCP JSON before SDK decoding on stdio, HTTP JSON and both
   SSE transports. Duplicate fields, changed numeric values, malformed JSON and
   invalid UTF-8 now make collection explicitly incomplete, retaining prior valid

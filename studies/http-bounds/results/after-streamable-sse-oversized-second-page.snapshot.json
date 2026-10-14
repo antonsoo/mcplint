@@ -1,0 +1,70 @@
+{
+  "collection": [
+    {
+      "detail": "Live server metadata could not be read faithfully. An SSE line or event data exceeded the 10 MiB read limit.",
+      "pages": 1,
+      "received": 1,
+      "retained": 1,
+      "scope": "tools/list",
+      "serverId": "http-byte-bound-control",
+      "status": "incomplete"
+    },
+    {
+      "detail": "Server did not advertise prompts.",
+      "pages": 0,
+      "received": 0,
+      "retained": 0,
+      "scope": "prompts/list",
+      "serverId": "http-byte-bound-control",
+      "status": "unsupported"
+    },
+    {
+      "detail": "Server did not advertise resources.",
+      "pages": 0,
+      "received": 0,
+      "retained": 0,
+      "scope": "resources/list",
+      "serverId": "http-byte-bound-control",
+      "status": "unsupported"
+    },
+    {
+      "detail": "Server did not advertise resources.",
+      "pages": 0,
+      "received": 0,
+      "retained": 0,
+      "scope": "resources/templates/list",
+      "serverId": "http-byte-bound-control",
+      "status": "unsupported"
+    }
+  ],
+  "createdAt": "2026-10-14T21:51:10.029Z",
+  "definitions": [
+    {
+      "scope": "tools/list",
+      "serverId": "http-byte-bound-control",
+      "value": {
+        "description": "Read a recorded local sequence number without changing any records.",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {},
+          "type": "object"
+        },
+        "name": "read_sequence"
+      }
+    }
+  ],
+  "format": "mcplint-metadata-snapshot",
+  "schemaVersion": 1,
+  "servers": [
+    {
+      "capabilities": {
+        "tools": {}
+      },
+      "id": "http-byte-bound-control",
+      "serverInfo": {
+        "name": "http-byte-bound-control",
+        "version": "1"
+      }
+    }
+  ]
+}

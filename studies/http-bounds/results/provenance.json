@@ -1,0 +1,9 @@
+{
+  "baselineCommit": "b2b95661b0ebe3583a317b390c4392702219cf4a",
+  "node": "v26.7.0",
+  "sdkServerAndClientVersion": "1.31.0",
+  "sdkPackageSha256": "db4753c0bcdc297ef0dd5f6573219e461270e542146d6574de0ef80dde0f7b4b",
+  "baselineSdkPackageMatches": true,
+  "captureDriverSha256": "ce230699ae1fea14eb8aa544167d9793b81d47edd0e7a212df3cf8adcb90cb5f",
+  "casesConstructed": true
+}

@@ -1,0 +1,111 @@
+{
+  "format": "mcplint-metadata-diff",
+  "schemaVersion": 1,
+  "before": {
+    "createdAt": "2026-10-14T21:51:07.904Z",
+    "sha256": "22f26d44be67b18433e0bc2319d0dc99db3e932cff83ccf8614dcd1e40558bff",
+    "definitions": 2
+  },
+  "after": {
+    "createdAt": "2026-10-14T21:51:08.469Z",
+    "sha256": "da88a861bfd2af22a42fa272d13fc1ff85f105fd493b7b9f41d316214412e9d8",
+    "definitions": 1
+  },
+  "complete": false,
+  "issues": [
+    "After: http-byte-bound-control tools/list is incomplete.",
+    "http-byte-bound-control tools/list: coverage is complete before and incomplete after; absent definitions cannot be classified as added or removed."
+  ],
+  "summary": {
+    "added": 0,
+    "removed": 0,
+    "changed": 0,
+    "unchanged": 2,
+    "unpaired": 1
+  },
+  "changes": [],
+  "coverage": {
+    "before": [
+      {
+        "pages": 2,
+        "received": 2,
+        "retained": 2,
+        "scope": "tools/list",
+        "serverId": "http-byte-bound-control",
+        "status": "complete"
+      },
+      {
+        "detail": "Server did not advertise prompts.",
+        "pages": 0,
+        "received": 0,
+        "retained": 0,
+        "scope": "prompts/list",
+        "serverId": "http-byte-bound-control",
+        "status": "unsupported"
+      },
+      {
+        "detail": "Server did not advertise resources.",
+        "pages": 0,
+        "received": 0,
+        "retained": 0,
+        "scope": "resources/list",
+        "serverId": "http-byte-bound-control",
+        "status": "unsupported"
+      },
+      {
+        "detail": "Server did not advertise resources.",
+        "pages": 0,
+        "received": 0,
+        "retained": 0,
+        "scope": "resources/templates/list",
+        "serverId": "http-byte-bound-control",
+        "status": "unsupported"
+      }
+    ],
+    "after": [
+      {
+        "detail": "Live server metadata could not be read faithfully. An HTTP JSON response exceeded the 10 MiB read limit.",
+        "pages": 1,
+        "received": 1,
+        "retained": 1,
+        "scope": "tools/list",
+        "serverId": "http-byte-bound-control",
+        "status": "incomplete"
+      },
+      {
+        "detail": "Server did not advertise prompts.",
+        "pages": 0,
+        "received": 0,
+        "retained": 0,
+        "scope": "prompts/list",
+        "serverId": "http-byte-bound-control",
+        "status": "unsupported"
+      },
+      {
+        "detail": "Server did not advertise resources.",
+        "pages": 0,
+        "received": 0,
+        "retained": 0,
+        "scope": "resources/list",
+        "serverId": "http-byte-bound-control",
+        "status": "unsupported"
+      },
+      {
+        "detail": "Server did not advertise resources.",
+        "pages": 0,
+        "received": 0,
+        "retained": 0,
+        "scope": "resources/templates/list",
+        "serverId": "http-byte-bound-control",
+        "status": "unsupported"
+      }
+    ]
+  },
+  "notes": [
+    "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+    "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+    "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+    "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+    "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+  ]
+}

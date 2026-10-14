@@ -3,6 +3,7 @@ import { TextDecoder } from 'node:util';
 import { createParser } from 'eventsource-parser';
 import { JsonIntegrityError, readJson } from '../core/read-json.js';
 import type { LintTarget } from '../core/types.js';
+import { SseMessageBounds } from './sse-bounds.js';
 
 /** Only our own diagnostics may cross into a report or terminal message. */
 export class LiveJsonIntegrityError extends Error {
@@ -42,6 +43,8 @@ function decode(decoder: TextDecoder, bytes?: Uint8Array, stream = false): strin
 
 // Matches the SDK's existing stdio read-buffer ceiling, including line endings.
 export const MAX_STDIO_MESSAGE_BYTES = 10 * 1024 * 1024;
+/** Fetch supplies decompressed response bytes. The bound precedes JSON/SDK decoding. */
+export const MAX_HTTP_MESSAGE_BYTES = 10 * 1024 * 1024;
 
 /** Release only validated, complete lines. Earlier good messages remain usable
  * even when the same read contains a later damaged message. */
@@ -98,14 +101,28 @@ export function guardHttpResponse(
   const sse = contentType.includes('text/event-stream');
   if (!sse && !contentType.includes('application/json')) return response;
   const decoder = new TextDecoder('utf-8', { fatal: true });
+  const bounds = sse ? new SseMessageBounds(MAX_HTTP_MESSAGE_BYTES, () => {
+    throw new LiveJsonIntegrityError('An SSE line or event data exceeded the 10 MiB read limit.');
+  }) : undefined;
   const parser = sse ? createParser({ onEvent(event) {
+    if (Buffer.byteLength(event.data, 'utf8') > MAX_HTTP_MESSAGE_BYTES) {
+      throw new LiveJsonIntegrityError('SSE event data exceeded the 10 MiB read limit.');
+    }
     if (event.data && (!event.event || event.event === 'message')) checkJson(event.data);
   } }) : undefined;
   const pieces: Uint8Array[] = [];
   const text: string[] = [];
+  let bytes = 0;
   const guarded = response.body.pipeThrough(new TransformStream<Uint8Array, Uint8Array>({
     transform(chunk, controller) {
       try {
+        if (bounds) bounds.feed(chunk);
+        else {
+          bytes += chunk.byteLength;
+          if (bytes > MAX_HTTP_MESSAGE_BYTES) {
+            throw new LiveJsonIntegrityError('An HTTP JSON response exceeded the 10 MiB read limit.');
+          }
+        }
         const decoded = decode(decoder, chunk, true);
         if (parser) {
           parser.feed(decoded);
@@ -115,6 +132,8 @@ export function guardHttpResponse(
           text.push(decoded);
         }
       } catch (error) {
+        pieces.length = 0;
+        text.length = 0;
         const failure = error as LiveJsonIntegrityError;
         onFailure(failure);
         throw failure;
@@ -128,8 +147,12 @@ export function guardHttpResponse(
           text.push(end);
           checkJson(text.join(''));
           for (const piece of pieces) controller.enqueue(piece);
+          pieces.length = 0;
+          text.length = 0;
         }
       } catch (error) {
+        pieces.length = 0;
+        text.length = 0;
         const failure = error as LiveJsonIntegrityError;
         onFailure(failure);
         throw failure;

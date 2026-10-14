@@ -1,0 +1,532 @@
+{
+  "node": "v26.7.0",
+  "expectation": "before",
+  "heapMiB": 256,
+  "synthetic": true,
+  "cases": [
+    {
+      "label": "json-sdk-control",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "mcplint",
+        "http",
+        "http://127.0.0.1:45153/mcp",
+        "--format",
+        "json",
+        "--fail-on",
+        "error",
+        "--snapshot",
+        "json-sdk-control.snapshot.json"
+      ],
+      "seconds": 0.43031627100000003,
+      "exit": 0,
+      "signal": null,
+      "stdout": "{\n  \"generatedAt\": \"2026-10-14T21:52:19.579Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"http-byte-bound-control\",\n      \"label\": \"http://127.0.0.1:45153/mcp\",\n      \"name\": \"http-byte-bound-control\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 2,\n      \"received\": 2,\n      \"retained\": 2\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise prompts.\"\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"resources/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 2,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 72,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "stderr": "Snapshot written to json-sdk-control.snapshot.json\n",
+      "mode": "json",
+      "attack": false,
+      "methods": [
+        "initialize",
+        "notifications/initialized",
+        "tools/list",
+        "tools/list"
+      ],
+      "wire": [],
+      "report": {
+        "generatedAt": "2026-10-14T21:52:19.579Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "http-byte-bound-control",
+            "label": "http://127.0.0.1:45153/mcp",
+            "name": "http-byte-bound-control",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 2,
+            "received": 2,
+            "retained": 2
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 2,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 72,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      }
+    },
+    {
+      "label": "json-oversized-second-page",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "mcplint",
+        "http",
+        "http://127.0.0.1:44933/mcp",
+        "--format",
+        "json",
+        "--fail-on",
+        "error",
+        "--snapshot",
+        "json-oversized-second-page.snapshot.json"
+      ],
+      "seconds": 4.657934717,
+      "exit": null,
+      "signal": "SIGABRT",
+      "stdout": "",
+      "stderr": "\n<--- Last few GCs --->\n\n[2760751:0xcc3c000]     1046 ms: Mark-Compact (reduce) 227.4 (258.1) -> 227.4 (258.1) MB, pooled: 0.0 MB, 31.20 / 0.00 ms (average mu = 0.008, current mu = 0.000) last resort; GC in old space requested\n[2760751:0xcc3c000]     1075 ms: Mark-Compact (reduce) 227.4 (258.1) -> 227.4 (258.1) MB, pooled: 0.0 MB, 28.91 / 0.00 ms (average mu = 0.004, current mu = 0.000) last resort; GC in old space requested\n\nFATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory\n----- Native stack trace -----\n\n 1: 0x82153b node::OOMErrorHandler(char const*, v8::OOMDetails const&) [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 2: 0xc771eb  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 3: 0xee8135  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 4: 0xee6edd  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 5: 0xed927c  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 6: 0xed8b8f  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 7: 0xeb34ad  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 8: 0xe9baaf  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 9: 0x10063b9  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n10: 0x100aa0e  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n11: 0x100d6c7  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n12: 0x100ab17  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n13: 0x100aa63  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n14: 0x1005da3  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n15: 0x1005a81  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n16: 0xced470  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n17: 0x1a899b6  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n",
+      "mode": "json",
+      "attack": true,
+      "methods": [
+        "initialize",
+        "notifications/initialized",
+        "tools/list",
+        "tools/list"
+      ],
+      "wire": [
+        {
+          "id": 2,
+          "constructedBytes": 100663420,
+          "constructedSha256": "e7773b4c5bdb1784b1b6ff559e0ee3b38162c59262e5fa43be707ab67553f66e",
+          "attemptedBytes": 100663420,
+          "prefix": "{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":{\"tools\":[{\"name\":\"oversized_metadata\",\"description\":\"",
+          "padding": "96 repetitions of 1 MiB ASCII x",
+          "suffix": "\",\"inputSchema\":{\"type\":\"object\"}}]}}"
+        }
+      ],
+      "report": null
+    },
+    {
+      "label": "json-oversized-initialize",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "mcplint",
+        "http",
+        "http://127.0.0.1:45877/mcp",
+        "--format",
+        "json",
+        "--fail-on",
+        "error",
+        "--snapshot",
+        "json-oversized-initialize.snapshot.json"
+      ],
+      "seconds": 4.3686938920000005,
+      "exit": null,
+      "signal": "SIGABRT",
+      "stdout": "",
+      "stderr": "\n<--- Last few GCs --->\n\n[2760800:0x31b08000]     1082 ms: Mark-Compact (reduce) 226.7 (257.3) -> 226.7 (257.3) MB, pooled: 0.0 MB, 31.83 / 0.00 ms (average mu = 0.008, current mu = 0.000) last resort; GC in old space requested\n[2760800:0x31b08000]     1111 ms: Mark-Compact (reduce) 226.7 (257.3) -> 226.7 (257.3) MB, pooled: 0.0 MB, 29.16 / 0.00 ms (average mu = 0.004, current mu = 0.001) last resort; GC in old space requested\n\nFATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory\n----- Native stack trace -----\n\n 1: 0x82153b node::OOMErrorHandler(char const*, v8::OOMDetails const&) [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 2: 0xc771eb  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 3: 0xee8135  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 4: 0xee6edd  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 5: 0xed927c  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 6: 0xed8b8f  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 7: 0xeb34ad  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 8: 0xe9baaf  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 9: 0x10063b9  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n10: 0x100aa0e  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n11: 0x100aa63  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n12: 0x1005da3  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n13: 0x1005a81  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n14: 0xced470  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n15: 0x1a899b6  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n",
+      "mode": "json",
+      "attack": "initialize",
+      "methods": [
+        "initialize"
+      ],
+      "wire": [
+        {
+          "id": 0,
+          "constructedBytes": 100663470,
+          "constructedSha256": "b37eb6a7bc86c3ffa9579f2357ab72085170356946256e546be22e83d97ee6f9",
+          "attemptedBytes": 100663470,
+          "prefix": "{\"jsonrpc\":\"2.0\",\"id\":0,\"result\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{\"tools\":{}},\"serverInfo\":{\"name\":\"http-byte-bound-control\",\"version\":\"1\"},\"instructions\":\"",
+          "padding": "96 repetitions of 1 MiB ASCII x",
+          "suffix": "\"}}"
+        }
+      ],
+      "report": null
+    },
+    {
+      "label": "streamable-sse-sdk-control",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "mcplint",
+        "http",
+        "http://127.0.0.1:46173/mcp",
+        "--format",
+        "json",
+        "--fail-on",
+        "error",
+        "--snapshot",
+        "streamable-sse-sdk-control.snapshot.json"
+      ],
+      "seconds": 0.4166752919999999,
+      "exit": 0,
+      "signal": null,
+      "stdout": "{\n  \"generatedAt\": \"2026-10-14T21:52:29.065Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"http-byte-bound-control\",\n      \"label\": \"http://127.0.0.1:46173/mcp\",\n      \"name\": \"http-byte-bound-control\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 2,\n      \"received\": 2,\n      \"retained\": 2\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise prompts.\"\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"resources/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 2,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 72,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "stderr": "Snapshot written to streamable-sse-sdk-control.snapshot.json\n",
+      "mode": "streamable-sse",
+      "attack": false,
+      "methods": [
+        "initialize",
+        "notifications/initialized",
+        "tools/list",
+        "tools/list"
+      ],
+      "wire": [],
+      "report": {
+        "generatedAt": "2026-10-14T21:52:29.065Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "http-byte-bound-control",
+            "label": "http://127.0.0.1:46173/mcp",
+            "name": "http-byte-bound-control",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 2,
+            "received": 2,
+            "retained": 2
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 2,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 72,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      }
+    },
+    {
+      "label": "streamable-sse-oversized-second-page",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "mcplint",
+        "http",
+        "http://127.0.0.1:45255/mcp",
+        "--format",
+        "json",
+        "--fail-on",
+        "error",
+        "--snapshot",
+        "streamable-sse-oversized-second-page.snapshot.json"
+      ],
+      "seconds": 4.2198612749999995,
+      "exit": null,
+      "signal": "SIGABRT",
+      "stdout": "",
+      "stderr": "\n<--- Last few GCs --->\n\n[2760919:0x3d8d1000]     1103 ms: Mark-Compact (reduce) 215.5 (266.8) -> 215.5 (266.8) MB, pooled: 0.0 MB, 33.44 / 0.00 ms (average mu = 0.004, current mu = 0.000) last resort; GC in old space requested\n[2760919:0x3d8d1000]     1136 ms: Mark-Compact (reduce) 215.5 (266.8) -> 215.5 (266.8) MB, pooled: 0.0 MB, 33.37 / 0.00 ms (average mu = 0.002, current mu = 0.000) last resort; GC in old space requested\n\nFATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory\n----- Native stack trace -----\n\n 1: 0x82153b node::OOMErrorHandler(char const*, v8::OOMDetails const&) [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 2: 0xc771eb  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 3: 0xee8135  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 4: 0xee6edd  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 5: 0xed927c  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 6: 0xed8b8f  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 7: 0xeb34ad  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 8: 0xe9baaf  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 9: 0xe9b950  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n10: 0xc92ac8 v8::String::NewFromOneByte(v8::Isolate*, unsigned char const*, v8::NewStringType, int) [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n11: 0xb424df  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n12: 0x8e2d97 node::encoding_binding::BindingData::DecodeUTF8(v8::FunctionCallbackInfo<v8::Value> const&) [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n13: 0x19dabda  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n",
+      "mode": "streamable-sse",
+      "attack": true,
+      "methods": [
+        "initialize",
+        "notifications/initialized",
+        "tools/list",
+        "tools/list"
+      ],
+      "wire": [
+        {
+          "id": 2,
+          "constructedBytes": 100663460,
+          "constructedSha256": "63bfd7f23638f32db804dc4513bc38dae09b2dd9f2c9c5d1e1899c35808e5502",
+          "attemptedBytes": 99614843,
+          "prefix": "id: observed\r\nevent: message\r\ndata: {\"jsonrpc\":\"2.0\",\"id\":2,\"result\":{\"tools\":[{\"name\":\"oversized_metadata\",\"description\":\"",
+          "padding": "96 repetitions of 1 MiB ASCII x",
+          "suffix": "\",\"inputSchema\":{\"type\":\"object\"}}]}}\r\n\r\n"
+        }
+      ],
+      "report": null
+    },
+    {
+      "label": "streamable-sse-oversized-initialize",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "mcplint",
+        "http",
+        "http://127.0.0.1:46005/mcp",
+        "--format",
+        "json",
+        "--fail-on",
+        "error",
+        "--snapshot",
+        "streamable-sse-oversized-initialize.snapshot.json"
+      ],
+      "seconds": 4.154391385000001,
+      "exit": null,
+      "signal": "SIGABRT",
+      "stdout": "",
+      "stderr": "\n<--- Last few GCs --->\n\n[2761152:0x16013000]     1058 ms: Mark-Compact (reduce) 212.2 (265.1) -> 212.2 (265.1) MB, pooled: 0.0 MB, 40.42 / 0.00 ms (average mu = 0.004, current mu = 0.000) last resort; GC in old space requested\n[2761152:0x16013000]     1091 ms: Mark-Compact (reduce) 212.2 (265.1) -> 212.2 (265.1) MB, pooled: 0.0 MB, 32.76 / 0.00 ms (average mu = 0.003, current mu = 0.001) last resort; GC in old space requested\n\nFATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory\n----- Native stack trace -----\n\n 1: 0x82153b node::OOMErrorHandler(char const*, v8::OOMDetails const&) [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 2: 0xc771eb  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 3: 0xee8135  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 4: 0xee6edd  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 5: 0xed927c  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 6: 0xed8b8f  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 7: 0xeb34ad  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 8: 0xe9baaf  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 9: 0xe9b950  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n10: 0xc92ac8 v8::String::NewFromOneByte(v8::Isolate*, unsigned char const*, v8::NewStringType, int) [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n11: 0xb424df  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n12: 0x8e2db9 node::encoding_binding::BindingData::DecodeUTF8(v8::FunctionCallbackInfo<v8::Value> const&) [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n13: 0x19dabda  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n",
+      "mode": "streamable-sse",
+      "attack": "initialize",
+      "methods": [
+        "initialize"
+      ],
+      "wire": [
+        {
+          "id": 0,
+          "constructedBytes": 100663510,
+          "constructedSha256": "037a85862b0bd24b2ab0dbcdd008462ef39076c9d5b424e72904d8c361732758",
+          "attemptedBytes": 99614927,
+          "prefix": "id: observed\r\nevent: message\r\ndata: {\"jsonrpc\":\"2.0\",\"id\":0,\"result\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{\"tools\":{}},\"serverInfo\":{\"name\":\"http-byte-bound-control\",\"version\":\"1\"},\"instructions\":\"",
+          "padding": "96 repetitions of 1 MiB ASCII x",
+          "suffix": "\"}}\r\n\r\n"
+        }
+      ],
+      "report": null
+    },
+    {
+      "label": "legacy-sse-sdk-control",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "mcplint",
+        "http",
+        "http://127.0.0.1:45235/sse",
+        "--format",
+        "json",
+        "--fail-on",
+        "error",
+        "--snapshot",
+        "legacy-sse-sdk-control.snapshot.json"
+      ],
+      "seconds": 0.46962272099999974,
+      "exit": 0,
+      "signal": null,
+      "stdout": "{\n  \"generatedAt\": \"2026-10-14T21:52:37.957Z\",\n  \"tokenizer\": \"o200k_base\",\n  \"servers\": [\n    {\n      \"id\": \"http-byte-bound-control\",\n      \"label\": \"http://127.0.0.1:45235/sse\",\n      \"name\": \"http-byte-bound-control\",\n      \"version\": \"1\"\n    }\n  ],\n  \"collection\": [\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"tools/list\",\n      \"status\": \"complete\",\n      \"pages\": 2,\n      \"received\": 2,\n      \"retained\": 2\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"prompts/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise prompts.\"\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"resources/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    },\n    {\n      \"serverId\": \"http-byte-bound-control\",\n      \"scope\": \"resources/templates/list\",\n      \"status\": \"unsupported\",\n      \"pages\": 0,\n      \"received\": 0,\n      \"retained\": 0,\n      \"detail\": \"Server did not advertise resources.\"\n    }\n  ],\n  \"summary\": {\n    \"totalFindings\": 0,\n    \"bySeverity\": {\n      \"error\": 0,\n      \"warning\": 0,\n      \"info\": 0\n    },\n    \"byRule\": {},\n    \"toolCount\": 2,\n    \"promptCount\": 0,\n    \"resourceCount\": 0,\n    \"totalEstimatedTokens\": 72,\n    \"complete\": true,\n    \"score\": 100\n  },\n  \"findings\": []\n}\n",
+      "stderr": "Snapshot written to legacy-sse-sdk-control.snapshot.json\n",
+      "mode": "legacy-sse",
+      "attack": false,
+      "methods": [
+        "initialize",
+        "notifications/initialized",
+        "tools/list",
+        "tools/list"
+      ],
+      "wire": [],
+      "report": {
+        "generatedAt": "2026-10-14T21:52:37.957Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "http-byte-bound-control",
+            "label": "http://127.0.0.1:45235/sse",
+            "name": "http-byte-bound-control",
+            "version": "1"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 2,
+            "received": 2,
+            "retained": 2
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "http-byte-bound-control",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ],
+        "summary": {
+          "totalFindings": 0,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 0
+          },
+          "byRule": {},
+          "toolCount": 2,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 72,
+          "complete": true,
+          "score": 100
+        },
+        "findings": []
+      }
+    },
+    {
+      "label": "legacy-sse-oversized-second-page",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "mcplint",
+        "http",
+        "http://127.0.0.1:44717/sse",
+        "--format",
+        "json",
+        "--fail-on",
+        "error",
+        "--snapshot",
+        "legacy-sse-oversized-second-page.snapshot.json"
+      ],
+      "seconds": 4.104661724999998,
+      "exit": null,
+      "signal": "SIGABRT",
+      "stdout": "",
+      "stderr": "\n<--- Last few GCs --->\n\n[2761428:0x1f987000]     1006 ms: Mark-Compact (reduce) 208.0 (259.8) -> 208.0 (259.8) MB, pooled: 0.0 MB, 30.77 / 0.00 ms (average mu = 0.005, current mu = 0.001) last resort; GC in old space requested\n[2761428:0x1f987000]     1034 ms: Mark-Compact (reduce) 208.0 (259.8) -> 208.0 (259.8) MB, pooled: 0.0 MB, 28.00 / 0.00 ms (average mu = 0.003, current mu = 0.001) last resort; GC in old space requested\n\nFATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory\n----- Native stack trace -----\n\n 1: 0x82153b node::OOMErrorHandler(char const*, v8::OOMDetails const&) [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 2: 0xc771eb  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 3: 0xee8135  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 4: 0xee6edd  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 5: 0xed927c  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 6: 0xed8b8f  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 7: 0xeb34ad  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 8: 0xe9baaf  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 9: 0xe9b950  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n10: 0xc92ac8 v8::String::NewFromOneByte(v8::Isolate*, unsigned char const*, v8::NewStringType, int) [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n11: 0xb424df  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n12: 0x8e2db9 node::encoding_binding::BindingData::DecodeUTF8(v8::FunctionCallbackInfo<v8::Value> const&) [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n13: 0x19dabda  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n",
+      "mode": "legacy-sse",
+      "attack": true,
+      "methods": [
+        "initialize",
+        "notifications/initialized",
+        "tools/list",
+        "tools/list"
+      ],
+      "wire": [
+        {
+          "id": 2,
+          "constructedBytes": 100663460,
+          "constructedSha256": "63bfd7f23638f32db804dc4513bc38dae09b2dd9f2c9c5d1e1899c35808e5502",
+          "attemptedBytes": 98566267,
+          "prefix": "id: observed\r\nevent: message\r\ndata: {\"jsonrpc\":\"2.0\",\"id\":2,\"result\":{\"tools\":[{\"name\":\"oversized_metadata\",\"description\":\"",
+          "padding": "96 repetitions of 1 MiB ASCII x",
+          "suffix": "\",\"inputSchema\":{\"type\":\"object\"}}]}}\r\n\r\n"
+        }
+      ],
+      "report": null
+    },
+    {
+      "label": "legacy-sse-oversized-initialize",
+      "command": [
+        "node",
+        "--max-old-space-size=256",
+        "mcplint",
+        "http",
+        "http://127.0.0.1:45751/sse",
+        "--format",
+        "json",
+        "--fail-on",
+        "error",
+        "--snapshot",
+        "legacy-sse-oversized-initialize.snapshot.json"
+      ],
+      "seconds": 4.257979310999999,
+      "exit": null,
+      "signal": "SIGABRT",
+      "stdout": "",
+      "stderr": "\n<--- Last few GCs --->\n\n[2761614:0x17415000]     1070 ms: Mark-Compact (reduce) 207.1 (258.1) -> 207.1 (258.1) MB, pooled: 0.0 MB, 34.23 / 0.00 ms (average mu = 0.004, current mu = 0.001) last resort; GC in old space requested\n[2761614:0x17415000]     1102 ms: Mark-Compact (reduce) 207.1 (258.1) -> 207.1 (258.1) MB, pooled: 0.0 MB, 31.07 / 0.00 ms (average mu = 0.002, current mu = 0.000) last resort; GC in old space requested\n\nFATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory\n----- Native stack trace -----\n\n 1: 0x82153b node::OOMErrorHandler(char const*, v8::OOMDetails const&) [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 2: 0xc771eb  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 3: 0xee8135  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 4: 0xee6edd  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 5: 0xed927c  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 6: 0xed8b8f  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 7: 0xeb34ad  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 8: 0xe9baaf  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n 9: 0xe9b950  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n10: 0xc92ac8 v8::String::NewFromOneByte(v8::Isolate*, unsigned char const*, v8::NewStringType, int) [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n11: 0xb424df  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n12: 0x8e2db9 node::encoding_binding::BindingData::DecodeUTF8(v8::FunctionCallbackInfo<v8::Value> const&) [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n13: 0x19dabda  [/home/antonsoloviev/.local/share/fnm/node-versions/v26.7.0/installation/bin/node]\n",
+      "mode": "legacy-sse",
+      "attack": "initialize",
+      "methods": [
+        "initialize"
+      ],
+      "wire": [
+        {
+          "id": 0,
+          "constructedBytes": 100663510,
+          "constructedSha256": "037a85862b0bd24b2ab0dbcdd008462ef39076c9d5b424e72904d8c361732758",
+          "attemptedBytes": 95420623,
+          "prefix": "id: observed\r\nevent: message\r\ndata: {\"jsonrpc\":\"2.0\",\"id\":0,\"result\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{\"tools\":{}},\"serverInfo\":{\"name\":\"http-byte-bound-control\",\"version\":\"1\"},\"instructions\":\"",
+          "padding": "96 repetitions of 1 MiB ASCII x",
+          "suffix": "\"}}\r\n\r\n"
+        }
+      ],
+      "report": null
+    }
+  ],
+  "complete": true,
+  "driverSha256": "ce230699ae1fea14eb8aa544167d9793b81d47edd0e7a212df3cf8adcb90cb5f"
+}
