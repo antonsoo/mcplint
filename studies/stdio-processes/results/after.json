@@ -1,7 +1,7 @@
 {
   "node": "v26.7.0",
   "platform": "linux",
-  "transportSha256": "6b817bbb96f38c5d2b4d961c167eea206a11c6705dcbccb92196d26641bd24b8",
+  "transportSha256": "f7c1b7c17501dabbc00d98a271ba99c00a95c9628b31c254f17f41e110a0bf0a",
   "fixture": "synthetic local native MCP SDK server with a 40 ms heartbeat",
   "results": [
     {
@@ -11,7 +11,7 @@
       "code": 0,
       "signal": null,
       "timedOut": false,
-      "elapsedMs": 780,
+      "elapsedMs": 766,
       "cliExit": {
         "code": 0,
         "signal": null
@@ -34,7 +34,7 @@
       "code": 0,
       "signal": null,
       "timedOut": false,
-      "elapsedMs": 894,
+      "elapsedMs": 931,
       "cliExit": {
         "code": 0,
         "signal": null
@@ -57,7 +57,7 @@
       "code": 0,
       "signal": null,
       "timedOut": false,
-      "elapsedMs": 2923,
+      "elapsedMs": 2997,
       "cliExit": {
         "code": 0,
         "signal": null
@@ -81,7 +81,7 @@
       "code": 0,
       "signal": null,
       "timedOut": false,
-      "elapsedMs": 4818,
+      "elapsedMs": 4929,
       "cliExit": {
         "code": 0,
         "signal": null
@@ -104,7 +104,7 @@
       "code": 2,
       "signal": null,
       "timedOut": false,
-      "elapsedMs": 3634,
+      "elapsedMs": 3626,
       "cliExit": {
         "code": 2,
         "signal": null
@@ -128,7 +128,7 @@
       "code": 2,
       "signal": null,
       "timedOut": false,
-      "elapsedMs": 5664,
+      "elapsedMs": 5618,
       "cliExit": {
         "code": 2,
         "signal": null
@@ -151,7 +151,7 @@
       "code": 0,
       "signal": null,
       "timedOut": false,
-      "elapsedMs": 2754,
+      "elapsedMs": 2684,
       "cliExit": {
         "code": 0,
         "signal": null
@@ -177,7 +177,7 @@
       "code": 0,
       "signal": null,
       "timedOut": false,
-      "elapsedMs": 2785,
+      "elapsedMs": 2706,
       "cliExit": {
         "code": 0,
         "signal": null
@@ -201,7 +201,7 @@
       "code": 130,
       "signal": null,
       "timedOut": false,
-      "elapsedMs": 4682,
+      "elapsedMs": 4651,
       "cliExit": {
         "code": 130,
         "signal": null
@@ -224,7 +224,7 @@
       "code": 143,
       "signal": null,
       "timedOut": false,
-      "elapsedMs": 4610,
+      "elapsedMs": 4678,
       "cliExit": {
         "code": 143,
         "signal": null

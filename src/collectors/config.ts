@@ -236,6 +236,7 @@ export interface CollectConfigOptions extends ConnectionOptions {
 }
 
 export async function collectConfig(path: string, opts: CollectConfigOptions = {}): Promise<LintTarget> {
+  opts.signal?.throwIfAborted();
   connectionBudget(opts.connectTimeoutMs); // Validate once, even if every server is disabled.
   const raw = await readTextFile(path);
   let parsed: unknown;
@@ -249,6 +250,7 @@ export async function collectConfig(path: string, opts: CollectConfigOptions = {
   }
   const { entries, skipped } = readServerConfig(parsed, { path, ...(opts.inputs ? { inputs: opts.inputs } : {}) });
   await opts.onSourceFiles?.([resolve(path), ...entries.flatMap(entry => entry.kind === 'stdio' && entry.envFile ? [entry.envFile] : [])]);
+  opts.signal?.throwIfAborted();
   for (const server of skipped) opts.onServerSkipped?.(server);
   if (entries.length === 0 && skipped.length === 0) {
     throw new Error(`${path}'s server map has no entries with a "command" or "url".`);
@@ -261,6 +263,7 @@ export async function collectConfig(path: string, opts: CollectConfigOptions = {
       pages: 0, received: 0, retained: 0, detail: server.reason }]
   }));
   for (const entry of entries) {
+    opts.signal?.throwIfAborted();
     opts.onServerStart?.(entry);
     try {
       let target: LintTarget;
@@ -269,6 +272,7 @@ export async function collectConfig(path: string, opts: CollectConfigOptions = {
         const env = fromFile || entry.env ? { ...fromFile, ...entry.env } : undefined;
         target = await collectStdio({
           connectTimeoutMs: opts.connectTimeoutMs,
+          signal: opts.signal,
           command: entry.command,
           args: entry.args,
           ...(env ? { env } : {}),
@@ -279,6 +283,7 @@ export async function collectConfig(path: string, opts: CollectConfigOptions = {
       } else {
         target = await collectHttp({
           connectTimeoutMs: opts.connectTimeoutMs,
+          signal: opts.signal,
           url: entry.url,
           ...(entry.headers ? { headers: entry.headers } : {}),
           ...(entry.sse ? { transport: 'sse' as const } : {}),
@@ -288,6 +293,7 @@ export async function collectConfig(path: string, opts: CollectConfigOptions = {
       }
       targets.push(target);
     } catch (err) {
+      opts.signal?.throwIfAborted();
       opts.onServerError?.(entry, err);
       targets.push({ servers: [{ id: entry.key, label: entry.key }], tools: [], prompts: [], resources: [],
         metadata: { servers: [{ id: entry.key }], definitions: [] },
@@ -296,6 +302,7 @@ export async function collectConfig(path: string, opts: CollectConfigOptions = {
     }
   }
 
+  opts.signal?.throwIfAborted();
   return mergeTargets(targets);
 }
 

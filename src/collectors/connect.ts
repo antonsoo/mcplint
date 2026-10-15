@@ -6,6 +6,8 @@ export const DEFAULT_CONNECT_TIMEOUT_MS = 30_000;
 export interface ConnectionOptions {
   /** Per server: transport startup plus the complete MCP handshake, including HTTP fallback. */
   connectTimeoutMs?: number;
+  /** Cancel collection and join transport/process cleanup before rejecting. */
+  signal?: AbortSignal;
 }
 
 export class ConnectionTimeoutError extends Error {
@@ -28,20 +30,33 @@ export function connectionBudget(timeoutMs = DEFAULT_CONNECT_TIMEOUT_MS): { dead
  * The collector must close its client in finally, on timeout as on every other outcome.
  */
 export async function connectWithinBudget(
-  client: Client, transport: Transport, budget: ReturnType<typeof connectionBudget>
+  client: Client, transport: Transport, budget: ReturnType<typeof connectionBudget>, signal?: AbortSignal
 ): Promise<void> {
+  signal?.throwIfAborted();
   const remaining = Math.ceil(budget.deadline - performance.now());
   if (remaining <= 0) throw new ConnectionTimeoutError(budget.timeoutMs);
   let timer: ReturnType<typeof setTimeout> | undefined;
   const expired = new Promise<never>((_resolve, reject) => {
     timer = setTimeout(() => reject(new ConnectionTimeoutError(budget.timeoutMs)), remaining);
   });
+  let onAbort: (() => void) | undefined;
+  const cancelled = new Promise<never>((_resolve, reject) => {
+    if (signal) {
+      onAbort = () => {
+        // AbortSignal reasons are caller-owned values; preserve their identity.
+        // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
+        reject(signal.reason);
+      };
+      signal.addEventListener('abort', onAbort, { once: true });
+    }
+  });
   try {
     await Promise.race([
       client.connect(transport, { timeout: remaining, maxTotalTimeout: remaining }),
-      expired
+      expired, cancelled
     ]);
   } finally {
     clearTimeout(timer);
+    if (onAbort) signal?.removeEventListener('abort', onAbort);
   }
 }

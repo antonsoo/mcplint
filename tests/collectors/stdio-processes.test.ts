@@ -55,6 +55,27 @@ async function setup(mode: string, launcher: 'direct' | 'npm' | 'exited-wrapper'
 }
 
 describe.skipIf(process.platform === 'win32')('owned POSIX stdio processes, actual native MCP and npm', () => {
+  it('does not spawn a command for an already cancelled collection', async () => {
+    const fixture = await setup('graceful', 'direct');
+    const controller = new AbortController();
+    const reason = new Error('cancelled before launch');
+    controller.abort(reason);
+    await expect(collectStdio({ ...fixture.options, signal: controller.signal })).rejects.toBe(reason);
+    await expect(fixture.pid()).rejects.toMatchObject({ code: 'ENOENT' });
+  });
+
+  it('joins a resistant npm descendant before rejecting with the caller cancellation reason', async () => {
+    const fixture = await setup('stalled-resistant');
+    const controller = new AbortController();
+    const reason = new Error('caller cancelled collection');
+    const pending = collectStdio({ ...fixture.options, signal: controller.signal }).catch(error => error as unknown);
+    await expect.poll(async () => { try { return await fixture.pid(); } catch { return 0; } }).toBeGreaterThan(0);
+    controller.abort(reason);
+    expect(await pending).toBe(reason);
+    expect(await live(await fixture.pid())).toBe(false);
+    expect(await fixture.events()).toContain('SIGTERM:ignored');
+  }, 12_000);
+
   for (const launcher of ['direct', 'npm'] as const) {
     it(`lets ${launcher} exit on EOF before sending a signal`, async () => {
       const fixture = await setup('graceful', launcher);

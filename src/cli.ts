@@ -4,7 +4,6 @@ import { createReadStream } from 'node:fs';
 import { resolve } from 'node:path';
 import chalk from 'chalk';
 import { collectStdio } from './collectors/stdio.js';
-import { shutdownStdioProcesses } from './collectors/stdio-transport.js';
 import { collectHttp } from './collectors/http.js';
 import { collectFile } from './collectors/file.js';
 import { collectConfig } from './collectors/config.js';
@@ -27,12 +26,14 @@ import type { LintTarget, LintResult, Severity } from './core/types.js';
 import { VERSION } from './version.js';
 
 let interrupted: number | undefined;
+const cancellation = new AbortController();
 function interrupt(exitCode: number): void {
   if (interrupted !== undefined) return;
   interrupted = exitCode;
   // POSIX stdio servers have their own process group. Join their shutdown
   // before exiting; an interactive signal no longer reaches them implicitly.
-  void shutdownStdioProcesses().then(() => process.exit(exitCode));
+  cancellation.abort(new Error('Audit interrupted.'));
+  void mainCompletion.then(() => process.exit(exitCode));
 }
 process.on('SIGINT', () => interrupt(130));
 process.on('SIGTERM', () => interrupt(143));
@@ -148,8 +149,11 @@ async function main(): Promise<void> {
   if (values['total-budget'] !== undefined) config.totalBudget = parsePositiveInt('--total-budget', values['total-budget']);
 
   let collected: LintTarget;
-  const connectionOptions = values['connect-timeout'] === undefined ? {}
-    : { connectTimeoutMs: parsePositiveInt('--connect-timeout', values['connect-timeout']) };
+  const connectionOptions = {
+    signal: cancellation.signal,
+    ...(values['connect-timeout'] === undefined ? {}
+      : { connectTimeoutMs: parsePositiveInt('--connect-timeout', values['connect-timeout']) })
+  };
   connectionBudget(connectionOptions.connectTimeoutMs);
 
   try {
@@ -292,7 +296,7 @@ function parseInputs(list: string[] | undefined): Record<string, string> | undef
   return out;
 }
 
-main().catch((err: unknown) => {
+const mainCompletion = main().catch((err: unknown) => {
   if (interrupted !== undefined) return;
   fail(err instanceof Error ? err.message : String(err));
 });

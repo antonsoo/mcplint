@@ -26,20 +26,30 @@ async function collectOver(
   transport: Transport, opts: HttpTargetOptions, budget: ReturnType<typeof connectionBudget>,
   client = new Client({ name: 'mcplint', version: VERSION })
 ): Promise<LintTarget> {
+  opts.signal?.throwIfAborted();
+  const onAbort = (): void => { void transport.close().catch(() => undefined); };
+  opts.signal?.addEventListener('abort', onAbort, { once: true });
   try {
-    await connectWithinBudget(client, transport, budget);
+    await connectWithinBudget(client, transport, budget, opts.signal);
     // See collectors/stdio.ts: prefer the server's own declared name over a
     // generic "http" placeholder when the caller didn't pin a serverId.
     const discoveredName = client.getServerVersion()?.name;
     const serverId = opts.serverId ?? discoveredName ?? 'http';
     const label = opts.label ?? opts.url;
-    return await collectFromClient(client, serverId, label);
+    const target = await collectFromClient(client, serverId, label);
+    opts.signal?.throwIfAborted();
+    return target;
   } finally {
-    await client.close().catch(() => undefined);
+    try {
+      await client.close().catch(() => undefined);
+      await transport.close();
+      opts.signal?.throwIfAborted();
+    } finally { opts.signal?.removeEventListener('abort', onAbort); }
   }
 }
 
 export async function collectHttp(opts: HttpTargetOptions): Promise<LintTarget> {
+  opts.signal?.throwIfAborted();
   const budget = connectionBudget(opts.connectTimeoutMs);
   const url = new URL(opts.url);
   const requestInit = opts.headers ? { headers: opts.headers } : undefined;
@@ -68,6 +78,7 @@ export async function collectHttp(opts: HttpTargetOptions): Promise<LintTarget> 
         requestInit, fetch: fetchFor(client),
       }), client);
     } catch (streamable) {
+      opts.signal?.throwIfAborted();
       // Only a protocol rejection justifies trying legacy SSE. A timeout, server
       // outage or invalid initialize response is not evidence of an older server.
       if (redirectFailure || integrityFailure || client.getServerVersion() !== undefined ||
@@ -78,6 +89,7 @@ export async function collectHttp(opts: HttpTargetOptions): Promise<LintTarget> 
       return await sse();
     }
   } catch (error) {
+    opts.signal?.throwIfAborted();
     // EventSource wraps fetch rejections. Keep our bounded diagnostic without
     // trusting a server-supplied message or echoing a Location URL's credentials.
     throw redirectFailure ?? integrityFailure ?? error;

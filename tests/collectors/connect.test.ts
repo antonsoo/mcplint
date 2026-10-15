@@ -65,6 +65,57 @@ function good(req: IncomingMessage, res: ServerResponse, message: Message): void
 }
 
 describe('actual transport connection deadlines', () => {
+  it('cancels legacy SSE startup without waiting for its connection deadline', async () => {
+    const server = await listen((_req, res) => {
+      res.writeHead(200, { 'Content-Type': 'text/event-stream' }); res.write(': open\n\n');
+    });
+    const controller = new AbortController();
+    const reason = new Error('caller cancelled SSE startup');
+    const pending = collectHttp({ url: server.url, transport: 'sse', signal: controller.signal,
+      connectTimeoutMs: 5000 }).catch(error => error as unknown);
+    await expect.poll(() => server.requests.length).toBe(1);
+    controller.abort(reason);
+    expect(await pending).toBe(reason);
+    await expect.poll(() => server.active.size).toBe(0);
+    expect(server.requests.map(request => request.method)).toEqual(['GET']);
+  });
+
+  it('rejects cancellation during list collection instead of returning a partial success', async () => {
+    const server = await listen((req, res, message) => {
+      if (message.method !== 'tools/list') good(req, res, message);
+    });
+    const controller = new AbortController();
+    const reason = new Error('caller cancelled tool collection');
+    const pending = collectHttp({ url: server.url, signal: controller.signal,
+      connectTimeoutMs: 5000 }).catch(error => error as unknown);
+    await expect.poll(() => server.requests.some(request => request.rpc === 'tools/list')).toBe(true);
+    controller.abort(reason);
+    expect(await pending).toBe(reason);
+    await expect.poll(() => server.active.size).toBe(0);
+  });
+
+  it('aborts a config before starting its next server', async () => {
+    const stalled = await listen((_req, res) => {
+      res.writeHead(200, { 'Content-Type': 'text/event-stream' }); res.write(': open\n\n');
+    });
+    const healthy = await listen(good);
+    const config = join(await scratch(), '.mcp.json');
+    await writeFile(config, JSON.stringify({ mcpServers: {
+      stalled: { type: 'sse', url: stalled.url }, healthy: { url: healthy.url }
+    } }));
+    const controller = new AbortController();
+    const reason = new Error('caller cancelled config');
+    const started: string[] = [];
+    const pending = collectConfig(config, { signal: controller.signal, connectTimeoutMs: 5000,
+      onServerStart: entry => { started.push(entry.key); } }).catch(error => error as unknown);
+    await expect.poll(() => stalled.requests.length).toBe(1);
+    controller.abort(reason);
+    expect(await pending).toBe(reason);
+    expect(started).toEqual(['stalled']);
+    expect(healthy.requests).toHaveLength(0);
+    await expect.poll(() => stalled.active.size).toBe(0);
+  });
+
   for (const headers of [false, true]) {
     it(`closes legacy SSE that never sends an endpoint (headers sent: ${headers})`, async () => {
       const server = await listen((_req, res) => {

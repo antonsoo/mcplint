@@ -1,7 +1,7 @@
 {
   "node": "v26.7.0",
   "platform": "linux",
-  "transportSha256": "6b817bbb96f38c5d2b4d961c167eea206a11c6705dcbccb92196d26641bd24b8",
+  "transportSha256": "f7c1b7c17501dabbc00d98a271ba99c00a95c9628b31c254f17f41e110a0bf0a",
   "fixture": "synthetic local native MCP SDK server with a 40 ms heartbeat",
   "results": [
     {
@@ -11,7 +11,7 @@
       "code": 130,
       "signal": null,
       "timedOut": false,
-      "elapsedMs": 4747,
+      "elapsedMs": 4596,
       "cliExit": {
         "code": 130,
         "signal": null
@@ -34,7 +34,7 @@
       "code": 130,
       "signal": null,
       "timedOut": false,
-      "elapsedMs": 4697,
+      "elapsedMs": 4695,
       "cliExit": {
         "code": 130,
         "signal": null

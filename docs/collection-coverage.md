@@ -120,10 +120,18 @@ elapsed time. On POSIX, each stdio launch gets its own process group; cleanup
 closes stdin, allows two seconds for EOF shutdown, signals the remaining group
 with SIGTERM, then allows another two seconds before SIGKILL. It checks the group
 even after npm/the launcher exits, including helpers with no inherited pipes.
-After SIGKILL it waits up to two seconds for the direct child and closes local
+After SIGKILL it waits up to two seconds for the direct child/group and closes local
 pipe endpoints. The CLI joins the same cleanup on SIGINT/SIGTERM before exiting
-with 130/143, and does not start later stdio config entries during shutdown.
+with 130/143, and does not start later config entries during shutdown.
 Library imports do not install process signal handlers.
+
+Library callers can pass an `AbortSignal` as `signal` to `collectStdio`,
+`collectHttp` and `collectConfig`. A pre-aborted signal prevents intake/launch.
+Cancellation during startup or listing rejects with `signal.reason` after
+transport/process cleanup. An aborted config stops before its next server.
+Applications own their signal policy; for example, an application's existing
+SIGINT handler can abort its controller and wait for the collection promise to
+settle before exiting. [Installed library controls](../studies/stdio-processes/README.md).
 
 Windows retains direct-child termination; process-group behavior was verified on
 Linux/WSL2, not Windows or macOS. This is not a deadline for the entire audit,

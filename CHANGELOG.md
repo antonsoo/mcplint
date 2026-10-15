@@ -10,6 +10,9 @@ All notable changes to this project are documented in this file.
   SIGTERM join shutdown before exiting with 130/143; library imports install no
   signal handlers. [Native SDK, npm and installed CLI evidence](studies/stdio-processes/README.md).
   Windows retains direct-child cleanup; this is an unreleased source change.
+  Library callers can pass `signal` to `collectStdio`, `collectHttp` and
+  `collectConfig`; cancellation rejects with the caller's reason after cleanup,
+  including during legacy SSE startup, and prevents subsequent config launches.
 
 - Advance cached CR/LF search positions through each SSE chunk. Valid short
   comment lines no longer repeatedly scan the remaining suffix for a missing

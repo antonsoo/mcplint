@@ -7,15 +7,6 @@ import type { JSONRPCMessage } from '@modelcontextprotocol/sdk/types.js';
 import { JsonLineGuard, LiveJsonIntegrityError, MAX_STDIO_MESSAGE_BYTES } from './live-json.js';
 
 const SHUTDOWN_GRACE_MS = 2000;
-const activeTransports = new Set<GuardedStdioTransport>();
-let shuttingDown = false;
-
-/** CLI signal handling only: library imports install no process signal handlers.
- * Refuse subsequent config entries while the CLI joins cleanup and exits. */
-export async function shutdownStdioProcesses(): Promise<void> {
-  shuttingDown = true;
-  await Promise.allSettled([...activeTransports].map(transport => transport.close()));
-}
 
 /** Polling also observes descendants after the launcher has exited. A child's
  * `close` event alone says nothing about helpers that did not inherit its pipes. */
@@ -53,7 +44,6 @@ export class GuardedStdioTransport implements Transport {
   constructor(private readonly options: ProcessOptions) {}
 
   async start(): Promise<void> {
-    if (shuttingDown) throw new Error('Stdio collection was interrupted.');
     if (this.started) throw new Error('Stdio transport already started.');
     this.started = true;
     const child = spawn(this.options.command, this.options.args, {
@@ -66,7 +56,6 @@ export class GuardedStdioTransport implements Transport {
     });
     // stdin/stdout are pipes; stderr is intentionally inherited as before.
     this.process = child as ChildProcessByStdio<Writable, Readable, null>;
-    activeTransports.add(this);
     if (process.platform !== 'win32') this.processGroup = child.pid;
     const guard = this.guard = new JsonLineGuard();
     const framing = this.framing = new StdioServerTransport(guard, child.stdin!, {
@@ -139,9 +128,10 @@ export class GuardedStdioTransport implements Transport {
         // The group can still contain a live server after npm/the shell has
         // exited. Do not gate escalation on the launcher's exitCode.
         signal('SIGKILL');
-        // Orphaned zombies may keep a group id until their new parent reaps
-        // them. Wait for our own child, without an unbounded group/pipe wait.
-        await waitForStop(exited);
+        // Signal delivery is asynchronous even when the launcher already
+        // exited. Join group disappearance as well as our own child. Orphaned
+        // zombies may retain a group id, so this final wait is still bounded.
+        await waitForStop(() => exited() && stopped());
       }
     } finally {
       // A daemon can deliberately leave the group and retain inherited pipes.
@@ -151,7 +141,6 @@ export class GuardedStdioTransport implements Transport {
       child.unref();
       this.process = undefined;
       this.processGroup = undefined;
-      activeTransports.delete(this);
     }
   }
 

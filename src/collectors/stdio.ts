@@ -19,6 +19,7 @@ export interface StdioTargetOptions extends ConnectionOptions {
 }
 
 export async function collectStdio(opts: StdioTargetOptions): Promise<LintTarget> {
+  opts.signal?.throwIfAborted();
   const budget = connectionBudget(opts.connectTimeoutMs);
   const env: Record<string, string | undefined> = { ...getDefaultEnvironment(), ...processEnvAsStrings() };
   for (const [key, value] of Object.entries(opts.env ?? {})) {
@@ -40,9 +41,11 @@ export async function collectStdio(opts: StdioTargetOptions): Promise<LintTarget
   });
 
   const client = new Client({ name: 'mcplint', version: VERSION });
+  const onAbort = (): void => { void transport.close().catch(() => undefined); };
+  opts.signal?.addEventListener('abort', onAbort, { once: true });
 
   try {
-    await connectWithinBudget(client, transport, budget);
+    await connectWithinBudget(client, transport, budget, opts.signal);
     // Prefer the name the server itself declared in the `initialize` handshake
     // (serverInfo.name) over a generic "stdio" placeholder — much more useful
     // in reports and screenshots when linting a single server.
@@ -51,14 +54,20 @@ export async function collectStdio(opts: StdioTargetOptions): Promise<LintTarget
     // Keep the label as the literal command by default — it's what makes a report
     // reproducible (see the "target" field in the HTML/terminal header).
     const label = opts.label ?? `${opts.command} ${opts.args.join(' ')}`.trim();
-    return retainIntegrityFailure(await collectFromClient(client, serverId, label), transport.integrityError);
+    const target = await collectFromClient(client, serverId, label);
+    opts.signal?.throwIfAborted();
+    return retainIntegrityFailure(target, transport.integrityError);
   } catch (error) {
+    opts.signal?.throwIfAborted();
     throw transport.integrityError ?? error;
   } finally {
-    await client.close().catch(() => undefined);
-    // A guard-triggered close already detaches the transport from the client.
-    // Still join process cleanup before returning a partial report or failure.
-    await transport.close();
+    try {
+      await client.close().catch(() => undefined);
+      // A guard-triggered close already detaches the transport from the client.
+      // Still join process cleanup before returning a partial report or failure.
+      await transport.close();
+      opts.signal?.throwIfAborted();
+    } finally { opts.signal?.removeEventListener('abort', onAbort); }
   }
 }
 

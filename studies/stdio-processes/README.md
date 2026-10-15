@@ -1,7 +1,7 @@
 # Stdio shutdown must stop the server behind the launcher
 
 Captured on 2026-10-15 with Node 26.7.0, npm 12.0.1 and MCP SDK 1.31.0 on
-14-vCPU x64 WSL2 Linux (kernel 6.18.54.1, approximately 47 GiB available RAM).
+14-vCPU x64 WSL2 Linux (kernel 6.18.54.1, approximately 47 GiB RAM).
 
 The pre-fix source (`117350c105c2f432c7421c963073a36c02b4ecac`) signalled only
 the process it directly spawned. A real `npm run` launcher creates a shell and
@@ -69,14 +69,24 @@ POSIX launches use `detached: true` to establish an owned process group, while
 remaining referenced and connected to their stdio pipes. Shutdown closes stdin
 and gives EOF two seconds, sends SIGTERM to that group, gives it another two
 seconds, then sends SIGKILL if it still exists. A launcher's exit is insufficient
-evidence that its group is gone. The final wait for the direct child is bounded;
+evidence that its group is gone. The final wait for the direct child/group is bounded;
 local input/output endpoints are then destroyed. Orphaned zombies do not create
 an unbounded wait for group disappearance.
 
-The CLI joins shutdown on SIGINT/SIGTERM before exiting with 130/143. Further
-stdio starts are refused once interruption begins. Merely importing the
-library installs no signal handlers. The stdio collector also propagates a
+The CLI cancels collection on SIGINT/SIGTERM and joins shutdown before exiting
+with 130/143. Aborted configs never advance to their next server. Merely importing
+the library installs no signal handlers. The stdio collector also propagates a
 cleanup error instead of silently claiming successful completion.
+
+Library callers pass an `AbortSignal` as `signal` to `collectStdio`, `collectHttp`
+or `collectConfig`. Cancellation before launch starts nothing; cancellation
+during initialization, listing or process shutdown rejects with the caller's
+`signal.reason` after cleanup. This also interrupts legacy SSE startup before
+its connection deadline. The CLI uses this same cancellation path. The
+application importing the library owns any mapping from OS signals to its
+controller. [Source library replay](results/library.json) checks the public
+import, unchanged signal-handler counts, pre-aborted launch and a resistant npm
+descendant's state at the moment cancellation rejects.
 
 The process-group mechanism follows Node's documented
 [`options.detached`](https://nodejs.org/api/child_process.html#optionsdetached)
@@ -97,6 +107,7 @@ npm run build
 node studies/stdio-processes/replay.mjs . studies/stdio-processes/results/after.json --expect-clean
 npx vitest run tests/collectors/stdio-processes.test.ts
 node studies/stdio-processes/replay.mjs . studies/stdio-processes/results/interruption-controls.json --expect-clean --interrupt-controls
+node studies/stdio-processes/library-replay.mjs . studies/stdio-processes/results/library.json
 ```
 
 For the baseline, archive the pinned commit to a separate directory, install
