@@ -116,11 +116,21 @@ List collection has its separate limits after the handshake completes. Library
 callers can pass `connectTimeoutMs` to `collectHttp`, `collectStdio` or `collectConfig`;
 values must be integers from 1 through 2147483647. The default is 30000.
 The collector closes its transport on timeout. Scheduling and cleanup add to
-elapsed time: a directly spawned process receives EOF, then SIGTERM after two
-seconds and SIGKILL after another two seconds if needed. Cleanup waits for the
-direct child to close. This is not a deadline for the entire audit
-or a guarantee of terminating a server's detached descendants.
+elapsed time. On POSIX, each stdio launch gets its own process group; cleanup
+closes stdin, allows two seconds for EOF shutdown, signals the remaining group
+with SIGTERM, then allows another two seconds before SIGKILL. It checks the group
+even after npm/the launcher exits, including helpers with no inherited pipes.
+After SIGKILL it waits up to two seconds for the direct child and closes local
+pipe endpoints. The CLI joins the same cleanup on SIGINT/SIGTERM before exiting
+with 130/143, and does not start later stdio config entries during shutdown.
+Library imports do not install process signal handlers.
+
+Windows retains direct-child termination; process-group behavior was verified on
+Linux/WSL2, not Windows or macOS. This is not a deadline for the entire audit,
+a process sandbox, cleanup after SIGKILL of mcplint itself, or a guarantee of
+stopping descendants that deliberately create a different process group/session.
 [Actual connections, child-process checks and retained reports](../studies/connection-deadlines/README.md).
+[npm launchers, background helpers, interruption and installed CLI evidence](../studies/stdio-processes/README.md).
 
 ## CI and library consumers
 

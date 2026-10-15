@@ -58,7 +58,7 @@ export async function collectStdio(opts: StdioTargetOptions): Promise<LintTarget
     await client.close().catch(() => undefined);
     // A guard-triggered close already detaches the transport from the client.
     // Still join process cleanup before returning a partial report or failure.
-    await transport.close().catch(() => undefined);
+    await transport.close();
   }
 }
 

@@ -176,6 +176,9 @@ node dist/cli.js stdio -- npx tsx examples/good-server/server.ts
   complete initialization, including legacy HTTP fallback. Set `--connect-timeout <ms>` for slow
   startup. A timed-out config entry remains incomplete while the next server is audited.
   [Loopback reproduction, process cleanup and installed-package results](studies/connection-deadlines/README.md).
+  POSIX stdio cleanup now also stops the launched process group, including servers
+  behind npm and background helpers, after collection, failures and CLI interruption.
+  [Live-process and heartbeat reproduction](studies/stdio-processes/README.md).
 - **Bounded connection diagnostics (source checkout).** CLI errors keep recognized
   HTTP/MCP/system codes without copying response bodies or initialization error
   text into stderr. Malformed server-config and credential-argument diagnostics

@@ -4,6 +4,7 @@ import { createReadStream } from 'node:fs';
 import { resolve } from 'node:path';
 import chalk from 'chalk';
 import { collectStdio } from './collectors/stdio.js';
+import { shutdownStdioProcesses } from './collectors/stdio-transport.js';
 import { collectHttp } from './collectors/http.js';
 import { collectFile } from './collectors/file.js';
 import { collectConfig } from './collectors/config.js';
@@ -25,6 +26,16 @@ import { renderMetadataTerminal } from './report/metadata.js';
 import type { LintTarget, LintResult, Severity } from './core/types.js';
 import { VERSION } from './version.js';
 
+let interrupted: number | undefined;
+function interrupt(exitCode: number): void {
+  if (interrupted !== undefined) return;
+  interrupted = exitCode;
+  // POSIX stdio servers have their own process group. Join their shutdown
+  // before exiting; an interactive signal no longer reaches them implicitly.
+  void shutdownStdioProcesses().then(() => process.exit(exitCode));
+}
+process.on('SIGINT', () => interrupt(130));
+process.on('SIGTERM', () => interrupt(143));
 
 const HELP = `mcplint ${VERSION} — lint MCP server tools the way the model sees them.
 
@@ -60,6 +71,7 @@ Examples:
 `;
 
 function fail(message: string): never {
+  if (interrupted !== undefined) throw new Error('Audit interrupted.');
   process.stderr.write(chalk.red(`mcplint: ${visibleControls(message)}\n`));
   process.exit(2);
 }
@@ -176,9 +188,13 @@ async function main(): Promise<void> {
             inputPaths.push(...paths);
             await validateOutputPaths(inputPaths, outputPaths);
           },
-          onServerStart: (entry) => process.stderr.write(chalk.dim(`  starting ${visibleControls(entry.key)} (${entry.kind})...\n`)),
-          onServerError: (entry, err) =>
-            process.stderr.write(chalk.red(`  ${visibleControls(entry.key)}: ${connectionFailureMessage(err)}\n`)),
+          onServerStart: (entry) => {
+            if (interrupted !== undefined) throw new Error('Audit interrupted.');
+            process.stderr.write(chalk.dim(`  starting ${visibleControls(entry.key)} (${entry.kind})...\n`));
+          },
+          onServerError: (entry, err) => {
+            if (interrupted === undefined) process.stderr.write(chalk.red(`  ${visibleControls(entry.key)}: ${connectionFailureMessage(err)}\n`));
+          },
           onServerSkipped: (server) =>
             process.stderr.write(chalk.yellow(`  ${visibleControls(server.key)}: not started — ${visibleControls(server.reason)}\n`)),
           ...(inputs ? { inputs } : {})
@@ -192,6 +208,7 @@ async function main(): Promise<void> {
     fail((err as Error).message);
   }
 
+  if (interrupted !== undefined) return;
   const result = lint(collected, config);
   await validateOutputPaths(inputPaths, outputPaths);
   if (values.snapshot) {
@@ -276,5 +293,6 @@ function parseInputs(list: string[] | undefined): Record<string, string> | undef
 }
 
 main().catch((err: unknown) => {
+  if (interrupted !== undefined) return;
   fail(err instanceof Error ? err.message : String(err));
 });

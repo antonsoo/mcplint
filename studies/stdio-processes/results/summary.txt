@@ -1,0 +1,18 @@
+Native MCP SDK + actual npm; synthetic local servers, 40 ms heartbeats.
+A working server/helper after collection or interruption is a leak.
+
+Case                                  Before    After     Exit
+direct/graceful                       clean     clean     0
+npm/graceful                          clean     clean     0
+npm/lingering                         LEAK      clean     0
+npm/resistant                         LEAK      clean     0
+npm/stalled                           LEAK      clean     2
+exited-wrapper/resistant              LEAK      clean     2
+direct/background                     LEAK      clean     0
+npm/damaged                           LEAK      clean     0
+SIGINT/stalled-resistant              LEAK      clean     130
+SIGTERM/stalled-resistant             LEAK      clean     143
+
+Working servers/helpers after return: 8/10 -> 0/10
+Unrelated controls survived: 10/10
+External teardown needed after fix: 0/10

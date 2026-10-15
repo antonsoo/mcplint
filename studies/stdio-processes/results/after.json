@@ -1,0 +1,244 @@
+{
+  "node": "v26.7.0",
+  "platform": "linux",
+  "transportSha256": "6b817bbb96f38c5d2b4d961c167eea206a11c6705dcbccb92196d26641bd24b8",
+  "fixture": "synthetic local native MCP SDK server with a 40 ms heartbeat",
+  "results": [
+    {
+      "launcher": "direct",
+      "mode": "graceful",
+      "connectionMs": 5000,
+      "code": 0,
+      "signal": null,
+      "timedOut": false,
+      "elapsedMs": 780,
+      "cliExit": {
+        "code": 0,
+        "signal": null
+      },
+      "collectedTools": 1,
+      "complete": true,
+      "serverStateAfterReturn": "gone",
+      "heartbeatAdvancedAfterReturn": false,
+      "unrelatedProcessSurvived": true,
+      "events": [
+        "stdin:end",
+        "exit:0"
+      ],
+      "stderr": ""
+    },
+    {
+      "launcher": "npm",
+      "mode": "graceful",
+      "connectionMs": 5000,
+      "code": 0,
+      "signal": null,
+      "timedOut": false,
+      "elapsedMs": 894,
+      "cliExit": {
+        "code": 0,
+        "signal": null
+      },
+      "collectedTools": 1,
+      "complete": true,
+      "serverStateAfterReturn": "gone",
+      "heartbeatAdvancedAfterReturn": false,
+      "unrelatedProcessSurvived": true,
+      "events": [
+        "stdin:end",
+        "exit:0"
+      ],
+      "stderr": ""
+    },
+    {
+      "launcher": "npm",
+      "mode": "lingering",
+      "connectionMs": 5000,
+      "code": 0,
+      "signal": null,
+      "timedOut": false,
+      "elapsedMs": 2923,
+      "cliExit": {
+        "code": 0,
+        "signal": null
+      },
+      "collectedTools": 1,
+      "complete": true,
+      "serverStateAfterReturn": "gone",
+      "heartbeatAdvancedAfterReturn": false,
+      "unrelatedProcessSurvived": true,
+      "events": [
+        "stdin:end",
+        "SIGTERM",
+        "exit:0"
+      ],
+      "stderr": ""
+    },
+    {
+      "launcher": "npm",
+      "mode": "resistant",
+      "connectionMs": 5000,
+      "code": 0,
+      "signal": null,
+      "timedOut": false,
+      "elapsedMs": 4818,
+      "cliExit": {
+        "code": 0,
+        "signal": null
+      },
+      "collectedTools": 1,
+      "complete": true,
+      "serverStateAfterReturn": "gone",
+      "heartbeatAdvancedAfterReturn": false,
+      "unrelatedProcessSurvived": true,
+      "events": [
+        "stdin:end",
+        "SIGTERM:ignored"
+      ],
+      "stderr": ""
+    },
+    {
+      "launcher": "npm",
+      "mode": "stalled",
+      "connectionMs": 1200,
+      "code": 2,
+      "signal": null,
+      "timedOut": false,
+      "elapsedMs": 3634,
+      "cliExit": {
+        "code": 2,
+        "signal": null
+      },
+      "collectedTools": null,
+      "complete": null,
+      "serverStateAfterReturn": "gone",
+      "heartbeatAdvancedAfterReturn": false,
+      "unrelatedProcessSurvived": true,
+      "events": [
+        "stdin:end",
+        "SIGTERM",
+        "exit:0"
+      ],
+      "stderr": "mcplint: Connection and initialization exceeded 1200 ms. Check server startup and availability, or increase --connect-timeout."
+    },
+    {
+      "launcher": "exited-wrapper",
+      "mode": "resistant",
+      "connectionMs": 1200,
+      "code": 2,
+      "signal": null,
+      "timedOut": false,
+      "elapsedMs": 5664,
+      "cliExit": {
+        "code": 2,
+        "signal": null
+      },
+      "collectedTools": null,
+      "complete": null,
+      "serverStateAfterReturn": "gone",
+      "heartbeatAdvancedAfterReturn": false,
+      "unrelatedProcessSurvived": true,
+      "events": [
+        "stdin:end",
+        "SIGTERM:ignored"
+      ],
+      "stderr": "mcplint: Connection and initialization exceeded 1200 ms. Check server startup and availability, or increase --connect-timeout."
+    },
+    {
+      "launcher": "direct",
+      "mode": "background",
+      "connectionMs": 5000,
+      "code": 0,
+      "signal": null,
+      "timedOut": false,
+      "elapsedMs": 2754,
+      "cliExit": {
+        "code": 0,
+        "signal": null
+      },
+      "collectedTools": 1,
+      "complete": true,
+      "serverStateAfterReturn": "gone",
+      "heartbeatAdvancedAfterReturn": false,
+      "helperStateAfterReturn": "gone",
+      "helperHeartbeatAdvancedAfterReturn": false,
+      "unrelatedProcessSurvived": true,
+      "events": [
+        "stdin:end",
+        "exit:0",
+        "helper:SIGTERM"
+      ],
+      "stderr": ""
+    },
+    {
+      "launcher": "npm",
+      "mode": "damaged",
+      "connectionMs": 5000,
+      "code": 0,
+      "signal": null,
+      "timedOut": false,
+      "elapsedMs": 2785,
+      "cliExit": {
+        "code": 0,
+        "signal": null
+      },
+      "collectedTools": 0,
+      "complete": false,
+      "serverStateAfterReturn": "gone",
+      "heartbeatAdvancedAfterReturn": false,
+      "unrelatedProcessSurvived": true,
+      "events": [
+        "stdin:end",
+        "SIGTERM",
+        "exit:0"
+      ],
+      "stderr": ""
+    },
+    {
+      "launcher": "SIGINT",
+      "mode": "stalled-resistant",
+      "connectionMs": 60000,
+      "code": 130,
+      "signal": null,
+      "timedOut": false,
+      "elapsedMs": 4682,
+      "cliExit": {
+        "code": 130,
+        "signal": null
+      },
+      "collectedTools": null,
+      "complete": null,
+      "serverStateAfterReturn": "gone",
+      "heartbeatAdvancedAfterReturn": false,
+      "unrelatedProcessSurvived": true,
+      "events": [
+        "stdin:end",
+        "SIGTERM:ignored"
+      ],
+      "stderr": ""
+    },
+    {
+      "launcher": "SIGTERM",
+      "mode": "stalled-resistant",
+      "connectionMs": 60000,
+      "code": 143,
+      "signal": null,
+      "timedOut": false,
+      "elapsedMs": 4610,
+      "cliExit": {
+        "code": 143,
+        "signal": null
+      },
+      "collectedTools": null,
+      "complete": null,
+      "serverStateAfterReturn": "gone",
+      "heartbeatAdvancedAfterReturn": false,
+      "unrelatedProcessSurvived": true,
+      "events": [
+        "stdin:end",
+        "SIGTERM:ignored"
+      ],
+      "stderr": ""
+    }
+  ]
+}

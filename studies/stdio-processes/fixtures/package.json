@@ -1,0 +1,6 @@
+{
+  "name": "mcplint-process-lifecycle-fixture",
+  "private": true,
+  "type": "module",
+  "scripts": { "server": "node server.mjs" }
+}
