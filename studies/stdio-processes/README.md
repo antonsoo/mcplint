@@ -172,6 +172,11 @@ its `node_modules/@antonsoloviev/mcplint` directory as the replay's first
 argument. Use that consumer's Node/npm on PATH for the fixture subprocesses too.
 `library-replay.mjs` accepts the same installed directory and an output path.
 
-This is a local source correction. The tarball retains the existing `0.3.3`
-metadata for installation checks; it is not a new registry release. No push,
-tag, registry publication or hosted deployment was performed.
+The tarball retains the existing `0.3.3` metadata for installation checks; it
+is not a new registry release. After local verification, the source correction
+was pushed with the owner's authorization. The [publication receipt](results/publication.json)
+records a clean checkout at `ce34b3499c8ca19ccd8999ac16a182cec1ea5a56`, equal
+remote HEAD, and byte-for-byte matches for all 34 changed files fetched from
+pinned public GitHub URLs. No tag, registry publication or hosted deployment
+was performed. This subsequent documentation receipt does not change the
+tested implementation.

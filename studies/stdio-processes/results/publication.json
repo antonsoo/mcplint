@@ -1,0 +1,284 @@
+{
+  "date": "2026-10-15",
+  "baseline": "117350c105c2f432c7421c963073a36c02b4ecac",
+  "sourceHead": "ce34b3499c8ca19ccd8999ac16a182cec1ea5a56",
+  "remoteHead": "ce34b3499c8ca19ccd8999ac16a182cec1ea5a56",
+  "cleanTreeAtCapture": true,
+  "files": [
+    {
+      "path": "CHANGELOG.md",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/CHANGELOG.md",
+      "status": 200,
+      "bytes": 24573,
+      "sha256": "7e44183414995d349dd6a010c9f655c5844c4a819d38f119f78741bbed35fa91",
+      "matches": true
+    },
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/README.md",
+      "status": 200,
+      "bytes": 41037,
+      "sha256": "fef020333a648a6e9b9e173a7dd677a3eef2821842a1275f4dfa489fd502f20f",
+      "matches": true
+    },
+    {
+      "path": "docs/assets/stdio-processes.png",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/docs/assets/stdio-processes.png",
+      "status": 200,
+      "bytes": 176254,
+      "sha256": "d04dbf2f5d42cf7d329f72fa4df526193f1da63fcb8f39ee84b5d9a3f8d5a252",
+      "matches": true
+    },
+    {
+      "path": "docs/collection-coverage.md",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/docs/collection-coverage.md",
+      "status": 200,
+      "bytes": 15303,
+      "sha256": "d51bf88571ca48c43b03e8d66e2c399d2828ab88096657b138abfe20cf610cdd",
+      "matches": true
+    },
+    {
+      "path": "src/cli.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/src/cli.ts",
+      "status": 200,
+      "bytes": 13724,
+      "sha256": "f3ae7fd3d36f36d32bf095b791ce22d6f41d3ba2638e0bb33bf105a39e0725a5",
+      "matches": true
+    },
+    {
+      "path": "src/collectors/config.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/src/collectors/config.ts",
+      "status": 200,
+      "bytes": 13405,
+      "sha256": "cc0f0d536abe05a9ea8ca5c23f74953b9fe00a8536083e0e2a86e332566206bc",
+      "matches": true
+    },
+    {
+      "path": "src/collectors/connect.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/src/collectors/connect.ts",
+      "status": 200,
+      "bytes": 2719,
+      "sha256": "882d634067ec91e0c39c1dcb2a828da1c0c5f27c1423d11a8cc38c3ea3610829",
+      "matches": true
+    },
+    {
+      "path": "src/collectors/http.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/src/collectors/http.ts",
+      "status": 200,
+      "bytes": 4694,
+      "sha256": "eea6a2f382b67f1b5d13308cdf40dfe2353d0c289bd05dad7bb6165b127adcd7",
+      "matches": true
+    },
+    {
+      "path": "src/collectors/stdio-transport.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/src/collectors/stdio-transport.ts",
+      "status": 200,
+      "bytes": 6341,
+      "sha256": "dd973e47d69dd0fd48a3e11cbb4f91b1665aed3233a3c5a012a96dc4d53f0186",
+      "matches": true
+    },
+    {
+      "path": "src/collectors/stdio.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/src/collectors/stdio.ts",
+      "status": 200,
+      "bytes": 3596,
+      "sha256": "ef131f1dca80343022bb3d8ad15f59450a76df400929189f8ad0ad88f8fcb8ed",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/README.md",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/README.md",
+      "status": 200,
+      "bytes": 10432,
+      "sha256": "2c0f3f02dcbef53816dfcea27067bef592320e97e3290daca46e3ac88e9bead3",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/fixtures/helper.mjs",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/fixtures/helper.mjs",
+      "status": 200,
+      "bytes": 476,
+      "sha256": "c14388774265adae6d9cf499b9bea4b2464801fbae63d1e3056b525e49562d20",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/fixtures/package.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/fixtures/package.json",
+      "status": 200,
+      "bytes": 135,
+      "sha256": "023c3335e66e7af99c92caa12e302ac129d139bab41aed021647a149d6c8d300",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/fixtures/server.mjs",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/fixtures/server.mjs",
+      "status": 200,
+      "bytes": 2188,
+      "sha256": "ab3c9a14b823c6f83a768a833c55aaec07c655152c8b91fc333452aa5cbb2295",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/fixtures/wrapper.mjs",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/fixtures/wrapper.mjs",
+      "status": 200,
+      "bytes": 306,
+      "sha256": "002f3e19f6b43eb7a8edf94dd7f78edac8cb16c13187915cc065ff080b3b7541",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/library-replay.mjs",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/library-replay.mjs",
+      "status": 200,
+      "bytes": 3611,
+      "sha256": "9af600b270b581abf87ac5c10c814f6c8b9e18b0f07e529269bc5d8fba5a99fe",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/replay.mjs",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/replay.mjs",
+      "status": 200,
+      "bytes": 8727,
+      "sha256": "636585aacae427a9e6a6b17d9df29fb15bbbde59218e363988a6ab106e907d54",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/results/after.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/results/after.json",
+      "status": 200,
+      "bytes": 5870,
+      "sha256": "6a5c8fb2fe5d5a971449faafc71e457089a834e0cb8afd0403ff796548c29f3b",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/results/before.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/results/before.json",
+      "status": 200,
+      "bytes": 5728,
+      "sha256": "187d4253d6b1835f933499111467ad3793b9e6ff2f583fee0b4d33ea3f201abe",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/results/installed-node20.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/results/installed-node20.json",
+      "status": 200,
+      "bytes": 5871,
+      "sha256": "85bbf85525f51ee91ae02f28f675f82c59a0fc84e0c488fac007f402206d2e15",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/results/installed-node24.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/results/installed-node24.json",
+      "status": 200,
+      "bytes": 5871,
+      "sha256": "ff5ebd2ed2fe2072bdc3a40faf3dcab53edf19e5e1a40ea79ed42386c844bc9c",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/results/interruption-controls.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/results/interruption-controls.json",
+      "status": 200,
+      "bytes": 1504,
+      "sha256": "8a75ad6aa7adc5b6906cfbf1b705d76180ed34a4ea80ad83740d667230da260b",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/results/interruption-node20.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/results/interruption-node20.json",
+      "status": 200,
+      "bytes": 1504,
+      "sha256": "e2f6ffdc63fb3f31bb432b7a54f500fcf74d02daae9b0bf471b2416a5c425167",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/results/interruption-node24.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/results/interruption-node24.json",
+      "status": 200,
+      "bytes": 1505,
+      "sha256": "de5b16e74792cd44b6f80abee6d62c18b9892991426fdeb98907aa6b1d6b6723",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/results/library-node20.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/results/library-node20.json",
+      "status": 200,
+      "bytes": 334,
+      "sha256": "41364b21df91210405fa688240588c38fd62cff11bb6ec73d8acf03db79582a4",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/results/library-node24.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/results/library-node24.json",
+      "status": 200,
+      "bytes": 335,
+      "sha256": "6ced2a834dddf1dcd02cc76652f660ab44afc937b8b435f27175e05d59e44604",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/results/library.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/results/library.json",
+      "status": 200,
+      "bytes": 334,
+      "sha256": "60b512a488bd000a4a5052046d5ebf0095dc0f585a9570ab941140fe44123eed",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/results/public-import-node20.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/results/public-import-node20.json",
+      "status": 200,
+      "bytes": 104,
+      "sha256": "b15f25db94cdc8b1ec53ed0942f83782b44beeb714c52e83ca80d34abcce1132",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/results/public-import-node24.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/results/public-import-node24.json",
+      "status": 200,
+      "bytes": 105,
+      "sha256": "de50da6d0256a37103a5a7874012bb07e75b5c60f8f86282a93fbb6f0f30685e",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/results/summary.txt",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/results/summary.txt",
+      "status": 200,
+      "bytes": 936,
+      "sha256": "e837689fc28b95fb3acea60a15fd03dac28926c1784658b2d41c6bb1f02032e6",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/results/verification.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/results/verification.json",
+      "status": 200,
+      "bytes": 5102,
+      "sha256": "e98fc4dc93a62995f3abec05672c571c4d696f26676a28e3290586983f9a0c62",
+      "matches": true
+    },
+    {
+      "path": "studies/stdio-processes/summarize.mjs",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/studies/stdio-processes/summarize.mjs",
+      "status": 200,
+      "bytes": 1473,
+      "sha256": "d50b1027a0d8790d37fdbc903254fc2d099b702d132ac27fa02797558c501563",
+      "matches": true
+    },
+    {
+      "path": "tests/collectors/connect.test.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/tests/collectors/connect.test.ts",
+      "status": 200,
+      "bytes": 13181,
+      "sha256": "e0c867705951121997ea5189c3cda7b9bdbe917a690ad05bf06443e60d451631",
+      "matches": true
+    },
+    {
+      "path": "tests/collectors/stdio-processes.test.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/ce34b3499c8ca19ccd8999ac16a182cec1ea5a56/tests/collectors/stdio-processes.test.ts",
+      "status": 200,
+      "bytes": 7318,
+      "sha256": "032ffcbc141e8b88e2c0d925a737d6682aa2a54ca8f94c665ba28e74effa46cc",
+      "matches": true
+    }
+  ],
+  "fileCount": 34,
+  "allMatched": true,
+  "scope": "Public main source bytes only; no registry release or hosted demo deployment claimed."
+}
