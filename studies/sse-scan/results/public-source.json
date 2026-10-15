@@ -1,0 +1,94 @@
+{
+  "repository": "https://github.com/antonsoo/mcplint",
+  "revision": "5feb754b99766fb03dba5ddc0c6106edf102e365",
+  "remoteMain": "5feb754b99766fb03dba5ddc0c6106edf102e365",
+  "localTreeCleanAtVerification": true,
+  "allChangedFilesMatchPublicPinnedBytes": true,
+  "files": [
+    {
+      "path": "CHANGELOG.md",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/5feb754b99766fb03dba5ddc0c6106edf102e365/CHANGELOG.md",
+      "bytes": 23842,
+      "sha256": "4c7fac8de9190495152835af7802188add3045065a051d3c03e9bc116c5def9f"
+    },
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/5feb754b99766fb03dba5ddc0c6106edf102e365/README.md",
+      "bytes": 40788,
+      "sha256": "9d2fc5e798bc7fb1a1a92fa3e5ce3646fca769bc22d52941639b70cc0c07860f"
+    },
+    {
+      "path": "src/collectors/sse-bounds.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/5feb754b99766fb03dba5ddc0c6106edf102e365/src/collectors/sse-bounds.ts",
+      "bytes": 2817,
+      "sha256": "ce5bd7b057e223b9269a76b65315ffb3164a6f600e6671f8292fc369aa73d70e"
+    },
+    {
+      "path": "studies/sse-scan/README.md",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/5feb754b99766fb03dba5ddc0c6106edf102e365/studies/sse-scan/README.md",
+      "bytes": 4809,
+      "sha256": "d9d014a82973b28f86ebc436530b488a3518ae3cd73b7d0703ed86115be92755"
+    },
+    {
+      "path": "studies/sse-scan/replay.mjs",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/5feb754b99766fb03dba5ddc0c6106edf102e365/studies/sse-scan/replay.mjs",
+      "bytes": 4699,
+      "sha256": "0767174e2bdff87b1cdbfd2679ad256368b806267a6765e0c09c64bafe1f38c4"
+    },
+    {
+      "path": "studies/sse-scan/results/after.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/5feb754b99766fb03dba5ddc0c6106edf102e365/studies/sse-scan/results/after.json",
+      "bytes": 10673,
+      "sha256": "7448d5e557af98ed098fe61f03b2bb2372eea714e46d904334698300160779a3"
+    },
+    {
+      "path": "studies/sse-scan/results/artifacts.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/5feb754b99766fb03dba5ddc0c6106edf102e365/studies/sse-scan/results/artifacts.json",
+      "bytes": 19317,
+      "sha256": "ef803789c575ba4ee298ce6eed3d87d10674fd71375f640fff44229b9ba8b402"
+    },
+    {
+      "path": "studies/sse-scan/results/before.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/5feb754b99766fb03dba5ddc0c6106edf102e365/studies/sse-scan/results/before.json",
+      "bytes": 5263,
+      "sha256": "5cae8b93200401fb6624b91219d0e1bfb3514959c66fe464f29fdbb14607d825"
+    },
+    {
+      "path": "studies/sse-scan/results/packed-node20.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/5feb754b99766fb03dba5ddc0c6106edf102e365/studies/sse-scan/results/packed-node20.json",
+      "bytes": 10686,
+      "sha256": "06e80bfc2999fca85f46b360edd68d6ca2cc3be83d2a382fa32f204676279111"
+    },
+    {
+      "path": "studies/sse-scan/results/packed-node26.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/5feb754b99766fb03dba5ddc0c6106edf102e365/studies/sse-scan/results/packed-node26.json",
+      "bytes": 10679,
+      "sha256": "02763e105c25dfb97b7d08d9703d336b5eb6623d4149b971a73723c3301517b0"
+    },
+    {
+      "path": "studies/sse-scan/results/scaling-after.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/5feb754b99766fb03dba5ddc0c6106edf102e365/studies/sse-scan/results/scaling-after.json",
+      "bytes": 3690,
+      "sha256": "fd56e637fd7a2190c4d0b99fa135f3a1c174192824223197dee13f220007fd84"
+    },
+    {
+      "path": "studies/sse-scan/results/scaling-before.json",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/5feb754b99766fb03dba5ddc0c6106edf102e365/studies/sse-scan/results/scaling-before.json",
+      "bytes": 3674,
+      "sha256": "3066f1522fe8bdcc70894f66cd1f8970165622c73d2bdd28e27bc51973c68e4d"
+    },
+    {
+      "path": "studies/sse-scan/scaling.mjs",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/5feb754b99766fb03dba5ddc0c6106edf102e365/studies/sse-scan/scaling.mjs",
+      "bytes": 1310,
+      "sha256": "6139a15bef3f09d7b2d01db025d0e8ee64ad5ccb3a76b601cdd380edd7ac0b63"
+    },
+    {
+      "path": "tests/collectors/http-bounds.test.ts",
+      "url": "https://raw.githubusercontent.com/antonsoo/mcplint/5feb754b99766fb03dba5ddc0c6106edf102e365/tests/collectors/http-bounds.test.ts",
+      "bytes": 7439,
+      "sha256": "e34b10d08b383062f3778dad36fa6cbe26dc3b00282869e77db16c6af8c2edf2"
+    }
+  ],
+  "scope": "Source synchronization only; no registry release or hosted deployment claimed"
+}

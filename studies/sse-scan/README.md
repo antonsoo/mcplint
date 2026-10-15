@@ -90,3 +90,7 @@ The installed package also replays every guard and loopback case on
 source metadata exactly, including the 12 MiB stream within the same 5,000 ms
 initialization budget. The three compiled modules' hashes match the source build.
 No browser code changed in this HTTP collector repair.
+
+[Public source receipt](results/public-source.json): all 14 changed files at
+`5feb754b99766fb03dba5ddc0c6106edf102e365` matched a clean checkout and pinned
+GitHub raw-file bytes. The remote main head matched that revision at verification.
