@@ -1,0 +1,55 @@
+{
+  "node": "v20.0.0",
+  "platform": "linux",
+  "transportSha256": "f7c1b7c17501dabbc00d98a271ba99c00a95c9628b31c254f17f41e110a0bf0a",
+  "fixture": "synthetic local native MCP SDK server with a 40 ms heartbeat",
+  "results": [
+    {
+      "launcher": "group-SIGINT",
+      "mode": "stalled-resistant",
+      "connectionMs": 60000,
+      "code": 130,
+      "signal": null,
+      "timedOut": false,
+      "elapsedMs": 6987,
+      "cliExit": {
+        "code": 130,
+        "signal": null
+      },
+      "collectedTools": null,
+      "complete": null,
+      "serverStateAfterReturn": "gone",
+      "heartbeatAdvancedAfterReturn": false,
+      "unrelatedProcessSurvived": true,
+      "events": [
+        "stdin:end",
+        "SIGTERM:ignored"
+      ],
+      "stderr": ""
+    },
+    {
+      "launcher": "config-SIGINT",
+      "mode": "stalled-resistant",
+      "connectionMs": 60000,
+      "code": 130,
+      "signal": null,
+      "timedOut": false,
+      "elapsedMs": 6694,
+      "cliExit": {
+        "code": 130,
+        "signal": null
+      },
+      "collectedTools": null,
+      "complete": null,
+      "serverStateAfterReturn": "gone",
+      "heartbeatAdvancedAfterReturn": false,
+      "laterServerStarted": false,
+      "unrelatedProcessSurvived": true,
+      "events": [
+        "stdin:end",
+        "SIGTERM:ignored"
+      ],
+      "stderr": "mcplint: \"config\" launches every server listed in <scratch>/.mcp.json. Only run this against configs you trust.\n  starting current (stdio)..."
+    }
+  ]
+}

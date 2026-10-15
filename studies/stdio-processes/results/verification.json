@@ -1,0 +1,163 @@
+{
+  "date": "2026-10-15",
+  "baselineRevision": "117350c105c2f432c7421c963073a36c02b4ecac",
+  "implementationRevision": "67b43208fafa1ad258d18eda1882569ea23014c2",
+  "trackingIssue": "officina-j1ja",
+  "environment": {
+    "platform": "Linux/WSL2",
+    "kernel": "6.18.54.1-microsoft-standard-WSL2",
+    "arch": "x86_64",
+    "logicalCpus": 14
+  },
+  "sourceManifestSha256": "8727ff69e821abfaa30726bef86110e24c69390e77e9f65ed0fabebb1f9cfc9b",
+  "sourceChecks": [
+    {
+      "node": "v26.7.0",
+      "freshArchive": true,
+      "commands": [
+        "npm ci",
+        "npm run lint",
+        "npm run typecheck",
+        "npm test -- --maxWorkers 4",
+        "npm run build",
+        "npm run build:site",
+        "npm pack --json --pack-destination <scratch>"
+      ],
+      "allCommandsExitCode": 0,
+      "testFilesPassed": 49,
+      "testsPassed": 653,
+      "testDurationSeconds": 67.53,
+      "archive": {
+        "bytes": 19712000,
+        "sha256": "db674feb6120dddd15b21043d0bf05e745fd17a9471f94b8c6f7e1b95cf706e7"
+      }
+    },
+    {
+      "node": "v24.21.0",
+      "freshArchive": true,
+      "commands": [
+        "npm ci",
+        "npm run lint",
+        "npm run typecheck",
+        "npm test -- --maxWorkers 4",
+        "npm run build",
+        "npm run build:site",
+        "npm pack --json --pack-destination <scratch>"
+      ],
+      "allCommandsExitCode": 0,
+      "testFilesPassed": 49,
+      "testsPassed": 653,
+      "testDurationSeconds": 65.4,
+      "archive": {
+        "bytes": 19712000,
+        "sha256": "db674feb6120dddd15b21043d0bf05e745fd17a9471f94b8c6f7e1b95cf706e7"
+      }
+    }
+  ],
+  "tarball": {
+    "filename": "antonsoloviev-mcplint-0.3.3.tgz",
+    "bytes": 137496,
+    "sha256": "7ea79e6e4d823362e4d13c87f28ea1d4795dbd99d09c0ba5f234171ce91cd8c2",
+    "packageVersion": "0.3.3",
+    "identicalAcrossNode24And26Builds": true,
+    "unpackedBytes": 435675,
+    "fileCount": 125
+  },
+  "consumerTypecheck": {
+    "passed": true,
+    "command": "tsc --noEmit --strict --skipLibCheck --module NodeNext --moduleResolution NodeNext --target ES2022 --typeRoots <archive>/node_modules/@types check.mts"
+  },
+  "installedConsumers": [
+    {
+      "node": "v20.0.0",
+      "npm": "9.6.4",
+      "freshTarballInstall": true,
+      "binVersion": "0.3.3",
+      "binFileAudit": {
+        "complete": true,
+        "tools": 2
+      },
+      "publicSpecifierImport": true,
+      "preabortedCollectors": 3,
+      "mainProcessCasesPassed": 10,
+      "extraInterruptionCasesPassed": 2,
+      "libraryCancellationPassed": true,
+      "unrelatedProcessesSurvived": 12,
+      "shippedDistFilesVerified": 94,
+      "distManifestSha256": "3cef5beb1881f05cab13fdc14ffbc2414da1dd1db1ae658078bc03c53271cd85",
+      "dependencies": {
+        "@modelcontextprotocol/sdk": "1.32.1",
+        "gpt-tokenizer": "4.0.3"
+      }
+    },
+    {
+      "node": "v24.21.0",
+      "npm": "11.19.0",
+      "freshTarballInstall": true,
+      "binVersion": "0.3.3",
+      "binFileAudit": {
+        "complete": true,
+        "tools": 2
+      },
+      "publicSpecifierImport": true,
+      "preabortedCollectors": 3,
+      "mainProcessCasesPassed": 10,
+      "extraInterruptionCasesPassed": 2,
+      "libraryCancellationPassed": true,
+      "unrelatedProcessesSurvived": 12,
+      "shippedDistFilesVerified": 94,
+      "distManifestSha256": "3cef5beb1881f05cab13fdc14ffbc2414da1dd1db1ae658078bc03c53271cd85",
+      "dependencies": {
+        "@modelcontextprotocol/sdk": "1.32.1",
+        "gpt-tokenizer": "4.0.3"
+      }
+    }
+  ],
+  "sourceStudy": {
+    "cases": 10,
+    "leakingCasesBefore": 8,
+    "leakingCasesAfter": 0
+  },
+  "criticalSourceFiles": {
+    "cli.ts": {
+      "bytes": 13724,
+      "sha256": "f3ae7fd3d36f36d32bf095b791ce22d6f41d3ba2638e0bb33bf105a39e0725a5"
+    },
+    "collectors/stdio-transport.ts": {
+      "bytes": 6341,
+      "sha256": "dd973e47d69dd0fd48a3e11cbb4f91b1665aed3233a3c5a012a96dc4d53f0186"
+    },
+    "collectors/stdio.ts": {
+      "bytes": 3596,
+      "sha256": "ef131f1dca80343022bb3d8ad15f59450a76df400929189f8ad0ad88f8fcb8ed"
+    },
+    "collectors/connect.ts": {
+      "bytes": 2719,
+      "sha256": "882d634067ec91e0c39c1dcb2a828da1c0c5f27c1423d11a8cc38c3ea3610829"
+    },
+    "collectors/http.ts": {
+      "bytes": 4694,
+      "sha256": "eea6a2f382b67f1b5d13308cdf40dfe2353d0c289bd05dad7bb6165b127adcd7"
+    },
+    "collectors/config.ts": {
+      "bytes": 13405,
+      "sha256": "cc0f0d536abe05a9ea8ca5c23f74953b9fe00a8536083e0e2a86e332566206bc"
+    }
+  },
+  "screenshot": {
+    "path": "docs/assets/stdio-processes.png",
+    "bytes": 176254,
+    "sha256": "d04dbf2f5d42cf7d329f72fa4df526193f1da63fcb8f39ee84b5d9a3f8d5a252"
+  },
+  "publication": {
+    "localCommitsOnly": true,
+    "pushedByThisSession": false,
+    "registryReleaseByThisSession": false,
+    "deploymentByThisSession": false
+  },
+  "limits": [
+    "Process-group behavior verified on Linux/WSL2 only; macOS unverified.",
+    "Windows retains direct-child cleanup.",
+    "Descendants that deliberately leave the owned process group/session and SIGKILL of mcplint itself remain outside cleanup."
+  ]
+}

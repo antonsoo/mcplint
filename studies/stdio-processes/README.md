@@ -119,5 +119,59 @@ The fixture and harness are shared between both builds. Ordinary controls allow
 signal controls use 60000 ms and interrupt as soon as the fixture is running.
 These are connection budgets, not wall-clock audit deadlines.
 
-The main change is source only. No registry release or hosted deployment is
-implied by these local results.
+## Clean builds and installed artifacts
+
+[Verification receipt](results/verification.json) pins implementation commit
+`67b43208fafa1ad258d18eda1882569ea23014c2`, source/archive hashes and the tested
+tarball. Two fresh archives independently ran `npm ci`, lint, typecheck, the
+complete test suite, the CLI build, the static report build and `npm pack`.
+
+| Environment | Verified result |
+| --- | --- |
+| Source: Node 24.21.0 / npm 11.19.0 | 49 files, 653 tests; lint/typecheck/build/site/pack pass |
+| Source: Node 26.7.0 / npm 12.0.1 | 49 files, 653 tests; lint/typecheck/build/site/pack pass |
+| Fresh tarball install: Node 20.0.0 / npm 9.6.4 | CLI bin, public import, 10 lifecycle cases, 2 interruption controls and library cancellation pass |
+| Fresh tarball install: Node 24.21.0 / npm 11.19.0 | CLI bin, public import, 10 lifecycle cases, 2 interruption controls and library cancellation pass |
+
+Both source builds produced the same 137,496-byte tarball (SHA-256
+`7ea79e6e4d823362e4d13c87f28ea1d4795dbd99d09c0ba5f234171ce91cd8c2`). All 94
+shipped JavaScript/declaration files matched the clean builds byte for byte in
+both consumer installs. A separate TypeScript consumer checked the installed
+declarations for all three collectors' `signal` option. A real public-specifier
+import (`@antonsoloviev/mcplint`) preserved process signal-handler counts and
+rejected pre-aborted stdio/HTTP/config calls before I/O.
+
+The source builds use locked SDK 1.31.0. Fresh consumer installs resolved the
+declared ranges to SDK 1.32.1 and gpt-tokenizer 4.0.3; the installed replays thus
+also exercise those resolved dependencies, without relying on the checkout's
+node_modules.
+
+| Installed evidence | Node 20 | Node 24 |
+| --- | --- | --- |
+| Lifecycle cases | [receipt](results/installed-node20.json) | [receipt](results/installed-node24.json) |
+| Terminal/config interruption | [receipt](results/interruption-node20.json) | [receipt](results/interruption-node24.json) |
+| Library cancellation | [receipt](results/library-node20.json) | [receipt](results/library-node24.json) |
+| Public import/pre-aborted calls | [receipt](results/public-import-node20.json) | [receipt](results/public-import-node24.json) |
+
+The clean-source checks were:
+
+```sh
+task_artifact_dir=$(mktemp -d)
+npm ci
+npm run lint
+npm run typecheck
+npm test -- --maxWorkers 4
+npm run build
+npm run build:site
+npm pack --json --pack-destination "$task_artifact_dir"
+```
+
+`npm run build:site` produces the three static reports in `site/`. To check an
+installed build, install the tarball into an empty consumer project, then pass
+its `node_modules/@antonsoloviev/mcplint` directory as the replay's first
+argument. Use that consumer's Node/npm on PATH for the fixture subprocesses too.
+`library-replay.mjs` accepts the same installed directory and an output path.
+
+This is a local source correction. The tarball retains the existing `0.3.3`
+metadata for installation checks; it is not a new registry release. No push,
+tag, registry publication or hosted deployment was performed.
