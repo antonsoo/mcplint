@@ -74,3 +74,19 @@ connection failures. The scripts retain hashes for the input and tested modules.
 
 The working source passes all 640 tests, lint and type checking. These are source
 changes; no npm registry release or hosted deployment is implied.
+
+## Clean and installed package checks
+
+A clean archive of `d0e0a09` was installed with `npm ci`: lint, type checking,
+all **640 tests on Node 20.20.2**, build and `npm pack` pass. All 125 files in
+the tarball match both the clean build and a separate installation byte-for-byte
+(including 96 distribution files). The installed CLI's complete fixture JSON
+matches the clean CLI except for its generation timestamp.
+[Artifact hashes and comparison scope](results/artifacts.json).
+
+The installed package also replays every guard and loopback case on
+[Node 20.20.2](results/packed-node20.json) and
+[Node 26.7.0](results/packed-node26.json). All repaired collections match the
+source metadata exactly, including the 12 MiB stream within the same 5,000 ms
+initialization budget. The three compiled modules' hashes match the source build.
+No browser code changed in this HTTP collector repair.
