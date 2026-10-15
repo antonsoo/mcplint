@@ -18,9 +18,13 @@ export class SseMessageBounds {
       if (chunk[0] === 10) start = 1;
       if (chunk.length) this.afterCr = false;
     }
+    // Cache each separator's next position. Searching the remaining suffix for
+    // an absent CR on every LF-only line makes valid comment streams quadratic.
+    let lf = chunk.indexOf(10, start);
+    let cr = chunk.indexOf(13, start);
     while (start < chunk.length) {
-      const lf = chunk.indexOf(10, start);
-      const cr = chunk.indexOf(13, start);
+      if (lf !== -1 && lf < start) lf = chunk.indexOf(10, start);
+      if (cr !== -1 && cr < start) cr = chunk.indexOf(13, start);
       const end = lf < 0 ? (cr < 0 ? chunk.length : cr) : (cr < 0 ? lf : Math.min(lf, cr));
       for (let i = start; i < end && this.prefix.length < 9; i++) this.prefix.push(chunk[i]!);
       this.lineBytes += end - start;

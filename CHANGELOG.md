@@ -4,6 +4,12 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Advance cached CR/LF search positions through each SSE chunk. Valid short
+  comment lines no longer repeatedly scan the remaining suffix for a missing
+  separator and block initialization. Preserve UTF-8 byte limits, joined data
+  limits, BOM and split-CRLF handling. Retain bounded-search regression checks
+  and [actual SDK loopback evidence](studies/sse-scan/README.md).
+
 - Bound decompressed HTTP JSON responses and SSE lines/joined event data at
   10 MiB before metadata/SDK decoding. A labelled 96 MiB response previously
   aborted the CLI under a 256 MiB V8 heap cap. Oversized initialization now

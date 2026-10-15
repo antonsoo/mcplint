@@ -169,6 +169,9 @@ node dist/cli.js stdio -- npx tsx examples/good-server/server.ts
   lines/event data before metadata decoding exhausts the audit process. Earlier
   pages remain inspectable with incomplete coverage and no score.
   [Memory-limited CLI and ordinary SDK controls](studies/http-bounds/README.md).
+  Valid short SSE comments also scan with bounded separator-search work; a
+  [loopback reproduction](studies/sse-scan/README.md) previously timed out during
+  initialization while repeatedly rescanning the same received bytes.
 - **Connection deadlines (source checkout).** A server has 30 seconds to open its transport and
   complete initialization, including legacy HTTP fallback. Set `--connect-timeout <ms>` for slow
   startup. A timed-out config entry remains incomplete while the next server is audited.

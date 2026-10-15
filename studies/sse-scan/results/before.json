@@ -1,0 +1,179 @@
+{
+  "node": "v26.7.0",
+  "platform": "linux",
+  "synthetic": true,
+  "hostLoad": "Concurrent workloads; timings are observations, not isolated benchmarks",
+  "sourceHashes": {
+    "collectors/sse-bounds.js": "e473bc1ac7ba61910b50927d24a0c872a27c096333011b62957e3d1e841e0c6b",
+    "collectors/live-json.js": "cb937bacea7f07e952e2505b92e1cbc196cb456a223029ec748ba4f73fe8cd53",
+    "collectors/http.js": "bcb6358f9c14419d41262596f6feab536ccf790a2e4ebce3bcde71747d6a482f"
+  },
+  "guarded": [
+    {
+      "commentBytes": 0,
+      "bytes": 44,
+      "sha256": "e73a7c8c7853901163efd227ab18e90fefbed9a969f3fabde3fbf1df96864712",
+      "outputMatchesInput": true,
+      "failures": [],
+      "durationMs": 5.287210000000016,
+      "zeroDelayTimerDeliveredAfterMs": 6.884267000000023
+    },
+    {
+      "commentBytes": 262144,
+      "bytes": 262188,
+      "sha256": "a828caf384def6735d9f2515621c66a509d6aca53e80ac0433d93297848b4779",
+      "outputMatchesInput": true,
+      "failures": [],
+      "durationMs": 190.86904700000002,
+      "zeroDelayTimerDeliveredAfterMs": 191.05454600000002
+    },
+    {
+      "commentBytes": 1048576,
+      "bytes": 1048620,
+      "sha256": "6294c4aa7e3d8c1aaf5e254c6887100319f873f334dc52574f3d40254a3d70f8",
+      "outputMatchesInput": true,
+      "failures": [],
+      "durationMs": 3201.895668,
+      "zeroDelayTimerDeliveredAfterMs": 3202.0061760000003
+    }
+  ],
+  "network": [
+    {
+      "commentBytesPerResponse": 0,
+      "connectTimeoutMs": 5000,
+      "seconds": 0.04025765599999977,
+      "requests": [
+        "initialize",
+        "notifications/initialized",
+        "tools/list"
+      ],
+      "target": {
+        "servers": [
+          {
+            "id": "sse-comment-capture",
+            "label": "controlled-loopback-sse",
+            "name": "sse-comment-capture",
+            "version": "1.0.0"
+          }
+        ],
+        "tools": [
+          {
+            "kind": "tool",
+            "serverId": "sse-comment-capture",
+            "name": "lookup_record",
+            "description": "Look up a record by its stable ID.",
+            "inputSchema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          }
+        ],
+        "prompts": [],
+        "resources": [],
+        "collection": [
+          {
+            "serverId": "sse-comment-capture",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 1,
+            "retained": 1
+          },
+          {
+            "serverId": "sse-comment-capture",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "sse-comment-capture",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "sse-comment-capture",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ],
+        "metadata": {
+          "servers": [
+            {
+              "id": "sse-comment-capture",
+              "serverInfo": {
+                "name": "sse-comment-capture",
+                "version": "1.0.0"
+              },
+              "capabilities": {
+                "tools": {}
+              }
+            }
+          ],
+          "definitions": [
+            {
+              "serverId": "sse-comment-capture",
+              "scope": "tools/list",
+              "value": {
+                "name": "lookup_record",
+                "description": "Look up a record by its stable ID.",
+                "inputSchema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "commentBytesPerResponse": 1048576,
+      "connectTimeoutMs": 5000,
+      "seconds": 6.7614656129999995,
+      "requests": [
+        "initialize"
+      ],
+      "failure": {
+        "name": "ConnectionTimeoutError",
+        "message": "Connection and initialization exceeded 5000 ms. Check server startup and availability, or increase --connect-timeout."
+      }
+    },
+    {
+      "commentBytesPerResponse": 12582912,
+      "connectTimeoutMs": 5000,
+      "seconds": 5.078575365000001,
+      "requests": [
+        "initialize"
+      ],
+      "failure": {
+        "name": "ConnectionTimeoutError",
+        "message": "Connection and initialization exceeded 5000 ms. Check server startup and availability, or increase --connect-timeout."
+      }
+    }
+  ]
+}

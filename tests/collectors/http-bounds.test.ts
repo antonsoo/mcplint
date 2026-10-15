@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { createParser } from 'eventsource-parser';
 import { createHash } from 'node:crypto';
 import { createServer } from 'node:http';
@@ -9,6 +9,23 @@ import { guardHttpResponse, LiveJsonIntegrityError, MAX_HTTP_MESSAGE_BYTES } fro
 const fail = (): never => { throw new Error('bound exceeded'); };
 
 describe('SSE framing preserves independent event-parser boundaries', () => {
+  it.each(['\n', '\r', '\r\n', '\n\n\n\n\r'])('bounds total separator search work for %j comments', ending => {
+    const bytes = new TextEncoder().encode((':' + ending).repeat(4096));
+    const nativeIndexOf = bytes.indexOf.bind(bytes);
+    let searchedBytes = 0;
+    const search = vi.spyOn(bytes, 'indexOf').mockImplementation((value, start = 0) => {
+      const found = nativeIndexOf(value, start);
+      searchedBytes += (found < 0 ? bytes.length : found + 1) - start;
+      return found;
+    });
+    try {
+      new SseMessageBounds(16, fail).feed(bytes);
+      // A byte may be visited once per separator, not once per remaining line.
+      // This measures actual search work instead of a host-dependent timeout.
+      expect(searchedBytes).toBeLessThanOrEqual(bytes.length * 2);
+    } finally { search.mockRestore(); }
+  });
+
   it.each(['\n', '\r\n', '\r'])('keeps split %j framing, Unicode bytes, BOM and repeated event/header lines', ending => {
     const raw = Buffer.from('\ufeff: initial comment' + ending +
       ['event: message', 'id: one', 'data: λλ', 'retry: 1000', 'data', '',
