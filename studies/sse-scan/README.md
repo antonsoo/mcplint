@@ -80,7 +80,7 @@ changes; no npm registry release or hosted deployment is implied.
 A clean archive of `d0e0a09` was installed with `npm ci`: lint, type checking,
 all **640 tests on Node 20.20.2**, build and `npm pack` pass. All 125 files in
 the tarball match both the clean build and a separate installation byte-for-byte
-(including 96 distribution files). The installed CLI's complete fixture JSON
+(including 94 distribution files). The installed CLI's complete fixture JSON
 matches the clean CLI except for its generation timestamp.
 [Artifact hashes and comparison scope](results/artifacts.json).
 
