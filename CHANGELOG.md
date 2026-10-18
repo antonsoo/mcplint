@@ -4,6 +4,11 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Include the real filesystem-server dependency comparison in the static site
+  build, using the existing offline metadata renderer. Retain both original
+  snapshots, full comparison and capture provenance as direct downloads. The
+  build checks the retained 13-change result without contacting a server.
+
 - Stop the owned POSIX stdio process group after collection and connection or
   decoding failure, including when npm/the launcher has already exited. Preserve
   EOF grace, escalate to SIGTERM/SIGKILL, and bound pipe cleanup. CLI SIGINT and

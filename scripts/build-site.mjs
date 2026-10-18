@@ -5,11 +5,13 @@
  * installing" demo. Requires `npm run build` to have already produced
  * dist/cli.js. Not part of the npm package — this is purely for Pages.
  */
-import { mkdir, writeFile } from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
+import { compareMetadata, parseMetadataSnapshot, renderMetadataHtml } from '../dist/index.js';
 
 const run = promisify(execFile);
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
@@ -68,6 +70,21 @@ async function main() {
   await buildReport('poisoned-server', 'index.html', 'poisoned', 'mcplint · sample report on a deliberately poisoned MCP server');
   await buildReport('good-server', 'good.html', 'good', 'mcplint · sample report on a well-behaved MCP server');
   await buildReport('collection-evidence', 'incomplete.html', 'incomplete', 'mcplint · synthetic interrupted collection', ['node', 'tests/fixtures/servers/collection-evidence.mjs', 'partial']);
+  // Publish the existing offline renderer with real retained metadata. Building
+  // this example neither installs the historical server nor calls its tools.
+  const captures = join(root, 'studies/metadata-diff/reference/captures');
+  const before = await readFile(join(captures, 'zod3.snapshot.json'), 'utf8');
+  const after = await readFile(join(captures, 'zod4.snapshot.json'), 'utf8');
+  const comparison = compareMetadata(parseMetadataSnapshot(before), parseMetadataSnapshot(after));
+  assert.equal(comparison.complete, true);
+  assert.deepEqual(comparison.summary, { added: 0, removed: 0, changed: 13, unchanged: 2, unpaired: 0 });
+  assert.deepEqual(comparison, JSON.parse(await readFile(join(captures, 'dependency.diff.json'), 'utf8')));
+  await writeFile(join(siteDir, 'filesystem-dependencies.html'), renderMetadataHtml(comparison));
+  await writeFile(join(siteDir, 'filesystem-before.json'), before);
+  await writeFile(join(siteDir, 'filesystem-after.json'), after);
+  await writeFile(join(siteDir, 'filesystem-diff.json'), JSON.stringify(comparison, null, 2) + '\n');
+  await writeFile(join(siteDir, 'filesystem-evidence.json'), await readFile(join(captures, 'observations.json')));
+  console.log('wrote real filesystem dependency comparison and four evidence downloads');
   await writeFile(join(siteDir, '.nojekyll'), '');
 }
 

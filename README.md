@@ -1,6 +1,6 @@
 # mcplint
 
-Lint your MCP server's tools the way the model sees them: token cost, clarity, and hidden instructions.
+Inspect MCP metadata and review the contract a server exposes.
 
 [![npm](https://img.shields.io/npm/v/@antonsoloviev/mcplint)](https://www.npmjs.com/package/@antonsoloviev/mcplint)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -10,7 +10,7 @@ Lint your MCP server's tools the way the model sees them: token cost, clarity, a
 
 Clients can serialize many [MCP](https://modelcontextprotocol.io/) tool definitions into model context,
 including tools that are never called. The actual selection and repetition depend on the client. mcplint
-estimates the collected definitions and inspects their text before they reach that context. That creates three concrete problems:
+estimates the collected definitions and inspects their text before they reach that context. That creates four concrete problems:
 
 1. **Bloat.** A server with a dozen verbosely-described tools can burn thousands of tokens before the
    conversation even starts, when those definitions are included, whether or not any of them get used.
@@ -24,6 +24,9 @@ estimates the collected definitions and inspects their text before they reach th
    Invariant Labs' [Tool Poisoning Attacks](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks)
    write-up and Johann Rehberger's [Unicode Tag "ASCII smuggling"](https://embracethered.com/blog/posts/2024/hiding-and-finding-text-with-unicode-tags/)
    research, both of which mcplint's safety rules are built to catch.
+4. **Contract drift.** The same compiled server can expose different parameter schemas under
+   different dependency resolutions. A score does not record what changed. The source checkout
+   captures definitions and compares their actual fields, including required parameters.
 
 Server authors need a fast linter to run in CI, before a bad tool definition ships. Anyone installing a
 third-party MCP server needs a way to see what they're actually adding to their model's context before they run
@@ -99,7 +102,7 @@ Snapshots retain schemas, descriptions, annotations, unknown list-entry fields,
 and the initialization metadata exposed by the SDK. Failed pages never become
 invented removals. The HTML report runs offline and downloads the full comparison.
 
-![Offline metadata comparison showing a changed extension field and a parameter maximum changing from 100 to 200](docs/assets/metadata-review/chromium-1440.png)
+![Real filesystem-server metadata: read_text_file loses its parameters and required path under a different dependency resolution](docs/assets/metadata-review/filesystem-dependencies.png)
 
 [User guide](docs/metadata-review.md) and [reproducible study](studies/metadata-diff/README.md).
 
@@ -112,10 +115,15 @@ the original response too. A damaged list page yields an explicitly incomplete
 capture, retaining earlier valid pages; it cannot pass an unchanged diff.
 [Live-server reproduction](studies/live-json/README.md). These checks cannot
 recover values already lost in an older snapshot or a decoded library object.
-The saved-file study also captures the same official filesystem server under two dependency
-resolutions: its compiled entrypoint is identical, but 13 tool schemas change.
-These commands are **unreleased source features**; the npm package and hosted
-demo have not been updated for them.
+The study also captures the official filesystem server `2025.8.21` under two
+dependency resolutions. Its compiled entrypoint and reported server version are
+identical, but 13 tool schemas change: `read_text_file` loses its declared `path`,
+`head` and `tail` parameters, its required `path`, and its additional-property
+restriction. This compares pinned historical installations, not the latest server.
+The site build now includes an [interactive real-server comparison](https://antonsoo.github.io/mcplint/filesystem-dependencies.html)
+and its original snapshots; [delivery evidence](studies/metadata-diff/publication/README.md)
+separates local builds from public hosting. The capture and diff commands remain
+**unreleased source features**; no npm release is implied by the demo.
 
 ## Quickstart
 
