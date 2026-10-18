@@ -4,7 +4,16 @@ Inspect MCP metadata and review the contract a server exposes.
 
 [![npm](https://img.shields.io/npm/v/@antonsoloviev/mcplint)](https://www.npmjs.com/package/@antonsoloviev/mcplint)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Live demo](https://img.shields.io/badge/live%20demo-HTML%20report-35d0ba.svg)](https://antonsoo.github.io/mcplint/)
+[![Live demo](https://img.shields.io/badge/live%20demo-native%20contract%20diff-35d0ba.svg)](https://antonsoo.github.io/mcplint/filesystem-dependencies.html)
+
+![Real filesystem-server metadata: read_text_file loses its parameters and required path under a different dependency resolution](docs/assets/metadata-review/filesystem-dependencies.png)
+
+Two locked installations of `@modelcontextprotocol/server-filesystem@2025.8.21`
+return the same reported server version, but resolving Zod 3.25.76 versus 4.6.7
+changes 13 tool schemas. `read_text_file` loses its declared parameters.
+[Open the actual metadata comparison](https://antonsoo.github.io/mcplint/filesystem-dependencies.html)
+and download both native snapshots. [Reconstruction, source hashes and public
+verification](studies/metadata-diff/publication/README.md) keep the result reproducible.
 
 ## Why this exists
 
@@ -16,14 +25,14 @@ estimates the collected definitions and inspects their text before they reach th
    conversation even starts, when those definitions are included, whether or not any of them get used.
 2. **Ambiguity.** A tool named `run` or `query`, or a parameter with no description, forces the model to guess.
    Anthropic's own tool-use documentation calls detailed descriptions "by far the most important factor in tool
-   performance" — and most real servers don't have them.
+   performance". Missing or empty descriptions are reviewable findings here.
 3. **Tool poisoning.** A tool description is plain text the model reads and (mostly) trusts. It can carry
    invisible Unicode payloads, prompt-injection phrases ("ignore all previous instructions", "do not tell the
    user"), instructions to read `~/.ssh` or `.env`, or instructions that quietly rewrite how the model calls a
    *different* tool from a *different*, possibly trusted, server. This is a documented, real attack class — see
    Invariant Labs' [Tool Poisoning Attacks](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks)
    write-up and Johann Rehberger's [Unicode Tag "ASCII smuggling"](https://embracethered.com/blog/posts/2024/hiding-and-finding-text-with-unicode-tags/)
-   research, both of which mcplint's safety rules are built to catch.
+   research. The rules flag related patterns for review; a finding does not establish malicious intent.
 4. **Contract drift.** The same compiled server can expose different parameter schemas under
    different dependency resolutions. A score does not record what changed. The source checkout
    captures definitions and compares their actual fields, including required parameters.
@@ -31,12 +40,6 @@ estimates the collected definitions and inspects their text before they reach th
 Server authors need a fast linter to run in CI, before a bad tool definition ships. Anyone installing a
 third-party MCP server needs a way to see what they're actually adding to their model's context before they run
 it. mcplint is both: a CI-friendly rule engine, and a one-shot audit CLI.
-
-![mcplint's self-contained HTML report for the deliberately poisoned fixture server: a 0/100 score ring, per-tool token budget bars, and the first findings group, where the server's own instructions ask the model to read ~/.config/gh/hosts.yml without mentioning it](docs/assets/html-report-dark-top.png)
-
-_Real, unedited `mcplint stdio --format html -- npx tsx examples/poisoned-server/server.ts` output — try it live at
-[antonsoo.github.io/mcplint](https://antonsoo.github.io/mcplint/), or see [Usage](#usage) below for the terminal
-report._
 
 The source checkout marks explicitly non-complete discovery responses as audit
 gaps. A tool array beside `resultType: "input_required"` no longer produces a
@@ -102,7 +105,6 @@ Snapshots retain schemas, descriptions, annotations, unknown list-entry fields,
 and the initialization metadata exposed by the SDK. Failed pages never become
 invented removals. The HTML report runs offline and downloads the full comparison.
 
-![Real filesystem-server metadata: read_text_file loses its parameters and required path under a different dependency resolution](docs/assets/metadata-review/filesystem-dependencies.png)
 
 [User guide](docs/metadata-review.md) and [reproducible study](studies/metadata-diff/README.md).
 
