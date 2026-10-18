@@ -38,3 +38,23 @@ all four screenshots were opened and inspected. Accessibility violations,
 page errors and HTTP requests after disconnecting are zero. Firefox's implicit
 origin-favicon probe is blocked by the report's existing `default-src 'none'`;
 that diagnostic is retained separately rather than changing the content policy.
+
+## Public delivery
+
+Tested source `4131a78` passed a fresh locked install, lint, types, site build,
+653 checks with two workers, and all 32 existing browser regressions. The first
+default-concurrency run had nine timing/startup failures under heavy shared
+load; the unchanged two-worker run passed every check. Both outcomes are
+retained in the [verification receipt](verification.json). Product TypeScript
+files are unchanged by this static-example addition.
+
+Deployment `5b3cffb` serves the [interactive comparison](https://antonsoo.github.io/mcplint/filesystem-dependencies.html),
+[before](https://antonsoo.github.io/mcplint/filesystem-before.json) and
+[after](https://antonsoo.github.io/mcplint/filesystem-after.json) snapshots,
+[full diff](https://antonsoo.github.io/mcplint/filesystem-diff.json), and
+[capture observations](https://antonsoo.github.io/mcplint/filesystem-evidence.json).
+The [canonical HTTP check](hosting.json) byte-verifies all nine current site
+files and the entry URL without cache-busting. The [hosted browser receipt](hosted-browser.json)
+checks the same eight complete online/offline views and eight downloads.
+Every downloaded comparison retains all thirteen changes. All four hosted
+screenshots were opened and inspected. No npm package was released.

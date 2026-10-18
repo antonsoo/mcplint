@@ -1,0 +1,118 @@
+{
+  "base": "https://antonsoo.github.io/mcplint/",
+  "offlineAfterInitialLoad": true,
+  "pageErrors": [],
+  "offlineHttpRequests": [],
+  "blockedImplicitFavicons": [
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "directive": "img-src",
+      "blockedURI": "https://antonsoo.github.io/favicon.ico"
+    },
+    {
+      "engine": "firefox",
+      "width": 375,
+      "directive": "img-src",
+      "blockedURI": "https://antonsoo.github.io/favicon.ico"
+    }
+  ],
+  "results": [
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "view": "hosted",
+      "htmlSha256": "c206458063d631060ceb5a8d5fe19ca3589ad757dc471fb94c65695429279407",
+      "downloadedJsonSha256": "74a137591572e6a8854466d1d5af7cd75994da4abb132d2b9d3fabd02cfcb2cd",
+      "all13ChangesPreserved": true,
+      "fourExactSchemaRemovalsVisible": true,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "view": "standalone",
+      "htmlSha256": "c206458063d631060ceb5a8d5fe19ca3589ad757dc471fb94c65695429279407",
+      "downloadedJsonSha256": "74a137591572e6a8854466d1d5af7cd75994da4abb132d2b9d3fabd02cfcb2cd",
+      "all13ChangesPreserved": true,
+      "fourExactSchemaRemovalsVisible": true,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "view": "hosted",
+      "htmlSha256": "c206458063d631060ceb5a8d5fe19ca3589ad757dc471fb94c65695429279407",
+      "downloadedJsonSha256": "74a137591572e6a8854466d1d5af7cd75994da4abb132d2b9d3fabd02cfcb2cd",
+      "all13ChangesPreserved": true,
+      "fourExactSchemaRemovalsVisible": true,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "engine": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "view": "standalone",
+      "htmlSha256": "c206458063d631060ceb5a8d5fe19ca3589ad757dc471fb94c65695429279407",
+      "downloadedJsonSha256": "74a137591572e6a8854466d1d5af7cd75994da4abb132d2b9d3fabd02cfcb2cd",
+      "all13ChangesPreserved": true,
+      "fourExactSchemaRemovalsVisible": true,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "view": "hosted",
+      "htmlSha256": "c206458063d631060ceb5a8d5fe19ca3589ad757dc471fb94c65695429279407",
+      "downloadedJsonSha256": "74a137591572e6a8854466d1d5af7cd75994da4abb132d2b9d3fabd02cfcb2cd",
+      "all13ChangesPreserved": true,
+      "fourExactSchemaRemovalsVisible": true,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "view": "standalone",
+      "htmlSha256": "c206458063d631060ceb5a8d5fe19ca3589ad757dc471fb94c65695429279407",
+      "downloadedJsonSha256": "74a137591572e6a8854466d1d5af7cd75994da4abb132d2b9d3fabd02cfcb2cd",
+      "all13ChangesPreserved": true,
+      "fourExactSchemaRemovalsVisible": true,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "view": "hosted",
+      "htmlSha256": "c206458063d631060ceb5a8d5fe19ca3589ad757dc471fb94c65695429279407",
+      "downloadedJsonSha256": "74a137591572e6a8854466d1d5af7cd75994da4abb132d2b9d3fabd02cfcb2cd",
+      "all13ChangesPreserved": true,
+      "fourExactSchemaRemovalsVisible": true,
+      "noOverflow": true,
+      "axeViolations": 0
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "view": "standalone",
+      "htmlSha256": "c206458063d631060ceb5a8d5fe19ca3589ad757dc471fb94c65695429279407",
+      "downloadedJsonSha256": "74a137591572e6a8854466d1d5af7cd75994da4abb132d2b9d3fabd02cfcb2cd",
+      "all13ChangesPreserved": true,
+      "fourExactSchemaRemovalsVisible": true,
+      "noOverflow": true,
+      "axeViolations": 0
+    }
+  ]
+}

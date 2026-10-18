@@ -1,0 +1,61 @@
+{
+  "testedSource": "4131a78ec3a2c9fd5ad46e9597e5c8fd3f2a4209",
+  "node": "26.7.0",
+  "checks": {
+    "install": {
+      "command": "npm ci",
+      "exitCode": 0,
+      "bytes": 769,
+      "sha256": "b553e54aeaced604a24cf0f6b35e7ab92c0042a112eec4fd28715d145d380c93"
+    },
+    "lint": {
+      "command": "npm run lint",
+      "exitCode": 0,
+      "bytes": 90,
+      "sha256": "85df980db874cd7731d09742497894f52670044bf9d4ac7030b94255e5fb2c6a"
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "exitCode": 0,
+      "bytes": 100,
+      "sha256": "038b1e6d4434bffcf21c21a3a434b4c3d51462f7d42e3d1227e62ddd63819cf0"
+    },
+    "tests-bounded": {
+      "command": "node node_modules/vitest/vitest.mjs run --maxWorkers=2",
+      "exitCode": 0,
+      "bytes": 1710,
+      "sha256": "a24c5b0c9e4fe36d3c2f9acde8953f59351e7c9d7c8c726fb4a0d8959d2658ba"
+    },
+    "build": {
+      "command": "npm run build:site",
+      "exitCode": 0,
+      "bytes": 385,
+      "sha256": "7c7b36cc00c5c609efbce73ad3095a7394939e6733c053a6b66795c4731e9cd5"
+    },
+    "browser": {
+      "command": "node node_modules/@playwright/test/cli.js test",
+      "exitCode": 0,
+      "bytes": 4597,
+      "sha256": "8267f48d21dea4c87e073eb1441ceb5a8c5f7536d687d4cf0b0164ebe35bbd65"
+    }
+  },
+  "unitChecks": 653,
+  "regressionBrowserChecks": 32,
+  "productSourceFilesUnchangedFromPriorRevision": 47,
+  "priorRevision": "f98df21",
+  "nativeReplay": "native.json",
+  "hostedFiles": 9,
+  "deployment": "5b3cffb6e418cf7aa2058a75369d64dd3f8cf1d0",
+  "priorDefaultConcurrencyRun": {
+    "passed": 644,
+    "failed": 9,
+    "failedFiles": 8,
+    "log": {
+      "bytes": 10735,
+      "sha256": "dd0b10a1f8dd2ab3119b557deb671a567e63e8f2530df0da1ad4f0ab8dcf444f"
+    },
+    "observedHostLoadAverage": 47.33,
+    "interpretation": "Timing and fixture-startup failures under shared load; rerun unchanged with two workers passed all 653 checks. Resource contention is an inference, not a product fix."
+  },
+  "npmRelease": false
+}
