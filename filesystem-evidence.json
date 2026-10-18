@@ -1,0 +1,64 @@
+{
+  "package": "@modelcontextprotocol/server-filesystem@2025.8.21",
+  "interpretation": "Current fresh installs of one historical package under two dependency resolutions, not a reconstruction of its original publication environment.",
+  "changedPackageRecords": [
+    "node_modules/zod"
+  ],
+  "evidence": {
+    "zod3": {
+      "node": "v26.7.0",
+      "serverCompiledSha256": "ce7bdceccfac6d848687bc7067167c72269bc3dbb6312261f5e9b9f481286ec7",
+      "packageLockSha256": "abb99c4af3d3666dce6a2a4dfe92ca7b6498860130aa88ffa7e89d1c01660d4e",
+      "serverVersion": "2025.8.21",
+      "zodVersion": "3.25.76",
+      "definitions": 14,
+      "rawProbeMatchesSnapshot": true,
+      "toolsCalled": 0,
+      "readTextFileSchema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "tail": {
+            "type": "number",
+            "description": "If provided, returns only the last N lines of the file"
+          },
+          "head": {
+            "type": "number",
+            "description": "If provided, returns only the first N lines of the file"
+          }
+        },
+        "required": [
+          "path"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    "zod4": {
+      "node": "v26.7.0",
+      "serverCompiledSha256": "ce7bdceccfac6d848687bc7067167c72269bc3dbb6312261f5e9b9f481286ec7",
+      "packageLockSha256": "777e3c28d8e5e6fba2468cee8d8bfbd2f3d57a256ce005e86c53e44ca3e0e791",
+      "serverVersion": "2025.8.21",
+      "zodVersion": "4.6.7",
+      "definitions": 14,
+      "rawProbeMatchesSnapshot": true,
+      "toolsCalled": 0,
+      "readTextFileSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    }
+  },
+  "comparison": {
+    "exit": 1,
+    "complete": true,
+    "summary": {
+      "added": 0,
+      "removed": 0,
+      "changed": 13,
+      "unchanged": 2,
+      "unpaired": 0
+    }
+  }
+}
