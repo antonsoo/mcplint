@@ -130,5 +130,11 @@ gate change on [Node 24](installed-sdk.json) and the supported [Node 20.0.0
 floor](node20-sdk.json), with no tool calls.
 
 This is a source improvement and a locally built package, not an npm release.
-Public-source and hosted-byte checks are separate from that installation
-evidence. No vendor deployment or implementation has been changed.
+[Publication verification](publication.json) checks all 36 changed files at
+public source revision `a2fe7ff3bac82f417d3c404a25f363ad9d23f3fc` and all
+12 hosted files against the reviewed build. The deployment preserves every
+previous site file. [Hosted browser replay](hosted-browser.json) verifies the
+four report cases, including offline keyboard use after initial loading.
+Firefox's implicit origin-favicon probe is blocked by the existing policy and
+recorded separately; no other policy violations were accepted. No vendor
+deployment or implementation has been changed.

@@ -25,7 +25,9 @@ for (const [name, engine] of [['chromium', chromium], ['firefox', firefox]]) {
       page.on('request', request => { if (/^https?:/.test(request.url())) requests.push(request.url()); });
       await page.addInitScript(() => {
         window.violations = [];
-        addEventListener('securitypolicyviolation', event => window.violations.push(event.violatedDirective));
+        addEventListener('securitypolicyviolation', event => window.violations.push({
+          directive: event.violatedDirective, blockedURI: event.blockedURI,
+        }));
       });
       if (url.startsWith('file:')) await context.setOffline(true);
       await page.goto(url);
@@ -42,12 +44,18 @@ for (const [name, engine] of [['chromium', chromium], ['firefox', firefox]]) {
       assert.equal(await page.getByRole('button', { name: 'Toggle color theme' }).evaluate(el => el === document.activeElement), true);
       await page.keyboard.press('Enter');
       assert.equal(await page.locator('html').getAttribute('data-theme'), 'light');
-      assert.deepEqual(await page.evaluate(() => window.violations), []);
+      const policy = await page.evaluate(() => window.violations);
+      // Firefox probes the origin favicon on hosted pages. The report correctly
+      // blocks it; retain that browser probe rather than weakening the policy.
+      const favicon = !url.startsWith('file:') && name === 'firefox'
+        ? new URL('/favicon.ico', url).href : null;
+      assert.deepEqual(policy.filter(event => !(event.directive === 'img-src' && event.blockedURI === favicon)), []);
       assert.deepEqual(errors, []);
       if (url.startsWith('file:')) assert.deepEqual(requests, []);
       cases.push({ browser: name, version: browser.version(), width, enumTypeFindings: 4,
         horizontalOverflow: false, offlineKeyboardThemeToggle: true, axeViolations: 0,
-        pageErrors: errors, cspViolations: [], httpRequests: requests,
+        pageErrors: errors, cspViolations: policy, blockedOriginFaviconProbe: policy.length > 0,
+        httpRequests: requests,
         screenshot: screenshot.slice(root.length + 1), screenshotSha256: createHash('sha256').update(await readFile(screenshot)).digest('hex') });
       await context.close();
     }
