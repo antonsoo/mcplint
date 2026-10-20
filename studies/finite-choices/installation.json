@@ -1,0 +1,161 @@
+{
+  "source_tree": "4b89bf4aa7304277237ffd576f88b717eb796fe9",
+  "source_archive_sha256": "9cd9bc70e37bb4fb6cf4823d18357e94b1e0c8a3a1b18eaa26cfd7b8bcbd2544",
+  "checks": [
+    {
+      "command": [
+        "node",
+        "--version"
+      ],
+      "exit_code": 0,
+      "seconds": 0.005,
+      "output_sha256": "2b796b748c85883d00cfea9775eaa143435f0dc06c69311b444cf0dfc98214bc",
+      "tail": "v24.22.0\n"
+    },
+    {
+      "command": [
+        "npm",
+        "--version"
+      ],
+      "exit_code": 0,
+      "seconds": 0.09,
+      "output_sha256": "acb90e420303a6e949fec90f74faf64cc372894b3964e310a261689b898f41b0",
+      "tail": "11.19.1\n"
+    },
+    {
+      "command": [
+        "npm",
+        "ci"
+      ],
+      "exit_code": 0,
+      "seconds": 7.801,
+      "output_sha256": "255cb6f8cbfddd777366b6bc4e2d24b9296eb69cf7324f12616a8d863e85c7fb",
+      "tail": "npm warn deprecated eslint@9.39.5: This version is no longer supported. Please see https://eslint.org/version-support for other options.\n\n> @antonsoloviev/mcplint@0.3.3 prepare\n> npm run build\n\n\n> @antonsoloviev/mcplint@0.3.3 build\n> tsc -p tsconfig.json\n\n\nadded 247 packages, and audited 248 packages in 8s\n\n82 packages are looking for funding\n  run `npm fund` for details\n\n1 moderate severity vulnerability\n\nTo address all issues, run:\n  npm audit fix\n\nRun `npm audit` for details.\nnpm warn install-scripts 1 package has install scripts not yet covered by allowScripts:\nnpm warn install-scripts   esbuild@0.28.2 (postinstall: node install.js)\nnpm warn install-scripts\nnpm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.\n"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "exit_code": 0,
+      "seconds": 6.439,
+      "output_sha256": "893cf3eefbc4fa6ae9be08ee6bc96398b1393137de7ebe1195dcd86a3337a655",
+      "tail": "\n> @antonsoloviev/mcplint@0.3.3 lint\n> eslint . --max-warnings=0\n\n"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exit_code": 0,
+      "seconds": 3.023,
+      "output_sha256": "8f0edc2a9dc86e4274396a40a1c61b57cfb44f2d6640f06d05c7ae40f3708895",
+      "tail": "\n> @antonsoloviev/mcplint@0.3.3 typecheck\n> tsc -p tsconfig.typecheck.json\n\n"
+    },
+    {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exit_code": 0,
+      "seconds": 34.144,
+      "output_sha256": "91e392f05447140d620b85aa5f2af7105e54bb5deb1bd544a1d0291612802909",
+      "tail": "\n> @antonsoloviev/mcplint@0.3.3 test\n> vitest run\n\n\n RUN  v5.0.2 <scratch>/mcplint-finite-clean\n\n\n Test Files  50 passed (50)\n      Tests  659 passed (659)\n   Start at  11:45:02\n   Duration  33.73s (tests 93%, import 5%, transform 2%)\n\n"
+    },
+    {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exit_code": 0,
+      "seconds": 27.885,
+      "output_sha256": "5917e18ab7fe09ffa2d9ab932f324bce31c6ee6c3533e05bf7c86dcaa51f25ff",
+      "tail": "\n> @antonsoloviev/mcplint@0.3.3 test\n> vitest run\n\n\n RUN  v5.0.2 <scratch>/mcplint-finite-clean\n\n\n Test Files  50 passed (50)\n      Tests  659 passed (659)\n   Start at  11:45:37\n   Duration  27.46s (tests 93%, import 5%, transform 1%)\n\n"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:browser"
+      ],
+      "exit_code": 0,
+      "seconds": 23.546,
+      "output_sha256": "840dea7c6b44f5aff87f3960a813ea93898c202083b80ee59e2cf975cc4780b1",
+      "tail": " \u203a scalar enum evidence remains readable offline at 1440px (2.2s)\n  \u2713  18 [firefox] \u203a tests/browser/enum-values.spec.mjs:23:34 \u203a scalar enum evidence remains readable offline at 375px (2.1s)\n  \u2713  19 [firefox] \u203a tests/browser/metadata.spec.mjs:20:34 \u203a metadata report pages fields and retains hostile full values at 1440px (587ms)\n  \u2713  20 [firefox] \u203a tests/browser/metadata.spec.mjs:20:34 \u203a metadata report pages fields and retains hostile full values at 375px (624ms)\n  \u2713  21 [firefox] \u203a tests/browser/reports.spec.mjs:40:3 \u203a offline evidence 1440px dark (1.2s)\n  \u2713  22 [firefox] \u203a tests/browser/reports.spec.mjs:78:3 \u203a findings verdict is independent of score (962ms)\n  \u2713  23 [firefox] \u203a tests/browser/reports.spec.mjs:40:3 \u203a offline evidence 1440px light (1.1s)\n  \u2713  24 [firefox] \u203a tests/browser/reports.spec.mjs:78:3 \u203a disabled verdict is independent of score (858ms)\n  \u2713  26 [firefox] \u203a tests/browser/reports.spec.mjs:85:1 \u203a Markdown metadata stays literal after real GFM rendering (341ms)\n  \u2713  27 [firefox] \u203a tests/browser/reports.spec.mjs:97:1 \u203a theme toggle works when storage is unavailable (369ms)\n  \u2713  25 [firefox] \u203a tests/browser/reports.spec.mjs:40:3 \u203a offline evidence 375px dark (1.4s)\n  \u2713  28 [firefox] \u203a tests/browser/reports.spec.mjs:108:1 \u203a built demo navigation keeps three distinct audit outcomes usable on a phone (1.3s)\n  \u2713  29 [firefox] \u203a tests/browser/reports.spec.mjs:40:3 \u203a offline evidence 375px light (1.4s)\n  \u2713  31 [firefox] \u203a tests/browser/reports.spec.mjs:78:3 \u203a clean verdict is independent of score (912ms)\n  \u2713  30 [firefox] \u203a tests/browser/schema-audit.spec.mjs:26:3 \u203a schema findings remain readable offline at 1440px (1.5s)\n  \u2713  32 [firefox] \u203a tests/browser/schema-audit.spec.mjs:26:3 \u203a schema findings remain readable offline at 375px (1.1s)\n\n  32 passed (18.7s)\n"
+    },
+    {
+      "command": [
+        "node",
+        "studies/finite-choices/browser.mjs"
+      ],
+      "exit_code": 0,
+      "seconds": 6.251,
+      "output_sha256": "9ddf728e85a76bc7e4648997fa44a0b2453d1e3ca37925c1ef9e9852ebaa5337",
+      "tail": "Verified four offline native-report browser/viewport cases.\n"
+    },
+    {
+      "command": [
+        "npm",
+        "pack",
+        "--ignore-scripts",
+        "--json"
+      ],
+      "exit_code": 0,
+      "seconds": 0.469,
+      "output_sha256": "80c51a37dbca37f9d16858ba7c29fb2d5e55762f122ffc83a94876f4632427f1",
+      "tail": "g-generic.md\",\n        \"size\": 1676,\n        \"mode\": 420\n      },\n      {\n        \"path\": \"docs/rules/naming-invalid-chars.md\",\n        \"size\": 1226,\n        \"mode\": 420\n      },\n      {\n        \"path\": \"docs/rules/naming-shadowing.md\",\n        \"size\": 2161,\n        \"mode\": 420\n      },\n      {\n        \"path\": \"docs/rules/naming-strict-client-compat.md\",\n        \"size\": 1635,\n        \"mode\": 420\n      },\n      {\n        \"path\": \"docs/rules/safety-control-characters.md\",\n        \"size\": 2848,\n        \"mode\": 420\n      },\n      {\n        \"path\": \"docs/rules/safety-cross-tool-reference.md\",\n        \"size\": 2553,\n        \"mode\": 420\n      },\n      {\n        \"path\": \"docs/rules/safety-encoded-blob.md\",\n        \"size\": 1759,\n        \"mode\": 420\n      },\n      {\n        \"path\": \"docs/rules/safety-hidden-unicode.md\",\n        \"size\": 3797,\n        \"mode\": 420\n      },\n      {\n        \"path\": \"docs/rules/safety-missing-annotations.md\",\n        \"size\": 2138,\n        \"mode\": 420\n      },\n      {\n        \"path\": \"docs/rules/safety-prompt-injection.md\",\n        \"size\": 4064,\n        \"mode\": 420\n      },\n      {\n        \"path\": \"docs/rules/safety-secret-access.md\",\n        \"size\": 3252,\n        \"mode\": 420\n      },\n      {\n        \"path\": \"docs/rules/safety-unchecked.md\",\n        \"size\": 1854,\n        \"mode\": 420\n      },\n      {\n        \"path\": \"docs/rules/schema-enum-type.md\",\n        \"size\": 3146,\n        \"mode\": 420\n      },\n      {\n        \"path\": \"docs/rules/schema-invalid.md\",\n        \"size\": 4112,\n        \"mode\": 420\n      },\n      {\n        \"path\": \"docs/rules/schema-portability.md\",\n        \"size\": 2462,\n        \"mode\": 420\n      },\n      {\n        \"path\": \"package.json\",\n        \"size\": 2243,\n        \"mode\": 420\n      }\n    ],\n    \"entryCount\": 130,\n    \"bundled\": []\n  }\n]\n"
+    },
+    {
+      "command": [
+        "npm",
+        "install",
+        "--ignore-scripts",
+        "--omit=dev",
+        "<scratch>/mcplint-finite-clean/antonsoloviev-mcplint-0.3.3.tgz"
+      ],
+      "exit_code": 0,
+      "seconds": 5.291,
+      "output_sha256": "ee87d8a903e6630465f1e1b2127ace2a1b2a4b5a567f9a66adcf7c338d88a376",
+      "tail": "\nadded 98 packages, and audited 99 packages in 5s\n\n35 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\n"
+    },
+    {
+      "command": [
+        "node",
+        "<scratch>/mcplint-finite-consumer/node_modules/@antonsoloviev/mcplint/dist/cli.js",
+        "file",
+        "studies/finite-choices/captures/tools.json",
+        "--format",
+        "json",
+        "--output",
+        "<scratch>/mcplint-finite-installed-report.json"
+      ],
+      "exit_code": 0,
+      "seconds": 0.359,
+      "output_sha256": "1655d88b187f371244a254b1f2fe4a06d4cab95c8b8bc05cffe599dc5719b5ef",
+      "tail": "Report written to <scratch>/mcplint-finite-installed-report.json\n"
+    },
+    {
+      "command": [
+        "node",
+        "studies/finite-choices/verify-cli.mjs",
+        "<scratch>/mcplint-finite-before/dist/cli.js",
+        "<scratch>/mcplint-finite-consumer/node_modules/@antonsoloviev/mcplint/dist/cli.js",
+        "<checkout>/studies/finite-choices/installed-sdk.json"
+      ],
+      "exit_code": 0,
+      "seconds": 1.292,
+      "output_sha256": "90b2a734db891374f56d1534fe96a757c0228d0e299eead4ed1d5c3232d1b892",
+      "tail": "Native SDK replay: metadata unchanged; gate 0 -> 1; four new findings; zero tools/call requests.\n"
+    }
+  ],
+  "package": {
+    "filename": "antonsoloviev-mcplint-0.3.3.tgz",
+    "sha256": "abb78763b4cb6d08759a50207781130b7bb6e3b137d2f079919d0fb473b66c00",
+    "integrity": "sha512-zcheyv+Y59UpgPGRNHcvC4FaPb0jWjqie4fq6ypTXdN4kstuCrPOJkPhwGPxCNipvfI0Ek2yziJj6VzaPdgkhA==",
+    "installed_files_equal_archive": 130,
+    "enum_type_findings": 4
+  },
+  "registry_release": false
+}

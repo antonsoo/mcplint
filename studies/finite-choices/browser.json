@@ -1,0 +1,62 @@
+{
+  "urlKind": "local-file",
+  "scriptSha256": "af9ad3783f6f07c41095a576d24e264e0e20941d18b6b3d6d9a9475004f53c5b",
+  "cases": [
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "width": 1440,
+      "enumTypeFindings": 4,
+      "horizontalOverflow": false,
+      "offlineKeyboardThemeToggle": true,
+      "axeViolations": 0,
+      "pageErrors": [],
+      "cspViolations": [],
+      "httpRequests": [],
+      "screenshot": "docs/assets/finite-choices/chromium-1440-video.png",
+      "screenshotSha256": "7befd05ff5d6ca5cb9b3c1c56b45474e2725dfbcd87dfe627eaaf986d37f30d6"
+    },
+    {
+      "browser": "chromium",
+      "version": "153.0.8010.12",
+      "width": 375,
+      "enumTypeFindings": 4,
+      "horizontalOverflow": false,
+      "offlineKeyboardThemeToggle": true,
+      "axeViolations": 0,
+      "pageErrors": [],
+      "cspViolations": [],
+      "httpRequests": [],
+      "screenshot": "docs/assets/finite-choices/chromium-375-video.png",
+      "screenshotSha256": "b592ccd33a748cd445bab3aaafc63d58272806d808e70942a778ca64b8ce3cf1"
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "width": 1440,
+      "enumTypeFindings": 4,
+      "horizontalOverflow": false,
+      "offlineKeyboardThemeToggle": true,
+      "axeViolations": 0,
+      "pageErrors": [],
+      "cspViolations": [],
+      "httpRequests": [],
+      "screenshot": "docs/assets/finite-choices/firefox-1440-video.png",
+      "screenshotSha256": "0d405ffacb25488527655a1c81a54fd85449570a526965b3ee7f92cbbe4f9e4c"
+    },
+    {
+      "browser": "firefox",
+      "version": "155.0",
+      "width": 375,
+      "enumTypeFindings": 4,
+      "horizontalOverflow": false,
+      "offlineKeyboardThemeToggle": true,
+      "axeViolations": 0,
+      "pageErrors": [],
+      "cspViolations": [],
+      "httpRequests": [],
+      "screenshot": "docs/assets/finite-choices/firefox-375-video.png",
+      "screenshotSha256": "2620f328bab7fdc9e63bce582eeeec842cae9f66746163c7292abaa76a17424d"
+    }
+  ]
+}

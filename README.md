@@ -15,6 +15,14 @@ changes 13 tool schemas. `read_text_file` loses its declared parameters.
 and download both native snapshots. [Reconstruction, source hashes and public
 verification](studies/metadata-diff/publication/README.md) keep the result reproducible.
 
+A schema can also compile while excluding every choice it advertises. The
+source checkout finds four such contradictions in current SVGverseAI registry
+metadata: numeric and boolean parameters offer only strings. [View the retained
+report](https://antonsoo.github.io/mcplint/enum-choices.html) or [replay the
+evidence](studies/finite-choices/README.md). The optional fields can still be
+omitted; this is a warning about their declared choices, not a runtime or
+privacy claim. This rule is not yet in the npm release.
+
 ## Why this exists
 
 Clients can serialize many [MCP](https://modelcontextprotocol.io/) tool definitions into model context,
@@ -160,7 +168,7 @@ node dist/cli.js stdio -- npx tsx examples/good-server/server.ts
   [Actual child-process reproduction](studies/config-env-unset/README.md).
   `envFile` also reads inline comments, quoted hashes and supported escape sequences as VS Code does;
   [launch and reference-parser comparisons](studies/envfile-syntax/README.md) cover the source correction.
-- **26 rules** across six categories — token budget, naming, descriptions, schema validity, safety, and collection. Every
+- **27 rules** across six categories — token budget, naming, descriptions, schema validity, safety, and collection. Every
   rule has an id, a default severity, a rationale, and a doc page in [`docs/rules/`](docs/rules/).
 - **Five report formats**: colored terminal, JSON, [SARIF 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/)
   (for GitHub code scanning and friends), Markdown, and a self-contained, offline HTML report.
@@ -326,6 +334,7 @@ The full 14-tool report is browsable live at
 | [`description/required-undeclared`](docs/rules/description-required-undeclared.md) | description | warning | A simple schema requires an undocumented name; error if `additionalProperties: false` forbids it. |
 | [`description/near-duplicate`](docs/rules/description-near-duplicate.md) | description | warning | Two tools with ≥75% word-overlap descriptions. |
 | [`schema/invalid`](docs/rules/schema-invalid.md) | schema | error | Malformed input/output schema, or input root not `type: "object"`. |
+| [`schema/enum-type`](docs/rules/schema-enum-type.md) | schema | warning | Every enum choice contradicts the declared type at the same schema node. Optional fields may still be omitted. |
 | [`schema/portability`](docs/rules/schema-portability.md) | schema | info | Constructs that some clients (OpenAI strict mode, external `$ref`) handle inconsistently; one note per server. |
 | [`safety/hidden-unicode`](docs/rules/safety-hidden-unicode.md) | safety | error | Zero-width, other invisible (Hangul fillers and similar), bidi-control, Unicode Tag, or variation-selector characters — decoded and shown. |
 | [`safety/control-characters`](docs/rules/safety-control-characters.md) | safety | error | Control characters in a name or text, such as the escape codes that hide or overwrite text in a terminal (Trail of Bits' MCP attack); shown visibly, never printed raw. |

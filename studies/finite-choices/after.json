@@ -1,0 +1,191 @@
+{
+  "generatedAt": "2026-10-20T18:46:34.489Z",
+  "tokenizer": "o200k_base",
+  "servers": [
+    {
+      "id": "file",
+      "label": "studies/finite-choices/captures/tools.json"
+    }
+  ],
+  "collection": [
+    {
+      "serverId": "file",
+      "scope": "tools/list",
+      "status": "complete",
+      "pages": 1,
+      "received": 3,
+      "retained": 3
+    },
+    {
+      "serverId": "file",
+      "scope": "file",
+      "status": "complete",
+      "pages": 0,
+      "received": 0,
+      "retained": 0,
+      "detail": "Only the supplied snapshot was inspected; no server was contacted."
+    }
+  ],
+  "summary": {
+    "totalFindings": 13,
+    "bySeverity": {
+      "error": 0,
+      "warning": 6,
+      "info": 7
+    },
+    "byRule": {
+      "budget/tool-tokens": 1,
+      "description/too-short": 1,
+      "description/enum-unexplained": 6,
+      "schema/portability": 1,
+      "schema/enum-type": 4
+    },
+    "toolCount": 3,
+    "promptCount": 0,
+    "resourceCount": 0,
+    "totalEstimatedTokens": 1213,
+    "complete": true,
+    "score": 89
+  },
+  "findings": [
+    {
+      "ruleId": "budget/tool-tokens",
+      "severity": "warning",
+      "serverId": "file",
+      "subject": {
+        "kind": "tool",
+        "name": "generate-blaze-image"
+      },
+      "message": "~762 estimated tokens (budget: 400). Heavier than 95% of tool definitions in the registry census.",
+      "suggestion": "Shorten the description or simplify inputSchema (fewer nested objects, shorter enum lists)."
+    },
+    {
+      "ruleId": "description/too-short",
+      "severity": "warning",
+      "serverId": "file",
+      "subject": {
+        "kind": "tool",
+        "name": "generate-ai-video"
+      },
+      "message": "Description is only 17 characters / 3 words: \"Generate AI video\""
+    },
+    {
+      "ruleId": "description/enum-unexplained",
+      "severity": "info",
+      "serverId": "file",
+      "subject": {
+        "kind": "tool",
+        "name": "generate-ai-video"
+      },
+      "message": "Parameter \"duration\" has scalar enum [\"5\",\"10\"] but its description mentions none of the values."
+    },
+    {
+      "ruleId": "description/enum-unexplained",
+      "severity": "info",
+      "serverId": "file",
+      "subject": {
+        "kind": "tool",
+        "name": "generate-ai-video"
+      },
+      "message": "Parameter \"aspectRation\" has scalar enum [\"16:9\",\"4:3\",\"1:1\"] but its description mentions none of the values."
+    },
+    {
+      "ruleId": "description/enum-unexplained",
+      "severity": "info",
+      "serverId": "file",
+      "subject": {
+        "kind": "tool",
+        "name": "generate-blaze-image"
+      },
+      "message": "Parameter \"style\" has scalar enum [\"Icon (broken_line)\",\"Icon (colored_outline)\",\"Icon (colored_shapes)\",\"Icon (colored_shapes_gradient)\",\"Icon (doodle_fill)\",\"Icon (doodle_offset_fill)\",\"Icon (offset_fill)\",\"Icon (outline)\",\"Icon (outline_gradient)\",\"Icon (pictogram)\",\"Digital Illustrations (bold_fantasy)\",\"Digital Illustrations (child_book)\",\"Digital Illustrations (hand_drawn_outline)\",\"Digital Illustrations (modern_folk)\",\"Digital Illustrations (neon_calm)\",\"Digital Illustrations (outline_details)\",\"Digital Illustrations (pixel_art)\",\"Digital Illustrations (multicolor)\",\"Digital Illustrations (pop_art)\",\"Digital Illustrations (street_art)\",\"Digital Illustrations (Living fossils)\",\"Digital Illustrations (Twilight)\",\"Digital Illustrations (2d_art_poster_2)\",\"Digital Illustrations (graphic_intensity)\",\"Digital Illustrations (Amber Aesthetics)\",\"Digital Illustrations (retro-sunset)\",\"Digital Illustrations (Bold Geometry Art)\",\"Digital Illustrations (Portrait Illustration)\",\"Digital Illustrations (Sticker Pop\\n\\nsticker-pop)\",\"Vector Illustrations (cartoon)\",\"Vector Illustrations (line_art)\",\"Vector Illustrations (doodle_line_art)\",\"Vector Illustrations (line_circuit)\",\"Vector Illustrations (linocut)\",\"Vector Illustrations (kawaii)\",\"Vector Illustrations (engraving)\",\"Vector Illustrations (seamless)\",\"Vector Illustrations (Frostline Illustration)\",\"Vector Illustrations (Joyful Shape)\",\"Vector Illustrations (Cartoon Bloom)\",\"Vector Illustrations (Hipster)\",\"Vector Illustrations (Mosaic Vector Art)\",\"Vector Illustrations (Comic Vector Art)\",\"Vector Illustrations (Kids Colouring Book)\",\"Vector Illustrations (Kids Story Illustration)\",\"Vector Illustrations (Outline Illustration)\",\"Vector Illustrations (Vector Art)\",\"Vector Illustrations (Flat Vector Art)\",\"Vector Illustrations (Gradient Vector Art)\",\"Vector Illustrations (Modern Tech Outline)\",\"Vector Illustrations (neovector)\",\"Vector Illustrations (ColorMe)\",\"Vector Illustrations (simple_line)\",\"Vector Illustrations (blu_stick_illustration)\",\"Vector Illustrations (modern_play)\",\"Logo (emblem_graffiti)\",\"Logo (emblem_pop_art)\",\"Logo (emblem_punk)\",\"Logo (emblem_stamp)\",\"Logo (emblem_vintage)\",\"Logo (Shape)\",\"Logo (Calligraphy)\",\"Logo (Bold Vibrant Graphic)\",\"Logo (Playful)\",\"Logo (boldfolk-3d)\",\"Logo (Minimal Vibrant Logo)\"] but its description mentions none of the values."
+    },
+    {
+      "ruleId": "description/enum-unexplained",
+      "severity": "info",
+      "serverId": "file",
+      "subject": {
+        "kind": "tool",
+        "name": "generate-blaze-image"
+      },
+      "message": "Parameter \"output_format\" has scalar enum [\"svg\",\"png\",\"webp\"] but its description mentions none of the values."
+    },
+    {
+      "ruleId": "description/enum-unexplained",
+      "severity": "info",
+      "serverId": "file",
+      "subject": {
+        "kind": "tool",
+        "name": "generate-spark-image"
+      },
+      "message": "Parameter \"style\" has scalar enum [\"Illustration\",\"Sticker\",\"Cartoon\",\"Simple Vector\",\"Pixel Art\",\"Colouring Book\",\"BoldFolk\",\"Fresh Cartoon\",\"Boho Illustrated\"] but its description mentions none of the values."
+    },
+    {
+      "ruleId": "description/enum-unexplained",
+      "severity": "info",
+      "serverId": "file",
+      "subject": {
+        "kind": "tool",
+        "name": "generate-spark-image"
+      },
+      "message": "Parameter \"output_format\" has scalar enum [\"svg\",\"png\"] but its description mentions none of the values."
+    },
+    {
+      "ruleId": "schema/portability",
+      "severity": "info",
+      "serverId": "file",
+      "subject": {
+        "kind": "server",
+        "name": "file"
+      },
+      "message": "3 of 3 tools have optional properties and do not set `additionalProperties: false` (\"generate-ai-video\", \"generate-blaze-image\", \"generate-spark-image\"). OpenAI Structured Outputs / strict function calling requires every property to be listed in `required` and `additionalProperties: false`; these schemas need translation before they can be used there. (https://platform.openai.com/docs/guides/structured-outputs)"
+    },
+    {
+      "ruleId": "schema/enum-type",
+      "severity": "warning",
+      "serverId": "file",
+      "subject": {
+        "kind": "tool",
+        "name": "generate-ai-video"
+      },
+      "message": "\"inputSchema#/properties/isPrivate\": none of the 2 enum choices (string) matches declared type \"boolean\".",
+      "detail": "No value satisfies both type and enum at this schema node. This contradiction can occur in valid JSON Schema, so compilation alone does not detect the unusable choices. The finding does not establish that the whole tool is unusable: optional properties may be omitted and other branches may still match. Negation and if conditions are not inspected as value choices.",
+      "suggestion": "Align the enum values and declared type with the intended contract. Do not automatically coerce strings to numbers or booleans; the intended representation is unknown."
+    },
+    {
+      "ruleId": "schema/enum-type",
+      "severity": "warning",
+      "serverId": "file",
+      "subject": {
+        "kind": "tool",
+        "name": "generate-ai-video"
+      },
+      "message": "\"inputSchema#/properties/duration\": none of the 2 enum choices (string) matches declared type \"number\".",
+      "detail": "No value satisfies both type and enum at this schema node. This contradiction can occur in valid JSON Schema, so compilation alone does not detect the unusable choices. The finding does not establish that the whole tool is unusable: optional properties may be omitted and other branches may still match. Negation and if conditions are not inspected as value choices.",
+      "suggestion": "Align the enum values and declared type with the intended contract. Do not automatically coerce strings to numbers or booleans; the intended representation is unknown."
+    },
+    {
+      "ruleId": "schema/enum-type",
+      "severity": "warning",
+      "serverId": "file",
+      "subject": {
+        "kind": "tool",
+        "name": "generate-blaze-image"
+      },
+      "message": "\"inputSchema#/properties/isPrivate\": none of the 2 enum choices (string) matches declared type \"boolean\".",
+      "detail": "No value satisfies both type and enum at this schema node. This contradiction can occur in valid JSON Schema, so compilation alone does not detect the unusable choices. The finding does not establish that the whole tool is unusable: optional properties may be omitted and other branches may still match. Negation and if conditions are not inspected as value choices.",
+      "suggestion": "Align the enum values and declared type with the intended contract. Do not automatically coerce strings to numbers or booleans; the intended representation is unknown."
+    },
+    {
+      "ruleId": "schema/enum-type",
+      "severity": "warning",
+      "serverId": "file",
+      "subject": {
+        "kind": "tool",
+        "name": "generate-spark-image"
+      },
+      "message": "\"inputSchema#/properties/isPrivate\": none of the 2 enum choices (string) matches declared type \"boolean\".",
+      "detail": "No value satisfies both type and enum at this schema node. This contradiction can occur in valid JSON Schema, so compilation alone does not detect the unusable choices. The finding does not establish that the whole tool is unusable: optional properties may be omitted and other branches may still match. Negation and if conditions are not inspected as value choices.",
+      "suggestion": "Align the enum values and declared type with the intended contract. Do not automatically coerce strings to numbers or booleans; the intended representation is unknown."
+    }
+  ]
+}

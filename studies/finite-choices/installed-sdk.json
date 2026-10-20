@@ -1,0 +1,339 @@
+{
+  "cases": [
+    {
+      "label": "before",
+      "exitCode": 0,
+      "report": {
+        "generatedAt": "2026-10-20T18:48:20.113Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "recorded-svgverseai-enum-replay",
+            "label": "node studies/finite-choices/replay-server.mjs",
+            "name": "recorded-svgverseai-enum-replay",
+            "version": "1.0.0"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "recorded-svgverseai-enum-replay",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 3,
+            "retained": 3
+          },
+          {
+            "serverId": "recorded-svgverseai-enum-replay",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "recorded-svgverseai-enum-replay",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "recorded-svgverseai-enum-replay",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ],
+        "summary": {
+          "totalFindings": 1,
+          "bySeverity": {
+            "error": 0,
+            "warning": 0,
+            "info": 1
+          },
+          "byRule": {
+            "schema/portability": 1
+          },
+          "toolCount": 3,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 1213,
+          "complete": true,
+          "score": 99
+        },
+        "findings": [
+          {
+            "ruleId": "schema/portability",
+            "severity": "info",
+            "serverId": "recorded-svgverseai-enum-replay",
+            "subject": {
+              "kind": "server",
+              "name": "recorded-svgverseai-enum-replay"
+            },
+            "message": "3 of 3 tools have optional properties and do not set `additionalProperties: false` (\"generate-ai-video\", \"generate-blaze-image\", \"generate-spark-image\"). OpenAI Structured Outputs / strict function calling requires every property to be listed in `required` and `additionalProperties: false`; these schemas need translation before they can be used there. (https://platform.openai.com/docs/guides/structured-outputs)"
+          }
+        ]
+      },
+      "methods": [
+        "tools/list"
+      ],
+      "snapshotSha256": "d488fe405327fb4b646274271482c9c97ac3023c043585a6234cc0333fc33ef6"
+    },
+    {
+      "label": "after",
+      "exitCode": 1,
+      "report": {
+        "generatedAt": "2026-10-20T18:48:20.717Z",
+        "tokenizer": "o200k_base",
+        "servers": [
+          {
+            "id": "recorded-svgverseai-enum-replay",
+            "label": "node studies/finite-choices/replay-server.mjs",
+            "name": "recorded-svgverseai-enum-replay",
+            "version": "1.0.0"
+          }
+        ],
+        "collection": [
+          {
+            "serverId": "recorded-svgverseai-enum-replay",
+            "scope": "tools/list",
+            "status": "complete",
+            "pages": 1,
+            "received": 3,
+            "retained": 3
+          },
+          {
+            "serverId": "recorded-svgverseai-enum-replay",
+            "scope": "prompts/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise prompts."
+          },
+          {
+            "serverId": "recorded-svgverseai-enum-replay",
+            "scope": "resources/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          },
+          {
+            "serverId": "recorded-svgverseai-enum-replay",
+            "scope": "resources/templates/list",
+            "status": "unsupported",
+            "pages": 0,
+            "received": 0,
+            "retained": 0,
+            "detail": "Server did not advertise resources."
+          }
+        ],
+        "summary": {
+          "totalFindings": 5,
+          "bySeverity": {
+            "error": 0,
+            "warning": 4,
+            "info": 1
+          },
+          "byRule": {
+            "schema/portability": 1,
+            "schema/enum-type": 4
+          },
+          "toolCount": 3,
+          "promptCount": 0,
+          "resourceCount": 0,
+          "totalEstimatedTokens": 1213,
+          "complete": true,
+          "score": 94
+        },
+        "findings": [
+          {
+            "ruleId": "schema/portability",
+            "severity": "info",
+            "serverId": "recorded-svgverseai-enum-replay",
+            "subject": {
+              "kind": "server",
+              "name": "recorded-svgverseai-enum-replay"
+            },
+            "message": "3 of 3 tools have optional properties and do not set `additionalProperties: false` (\"generate-ai-video\", \"generate-blaze-image\", \"generate-spark-image\"). OpenAI Structured Outputs / strict function calling requires every property to be listed in `required` and `additionalProperties: false`; these schemas need translation before they can be used there. (https://platform.openai.com/docs/guides/structured-outputs)"
+          },
+          {
+            "ruleId": "schema/enum-type",
+            "severity": "warning",
+            "serverId": "recorded-svgverseai-enum-replay",
+            "subject": {
+              "kind": "tool",
+              "name": "generate-ai-video"
+            },
+            "message": "\"inputSchema#/properties/isPrivate\": none of the 2 enum choices (string) matches declared type \"boolean\".",
+            "detail": "No value satisfies both type and enum at this schema node. This contradiction can occur in valid JSON Schema, so compilation alone does not detect the unusable choices. The finding does not establish that the whole tool is unusable: optional properties may be omitted and other branches may still match. Negation and if conditions are not inspected as value choices.",
+            "suggestion": "Align the enum values and declared type with the intended contract. Do not automatically coerce strings to numbers or booleans; the intended representation is unknown."
+          },
+          {
+            "ruleId": "schema/enum-type",
+            "severity": "warning",
+            "serverId": "recorded-svgverseai-enum-replay",
+            "subject": {
+              "kind": "tool",
+              "name": "generate-ai-video"
+            },
+            "message": "\"inputSchema#/properties/duration\": none of the 2 enum choices (string) matches declared type \"number\".",
+            "detail": "No value satisfies both type and enum at this schema node. This contradiction can occur in valid JSON Schema, so compilation alone does not detect the unusable choices. The finding does not establish that the whole tool is unusable: optional properties may be omitted and other branches may still match. Negation and if conditions are not inspected as value choices.",
+            "suggestion": "Align the enum values and declared type with the intended contract. Do not automatically coerce strings to numbers or booleans; the intended representation is unknown."
+          },
+          {
+            "ruleId": "schema/enum-type",
+            "severity": "warning",
+            "serverId": "recorded-svgverseai-enum-replay",
+            "subject": {
+              "kind": "tool",
+              "name": "generate-blaze-image"
+            },
+            "message": "\"inputSchema#/properties/isPrivate\": none of the 2 enum choices (string) matches declared type \"boolean\".",
+            "detail": "No value satisfies both type and enum at this schema node. This contradiction can occur in valid JSON Schema, so compilation alone does not detect the unusable choices. The finding does not establish that the whole tool is unusable: optional properties may be omitted and other branches may still match. Negation and if conditions are not inspected as value choices.",
+            "suggestion": "Align the enum values and declared type with the intended contract. Do not automatically coerce strings to numbers or booleans; the intended representation is unknown."
+          },
+          {
+            "ruleId": "schema/enum-type",
+            "severity": "warning",
+            "serverId": "recorded-svgverseai-enum-replay",
+            "subject": {
+              "kind": "tool",
+              "name": "generate-spark-image"
+            },
+            "message": "\"inputSchema#/properties/isPrivate\": none of the 2 enum choices (string) matches declared type \"boolean\".",
+            "detail": "No value satisfies both type and enum at this schema node. This contradiction can occur in valid JSON Schema, so compilation alone does not detect the unusable choices. The finding does not establish that the whole tool is unusable: optional properties may be omitted and other branches may still match. Negation and if conditions are not inspected as value choices.",
+            "suggestion": "Align the enum values and declared type with the intended contract. Do not automatically coerce strings to numbers or booleans; the intended representation is unknown."
+          }
+        ]
+      },
+      "methods": [
+        "tools/list"
+      ],
+      "snapshotSha256": "97d2095e7d0090cfab773b9c1d6e0945933af610d55492ea3e6dc3554b1fe816"
+    }
+  ],
+  "capturedMetadataComparison": {
+    "format": "mcplint-metadata-diff",
+    "schemaVersion": 1,
+    "before": {
+      "createdAt": "2026-10-20T18:48:20.114Z",
+      "sha256": "2df018c3363be171256b532d8dce3992e718aa702dadf276a4fc04e406ca8557",
+      "definitions": 3
+    },
+    "after": {
+      "createdAt": "2026-10-20T18:48:20.718Z",
+      "sha256": "5641fb186f5eea8227bc18865ce879962310ed8dc288ceb91b7548855013df42",
+      "definitions": 3
+    },
+    "complete": true,
+    "issues": [],
+    "summary": {
+      "added": 0,
+      "removed": 0,
+      "changed": 0,
+      "unchanged": 4,
+      "unpaired": 0
+    },
+    "changes": [],
+    "coverage": {
+      "before": [
+        {
+          "pages": 1,
+          "received": 3,
+          "retained": 3,
+          "scope": "tools/list",
+          "serverId": "recorded-svgverseai-enum-replay",
+          "status": "complete"
+        },
+        {
+          "detail": "Server did not advertise prompts.",
+          "pages": 0,
+          "received": 0,
+          "retained": 0,
+          "scope": "prompts/list",
+          "serverId": "recorded-svgverseai-enum-replay",
+          "status": "unsupported"
+        },
+        {
+          "detail": "Server did not advertise resources.",
+          "pages": 0,
+          "received": 0,
+          "retained": 0,
+          "scope": "resources/list",
+          "serverId": "recorded-svgverseai-enum-replay",
+          "status": "unsupported"
+        },
+        {
+          "detail": "Server did not advertise resources.",
+          "pages": 0,
+          "received": 0,
+          "retained": 0,
+          "scope": "resources/templates/list",
+          "serverId": "recorded-svgverseai-enum-replay",
+          "status": "unsupported"
+        }
+      ],
+      "after": [
+        {
+          "pages": 1,
+          "received": 3,
+          "retained": 3,
+          "scope": "tools/list",
+          "serverId": "recorded-svgverseai-enum-replay",
+          "status": "complete"
+        },
+        {
+          "detail": "Server did not advertise prompts.",
+          "pages": 0,
+          "received": 0,
+          "retained": 0,
+          "scope": "prompts/list",
+          "serverId": "recorded-svgverseai-enum-replay",
+          "status": "unsupported"
+        },
+        {
+          "detail": "Server did not advertise resources.",
+          "pages": 0,
+          "received": 0,
+          "retained": 0,
+          "scope": "resources/list",
+          "serverId": "recorded-svgverseai-enum-replay",
+          "status": "unsupported"
+        },
+        {
+          "detail": "Server did not advertise resources.",
+          "pages": 0,
+          "received": 0,
+          "retained": 0,
+          "scope": "resources/templates/list",
+          "serverId": "recorded-svgverseai-enum-replay",
+          "status": "unsupported"
+        }
+      ]
+    },
+    "notes": [
+      "This compares recorded metadata, not server code, tool behavior, returned content or safety.",
+      "Server IDs are matched exactly. They are labels, not authenticated identities. Renames appear as additions and removals.",
+      "Object key order and list order are ignored. Array order and string contents are preserved. No JSON Schema compatibility is inferred.",
+      "Hashes identify canonical decoded snapshots, including capture times; they do not authenticate their author or the server.",
+      "Incomplete collection and ambiguous identities cannot establish an unchanged inventory. Missing scopes in both saved files are outside the comparison."
+    ]
+  },
+  "runtime": {
+    "node": "v24.22.0",
+    "platform": "linux",
+    "arch": "x64"
+  },
+  "sdkReplay": "unchanged retained tool definitions; no tool implementation or remote connection",
+  "scriptSha256": "89e06115751c96a38ff9698f61c551629224794654bec25793999294d26edb5c"
+}

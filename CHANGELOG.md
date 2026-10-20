@@ -4,6 +4,14 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Add `schema/enum-type` (warning) for a local schema whose finite enum and
+  declared type have no common value. Check input/output schema positions
+  without coercion, reference resolution or regex execution; respect legacy
+  `$ref` siblings and skip negation/condition tests. Retain four contradictions
+  in public registry metadata rechecked on 2026-10-20, two independent instance
+  validators and a full 25,799-tool audit comparison. [Native evidence and
+  limits](studies/finite-choices/README.md). No npm release.
+
 - Include the real filesystem-server dependency comparison in the static site
   build, using the existing offline metadata renderer. Retain both original
   snapshots, full comparison and capture provenance as direct downloads. The

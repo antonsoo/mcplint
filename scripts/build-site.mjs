@@ -11,7 +11,7 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { compareMetadata, parseMetadataSnapshot, renderMetadataHtml } from '../dist/index.js';
+import { collectFile, compareMetadata, lint, parseMetadataSnapshot, renderHtml, renderMetadataHtml, resolveConfig } from '../dist/index.js';
 
 const run = promisify(execFile);
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
@@ -85,6 +85,16 @@ async function main() {
   await writeFile(join(siteDir, 'filesystem-diff.json'), JSON.stringify(comparison, null, 2) + '\n');
   await writeFile(join(siteDir, 'filesystem-evidence.json'), await readFile(join(captures, 'observations.json')));
   console.log('wrote real filesystem dependency comparison and four evidence downloads');
+  // Replay retained metadata only. No image/video tools or remote servers are called.
+  const enumFile = 'studies/finite-choices/captures/all-tools.json';
+  const enumTarget = await collectFile(enumFile, 'svgverseai-retained');
+  enumTarget.servers.forEach(server => { server.label = 'SVGverseAI registry metadata, rechecked 2026-10-20'; });
+  const enumReport = lint(enumTarget, resolveConfig({ file: {} }));
+  assert.equal(enumReport.findings.filter(row => row.ruleId === 'schema/enum-type').length, 4);
+  await writeFile(join(siteDir, 'enum-choices.html'), renderHtml(enumReport));
+  await writeFile(join(siteDir, 'enum-choices-tools.json'), await readFile(join(root, enumFile)));
+  await writeFile(join(siteDir, 'enum-choices-provenance.json'), await readFile(join(root, 'studies/finite-choices/provenance.json')));
+  console.log('wrote retained enum/type contradiction report and original evidence downloads');
   await writeFile(join(siteDir, '.nojekyll'), '');
 }
 

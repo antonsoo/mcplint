@@ -2,6 +2,9 @@ import type { Finding, Rule, RuleContext } from '../types.js';
 import { asSchema, isPlainObject, schemaProperties } from '../schema-utils.js';
 import { checkSchema, schemaNodes } from '../schema-validation.js';
 import { UNCHECKED_RULE_ID } from './safety.js';
+import { enumTypes } from './enum-types.js';
+
+export { enumTypes } from './enum-types.js';
 
 export const validSchema: Rule = {
   id: 'schema/invalid',
@@ -127,4 +130,4 @@ function collectRefs(schema: Record<string, unknown>): string[] {
   return schemaNodes(schema).nodes.flatMap(node => typeof node.$ref === 'string' ? [node.$ref] : []);
 }
 
-export const rules: Rule[] = [validSchema, portability];
+export const rules: Rule[] = [validSchema, portability, enumTypes];

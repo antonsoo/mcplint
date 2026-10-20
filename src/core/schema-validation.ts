@@ -15,7 +15,7 @@ const dialectUris: Record<Dialect, string> = {
   '2020-12': 'https://json-schema.org/draft/2020-12/schema'
 };
 
-function dialectOf(uri: string): Dialect | undefined {
+export function dialectOf(uri: string): Dialect | undefined {
   const normalized = uri.replace(/^https?:/, '').replace(/#$/, '');
   return (Object.keys(dialectUris) as Dialect[]).find(key =>
     dialectUris[key].replace(/^https?:/, '') === normalized);

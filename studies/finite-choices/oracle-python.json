@@ -1,0 +1,9 @@
+{
+  "jsonschema_version": "4.10.3",
+  "controls_checked": 780,
+  "native_contradictions_checked": 4,
+  "uncompressed_input_sha256": "e94a7ea0562cbe8e394452a63499d454c66cdd94f659a3869b54b8a235aeffee",
+  "script_sha256": "6f2230f37a3e1661c3224c0e6371e892f51dce8e4b977f67c0640b2733d99c0d",
+  "all_accepted_values_and_conflicts_agree": true,
+  "tool_calls": 0
+}

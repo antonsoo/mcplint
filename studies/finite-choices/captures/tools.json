@@ -1,0 +1,229 @@
+{
+  "tools": [
+    {
+      "name": "generate-ai-video",
+      "description": "Generate AI video",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "prompt": {
+            "type": "string",
+            "description": "Prompt for AI video generation"
+          },
+          "duration": {
+            "enum": [
+              "5",
+              "10"
+            ],
+            "type": "number",
+            "default": "5",
+            "description": "Duration of the video in seconds"
+          },
+          "imageUrl": {
+            "type": "string",
+            "default": "",
+            "description": "Image URL to generate video from"
+          },
+          "isPrivate": {
+            "enum": [
+              "true",
+              "false"
+            ],
+            "type": "boolean",
+            "default": "false",
+            "description": "Set to true to generate a private video (not supported for Explorer plan)"
+          },
+          "aspectRation": {
+            "enum": [
+              "16:9",
+              "4:3",
+              "1:1"
+            ],
+            "type": "string",
+            "default": "16:9",
+            "description": "Aspect ratio of the video"
+          },
+          "collectionId": {
+            "type": "string",
+            "default": "",
+            "description": "Collection ID where the generated video will be stored. If not provided, the default collection will be used. To obtain a collection ID, use the get-collections tool."
+          },
+          "negative_prompt": {
+            "type": "string",
+            "description": "Text prompt to exclude from the image"
+          }
+        }
+      }
+    },
+    {
+      "name": "generate-blaze-image",
+      "description": "Generate an SVG, PNG, or WebP image from a prompt using Blaze styles",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "style": {
+            "enum": [
+              "Icon (broken_line)",
+              "Icon (colored_outline)",
+              "Icon (colored_shapes)",
+              "Icon (colored_shapes_gradient)",
+              "Icon (doodle_fill)",
+              "Icon (doodle_offset_fill)",
+              "Icon (offset_fill)",
+              "Icon (outline)",
+              "Icon (outline_gradient)",
+              "Icon (pictogram)",
+              "Digital Illustrations (bold_fantasy)",
+              "Digital Illustrations (child_book)",
+              "Digital Illustrations (hand_drawn_outline)",
+              "Digital Illustrations (modern_folk)",
+              "Digital Illustrations (neon_calm)",
+              "Digital Illustrations (outline_details)",
+              "Digital Illustrations (pixel_art)",
+              "Digital Illustrations (multicolor)",
+              "Digital Illustrations (pop_art)",
+              "Digital Illustrations (street_art)",
+              "Digital Illustrations (Living fossils)",
+              "Digital Illustrations (Twilight)",
+              "Digital Illustrations (2d_art_poster_2)",
+              "Digital Illustrations (graphic_intensity)",
+              "Digital Illustrations (Amber Aesthetics)",
+              "Digital Illustrations (retro-sunset)",
+              "Digital Illustrations (Bold Geometry Art)",
+              "Digital Illustrations (Portrait Illustration)",
+              "Digital Illustrations (Sticker Pop\n\nsticker-pop)",
+              "Vector Illustrations (cartoon)",
+              "Vector Illustrations (line_art)",
+              "Vector Illustrations (doodle_line_art)",
+              "Vector Illustrations (line_circuit)",
+              "Vector Illustrations (linocut)",
+              "Vector Illustrations (kawaii)",
+              "Vector Illustrations (engraving)",
+              "Vector Illustrations (seamless)",
+              "Vector Illustrations (Frostline Illustration)",
+              "Vector Illustrations (Joyful Shape)",
+              "Vector Illustrations (Cartoon Bloom)",
+              "Vector Illustrations (Hipster)",
+              "Vector Illustrations (Mosaic Vector Art)",
+              "Vector Illustrations (Comic Vector Art)",
+              "Vector Illustrations (Kids Colouring Book)",
+              "Vector Illustrations (Kids Story Illustration)",
+              "Vector Illustrations (Outline Illustration)",
+              "Vector Illustrations (Vector Art)",
+              "Vector Illustrations (Flat Vector Art)",
+              "Vector Illustrations (Gradient Vector Art)",
+              "Vector Illustrations (Modern Tech Outline)",
+              "Vector Illustrations (neovector)",
+              "Vector Illustrations (ColorMe)",
+              "Vector Illustrations (simple_line)",
+              "Vector Illustrations (blu_stick_illustration)",
+              "Vector Illustrations (modern_play)",
+              "Logo (emblem_graffiti)",
+              "Logo (emblem_pop_art)",
+              "Logo (emblem_punk)",
+              "Logo (emblem_stamp)",
+              "Logo (emblem_vintage)",
+              "Logo (Shape)",
+              "Logo (Calligraphy)",
+              "Logo (Bold Vibrant Graphic)",
+              "Logo (Playful)",
+              "Logo (boldfolk-3d)",
+              "Logo (Minimal Vibrant Logo)"
+            ],
+            "type": "string",
+            "default": "Digital Illustrations(child_book)",
+            "description": "Style to apply for the generated image"
+          },
+          "prompt": {
+            "type": "string",
+            "description": "Text prompt for image generation"
+          },
+          "isPrivate": {
+            "enum": [
+              "true",
+              "false"
+            ],
+            "type": "boolean",
+            "default": "false",
+            "description": "Set to true to generate a private image (not supported for Explorer plan)"
+          },
+          "collectionId": {
+            "type": "string",
+            "default": "",
+            "description": "Collection ID where the generated image will be stored. If not provided, the default collection will be used. To obtain a collection ID, use the get-collections tool."
+          },
+          "output_format": {
+            "enum": [
+              "svg",
+              "png",
+              "webp"
+            ],
+            "type": "string",
+            "default": "png",
+            "description": "Format of the generated image"
+          },
+          "negative_prompt": {
+            "type": "string",
+            "description": "Text prompt to exclude from the image"
+          }
+        }
+      }
+    },
+    {
+      "name": "generate-spark-image",
+      "description": "Generate an SVG or PNG image from a prompt using Spark styles",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "style": {
+            "enum": [
+              "Illustration",
+              "Sticker",
+              "Cartoon",
+              "Simple Vector",
+              "Pixel Art",
+              "Colouring Book",
+              "BoldFolk",
+              "Fresh Cartoon",
+              "Boho Illustrated"
+            ],
+            "type": "string",
+            "default": "Illustration",
+            "description": "Style to apply for the generated image"
+          },
+          "prompt": {
+            "type": "string",
+            "description": "Text prompt for image generation"
+          },
+          "isPrivate": {
+            "enum": [
+              "true",
+              "false"
+            ],
+            "type": "boolean",
+            "default": "false",
+            "description": "Set to true to generate a private image (not supported for Explorer plan)"
+          },
+          "collectionId": {
+            "type": "string",
+            "default": "",
+            "description": "Collection ID where the generated image will be stored. If not provided, the default collection will be used. To obtain a collection ID, use the get-collections tool."
+          },
+          "output_format": {
+            "enum": [
+              "svg",
+              "png"
+            ],
+            "type": "string",
+            "default": "png",
+            "description": "Format of the generated image"
+          },
+          "negative_prompt": {
+            "type": "string",
+            "description": "Text prompt to exclude from the image"
+          }
+        }
+      }
+    }
+  ]
+}

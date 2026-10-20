@@ -1,0 +1,173 @@
+{
+  "before": {
+    "exitCode": 0,
+    "report": {
+      "generatedAt": "2026-10-20T18:47:42.253Z",
+      "tokenizer": "o200k_base",
+      "servers": [
+        {
+          "id": "file",
+          "label": "studies/finite-choices/captures/tools.json"
+        }
+      ],
+      "collection": [
+        {
+          "serverId": "file",
+          "scope": "tools/list",
+          "status": "complete",
+          "pages": 1,
+          "received": 3,
+          "retained": 3
+        },
+        {
+          "serverId": "file",
+          "scope": "file",
+          "status": "complete",
+          "pages": 0,
+          "received": 0,
+          "retained": 0,
+          "detail": "Only the supplied snapshot was inspected; no server was contacted."
+        }
+      ],
+      "summary": {
+        "totalFindings": 1,
+        "bySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 1
+        },
+        "byRule": {
+          "schema/portability": 1
+        },
+        "toolCount": 3,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 1213,
+        "complete": true,
+        "score": 99
+      },
+      "findings": [
+        {
+          "ruleId": "schema/portability",
+          "severity": "info",
+          "serverId": "file",
+          "subject": {
+            "kind": "server",
+            "name": "file"
+          },
+          "message": "3 of 3 tools have optional properties and do not set `additionalProperties: false` (\"generate-ai-video\", \"generate-blaze-image\", \"generate-spark-image\"). OpenAI Structured Outputs / strict function calling requires every property to be listed in `required` and `additionalProperties: false`; these schemas need translation before they can be used there. (https://platform.openai.com/docs/guides/structured-outputs)"
+        }
+      ]
+    }
+  },
+  "after": {
+    "exitCode": 1,
+    "report": {
+      "generatedAt": "2026-10-20T18:47:42.595Z",
+      "tokenizer": "o200k_base",
+      "servers": [
+        {
+          "id": "file",
+          "label": "studies/finite-choices/captures/tools.json"
+        }
+      ],
+      "collection": [
+        {
+          "serverId": "file",
+          "scope": "tools/list",
+          "status": "complete",
+          "pages": 1,
+          "received": 3,
+          "retained": 3
+        },
+        {
+          "serverId": "file",
+          "scope": "file",
+          "status": "complete",
+          "pages": 0,
+          "received": 0,
+          "retained": 0,
+          "detail": "Only the supplied snapshot was inspected; no server was contacted."
+        }
+      ],
+      "summary": {
+        "totalFindings": 5,
+        "bySeverity": {
+          "error": 0,
+          "warning": 4,
+          "info": 1
+        },
+        "byRule": {
+          "schema/portability": 1,
+          "schema/enum-type": 4
+        },
+        "toolCount": 3,
+        "promptCount": 0,
+        "resourceCount": 0,
+        "totalEstimatedTokens": 1213,
+        "complete": true,
+        "score": 94
+      },
+      "findings": [
+        {
+          "ruleId": "schema/portability",
+          "severity": "info",
+          "serverId": "file",
+          "subject": {
+            "kind": "server",
+            "name": "file"
+          },
+          "message": "3 of 3 tools have optional properties and do not set `additionalProperties: false` (\"generate-ai-video\", \"generate-blaze-image\", \"generate-spark-image\"). OpenAI Structured Outputs / strict function calling requires every property to be listed in `required` and `additionalProperties: false`; these schemas need translation before they can be used there. (https://platform.openai.com/docs/guides/structured-outputs)"
+        },
+        {
+          "ruleId": "schema/enum-type",
+          "severity": "warning",
+          "serverId": "file",
+          "subject": {
+            "kind": "tool",
+            "name": "generate-ai-video"
+          },
+          "message": "\"inputSchema#/properties/isPrivate\": none of the 2 enum choices (string) matches declared type \"boolean\".",
+          "detail": "No value satisfies both type and enum at this schema node. This contradiction can occur in valid JSON Schema, so compilation alone does not detect the unusable choices. The finding does not establish that the whole tool is unusable: optional properties may be omitted and other branches may still match. Negation and if conditions are not inspected as value choices.",
+          "suggestion": "Align the enum values and declared type with the intended contract. Do not automatically coerce strings to numbers or booleans; the intended representation is unknown."
+        },
+        {
+          "ruleId": "schema/enum-type",
+          "severity": "warning",
+          "serverId": "file",
+          "subject": {
+            "kind": "tool",
+            "name": "generate-ai-video"
+          },
+          "message": "\"inputSchema#/properties/duration\": none of the 2 enum choices (string) matches declared type \"number\".",
+          "detail": "No value satisfies both type and enum at this schema node. This contradiction can occur in valid JSON Schema, so compilation alone does not detect the unusable choices. The finding does not establish that the whole tool is unusable: optional properties may be omitted and other branches may still match. Negation and if conditions are not inspected as value choices.",
+          "suggestion": "Align the enum values and declared type with the intended contract. Do not automatically coerce strings to numbers or booleans; the intended representation is unknown."
+        },
+        {
+          "ruleId": "schema/enum-type",
+          "severity": "warning",
+          "serverId": "file",
+          "subject": {
+            "kind": "tool",
+            "name": "generate-blaze-image"
+          },
+          "message": "\"inputSchema#/properties/isPrivate\": none of the 2 enum choices (string) matches declared type \"boolean\".",
+          "detail": "No value satisfies both type and enum at this schema node. This contradiction can occur in valid JSON Schema, so compilation alone does not detect the unusable choices. The finding does not establish that the whole tool is unusable: optional properties may be omitted and other branches may still match. Negation and if conditions are not inspected as value choices.",
+          "suggestion": "Align the enum values and declared type with the intended contract. Do not automatically coerce strings to numbers or booleans; the intended representation is unknown."
+        },
+        {
+          "ruleId": "schema/enum-type",
+          "severity": "warning",
+          "serverId": "file",
+          "subject": {
+            "kind": "tool",
+            "name": "generate-spark-image"
+          },
+          "message": "\"inputSchema#/properties/isPrivate\": none of the 2 enum choices (string) matches declared type \"boolean\".",
+          "detail": "No value satisfies both type and enum at this schema node. This contradiction can occur in valid JSON Schema, so compilation alone does not detect the unusable choices. The finding does not establish that the whole tool is unusable: optional properties may be omitted and other branches may still match. Negation and if conditions are not inspected as value choices.",
+          "suggestion": "Align the enum values and declared type with the intended contract. Do not automatically coerce strings to numbers or booleans; the intended representation is unknown."
+        }
+      ]
+    }
+  }
+}
