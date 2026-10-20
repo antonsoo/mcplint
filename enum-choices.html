@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'sha256-R13UI60sXCupoY4yOmNdfdY1Cy3eWSpYOcx4Jl64kv0='; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mcplint report — SVGverseAI registry metadata, rechecked 2026-10-20</title>
+<style>
+:root {
+  --bg: #0b0f14;
+  --bg-elevated: #121821;
+  --bg-inset: #0e141c;
+  --border: #1f2a37;
+  --text: #e6edf3;
+  --text-muted: #8b98a5;
+  --accent: #35d0ba;
+  --error: #ff6b6b;
+  --warning: #f5a623;
+  --info: #4ea1ff;
+  --ok: #35d399;
+  --mono: ui-monospace, "SFMono-Regular", "IBM Plex Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --sans: ui-sans-serif, -apple-system, "Segoe UI", "IBM Plex Sans", Roboto, Helvetica, Arial, sans-serif;
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  --bg: #f7f8fa;
+  --bg-elevated: #ffffff;
+  --bg-inset: #eef1f4;
+  --border: #dce3e9;
+  --text: #0e1620;
+  --text-muted: #5b6b7a;
+  --accent: #0d8070;
+  --error: #ae282f;
+  --warning: #87520a;
+  --info: #1a5caf;
+  --ok: #157c53;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f7f8fa;
+    --bg-elevated: #ffffff;
+    --bg-inset: #eef1f4;
+    --border: #dce3e9;
+    --text: #0e1620;
+    --text-muted: #5b6b7a;
+    --accent: #0d8070;
+    --error: #ae282f;
+    --warning: #87520a;
+    --info: #1a5caf;
+    --ok: #157c53;
+    color-scheme: light;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); }
+code, .mono { font-family: var(--mono); }
+.page { max-width: 960px; margin: 0 auto; padding: 20px 20px 60px; }
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0 18px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.brand { margin: 0; line-height: inherit; font-family: var(--mono); font-weight: 700; font-size: 16px; letter-spacing: 0.02em; }
+.brand .bracket { color: var(--accent); }
+.target {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text-muted);
+  background: var(--bg-inset);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 3px 8px;
+  max-width: 40ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.meta { font-family: var(--mono); font-size: 12px; color: var(--text-muted); margin-left: auto; }
+.theme-toggle {
+  background: var(--bg-inset);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  width: 30px; height: 30px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+}
+.theme-toggle:hover { border-color: var(--accent); }
+.theme-toggle svg { stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; }
+.theme-toggle .icon-moon { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .theme-toggle .icon-sun { display: none; }
+  :root:not([data-theme="dark"]) .theme-toggle .icon-moon { display: block; }
+}
+
+.audit-status { margin: 0 0 24px; padding: 16px 20px; border-left: 4px solid var(--accent); background: var(--bg-elevated); }
+.audit-status h2 { margin: 0 0 6px; font-size: 22px; }
+.audit-status p { margin: 0; max-width: 72ch; }
+.audit-incomplete { border-color: var(--error); }
+.coverage-help { color: var(--text-muted); max-width: 72ch; }
+.coverage-scroll { overflow-x: auto; }
+.coverage-scroll:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.coverage-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+.coverage-table caption { text-align: left; color: var(--text-muted); padding-bottom: 10px; }
+.coverage-table th, .coverage-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.coverage-table th[scope="row"] { font-weight: 500; min-width: 220px; overflow-wrap: anywhere; }
+.coverage-scope, .coverage-detail { display: block; font-weight: 400; }
+.coverage-scope { color: var(--text-muted); margin: 3px 0; }
+.coverage-detail { max-width: 65ch; }
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.score-block { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.ring { transform: rotate(-90deg); }
+.ring-track { fill: none; stroke: var(--border); stroke-width: 10; }
+.ring-fill { fill: none; stroke: var(--accent); stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 0.6s ease; }
+.ring-score { transform: rotate(90deg); transform-origin: 70px 70px; font-family: var(--mono); font-size: 34px; font-weight: 700; fill: var(--text); text-anchor: middle; }
+.ring-label { transform: rotate(90deg); transform-origin: 70px 70px; font-family: var(--mono); font-size: 11px; fill: var(--text-muted); text-anchor: middle; }
+.score-band { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+.stat-grid { display: grid; grid-template-columns: repeat(4, auto); gap: 18px 28px; flex: 1; min-width: 260px; }
+.stat { display: flex; flex-direction: column; }
+.stat-value { font-family: var(--mono); font-size: 22px; font-weight: 700; }
+.stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+.panel {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+}
+.panel h2 { margin: 0 0 14px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; display: flex; align-items: baseline; gap: 10px; }
+.panel h2 .hint { font-size: 11px; text-transform: none; letter-spacing: 0; color: var(--text-muted); font-weight: 400; }
+
+.bars { display: flex; flex-direction: column; gap: 8px; }
+.bar-row { display: grid; grid-template-columns: 14ch 1fr 6ch; align-items: center; gap: 10px; font-family: var(--mono); font-size: 12px; }
+.bar-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-muted); }
+.bar-track { background: var(--bg-inset); border-radius: 4px; height: 10px; overflow: hidden; }
+.bar-fill { height: 100%; background: var(--accent); border-radius: 4px; }
+.bar-fill.over { background: var(--warning); }
+.bar-value { text-align: right; }
+.budget-note { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+
+.subjects { display: flex; flex-direction: column; gap: 14px; }
+.subject { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.subject-head {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 14px; background: var(--bg-inset); border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.subject-head h3 { margin: 0; font-size: 14px; font-family: var(--mono); }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.dot.sev-error { background: var(--error); }
+.dot.sev-warning { background: var(--warning); }
+.dot.sev-info { background: var(--info); }
+.tag { font-size: 11px; color: var(--text-muted); border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; }
+.tag.muted { color: var(--text-muted); }
+.count { margin-left: auto; font-size: 11px; color: var(--text-muted); font-family: var(--mono); }
+
+.findings { list-style: none; margin: 0; padding: 0; }
+.finding { padding: 12px 14px; border-left: 3px solid transparent; border-top: 1px solid var(--border); }
+.finding:first-child { border-top: none; }
+.finding.sev-error { border-left-color: var(--error); }
+.finding.sev-warning { border-left-color: var(--warning); }
+.finding.sev-info { border-left-color: var(--info); }
+.finding-head { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap; }
+.sev-chip { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; padding: 1px 6px; border-radius: 4px; }
+.sev-chip.sev-error { color: var(--error); background: color-mix(in srgb, var(--error) 16%, transparent); }
+.sev-chip.sev-warning { color: var(--warning); background: color-mix(in srgb, var(--warning) 16%, transparent); }
+.sev-chip.sev-info { color: var(--info); background: color-mix(in srgb, var(--info) 16%, transparent); }
+.rule-id { font-family: var(--mono); font-size: 12px; text-decoration: none; }
+.rule-id:hover { text-decoration: underline; }
+.finding-msg { margin: 0 0 4px; }
+.suggestion { margin: 6px 0 0; color: var(--text-muted); font-size: 13px; font-style: italic; }
+.suggestion .arrow { color: var(--accent); font-style: normal; margin-right: 2px; }
+.detail { margin: 6px 0 0; padding: 8px 10px; background: var(--bg-inset); border: 1px solid var(--border); border-radius: 6px; font-size: 12px; white-space: pre-wrap; word-break: break-word; }
+
+.hexstrip { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 0; padding: 8px; background: var(--bg-inset); border: 1px solid var(--border); border-radius: 6px; }
+.hexstrip .cp { font-family: var(--mono); font-size: 11px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 3px; padding: 2px 5px; color: var(--accent); }
+
+.sev-error-text { color: var(--error); }
+.sev-warning-text { color: var(--warning); }
+.sev-info-text { color: var(--info); }
+.sev-good-text { color: var(--ok); }
+.sev-mid-text { color: var(--warning); }
+.sev-bad-text { color: var(--error); }
+
+.empty { color: var(--text-muted); }
+.muted { color: var(--text-muted); }
+
+.footer { text-align: center; color: var(--text-muted); font-size: 12px; margin-top: 30px; }
+
+@media (max-width: 480px) {
+  .stat-grid { grid-template-columns: repeat(2, auto); }
+  .audit-status { margin: 0 0 24px; padding: 16px 20px; border-left: 4px solid var(--accent); background: var(--bg-elevated); }
+.audit-status h2 { margin: 0 0 6px; font-size: 22px; }
+.audit-status p { margin: 0; max-width: 72ch; }
+.audit-incomplete { border-color: var(--error); }
+.coverage-help { color: var(--text-muted); max-width: 72ch; }
+.coverage-scroll { overflow-x: auto; }
+.coverage-scroll:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.coverage-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+.coverage-table caption { text-align: left; color: var(--text-muted); padding-bottom: 10px; }
+.coverage-table th, .coverage-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.coverage-table th[scope="row"] { font-weight: 500; min-width: 220px; overflow-wrap: anywhere; }
+.coverage-scope, .coverage-detail { display: block; font-weight: 400; }
+.coverage-scope { color: var(--text-muted); margin: 3px 0; }
+.coverage-detail { max-width: 65ch; }
+.hero { gap: 20px; }
+  .bar-row { grid-template-columns: 9ch 1fr 4ch; }
+}
+
+*:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="topbar">
+    <h1 class="brand"><span class="bracket">[</span>mcplint<span class="bracket">]</span></h1>
+    <div class="target" title="SVGverseAI registry metadata, rechecked 2026-10-20">SVGverseAI registry metadata, rechecked 2026-10-20</div>
+    <div class="meta">2026-10-20T18:46:08.971Z</div>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme" type="button">
+      <svg class="icon-sun" viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" width="16" height="16"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></svg>
+    </button>
+  </header>
+
+  <main>
+  <div class="audit-status ">
+    <h2>Findings to review</h2>
+    <p>Scope: collected metadata and configured rules. A completed audit and a high score do not certify that a server is safe.</p>
+  </div>
+  <section class="hero" aria-label="Audit summary">
+    <div class="score-block">
+      
+  <svg class="ring" width="140" height="140" viewBox="0 0 140 140" role="img" aria-label="Score 93 out of 100">
+    <circle class="ring-track" cx="70" cy="70" r="52" />
+    <circle class="ring-fill" cx="70" cy="70" r="52" stroke-dasharray="326.7256359733385" stroke-dashoffset="22.87079451813368" />
+    <text x="70" y="66" class="ring-score">93</text>
+    <text x="70" y="88" class="ring-label">/ 100</text>
+  </svg>
+      <div class="score-band">Heuristic score</div>
+    </div>
+    <div class="stat-grid">
+      <div class="stat"><span class="stat-value">1</span><span class="stat-label">servers</span></div>
+      <div class="stat"><span class="stat-value">6</span><span class="stat-label">tools</span></div>
+      <div class="stat"><span class="stat-value">0</span><span class="stat-label">prompts</span></div>
+      <div class="stat"><span class="stat-value">0</span><span class="stat-label">resources</span></div>
+      <div class="stat"><span class="stat-value">~1311 </span><span class="stat-label">est. tokens</span></div>
+      <div class="stat sev-error-text"><span class="stat-value">0</span><span class="stat-label">errors</span></div>
+      <div class="stat sev-warning-text"><span class="stat-value">7</span><span class="stat-label">warnings</span></div>
+      <div class="stat sev-info-text"><span class="stat-value">7</span><span class="stat-label">info</span></div>
+    </div>
+  </section>
+
+  
+
+  <section class="panel">
+    <h2>Token budget<span class="hint">o200k_base estimate</span></h2>
+    
+  <div class="bars">
+    
+      <div class="bar-row">
+        <span class="bar-label" title="generate-blaze-image">generate-blaze-image</span>
+        <div class="bar-track">
+          <div class="bar-fill over" style="width:100%"></div>
+        </div>
+        <span class="bar-value">762</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label" title="generate-spark-image">generate-spark-image</span>
+        <div class="bar-track">
+          <div class="bar-fill " style="width:30.05249343832021%"></div>
+        </div>
+        <span class="bar-value">229</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label" title="generate-ai-video">generate-ai-video</span>
+        <div class="bar-track">
+          <div class="bar-fill " style="width:29.133858267716533%"></div>
+        </div>
+        <span class="bar-value">222</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label" title="image-to-svg">image-to-svg</span>
+        <div class="bar-track">
+          <div class="bar-fill " style="width:5.511811023622047%"></div>
+        </div>
+        <span class="bar-value">42</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label" title="create-collection">create-collection</span>
+        <div class="bar-track">
+          <div class="bar-fill " style="width:4.330708661417323%"></div>
+        </div>
+        <span class="bar-value">33</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label" title="list-collections">list-collections</span>
+        <div class="bar-track">
+          <div class="bar-fill " style="width:3.0183727034120733%"></div>
+        </div>
+        <span class="bar-value">23</span>
+      </div>
+    <div class="budget-note">budget: 400 tokens/tool &middot; bars over budget shown in amber</div>
+  </div>
+  </section>
+
+  <section class="panel">
+    <h2>Findings<span class="hint">14 total, grouped by server / tool / prompt / resource</span></h2>
+    <div class="subjects">
+  <article class="subject sev-warning" id="s-82b535f14eba3db9315549ae8274fdf0de14f8610c56732463fd5f890d6dd30a">
+    <header class="subject-head">
+      <span class="dot sev-warning"></span>
+      <h3>create-collection</h3>
+      <span class="tag">tool</span>
+      <span class="tag muted">svgverseai-retained</span>
+      <span class="count">1 finding</span>
+    </header>
+    <ul class="findings">
+      
+    <li class="finding sev-warning">
+      <div class="finding-head">
+        <span class="sev-chip sev-warning">warning</span>
+        <a class="rule-id" href="https://github.com/antonsoo/mcplint/blob/main/docs/rules/description-too-short.md" title="Description is shorter than 20 characters or fewer than 4 words." target="_blank" rel="noopener">description/too-short</a>
+      </div>
+      <p class="finding-msg">Description is only 17 characters / 2 words: &quot;Create collection&quot;</p>
+      
+      
+    </li>
+    </ul>
+  </article>
+  <article class="subject sev-warning" id="s-e39e680a9e30e3053710370ed8bce0f232fa8136dcc3466279561ec1313815d4">
+    <header class="subject-head">
+      <span class="dot sev-warning"></span>
+      <h3>generate-ai-video</h3>
+      <span class="tag">tool</span>
+      <span class="tag muted">svgverseai-retained</span>
+      <span class="count">5 findings</span>
+    </header>
+    <ul class="findings">
+      
+    <li class="finding sev-warning">
+      <div class="finding-head">
+        <span class="sev-chip sev-warning">warning</span>
+        <a class="rule-id" href="https://github.com/antonsoo/mcplint/blob/main/docs/rules/description-too-short.md" title="Description is shorter than 20 characters or fewer than 4 words." target="_blank" rel="noopener">description/too-short</a>
+      </div>
+      <p class="finding-msg">Description is only 17 characters / 3 words: &quot;Generate AI video&quot;</p>
+      
+      
+    </li>
+    <li class="finding sev-warning">
+      <div class="finding-head">
+        <span class="sev-chip sev-warning">warning</span>
+        <a class="rule-id" href="https://github.com/antonsoo/mcplint/blob/main/docs/rules/schema-enum-type.md" title="Every enum choice is excluded by the declared JSON type at the same schema node." target="_blank" rel="noopener">schema/enum-type</a>
+      </div>
+      <p class="finding-msg">&quot;inputSchema#/properties/isPrivate&quot;: none of the 2 enum choices (string) matches declared type &quot;boolean&quot;.</p>
+      <pre class="detail">No value satisfies both type and enum at this schema node. This contradiction can occur in valid JSON Schema, so compilation alone does not detect the unusable choices. The finding does not establish that the whole tool is unusable: optional properties may be omitted and other branches may still match. Negation and if conditions are not inspected as value choices.</pre>
+      <p class="suggestion"><span class="arrow">&#8594;</span> Align the enum values and declared type with the intended contract. Do not automatically coerce strings to numbers or booleans; the intended representation is unknown.</p>
+    </li>
+    <li class="finding sev-warning">
+      <div class="finding-head">
+        <span class="sev-chip sev-warning">warning</span>
+        <a class="rule-id" href="https://github.com/antonsoo/mcplint/blob/main/docs/rules/schema-enum-type.md" title="Every enum choice is excluded by the declared JSON type at the same schema node." target="_blank" rel="noopener">schema/enum-type</a>
+      </div>
+      <p class="finding-msg">&quot;inputSchema#/properties/duration&quot;: none of the 2 enum choices (string) matches declared type &quot;number&quot;.</p>
+      <pre class="detail">No value satisfies both type and enum at this schema node. This contradiction can occur in valid JSON Schema, so compilation alone does not detect the unusable choices. The finding does not establish that the whole tool is unusable: optional properties may be omitted and other branches may still match. Negation and if conditions are not inspected as value choices.</pre>
+      <p class="suggestion"><span class="arrow">&#8594;</span> Align the enum values and declared type with the intended contract. Do not automatically coerce strings to numbers or booleans; the intended representation is unknown.</p>
+    </li>
+    <li class="finding sev-info">
+      <div class="finding-head">
+        <span class="sev-chip sev-info">info</span>
+        <a class="rule-id" href="https://github.com/antonsoo/mcplint/blob/main/docs/rules/description-enum-unexplained.md" title="A scalar enum parameter has more than one value but its description does not mention any of them." target="_blank" rel="noopener">description/enum-unexplained</a>
+      </div>
+      <p class="finding-msg">Parameter &quot;duration&quot; has scalar enum [&quot;5&quot;,&quot;10&quot;] but its description mentions none of the values.</p>
+      
+      
+    </li>
+    <li class="finding sev-info">
+      <div class="finding-head">
+        <span class="sev-chip sev-info">info</span>
+        <a class="rule-id" href="https://github.com/antonsoo/mcplint/blob/main/docs/rules/description-enum-unexplained.md" title="A scalar enum parameter has more than one value but its description does not mention any of them." target="_blank" rel="noopener">description/enum-unexplained</a>
+      </div>
+      <p class="finding-msg">Parameter &quot;aspectRation&quot; has scalar enum [&quot;16:9&quot;,&quot;4:3&quot;,&quot;1:1&quot;] but its description mentions none of the values.</p>
+      
+      
+    </li>
+    </ul>
+  </article>
+  <article class="subject sev-warning" id="s-b6fa8e4459274a8c7576e0a1fce8da248b69f3942ba98457eac561cf68553464">
+    <header class="subject-head">
+      <span class="dot sev-warning"></span>
+      <h3>generate-blaze-image</h3>
+      <span class="tag">tool</span>
+      <span class="tag muted">svgverseai-retained</span>
+      <span class="count">4 findings</span>
+    </header>
+    <ul class="findings">
+      
+    <li class="finding sev-warning">
+      <div class="finding-head">
+        <span class="sev-chip sev-warning">warning</span>
+        <a class="rule-id" href="https://github.com/antonsoo/mcplint/blob/main/docs/rules/budget-tool-tokens.md" title="A single tool definition exceeds the configured token budget." target="_blank" rel="noopener">budget/tool-tokens</a>
+      </div>
+      <p class="finding-msg">~762 estimated tokens (budget: 400). Heavier than 95% of tool definitions in the registry census.</p>
+      
+      <p class="suggestion"><span class="arrow">&#8594;</span> Shorten the description or simplify inputSchema (fewer nested objects, shorter enum lists).</p>
+    </li>
+    <li class="finding sev-warning">
+      <div class="finding-head">
+        <span class="sev-chip sev-warning">warning</span>
+        <a class="rule-id" href="https://github.com/antonsoo/mcplint/blob/main/docs/rules/schema-enum-type.md" title="Every enum choice is excluded by the declared JSON type at the same schema node." target="_blank" rel="noopener">schema/enum-type</a>
+      </div>
+      <p class="finding-msg">&quot;inputSchema#/properties/isPrivate&quot;: none of the 2 enum choices (string) matches declared type &quot;boolean&quot;.</p>
+      <pre class="detail">No value satisfies both type and enum at this schema node. This contradiction can occur in valid JSON Schema, so compilation alone does not detect the unusable choices. The finding does not establish that the whole tool is unusable: optional properties may be omitted and other branches may still match. Negation and if conditions are not inspected as value choices.</pre>
+      <p class="suggestion"><span class="arrow">&#8594;</span> Align the enum values and declared type with the intended contract. Do not automatically coerce strings to numbers or booleans; the intended representation is unknown.</p>
+    </li>
+    <li class="finding sev-info">
+      <div class="finding-head">
+        <span class="sev-chip sev-info">info</span>
+        <a class="rule-id" href="https://github.com/antonsoo/mcplint/blob/main/docs/rules/description-enum-unexplained.md" title="A scalar enum parameter has more than one value but its description does not mention any of them." target="_blank" rel="noopener">description/enum-unexplained</a>
+      </div>
+      <p class="finding-msg">Parameter &quot;style&quot; has scalar enum [&quot;Icon (broken_line)&quot;,&quot;Icon (colored_outline)&quot;,&quot;Icon (colored_shapes)&quot;,&quot;Icon (colored_shapes_gradient)&quot;,&quot;Icon (doodle_fill)&quot;,&quot;Icon (doodle_offset_fill)&quot;,&quot;Icon (offset_fill)&quot;,&quot;Icon (outline)&quot;,&quot;Icon (outline_gradient)&quot;,&quot;Icon (pictogram)&quot;,&quot;Digital Illustrations (bold_fantasy)&quot;,&quot;Digital Illustrations (child_book)&quot;,&quot;Digital Illustrations (hand_drawn_outline)&quot;,&quot;Digital Illustrations (modern_folk)&quot;,&quot;Digital Illustrations (neon_calm)&quot;,&quot;Digital Illustrations (outline_details)&quot;,&quot;Digital Illustrations (pixel_art)&quot;,&quot;Digital Illustrations (multicolor)&quot;,&quot;Digital Illustrations (pop_art)&quot;,&quot;Digital Illustrations (street_art)&quot;,&quot;Digital Illustrations (Living fossils)&quot;,&quot;Digital Illustrations (Twilight)&quot;,&quot;Digital Illustrations (2d_art_poster_2)&quot;,&quot;Digital Illustrations (graphic_intensity)&quot;,&quot;Digital Illustrations (Amber Aesthetics)&quot;,&quot;Digital Illustrations (retro-sunset)&quot;,&quot;Digital Illustrations (Bold Geometry Art)&quot;,&quot;Digital Illustrations (Portrait Illustration)&quot;,&quot;Digital Illustrations (Sticker Pop\n\nsticker-pop)&quot;,&quot;Vector Illustrations (cartoon)&quot;,&quot;Vector Illustrations (line_art)&quot;,&quot;Vector Illustrations (doodle_line_art)&quot;,&quot;Vector Illustrations (line_circuit)&quot;,&quot;Vector Illustrations (linocut)&quot;,&quot;Vector Illustrations (kawaii)&quot;,&quot;Vector Illustrations (engraving)&quot;,&quot;Vector Illustrations (seamless)&quot;,&quot;Vector Illustrations (Frostline Illustration)&quot;,&quot;Vector Illustrations (Joyful Shape)&quot;,&quot;Vector Illustrations (Cartoon Bloom)&quot;,&quot;Vector Illustrations (Hipster)&quot;,&quot;Vector Illustrations (Mosaic Vector Art)&quot;,&quot;Vector Illustrations (Comic Vector Art)&quot;,&quot;Vector Illustrations (Kids Colouring Book)&quot;,&quot;Vector Illustrations (Kids Story Illustration)&quot;,&quot;Vector Illustrations (Outline Illustration)&quot;,&quot;Vector Illustrations (Vector Art)&quot;,&quot;Vector Illustrations (Flat Vector Art)&quot;,&quot;Vector Illustrations (Gradient Vector Art)&quot;,&quot;Vector Illustrations (Modern Tech Outline)&quot;,&quot;Vector Illustrations (neovector)&quot;,&quot;Vector Illustrations (ColorMe)&quot;,&quot;Vector Illustrations (simple_line)&quot;,&quot;Vector Illustrations (blu_stick_illustration)&quot;,&quot;Vector Illustrations (modern_play)&quot;,&quot;Logo (emblem_graffiti)&quot;,&quot;Logo (emblem_pop_art)&quot;,&quot;Logo (emblem_punk)&quot;,&quot;Logo (emblem_stamp)&quot;,&quot;Logo (emblem_vintage)&quot;,&quot;Logo (Shape)&quot;,&quot;Logo (Calligraphy)&quot;,&quot;Logo (Bold Vibrant Graphic)&quot;,&quot;Logo (Playful)&quot;,&quot;Logo (boldfolk-3d)&quot;,&quot;Logo (Minimal Vibrant Logo)&quot;] but its description mentions none of the values.</p>
+      
+      
+    </li>
+    <li class="finding sev-info">
+      <div class="finding-head">
+        <span class="sev-chip sev-info">info</span>
+        <a class="rule-id" href="https://github.com/antonsoo/mcplint/blob/main/docs/rules/description-enum-unexplained.md" title="A scalar enum parameter has more than one value but its description does not mention any of them." target="_blank" rel="noopener">description/enum-unexplained</a>
+      </div>
+      <p class="finding-msg">Parameter &quot;output_format&quot; has scalar enum [&quot;svg&quot;,&quot;png&quot;,&quot;webp&quot;] but its description mentions none of the values.</p>
+      
+      
+    </li>
+    </ul>
+  </article>
+  <article class="subject sev-warning" id="s-23cc192d41ea69a5486d7acefb8517358ff13e3f56c013e91a6febf957596a49">
+    <header class="subject-head">
+      <span class="dot sev-warning"></span>
+      <h3>generate-spark-image</h3>
+      <span class="tag">tool</span>
+      <span class="tag muted">svgverseai-retained</span>
+      <span class="count">3 findings</span>
+    </header>
+    <ul class="findings">
+      
+    <li class="finding sev-warning">
+      <div class="finding-head">
+        <span class="sev-chip sev-warning">warning</span>
+        <a class="rule-id" href="https://github.com/antonsoo/mcplint/blob/main/docs/rules/schema-enum-type.md" title="Every enum choice is excluded by the declared JSON type at the same schema node." target="_blank" rel="noopener">schema/enum-type</a>
+      </div>
+      <p class="finding-msg">&quot;inputSchema#/properties/isPrivate&quot;: none of the 2 enum choices (string) matches declared type &quot;boolean&quot;.</p>
+      <pre class="detail">No value satisfies both type and enum at this schema node. This contradiction can occur in valid JSON Schema, so compilation alone does not detect the unusable choices. The finding does not establish that the whole tool is unusable: optional properties may be omitted and other branches may still match. Negation and if conditions are not inspected as value choices.</pre>
+      <p class="suggestion"><span class="arrow">&#8594;</span> Align the enum values and declared type with the intended contract. Do not automatically coerce strings to numbers or booleans; the intended representation is unknown.</p>
+    </li>
+    <li class="finding sev-info">
+      <div class="finding-head">
+        <span class="sev-chip sev-info">info</span>
+        <a class="rule-id" href="https://github.com/antonsoo/mcplint/blob/main/docs/rules/description-enum-unexplained.md" title="A scalar enum parameter has more than one value but its description does not mention any of them." target="_blank" rel="noopener">description/enum-unexplained</a>
+      </div>
+      <p class="finding-msg">Parameter &quot;style&quot; has scalar enum [&quot;Illustration&quot;,&quot;Sticker&quot;,&quot;Cartoon&quot;,&quot;Simple Vector&quot;,&quot;Pixel Art&quot;,&quot;Colouring Book&quot;,&quot;BoldFolk&quot;,&quot;Fresh Cartoon&quot;,&quot;Boho Illustrated&quot;] but its description mentions none of the values.</p>
+      
+      
+    </li>
+    <li class="finding sev-info">
+      <div class="finding-head">
+        <span class="sev-chip sev-info">info</span>
+        <a class="rule-id" href="https://github.com/antonsoo/mcplint/blob/main/docs/rules/description-enum-unexplained.md" title="A scalar enum parameter has more than one value but its description does not mention any of them." target="_blank" rel="noopener">description/enum-unexplained</a>
+      </div>
+      <p class="finding-msg">Parameter &quot;output_format&quot; has scalar enum [&quot;svg&quot;,&quot;png&quot;] but its description mentions none of the values.</p>
+      
+      
+    </li>
+    </ul>
+  </article>
+  <article class="subject sev-info" id="s-dc90b02a7c9feb68752ca19f1eef928ce5dbb297a4025f62611ea228879e2797">
+    <header class="subject-head">
+      <span class="dot sev-info"></span>
+      <h3>svgverseai-retained</h3>
+      <span class="tag">server</span>
+      <span class="tag muted">svgverseai-retained</span>
+      <span class="count">1 finding</span>
+    </header>
+    <ul class="findings">
+      
+    <li class="finding sev-info">
+      <div class="finding-head">
+        <span class="sev-chip sev-info">info</span>
+        <a class="rule-id" href="https://github.com/antonsoo/mcplint/blob/main/docs/rules/schema-portability.md" title="Schema uses a construct that some clients handle inconsistently. Phrased as a suggestion, not an error." target="_blank" rel="noopener">schema/portability</a>
+      </div>
+      <p class="finding-msg">5 of 6 tools have optional properties and do not set `additionalProperties: false` (&quot;create-collection&quot;, &quot;generate-ai-video&quot;, &quot;generate-blaze-image&quot;, &quot;generate-spark-image&quot;, &quot;image-to-svg&quot;). OpenAI Structured Outputs / strict function calling requires every property to be listed in `required` and `additionalProperties: false`; these schemas need translation before they can be used there. (https://platform.openai.com/docs/guides/structured-outputs)</p>
+      
+      
+    </li>
+    </ul>
+  </article></div>
+  </section>
+
+  <section class="panel" aria-labelledby="coverage-heading">
+    <h2 id="coverage-heading">Collection coverage</h2>
+    <p class="coverage-help">Received counts include malformed entries. Retained counts include objects whose valid fields could still be checked. Unsupported methods and disabled servers were not inspected.</p>
+    <div class="coverage-scroll" role="region" aria-label="Collection coverage table" tabindex="0">
+      <table class="coverage-table">
+        <caption>Collection results by server and source</caption>
+        <thead><tr><th scope="col">Server / source</th><th scope="col">Status</th><th scope="col">Pages</th><th scope="col">Received</th><th scope="col">Retained</th></tr></thead>
+        <tbody><tr>
+          <th scope="row">svgverseai-retained<span class="coverage-scope">tools/list</span></th>
+          <td class="">complete</td><td>1</td><td>6</td><td>6</td>
+        </tr><tr>
+          <th scope="row">svgverseai-retained<span class="coverage-scope">file</span><span class="coverage-detail">Only the supplied snapshot was inspected; no server was contacted.</span></th>
+          <td class="">complete</td><td>0</td><td>0</td><td>0</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  </main>
+  <footer class="footer">
+    Generated by <a href="https://github.com/antonsoo/mcplint">mcplint</a> · rules documented in <code>docs/rules/</code>
+  </footer>
+</div>
+<script>
+(function () {
+  var STORAGE_KEY = 'mcplint-theme';
+  var root = document.documentElement;
+  var toggle = document.getElementById('theme-toggle');
+  function apply(theme) {
+    if (theme === 'light' || theme === 'dark') root.setAttribute('data-theme', theme);
+    else root.removeAttribute('data-theme');
+  }
+  var saved = null;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+  apply(saved);
+  if (toggle) {
+    toggle.addEventListener('click', function () {
+      var current = root.getAttribute('data-theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = current === 'dark' ? 'light' : 'dark';
+      apply(next);
+      try { localStorage.setItem(STORAGE_KEY, next); } catch (e) {}
+    });
+  }
+})();
+</script>
+</body>
+</html>
