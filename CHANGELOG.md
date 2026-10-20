@@ -4,6 +4,16 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Reuse fixed official meta-schema validators separately from user compilers,
+  which still clear every resource and reset after 32 compilations. Retain
+  built-in meta-schema references and original failure classifications.
+  Share successful tool-token counts only inside one synchronous audit;
+  subsequent audits recount mutated library objects. Native 2,530-tool and
+  314-tool catalogs take 28.3% and 22.1% less median elapsed time in the
+  recorded fresh-process CLI measurements, with lower measured peak RSS.
+  All 1,304 retained server audits remain unchanged. [Timings, exact
+  comparisons and boundaries](studies/audit-throughput/README.md). No npm release.
+
 - Add `schema/enum-type` (warning) for a local schema whose finite enum and
   declared type have no common value. Check input/output schema positions
   without coercion, reference resolution or regex execution; respect legacy

@@ -154,6 +154,14 @@ node dist/cli.js stdio -- npx tsx examples/good-server/server.ts
 
 ## Features
 
+- **Large catalog audits (source checkout):** share only fixed official
+  meta-schema validators and estimate each tool once per audit. In fresh Node
+  processes, the retained 2,530-tool gateway goes from a median 3.81s to 2.73s;
+  a 314-tool long-description catalog goes from 2.54s to 1.98s. All 25,799
+  retained-tool audits stay identical apart from generation time.
+  [Inputs, five-sample timings, memory and limits](studies/audit-throughput/README.md).
+  This is not yet an npm release.
+
 - **Four targets**: `stdio` (spawn a server), `http` (Streamable HTTP, falling back to the older HTTP+SSE
   transport, with custom headers), `file` (a saved `tools/list` result or a bare tool array), `config` (every
   server in an MCP client's own configuration).

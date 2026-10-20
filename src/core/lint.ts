@@ -1,4 +1,4 @@
-import type { Finding, LintResult, LintSummary, LintTarget, ResolvedConfig, Severity } from './types.js';
+import type { CollectedTool, Finding, LintResult, LintSummary, LintTarget, ResolvedConfig, RuleContext, Severity } from './types.js';
 import { allRules } from './rules/index.js';
 import { UNCHECKED_RULE_ID } from './rules/safety.js';
 import { effectiveSeverity, isIgnored } from './config.js';
@@ -9,11 +9,23 @@ import { estimateToolTokens } from './tokenizer.js';
 export function lint(target: LintTarget, config: ResolvedConfig): LintResult {
   const findings: Finding[] = [];
   let complete = !(target.collection ?? []).some(record => record.status === 'incomplete');
+  // The two budget rules and summary inspect the same collected objects in
+  // this synchronous audit. Keep only counts, not serialized payloads. A new
+  // audit gets a new cache, including when library callers mutate old objects.
+  const tokenCounts = new WeakMap<CollectedTool, number>();
+  const estimate = (tool: CollectedTool): number => {
+    const cached = tokenCounts.get(tool);
+    if (cached !== undefined) return cached;
+    const tokens = estimateToolTokens(tool);
+    tokenCounts.set(tool, tokens);
+    return tokens;
+  };
+  const context: RuleContext = { target, config, estimateToolTokens: estimate };
 
   for (const rule of allRules) {
     let raw: Finding[];
     try {
-      raw = rule.check({ target, config });
+      raw = rule.check(context);
     } catch (err) {
       // Fail closed: the other rules still run, and the check that didn't is an error, not silence.
       const server = target.servers[0]?.id ?? 'unknown';
@@ -50,7 +62,7 @@ export function lint(target: LintTarget, config: ResolvedConfig): LintResult {
 
   let totalEstimatedTokens: number | null = 0;
   for (const tool of target.tools) {
-    try { totalEstimatedTokens += estimateToolTokens(tool); }
+    try { totalEstimatedTokens += estimate(tool); }
     catch { totalEstimatedTokens = null; complete = false; break; }
   }
   const summary: LintSummary = {

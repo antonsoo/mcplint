@@ -11,6 +11,18 @@ const identified = {
 const referring = { type: 'object', properties: { record: { $ref: identified.$id } } };
 
 describe('independent schema resources', () => {
+  it('keeps built-in meta-schema references available beyond compiler replacement boundaries', () => {
+    for (const $schema of [
+      'http://json-schema.org/draft-06/schema', 'http://json-schema.org/draft-07/schema',
+      'https://json-schema.org/draft/2019-09/schema', 'https://json-schema.org/draft/2020-12/schema'
+    ]) {
+      for (let i = 0; i < 40; i++) {
+        expect(checkSchema({ $schema, type: 'object', properties: { schema: { $ref: $schema } } }).status).toBe('valid');
+        expect(checkSchema({ $schema, type: 'object', properties: { schema: 12 } }).status).toBe('invalid');
+      }
+    }
+  });
+
   it('accepts the same $id in different tools, schema fields, and repeated audits', () => {
     const tools = ['read_record', 'write_record'].map(name => tool({
       name, inputSchema: structuredClone(identified), outputSchema: structuredClone(identified)

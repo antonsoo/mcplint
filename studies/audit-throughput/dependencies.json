@@ -1,0 +1,9 @@
+{
+  "installed": {
+    "ajv": "8.20.0",
+    "gpt-tokenizer": "4.0.0",
+    "@modelcontextprotocol/sdk": "1.31.0",
+    "typescript": "5.9.3"
+  },
+  "packageLockSha256": "fdf2f6bf65e8951a4cba096071bd4fb42c170898798568d2ca2c9f94f058da17"
+}

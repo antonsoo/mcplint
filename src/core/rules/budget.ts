@@ -21,7 +21,7 @@ export const toolTokens: Rule = {
   check(ctx: RuleContext): Finding[] {
     const findings: Finding[] = [];
     for (const tool of ctx.target.tools) {
-      const tokens = estimateToolTokens(tool);
+      const tokens = (ctx.estimateToolTokens ?? estimateToolTokens)(tool);
       if (tokens > ctx.config.budget) {
         findings.push({
           ruleId: this.id,
@@ -48,7 +48,8 @@ export const totalTokens: Rule = {
     'budget the limit is 16,000 tokens, 8% of a 200,000-token window, which 93% of the servers in the registry census stay under.',
   check(ctx: RuleContext): Finding[] {
     const budget = ctx.config.totalBudget ?? DEFAULT_TOTAL_BUDGET;
-    const total = ctx.target.tools.reduce((sum, tool) => sum + estimateToolTokens(tool), 0);
+    const estimate = ctx.estimateToolTokens ?? estimateToolTokens;
+    const total = ctx.target.tools.reduce((sum, tool) => sum + estimate(tool), 0);
     if (total <= budget) return [];
     return [
       {

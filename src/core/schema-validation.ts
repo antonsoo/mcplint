@@ -23,22 +23,36 @@ export function dialectOf(uri: string): Dialect | undefined {
 
 // Clear every user resource after each check, including nested IDs registered by failed compiles.
 // Ajv's code-generation scope also retains compiled functions after removeSchema(), so periodically
-// replace the entire instance. Amortize meta-schema compilation without an unbounded process cache.
+// replace the entire user compiler. Official meta-schema validation is separate:
+// that instance never registers or compiles user schemas, so it can retain the
+// fixed official validators without repeatedly generating them every 32 tools.
 const VALIDATOR_BATCH_SIZE = 32;
 const validators = new Map<Dialect, { validator: Validator; uses: number }>();
+const metaValidators = new Map<Dialect, Validator>();
+
+function createValidator(dialect: Dialect): Validator {
+  const options = { strict: false, allErrors: false, logger: false as const, inlineRefs: false, validateSchema: false };
+  const validator = dialect === '2020-12' ? new Ajv2020(options)
+    : dialect === '2019-09' ? new Ajv2019(options) : new Ajv(options);
+  if (dialect === '06') {
+    const require = createRequire(import.meta.url);
+    validator.addMetaSchema(require('ajv/dist/refs/json-schema-draft-06.json') as Record<string, unknown>);
+  }
+  return validator;
+}
+
+function metaValidatorFor(dialect: Dialect): Validator {
+  let validator = metaValidators.get(dialect);
+  if (!validator) { validator = createValidator(dialect); metaValidators.set(dialect, validator); }
+  return validator;
+}
+
 function validatorFor(dialect: Dialect): Validator {
   let entry = validators.get(dialect);
   if (!entry || entry.uses >= VALIDATOR_BATCH_SIZE) {
-    // Validate the meta-schema explicitly, so compiler restrictions (e.g. OpenAPI nullable)
-    // are distinguishable from demonstrably malformed JSON Schema.
-    const options = { strict: false, allErrors: false, logger: false as const, inlineRefs: false, validateSchema: false };
-    const validator = dialect === '2020-12' ? new Ajv2020(options)
-      : dialect === '2019-09' ? new Ajv2019(options) : new Ajv(options);
-    if (dialect === '06') {
-      const require = createRequire(import.meta.url);
-      validator.addMetaSchema(require('ajv/dist/refs/json-schema-draft-06.json') as Record<string, unknown>);
-    }
-    entry = { validator, uses: 0 };
+    // Keep built-in resources in each compiler too: a user's $ref to an
+    // official meta-schema still has the same declared offline resolution.
+    entry = { validator: createValidator(dialect), uses: 0 };
     validators.set(dialect, entry);
   }
   entry.uses++;
@@ -96,13 +110,15 @@ export function checkSchema(schema: Record<string, unknown>): SchemaCheck {
       return { status: 'unchecked', reason: `Nested dialect ${JSON.stringify(node.$schema)} differs from the root dialect; mixed dialect resources are not supported.` };
     }
   }
-  const validator = validatorFor(dialect);
+  let validator: Validator | undefined;
   try {
     // Normalize known URI aliases without discarding the declared dialect or mutating the input.
     const declared = { ...schema, $schema: dialectUris[dialect] };
-    if (!validator.validateSchema(declared)) {
-      return { status: 'invalid', reason: `schema is invalid: ${validator.errorsText()}` };
+    const meta = metaValidatorFor(dialect);
+    if (!meta.validateSchema(declared)) {
+      return { status: 'invalid', reason: `schema is invalid: ${meta.errorsText()}` };
     }
+    validator = validatorFor(dialect);
     validator.compile(declared);
     return { status: 'valid' };
   } catch (error) {
@@ -114,6 +130,6 @@ export function checkSchema(schema: Record<string, unknown>): SchemaCheck {
     }
     return { status: 'unchecked', reason: `JSON Schema compiler could not finish: ${error instanceof Error ? error.message : String(error)}` };
   } finally {
-    validator.removeSchema();
+    validator?.removeSchema();
   }
 }

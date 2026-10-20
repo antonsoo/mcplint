@@ -1,0 +1,29 @@
+{
+  "baseline_source_commit": "dd2c625aef078a237703e2255da4b489d8f609c9",
+  "selection": "Largest retained census tool count, plus a retained long-description catalog. Complete native tool definitions are unchanged; only the enclosing registry fields are omitted.",
+  "cases": [
+    {
+      "label": "gateway",
+      "server": "pipeworx/gateway",
+      "source": "https://registry.smithery.ai/servers/pipeworx/gateway",
+      "census_capture": "studies/registry-census/cache/servers/e77ca4d8b71a6eaa4297de8a988ab79db97d931d.json",
+      "raw_sha256": "3bebdf8c9256f459df0b3339784b93a53d28de2b759b51da3ef7b84125b463c2",
+      "projection_sha256": "99071791b38110cd9ddd6fb40ebd10710d652b40ca400cab6813a2558a96d9f5",
+      "tools": 2530,
+      "bytes": 865125,
+      "retained_gzip": "captures/gateway.json.gz"
+    },
+    {
+      "label": "bitquery",
+      "server": "bitquery/bitquery-mcp",
+      "source": "https://registry.smithery.ai/servers/bitquery/bitquery-mcp",
+      "census_capture": "studies/registry-census/cache/heldout/9317ab48541e58e053ea7489b58d7646e90a0e7a.json",
+      "raw_sha256": "be5159479c6258a05e842d0919a72ceaf4b0ab5418466024e6d4ee5ba1be8450",
+      "projection_sha256": "824bbfc18bb6bddc80784b6cb8de188e4c9946bdaaf3dcb5f710eba5356dacd8",
+      "tools": 314,
+      "bytes": 1317265,
+      "retained_gzip": "captures/bitquery.json.gz"
+    }
+  ],
+  "third_party_notice": "These are public functional tool definitions published by the named servers through Smithery, retained as native performance evidence. The captures supply no license declaration; their content is not claimed as original project data."
+}

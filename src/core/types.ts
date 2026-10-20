@@ -155,6 +155,9 @@ export interface ResolvedConfig {
 export interface RuleContext {
   target: LintTarget;
   config: ResolvedConfig;
+  /** A single audit may share successful estimates. Standalone rules can omit
+   * this function; counts are never cached across calls to lint(). */
+  estimateToolTokens?: (tool: CollectedTool) => number;
 }
 
 export interface LintSummary {

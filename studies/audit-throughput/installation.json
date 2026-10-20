@@ -1,0 +1,147 @@
+{
+  "source_tree": "159a0cdb23ab2cbdf84703c51a26cd2acc9558be",
+  "source_archive_sha256": "75acbc66747e213832ee5b70ab0aa700dd53b215613d4677f2fbe48301a8689a",
+  "checks": [
+    {
+      "command": [
+        "node",
+        "--version"
+      ],
+      "exit_code": 0,
+      "seconds": 0.016,
+      "output_sha256": "2b796b748c85883d00cfea9775eaa143435f0dc06c69311b444cf0dfc98214bc",
+      "tail": "v24.22.0\n"
+    },
+    {
+      "command": [
+        "npm",
+        "--version"
+      ],
+      "exit_code": 0,
+      "seconds": 0.15,
+      "output_sha256": "acb90e420303a6e949fec90f74faf64cc372894b3964e310a261689b898f41b0",
+      "tail": "11.19.1\n"
+    },
+    {
+      "command": [
+        "npm",
+        "ci"
+      ],
+      "exit_code": 0,
+      "seconds": 10.311,
+      "output_sha256": "9f6d1d371425c039589785be4ec195876205148511461e9fdd84719dcaeaebb1",
+      "tail": "n build\n\n\n> @antonsoloviev/mcplint@0.3.3 build\n> tsc -p tsconfig.json\n\n\nadded 247 packages, and audited 248 packages in 10s\n\n82 packages are looking for funding\n  run `npm fund` for details\n\n1 moderate severity vulnerability\n\nTo address all issues, run:\n  npm audit fix\n\nRun `npm audit` for details.\nnpm warn install-scripts 1 package has install scripts not yet covered by allowScripts:\nnpm warn install-scripts   esbuild@0.28.2 (postinstall: node install.js)\nnpm warn install-scripts\nnpm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.\n"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "exit_code": 0,
+      "seconds": 8.473,
+      "output_sha256": "893cf3eefbc4fa6ae9be08ee6bc96398b1393137de7ebe1195dcd86a3337a655",
+      "tail": "\n> @antonsoloviev/mcplint@0.3.3 lint\n> eslint . --max-warnings=0\n\n"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exit_code": 0,
+      "seconds": 3.421,
+      "output_sha256": "8f0edc2a9dc86e4274396a40a1c61b57cfb44f2d6640f06d05c7ae40f3708895",
+      "tail": "\n> @antonsoloviev/mcplint@0.3.3 typecheck\n> tsc -p tsconfig.typecheck.json\n\n"
+    },
+    {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exit_code": 0,
+      "seconds": 36.142,
+      "output_sha256": "004f83fb20e64162280aa1eb9a9acae4754f6424cbc0d2b2c933b903c458da35",
+      "tail": "\n> @antonsoloviev/mcplint@0.3.3 test\n> vitest run\n\n\n RUN  v5.0.2 <scratch>/mcplint-speed-clean\n\n\n Test Files  50 passed (50)\n      Tests  661 passed (661)\n   Start at  12:23:31\n   Duration  35.62s (tests 92%, import 5%, transform 3%)\n\n"
+    },
+    {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exit_code": 0,
+      "seconds": 35.736,
+      "output_sha256": "7445a033d218ee794b01f13b2d8dc58aa7bcb3d65023e440a7faa0c54c2e92fe",
+      "tail": "\n> @antonsoloviev/mcplint@0.3.3 test\n> vitest run\n\n\n RUN  v5.0.2 <scratch>/mcplint-speed-clean\n\n\n Test Files  50 passed (50)\n      Tests  661 passed (661)\n   Start at  12:24:07\n   Duration  35.23s (tests 93%, import 6%, transform 1%)\n\n"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "test:browser"
+      ],
+      "exit_code": 0,
+      "seconds": 42.8,
+      "output_sha256": "afe6bd27a765eb1c70675a8713c37d97b1b00445b7efe034020dcc8df1d0a504",
+      "tail": "\n  \u2713  28 [firefox] \u203a tests/browser/reports.spec.mjs:108:1 \u203a built demo navigation keeps three distinct audit outcomes usable on a phone (3.3s)\n  \u2713  29 [firefox] \u203a tests/browser/reports.spec.mjs:40:3 \u203a offline evidence 375px light (2.3s)\n  \u2713  30 [firefox] \u203a tests/browser/schema-audit.spec.mjs:26:3 \u203a schema findings remain readable offline at 1440px (2.0s)\n  \u2713  31 [firefox] \u203a tests/browser/reports.spec.mjs:78:3 \u203a clean verdict is independent of score (1.5s)\n  \u2713  32 [firefox] \u203a tests/browser/schema-audit.spec.mjs:26:3 \u203a schema findings remain readable offline at 375px (1.8s)\n\n  32 passed (34.3s)\n"
+    },
+    {
+      "command": [
+        "npm",
+        "pack",
+        "--ignore-scripts",
+        "--json"
+      ],
+      "exit_code": 0,
+      "seconds": 0.811,
+      "output_sha256": "a50e9d997a2aedc58b6c20b3bac3f5d04e10240d8dcf0999d74a3b3339e29062",
+      "tail": "mode\": 420\n      },\n      {\n        \"path\": \"docs/rules/safety-unchecked.md\",\n        \"size\": 1854,\n        \"mode\": 420\n      },\n      {\n        \"path\": \"docs/rules/schema-enum-type.md\",\n        \"size\": 3146,\n        \"mode\": 420\n      },\n      {\n        \"path\": \"docs/rules/schema-invalid.md\",\n        \"size\": 4112,\n        \"mode\": 420\n      },\n      {\n        \"path\": \"docs/rules/schema-portability.md\",\n        \"size\": 2462,\n        \"mode\": 420\n      },\n      {\n        \"path\": \"package.json\",\n        \"size\": 2243,\n        \"mode\": 420\n      }\n    ],\n    \"entryCount\": 130,\n    \"bundled\": []\n  }\n]\n"
+    },
+    {
+      "command": [
+        "npm",
+        "install",
+        "--ignore-scripts",
+        "--omit=dev",
+        "<scratch>/mcplint-speed-clean/antonsoloviev-mcplint-0.3.3.tgz"
+      ],
+      "exit_code": 0,
+      "seconds": 6.88,
+      "output_sha256": "52d33c77e856e362a4a62fd828b597e942d8495b5ce19ffbf696008913344004",
+      "tail": "\nadded 98 packages, and audited 99 packages in 7s\n\n35 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\n"
+    },
+    {
+      "command": [
+        "<scratch>/mcplint-node24/node-v24.22.0-linux-x64/bin/node",
+        "studies/finite-choices/verify-cli.mjs",
+        "<scratch>/mcplint-finite-before/dist/cli.js",
+        "<scratch>/mcplint-speed-consumer/node_modules/@antonsoloviev/mcplint/dist/cli.js",
+        "<checkout>/studies/audit-throughput/installed-sdk-24.json"
+      ],
+      "exit_code": 0,
+      "seconds": 2.489,
+      "output_sha256": "90b2a734db891374f56d1534fe96a757c0228d0e299eead4ed1d5c3232d1b892",
+      "tail": "Native SDK replay: metadata unchanged; gate 0 -> 1; four new findings; zero tools/call requests.\n"
+    },
+    {
+      "command": [
+        "<scratch>/mcplint-node20/node-v20.0.0-linux-x64/bin/node",
+        "studies/finite-choices/verify-cli.mjs",
+        "<scratch>/mcplint-finite-before/dist/cli.js",
+        "<scratch>/mcplint-speed-consumer/node_modules/@antonsoloviev/mcplint/dist/cli.js",
+        "<checkout>/studies/audit-throughput/installed-sdk-20.json"
+      ],
+      "exit_code": 0,
+      "seconds": 2.974,
+      "output_sha256": "90b2a734db891374f56d1534fe96a757c0228d0e299eead4ed1d5c3232d1b892",
+      "tail": "Native SDK replay: metadata unchanged; gate 0 -> 1; four new findings; zero tools/call requests.\n"
+    }
+  ],
+  "artifact": {
+    "filename": "antonsoloviev-mcplint-0.3.3.tgz",
+    "sha256": "f085c48185e2a2b2d10cdc39765a67a0d14614bee67b83dc6a9c4fa3e24c1d69",
+    "integrity": "sha512-xy0UptI0qIPeuqFb5mg9zcARePBKhnuZgRCdhnFz052JrZYSSu7hr+OWKlnXE+R3ltua9RLMfROvhZK5KSBTew==",
+    "installed_payload_files_verified": 130
+  },
+  "registry_release": false
+}

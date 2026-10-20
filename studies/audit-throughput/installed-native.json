@@ -1,0 +1,33 @@
+{
+  "allRuntimeModulesMatchBenchmark": 49,
+  "cases": [
+    {
+      "node": "24",
+      "catalog": "pipeworx/gateway",
+      "tools": 2530,
+      "reportSha256ExcludingGeneratedAt": "1b2751b38b67083ceb501ca5f904e7077c2496ff7333bc23e71a10e8418becfa",
+      "exitCode": 1
+    },
+    {
+      "node": "20",
+      "catalog": "pipeworx/gateway",
+      "tools": 2530,
+      "reportSha256ExcludingGeneratedAt": "1b2751b38b67083ceb501ca5f904e7077c2496ff7333bc23e71a10e8418becfa",
+      "exitCode": 1
+    },
+    {
+      "node": "24",
+      "catalog": "bitquery/bitquery-mcp",
+      "tools": 314,
+      "reportSha256ExcludingGeneratedAt": "25970a9c930566cbe32489e83ee294e3d350842858730b26d1e6db720b5cb867",
+      "exitCode": 1
+    },
+    {
+      "node": "20",
+      "catalog": "bitquery/bitquery-mcp",
+      "tools": 314,
+      "reportSha256ExcludingGeneratedAt": "25970a9c930566cbe32489e83ee294e3d350842858730b26d1e6db720b5cb867",
+      "exitCode": 1
+    }
+  ]
+}

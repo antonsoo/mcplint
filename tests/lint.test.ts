@@ -3,6 +3,23 @@ import { lint, shouldFail, topOffenders } from '../src/core/lint.js';
 import { baseConfig, targetOf, tool } from './helpers.js';
 
 describe('lint', () => {
+  it('recounts a reused library tool after its schema and description change between audits', () => {
+    const t = tool({ name: 'read_record', description: 'Read one record by its identifier.' });
+    const target = targetOf([t]);
+    const first = lint(target, baseConfig({ budget: 100, totalBudget: 100 }));
+    expect(first.findings.some(row => row.ruleId === 'budget/tool-tokens')).toBe(false);
+    t.description = 'Detailed usage notes for this record. '.repeat(100);
+    t.inputSchema = { type: 'object', properties: { identifier: { type: 'string' } } };
+    const second = lint(target, baseConfig({ budget: 100, totalBudget: 100 }));
+    expect(second.summary.totalEstimatedTokens).toBeGreaterThan(first.summary.totalEstimatedTokens!);
+    expect(second.findings.filter(row => row.ruleId.startsWith('budget/')).map(row => row.ruleId))
+      .toEqual(['budget/tool-tokens', 'budget/total-tokens']);
+    expect(second.findings.find(row => row.ruleId === 'budget/tool-tokens')?.message)
+      .toContain(`~${second.summary.totalEstimatedTokens} estimated tokens`);
+    expect(second.findings.find(row => row.ruleId === 'budget/total-tokens')?.message)
+      .toContain(`~${second.summary.totalEstimatedTokens} estimated tokens`);
+  });
+
   it('produces zero findings and a score of 100 for a clean target', () => {
     const t = tool({
       name: 'list_invoices',
