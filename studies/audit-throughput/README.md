@@ -99,5 +99,10 @@ enum/type warning gate on [Node 24](installed-sdk-24.json) and the supported
 [Installed native-catalog checks](installed-native.json) compare both full
 catalog reports on both Node versions with the benchmark's exact report
 hashes. Every installed runtime module also matches the measured build.
-These checks do not publish an npm version or rerender the hosted static
-reports; their existing findings remain unchanged.
+No manual Pages deployment was made for the performance change. Hosted
+reports are static; the measured speed improvement applies to the source
+CLI and library. No npm version was released.
+
+[Public-source verification](publication.json) checks all 21 changed files at
+revision `d4b1eb3f67cb245a170a7b6adf4ab7e5c9fd7f0f`, including the exact
+runtime, native inputs and full benchmark/corpus receipts.

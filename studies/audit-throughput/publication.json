@@ -1,0 +1,113 @@
+{
+  "source_commit": "d4b1eb3f67cb245a170a7b6adf4ab7e5c9fd7f0f",
+  "files_verified": 21,
+  "files": [
+    {
+      "file": "CHANGELOG.md",
+      "bytes": 26073,
+      "sha256": "60bf87dcbef7651c133dd2eb5da51b54946ad3be178ad5f97910130695b6ada4"
+    },
+    {
+      "file": "README.md",
+      "bytes": 43042,
+      "sha256": "d61768b6a1df598ce4112f6322e7da548623a4d4e099c65f6470d384b9e979a7"
+    },
+    {
+      "file": "src/core/lint.ts",
+      "bytes": 4399,
+      "sha256": "e00c11423a9f317b6d8f8b1b20dec431bf448be1a29ff95c6f26026b1baf438d"
+    },
+    {
+      "file": "src/core/rules/budget.ts",
+      "bytes": 3376,
+      "sha256": "9828a3d7a323dc3d1b451087f44619fdc011abcef5d4a8b14cabae74c96ea968"
+    },
+    {
+      "file": "src/core/schema-validation.ts",
+      "bytes": 6581,
+      "sha256": "35966da48bbba59f82167253d01218a39dd2057f78fb432a1bf16731f34cfd43"
+    },
+    {
+      "file": "src/core/types.ts",
+      "bytes": 5192,
+      "sha256": "32df63ff6066584fa6d484418a462086eaeafb6bd90bde0721673d431e97f3fd"
+    },
+    {
+      "file": "studies/audit-throughput/README.md",
+      "bytes": 5574,
+      "sha256": "5ae54fe7f07122c257776f548bab286080fcc05d9c5b85f11bf8a8cc7c30cfb6"
+    },
+    {
+      "file": "studies/audit-throughput/benchmark.json",
+      "bytes": 27946,
+      "sha256": "7bcc578a921a0aa91a96c10af9cd76ec9a64d8bee4614893168a17cc97620bc7"
+    },
+    {
+      "file": "studies/audit-throughput/benchmark.mjs",
+      "bytes": 4981,
+      "sha256": "70fd34ce0e3b14937c7310e67c47f3e1082be74d51a77b12a65af844e52bdfc9"
+    },
+    {
+      "file": "studies/audit-throughput/captures/bitquery.json.gz",
+      "bytes": 309828,
+      "sha256": "880ac0bc82f02ce368db2ac7daed9dd3be459f97b2e34c3e6e9d02860d62b029"
+    },
+    {
+      "file": "studies/audit-throughput/captures/gateway.json.gz",
+      "bytes": 177429,
+      "sha256": "5563c354e67dd0fa11a72b5a665ba4da43085a958bb74cf77a5c08d584ee39ef"
+    },
+    {
+      "file": "studies/audit-throughput/corpus.json.gz",
+      "bytes": 160520,
+      "sha256": "17963c79edd5accd392310f54b793325502d4fbb219c5b72c296215645202047"
+    },
+    {
+      "file": "studies/audit-throughput/corpus.mjs",
+      "bytes": 2971,
+      "sha256": "d3d325225b45078b0aa2ce9a00643a4e68f4c15bdcad92011e743eeb14d06ac0"
+    },
+    {
+      "file": "studies/audit-throughput/dependencies.json",
+      "bytes": 236,
+      "sha256": "d35eead76aefa9ae668ddd23d7ed56f916926892c50e2c68b1f39058ed2da6d9"
+    },
+    {
+      "file": "studies/audit-throughput/installation.json",
+      "bytes": 7055,
+      "sha256": "2fce6468308bc92da0c0e33b5c8afdebce4cf4c5aba0e7037b5caea89dfe2c06"
+    },
+    {
+      "file": "studies/audit-throughput/installed-native.json",
+      "bytes": 953,
+      "sha256": "6b52604e73248c8dcf4ac497ed0159e08d65236b725ac7ef9e4a9e16bd759132"
+    },
+    {
+      "file": "studies/audit-throughput/installed-sdk-20.json",
+      "bytes": 13685,
+      "sha256": "5c2479e48e825c3b13620632a8c37e1138e6fedeb61197185cb8221b41925028"
+    },
+    {
+      "file": "studies/audit-throughput/installed-sdk-24.json",
+      "bytes": 13686,
+      "sha256": "54bb07b8f829a15e8ed942ac35be932fa63c92e240ce32a56b8e9785a4f8113c"
+    },
+    {
+      "file": "studies/audit-throughput/provenance.json",
+      "bytes": 1629,
+      "sha256": "2d51addea67b9e6a941760ae6001ee028166749ca92d48ca3a9ae04c5ada56f9"
+    },
+    {
+      "file": "tests/lint.test.ts",
+      "bytes": 5075,
+      "sha256": "623737fb28c2ab7670d70148d5babee6055626b354951cc2f45f4aba26f02477"
+    },
+    {
+      "file": "tests/schema-validation.test.ts",
+      "bytes": 10025,
+      "sha256": "8b19dc2a8d4a814adb235d6aa81944087d160e62eaf967c5f799bafda63eaea7"
+    }
+  ],
+  "npm_release": false,
+  "manual_pages_deployment": false
+}
