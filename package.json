@@ -21,7 +21,7 @@
     "docs/metadata-review.md",
     "!dist/**/*.map"
   ],
-  "author": "Anton Soloviev",
+  "author": "Anthony Mercer",
   "license": "MIT",
   "homepage": "https://antonsoo.github.io/mcplint/",
   "repository": {
