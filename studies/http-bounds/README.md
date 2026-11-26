@@ -138,3 +138,8 @@ from pinned public raw URLs and matched byte for byte to the clean local source.
 The upload response timed out after the body was sent; independent remote-head
 and public-byte checks establish publication. No registry release or manual
 hosted deployment was performed.
+
+On 2026-11-25 this machine's home-directory paths in the retained results were
+replaced with `<workspace>/` (the showcases folder) or `~/`. Nothing else in
+those files changed. `results/public-source.json` still records the files as
+published at `the rec`, before that edit.
