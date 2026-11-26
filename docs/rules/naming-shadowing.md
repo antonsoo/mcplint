@@ -25,7 +25,7 @@ Rename one of the two tools to be clearly distinct, or namespace both by server 
 
 ## Calculation and limits
 
-The source checkout computes exact edit distances through two edits with two five-cell
+mcplint computes exact edit distances through two edits with two five-cell
 rows, stopping once no qualifying path remains. Longer distances are represented only as
 "more than two"; they never qualify for this rule. Matching prefixes and suffixes are
 removed before that calculation. Names are still lowercased and measured in JavaScript

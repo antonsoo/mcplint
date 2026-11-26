@@ -4,6 +4,13 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+## [0.4.0] - 2026-11-26
+
+- Published as `@anthonymercer/mcplint`. The earlier
+  `@antonsoloviev/mcplint` package is deprecated and points here; its
+  versions stay installable.
+- Package metadata names Anthony Mercer as the author.
+
 - Report timestamps honor `SOURCE_DATE_EPOCH`, and the Pages demo build sets it
   from the commit date, so two builds of one commit are byte-identical.
 

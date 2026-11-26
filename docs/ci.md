@@ -1,6 +1,6 @@
 # Running mcplint in CI
 
-mcplint is on npm as `@antonsoloviev/mcplint`, so `npx` can run it with no install step. Two ways to wire it
+mcplint is on npm as `@anthonymercer/mcplint`, so `npx` can run it with no install step. Two ways to wire it
 into a server repository's CI:
 
 ## GitHub Actions
@@ -24,7 +24,7 @@ jobs:
 
       # Runs the published CLI via npx, no local install step needed.
       - name: Lint MCP tool definitions
-        run: npx @antonsoloviev/mcplint stdio --fail-on error -- node dist/server.js
+        run: npx @anthonymercer/mcplint stdio --fail-on error -- node dist/server.js
 ```
 
 Swap the final `-- node dist/server.js` for however your server actually starts (a built entrypoint, `npx tsx
@@ -35,7 +35,7 @@ For a server exposed over Streamable HTTP instead, start it as a background step
 ```yaml
       - run: node dist/server.js &
       - run: npx wait-on http://localhost:3000/mcp
-      - run: npx @antonsoloviev/mcplint http http://localhost:3000/mcp --fail-on error
+      - run: npx @anthonymercer/mcplint http http://localhost:3000/mcp --fail-on error
 ```
 
 ## Any other CI system
@@ -43,7 +43,7 @@ For a server exposed over Streamable HTTP instead, start it as a background step
 The same idea works anywhere a shell step runs:
 
 ```sh
-npx @antonsoloviev/mcplint stdio --format sarif --output mcplint.sarif -- node dist/server.js
+npx @anthonymercer/mcplint stdio --format sarif --output mcplint.sarif -- node dist/server.js
 ```
 
 `--format sarif` produces a [SARIF 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/) log; GitHub code
@@ -62,7 +62,7 @@ scanning, GitLab, and most other CI dashboards can ingest it directly (on GitHub
 Either threshold also fails incomplete audits, including unavailable configured servers and unfinished
 checks. This remains true when their diagnostic is suppressed. The report preserves partial findings and
 collection evidence; JSON uses `summary.complete: false` and `summary.score: null`. Invalid lint settings
-exit 2 before collection. These coverage semantics are part of the unreleased source update; use a build
-containing that update before depending on them in CI. See [collection coverage](collection-coverage.md).
+exit 2 before collection. These coverage semantics need mcplint 0.4.0 or
+later. See [collection coverage](collection-coverage.md).
 
 Rule severities can be tuned per-repository in a `.mcplintrc.json` — see the main [README](../README.md#configuration).

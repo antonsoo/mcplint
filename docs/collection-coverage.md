@@ -89,8 +89,8 @@ replacement character in correctly encoded text is valid input.
 | Connection and initialization, per server | 30 seconds by default; `--connect-timeout <ms>` | Single target exits 2; config entry is incomplete and collection proceeds to the next server. |
 | One live list operation | 60 seconds for requests across its pages | Incomplete; prior pages retained. |
 | One stdio message | 10 MiB, including line endings | Connection fails during initialization; otherwise incomplete, retaining prior pages. |
-| One HTTP JSON response (source checkout) | 10 MiB of response bytes after fetch decompression | Connection fails during initialization; otherwise incomplete, retaining prior pages. |
-| One SSE line / event data (source checkout) | 10 MiB per line excluding its ending; 10 MiB of joined UTF-8 data | Same incomplete/failure rule. Complete comments, headers and separate events do not form a lifetime stream byte cap. |
+| One HTTP JSON response | 10 MiB of response bytes after fetch decompression | Connection fails during initialization; otherwise incomplete, retaining prior pages. |
+| One SSE line / event data | 10 MiB per line excluding its ending; 10 MiB of joined UTF-8 data | Same incomplete/failure rule. Complete comments, headers and separate events do not form a lifetime stream byte cap. |
 | One metadata JSON message or saved input | 128 container levels | Refused before its decoded values enter analysis. Live collection retains earlier pages as incomplete. |
 | One list in a saved file | 100,000 raw entries | Incomplete if entries are omitted. |
 | Safety text per input/output schema | 128 levels; 20,000 visited values; 2,000,000 UTF-16 units including keys | `safety/unchecked`; retained text and other tools still checked. |
@@ -101,7 +101,7 @@ It does not expand `$ref` or fetch referenced URLs. Diagnostic paths longer than
 500 characters are shortened; this does not shorten the key's scanned text.
 
 These bounds are not a sandbox or an overall memory/CPU guarantee. File reading and
-JSON decoding still read the input into memory. The source checkout bounds HTTP
+JSON decoding still read the input into memory. mcplint bounds HTTP
 JSON responses and SSE buffered lines/event data before decoding, without imposing
 a lifetime stream cap. [CLI failure and transport controls](../studies/http-bounds/README.md)
 document the correction. The schema compiler, tokenizer and pairwise
@@ -189,7 +189,7 @@ Lint configuration is validated before collection. It must be an object with onl
 integers. Severity values must be `error`, `warning`, `info` or `off`; ignore entries
 must be nonempty strings. Invalid settings produce a clear configuration error.
 
-API changes in this unreleased update:
+API changes in 0.4.0:
 
 - Collectors add `target.collection: CollectionRecord[]`. Caller-built library
   targets may omit it; reports identify that as caller-supplied metadata.

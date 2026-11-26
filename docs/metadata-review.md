@@ -1,6 +1,6 @@
 # Review MCP metadata changes
 
-Available in the source checkout; not yet released to npm. A lint score describes
+Available since 0.4.0. A lint score describes
 one collection. A snapshot comparison answers which recorded definitions changed
 between two collections, even when both audits have the same score and findings.
 

