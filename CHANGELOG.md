@@ -4,6 +4,9 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Report timestamps honor `SOURCE_DATE_EPOCH`, and the Pages demo build sets it
+  from the commit date, so two builds of one commit are byte-identical.
+
 - Reuse fixed official meta-schema validators separately from user compilers,
   which still clear every resource and reset after 32 compilations. Retain
   built-in meta-schema references and original failure classifications.

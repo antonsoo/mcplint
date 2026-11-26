@@ -82,9 +82,19 @@ export function lint(target: LintTarget, config: ResolvedConfig): LintResult {
     findings,
     summary,
     config,
-    generatedAt: new Date().toISOString(),
+    generatedAt: reportTimestamp(),
     tokenizerName: TOKENIZER_NAME
   };
+}
+
+/**
+ * Report time. Honors SOURCE_DATE_EPOCH (https://reproducible-builds.org/specs/source-date-epoch/)
+ * so that a published report built twice from one commit is byte-identical.
+ */
+export function reportTimestamp(env: NodeJS.ProcessEnv = process.env, now: () => Date = () => new Date()): string {
+  const epoch = env.SOURCE_DATE_EPOCH?.trim();
+  if (epoch && /^\d+$/.test(epoch)) return new Date(Number(epoch) * 1000).toISOString();
+  return now().toISOString();
 }
 
 export function shouldFail(result: LintResult): boolean {

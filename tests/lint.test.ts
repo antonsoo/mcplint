@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { lint, shouldFail, topOffenders } from '../src/core/lint.js';
+import { lint, reportTimestamp, shouldFail, topOffenders } from '../src/core/lint.js';
 import { baseConfig, targetOf, tool } from './helpers.js';
 
 describe('lint', () => {
@@ -96,5 +96,18 @@ describe('topOffenders', () => {
     const offenders = topOffenders(result, 2);
     expect(offenders[0]!.name).toBe('big');
     expect(offenders[0]!.tokens).toBeGreaterThan(offenders[1]!.tokens);
+  });
+});
+
+describe('reportTimestamp', () => {
+  const now = () => new Date('2026-11-25T12:34:56.789Z');
+  it('uses the current time by default', () => {
+    expect(reportTimestamp({}, now)).toBe('2026-11-25T12:34:56.789Z');
+  });
+  it('honors SOURCE_DATE_EPOCH for reproducible reports', () => {
+    expect(reportTimestamp({ SOURCE_DATE_EPOCH: '1761700000' }, now)).toBe('2025-10-29T01:06:40.000Z');
+  });
+  it('ignores a malformed SOURCE_DATE_EPOCH', () => {
+    expect(reportTimestamp({ SOURCE_DATE_EPOCH: 'yesterday' }, now)).toBe('2026-11-25T12:34:56.789Z');
   });
 });

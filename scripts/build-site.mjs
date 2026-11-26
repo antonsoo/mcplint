@@ -67,6 +67,12 @@ async function buildReport(fixture, outFile, navKey, title, command) {
 
 async function main() {
   await mkdir(siteDir, { recursive: true });
+  // Date the reports by the commit they were built from, so two builds of one
+  // commit are byte-identical (lint() and the CLI both honor SOURCE_DATE_EPOCH).
+  if (!process.env.SOURCE_DATE_EPOCH) {
+    const { stdout } = await run('git', ['log', '-1', '--format=%ct'], { cwd: root });
+    process.env.SOURCE_DATE_EPOCH = stdout.trim();
+  }
   await buildReport('poisoned-server', 'index.html', 'poisoned', 'mcplint · sample report on a deliberately poisoned MCP server');
   await buildReport('good-server', 'good.html', 'good', 'mcplint · sample report on a well-behaved MCP server');
   await buildReport('collection-evidence', 'incomplete.html', 'incomplete', 'mcplint · synthetic interrupted collection', ['node', 'tests/fixtures/servers/collection-evidence.mjs', 'partial']);
